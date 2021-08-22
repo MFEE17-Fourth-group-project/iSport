@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-22 10:21:35
+-- 產生時間： 2021-08-22 10:21:44
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.7
 
@@ -24,34 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `category`
+-- 資料表結構 `category_tag`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `category_tag` (
   `id` int(6) UNSIGNED NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tag` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `valid` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 傾印資料表的資料 `category`
+-- 傾印資料表的資料 `category_tag`
 --
 
-INSERT INTO `category` (`id`, `name`, `valid`) VALUES
-(1, '有氧運動', 1),
-(2, '重量訓練', 1),
-(3, 'tabata', 1),
-(4, '核心強化', 1),
-(5, '健康料理', 1);
+INSERT INTO `category_tag` (`id`, `tag`, `valid`) VALUES
+(1, '臂肌', 1),
+(2, '胸肌', 1),
+(3, '背肌', 1),
+(4, '腹肌', 1),
+(5, '臀肌', 1),
+(6, '腿肌', 1);
 
 --
 -- 已傾印資料表的索引
 --
 
 --
--- 資料表索引 `category`
+-- 資料表索引 `category_tag`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_tag`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +60,10 @@ ALTER TABLE `category`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `category`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `category_tag`
 --
-ALTER TABLE `category`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `category_tag`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
