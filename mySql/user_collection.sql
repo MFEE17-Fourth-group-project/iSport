@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-22 10:13:05
+-- 產生時間： 2021-08-22 10:12:07
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.7
 
@@ -24,34 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `user_like`
+-- 資料表結構 `user_collection`
 --
 
-CREATE TABLE `user_like` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `user_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `comment_id` int(6) NOT NULL,
-  `video_id` int(6) UNSIGNED NOT NULL,
-  `product_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `user_collection` (
+  `id` tinyint(4) NOT NULL,
+  `user_id` tinyint(4) NOT NULL,
+  `video_id` tinyint(4) NOT NULL,
+  `product_id` tinyint(4) NOT NULL,
   `article_id` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 傾印資料表的資料 `user_like`
+-- 傾印資料表的資料 `user_collection`
 --
 
-INSERT INTO `user_like` (`id`, `user_id`, `comment_id`, `video_id`, `product_id`, `article_id`) VALUES
-(1, '1', 0, 0, '', 1),
-(2, '2', 0, 0, '', 2);
+INSERT INTO `user_collection` (`id`, `user_id`, `video_id`, `product_id`, `article_id`) VALUES
+(1, 1, 0, 0, 1),
+(2, 1, 0, 0, 2);
 
 --
 -- 已傾印資料表的索引
 --
 
 --
--- 資料表索引 `user_like`
+-- 資料表索引 `user_collection`
 --
-ALTER TABLE `user_like`
+ALTER TABLE `user_collection`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +58,10 @@ ALTER TABLE `user_like`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `user_like`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `user_collection`
 --
-ALTER TABLE `user_like`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `user_collection`
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
