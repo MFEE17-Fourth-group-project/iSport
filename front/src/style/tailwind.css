@@ -49,7 +49,7 @@
 }
 
 .btn-yellow:active {
-    @apply bg-yellow-600;
+    @apply bg-yellow-500;
 }
 
 .btn-yellow:focus {
@@ -98,7 +98,7 @@
 }
 
 .user-image-sm:hover {
-    @apply filter brightness-75 cursor-pointer;
+    @apply filter brightness-90 cursor-pointer;
 }
 
 .user-image-sm:active {
