@@ -92,14 +92,17 @@
     @apply outline-none;
 }
 
+/* 小會員圖 */
 .user-image-sm {
     @apply w-20 px-4;
 }
 
+/* 大會員圖 */
 .user-image-bg {
     @apply w-56 px-4;
 }
 
+/* 原型圖片 */
 .image-round {
     @apply shadow rounded-full max-w-full h-auto align-middle border-none;
 }
