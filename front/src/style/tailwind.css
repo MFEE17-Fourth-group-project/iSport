@@ -2,7 +2,106 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* btn-blue */
 .btn-blue {
-    @apply text-2xl font-mono text-gray-400 px-4 py-1
-        rounded-md bg-blue-200;
+    @apply text-white bg-blue-500 border border-solid border-blue-400 uppercase text-base
+        px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
 }
+
+.btn-blue:hover {
+    @apply bg-blue-600 border-blue-600;
+}
+
+.btn-blue:active {
+    @apply bg-blue-600;
+}
+
+.btn-blue:focus {
+    @apply outline-none;
+}
+
+/* btn-red */
+.btn-red {
+    @apply text-white bg-red-500 border border-solid border-red-400 uppercase text-base
+        px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.btn-red:hover {
+    @apply bg-red-600 border-red-600;
+}
+
+.btn-red:active {
+    @apply bg-red-600;
+}
+
+.btn-red:focus {
+    @apply outline-none;
+}
+
+/* btn-yellow */
+.btn-yellow {
+    @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base
+        px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.btn-yellow:hover {
+    @apply bg-yellow-500 border-yellow-500;
+}
+
+.btn-yellow:active {
+    @apply bg-yellow-600;
+}
+
+.btn-yellow:focus {
+    @apply outline-none;
+}
+
+/* btn-gray */
+.btn-gray {
+    @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-base
+        px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.btn-gray:hover {
+    @apply bg-gray-800 border-gray-800;
+}
+
+.btn-gray:active {
+    @apply bg-gray-800;
+}
+
+.btn-gray:focus {
+    @apply outline-none;
+}
+
+/* btn-green */
+.btn-green {
+    @apply text-white bg-green-500 border border-solid border-green-500 uppercase text-base
+        px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.btn-green:hover {
+    @apply bg-green-600 border-green-600;
+}
+
+.btn-green:active {
+    @apply bg-green-600;
+}
+
+.btn-green:focus {
+    @apply outline-none;
+}
+
+.user-image-sm {
+    @apply w-20 px-4;
+}
+
+.user-image-bg {
+    @apply w-56 px-4;
+}
+
+.image-round {
+    @apply shadow rounded-full max-w-full h-auto align-middle border-none;
+}
+
+
