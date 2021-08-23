@@ -1,20 +1,21 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Articles from './pages/Articles'
-import Products from './pages/products/Product'
-import User from './pages/user/User'
-import Video from './pages/videos/Video'
+import Articles from "./article/Article";
+import Products from "./product/Product";
+import User from "./user/User";
+import Video from "./video/Video";
+import Nav from "../global/Nav";
 
-function RouterPages() {
-
+function HomeRouter() {
   return (
     <Router>
       <>
-        <Link to="/articles">Articles</Link>
+        {/* <Link to="/articles">Articles</Link>
         <Link to="/products">Products</Link>
         <Link to="/user">User</Link>
-        <Link to="/video">Video</Link>
+        <Link to="/video">Video</Link> */}
+        <Nav />
 
         <Switch>
           <Route path="/articles">
@@ -32,7 +33,7 @@ function RouterPages() {
         </Switch>
       </>
     </Router>
-  )
+  );
 }
 
-export default RouterPages
+export default HomeRouter;
