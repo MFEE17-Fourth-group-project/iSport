@@ -17,6 +17,11 @@ function App() {
                 <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
                     alt="..." class="image-round" />
             </div>
+            <div class="user-image-sm">
+                <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
+                    alt="..." class="image-round" />
+            </div>
+
 
             <div class="user-image-bg">
                 <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"

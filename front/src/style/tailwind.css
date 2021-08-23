@@ -94,17 +94,24 @@
 
 /* 小會員圖 */
 .user-image-sm {
-    @apply w-20 px-4;
+    @apply w-12;
+}
+
+.user-image-sm:hover {
+    @apply filter brightness-75 cursor-pointer;
+}
+
+.user-image-sm:active {
+    @apply filter brightness-75 cursor-pointer;
 }
 
 /* 大會員圖 */
 .user-image-bg {
-    @apply w-56 px-4;
+    @apply w-48;
 }
 
 /* 原型圖片 */
 .image-round {
     @apply shadow rounded-full max-w-full h-auto align-middle border-none;
 }
-
 

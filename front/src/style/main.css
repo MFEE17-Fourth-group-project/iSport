@@ -29286,6 +29286,138 @@ video {
   --tw-brightness: brightness(2);
 }
 
+.hover\:brightness-0:hover {
+  --tw-brightness: brightness(0);
+}
+
+.hover\:brightness-50:hover {
+  --tw-brightness: brightness(.5);
+}
+
+.hover\:brightness-75:hover {
+  --tw-brightness: brightness(.75);
+}
+
+.hover\:brightness-90:hover {
+  --tw-brightness: brightness(.9);
+}
+
+.hover\:brightness-95:hover {
+  --tw-brightness: brightness(.95);
+}
+
+.hover\:brightness-100:hover {
+  --tw-brightness: brightness(1);
+}
+
+.hover\:brightness-105:hover {
+  --tw-brightness: brightness(1.05);
+}
+
+.hover\:brightness-110:hover {
+  --tw-brightness: brightness(1.1);
+}
+
+.hover\:brightness-125:hover {
+  --tw-brightness: brightness(1.25);
+}
+
+.hover\:brightness-150:hover {
+  --tw-brightness: brightness(1.5);
+}
+
+.hover\:brightness-200:hover {
+  --tw-brightness: brightness(2);
+}
+
+.active\:brightness-0:active {
+  --tw-brightness: brightness(0);
+}
+
+.active\:brightness-50:active {
+  --tw-brightness: brightness(.5);
+}
+
+.active\:brightness-75:active {
+  --tw-brightness: brightness(.75);
+}
+
+.active\:brightness-90:active {
+  --tw-brightness: brightness(.9);
+}
+
+.active\:brightness-95:active {
+  --tw-brightness: brightness(.95);
+}
+
+.active\:brightness-100:active {
+  --tw-brightness: brightness(1);
+}
+
+.active\:brightness-105:active {
+  --tw-brightness: brightness(1.05);
+}
+
+.active\:brightness-110:active {
+  --tw-brightness: brightness(1.1);
+}
+
+.active\:brightness-125:active {
+  --tw-brightness: brightness(1.25);
+}
+
+.active\:brightness-150:active {
+  --tw-brightness: brightness(1.5);
+}
+
+.active\:brightness-200:active {
+  --tw-brightness: brightness(2);
+}
+
+.focus\:brightness-0:focus {
+  --tw-brightness: brightness(0);
+}
+
+.focus\:brightness-50:focus {
+  --tw-brightness: brightness(.5);
+}
+
+.focus\:brightness-75:focus {
+  --tw-brightness: brightness(.75);
+}
+
+.focus\:brightness-90:focus {
+  --tw-brightness: brightness(.9);
+}
+
+.focus\:brightness-95:focus {
+  --tw-brightness: brightness(.95);
+}
+
+.focus\:brightness-100:focus {
+  --tw-brightness: brightness(1);
+}
+
+.focus\:brightness-105:focus {
+  --tw-brightness: brightness(1.05);
+}
+
+.focus\:brightness-110:focus {
+  --tw-brightness: brightness(1.1);
+}
+
+.focus\:brightness-125:focus {
+  --tw-brightness: brightness(1.25);
+}
+
+.focus\:brightness-150:focus {
+  --tw-brightness: brightness(1.5);
+}
+
+.focus\:brightness-200:focus {
+  --tw-brightness: brightness(2);
+}
+
 .contrast-0 {
   --tw-contrast: contrast(0);
 }
@@ -30062,17 +30194,49 @@ video {
   outline-offset: 2px;
 }
 
+/* 小會員圖 */
+
 .user-image-sm {
-  width: 5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 3rem;
 }
 
-.user-image-bg {
-  width: 14rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.user-image-sm:hover {
+  cursor: pointer;
+  --tw-blur: var(--tw-empty,/*!*/ /*!*/);
+  --tw-brightness: var(--tw-empty,/*!*/ /*!*/);
+  --tw-contrast: var(--tw-empty,/*!*/ /*!*/);
+  --tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
+  --tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
+  --tw-invert: var(--tw-empty,/*!*/ /*!*/);
+  --tw-saturate: var(--tw-empty,/*!*/ /*!*/);
+  --tw-sepia: var(--tw-empty,/*!*/ /*!*/);
+  --tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-brightness: brightness(.75);
 }
+
+.user-image-sm:active {
+  cursor: pointer;
+  --tw-blur: var(--tw-empty,/*!*/ /*!*/);
+  --tw-brightness: var(--tw-empty,/*!*/ /*!*/);
+  --tw-contrast: var(--tw-empty,/*!*/ /*!*/);
+  --tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
+  --tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
+  --tw-invert: var(--tw-empty,/*!*/ /*!*/);
+  --tw-saturate: var(--tw-empty,/*!*/ /*!*/);
+  --tw-sepia: var(--tw-empty,/*!*/ /*!*/);
+  --tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-brightness: brightness(.75);
+}
+
+/* 大會員圖 */
+
+.user-image-bg {
+  width: 12rem;
+}
+
+/* 原型圖片 */
 
 .image-round {
   height: auto;
@@ -58773,6 +58937,138 @@ video {
   }
 
   .sm\:brightness-200 {
+    --tw-brightness: brightness(2);
+  }
+
+  .sm\:hover\:brightness-0:hover {
+    --tw-brightness: brightness(0);
+  }
+
+  .sm\:hover\:brightness-50:hover {
+    --tw-brightness: brightness(.5);
+  }
+
+  .sm\:hover\:brightness-75:hover {
+    --tw-brightness: brightness(.75);
+  }
+
+  .sm\:hover\:brightness-90:hover {
+    --tw-brightness: brightness(.9);
+  }
+
+  .sm\:hover\:brightness-95:hover {
+    --tw-brightness: brightness(.95);
+  }
+
+  .sm\:hover\:brightness-100:hover {
+    --tw-brightness: brightness(1);
+  }
+
+  .sm\:hover\:brightness-105:hover {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .sm\:hover\:brightness-110:hover {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .sm\:hover\:brightness-125:hover {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .sm\:hover\:brightness-150:hover {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .sm\:hover\:brightness-200:hover {
+    --tw-brightness: brightness(2);
+  }
+
+  .sm\:active\:brightness-0:active {
+    --tw-brightness: brightness(0);
+  }
+
+  .sm\:active\:brightness-50:active {
+    --tw-brightness: brightness(.5);
+  }
+
+  .sm\:active\:brightness-75:active {
+    --tw-brightness: brightness(.75);
+  }
+
+  .sm\:active\:brightness-90:active {
+    --tw-brightness: brightness(.9);
+  }
+
+  .sm\:active\:brightness-95:active {
+    --tw-brightness: brightness(.95);
+  }
+
+  .sm\:active\:brightness-100:active {
+    --tw-brightness: brightness(1);
+  }
+
+  .sm\:active\:brightness-105:active {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .sm\:active\:brightness-110:active {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .sm\:active\:brightness-125:active {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .sm\:active\:brightness-150:active {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .sm\:active\:brightness-200:active {
+    --tw-brightness: brightness(2);
+  }
+
+  .sm\:focus\:brightness-0:focus {
+    --tw-brightness: brightness(0);
+  }
+
+  .sm\:focus\:brightness-50:focus {
+    --tw-brightness: brightness(.5);
+  }
+
+  .sm\:focus\:brightness-75:focus {
+    --tw-brightness: brightness(.75);
+  }
+
+  .sm\:focus\:brightness-90:focus {
+    --tw-brightness: brightness(.9);
+  }
+
+  .sm\:focus\:brightness-95:focus {
+    --tw-brightness: brightness(.95);
+  }
+
+  .sm\:focus\:brightness-100:focus {
+    --tw-brightness: brightness(1);
+  }
+
+  .sm\:focus\:brightness-105:focus {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .sm\:focus\:brightness-110:focus {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .sm\:focus\:brightness-125:focus {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .sm\:focus\:brightness-150:focus {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .sm\:focus\:brightness-200:focus {
     --tw-brightness: brightness(2);
   }
 
@@ -88010,6 +88306,138 @@ video {
     --tw-brightness: brightness(2);
   }
 
+  .md\:hover\:brightness-0:hover {
+    --tw-brightness: brightness(0);
+  }
+
+  .md\:hover\:brightness-50:hover {
+    --tw-brightness: brightness(.5);
+  }
+
+  .md\:hover\:brightness-75:hover {
+    --tw-brightness: brightness(.75);
+  }
+
+  .md\:hover\:brightness-90:hover {
+    --tw-brightness: brightness(.9);
+  }
+
+  .md\:hover\:brightness-95:hover {
+    --tw-brightness: brightness(.95);
+  }
+
+  .md\:hover\:brightness-100:hover {
+    --tw-brightness: brightness(1);
+  }
+
+  .md\:hover\:brightness-105:hover {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .md\:hover\:brightness-110:hover {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .md\:hover\:brightness-125:hover {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .md\:hover\:brightness-150:hover {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .md\:hover\:brightness-200:hover {
+    --tw-brightness: brightness(2);
+  }
+
+  .md\:active\:brightness-0:active {
+    --tw-brightness: brightness(0);
+  }
+
+  .md\:active\:brightness-50:active {
+    --tw-brightness: brightness(.5);
+  }
+
+  .md\:active\:brightness-75:active {
+    --tw-brightness: brightness(.75);
+  }
+
+  .md\:active\:brightness-90:active {
+    --tw-brightness: brightness(.9);
+  }
+
+  .md\:active\:brightness-95:active {
+    --tw-brightness: brightness(.95);
+  }
+
+  .md\:active\:brightness-100:active {
+    --tw-brightness: brightness(1);
+  }
+
+  .md\:active\:brightness-105:active {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .md\:active\:brightness-110:active {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .md\:active\:brightness-125:active {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .md\:active\:brightness-150:active {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .md\:active\:brightness-200:active {
+    --tw-brightness: brightness(2);
+  }
+
+  .md\:focus\:brightness-0:focus {
+    --tw-brightness: brightness(0);
+  }
+
+  .md\:focus\:brightness-50:focus {
+    --tw-brightness: brightness(.5);
+  }
+
+  .md\:focus\:brightness-75:focus {
+    --tw-brightness: brightness(.75);
+  }
+
+  .md\:focus\:brightness-90:focus {
+    --tw-brightness: brightness(.9);
+  }
+
+  .md\:focus\:brightness-95:focus {
+    --tw-brightness: brightness(.95);
+  }
+
+  .md\:focus\:brightness-100:focus {
+    --tw-brightness: brightness(1);
+  }
+
+  .md\:focus\:brightness-105:focus {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .md\:focus\:brightness-110:focus {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .md\:focus\:brightness-125:focus {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .md\:focus\:brightness-150:focus {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .md\:focus\:brightness-200:focus {
+    --tw-brightness: brightness(2);
+  }
+
   .md\:contrast-0 {
     --tw-contrast: contrast(0);
   }
@@ -117241,6 +117669,138 @@ video {
   }
 
   .lg\:brightness-200 {
+    --tw-brightness: brightness(2);
+  }
+
+  .lg\:hover\:brightness-0:hover {
+    --tw-brightness: brightness(0);
+  }
+
+  .lg\:hover\:brightness-50:hover {
+    --tw-brightness: brightness(.5);
+  }
+
+  .lg\:hover\:brightness-75:hover {
+    --tw-brightness: brightness(.75);
+  }
+
+  .lg\:hover\:brightness-90:hover {
+    --tw-brightness: brightness(.9);
+  }
+
+  .lg\:hover\:brightness-95:hover {
+    --tw-brightness: brightness(.95);
+  }
+
+  .lg\:hover\:brightness-100:hover {
+    --tw-brightness: brightness(1);
+  }
+
+  .lg\:hover\:brightness-105:hover {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .lg\:hover\:brightness-110:hover {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .lg\:hover\:brightness-125:hover {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .lg\:hover\:brightness-150:hover {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .lg\:hover\:brightness-200:hover {
+    --tw-brightness: brightness(2);
+  }
+
+  .lg\:active\:brightness-0:active {
+    --tw-brightness: brightness(0);
+  }
+
+  .lg\:active\:brightness-50:active {
+    --tw-brightness: brightness(.5);
+  }
+
+  .lg\:active\:brightness-75:active {
+    --tw-brightness: brightness(.75);
+  }
+
+  .lg\:active\:brightness-90:active {
+    --tw-brightness: brightness(.9);
+  }
+
+  .lg\:active\:brightness-95:active {
+    --tw-brightness: brightness(.95);
+  }
+
+  .lg\:active\:brightness-100:active {
+    --tw-brightness: brightness(1);
+  }
+
+  .lg\:active\:brightness-105:active {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .lg\:active\:brightness-110:active {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .lg\:active\:brightness-125:active {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .lg\:active\:brightness-150:active {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .lg\:active\:brightness-200:active {
+    --tw-brightness: brightness(2);
+  }
+
+  .lg\:focus\:brightness-0:focus {
+    --tw-brightness: brightness(0);
+  }
+
+  .lg\:focus\:brightness-50:focus {
+    --tw-brightness: brightness(.5);
+  }
+
+  .lg\:focus\:brightness-75:focus {
+    --tw-brightness: brightness(.75);
+  }
+
+  .lg\:focus\:brightness-90:focus {
+    --tw-brightness: brightness(.9);
+  }
+
+  .lg\:focus\:brightness-95:focus {
+    --tw-brightness: brightness(.95);
+  }
+
+  .lg\:focus\:brightness-100:focus {
+    --tw-brightness: brightness(1);
+  }
+
+  .lg\:focus\:brightness-105:focus {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .lg\:focus\:brightness-110:focus {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .lg\:focus\:brightness-125:focus {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .lg\:focus\:brightness-150:focus {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .lg\:focus\:brightness-200:focus {
     --tw-brightness: brightness(2);
   }
 
@@ -146478,6 +147038,138 @@ video {
     --tw-brightness: brightness(2);
   }
 
+  .xl\:hover\:brightness-0:hover {
+    --tw-brightness: brightness(0);
+  }
+
+  .xl\:hover\:brightness-50:hover {
+    --tw-brightness: brightness(.5);
+  }
+
+  .xl\:hover\:brightness-75:hover {
+    --tw-brightness: brightness(.75);
+  }
+
+  .xl\:hover\:brightness-90:hover {
+    --tw-brightness: brightness(.9);
+  }
+
+  .xl\:hover\:brightness-95:hover {
+    --tw-brightness: brightness(.95);
+  }
+
+  .xl\:hover\:brightness-100:hover {
+    --tw-brightness: brightness(1);
+  }
+
+  .xl\:hover\:brightness-105:hover {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .xl\:hover\:brightness-110:hover {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .xl\:hover\:brightness-125:hover {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .xl\:hover\:brightness-150:hover {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .xl\:hover\:brightness-200:hover {
+    --tw-brightness: brightness(2);
+  }
+
+  .xl\:active\:brightness-0:active {
+    --tw-brightness: brightness(0);
+  }
+
+  .xl\:active\:brightness-50:active {
+    --tw-brightness: brightness(.5);
+  }
+
+  .xl\:active\:brightness-75:active {
+    --tw-brightness: brightness(.75);
+  }
+
+  .xl\:active\:brightness-90:active {
+    --tw-brightness: brightness(.9);
+  }
+
+  .xl\:active\:brightness-95:active {
+    --tw-brightness: brightness(.95);
+  }
+
+  .xl\:active\:brightness-100:active {
+    --tw-brightness: brightness(1);
+  }
+
+  .xl\:active\:brightness-105:active {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .xl\:active\:brightness-110:active {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .xl\:active\:brightness-125:active {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .xl\:active\:brightness-150:active {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .xl\:active\:brightness-200:active {
+    --tw-brightness: brightness(2);
+  }
+
+  .xl\:focus\:brightness-0:focus {
+    --tw-brightness: brightness(0);
+  }
+
+  .xl\:focus\:brightness-50:focus {
+    --tw-brightness: brightness(.5);
+  }
+
+  .xl\:focus\:brightness-75:focus {
+    --tw-brightness: brightness(.75);
+  }
+
+  .xl\:focus\:brightness-90:focus {
+    --tw-brightness: brightness(.9);
+  }
+
+  .xl\:focus\:brightness-95:focus {
+    --tw-brightness: brightness(.95);
+  }
+
+  .xl\:focus\:brightness-100:focus {
+    --tw-brightness: brightness(1);
+  }
+
+  .xl\:focus\:brightness-105:focus {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .xl\:focus\:brightness-110:focus {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .xl\:focus\:brightness-125:focus {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .xl\:focus\:brightness-150:focus {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .xl\:focus\:brightness-200:focus {
+    --tw-brightness: brightness(2);
+  }
+
   .xl\:contrast-0 {
     --tw-contrast: contrast(0);
   }
@@ -175712,6 +176404,138 @@ video {
     --tw-brightness: brightness(2);
   }
 
+  .\32xl\:hover\:brightness-0:hover {
+    --tw-brightness: brightness(0);
+  }
+
+  .\32xl\:hover\:brightness-50:hover {
+    --tw-brightness: brightness(.5);
+  }
+
+  .\32xl\:hover\:brightness-75:hover {
+    --tw-brightness: brightness(.75);
+  }
+
+  .\32xl\:hover\:brightness-90:hover {
+    --tw-brightness: brightness(.9);
+  }
+
+  .\32xl\:hover\:brightness-95:hover {
+    --tw-brightness: brightness(.95);
+  }
+
+  .\32xl\:hover\:brightness-100:hover {
+    --tw-brightness: brightness(1);
+  }
+
+  .\32xl\:hover\:brightness-105:hover {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .\32xl\:hover\:brightness-110:hover {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .\32xl\:hover\:brightness-125:hover {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .\32xl\:hover\:brightness-150:hover {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .\32xl\:hover\:brightness-200:hover {
+    --tw-brightness: brightness(2);
+  }
+
+  .\32xl\:active\:brightness-0:active {
+    --tw-brightness: brightness(0);
+  }
+
+  .\32xl\:active\:brightness-50:active {
+    --tw-brightness: brightness(.5);
+  }
+
+  .\32xl\:active\:brightness-75:active {
+    --tw-brightness: brightness(.75);
+  }
+
+  .\32xl\:active\:brightness-90:active {
+    --tw-brightness: brightness(.9);
+  }
+
+  .\32xl\:active\:brightness-95:active {
+    --tw-brightness: brightness(.95);
+  }
+
+  .\32xl\:active\:brightness-100:active {
+    --tw-brightness: brightness(1);
+  }
+
+  .\32xl\:active\:brightness-105:active {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .\32xl\:active\:brightness-110:active {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .\32xl\:active\:brightness-125:active {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .\32xl\:active\:brightness-150:active {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .\32xl\:active\:brightness-200:active {
+    --tw-brightness: brightness(2);
+  }
+
+  .\32xl\:focus\:brightness-0:focus {
+    --tw-brightness: brightness(0);
+  }
+
+  .\32xl\:focus\:brightness-50:focus {
+    --tw-brightness: brightness(.5);
+  }
+
+  .\32xl\:focus\:brightness-75:focus {
+    --tw-brightness: brightness(.75);
+  }
+
+  .\32xl\:focus\:brightness-90:focus {
+    --tw-brightness: brightness(.9);
+  }
+
+  .\32xl\:focus\:brightness-95:focus {
+    --tw-brightness: brightness(.95);
+  }
+
+  .\32xl\:focus\:brightness-100:focus {
+    --tw-brightness: brightness(1);
+  }
+
+  .\32xl\:focus\:brightness-105:focus {
+    --tw-brightness: brightness(1.05);
+  }
+
+  .\32xl\:focus\:brightness-110:focus {
+    --tw-brightness: brightness(1.1);
+  }
+
+  .\32xl\:focus\:brightness-125:focus {
+    --tw-brightness: brightness(1.25);
+  }
+
+  .\32xl\:focus\:brightness-150:focus {
+    --tw-brightness: brightness(1.5);
+  }
+
+  .\32xl\:focus\:brightness-200:focus {
+    --tw-brightness: brightness(2);
+  }
+
   .\32xl\:contrast-0 {
     --tw-contrast: contrast(0);
   }
@@ -176253,5 +177077,4 @@ video {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-
 
