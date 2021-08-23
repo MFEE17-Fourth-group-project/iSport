@@ -4,7 +4,7 @@ function Articles(props) {
 
   return (
     <>
-    <h1>Articles</h1>
+    <h1>Articles出現了</h1>
     </>
   )
 }

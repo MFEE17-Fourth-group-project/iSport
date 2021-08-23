@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import Articles from './pages/articles/Articles'
+import Articles from './pages/Articles'
 import Products from './pages/products/Product'
 import User from './pages/user/User'
 import Video from './pages/videos/Video'
