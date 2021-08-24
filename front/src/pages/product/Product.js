@@ -5,11 +5,11 @@ export default function Product() {
   return (
     <>
       <header className="relative w-full h-4/5 overflow-hidden">
-        <div className="text-white absolute">
-          <p className="text-h5">
+        <div className="text-white absolute w-1/2 top-1/2 left-32 transform -translate-y-1/2">
+          <p className="text-2xl break-all w-full leading-normal">
             Practice Hard, Play Strong, Pain Is Glory. ( Only For Women )
           </p>
-          <h1 className="text-h1">
+          <h1 className="text-6xl break-all w-full leading-normal">
             Solutions For Moving Better And Feeling Althier.
           </h1>
         </div>
@@ -21,7 +21,7 @@ export default function Product() {
           />
         </figure>
       </header>
-      <nav className="bg-gray-900 flex justify-center">
+      <nav className="mt-2.5 bg-gray-900 flex justify-center">
         <div className="border-b-2 border-yellow-400 w-36 text-white text-center text-base py-3">
           所有商品
         </div>
