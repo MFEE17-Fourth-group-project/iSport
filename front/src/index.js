@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style/main.css";
 import App from "./App";
-import HomeRouter from "./pages/HomeRouter";
+import Appp from "./Appp";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <RouterPages /> */}
-    <HomeRouter />
+    <Appp />
   </React.StrictMode>,
   document.getElementById("root")
 );

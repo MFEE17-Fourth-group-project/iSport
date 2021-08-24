@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function Nav() {
   return (
-    <div className="App">
+    <nav className="App">
       <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center sticky">
         <div className="flex items-center">
           <img src={Logo} width="48" alt="Logo" className="mr-2" />
@@ -30,7 +30,7 @@ function Nav() {
           </a>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
