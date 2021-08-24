@@ -3,7 +3,7 @@ import HomeRouter from "./pages/HomeRouter";
 
 function Appp() {
   return (
-    <div className="h-screen bg-gray-800">
+    <div className="h-full bg-gray-800">
       <HomeRouter />
     </div>
   );
