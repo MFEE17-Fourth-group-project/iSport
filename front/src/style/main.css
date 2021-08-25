@@ -579,9 +579,9 @@ video {
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1440px) {
   .container {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 }
 
@@ -7174,7 +7174,7 @@ video {
 }
 
 .max-w-screen-2xl {
-  max-width: 1536px;
+  max-width: 1440px;
 }
 
 .flex-1 {
@@ -30598,6 +30598,51 @@ video {
   outline-offset: 2px;
 }
 
+/* 小的 */
+
+.btn-yellow-sm {
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(251, 191, 36, var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+  transition-timing-function: linear;
+}
+
+.btn-yellow-sm:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(245, 158, 11, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(245, 158, 11, var(--tw-bg-opacity));
+}
+
+.btn-yellow-sm:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(245, 158, 11, var(--tw-bg-opacity));
+}
+
+.btn-yellow-sm:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 /* btn-gray */
 
 .btn-gray {
@@ -30639,6 +30684,51 @@ video {
 }
 
 .btn-gray:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+/* 小的 */
+
+.btn-gray-sm {
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgba(55, 65, 81, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+  transition-timing-function: linear;
+}
+
+.btn-gray-sm:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(31, 41, 55, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+}
+
+.btn-gray-sm:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+}
+
+.btn-gray-sm:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -30771,9 +30861,9 @@ video {
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .sm\:container {
-      max-width: 1536px;
+      max-width: 1440px;
     }
   }
 
@@ -37366,7 +37456,7 @@ video {
   }
 
   .sm\:max-w-screen-2xl {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 
   .sm\:flex-1 {
@@ -60641,9 +60731,9 @@ video {
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .md\:container {
-      max-width: 1536px;
+      max-width: 1440px;
     }
   }
 
@@ -67236,7 +67326,7 @@ video {
   }
 
   .md\:max-w-screen-2xl {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 
   .md\:flex-1 {
@@ -90511,9 +90601,9 @@ video {
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .lg\:container {
-      max-width: 1536px;
+      max-width: 1440px;
     }
   }
 
@@ -97106,7 +97196,7 @@ video {
   }
 
   .lg\:max-w-screen-2xl {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 
   .lg\:flex-1 {
@@ -120381,9 +120471,9 @@ video {
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .xl\:container {
-      max-width: 1536px;
+      max-width: 1440px;
     }
   }
 
@@ -126976,7 +127066,7 @@ video {
   }
 
   .xl\:max-w-screen-2xl {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 
   .xl\:flex-1 {
@@ -150222,7 +150312,7 @@ video {
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1440px) {
   .\32xl\:container {
     width: 100%;
   }
@@ -150251,9 +150341,9 @@ video {
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .\32xl\:container {
-      max-width: 1536px;
+      max-width: 1440px;
     }
   }
 
@@ -156846,7 +156936,7 @@ video {
   }
 
   .\32xl\:max-w-screen-2xl {
-    max-width: 1536px;
+    max-width: 1440px;
   }
 
   .\32xl\:flex-1 {

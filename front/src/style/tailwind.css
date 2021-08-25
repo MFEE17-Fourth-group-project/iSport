@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* btn-blue */
 .btn-blue {
@@ -56,6 +56,24 @@
   @apply outline-none;
 }
 
+/* 小的 */
+.btn-yellow-sm {
+  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
+        px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
+}
+
+.btn-yellow-sm:hover {
+  @apply bg-yellow-500 border-yellow-500;
+}
+
+.btn-yellow-sm:active {
+  @apply bg-yellow-500;
+}
+
+.btn-yellow-sm:focus {
+  @apply outline-none;
+}
+
 /* btn-gray */
 .btn-gray {
   @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-base
@@ -71,6 +89,24 @@
 }
 
 .btn-gray:focus {
+  @apply outline-none;
+}
+
+/* 小的 */
+.btn-gray-sm {
+  @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-sm
+        px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
+}
+
+.btn-gray-sm:hover {
+  @apply bg-gray-800 border-gray-800;
+}
+
+.btn-gray-sm:active {
+  @apply bg-gray-800;
+}
+
+.btn-gray-sm:focus {
   @apply outline-none;
 }
 

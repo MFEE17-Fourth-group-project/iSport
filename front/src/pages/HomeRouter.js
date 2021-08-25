@@ -6,6 +6,7 @@ import Products from "./product/Product";
 import User from "./user/User";
 import Video from "./video/Video";
 import Nav from "../global/Nav";
+import Footer from "../global/Footer";
 
 function HomeRouter() {
   return (
@@ -16,7 +17,6 @@ function HomeRouter() {
         <Link to="/user">User</Link>
         <Link to="/video">Video</Link> */}
         <Nav />
-
         <Switch>
           <Route path="/articles">
             <Articles />
@@ -31,6 +31,7 @@ function HomeRouter() {
             <Video />
           </Route>
         </Switch>
+        <Footer />
       </>
     </Router>
   );
