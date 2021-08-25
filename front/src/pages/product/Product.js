@@ -44,9 +44,9 @@ export default function Product() {
         <section>
           <div className="flex justify-between">
             <div className="flex items-center">
-              <i class="fas fa-filter text-white text-2xl"></i>
+              <i class="fas fa-filter text-white text-2xl cursor-pointer"></i>
               <button className="btn-yellow-sm mx-4">
-                價格<i class="fas fa-angle-up"></i>
+                價格<i class="fas fa-angle-up ml-1"></i>
               </button>
               <button className="btn-gray-sm mx-4">最新</button>
               <button className="btn-yellow-sm mx-4">最熱銷</button>
@@ -59,7 +59,27 @@ export default function Product() {
               <i class="fas fa-search text-white text-xl cursor-pointer"></i>
             </div>
           </div>
-          <div></div>
+
+          <div className="bg-gray-900 p-6 flex rounded-lg">
+            <div>
+              <p className="border-l-2 border-yellow-400 text-white pl-3 mb-2.5">
+                價格區間
+              </p>
+              <div className="w-72 py-1 bg-gray-700 rounded-full flex justify-between items-center px-4">
+                <input
+                  className="w-24 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center "
+                  placeholder="最小值"
+                />
+                <i class="fas fa-minus mx-1 text-yellow-400"></i>
+                <input
+                  className="w-24 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center"
+                  placeholder="最大值"
+                />
+              </div>
+            </div>
+
+            <div></div>
+          </div>
         </section>
         <section>products</section>
       </main>
