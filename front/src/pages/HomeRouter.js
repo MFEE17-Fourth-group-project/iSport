@@ -17,7 +17,7 @@ function HomeRouter() {
         <Link to="/user">User</Link>
         <Link to="/video">Video</Link> */}
         <Nav />
-
+        <hr/>
         <Footer />
         <Switch>
           <Route path="/articles">
