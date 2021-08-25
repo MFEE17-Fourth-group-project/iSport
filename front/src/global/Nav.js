@@ -14,18 +14,18 @@ function Nav() {
             <button className="btn-yellow mx-4">登入</button>
           </Link>
           <Link to="/video">
-            <p className="text-white text-opacity-80 mx-4">精選影片</p>
+            <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">精選影片</p>
           </Link>
           <Link to="/products">
-            <p className="text-white text-opacity-80 mx-4">多樣商品</p>
+            <p className="text-white text-opacity-85 mx-4">多樣商品</p>
           </Link>
           <Link to="/articles">
-            <p className="text-white text-opacity-80 mx-4">優質文章</p>
+            <p className="text-white text-opacity-85 mx-4">優質文章</p>
           </Link>
-          <a href="#" className="text-white text-opacity-70 mx-4">
+          <a href="#" className="text-white text-opacity-85 mx-4">
             健身房
           </a>
-          <a href="#" className="text-white text-opacity-70 mx-4">
+          <a href="#" className="text-white text-opacity-85 mx-4">
             購物車
           </a>
         </div>

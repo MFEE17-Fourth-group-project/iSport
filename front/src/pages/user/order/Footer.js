@@ -16,7 +16,7 @@ function Footer() {
                 <Link to=""
                   className=" w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600"
                 >
-                  <i className="fab fa-facebook"></i>
+                  <img className=""></img>
                   
                 </Link>
                 <Link to=""
