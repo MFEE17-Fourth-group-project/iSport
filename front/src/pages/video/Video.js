@@ -1,10 +1,11 @@
 import videoHeader from './../../images/有氧/cardio-1.jpg';
-import cardImg from './../../images/有氧/cardio-2.jpg';
+import VideoCard from './components/VideoCard';
+import VideoCard2 from './components/VideoCard2';
 
 const Video = () => {
     return (
         <div className="">
-            <img className="h-112 object-cover w-full" src={videoHeader} alt="Header Image" />
+            <img className="h-112 object-cover w-full" src={videoHeader} alt="" />
             <nav className="bg-gray-900 flex justify-center">
                 <div className="border-b-2 border-yellow-400 w-36 text-white text-center text-base py-5">
                     所有影片
@@ -23,20 +24,29 @@ const Video = () => {
                 </div>
             </nav>
             <main className="bg-gray-800 h-screen">
-                <div className="w-75 rounded-m overflow-hidden shadow-lg bg-gray-900 py-4 px-5 m-10">
-                    <img className="w-full h-44 object-fit" src={cardImg} alt="card image" />
-                    <div className="">
-                        <h3 className="text-base text-yellow-400 my-6">15 分鐘高强度全身肌肉 無需器材又能在家做的運動</h3>
-                        <p className="text-white text-sm text-opacity-70 mb-6">
-                            分享給大家 - 【15分鐘的全身徒手訓練】
-                            即使被禁在家，依然不阻礙我們想訓練的心！
-                            一起完成這 23 個動作吧～
-                        </p>
+                <div className="max-w-screen-xl flex flex-col mx-auto">
+                    <div className="flex my-6 justify-between">
+                        <div>
+                            <button className="btn-gray mr-4">最新上傳</button>
+                            <button className="btn-yellow">最多觀看</button>
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                className="placeholder-white text-white bg-gray-700 border border-solid border-gray-700
+                                    uppercase text-base px-4 py-2 rounded-full outline-none ease-linear
+                                    transition-all duration-150"
+                                placeholder="搜尋"
+                            />
+                        </div>
                     </div>
-                    <div className="">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    <div className="flex">
+
+                        <VideoCard />
+                        <VideoCard2 />
+                        <VideoCard />
+                        <VideoCard2 />
+
                     </div>
                 </div>
             </main>
