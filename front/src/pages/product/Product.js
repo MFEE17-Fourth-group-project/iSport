@@ -1,5 +1,5 @@
-import React from "react";
-import productHeader from "../../images/product-header.png";
+import React from 'react';
+import productHeader from '../../images/product-header.png';
 
 export default function Product() {
   return (
@@ -42,16 +42,21 @@ export default function Product() {
         main
         {/* filter按鈕 */}
         <section>
-          <div className="flex justify-between" >
-            <div className="flex items-center" >
+          <div className="flex justify-between">
+            <div className="flex items-center">
               <i class="fas fa-filter text-white text-2xl"></i>
-              <button className="btn-yellow mx-4">價格</button>
-              <button className="btn-yellow mx-4">價格</button>
-              <button className="btn-yellow mx-4">最熱銷</button>
+              <button className="btn-yellow-sm mx-4">
+                價格<i class="fas fa-angle-up"></i>
+              </button>
+              <button className="btn-gray-sm mx-4">最新</button>
+              <button className="btn-yellow-sm mx-4">最熱銷</button>
             </div>
-            <div className="w-1/3 bg-gray-700 rounded-full flex items-center px-4" >
-              <input className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white " placeholder="關鍵字..." />
-              <i class="fas fa-search text-white text-xl"></i>
+            <div className="w-1/3 bg-gray-700 rounded-full flex items-center px-4">
+              <input
+                className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white "
+                placeholder="關鍵字..."
+              />
+              <i class="fas fa-search text-white text-xl cursor-pointer"></i>
             </div>
           </div>
           <div></div>
