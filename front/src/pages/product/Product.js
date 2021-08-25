@@ -21,7 +21,7 @@ export default function Product() {
           />
         </figure>
       </header>
-      <nav className="mt-2.5 bg-gray-900 flex justify-center">
+      <nav className="bg-gray-900 flex justify-center">
         <div className="border-b-2 border-yellow-400 w-36 text-white text-center text-base py-3">
           所有商品
         </div>
@@ -40,7 +40,23 @@ export default function Product() {
       </nav>
       <main className="max-w-screen-xl my-0 mx-auto">
         main
-        <section>filter</section>
+        {/* filter按鈕 */}
+        <section>
+          <div className="flex justify-between" >
+            <div>
+            <i class="fas fa-filter text-3xl"></i>
+            <button className="btn-yellow mx-4">價格</button>
+            <button className="btn-yellow mx-4">價格</button>
+            <button className="btn-yellow mx-4">最熱銷</button>
+            </div>
+            <div className="w-1/3 bg-gray-700 rounded-full" >
+            
+
+
+            </div>
+          </div>
+          <div></div>
+        </section>
         <section>products</section>
       </main>
     </>
