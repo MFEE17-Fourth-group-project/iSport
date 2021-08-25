@@ -1,5 +1,5 @@
-import Logo from "../images/biceps.svg";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Logo from '../images/biceps.svg';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 function Nav() {
     return (
@@ -10,24 +10,36 @@ function Nav() {
                     <Link to="/" className="text-3xl text-white text-opacity-70 mx-4">iSport!</Link>
                 </div>
 
-                <div className="flex items-center ">
-                    <Link to="/user">
-                        <button className="btn-yellow mx-4">登入</button>
-                    </Link>
-                    <Link to="/video">
-                        <p className="text-white text-opacity-70 mx-4">精選影片</p>
-                    </Link>
-                    <Link to="/products">
-                        <p className="text-white text-opacity-70 mx-4">多樣商品</p>
-                    </Link>
-                    <Link to="/articles">
-                        <p className="text-white text-opacity-70 mx-4">優質文章</p>
-                    </Link>
-                    <a href="#" className="text-white text-opacity-70 mx-4">
-                        健身房
+        <div className="flex items-center ">
+          <Link to="/user">
+            <button className="btn-yellow mx-4">登入</button>
+          </Link>
+          <Link to="/video">
+            <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+              精選影片
+            </p>
+          </Link>
+          <Link to="/products">
+            <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+              多樣商品
+            </p>
+          </Link>
+          <Link to="/articles">
+            <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+              優質文章
+            </p>
+          </Link>
+          <a
+            href="/#"
+            className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
+          >
+            健身房
           </a>
-                    <a href="#" className="text-white text-opacity-70 mx-4">
-                        購物車
+          <a
+            href="/#"
+            className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
+          >
+            購物車
           </a>
                 </div>
             </div>
