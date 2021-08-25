@@ -43,16 +43,15 @@ export default function Product() {
         {/* filter按鈕 */}
         <section>
           <div className="flex justify-between" >
-            <div>
-            <i class="fas fa-filter text-3xl"></i>
-            <button className="btn-yellow mx-4">價格</button>
-            <button className="btn-yellow mx-4">價格</button>
-            <button className="btn-yellow mx-4">最熱銷</button>
+            <div className="flex items-center" >
+              <i class="fas fa-filter text-white text-2xl"></i>
+              <button className="btn-yellow mx-4">價格</button>
+              <button className="btn-yellow mx-4">價格</button>
+              <button className="btn-yellow mx-4">最熱銷</button>
             </div>
-            <div className="w-1/3 bg-gray-700 rounded-full" >
-            
-
-
+            <div className="w-1/3 bg-gray-700 rounded-full flex items-center px-4" >
+              <input className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white " placeholder="關鍵字..." />
+              <i class="fas fa-search text-white text-xl"></i>
             </div>
           </div>
           <div></div>
