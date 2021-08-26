@@ -7,6 +7,8 @@ import User from './user/User';
 import Video from './video/Video';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
+import ProductItem from './product/ProductItem'
+
 
 function HomeRouter() {
     return (
@@ -18,10 +20,13 @@ function HomeRouter() {
         <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
+                    <Route path="/product/item">
+                        <ProductItem />
+                    </Route>
                     <Route path="/articles">
                         <Articles />
                     </Route>
-                    <Route path="/products">
+                    <Route path="/product">
                         <Products />
                     </Route>
                     <Route path="/user">

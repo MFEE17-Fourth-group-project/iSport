@@ -19,7 +19,7 @@ function Nav() {
               精選影片
             </p>
           </Link>
-          <Link to="/products">
+          <Link to="/product">
             <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
               多樣商品
             </p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import productHeader from '../../images/product-header.png';
 import product from '../../images/product/1002-3.png';
 
@@ -46,6 +47,7 @@ export default function Product() {
             <main className="max-w-screen-xl my-0 mx-auto">
                 {/* filter按鈕 */}
                 <section className="mt-5">
+                    
                     <div className="flex justify-between">
                         <div className="flex items-center">
                             <i class="fas fa-filter text-white text-2xl cursor-pointer"></i>
@@ -101,6 +103,7 @@ export default function Product() {
                 </section>
                 <section className="my-5 grid grid-cols-5 gap-4">
                     {/* 卡片 */}
+                    <Link to="/product/item">
                     <div>
                         <div className="w-full rounded overflow-hidden shadow-lg bg-gray-900 relative">
                             <div className="w-full py-3 flex justify-between items-center absolute">
@@ -128,6 +131,7 @@ export default function Product() {
                             </div>
                         </div>
                     </div>
+                    </Link>
 
                     <div>
                         <div className="w-full rounded overflow-hidden shadow-lg bg-gray-900 relative">
