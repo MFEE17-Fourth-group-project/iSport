@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "extends": ["react-app"],
   "plugins": ["prettier", "react-hooks"],
   "rules": {
@@ -6,4 +7,18 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
+=======
+    "extends": [
+        "react-app"
+    ],
+    "plugins": [
+        "prettier",
+        "react-hooks"
+    ],
+    "rules": {
+        "prettier/prettier": 1, // warn 暫時關閉 記得將縮排改回2
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+    }
+>>>>>>> c416a64a3ca77de34fe253c412d5c87909e55c8f
 }

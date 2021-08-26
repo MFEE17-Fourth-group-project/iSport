@@ -1,7 +1,9 @@
-import Logo from './images/biceps.svg';
+import React from 'react';
+import HomeRouter from './pages/HomeRouter';
 
 function App() {
     return (
+<<<<<<< HEAD
         <div className="App">
             <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center sticky">
 
@@ -18,6 +20,10 @@ function App() {
                     <a href="#" className="text-white text-opacity-70 mx-4">購物車</a>
                 </div>
             </div>
+=======
+        <div className="bg-gray-800">
+            <HomeRouter />
+>>>>>>> c416a64a3ca77de34fe253c412d5c87909e55c8f
         </div>
     );
 }
