@@ -1,13 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-import Articles from "./article/Article";
-import Products from "./product/Product";
-import User from "./user/User";
-import Video from "./video/Video";
-import VideoId from "./video/VideoId";
-import Nav from "../global/Nav";
-import Footer from "../global/Footer";
+import Articles from './article/Article';
+import Product from './product/Product';
+import User from './user/User';
+import Video from './video/Video';
+import Nav from '../global/Nav';
+import Footer from '../global/Footer';
+import ProductItem from './product/ProductItem';
+import VideoId from './video/VideoId';
 
 function HomeRouter() {
     return (
@@ -19,11 +20,14 @@ function HomeRouter() {
         <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
+                    <Route path="/product/item">
+                        <ProductItem />
+                    </Route>
                     <Route path="/articles">
                         <Articles />
                     </Route>
-                    <Route path="/products">
-                        <Products />
+                    <Route path="/product">
+                        <Product />
                     </Route>
                     <Route path="/user">
                         <User />
