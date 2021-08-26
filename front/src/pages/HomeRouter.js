@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Articles from './article/Article';
-import Products from './product/Product';
+import Product from './product/Product';
 import User from './user/User';
 import Video from './video/Video';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
-import ProductItem from './product/ProductItem'
-
+import ProductItem from './product/ProductItem';
+import VideoId from './video/VideoId';
 
 function HomeRouter() {
     return (
@@ -27,10 +27,13 @@ function HomeRouter() {
                         <Articles />
                     </Route>
                     <Route path="/product">
-                        <Products />
+                        <Product />
                     </Route>
                     <Route path="/user">
                         <User />
+                    </Route>
+                    <Route path="/video/:videoId">
+                        <VideoId />
                     </Route>
                     <Route path="/video">
                         <Video />

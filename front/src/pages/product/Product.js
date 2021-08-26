@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import productHeader from '../../images/product-header.png';
 import product from '../../images/product/1002-3.png';
 
@@ -47,7 +47,6 @@ export default function Product() {
             <main className="max-w-screen-xl my-0 mx-auto">
                 {/* filter按鈕 */}
                 <section className="mt-5">
-                    
                     <div className="flex justify-between">
                         <div className="flex items-center">
                             <i class="fas fa-filter text-white text-2xl cursor-pointer"></i>
@@ -104,33 +103,33 @@ export default function Product() {
                 <section className="my-5 grid grid-cols-5 gap-4">
                     {/* 卡片 */}
                     <Link to="/product/item">
-                    <div>
-                        <div className="w-full rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                            <div className="w-full py-3 flex justify-between items-center absolute">
-                                <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
-                                    New
+                        <div>
+                            <div className="w-full rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-3 flex justify-between items-center absolute">
+                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
+                                        New
+                                    </div>
+                                    <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
-                            </div>
-                            <img
-                                className="w-full"
-                                src={product}
-                                alt="Mountain"
-                            />
-                            <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                <div className=" text-lg mb-2 text-yellow-400">
-                                    15 分鐘高强度全身肌肉
-                                    無需器材又能在家做的運動
-                                </div>
-                                <div className="text-white flex justify-between">
-                                    <div>$350</div>
-                                    <div>
-                                        已出售 <span>100</span>
+                                <img
+                                    className="w-full"
+                                    src={product}
+                                    alt="Mountain"
+                                />
+                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
+                                    <div className=" text-lg mb-2 text-yellow-400">
+                                        15 分鐘高强度全身肌肉
+                                        無需器材又能在家做的運動
+                                    </div>
+                                    <div className="text-white flex justify-between">
+                                        <div>$350</div>
+                                        <div>
+                                            已出售 <span>100</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </Link>
 
                     <div>
