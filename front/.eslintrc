@@ -2,7 +2,7 @@
   "extends": ["react-app"],
   "plugins": ["prettier", "react-hooks"],
   "rules": {
-    "prettier/prettier": "",  // warn 暫時關閉 記得將縮排改回2
+    "prettier/prettier": 0,  // warn 暫時關閉 記得將縮排改回2
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
