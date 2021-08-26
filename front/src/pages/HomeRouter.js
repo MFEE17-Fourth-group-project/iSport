@@ -5,6 +5,7 @@ import Articles from "./article/Article";
 import Products from "./product/Product";
 import User from "./user/User";
 import Video from "./video/Video";
+import Cart from "./cart/Cart"
 import Nav from "../global/Nav";
 import Footer from "../global/Footer";
 
@@ -29,6 +30,9 @@ function HomeRouter() {
           </Route>
           <Route path="/video">
             <Video />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </Switch>
         <Footer />
