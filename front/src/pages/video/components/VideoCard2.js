@@ -6,7 +6,7 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 const VideoCard = () => {
     return (
-        <div className="w-75 rounded-md overflow-hidden shadow-lg bg-gray-900 py-4 px-5 mr-4">
+        <div className="w-75 rounded-md overflow-hidden shadow-lg bg-gray-900 py-4 px-5">
             <img className="w-full h-44 object-fit" src={cardImg2} alt="" />
             <div className="">
                 <h3 className="text-base text-yellow-400 my-6">15 分鐘高强度全身肌肉 無需器材又能在家做的運動</h3>
