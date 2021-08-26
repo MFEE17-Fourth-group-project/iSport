@@ -41,7 +41,7 @@ export default function Product() {
             </nav>
             <main className="max-w-screen-xl my-0 mx-auto">
                 main
-                {/* filter按鈕 */}
+                    {/* filter按鈕 */}
                 <section>
                     <div className="flex justify-between">
                         <div className="flex items-center">
