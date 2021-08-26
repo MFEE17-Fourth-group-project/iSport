@@ -1,7 +1,7 @@
 import React from "react";
 import HomeRouter from "./pages/HomeRouter";
 
-function Appp() {
+function App() {
     return (
         <div>
             <HomeRouter />
@@ -9,4 +9,4 @@ function Appp() {
     );
 }
 
-export default Appp;
+export default App;
