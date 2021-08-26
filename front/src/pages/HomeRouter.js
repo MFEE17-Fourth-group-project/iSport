@@ -5,36 +5,40 @@ import Articles from "./article/Article";
 import Products from "./product/Product";
 import User from "./user/User";
 import Video from "./video/Video";
+import VideoId from "./video/VideoId";
 import Nav from "../global/Nav";
 import Footer from "../global/Footer";
 
 function HomeRouter() {
-  return (
-    <Router>
-      <>
-        {/* <Link to="/articles">Articles</Link>
+    return (
+        <Router>
+            <>
+                {/* <Link to="/articles">Articles</Link>
         <Link to="/products">Products</Link>
         <Link to="/user">User</Link>
         <Link to="/video">Video</Link> */}
-        <Nav />
-        <Switch>
-          <Route path="/articles">
-            <Articles />
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/user">
-            <User />
-          </Route>
-          <Route path="/video">
-            <Video />
-          </Route>
-        </Switch>
-        <Footer />
-      </>
-    </Router>
-  );
+                <Nav />
+                <Switch>
+                    <Route path="/articles">
+                        <Articles />
+                    </Route>
+                    <Route path="/products">
+                        <Products />
+                    </Route>
+                    <Route path="/user">
+                        <User />
+                    </Route>
+                    <Route path="/video/:videoId">
+                        <VideoId />
+                    </Route>
+                    <Route path="/video">
+                        <Video />
+                    </Route>
+                </Switch>
+                <Footer />
+            </>
+        </Router>
+    );
 }
 
 export default HomeRouter;
