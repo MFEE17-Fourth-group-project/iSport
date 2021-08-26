@@ -17,7 +17,6 @@ function App() {
                     <a href="#" className="text-white text-opacity-70 mx-4">健身房</a>
                     <a href="#" className="text-white text-opacity-70 mx-4">購物車</a>
                 </div>
-
             </div>
         </div>
     );

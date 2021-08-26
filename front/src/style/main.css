@@ -22,7 +22,6 @@ Use a more readable tab size (opinionated).
 */
 
 html {
-  -moz-tab-size: 4;
   tab-size: 4;
 }
 
@@ -30830,6 +30829,31 @@ video {
   vertical-align: middle;
   --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* 會員表單的li樣式 */
+
+.users-li {
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+/* 會員表單的li hover */
+
+.users-li:hover {
+  display: block;
+  border-right-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
 }
 
 @media (min-width: 640px) {

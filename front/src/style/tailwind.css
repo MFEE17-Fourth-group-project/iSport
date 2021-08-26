@@ -4,149 +4,158 @@
 
 /* btn-blue */
 .btn-blue {
-  @apply text-white bg-blue-500 border border-solid border-blue-400 uppercase text-base
+    @apply text-white bg-blue-500 border border-solid border-blue-400 uppercase text-base
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-blue:hover {
-  @apply bg-blue-600 border-blue-600;
+    @apply bg-blue-600 border-blue-600;
 }
 
 .btn-blue:active {
-  @apply bg-blue-600;
+    @apply bg-blue-600;
 }
 
 .btn-blue:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* btn-red */
 .btn-red {
-  @apply text-white bg-red-500 border border-solid border-red-400 uppercase text-base
+    @apply text-white bg-red-500 border border-solid border-red-400 uppercase text-base
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-red:hover {
-  @apply bg-red-600 border-red-600;
+    @apply bg-red-600 border-red-600;
 }
 
 .btn-red:active {
-  @apply bg-red-600;
+    @apply bg-red-600;
 }
 
 .btn-red:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* btn-yellow */
 .btn-yellow {
-  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base
+    @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-yellow:hover {
-  @apply bg-yellow-500 border-yellow-500;
+    @apply bg-yellow-500 border-yellow-500;
 }
 
 .btn-yellow:active {
-  @apply bg-yellow-500;
+    @apply bg-yellow-500;
 }
 
 .btn-yellow:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* 小的 */
 .btn-yellow-sm {
-  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
+    @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-yellow-sm:hover {
-  @apply bg-yellow-500 border-yellow-500;
+    @apply bg-yellow-500 border-yellow-500;
 }
 
 .btn-yellow-sm:active {
-  @apply bg-yellow-500;
+    @apply bg-yellow-500;
 }
 
 .btn-yellow-sm:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* btn-gray */
 .btn-gray {
-  @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-base
+    @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-base
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-gray:hover {
-  @apply bg-gray-800 border-gray-800;
+    @apply bg-gray-800 border-gray-800;
 }
 
 .btn-gray:active {
-  @apply bg-gray-800;
+    @apply bg-gray-800;
 }
 
 .btn-gray:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* 小的 */
 .btn-gray-sm {
-  @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-sm
+    @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-sm
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-gray-sm:hover {
-  @apply bg-gray-800 border-gray-800;
+    @apply bg-gray-800 border-gray-800;
 }
 
 .btn-gray-sm:active {
-  @apply bg-gray-800;
+    @apply bg-gray-800;
 }
 
 .btn-gray-sm:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* btn-green */
 .btn-green {
-  @apply text-white bg-green-500 border border-solid border-green-500 uppercase text-base
+    @apply text-white bg-green-500 border border-solid border-green-500 uppercase text-base
         px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
 }
 
 .btn-green:hover {
-  @apply bg-green-600 border-green-600;
+    @apply bg-green-600 border-green-600;
 }
 
 .btn-green:active {
-  @apply bg-green-600;
+    @apply bg-green-600;
 }
 
 .btn-green:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* 小會員圖 */
 .user-image-sm {
-  @apply w-12;
+    @apply w-12;
 }
 
 .user-image-sm:hover {
-  @apply filter brightness-90 cursor-pointer;
+    @apply filter brightness-90 cursor-pointer;
 }
 
 .user-image-sm:active {
-  @apply filter brightness-75 cursor-pointer;
+    @apply filter brightness-75 cursor-pointer;
 }
 
 /* 大會員圖 */
 .user-image-bg {
-  @apply w-48;
+    @apply w-48;
 }
 
 /* 原型圖片 */
 .image-round {
-  @apply shadow rounded-full max-w-full h-auto align-middle border-none;
+    @apply shadow rounded-full max-w-full h-auto align-middle border-none;
+}
+
+/* 會員表單的li樣式 */
+.users-li {
+    @apply pl-5 py-2 pb-3 block;
+}
+/* 會員表單的li hover */
+.users-li:hover {
+    @apply pl-5 py-2 pb-3 block bg-gray-700 border-r-4 border-yellow-400;
 }
