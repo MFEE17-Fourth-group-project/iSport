@@ -1054,7 +1054,7 @@ module.exports = {
         transitionDuration: ['responsive'],
         transitionProperty: ['responsive'],
         transitionTimingFunction: ['responsive'],
-        translate: ['responsive', 'hover', 'focus'],
+        translate: ['responsive', 'hover', 'focus', 'group-hover'],
         userSelect: ['responsive'],
         verticalAlign: ['responsive'],
         visibility: ['responsive'],

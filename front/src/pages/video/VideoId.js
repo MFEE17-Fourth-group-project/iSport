@@ -49,11 +49,12 @@ const VideoId = () => {
                     他可以，我們肯定也可以! (我自己也在努力當中XD)<br />
                     希望這輕電音歌單帶給你滿滿的動力喔 加油!<br />
                 </p>
-                <div className="my-3 pb-2 border-b-2 border-yellow-400">
+                <div className="my-3 pb-2 border-b-2 border-yellow-400 flex justify-center">
                     <div className="group cursor-pointer relative flex flex-col items-center">
-                        <span className="text-xs text-white pb-4 transform transition duration-150 
-                        group-hover:text-gray-200 group-hover:-translate-y-1">顯示更多</span>
-                        <FaCaretDown className="text-yellow-400 absolute bottom-1" />
+                        <span className="text-xs text-white pb-4 transform transition duration-200
+                        group-hover:text-gray-200 group-hover:-translate-y-0.5">顯示更多</span>
+                        <FaCaretDown className="text-yellow-400 absolute bottom-0 transform 
+                            transition duration-200 group-hover:translate-y-0.5" />
                     </div>
                 </div>
 
