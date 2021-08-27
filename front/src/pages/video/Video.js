@@ -10,7 +10,7 @@ const Video = () => {
         <div className="">
             <img className="h-112 object-cover w-full" src={videoHeader} alt="" />
             <VideoNav />
-            <main className="bg-gray-800 min-h-screen">
+            <main className="min-h-screen">
                 <div className="max-w-screen-xl flex flex-col mx-auto">
                     <div className="flex my-6 justify-between">
                         <div>
