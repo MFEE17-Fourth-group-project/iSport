@@ -34,18 +34,18 @@ function Nav() {
                             優質文章
                         </p>
                     </Link>
-                    <a
+                    <Link
                         href="/#"
                         className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
                     >
                         健身房
-                    </a>
-                    <a
-                        href="/cart"
+                    </Link>
+                    <Link
+                        to="/cart"
                         className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
                     >
                         購物車
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>
