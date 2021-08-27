@@ -27,7 +27,7 @@ function HomeRouter() {
                     <Route path="/articles">
                         <Articles />
                     </Route>
-                    <Route path="/product">
+                    <Route path="/products">
                         <Product />
                     </Route>
                     <Route path="/user">
