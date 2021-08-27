@@ -153,9 +153,17 @@
 
 /* 會員表單的li樣式 */
 .users-li {
-    @apply pl-5 py-2 pb-3 block;
+    @apply pl-8 py-2 pb-3 block;
 }
 /* 會員表單的li hover */
 .users-li:hover {
-    @apply pl-5 py-2 pb-3 block bg-gray-700 border-r-4 border-yellow-400;
+    @apply pl-8 py-2 pb-3 block bg-gray-700 border-r-4 border-yellow-400;
+}
+
+.submenu {
+    @apply ml-5 border-l-2 border-yellow-400 hidden;
+}
+
+.users-li :hover .submenu {
+    @apply block;
 }

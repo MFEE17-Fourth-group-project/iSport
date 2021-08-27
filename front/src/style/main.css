@@ -30838,7 +30838,7 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
+  padding-left: 2rem;
 }
 
 /* 會員表單的li hover */
@@ -30853,7 +30853,19 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
+  padding-left: 2rem;
+}
+
+.submenu {
+  margin-left: 1.25rem;
+  display: none;
+  border-left-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+}
+
+.users-li :hover .submenu {
+  display: block;
 }
 
 @media (min-width: 640px) {
