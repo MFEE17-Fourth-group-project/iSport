@@ -74,12 +74,6 @@
   @apply outline-none;
 }
 
-/* TODO: btn-yellow-tag by Sarah */
-.btn-yellow-tag {
-  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
-        rounded-full outline-none ease-linear transition-all duration-150;
-}
-
 .btn-yellow-tag:hover {
   @apply bg-yellow-500 border-yellow-500;
 }
@@ -167,4 +161,10 @@
 /* 原型圖片 */
 .image-round {
   @apply shadow rounded-full max-w-full h-auto align-middle border-none;
+}
+
+/* TODO: btn-yellow-tag by Sarah */
+.btn-yellow-tag {
+  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
+        rounded-full outline-none ease-linear transition-all duration-150;
 }

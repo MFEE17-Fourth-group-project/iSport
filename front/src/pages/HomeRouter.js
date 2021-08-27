@@ -6,6 +6,7 @@ import Product from './product/Product';
 import User from './user/User';
 import Video from './video/Video';
 import Cart from './cart/Cart';
+import Checkout from './cart/Checkout';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
@@ -41,6 +42,9 @@ function HomeRouter() {
                     </Route>
                     <Route path="/cart">
                         <Cart />
+                    </Route>
+                    <Route path="/checkout">
+                        <Checkout />
                     </Route>
                 </Switch>
                 <Footer />
