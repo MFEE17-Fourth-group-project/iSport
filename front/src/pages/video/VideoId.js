@@ -1,5 +1,6 @@
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
+import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
 import { FaClock } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
@@ -62,13 +63,29 @@ const VideoId = () => {
                         <button className="btn-yellow mr-3">最新留言</button>
                         <button className="btn-gray">熱門留言</button>
                     </div>
-                    <div className="flex">
+                    <div className="flex mb-7">
                         <img
                             className="w-12 h-12 rounded-full mr-4"
                             src={Person2}
                         />
-                        <h6 className="text-base text-white border-b self-start w-full p-1">新增留言</h6>
+                        <div className="flex flex-col w-full">
+                            <input
+                                className="pb-1 placeholder-white text-base text-white border-b border-gray-400 bg-gray-800
+                                self-start w-full focus:outline-none focus:placeholder-gray-400 focus:border-white mb-2"
+                                placeholder="新增留言"
+                            />
+                            <div className="flex justify-end">
+                                <button className="btn-gray mr-3">取消</button>
+                                <button className="btn-yellow">留言</button>
+                            </div>
+                        </div>
                     </div>
+
+
+                    <Comment />
+                    <Comment />
+                    <Comment />
+                    <Comment />
                 </div>
             </div>
 
