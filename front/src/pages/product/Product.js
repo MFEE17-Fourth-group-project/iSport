@@ -1,13 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import productHeader from '../../images/product-header.png';
 import product from '../../images/product/1002-3.png';
+import {
+    faAngleUp,
+    faFilter,
+    faSearch,
+    faMinus,
+    faHeart,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Product() {
     return (
         <>
             <div className="w-14 h-14 rounded-full bg-yellow-400 text-gray-900 flex justify-center items-center cursor-pointer fixed right-10 bottom-10 z-50">
-                <i class="fas fa-angle-up text-5xl"></i>
+                <FontAwesomeIcon className="text-5xl" icon={faAngleUp} />
             </div>
             <header className="relative w-full h-4/5 overflow-hidden">
                 <div className="text-white absolute w-1/2 top-1/2 left-32 transform -translate-y-1/2">
@@ -49,9 +57,17 @@ export default function Product() {
                 <section className="mt-5">
                     <div className="flex justify-between">
                         <div className="flex items-center">
-                            <i class="fas fa-filter text-white text-2xl cursor-pointer"></i>
+                            <FontAwesomeIcon
+                                className="text-white text-2xl cursor-pointer"
+                                icon={faFilter}
+                            />
+
                             <button className="btn-yellow-sm mx-4">
-                                價格<i class="fas fa-angle-up ml-1"></i>
+                                價格
+                                <FontAwesomeIcon
+                                    className="ml-1"
+                                    icon={faAngleUp}
+                                />
                             </button>
                             <button className="btn-yellow-sm mx-4">最新</button>
                             <button className="btn-gray-sm mx-4">最熱銷</button>
@@ -61,7 +77,10 @@ export default function Product() {
                                 className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white "
                                 placeholder="關鍵字..."
                             />
-                            <i class="fas fa-search text-white text-xl cursor-pointer"></i>
+                            <FontAwesomeIcon
+                                className="text-white text-xl cursor-pointer"
+                                icon={faSearch}
+                            />
                         </div>
                     </div>
 
@@ -75,7 +94,10 @@ export default function Product() {
                                     className="w-24 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center "
                                     placeholder="最小值"
                                 />
-                                <i class="fas fa-minus mx-1 text-yellow-400"></i>
+                                <FontAwesomeIcon
+                                    className="mx-1 text-yellow-400"
+                                    icon={faMinus}
+                                />
                                 <input
                                     className="w-24 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center"
                                     placeholder="最大值"
@@ -109,7 +131,10 @@ export default function Product() {
                                     <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                         New
                                     </div>
-                                    <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                    <FontAwesomeIcon
+                                        className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                        icon={faHeart}
+                                    />
                                 </div>
                                 <img
                                     className="w-full"
@@ -138,7 +163,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -166,7 +194,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -194,7 +225,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -222,7 +256,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -250,7 +287,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -279,7 +319,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -307,7 +350,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -334,7 +380,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -361,7 +410,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -388,7 +440,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -415,7 +470,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -442,7 +500,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -469,7 +530,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -496,7 +560,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -523,7 +590,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
@@ -550,7 +620,10 @@ export default function Product() {
                                 <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                     New
                                 </div>
-                                <i class="far fa-heart pr-3 text-2xl text-red-300 cursor-pointer"></i>
+                                <FontAwesomeIcon
+                                    className="pr-3 text-4xl text-red-300 cursor-pointer"
+                                    icon={faHeart}
+                                />
                             </div>
                             <img
                                 className="w-full"
