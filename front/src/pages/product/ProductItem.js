@@ -1,5 +1,6 @@
 import React from 'react';
 import product from '../../images/product/1002-3.png';
+import { FaPlus, FaMinus, FaAngleLeft } from 'react-icons/fa';
 
 function ProductItem() {
     return (
@@ -78,11 +79,13 @@ function ProductItem() {
                         </div>
                         <div className="mb-8 ">
                             <h1 className="py-3 font-bold text-3xl">
-                                商品名稱
+                                女款路跑背心
                             </h1>
                             <div className="text-sm">
                                 品名：
-                                <span className="text-yellow-400">美金農</span>
+                                <span className="text-yellow-400">
+                                    MIZUNO 美津濃
+                                </span>
                                 ｜ 總銷售量：
                                 <span>1243</span>
                             </div>
@@ -115,31 +118,42 @@ function ProductItem() {
                             </div>
                             <div className="py-1 flex justify-between">
                                 <div>
-                                    貨號：<span>10011031</span>
+                                    貨號：
+                                    <span className="text-gray-400">
+                                        10011031
+                                    </span>
                                 </div>
                                 <div>
                                     庫存：<span>134</span>
                                 </div>
                             </div>
-                            <div className="flex justify-between">
-                                <div>
-                                    $ <span>350</span>
+                            <div className="my-2 py-2 border-b-2 border-yellow-400 flex justify-between">
+                                <div className="text-yellow-400 text-lg">
+                                    NT$ <span>350</span>
                                 </div>
-                                <div>
-                                    <button type="button">+</button>
-                                    <input type="text" />
-                                    <button type="button">-</button>
+                                <div className="flex py-1 rounded-md justify-between items-center shadow-emboss">
+                                    <button type="button" className="px-2">
+                                        <FaPlus />
+                                    </button>
+                                    <input
+                                        type="text"
+                                        className="bg-transparent outline-none text-center"
+                                        value={0}
+                                    />
+                                    <button type="button" className="px-2">
+                                        <FaMinus />
+                                    </button>
                                 </div>
                             </div>
-                            <div className="text-right">
-                                小計 <span>350</span>
+                            <div className="text-right text-yellow-400 text-lg">
+                                小計 NT$ <span>350</span>
                             </div>
                         </div>
                         <div className="flex">
                             <button className="btn-yellow mr-3 w-2/3  ">
                                 加入購物車
                             </button>
-                            <button className="btn-yellow flex-grow ">
+                            <button className="border border-red-300 rounded-full text-red-300 flex-grow ">
                                 收藏
                             </button>
                         </div>
