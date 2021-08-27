@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiInstagram } from "react-icons/fi";
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-
+import { FiInstagram } from 'react-icons/fi';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 function Footer() {
     return (
@@ -54,8 +53,16 @@ function Footer() {
                         <Link to="/">關於我們</Link>
                     </div>
                 </div>
-                <div className="flex justify-center text-white text-opacity-85">
+                <div className="flex justify-center text-white text-opacity-85 mb-5">
                     <p>Copyright © ISport! All rights reserved.</p>
+                </div>
+                <div className="flex justify-center text-sm text-white text-opacity-85">
+                    <p>
+                        本網站為中壢資策會前端設計工程師班MFEE17第四組學員專題成果作品，本平台僅供學習、展示之用。
+                        <br />
+                        若有侵權疑慮，您可以私訊臉書 -
+                        【中壢】前端工程師就業養成班(MFEE17)，後續會由專人協助處理。
+                    </p>
                 </div>
             </footer>
         </>
