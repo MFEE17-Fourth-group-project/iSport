@@ -75,15 +75,15 @@
 }
 
 .btn-yellow-tag:hover {
-  @apply bg-yellow-500 border-yellow-500;
+    @apply bg-yellow-500 border-yellow-500;
 }
 
 .btn-yellow-tag:active {
-  @apply bg-yellow-500;
+    @apply bg-yellow-500;
 }
 
 .btn-yellow-tag:focus {
-  @apply outline-none;
+    @apply outline-none;
 }
 
 /* btn-gray */
@@ -172,19 +172,24 @@
     @apply block bg-gray-700 border-l-4 border-yellow-400 text-yellow-400 transition-all;
 }
 
+/* 會員表單的副欄樣式 */
 .submenu {
     @apply bg-opacity-0 opacity-0 max-h-0 duration-700 transition hidden;
 }
-
+/* 會員表單的副欄hover */
 .users-li:hover .submenu {
-    @apply block opacity-100 max-h-full;
+    @apply block opacity-100 max-h-full text-white;
 }
 .users-li:hover .submenu li:hover {
-    @apply bg-gray-700 block border-r-2 border-yellow-400;
+    @apply bg-gray-700 block border-r-2 border-yellow-400  text-yellow-400 transition;
+}
+/* 會員表單react icons樣式 */
+.userIcons {
+    @apply w-7 h-7 text-yellow-400 ml-5 mr-5 inline-block;
 }
 
 /* TODO: btn-yellow-tag by Sarah */
 .btn-yellow-tag {
-  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
+    @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
         rounded-full outline-none ease-linear transition-all duration-150;
 }
