@@ -1,8 +1,7 @@
 import cardImg1 from './../../../images/有氧/cardio-2.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { FaClock } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const VideoCard = () => {
@@ -19,16 +18,16 @@ const VideoCard = () => {
                         </p>
                 </div>
                 <div className="flex justify-between">
-                    <h6>
-                        <FontAwesomeIcon className="text-yellow-400 mr-1.5" icon={faClock} />
+                    <h6 className="flex items-center">
+                        <FaClock className="text-yellow-400 mr-1.5" />
                         <span className="text-xs text-white text-opacity-85">1530</span>
                     </h6>
-                    <h6>
-                        <FontAwesomeIcon className="text-yellow-400 mr-1.5" icon={faEye} />
+                    <h6 className="flex items-center">
+                        <FaEye className="text-yellow-400 mr-1.5" />
                         <span className="text-xs text-white text-opacity-85">1530</span>
                     </h6>
-                    <h6>
-                        <FontAwesomeIcon className="text-yellow-400 mr-1.5" icon={faThumbsUp} />
+                    <h6 className="flex items-center">
+                        <FaThumbsUp className="text-yellow-400 mr-1.5" />
                         <span className="text-xs text-white text-opacity-85">542</span>
                     </h6>
                 </div>

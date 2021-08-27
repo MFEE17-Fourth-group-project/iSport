@@ -74,6 +74,18 @@
     @apply outline-none;
 }
 
+.btn-yellow-tag:hover {
+  @apply bg-yellow-500 border-yellow-500;
+}
+
+.btn-yellow-tag:active {
+  @apply bg-yellow-500;
+}
+
+.btn-yellow-tag:focus {
+  @apply outline-none;
+}
+
 /* btn-gray */
 .btn-gray {
     @apply text-white bg-gray-700 border border-solid border-gray-700 uppercase text-base
@@ -169,4 +181,10 @@
 }
 .users-li:hover .submenu li:hover {
     @apply bg-gray-700 block border-r-2 border-yellow-400;
+}
+
+/* TODO: btn-yellow-tag by Sarah */
+.btn-yellow-tag {
+  @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
+        rounded-full outline-none ease-linear transition-all duration-150;
 }
