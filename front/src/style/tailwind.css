@@ -152,18 +152,21 @@
 }
 
 /* 會員表單的li樣式 */
-.users-li {
-    @apply pl-8 py-2 pb-3 block;
+.users-li a {
+    @apply pl-8 py-8 block;
 }
 /* 會員表單的li hover */
 .users-li:hover {
-    @apply pl-8 py-2 pb-3 block bg-gray-700 border-r-4 border-yellow-400;
+    @apply block bg-gray-700 border-l-4 border-yellow-400 text-yellow-400 transition-all;
 }
 
 .submenu {
-    @apply ml-5 border-l-2 border-yellow-400 hidden;
+    @apply bg-opacity-0 opacity-0 max-h-0 duration-700 transition hidden;
 }
 
-.users-li :hover .submenu {
-    @apply block;
+.users-li:hover .submenu {
+    @apply block opacity-100 max-h-full;
+}
+.users-li:hover .submenu li:hover {
+    @apply bg-gray-700 block border-r-2 border-yellow-400;
 }

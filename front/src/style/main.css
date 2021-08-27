@@ -30833,11 +30833,10 @@ video {
 
 /* 會員表單的li樣式 */
 
-.users-li {
+.users-li a {
   display: block;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-bottom: 0.75rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   padding-left: 2rem;
 }
 
@@ -30845,27 +30844,44 @@ video {
 
 .users-li:hover {
   display: block;
-  border-right-width: 4px;
+  border-left-width: 4px;
   --tw-border-opacity: 1;
   border-color: rgba(251, 191, 36, var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-bottom: 0.75rem;
-  padding-left: 2rem;
+  --tw-text-opacity: 1;
+  color: rgba(251, 191, 36, var(--tw-text-opacity));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .submenu {
-  margin-left: 1.25rem;
   display: none;
-  border-left-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+  max-height: 0px;
+  --tw-bg-opacity: 0;
+  opacity: 0;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 700ms;
 }
 
-.users-li :hover .submenu {
+.users-li:hover .submenu {
   display: block;
+  max-height: 100%;
+  opacity: 1;
+}
+
+.users-li:hover .submenu li:hover {
+  display: block;
+  border-right-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {
