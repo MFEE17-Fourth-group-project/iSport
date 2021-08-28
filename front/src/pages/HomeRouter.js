@@ -11,6 +11,8 @@ import Nav from '../global/Nav';
 import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
+import ArticleCategory from './article/ArticleCategory';
+import ArticleId from './article/ArticleId';
 
 function HomeRouter() {
     return (
@@ -22,11 +24,17 @@ function HomeRouter() {
         <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
-                    <Route path="/product/item">
+                    <Route path="/product/Item">
                         <ProductItem />
                     </Route>
                     <Route path="/articles">
                         <Articles />
+                    </Route>
+                    <Route path="/ArticleCategory">
+                        <ArticleCategory />
+                    </Route>
+                    <Route path="/ArticleId">
+                        <ArticleId />
                     </Route>
                     <Route path="/products">
                         <Product />
