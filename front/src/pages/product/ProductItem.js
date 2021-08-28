@@ -6,6 +6,9 @@ import {
     FaAngleLeft,
     FaHeart,
     FaCaretDown,
+    FaShare,
+    FaAngleUp,
+    FaAngleDown,
 } from 'react-icons/fa';
 
 function ProductItem() {
@@ -30,16 +33,16 @@ function ProductItem() {
             </nav>
             <main className="text-white text-opacity-85 max-w-screen-xl my-0 mx-auto">
                 {/* 圖片與資訊 */}
-                <section className="mt-5 flex">
+                <section className="py-3 flex">
                     {/* 圖片 */}
-                    <div className="flex w-auto mr-5">
+                    <div className="flex w-auto mr-5 py-3">
                         {/* 小圖 */}
                         <div className="h-500 overflow-y-hidden mr-2 relative">
-                            <div className="w-full h-6 bg-gradient-to-b from-gray-800 absolute top-0 left-0">
-                                <i></i>
+                            <div className="w-full h-6 bg-gradient-to-b from-gray-800 absolute top-0 left-0 cursor-pointer">
+                                <FaAngleUp className="text-2xl my-0 mx-auto text-yellow-400" />
                             </div>
-                            <div className="w-full h-6 bg-gradient-to-t from-gray-800 absolute bottom-0 left-0">
-                                <i></i>
+                            <div className="w-full h-6 bg-gradient-to-t from-gray-800 absolute bottom-0 left-0 cursor-pointer">
+                                <FaAngleDown className="text-2xl my-0 mx-auto text-yellow-400" />
                             </div>
                             <figure className="mb-2 w-28 h-28 rounded-md overflow-hidden">
                                 <img
@@ -78,7 +81,7 @@ function ProductItem() {
                             </figure>
                         </div>
                         {/* 大圖 */}
-                        <div className="w-500 rounded-lg overflow-y-hidden">
+                        <div className="w-500 rounded-lg overflow-y-hidden shadow-xl ">
                             <img
                                 src={product}
                                 alt="product"
@@ -89,15 +92,18 @@ function ProductItem() {
                     {/* 資訊與加入購物車 */}
                     <div className="py-5 flex-grow flex flex-col">
                         {/* 連結 */}
-                        <div className="mb-10 text-sm flex justify-between ">
-                            <div>
-                                <i></i> 回
+                        <div className="mb-7  text-sm flex justify-between ">
+                            <div className="flex items-center cursor-pointer">
+                                <FaAngleLeft className="text-yellow-400" />
+                                <span>回 &nbsp; </span>
                                 <span className="text-yellow-400">
                                     運動服飾
                                 </span>
                             </div>
-                            <div>
-                                <i></i>分享
+                            <div className="flex items-center cursor-pointer">
+                                <FaShare className="text-yellow-400" />
+                                &nbsp;
+                                <p>分享</p>
                             </div>
                         </div>
                         <div className="mb-8 ">
@@ -106,7 +112,7 @@ function ProductItem() {
                             </h1>
                             <div className="text-sm">
                                 品名：
-                                <span className="text-yellow-400">
+                                <span className="text-yellow-400 cursor-pointer">
                                     MIZUNO 美津濃
                                 </span>
                                 ｜ 總銷售量：
@@ -161,7 +167,7 @@ function ProductItem() {
                                     <input
                                         type="text"
                                         className="bg-transparent outline-none text-center"
-                                        value={0}
+                                        value={1}
                                     />
                                     <button type="button" className="px-2">
                                         <FaMinus />
@@ -176,8 +182,9 @@ function ProductItem() {
                             <button className="btn-yellow mr-3 w-2/3  ">
                                 加入購物車
                             </button>
-                            <button className="border border-red-300 rounded-full text-red-300 flex-grow ">
-                                收藏
+                            <button className="border border-red-300 rounded-full text-red-300 flex-grow flex justify-center items-center">
+                                <FaHeart />
+                                <p className="pl-2">收藏</p>
                             </button>
                         </div>
                     </div>
