@@ -15,6 +15,7 @@ import FavouriteProduct from './user/cart/FavouriteProduct.js';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
+import TradingRecord from './user/cart/TradingRecord';
 
 function HomeRouter() {
     return (
@@ -22,6 +23,9 @@ function HomeRouter() {
             <>
                 <Nav />
                 <Switch>
+                    <Route path="/user/cart/TradingRecord">
+                        <TradingRecord />
+                    </Route>
                     <Route path="/user/cart/favourite">
                         <FavouriteProduct />
                     </Route>
