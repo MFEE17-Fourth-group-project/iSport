@@ -13,15 +13,12 @@ import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
+import HomePage from './HomePage';
 
 function HomeRouter() {
     return (
         <Router>
             <>
-                {/* <Link to="/articles">Articles</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/user">User</Link>
-        <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
                     <Route path="/product/Item">
@@ -53,6 +50,9 @@ function HomeRouter() {
                     </Route>
                     <Route path="/checkout">
                         <Checkout />
+                    </Route>
+                    <Route path="/" exact>
+                        <HomePage />
                     </Route>
                 </Switch>
                 <Footer />
