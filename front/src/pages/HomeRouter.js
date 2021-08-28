@@ -14,6 +14,7 @@ import VideoId from './video/VideoId';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
+import TradingRecord from './user/cart/TradingRecord';
 
 function HomeRouter() {
     return (
@@ -21,6 +22,9 @@ function HomeRouter() {
             <>
                 <Nav />
                 <Switch>
+                    <Route path="/user/cart/TradingRecord">
+                        <TradingRecord />
+                    </Route>
                     <Route path="/product/Item">
                         <ProductItem />
                     </Route>
