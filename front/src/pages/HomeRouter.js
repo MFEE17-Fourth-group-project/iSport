@@ -11,6 +11,7 @@ import Nav from '../global/Nav';
 import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
+import FavouriteProduct from './user/cart/FavouriteProduct.js';
 
 function HomeRouter() {
     return (
@@ -22,6 +23,9 @@ function HomeRouter() {
         <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
+                    <Route path="/user/cart/favourite">
+                        <FavouriteProduct />
+                    </Route>
                     <Route path="/product/item">
                         <ProductItem />
                     </Route>
