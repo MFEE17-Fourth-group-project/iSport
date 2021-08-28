@@ -12,6 +12,8 @@ import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
 import FavouriteProduct from './user/cart/FavouriteProduct.js';
+import ArticleCategory from './article/ArticleCategory';
+import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
 
 function HomeRouter() {
@@ -28,6 +30,12 @@ function HomeRouter() {
                     </Route>
                     <Route path="/articles">
                         <Articles />
+                    </Route>
+                    <Route path="/ArticleCategory">
+                        <ArticleCategory />
+                    </Route>
+                    <Route path="/ArticleId">
+                        <ArticleId />
                     </Route>
                     <Route path="/products">
                         <Product />
