@@ -165,7 +165,7 @@
 
 /* 會員表單的li樣式 */
 .users-li a {
-    @apply pl-8 py-8 block;
+    @apply pl-8 py-2.5 block;
 }
 /* 會員表單的li hover */
 .users-li:hover {
@@ -185,7 +185,7 @@
 }
 /* 會員表單react icons樣式 */
 .userIcons {
-    @apply w-7 h-7 text-yellow-400 ml-5 mr-5 inline-block;
+    @apply w-5 h-5 text-yellow-400 ml-5 mr-5 inline-block;
 }
 
 /* TODO: btn-yellow-tag by Sarah */
