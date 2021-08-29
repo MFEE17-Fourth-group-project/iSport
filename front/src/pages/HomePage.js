@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import HomePage1 from './../images/homepage/homepage-1.jpg';
-import HomePage2 from './../images/homepage/homepage-2.jpg';
-import HomePage3 from './../images/homepage/homepage-3.jpg';
-import HomePage4 from './../images/homepage/homepage-4.jpg';
+// import HomePage2 from './../images/homepage/homepage-2.jpg';
+// import HomePage3 from './../images/homepage/homepage-3.jpg';
+// import HomePage4 from './../images/homepage/homepage-4.jpg';
 import HomePage8 from './../images/homepage/homepage-8.jpg';
 import VideoCard from './video/components/VideoCard';
 import VideoCard2 from './video/components/VideoCard2';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { BsCursorFill } from 'react-icons/bs';
+// import { BsCursorFill } from 'react-icons/bs';
 import MapImg from '../images/tabata/1.jpeg';
 import MapTop from '../images/map/map-top.png';
 import MapRight from '../images/map/map-right.png';
@@ -32,7 +32,11 @@ const HomePage = () => {
             {/* Banner Image */}
             <div className="relative h-175 w-full">
                 <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer" />
-                <img src={HomePage1} className="h-full w-full object-cover" alt="/>
+                <img
+                    src={HomePage1}
+                    className="h-full w-full object-cover"
+                    alt=""
+                />
                 <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-0 transform -translate-y-1/2 cursor-pointer" />
                 <div className="absolute bottom-40 left-40">
                     <h1 className="font-normal text-5xl text-white tracking-wide leading-snug mb-4">
@@ -66,6 +70,7 @@ const HomePage = () => {
                     <img
                         className="w-full rounded-3xl object-cover"
                         src={HomePage8}
+                        alt=""
                     />
                     {/* <BsCursorFill /> */}
                 </div>
