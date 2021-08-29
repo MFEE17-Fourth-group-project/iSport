@@ -15,11 +15,8 @@ import FavouriteProduct from './user/cart/FavouriteProduct.js';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
-<<<<<<< HEAD
-=======
 import TradingRecord from './user/cart/TradingRecord';
 
->>>>>>> 7ac63607c070afdad09d1c5c815576b02832cc80
 function HomeRouter() {
     return (
         <Router>
