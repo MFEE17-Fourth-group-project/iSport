@@ -11,16 +11,25 @@ import Nav from '../global/Nav';
 import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
+import FavouriteProduct from './user/cart/FavouriteProduct.js';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
+import TradingRecord from './user/cart/TradingRecord';
+
 function HomeRouter() {
     return (
         <Router>
             <>
                 <Nav />
                 <Switch>
-                    <Route path="/product/Item">
+                    <Route path="/user/cart/TradingRecord">
+                        <TradingRecord />
+                    </Route>
+                    <Route path="/user/cart/favourite">
+                        <FavouriteProduct />
+                    </Route>
+                    <Route path="/product/item">
                         <ProductItem />
                     </Route>
                     <Route path="/articles">

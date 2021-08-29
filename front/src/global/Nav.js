@@ -16,6 +16,16 @@ function Nav() {
                 </div>
 
                 <div className="flex items-center ">
+                    <Link to="/user/cart/TradingRecord">
+                        <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            購買紀錄
+                        </p>
+                    </Link>
+                    <Link to="/user/cart/favourite">
+                        <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            收藏商品
+                        </p>
+                    </Link>
                     <Link to="/user">
                         <button className="btn-yellow mx-4">登入</button>
                     </Link>
