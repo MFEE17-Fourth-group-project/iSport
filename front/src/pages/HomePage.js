@@ -81,7 +81,7 @@ const HomePage = () => {
             {/* Gym Section */}
             <section className="h-208 flex mt-7 bg-gray-900">
                 <div className="content-left flex justify-center m-auto">
-                    <div className="relative p-60">
+                    <div className="relative p-60 z-50">
                         <Link to="">
                             <img
                                 className="absolute top-10 left-40 w-1/4"
