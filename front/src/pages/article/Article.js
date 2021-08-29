@@ -11,6 +11,7 @@ function Article() {
                 <img
                     className="h-112 object-cover w-full"
                     src={ArticleHeader}
+                    alt=""
                 />
                 <ArticleNav />
 

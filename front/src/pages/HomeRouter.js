@@ -16,6 +16,7 @@ import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
 import TradingRecord from './user/cart/TradingRecord';
+import Gym from './gym/Gym';
 
 function HomeRouter() {
     return (
@@ -31,6 +32,9 @@ function HomeRouter() {
                     </Route>
                     <Route path="/product/item">
                         <ProductItem />
+                    </Route>
+                    <Route path="/Gym">
+                        <Gym />
                     </Route>
                     <Route path="/articles">
                         <Articles />

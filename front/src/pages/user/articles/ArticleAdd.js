@@ -98,7 +98,7 @@ function ArticleAdd() {
                         <br />
                         <input
                             type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            className="w-full bg-gray-900 border-b-2  p-4 my-4"
                             name="article_name"
                             id="article_name"
                             placeholder="最多50字"
@@ -109,7 +109,7 @@ function ArticleAdd() {
                         <select
                             name="category"
                             id="category"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            className="w-full bg-gray-900 border-b-2  p-4 my-4"
                         >
                             <option value="1">有氧</option>
                             <option value="2">重訓</option>
@@ -125,7 +125,7 @@ function ArticleAdd() {
                         <br />
                         <input
                             type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            className="w-full bg-gray-900 border-b-2  p-4 my-4"
                             name="added_by"
                             id="added_by"
                             placeholder="最多100字"
@@ -134,7 +134,7 @@ function ArticleAdd() {
                         <label for="">上傳圖片:</label>
                         <br />
                         <input
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            className="w-full bg-gray-900 border-b-2  p-4 my-4"
                             type="file"
                             name="file"
                             id="file"
@@ -150,7 +150,7 @@ function ArticleAdd() {
                         <textarea
                             name="content"
                             id="content"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-10 my-4"
+                            className="w-full bg-gray-900 border-b-2  p-10 my-4"
                         ></textarea>
                         <div className="flex flex-row justify-end">
                             <Link to="">

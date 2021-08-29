@@ -14,6 +14,7 @@ const ArticleId = () => {
                 <img
                     className="h-112 object-cover w-full"
                     src={ArticleHeader}
+                    alt=""
                 />
                 <ArticleNav />
                 <main className="max-w-screen-2xl mx-auto p-6 flex">
@@ -36,6 +37,7 @@ const ArticleId = () => {
                                 <img
                                     className="w-12 h-12 rounded-full mr-4"
                                     src={Person2}
+                                    alt=""
                                 />
                                 <div className="flex flex-col w-full">
                                     <input
