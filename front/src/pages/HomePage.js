@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import HomePage1 from './../images/homepage/homepage-1.jpg';
-// import HomePage2 from './../images/homepage/homepage-2.jpg';
-// import HomePage3 from './../images/homepage/homepage-3.jpg';
-// import HomePage4 from './../images/homepage/homepage-4.jpg';
+import HomePage2 from './../images/homepage/homepage-2.jpg';
+import HomePage3 from './../images/homepage/homepage-3.jpg';
+import HomePage4 from './../images/homepage/homepage-4.jpg';
 import HomePage8 from './../images/homepage/homepage-8.jpg';
 import VideoCard from './video/components/VideoCard';
 import VideoCard2 from './video/components/VideoCard2';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-// import { BsCursorFill } from 'react-icons/bs';
+import { BsCursorFill } from 'react-icons/bs';
 import MapImg from '../images/tabata/1.jpeg';
 import MapTop from '../images/map/map-top.png';
 import MapRight from '../images/map/map-right.png';
@@ -17,15 +17,13 @@ import MapBottom from '../images/map/map-bottom.png';
 import MapLeft from '../images/map/map-left.png';
 
 const HomePage = () => {
-    // const [bannerImage, setBannerImage] = useState([
-    //     HomePage1,
-    //     HomePage2,
-    //     HomePage3,
-    //     HomePage4
-    // ]);
-    // useEffect(() => {
-
-    // }, []);
+    const [bannerImage, setBannerImage] = useState([
+        HomePage1,
+        HomePage2,
+        HomePage3,
+        HomePage4,
+    ]);
+    useEffect(() => {}, []);
 
     return (
         <div className="max-w-screen-2xl mx-auto">
@@ -82,7 +80,7 @@ const HomePage = () => {
             <div className="h-208 flex mt-7"></div>
             {/* Gym Section */}
             <section className="h-208 flex mt-7 bg-gray-900">
-                <div className="content-left flex justify-center">
+                <div className="content-left flex justify-center m-auto">
                     <div className="relative p-60">
                         <Link to="">
                             <img

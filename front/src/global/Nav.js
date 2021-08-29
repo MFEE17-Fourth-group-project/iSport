@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
     return (
-        <nav className="App">
-            <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center sticky">
+        <nav className="App sticky top-0 z-0">
+            <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                 <div className="flex items-center">
                     <img src={Logo} width="40" alt="Logo" className="my-1 " />
                     <Link
