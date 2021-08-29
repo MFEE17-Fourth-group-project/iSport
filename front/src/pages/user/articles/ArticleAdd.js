@@ -6,9 +6,8 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { FaMoneyCheck } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
-import SuggestArtCol from '../video/components/SuggestArtCol';
 
-function Users() {
+function ArticleAdd() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <aside className="w-64 mr-2.5 bg-gray-900 rounded-t-xl shadow-xl">
@@ -88,20 +87,89 @@ function Users() {
             {/* ==================== */}
             <artical className="flex-grow flex-col">
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                    我的文章
+                    新增文章
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                    <div className="mt-6">
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                    </div>
+                    <from>
+                        <label className="">作者：</label>
+                        <span className="text-base text-red-500 mx-4">
+                            必填
+                        </span>
+                        <br />
+                        <input
+                            type="text"
+                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            name="article_name"
+                            id="article_name"
+                            placeholder="最多50字"
+                        ></input>
+                        <br />
+                        <label>分類：</label>
+                        <br />
+                        <select
+                            name="category"
+                            id="category"
+                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                        >
+                            <option value="1">有氧</option>
+                            <option value="2">重訓</option>
+                            <option value="3">tabata</option>
+                            <option value="4">核心</option>
+                            <option value="5">飲食</option>
+                        </select>
+                        <br />
+                        <label>標題：</label>
+                        <span className="text-base text-red-500 mx-4">
+                            必填
+                        </span>
+                        <br />
+                        <input
+                            type="text"
+                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            name="added_by"
+                            id="added_by"
+                            placeholder="最多100字"
+                        />
+                        <br />
+                        <label for="">上傳圖片:</label>
+                        <br />
+                        <input
+                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-4 my-4"
+                            type="file"
+                            name="file"
+                            id="file"
+                        />
+                        <br />
+                        <label>內容：</label>
+                        <span className="text-base text-red-500	 mx-4">
+                            必填
+                        </span>
+                        <br />
+                        <div id="toolbar-container"></div>
+                        <div id="editor"></div>
+                        <textarea
+                            name="content"
+                            id="content"
+                            className="w-full bg-gray-900 border-b-2 bg-gray-700 p-10 my-4"
+                        ></textarea>
+                        <div className="flex flex-row justify-end">
+                            <Link to="">
+                                <button
+                                    className="btn-yellow flex flex-row justify-end items-center"
+                                    type="submit"
+                                    id="button"
+                                >
+                                    <p className="font-bold text-xl mx-2">
+                                        新增
+                                    </p>
+                                </button>
+                            </Link>
+                        </div>
+                    </from>
                 </div>
             </artical>
         </main>
     );
 }
 
-export default Users;
+export default ArticleAdd;

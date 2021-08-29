@@ -14,7 +14,6 @@ import VideoId from './video/VideoId';
 import ArticleCategory from './article/ArticleCategory';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
-
 function HomeRouter() {
     return (
         <Router>

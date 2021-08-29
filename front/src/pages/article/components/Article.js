@@ -6,7 +6,7 @@ import { FaRegHeart } from 'react-icons/fa';
 const Article = () => {
     return (
         <>
-            <div className="border-4 border-light-blue-500 border-opacity-100">
+            <div className="border-4 border-light-blue-500 border-opacity-100 p-5">
                 <img className="mr-4" src={Person2} />
                 <h3 class="text-4xl m-2 text-yellow-400">
                     防疫必備！自組轟菌懶人包，五種居家訓練器材推薦組合

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ArticleHeader from '../../images/11.jpeg';
 import ArticleNav from './components/ArticleNav';
 import ArticleCardRight from './components/ArticleCardRight';
@@ -16,41 +17,38 @@ function Article() {
                 <main className="bg-gray-800">
                     <article className="flex justify-center mt-4 w-3/4 m-auto">
                         <div className="w-1/4 h-60"></div>
-                        {/* <Link to="/ArticleldCategory"> */}
-                        <ArticleCardRight />
-                        {/* </Link> */}
-                    </article>
-
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        {/* <Link to="/ArticleldCategory"> */}
-                        <ArticleCardLeft />
-                        {/* </Link> */}
-                        <div className="w-1/4 h-60"></div>
-                    </article>
-
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        <div className="w-1/4 h-60"></div>
-                        {/* <Link to="/ArticleldCategory"> */}
-                        <ArticleCardRight />
-                        {/* </Link> */}
-                    </article>
-
-                    <a href="#"></a>
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        {/* <Link to="/ArticleldCategory"> */}
-                        <ArticleCardLeft />
-                        {/* </Link> */}
-                        <div className="w-1/4 h-60"></div>
-                    </article>
-
-                    <a href="#">
-                        <article className="flex justify-center mt-4 mb-4 w-3/4 m-auto">
-                            <div className="w-1/4 h-60"></div>
-                            {/* <Link to="/ArticleldCategory"> */}
+                        <Link to="/ArticleCategory">
                             <ArticleCardRight />
-                            {/* </Link> */}
-                        </article>
-                    </a>
+                        </Link>
+                    </article>
+
+                    <article className="flex justify-center mt-4 w-3/4 m-auto">
+                        <Link to="/ArticleCategory">
+                            <ArticleCardLeft />
+                        </Link>
+                        <div className="w-1/4 h-60"></div>
+                    </article>
+
+                    <article className="flex justify-center mt-4 w-3/4 m-auto">
+                        <div className="w-1/4 h-60"></div>
+                        <Link to="/ArticleCategory">
+                            <ArticleCardRight />
+                        </Link>
+                    </article>
+
+                    <article className="flex justify-center mt-4 w-3/4 m-auto">
+                        <Link to="/ArticleCategory">
+                            <ArticleCardLeft />
+                        </Link>
+                        <div className="w-1/4 h-60"></div>
+                    </article>
+
+                    <article className="flex justify-center mt-4 mb-4 w-3/4 m-auto">
+                        <div className="w-1/4 h-60"></div>
+                        <Link to="/ArticleCategory">
+                            <ArticleCardRight />
+                        </Link>
+                    </article>
                 </main>
             </div>
         </>

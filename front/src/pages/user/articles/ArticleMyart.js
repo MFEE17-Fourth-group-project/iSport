@@ -8,7 +8,7 @@ import { FaMoneyCheck } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import SuggestArtCol from '../video/components/SuggestArtCol';
 
-function Users() {
+function ArticleMyart() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <aside className="w-64 mr-2.5 bg-gray-900 rounded-t-xl shadow-xl">
@@ -92,11 +92,21 @@ function Users() {
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                     <div className="mt-6">
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
-                        <SuggestArtCol />
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
                     </div>
                 </div>
             </artical>
@@ -104,4 +114,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default ArticleMyart;
