@@ -5,6 +5,11 @@ import HomePage2 from './../images/homepage/homepage-2.jpg';
 import HomePage3 from './../images/homepage/homepage-3.jpg';
 import HomePage4 from './../images/homepage/homepage-4.jpg';
 import HomePage8 from './../images/homepage/homepage-8.jpg';
+import HomePage9 from './../images/homepage/homepage-9.jpg';
+import HomePage10 from './../images/homepage/homepage-10.jpg';
+import HomePage11 from './../images/homepage/homepage-11.jpg';
+import HomePage12 from './../images/homepage/homepage-12.jpg';
+import HomePage13 from './../images/homepage/homepage-13.jpg';
 import VideoCard from './video/components/VideoCard';
 import VideoCard2 from './video/components/VideoCard2';
 import { BsFillCaretRightFill } from 'react-icons/bs';
@@ -23,7 +28,7 @@ const HomePage = () => {
         HomePage3,
         HomePage4,
     ]);
-    useEffect(() => {}, []);
+    useEffect(() => { }, []);
 
     return (
         <div className="max-w-screen-2xl mx-auto">
@@ -49,9 +54,9 @@ const HomePage = () => {
             {/* Video Section */}
             <div className="h-208 flex mt-7">
                 <div className="w-2/3">
-                    <div className="mt-7 ml-24">
-                        <h2 className="text-white text-3xl">精選影片</h2>
-                        <p className="text-white text-lg border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
+                    <div className="mt-6 ml-24">
+                        <h2 className="text-white text-4xl">精選影片</h2>
+                        <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
                             各式各樣的健身相關影片，讓您無論在戶外或是家裡都可以隨時
                             <br />
                             隨地觀看，不需擔心固定時間與定點的課程。
@@ -75,7 +80,65 @@ const HomePage = () => {
             </div>
 
             {/* Product Section */}
-            <div className="h-208 flex mt-7 bg-gray-900"></div>
+            <div className="h-208 flex mt-7 bg-gray-900">
+                <div className="flex pt-16 w-full">
+                    <div className="w-1/3 h-175 mr-10 relative">
+                        <img
+                            src={HomePage13}
+                            className="w-full h-full rounded-3xl object-cover"
+                        />
+                        <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-16 pt-8 pl-6">
+                            <h2 className="text-white text-4xl">多樣商品</h2>
+                            <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
+                                眾多精選商品，<br />
+                                    讓你在健康的道路上更加分。
+                                </p>
+                        </div>
+                    </div>
+                    <div className="w-1/3 h-175 mr-10 flex flex-col justify-between relative">
+                        <div className="h-1/2 mb-8">
+                            <img
+                                src={HomePage12}
+                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                            />
+                        </div>
+                        {/* <div className="absolute w-full h-1/2 bg-black bg-opacity-50 rounded-3xl mb-8">
+
+                        </div> */}
+                        <div className="h-1/2">
+                            <img
+                                src={HomePage11}
+                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                            />
+                        </div>
+                        {/* <div className="absolute w-full h-1/2 bottom-0 bg-black bg-opacity-50 rounded-3xl">
+
+                        </div> */}
+                    </div>
+                    <div className="mr-11 w-1/3 h-175 flex flex-col justify-between relative">
+                        <div className="h-1/2 mb-8">
+                            <img
+                                src={HomePage10}
+                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                            />
+                        </div>
+                        {/* <div className="absolute w-full h-1/2 bg-black bg-opacity-50 rounded-3xl mb-8">
+
+                        </div> */}
+                        <div className="h-1/2">
+                            <img
+                                src={HomePage9}
+                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                            />
+                        </div>
+                        {/* <div className="absolute w-full h-1/2 bottom-0 bg-black bg-opacity-50 rounded-3xl">
+
+                        </div> */}
+                    </div>
+                </div>
+
+            </div>
+
             {/* Article Section */}
             <div className="h-208 flex mt-7"></div>
             {/* Gym Section */}
