@@ -97,7 +97,17 @@ function Checkout2() {
                             </div> */}
 
                             {/* <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div> */}
-                            <div className="flex flex-row justify-end">
+                            <div className="flex flex-row justify-center">
+                                <button type="" className="mr-4">
+                                    <Link
+                                        to="/checkout"
+                                        className="btn-yellow-hollow flex flex-row justify-end items-center"
+                                    >
+                                        <p className="font-bold text-xl">
+                                            上一步
+                                        </p>
+                                    </Link>
+                                </button>
                                 <button type="submit">
                                     <Link
                                         to="/finished"

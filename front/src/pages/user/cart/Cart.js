@@ -24,7 +24,7 @@ function Cart() {
                         <div className="flex flex-row justify-end">
                             <Link
                                 to="/checkout"
-                                className="btn-yellow flex flex-row justify-end items-center"
+                                className="btn-yellow flex flex-row justify-center items-center"
                             >
                                 <FaArrowRight className="mr-2.5" />
                                 <p className="font-bold text-xl">前往結帳</p>

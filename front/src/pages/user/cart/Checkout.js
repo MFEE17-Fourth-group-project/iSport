@@ -92,10 +92,10 @@ function Checkout() {
                             </div> */}
                         </from>
                         {/* <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div> */}
-                        <div className="flex flex-row justify-end">
+                        <div className="flex flex-row justify-center">
                             <button type="submit">
                                 <Link
-                                    to="/finished"
+                                    to="/checkout2"
                                     className="btn-yellow flex flex-row justify-end items-center"
                                 >
                                     <p className="font-bold text-xl">下一步</p>

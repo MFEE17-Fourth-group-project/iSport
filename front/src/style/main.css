@@ -32085,6 +32085,52 @@ video {
   outline-offset: 2px;
 }
 
+/* btn-yellow-hollow*/
+
+.btn-yellow-hollow {
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgba(252, 211, 77, var(--tw-border-opacity));
+  background-color: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgba(251, 191, 36, var(--tw-text-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 150ms;
+  transition-timing-function: linear;
+}
+
+.btn-yellow-hollow:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(251, 191, 36, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+
+.btn-yellow-hollow:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(217, 119, 6, var(--tw-bg-opacity));
+}
+
+.btn-yellow-hollow:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 /* btn-yellow */
 
 .btn-yellow {
@@ -32385,8 +32431,8 @@ video {
 
 .users-li a {
   display: block;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
   padding-left: 2rem;
 }
 
@@ -32453,8 +32499,8 @@ video {
   margin-right: 1.25rem;
   margin-left: 1.25rem;
   display: inline-block;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
   --tw-text-opacity: 1;
   color: rgba(251, 191, 36, var(--tw-text-opacity));
 }
@@ -32481,6 +32527,14 @@ video {
   transition-duration: 150ms;
   transition-duration: 150ms;
   transition-timing-function: linear;
+}
+
+/*會員頁面title*/
+
+.user-page-title{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
 }
 
 @media (min-width: 640px) {

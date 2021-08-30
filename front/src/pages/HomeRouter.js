@@ -36,10 +36,13 @@ function HomeRouter() {
                     <Route path="/user/cart/favourite">
                         <FavouriteProduct />
                     </Route>
+                    <Route path="/user/cart">
+                        <Cart />
+                    </Route>
                     <Route path="/product/item">
                         <ProductItem />
                     </Route>
-                    <Route path="/Gym">
+                    <Route path="/gym">
                         <Gym />
                     </Route>
                     <Route path="/articles">
@@ -62,9 +65,6 @@ function HomeRouter() {
                     </Route>
                     <Route path="/video">
                         <Video />
-                    </Route>
-                    <Route path="/cart">
-                        <Cart />
                     </Route>
                     <Route path="/checkout">
                         <Checkout />
