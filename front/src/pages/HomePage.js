@@ -10,17 +10,16 @@ import HomePage10 from './../images/homepage/homepage-10.jpg';
 import HomePage11 from './../images/homepage/homepage-11.jpg';
 import HomePage12 from './../images/homepage/homepage-12.jpg';
 import HomePage13 from './../images/homepage/homepage-13.jpg';
+import HomePage14 from './../images/homepage/homepage-14.jpg';
 import VideoCard from './video/components/VideoCard';
 import VideoCard2 from './video/components/VideoCard2';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { BsCursorFill } from 'react-icons/bs';
 import MapImg from '../images/tabata/1.jpeg';
-import MapTop from '../images/map/map-top.png';
-import MapRight from '../images/map/map-right.png';
-import MapBottom from '../images/map/map-bottom.png';
-import MapLeft from '../images/map/map-left.png';
 import GymWindow from './gym/GymWindow';
+import { TiLocation } from 'react-icons/ti';
+import Map from '../images/map/map.png';
 
 const HomePage = () => {
     // const [bannerImage, setBannerImage] = useState([
@@ -29,7 +28,6 @@ const HomePage = () => {
     //     HomePage3,
     //     HomePage4,
     // ]);
-
 
     // useEffect(() => { }, []);
     const [gymWindow, setGymWindow] = useState(false);
@@ -43,7 +41,6 @@ const HomePage = () => {
 
     return (
         <div className="max-w-screen-2xl mx-auto">
-
             {gymWindow && <GymWindow onCancel={handleCancel} />}
 
             {/* Banner Image */}
@@ -104,7 +101,8 @@ const HomePage = () => {
                         <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-16 pt-8 pl-6">
                             <h2 className="text-white text-4xl">多樣商品</h2>
                             <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
-                                眾多精選商品，<br />
+                                眾多精選商品，
+                                <br />
                                 讓你在健康的道路上更加分。
                             </p>
                         </div>
@@ -150,41 +148,202 @@ const HomePage = () => {
                         </div> */}
                     </div>
                 </div>
-
             </div>
 
             {/* Article Section */}
-            <div className="h-208 flex mt-7"></div>
+            <div className="h-208 flex mt-7">
+                <div className="relative h-175 w-full">
+                    <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer z-10" />
+                    <img
+                        src={HomePage14}
+                        className="h-full w-full object-cover filter brightness-50"
+                        alt=""
+                    />
+                    <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-2/4 transform -translate-y-1/2 cursor-pointer" />
+                    <div className="absolute top-0 px-20 m-auto w-2/4 h-full overflow-y-auto">
+                        <h2 className="text-white text-2xl text-center">
+                            精選影片
+                        </h2>
+                        <p className="font-normal text-white tracking-wide leading-snug mb-4">
+                            章節一：我該增肌還是減脂？健身基礎知識判斷
+                            <br />
+                            1-1：帶你了解 inbody 各種真實資訊 教你看Inbody數據
+                            <br />
+                            1-2：設定自己的目標（增肌、減脂、同時增肌減脂）
+                            <br />
+                            PEETA增肌計畫EP01 ｜增肌重訓課表＋TDEE觀念
+                            <br />
+                            PEETA教室：何時增肌｜減脂｜TDEE | 如何達到理想身材？
+                            <br />
+                            PEETA增肌計畫EP02 | 重訓進步的關鍵！！漸進性負重增加
+                            <br />
+                            1-3：用 APP 飲食控制：
+                            <br />
+                            下載這個APP，增肌減脂成功一半！-Myfitnesspal操作介紹
+                            <br />
+                            <br />
+                            章節二：減重飲食的各種方法介紹
+                            <br />
+                            2-1：飲食減肥重種類：低碳、低脂、碳循環、生酮的操作方式
+                            <br />
+                            哪種飲食最能有效減脂？｜低醣、生酮、低脂、間歇式斷食
+                            <br />
+                            2-2：斷食執行方式：168、186、204 ...等斷食法
+                            <br />
+                            適合輕斷食的三種時間｜斷食全攻略-EP2｜營養師這樣說
+                            <br />
+                            2-3：碳循環飲食：高低碳日的搭配，達到增肌減脂目的
+                            <br />
+                            碳循環飲食 -<br />
+                            增肌減脂必備｜最棒的健身飲食？｜10週增肌計畫EP-08
+                            <br />
+                            <br />
+                            章節三：肩部肌群訓練動作
+                            <br />
+                            3-1：運動防疫小教室-第八堂/肩膀推舉
+                            <br />
+                            3-2：三運健身器材教學-肩推機#10
+                            <br />
+                            <br />
+                            章節四：胸部肌群訓練動作
+                            <br />
+                            4-1：三運健身器材教學-雙功能蝴蝶機#09
+                            <br />
+                            4-2：三運健身器材教學-胸推機#08
+                            <br />
+                            4-3：運動防疫小教室/第二堂-伏地挺身
+                            <br />
+                            <br />
+                            章節五：背部肌群訓練動作
+                            <br />
+                            5-1：運動防疫小教室-第六堂/背部訓練
+                            <br />
+                            5-2：三運健身器材教學-滑輪下拉機#07
+                            <br />
+                            5-3：三運健身器材教學-多功能滑輪下拉機#06
+                            <br />
+                            5-4：三運健身器材教學-坐姿划船機#05
+                            <br />
+                            <br />
+                            章節六：腿部肌群訓練動作
+                            <br />
+                            6-1：運動防疫小教室/第五堂-分腿蹲
+                            <br />
+                            6-2：運動防疫小教室/第一堂-深蹲
+                            <br />
+                            6-3：三運健身器材教學-腿部外展內收機#04
+                            <br />
+                            6-4：三運健身器材教學-腿部彎曲機#03
+                            <br />
+                            6-5：三運健身器材教學-腿部推蹬機 #01
+                            <br />
+                            6-6：三運健身器材教學-大腿伸展機#02
+                            <br />
+                            <br />
+                        </p>
+                        <button className="btn-yellow m-auto">閱讀更多</button>
+                    </div>
+                </div>
+            </div>
             {/* Gym Section */}
-            <section className="h-208 flex mt-7 bg-gray-900">
-                <div className="content-left flex justify-center m-auto">
-                    <div className="relative p-60 z-50">
+            <section className="h-208 flex bg-gray-900">
+                <div className="flex justify-center m-auto">
+                    <div className="relative p-72 ">
                         <img
-                            className="absolute top-10 left-40 w-1/4"
-                            src={MapTop}
-                            onClick={handleGymWindow}
+                            className="absolute top-8 left-16 w-2/4"
+                            src={Map}
+                            alt=""
                         />
-                        <img
-                            className="absolute top-40 left-40
-                                 w-1/4"
-                            src={MapRight}
-                            onClick={handleGymWindow}
-                        />
-                        <img
-                            className="absolute top-64 left-14 w-1/4"
-                            src={MapBottom}
-                            onClick={handleGymWindow}
-                        />
-                        <img
-                            className="absolute top-32 left-20 w-1/4"
-                            src={MapLeft}
-                            onClick={handleGymWindow}
-                        />
+                        <Link to="">
+                            <TiLocation className="z-0 text-gray-500 hover:text-gray-800 w-24 h-24 absolute top-24 left-56 transform -translate-y-1/2 cursor-pointer" />
+                        </Link>
+                        <Link to="">
+                            <TiLocation className="z-0 text-gray-500 hover:text-gray-800 w-24 h-24 absolute top-72 left-52 transform -translate-y-1/2 cursor-pointer" />
+                        </Link>
+
+                        <Link to="">
+                            <TiLocation className="z-0 text-gray-500 hover:text-gray-800 w-24 h-24 absolute top-96 left-32 transform -translate-y-1/2 cursor-pointer" />
+                        </Link>
+
+                        <Link to="">
+                            <TiLocation className="z-0 text-gray-500 hover:text-gray-800 w-24 h-24 absolute top-52 left-32 transform -translate-y-1/2 cursor-pointer" />
+                        </Link>
                     </div>
                     <div className="content-right">
                         <h3 class="text-4xl text-white text-center m-6">
                             健身房
                         </h3>
+                        <div className="flex justify-center text-2xl text-white text-center">
+                            <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                                北
+                            </div>
+                            <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                                中
+                            </div>
+                            <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                                南
+                            </div>
+                            <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                                東
+                            </div>
+                        </div>
+                        <Link to="">
+                            <div className="card flex items-center m-2">
+                                <img
+                                    className="map-img h-24 px-2"
+                                    src={MapImg}
+                                    alt=""
+                                />
+                                <div class="text-white">
+                                    <h5 class="text-2xl">中正運動中心</h5>
+                                    <p class="">
+                                        電話: 2581-1060 <br />
+                                        地址: 臺北市中山區中山北路二段44巷2號
+                                        <br />
+                                        網址:https://cssc.cyc.org.tw
+                                        <br />
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                        <Link to="">
+                            <div className="card flex items-center m-2">
+                                <img
+                                    className="map-img h-24 px-2"
+                                    src={MapImg}
+                                    alt=""
+                                />
+                                <div class="text-white">
+                                    <h5 class="text-2xl">中正運動中心</h5>
+                                    <p class="">
+                                        電話: 2581-1060 <br />
+                                        地址: 臺北市中山區中山北路二段44巷2號
+                                        <br />
+                                        網址:https://cssc.cyc.org.tw
+                                        <br />
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                        <Link to="">
+                            <div className="card flex items-center m-2">
+                                <img
+                                    className="map-img h-24 px-2"
+                                    src={MapImg}
+                                    alt=""
+                                />
+                                <div class="text-white">
+                                    <h5 class="text-2xl">中正運動中心</h5>
+                                    <p class="">
+                                        電話: 2581-1060 <br />
+                                        地址: 臺北市中山區中山北路二段44巷2號
+                                        <br />
+                                        網址:https://cssc.cyc.org.tw
+                                        <br />
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
                         <Link to="">
                             <div className="card flex items-center m-2">
                                 <img
