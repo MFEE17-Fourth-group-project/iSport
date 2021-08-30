@@ -110,12 +110,12 @@ function Checkout() {
                         <from>
                             <div
                                 className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
+                            pb-2.5 focus:border-yellow-400"
                             >
                                 <label>收件人</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="bg-transparent flex-1 outline-none"
                                 ></input>
                             </div>
                             <div
@@ -125,7 +125,7 @@ function Checkout() {
                                 <label>行動電話</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="bg-transparent flex-1 outline-none"
                                 ></input>
                             </div>
                             <div

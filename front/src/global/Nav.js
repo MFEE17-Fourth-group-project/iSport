@@ -27,7 +27,9 @@ function Nav() {
                         </p>
                     </Link>
                     <Link to="/SignIn">
-                        <button className="btn-yellow mx-4">登入</button>
+                        <button className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150">
+                            登入
+                        </button>
                     </Link>
                     <Link to="/video">
                         <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
