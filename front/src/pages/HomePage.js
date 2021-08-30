@@ -98,13 +98,14 @@ const HomePage = () => {
                             src={HomePage13}
                             className="w-full h-full rounded-3xl object-cover"
                         />
-                        <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-16 pt-8 pl-6">
+                        <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-16 pt-8 pl-6 pr-4">
                             <h2 className="text-white text-4xl">多樣商品</h2>
-                            <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
+                            <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 mt-7 mb-5">
                                 眾多精選商品，
                                 <br />
                                 讓你在健康的道路上更加分。
                             </p>
+                            <button className="btn-yellow-sm flex ml-auto">立即選購</button>
                         </div>
                     </div>
                     <div className="w-1/3 h-175 mr-10 flex flex-col justify-between">
@@ -113,8 +114,10 @@ const HomePage = () => {
                                 src={HomePage12}
                                 className="w-full h-full object-cover rounded-3xl"
                             />
-                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0 mb-8">
-                                <h3 className="hover:opacity-50 text-white">
+                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full
+                                h-full top-0 mb-8">
+                                <h3 className="text-white absolute top-1/2 left-1/2
+                                    transform -translate-y-1/2 -translate-x-1/2">
                                     運動服飾
                                 </h3>
                             </div>
@@ -126,7 +129,8 @@ const HomePage = () => {
                                 className="w-full h-full object-cover rounded-3xl"
                             />
                             <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
-                                <h3 className="hover:opacity-50 text-white">
+                                <h3 className="text-white absolute top-1/2 left-1/2
+                                    transform -translate-y-1/2 -translate-x-1/2">
                                     營養補給
                                 </h3>
                             </div>
@@ -139,7 +143,8 @@ const HomePage = () => {
                                 className="w-full h-full object-cover rounded-3xl"
                             />
                             <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0 mb-8">
-                                <h3 className="hover:opacity-50 text-white">
+                                <h3 className="text-white absolute top-1/2 left-1/2
+                                    transform -translate-y-1/2 -translate-x-1/2">
                                     健身器材
                                 </h3>
                             </div>
@@ -151,7 +156,8 @@ const HomePage = () => {
                                 className="w-full h-full object-cover rounded-3xl"
                             />
                             <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
-                                <h3 className="hover:opacity-50 text-white">
+                                <h3 className="text-white absolute top-1/2 left-1/2
+                                    transform -translate-y-1/2 -translate-x-1/2">
                                     運動鞋類
                                 </h3>
                             </div>
