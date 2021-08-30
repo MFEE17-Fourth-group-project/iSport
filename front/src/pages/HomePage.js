@@ -170,11 +170,11 @@ const HomePage = () => {
                         alt=""
                     />
                     <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-2/4 transform -translate-y-1/2 cursor-pointer" />
-                    <div className="absolute top-0 px-20 m-auto w-2/4 h-full overflow-y-auto">
-                        <h2 className="text-white text-2xl text-center">
+                    <div className="absolute top-0 m-auto h-full overflow-y-auto w-screen">
+                        <h2 className="text-white text-2xl w-2/4 px-20">
                             精選影片
                         </h2>
-                        <p className="font-normal text-white tracking-wide leading-snug mb-4">
+                        <p className="font-normal text-white tracking-wide leading-snug mb-4 w-2/4 px-20">
                             章節一：我該增肌還是減脂？健身基礎知識判斷
                             <br />
                             1-1：帶你了解 inbody 各種真實資訊 教你看Inbody數據
@@ -251,7 +251,6 @@ const HomePage = () => {
                             <br />
                             <br />
                         </p>
-                        <button className="btn-yellow m-auto">閱讀更多</button>
                     </div>
                 </div>
             </div>
@@ -297,7 +296,7 @@ const HomePage = () => {
                                 東
                             </div>
                         </div>
-                        <Link to="">
+                        <Link to="" onClick={handleGymWindow}>
                             <div className="card flex items-center m-2">
                                 <img
                                     className="map-img h-24 px-2"
@@ -316,7 +315,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </Link>
-                        <Link to="">
+                        <Link to="" onClick={handleGymWindow}>
                             <div className="card flex items-center m-2">
                                 <img
                                     className="map-img h-24 px-2"
@@ -335,7 +334,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </Link>
-                        <Link to="">
+                        <Link to="" onClick={handleGymWindow}>
                             <div className="card flex items-center m-2">
                                 <img
                                     className="map-img h-24 px-2"
@@ -354,7 +353,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </Link>
-                        <Link to="">
+                        <Link to="" onClick={handleGymWindow}>
                             <div className="card flex items-center m-2">
                                 <img
                                     className="map-img h-24 px-2"
