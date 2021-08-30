@@ -162,19 +162,17 @@ const HomePage = () => {
 
             {/* Article Section */}
             <div className="h-208 flex mt-7">
-                <div className="relative h-175 w-full">
+                <div className="relative h-175 w-full  w-2/4">
                     <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer z-10" />
                     <img
                         src={HomePage14}
                         className="h-full w-full object-cover filter brightness-50"
                         alt=""
                     />
-                    <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-2/4 transform -translate-y-1/2 cursor-pointer" />
-                    <div className="absolute top-0 m-auto h-full overflow-y-auto w-screen">
-                        <h2 className="text-white text-2xl w-2/4 px-20">
-                            精選影片
-                        </h2>
-                        <p className="font-normal text-white tracking-wide leading-snug mb-4 w-2/4 px-20">
+                    <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-2/4 transform -translate-y-1/2 cursor-pointer z-10" />
+                    <div className="absolute top-0 h-full overflow-y-auto w-screen">
+                        <h2 className="text-white text-2xl px-20">精選影片</h2>
+                        <p className="font-normal text-white tracking-wide leading-snug mb-4 px-20">
                             章節一：我該增肌還是減脂？健身基礎知識判斷
                             <br />
                             1-1：帶你了解 inbody 各種真實資訊 教你看Inbody數據
