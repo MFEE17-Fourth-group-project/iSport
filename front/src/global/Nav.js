@@ -1,7 +1,19 @@
 import Logo from '../images/biceps.svg';
+import SignIn from '../pages/user/sign/SignIn'
 import { Link } from 'react-router-dom';
+import {useState} from 'react';
 
 function Nav() {
+    const [signInWindow, setSignInWindow] = useState(false);
+
+    const handleSignIn = () => {
+        setSignInWindow(true);
+    }
+
+    const handleCancel = () => {
+        setSignInWindow(false);
+    }
+
     return (
         <nav className="App sticky top-0 z-50">
             <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
@@ -26,9 +38,7 @@ function Nav() {
                             收藏商品
                         </p>
                     </Link>
-                    <Link to="/SignIn">
-                        <button className="btn-yellow mx-4">登入</button>
-                    </Link>
+                    <button className="btn-yellow mx-4" onClick={handleSignIn}>登入</button>
                     <Link to="/video">
                         <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
                             精選影片
@@ -58,6 +68,7 @@ function Nav() {
                     </Link>
                 </div>
             </div>
+            {signInWindow && <SignIn onCancel={handleCancel} />}
         </nav>
     );
 }
