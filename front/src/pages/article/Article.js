@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ArticleHeader from '../../images/11.jpeg';
+import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import ArticleCardRight from './components/ArticleCardRight';
 import ArticleCardLeft from './components/ArticleCardLeft';
