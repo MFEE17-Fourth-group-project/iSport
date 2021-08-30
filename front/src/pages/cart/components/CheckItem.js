@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import product from '../../../images/product/1002-3.png';
 
 function CheckItem() {
-  return (
-    <>
-      <div className="p-5 flex flex-row">
+    return (
+        <>
+            <div className="p-5 flex flex-row">
                 <div className="w-36 mx-5 self-center text-center">
                     <img
                         className="w-full"
@@ -22,7 +22,9 @@ function CheckItem() {
                     </div>
                     <div className="flex flex-row items-center pb-1.5">
                         <p className="mr-2.5">顏色：</p>
-                        <div className="px-4 text-white text-opacity-85 text-center text-sm rounded-full">黑</div>
+                        <div className="px-4 text-white text-opacity-85 text-center text-sm rounded-full">
+                            黑
+                        </div>
                     </div>
                     <div className="flex flex-row items-center pb-1.5">
                         <p className="mr-2.5">尺寸：</p>
@@ -37,9 +39,9 @@ function CheckItem() {
                         </div>
                     </div>
                 </div>
-          </div>
-    </>
-  )
+            </div>
+        </>
+    );
 }
 
-export default CheckItem
+export default CheckItem;

@@ -6,6 +6,8 @@ import Product from './product/Product';
 import User from './user/User';
 import Video from './video/Video';
 import Cart from './cart/Cart';
+import Finished from './cart/Finished';
+import Checkout2 from './cart/Checkout2';
 import Checkout from './cart/Checkout';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
@@ -63,6 +65,11 @@ function HomeRouter() {
                     <Route path="/checkout">
                         <Checkout />
                     </Route>
+                    <Route path="/checkout2">
+                        <Checkout2 />
+                    </Route>
+                    <Route path="/finished">
+                        <Finished />
                     <Route path="/" exact>
                         <HomePage />
                     </Route>
