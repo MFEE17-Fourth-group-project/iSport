@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import userHeader from '../images/user/pic04.jpg';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -63,13 +64,13 @@ function Aside() {
                         </a>
                         <ul className="submenu">
                             <li>
-                                <a href="">我的文章</a>
+                                <Link to="ArticleAdd">我的文章</Link>
                             </li>
                             <li>
-                                <a href="">新增文章</a>
+                                <Link to="ArticleCollect">新增文章</Link>
                             </li>
                             <li>
-                                <a href="">收藏文章</a>
+                                <Link to="ArticleMyart">收藏文章</Link>
                             </li>
                         </ul>
                     </li>
