@@ -1,18 +1,18 @@
 import Logo from '../images/biceps.svg';
-import SignIn from '../pages/user/sign/SignIn'
+import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
-import {useState} from 'react';
+import { useState } from 'react';
 
 function Nav() {
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
         setSignInWindow(true);
-    }
+    };
 
     const handleCancel = () => {
         setSignInWindow(false);
-    }
+    };
 
     return (
         <nav className="App sticky top-0 z-50">
@@ -39,9 +39,11 @@ function Nav() {
                         </p>
                     </Link>
                     <button
-                         className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
-                          onClick={handleSignIn}
-                    >登入</button>
+                        className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
+                        onClick={handleSignIn}
+                    >
+                        登入
+                    </button>
                     <Link to="/video">
                         <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
                             精選影片
@@ -57,11 +59,10 @@ function Nav() {
                             優質文章
                         </p>
                     </Link>
-                    <Link
-                        href="/#"
-                        className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
-                    >
-                        健身房
+                    <Link to="/Gym">
+                        <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            健身房
+                        </p>
                     </Link>
                     <Link
                         to="/cart"
