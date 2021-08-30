@@ -1,90 +1,8 @@
 import React from 'react';
-// import userHeader from '../../images/user/pic04.jpg';
-// import { FaUserAlt } from 'react-icons/fa';
-// import { FaShoppingCart } from 'react-icons/fa';
-// import { FaHeart } from 'react-icons/fa';
-// import { FaMoneyCheck } from 'react-icons/fa';
-// import { FaComment } from 'react-icons/fa';
-import Aside from '../../global/Aside.js';
 
-function Users() {
+function SignUp() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
-            <Aside />
-            {/* <aside className="w-64 mr-2.5 bg-gray-900 rounded-t-xl shadow-xl">
-                <div className=" w-64 h-64 flex justify-center items-center">
-                    <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
-                        <img
-                            src={userHeader}
-                            alt=""
-                            className="w-full h-full object-cover object-center"
-                        />
-                    </div>
-                </div>
-                <div className="h-full aside-menu">
-                    <ul className="text-white text-lg ">
-                        <li className="users-li">
-                            <a href="">
-                                <FaUserAlt className="userIcons" /> 會員資料
-                            </a>
-                        </li>
-                        <li className="users-li">
-                            <a href="">
-                                <FaShoppingCart className="userIcons" />
-                                訂單管理
-                            </a>
-                            <ul className="submenu">
-                                <li>
-                                    <a href="">購買紀錄</a>
-                                </li>
-                                <li>
-                                    <a href="">購物車</a>
-                                </li>
-                                <li>
-                                    <a href="">我的最愛</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="users-li">
-                            <a href="">
-                                <FaHeart className="userIcons" />
-                                影片收藏
-                            </a>
-                            <ul className="submenu">
-                                <li>
-                                    <a href="">我的最愛</a>
-                                </li>
-                                <li>
-                                    <a href="">稍後觀看</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="users-li">
-                            <a href="">
-                                <FaMoneyCheck className="userIcons" />
-                                文章管理
-                            </a>
-                            <ul className="submenu">
-                                <li>
-                                    <a href="">我的文章</a>
-                                </li>
-                                <li>
-                                    <a href="">新增文章</a>
-                                </li>
-                                <li>
-                                    <a href="">收藏文章</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="users-li">
-                            <a href="">
-                                <FaComment className="userIcons" />
-                                聯絡我們
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </aside> */}
             <artical className="flex-grow flex-col">
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                     基本資料
@@ -94,14 +12,13 @@ function Users() {
                     <from>
                         <br />
                         <div className="items-center border-b py-2">
-                            <label for="menberName">暱稱：</label>
+                            <label for="menberName">姓名：</label>
                             <input
                                 type="text"
-                                className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                placeholder="小咪"
-                                aria-label="Full name"
+                                className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                placeholder="請輸入姓名"
                                 name="menberName"
-                                disabled
+                                required
                             />
                         </div>
                         <br />
@@ -111,16 +28,19 @@ function Users() {
                                 <input
                                     type="text"
                                     className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                    placeholder="Ab145gp12304"
+                                    placeholder="請輸入帳號"
                                     name="menberAccount"
+                                    required
                                 />
                             </div>
                             <div className="items-center border-b py-2 md:w-2/5 text-white">
                                 <label for="password">密碼：</label>
                                 <input
                                     type="password"
+                                    placeholder="請輸入6-8英數密碼"
                                     className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
                                     name="password"
+                                    required
                                 />
                             </div>
                         </div>
@@ -129,8 +49,9 @@ function Users() {
                             <input
                                 type="email"
                                 className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                placeholder="Ab145gp12304@test.com"
+                                placeholder="請輸入信箱"
                                 name="email"
+                                required
                             />
                         </div>
                         <div className="items-center border-b py-2 mb-6 text-white">
@@ -138,8 +59,9 @@ function Users() {
                             <input
                                 type="number"
                                 className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                placeholder="0900123456"
+                                placeholder="請輸入行動電話09xx-xxx-xxx"
                                 name="phone"
+                                required
                             />
                         </div>
                         <div className="items-center border-b py-2 mb-6 text-white">
@@ -147,8 +69,9 @@ function Users() {
                             <input
                                 type="text"
                                 className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                placeholder="台北市中山區羅斯福路9段201巷5弄20號3樓"
+                                placeholder="請輸入地址    ex:台北市中山區羅斯福路x段x巷x弄x號x樓"
                                 name="address"
+                                required
                             />
                         </div>
                     </from>
@@ -192,12 +115,15 @@ function Users() {
                         <div classNmae="mt-10"></div>
                         <label>關於我：</label>
                         <textarea
-                            class="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
+                            className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
                             rows="4"
                         ></textarea>
                         <div className="justify-center flex">
+                            <a href="" className="btn-green mr-10">
+                                返回
+                            </a>
                             <button type="submit" className="btn-yellow">
-                                更改個人資料
+                                註冊
                             </button>
                         </div>
                     </div>
@@ -207,4 +133,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default SignUp;

@@ -19,6 +19,10 @@ import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
 import TradingRecord from './user/cart/TradingRecord';
 import Gym from './gym/Gym';
+import SignUp from './user/sign/SignUp';
+import SignIn from './user/sign/SignIn';
+
+// import Aside from '../global/Aside';
 
 function HomeRouter() {
     return (
@@ -73,6 +77,12 @@ function HomeRouter() {
                     </Route>
                     <Route path="/" exact>
                         <HomePage />
+                    </Route>
+                    <Route path="/SignUp">
+                        <SignUp />
+                    </Route>
+                    <Route path="/SignIn">
+                        <SignIn />
                     </Route>
                 </Switch>
                 <Footer />

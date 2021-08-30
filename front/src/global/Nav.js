@@ -26,7 +26,7 @@ function Nav() {
                             收藏商品
                         </p>
                     </Link>
-                    <Link to="/user">
+                    <Link to="/SignIn">
                         <button className="btn-yellow mx-4">登入</button>
                     </Link>
                     <Link to="/video">
