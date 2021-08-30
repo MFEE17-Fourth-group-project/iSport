@@ -20,18 +20,32 @@ import MapTop from '../images/map/map-top.png';
 import MapRight from '../images/map/map-right.png';
 import MapBottom from '../images/map/map-bottom.png';
 import MapLeft from '../images/map/map-left.png';
+import GymWindow from './gym/GymWindow';
 
 const HomePage = () => {
-    const [bannerImage, setBannerImage] = useState([
-        HomePage1,
-        HomePage2,
-        HomePage3,
-        HomePage4,
-    ]);
-    useEffect(() => { }, []);
+    // const [bannerImage, setBannerImage] = useState([
+    //     HomePage1,
+    //     HomePage2,
+    //     HomePage3,
+    //     HomePage4,
+    // ]);
+
+
+    // useEffect(() => { }, []);
+    const [gymWindow, setGymWindow] = useState(false);
+    const handleGymWindow = () => {
+        setGymWindow(true);
+    };
+
+    const handleCancel = () => {
+        setGymWindow(false);
+    };
 
     return (
         <div className="max-w-screen-2xl mx-auto">
+
+            {gymWindow && <GymWindow onCancel={handleCancel} />}
+
             {/* Banner Image */}
             <div className="relative h-175 w-full">
                 <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer" />
@@ -91,8 +105,8 @@ const HomePage = () => {
                             <h2 className="text-white text-4xl">多樣商品</h2>
                             <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 my-7">
                                 眾多精選商品，<br />
-                                    讓你在健康的道路上更加分。
-                                </p>
+                                讓你在健康的道路上更加分。
+                            </p>
                         </div>
                     </div>
                     <div className="w-1/3 h-175 mr-10 flex flex-col justify-between relative">
@@ -145,37 +159,27 @@ const HomePage = () => {
             <section className="h-208 flex mt-7 bg-gray-900">
                 <div className="content-left flex justify-center m-auto">
                     <div className="relative p-60 z-50">
-                        <Link to="">
-                            <img
-                                className="absolute top-10 left-40 w-1/4"
-                                src={MapTop}
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="">
-                            <img
-                                className="absolute top-40 left-40
+                        <img
+                            className="absolute top-10 left-40 w-1/4"
+                            src={MapTop}
+                            onClick={handleGymWindow}
+                        />
+                        <img
+                            className="absolute top-40 left-40
                                  w-1/4"
-                                src={MapRight}
-                                alt=""
-                            />
-                        </Link>
-
-                        <Link to="">
-                            <img
-                                className="absolute top-64 left-14 w-1/4"
-                                src={MapBottom}
-                                alt=""
-                            />
-                        </Link>
-
-                        <Link to="">
-                            <img
-                                className="absolute top-32 left-20 w-1/4"
-                                src={MapLeft}
-                                alt=""
-                            />
-                        </Link>
+                            src={MapRight}
+                            onClick={handleGymWindow}
+                        />
+                        <img
+                            className="absolute top-64 left-14 w-1/4"
+                            src={MapBottom}
+                            onClick={handleGymWindow}
+                        />
+                        <img
+                            className="absolute top-32 left-20 w-1/4"
+                            src={MapLeft}
+                            onClick={handleGymWindow}
+                        />
                     </div>
                     <div className="content-right">
                         <h3 class="text-4xl text-white text-center m-6">
