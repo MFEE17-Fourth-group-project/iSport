@@ -107,45 +107,55 @@ const HomePage = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-1/3 h-175 mr-10 flex flex-col justify-between relative">
-                        <div className="h-1/2 mb-8">
+                    <div className="w-1/3 h-175 mr-10 flex flex-col justify-between">
+                        <div className="h-1/2 mb-8 rounded-3xl relative cursor-pointer">
                             <img
                                 src={HomePage12}
-                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                                className="w-full h-full object-cover rounded-3xl"
                             />
+                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0 mb-8">
+                                <h3 className="hover:opacity-50 text-white">
+                                    運動服飾
+                                </h3>
+                            </div>
                         </div>
-                        {/* <div className="absolute w-full h-1/2 bg-black bg-opacity-50 rounded-3xl mb-8">
 
-                        </div> */}
-                        <div className="h-1/2">
+                        <div className="h-1/2 rounded-3xl relative cursor-pointer">
                             <img
                                 src={HomePage11}
-                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                                className="w-full h-full object-cover rounded-3xl"
                             />
+                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
+                                <h3 className="hover:opacity-50 text-white">
+                                    營養補給
+                                </h3>
+                            </div>
                         </div>
-                        {/* <div className="absolute w-full h-1/2 bottom-0 bg-black bg-opacity-50 rounded-3xl">
-
-                        </div> */}
                     </div>
-                    <div className="mr-11 w-1/3 h-175 flex flex-col justify-between relative">
-                        <div className="h-1/2 mb-8">
+                    <div className="mr-11 w-1/3 h-175 flex flex-col justify-between">
+                        <div className="h-1/2 mb-8 rounded-3xl relative cursor-pointer">
                             <img
                                 src={HomePage10}
-                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                                className="w-full h-full object-cover rounded-3xl"
                             />
+                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0 mb-8">
+                                <h3 className="hover:opacity-50 text-white">
+                                    健身器材
+                                </h3>
+                            </div>
                         </div>
-                        {/* <div className="absolute w-full h-1/2 bg-black bg-opacity-50 rounded-3xl mb-8">
 
-                        </div> */}
-                        <div className="h-1/2">
+                        <div className="h-1/2 rounded-3xl relative cursor-pointer">
                             <img
                                 src={HomePage9}
-                                className="w-full h-full rounded-3xl object-cover hover:bg-black hover:bg-opacity-50"
+                                className="w-full h-full object-cover rounded-3xl"
                             />
+                            <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
+                                <h3 className="hover:opacity-50 text-white">
+                                    運動鞋類
+                                </h3>
+                            </div>
                         </div>
-                        {/* <div className="absolute w-full h-1/2 bottom-0 bg-black bg-opacity-50 rounded-3xl">
-
-                        </div> */}
                     </div>
                 </div>
             </div>
