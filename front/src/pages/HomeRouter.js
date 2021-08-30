@@ -70,6 +70,7 @@ function HomeRouter() {
                     </Route>
                     <Route path="/finished">
                         <Finished />
+                    </Route>
                     <Route path="/" exact>
                         <HomePage />
                     </Route>
