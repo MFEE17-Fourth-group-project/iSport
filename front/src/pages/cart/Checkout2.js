@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import creditCard from '../../images/';
 import userHeader from '../../images/11.jpeg';
-import CheckItem from './components/CheckItem';
 import ProgressBar from './components/ProgressBar';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -10,7 +10,7 @@ import { FaMoneyCheck } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import { CgChevronDoubleDown } from 'react-icons/cg';
 
-function Checkout() {
+function Checkout2() {
     return (
         <>
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -92,58 +92,51 @@ function Checkout() {
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 mb-2.5">
+                    <div className="text-white px-12 py-6 bg-gray-900 mb-2.5 rounded-b-xl">
                         <div>
                             <ProgressBar />
                         </div>
-                        <CheckItem />
-                        <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                            <p className="text-lg font-bold">Total :</p>
-                            <span className="text-lg font-bold">1400</span>
+                        <div>
+                            {/* <img src="creditCard" alt=""></img> */}
+                            <div></div>
                         </div>
-                        <div className="flex justify-center">
-                            <CgChevronDoubleDown className="text-2xl text-yellow-400" />
-                        </div>
-                        {/* <button className="flex flex-row justify-end">前往結帳</button> */}
-                    </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
                         <from>
-                            <label>收件人</label>
+                            <label>收件人：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>行動電話</label>
+                            <label>行動電話：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>信箱</label>
+                            <label>信箱：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>住家地址</label>
+                            <label>住家地址：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>寄送方式</label>
+                            <label>寄送方式：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>多得多得多的</label>
+                            <label>多得多得多的：</label>
                             <br />
                             <input
                                 type="text"
@@ -167,4 +160,4 @@ function Checkout() {
     );
 }
 
-export default Checkout;
+export default Checkout2;

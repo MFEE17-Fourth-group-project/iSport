@@ -10,7 +10,7 @@ import { FaMoneyCheck } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import { CgChevronDoubleDown } from 'react-icons/cg';
 
-function Checkout() {
+function Finished() {
     return (
         <>
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -108,42 +108,42 @@ function Checkout() {
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
                         <from>
-                            <label>收件人</label>
+                            <label>收件人：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>行動電話</label>
+                            <label>行動電話：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>信箱</label>
+                            <label>信箱：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>住家地址</label>
+                            <label>住家地址：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>寄送方式</label>
+                            <label>寄送方式：</label>
                             <br />
                             <input
                                 type="text"
                                 className="w-full bg-gray-900 border-b-2 bg-gray-700 "
                             ></input>
                             <br />
-                            <label>多得多得多的</label>
+                            <label>多得多得多的：</label>
                             <br />
                             <input
                                 type="text"
@@ -167,4 +167,4 @@ function Checkout() {
     );
 }
 
-export default Checkout;
+export default Finished;

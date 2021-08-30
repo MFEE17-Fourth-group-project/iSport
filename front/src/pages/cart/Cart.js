@@ -87,7 +87,7 @@ function Cart() {
                         </ul>
                     </div>
                 </aside>
-                <div className="flex-grow flex-col">
+                <article className="flex-grow flex-col">
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
                         購物車
                     </div>
@@ -110,7 +110,7 @@ function Cart() {
                         </div>
                         {/* <button className="flex flex-row justify-end">前往結帳</button> */}
                     </div>
-                </div>
+                </article>
             </main>
         </>
     );
