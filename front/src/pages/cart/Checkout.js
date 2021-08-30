@@ -108,57 +108,77 @@ function Checkout() {
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
                         <from>
-                            <label>收件人</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                            <label>行動電話</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                            <label>信箱</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                            <label>住家地址</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                            <label>寄送方式</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                            <label>多得多得多的</label>
-                            <br />
-                            <input
-                                type="text"
-                                className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                            ></input>
-                            <br />
-                        </from>
-                        <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div>
-                        <div className="flex flex-row justify-end">
-                            <Link
-                                to="/checkout2"
-                                className="btn-yellow flex flex-row justify-end items-center"
+                            <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
                             >
-                                <p className="font-bold text-xl">下一步</p>
-                            </Link>
+                                <label>收件人</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div>
+                            <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
+                            >
+                                <label>行動電話</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div>
+                            <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
+                            >
+                                <label>信箱</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div>
+                            <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
+                            >
+                                <label>住家地址</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div>
+                            <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
+                            >
+                                <label>寄送方式</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div>
+                            {/* <div
+                                className="flex mb-8 border-b border-gray-700
+                            pb-2.5 hover:border-yellow-400"
+                            >
+                                <label>多得多得多的</label>
+                                <input
+                                    type="text"
+                                    className="bg-transparent flex-1"
+                                ></input>
+                            </div> */}
+                        </from>
+                        {/* <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div> */}
+                        <div className="flex flex-row justify-end">
+                            <button type="submit">
+                                <Link
+                                    to="/finished"
+                                    className="btn-yellow flex flex-row justify-end items-center"
+                                >
+                                    <p className="font-bold text-xl">下一步</p>
+                                </Link>
+                            </button>
                         </div>
                     </div>
                 </article>
