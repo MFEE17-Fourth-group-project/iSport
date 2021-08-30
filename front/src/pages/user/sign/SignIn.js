@@ -3,7 +3,8 @@ import React from 'react';
 function SignIn(props) {
     return (
         <div className="w-screen h-screen fixed z-0">
-            <div className="w-full max-w-sm rounded justify-center flex-auto items-center transform translate-y-1/2 translate-x-1/2 absolute z-20">
+            <div className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
+                -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2">
                 <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                     登入
                 </div>
