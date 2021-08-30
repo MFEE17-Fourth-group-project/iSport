@@ -193,3 +193,8 @@
     @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
         rounded-full outline-none ease-linear transition-all duration-150;
 }
+
+/*會員頁面title*/
+.user-page-title{
+    @apply text-2xl font-bold;
+}
