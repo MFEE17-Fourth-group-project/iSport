@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
     return (
-        <nav className="App">
-            <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center sticky">
+        <nav className="App sticky top-0 z-50">
+            <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                 <div className="flex items-center">
                     <img src={Logo} width="40" alt="Logo" className="my-1 " />
                     <Link
@@ -16,6 +16,16 @@ function Nav() {
                 </div>
 
                 <div className="flex items-center ">
+                    <Link to="/user/cart/TradingRecord">
+                        <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            購買紀錄
+                        </p>
+                    </Link>
+                    <Link to="/user/cart/favourite">
+                        <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            收藏商品
+                        </p>
+                    </Link>
                     <Link to="/user">
                         <button className="btn-yellow mx-4">登入</button>
                     </Link>

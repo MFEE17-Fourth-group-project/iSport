@@ -13,22 +13,39 @@ import Nav from '../global/Nav';
 import Footer from '../global/Footer';
 import ProductItem from './product/ProductItem';
 import VideoId from './video/VideoId';
+import FavouriteProduct from './user/cart/FavouriteProduct.js';
+import ArticleCategory from './article/ArticleCategory';
+import ArticleId from './article/ArticleId';
+import HomePage from './HomePage';
+import TradingRecord from './user/cart/TradingRecord';
+import Gym from './gym/Gym';
 
 function HomeRouter() {
     return (
         <Router>
             <>
-                {/* <Link to="/articles">Articles</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/user">User</Link>
-        <Link to="/video">Video</Link> */}
                 <Nav />
                 <Switch>
+                    <Route path="/user/cart/TradingRecord">
+                        <TradingRecord />
+                    </Route>
+                    <Route path="/user/cart/favourite">
+                        <FavouriteProduct />
+                    </Route>
                     <Route path="/product/item">
                         <ProductItem />
                     </Route>
+                    <Route path="/Gym">
+                        <Gym />
+                    </Route>
                     <Route path="/articles">
                         <Articles />
+                    </Route>
+                    <Route path="/ArticleCategory">
+                        <ArticleCategory />
+                    </Route>
+                    <Route path="/ArticleId">
+                        <ArticleId />
                     </Route>
                     <Route path="/products">
                         <Product />
@@ -53,6 +70,8 @@ function HomeRouter() {
                     </Route>
                     <Route path="/finished">
                         <Finished />
+                    <Route path="/" exact>
+                        <HomePage />
                     </Route>
                 </Switch>
                 <Footer />

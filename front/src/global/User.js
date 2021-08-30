@@ -88,52 +88,7 @@ function Users() {
                     基本資料
                     <span className="text-base text-red-500	">(必填)</span>
                 </div>
-                <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                    <from>
-                        <label>暱稱：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>帳號：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>密碼：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>信箱：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>行動電話：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>住家地址：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                    </from>
-                </div>
+                <div className="text-white bg-gray-900 w-full h-full object-cover object-center"></div>
             </artical>
         </main>
     );

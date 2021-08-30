@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import userHeader from '../../images/user/pic04.jpg';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaHeart } from 'react-icons/fa';
 import { FaMoneyCheck } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
+import SuggestArtCol from '../video/components/SuggestArtCol';
 
-function Users() {
+function ArticleMyart() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <aside className="w-64 mr-2.5 bg-gray-900 rounded-t-xl shadow-xl">
@@ -83,60 +85,33 @@ function Users() {
                     </ul>
                 </div>
             </aside>
+            {/* ==================== */}
             <artical className="flex-grow flex-col">
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                    基本資料
-                    <span className="text-base text-red-500	">(必填)</span>
+                    我的文章
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                    <from>
-                        <label>暱稱：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>帳號：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>密碼：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>信箱：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>行動電話：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                        <label>住家地址：</label>
-                        <br />
-                        <input
-                            type="text"
-                            className="w-full bg-gray-900 border-b-2 bg-gray-700 "
-                        ></input>
-                        <br />
-                    </from>
+                    <div className="mt-6">
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                        <Link to="">
+                            <SuggestArtCol />
+                        </Link>
+                    </div>
                 </div>
             </artical>
         </main>
     );
 }
 
-export default Users;
+export default ArticleMyart;
