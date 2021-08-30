@@ -1,5 +1,5 @@
 import React from 'react';
-import product from '../../../images/product/1002-3.png';
+import product from '../../../../images/product/1002-3.png';
 import { FaHeart } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsCaretDownFill } from 'react-icons/bs';
