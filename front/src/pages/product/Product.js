@@ -131,7 +131,7 @@ export default function Product() {
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>

@@ -4,46 +4,51 @@ import {
     FaPlus,
     FaMinus,
     FaAngleLeft,
+    FaAngleRight,
     FaHeart,
     FaCaretDown,
     FaShare,
     FaAngleUp,
     FaAngleDown,
+    FaCircle,
 } from 'react-icons/fa';
 
 function ProductItem() {
     return (
         <>
-            <nav className="mt-2 bg-gray-900 flex justify-center">
-                <div className="border-b-2 border-yellow-400 w-36 text-white text-center text-base py-3">
+            <nav className="mt-2 bg-gray-900 flex justify-center text-sm lg:text-base">
+                <div className="flex-1 lg:flex-initial border-b-2 border-yellow-400 w-36 text-white text-center text-base py-3">
                     所有商品
                 </div>
-                <div className="border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 lg:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
                     運動服飾
                 </div>
-                <div className="border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 lg:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
                     運動鞋類
                 </div>
-                <div className="border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 lg:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
                     健身器材
                 </div>
-                <div className="border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 lg:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
                     營養補給
                 </div>
             </nav>
-            <main className="text-white text-opacity-85 max-w-screen-xl my-0 mx-auto">
+            <main className="px-3 text-white text-opacity-85 max-w-screen-xl my-0 mx-auto">
                 {/* 圖片與資訊 */}
-                <section className="py-3 flex">
+                <section className="w-full py-3 flex flex-col lg:flex-row">
                     {/* 圖片 */}
-                    <div className="flex w-auto mr-5 py-3">
+                    <div className="flex w-full lg:w-auto mr-5 py-3">
                         {/* 小圖 */}
-                        <div className="h-500 overflow-y-hidden mr-2 relative">
+                        <div className=" hidden lg:block h-500 overflow-y-hidden mr-2 relative">
                             <div className="w-full h-6 bg-gradient-to-b from-gray-800 absolute top-0 left-0 cursor-pointer">
                                 <FaAngleUp className="text-2xl my-0 mx-auto text-yellow-400" />
                             </div>
                             <div className="w-full h-6 bg-gradient-to-t from-gray-800 absolute bottom-0 left-0 cursor-pointer">
                                 <FaAngleDown className="text-2xl my-0 mx-auto text-yellow-400" />
                             </div>
+                            {/* 圖片群組 */}
+                            <div>
+
                             <figure className="mb-2 w-28 h-28 rounded-md overflow-hidden">
                                 <img
                                     src={product}
@@ -79,9 +84,16 @@ function ProductItem() {
                                     className="w-full h-full object-cover object-center"
                                 />
                             </figure>
+                            </div>
                         </div>
                         {/* 大圖 */}
-                        <div className="w-500 rounded-lg overflow-y-hidden shadow-xl ">
+                        <div className="w-full lg:w-500 rounded-lg overflow-y-hidden shadow-xl relative">
+                            <div className="lg:hidden h-full w-8 absolute left-0 top-0 bg-black bg-opacity-40 flex items-center justify-center" >
+                                <FaAngleLeft className="text-lg text-white "/>
+                            </div>
+                            <div className="lg:hidden h-full w-8 absolute right-0 top-0 bg-black bg-opacity-40 flex items-center justify-center" >
+                            <FaAngleRight className="text-lg text-white "/>
+                            </div>
                             <img
                                 src={product}
                                 alt="product"
@@ -89,6 +101,14 @@ function ProductItem() {
                             />
                         </div>
                     </div>
+                        {/* 點點 */}
+                        <div className="lg:hidden flex justify-center">
+                            <FaCircle className="text-yellow-400 text-xs p-0.5"/>
+                            <FaCircle className="text-gray-700 text-xs p-0.5"/>
+                            <FaCircle className="text-gray-700 text-xs p-0.5"/>
+                            <FaCircle className="text-gray-700 text-xs p-0.5"/>
+                            <FaCircle className="text-gray-700 text-xs p-0.5"/>
+                        </div>
                     {/* 資訊與加入購物車 */}
                     <div className="py-5 flex-grow flex flex-col">
                         {/* 連結 */}
@@ -166,7 +186,7 @@ function ProductItem() {
                                     </button>
                                     <input
                                         type="text"
-                                        className="bg-transparent outline-none text-center"
+                                        className=" w-20 lg:w-auto bg-transparent outline-none text-center"
                                         value={1}
                                     />
                                     <button type="button" className="px-2">
@@ -190,7 +210,7 @@ function ProductItem() {
                     </div>
                 </section>
                 {/* 商品簡介 */}
-                <section className="h-screen mt-5 overflow-y-hidden relative">
+                <section className=" h-96 lg:h-screen mt-5 overflow-y-hidden relative">
                     <h1 className="py-3 text-xl border-b-2 border-yellow-400 ">
                         商品介紹
                     </h1>
@@ -265,32 +285,32 @@ function ProductItem() {
                         你可能會喜歡......
                     </h1>
                     <div className="w-full overflow-x-hidden relative">
-                        <div className="h-full w-10 bg-gradient-to-r from-gray-800 absolute top-0 left-0 z-10">
-                            <i></i>
+                        <div className="h-full w-10 bg-gradient-to-r from-gray-800 absolute top-0 left-0 z-10 flex items-center justify-center">
+                        <FaAngleLeft className="text-3xl text-white "/>
                         </div>
-                        <div className="h-full w-10 bg-gradient-to-l from-gray-800 absolute top-0 right-0 z-10">
-                            <i></i>
+                        <div className="h-full w-10 bg-gradient-to-l from-gray-800 absolute top-0 right-0 z-10 flex items-center justify-center">
+                        <FaAngleRight className="text-3xl text-white "/>
                         </div>
 
-                        <div className="py-5 flex justify-center mx-2">
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
+                        <div className="py-5 flex mx-0 lg:mx-2">
+                            <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
+                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
                                 </div>
                                 <img
                                     className="w-full"
                                     src={product}
                                     alt="Mountain"
                                 />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
+                                <div className="px-4 py-2  lg:px-6 lg:py-4 h-32 lg:h-40 flex flex-col justify-between">
+                                    <div className="text-base lg:text-lg mb-2 text-yellow-400">
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>
@@ -299,24 +319,24 @@ function ProductItem() {
                                 </div>
                             </div>
 
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
+                            <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
+                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
                                 </div>
                                 <img
                                     className="w-full"
                                     src={product}
                                     alt="Mountain"
                                 />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
+                                <div className="px-4 py-2  lg:px-6 lg:py-4 h-32 lg:h-40 flex flex-col justify-between">
+                                    <div className="text-base lg:text-lg mb-2 text-yellow-400">
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>
@@ -325,24 +345,24 @@ function ProductItem() {
                                 </div>
                             </div>
 
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
+                            <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
+                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
                                 </div>
                                 <img
                                     className="w-full"
                                     src={product}
                                     alt="Mountain"
                                 />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
+                                <div className="px-4 py-2  lg:px-6 lg:py-4 h-32 lg:h-40 flex flex-col justify-between">
+                                    <div className="text-base lg:text-lg mb-2 text-yellow-400">
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>
@@ -351,24 +371,24 @@ function ProductItem() {
                                 </div>
                             </div>
 
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
+                            <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
+                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
                                 </div>
                                 <img
                                     className="w-full"
                                     src={product}
                                     alt="Mountain"
                                 />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
+                                <div className="px-4 py-2  lg:px-6 lg:py-4 h-32 lg:h-40 flex flex-col justify-between">
+                                    <div className="text-base lg:text-lg mb-2 text-yellow-400">
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>
@@ -377,24 +397,24 @@ function ProductItem() {
                                 </div>
                             </div>
 
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
+                            <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
+                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
+                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
                                 </div>
                                 <img
                                     className="w-full"
                                     src={product}
                                     alt="Mountain"
                                 />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
+                                <div className="px-4 py-2  lg:px-6 lg:py-4 h-32 lg:h-40 flex flex-col justify-between">
+                                    <div className="text-base lg:text-lg mb-2 text-yellow-400">
                                         15 分鐘高强度全身肌肉
                                         無需器材又能在家做的運動
                                     </div>
-                                    <div className="text-white flex justify-between">
+                                    <div className="text-sm lg:text-base text-white flex justify-between">
                                         <div>$350</div>
                                         <div>
                                             已出售 <span>100</span>
@@ -402,31 +422,7 @@ function ProductItem() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mx-2 flex-shrink-0 w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-3 flex justify-between items-center absolute">
-                                    <div className="text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-4xl text-red-300 cursor-pointer" />
-                                </div>
-                                <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="Mountain"
-                                />
-                                <div className="px-6 py-4 h-40 flex flex-col justify-between">
-                                    <div className=" text-lg mb-2 text-yellow-400">
-                                        15 分鐘高强度全身肌肉
-                                        無需器材又能在家做的運動
-                                    </div>
-                                    <div className="text-white flex justify-between">
-                                        <div>$350</div>
-                                        <div>
-                                            已出售 <span>100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </section>
