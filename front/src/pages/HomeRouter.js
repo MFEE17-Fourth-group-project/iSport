@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
 import Articles from './article/Article';
 import Product from './product/Product';
 import User from './user/User';
@@ -24,8 +23,8 @@ import SignIn from './user/sign/SignIn';
 import ArticleAdd from './user/articles/ArticleAdd';
 import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleMyart from './user/articles/ArticleMyart';
-
-//import Aside from '../global/Aside';
+import CustomerService from './user/sign/CustomerService';
+import SearchPassword from './user/sign/SearchPassword';
 
 function HomeRouter() {
     return (
@@ -33,6 +32,12 @@ function HomeRouter() {
             <>
                 <Nav />
                 <Switch>
+                    <Route path="/SearchPassword">
+                        <SearchPassword />
+                    </Route>
+                    <Route path="/user/CustomerService">
+                        <CustomerService />
+                    </Route>
                     <Route path="/user/cart/TradingRecord">
                         <TradingRecord />
                     </Route>

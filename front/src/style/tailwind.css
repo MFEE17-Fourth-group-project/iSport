@@ -195,6 +195,6 @@
 }
 
 /*會員頁面title*/
-.user-page-title{
+.user-page-title {
     @apply text-2xl font-bold;
 }
