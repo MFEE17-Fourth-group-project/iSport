@@ -1,18 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ArticleHeader from '../../images/11.jpeg';
 import MapImg from '../../images/11.jpeg';
 import Gyms from '../../images/map/gym.png';
 
 function Gym() {
     return (
         <>
-            <div className="flex justify-center m-auto">
-                <div className="relative p-72 w-1/2">
-                    <img className="absolute top-8 left-16" src={Gyms} alt="" />
+            <div>
+                <img
+                    className="h-112 object-cover w-full z-0"
+                    src={ArticleHeader}
+                    alt=""
+                />
+            </div>
+            <div className="flex justify-center">
+                <div className="">
+                    <img
+                        className="object-contain h-full p-4"
+                        src={Gyms}
+                        alt=""
+                    />
                 </div>
-                <div className="content-right">
+                <div className="">
                     <h3 class="text-4xl text-white text-center m-6">健身房</h3>
-                    <div className="flex justify-center text-2xl text-white text-center">
+                    <div className="flex justify-center text-2xl text-white text-center m-4">
                         <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
                             北
                         </div>
@@ -28,11 +40,7 @@ function Gym() {
                     </div>
                     <Link to="">
                         <div className="card flex items-center m-2">
-                            <img
-                                className="map-img h-24 px-2"
-                                src={MapImg}
-                                alt=""
-                            />
+                            <img className="h-24 px-2" src={MapImg} alt="" />
                             <div class="text-white">
                                 <h5 class="text-2xl">中正運動中心</h5>
                                 <p class="">
@@ -47,11 +55,7 @@ function Gym() {
                     </Link>
                     <Link to="">
                         <div className="card flex items-center m-2">
-                            <img
-                                className="map-img h-24 px-2"
-                                src={MapImg}
-                                alt=""
-                            />
+                            <img className="h-24 px-2" src={MapImg} alt="" />
                             <div class="text-white">
                                 <h5 class="text-2xl">中正運動中心</h5>
                                 <p class="">
@@ -66,11 +70,7 @@ function Gym() {
                     </Link>
                     <Link to="">
                         <div className="card flex items-center m-2">
-                            <img
-                                className="map-img h-24 px-2"
-                                src={MapImg}
-                                alt=""
-                            />
+                            <img className="h-24 px-2" src={MapImg} alt="" />
                             <div class="text-white">
                                 <h5 class="text-2xl">中正運動中心</h5>
                                 <p class="">
@@ -85,11 +85,7 @@ function Gym() {
                     </Link>
                     <Link to="">
                         <div className="card flex items-center m-2">
-                            <img
-                                className="map-img h-24 px-2"
-                                src={MapImg}
-                                alt=""
-                            />
+                            <img className="h-24 px-2" src={MapImg} alt="" />
                             <div class="text-white">
                                 <h5 class="text-2xl">中正運動中心</h5>
                                 <p class="">
