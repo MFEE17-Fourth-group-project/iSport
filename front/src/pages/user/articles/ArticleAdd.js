@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function ArticleAdd() {
     return (
@@ -68,11 +70,16 @@ function ArticleAdd() {
                         <br />
                         <div id="toolbar-container"></div>
                         <div id="editor"></div>
-                        <textarea
+                        <Editor
+                            toolbarClassName="toolbarClassName"
+                            wrapperClassName="wrapperClassName"
+                            editorClassName="editorClassName"
+                        />
+                        {/* <textarea
                             name="content"
                             id="content"
                             className="w-full bg-gray-900 border-b-2  p-4 my-4 focus:border-yellow-400 outline-none"
-                        ></textarea>
+                        ></textarea> */}
                         <div className="flex flex-row justify-end">
                             <Link to="">
                                 <button
