@@ -1061,7 +1061,7 @@ module.exports = {
         verticalAlign: ['responsive'],
         visibility: ['responsive'],
         whitespace: ['responsive'],
-        width: ['responsive'],
+        width: ['responsive', 'focus'],
         wordBreak: ['responsive'],
         zIndex: ['responsive', 'focus-within', 'focus'],
     },

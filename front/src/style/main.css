@@ -7486,6 +7486,290 @@ video {
   width: max-content;
 }
 
+.focus\:w-0:focus {
+  width: 0px;
+}
+
+.focus\:w-1:focus {
+  width: 0.25rem;
+}
+
+.focus\:w-2:focus {
+  width: 0.5rem;
+}
+
+.focus\:w-3:focus {
+  width: 0.75rem;
+}
+
+.focus\:w-4:focus {
+  width: 1rem;
+}
+
+.focus\:w-5:focus {
+  width: 1.25rem;
+}
+
+.focus\:w-6:focus {
+  width: 1.5rem;
+}
+
+.focus\:w-7:focus {
+  width: 1.75rem;
+}
+
+.focus\:w-8:focus {
+  width: 2rem;
+}
+
+.focus\:w-9:focus {
+  width: 2.25rem;
+}
+
+.focus\:w-10:focus {
+  width: 2.5rem;
+}
+
+.focus\:w-11:focus {
+  width: 2.75rem;
+}
+
+.focus\:w-12:focus {
+  width: 3rem;
+}
+
+.focus\:w-14:focus {
+  width: 3.5rem;
+}
+
+.focus\:w-16:focus {
+  width: 4rem;
+}
+
+.focus\:w-20:focus {
+  width: 5rem;
+}
+
+.focus\:w-24:focus {
+  width: 6rem;
+}
+
+.focus\:w-28:focus {
+  width: 7rem;
+}
+
+.focus\:w-32:focus {
+  width: 8rem;
+}
+
+.focus\:w-36:focus {
+  width: 9rem;
+}
+
+.focus\:w-40:focus {
+  width: 10rem;
+}
+
+.focus\:w-44:focus {
+  width: 11rem;
+}
+
+.focus\:w-48:focus {
+  width: 12rem;
+}
+
+.focus\:w-52:focus {
+  width: 13rem;
+}
+
+.focus\:w-56:focus {
+  width: 14rem;
+}
+
+.focus\:w-60:focus {
+  width: 15rem;
+}
+
+.focus\:w-64:focus {
+  width: 16rem;
+}
+
+.focus\:w-72:focus {
+  width: 18rem;
+}
+
+.focus\:w-75:focus {
+  width: 18.75rem;
+}
+
+.focus\:w-80:focus {
+  width: 20rem;
+}
+
+.focus\:w-96:focus {
+  width: 24rem;
+}
+
+.focus\:w-112:focus {
+  width: 28rem;
+}
+
+.focus\:w-175:focus {
+  width: 43.75rem;
+}
+
+.focus\:w-208:focus {
+  width: 52rem;
+}
+
+.focus\:w-500:focus {
+  width: 500px;
+}
+
+.focus\:w-auto:focus {
+  width: auto;
+}
+
+.focus\:w-px:focus {
+  width: 1px;
+}
+
+.focus\:w-0\.5:focus {
+  width: 0.125rem;
+}
+
+.focus\:w-1\.5:focus {
+  width: 0.375rem;
+}
+
+.focus\:w-2\.5:focus {
+  width: 0.625rem;
+}
+
+.focus\:w-3\.5:focus {
+  width: 0.875rem;
+}
+
+.focus\:w-1\/2:focus {
+  width: 50%;
+}
+
+.focus\:w-1\/3:focus {
+  width: 33.333333%;
+}
+
+.focus\:w-2\/3:focus {
+  width: 66.666667%;
+}
+
+.focus\:w-1\/4:focus {
+  width: 25%;
+}
+
+.focus\:w-2\/4:focus {
+  width: 50%;
+}
+
+.focus\:w-3\/4:focus {
+  width: 75%;
+}
+
+.focus\:w-1\/5:focus {
+  width: 20%;
+}
+
+.focus\:w-2\/5:focus {
+  width: 40%;
+}
+
+.focus\:w-3\/5:focus {
+  width: 60%;
+}
+
+.focus\:w-4\/5:focus {
+  width: 80%;
+}
+
+.focus\:w-1\/6:focus {
+  width: 16.666667%;
+}
+
+.focus\:w-2\/6:focus {
+  width: 33.333333%;
+}
+
+.focus\:w-3\/6:focus {
+  width: 50%;
+}
+
+.focus\:w-4\/6:focus {
+  width: 66.666667%;
+}
+
+.focus\:w-5\/6:focus {
+  width: 83.333333%;
+}
+
+.focus\:w-1\/12:focus {
+  width: 8.333333%;
+}
+
+.focus\:w-2\/12:focus {
+  width: 16.666667%;
+}
+
+.focus\:w-3\/12:focus {
+  width: 25%;
+}
+
+.focus\:w-4\/12:focus {
+  width: 33.333333%;
+}
+
+.focus\:w-5\/12:focus {
+  width: 41.666667%;
+}
+
+.focus\:w-6\/12:focus {
+  width: 50%;
+}
+
+.focus\:w-7\/12:focus {
+  width: 58.333333%;
+}
+
+.focus\:w-8\/12:focus {
+  width: 66.666667%;
+}
+
+.focus\:w-9\/12:focus {
+  width: 75%;
+}
+
+.focus\:w-10\/12:focus {
+  width: 83.333333%;
+}
+
+.focus\:w-11\/12:focus {
+  width: 91.666667%;
+}
+
+.focus\:w-full:focus {
+  width: 100%;
+}
+
+.focus\:w-screen:focus {
+  width: 100vw;
+}
+
+.focus\:w-min:focus {
+  width: min-content;
+}
+
+.focus\:w-max:focus {
+  width: max-content;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -32385,8 +32669,8 @@ video {
 
 .users-li a {
   display: block;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
   padding-left: 2rem;
 }
 
@@ -32453,8 +32737,8 @@ video {
   margin-right: 1.25rem;
   margin-left: 1.25rem;
   display: inline-block;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
   --tw-text-opacity: 1;
   color: rgba(251, 191, 36, var(--tw-text-opacity));
 }
@@ -32481,6 +32765,14 @@ video {
   transition-duration: 150ms;
   transition-duration: 150ms;
   transition-timing-function: linear;
+}
+
+/*會員頁面title*/
+
+.user-page-title{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
 }
 
 @media (min-width: 640px) {
@@ -39417,6 +39709,290 @@ video {
   }
 
   .sm\:w-max {
+    width: max-content;
+  }
+
+  .sm\:focus\:w-0:focus {
+    width: 0px;
+  }
+
+  .sm\:focus\:w-1:focus {
+    width: 0.25rem;
+  }
+
+  .sm\:focus\:w-2:focus {
+    width: 0.5rem;
+  }
+
+  .sm\:focus\:w-3:focus {
+    width: 0.75rem;
+  }
+
+  .sm\:focus\:w-4:focus {
+    width: 1rem;
+  }
+
+  .sm\:focus\:w-5:focus {
+    width: 1.25rem;
+  }
+
+  .sm\:focus\:w-6:focus {
+    width: 1.5rem;
+  }
+
+  .sm\:focus\:w-7:focus {
+    width: 1.75rem;
+  }
+
+  .sm\:focus\:w-8:focus {
+    width: 2rem;
+  }
+
+  .sm\:focus\:w-9:focus {
+    width: 2.25rem;
+  }
+
+  .sm\:focus\:w-10:focus {
+    width: 2.5rem;
+  }
+
+  .sm\:focus\:w-11:focus {
+    width: 2.75rem;
+  }
+
+  .sm\:focus\:w-12:focus {
+    width: 3rem;
+  }
+
+  .sm\:focus\:w-14:focus {
+    width: 3.5rem;
+  }
+
+  .sm\:focus\:w-16:focus {
+    width: 4rem;
+  }
+
+  .sm\:focus\:w-20:focus {
+    width: 5rem;
+  }
+
+  .sm\:focus\:w-24:focus {
+    width: 6rem;
+  }
+
+  .sm\:focus\:w-28:focus {
+    width: 7rem;
+  }
+
+  .sm\:focus\:w-32:focus {
+    width: 8rem;
+  }
+
+  .sm\:focus\:w-36:focus {
+    width: 9rem;
+  }
+
+  .sm\:focus\:w-40:focus {
+    width: 10rem;
+  }
+
+  .sm\:focus\:w-44:focus {
+    width: 11rem;
+  }
+
+  .sm\:focus\:w-48:focus {
+    width: 12rem;
+  }
+
+  .sm\:focus\:w-52:focus {
+    width: 13rem;
+  }
+
+  .sm\:focus\:w-56:focus {
+    width: 14rem;
+  }
+
+  .sm\:focus\:w-60:focus {
+    width: 15rem;
+  }
+
+  .sm\:focus\:w-64:focus {
+    width: 16rem;
+  }
+
+  .sm\:focus\:w-72:focus {
+    width: 18rem;
+  }
+
+  .sm\:focus\:w-75:focus {
+    width: 18.75rem;
+  }
+
+  .sm\:focus\:w-80:focus {
+    width: 20rem;
+  }
+
+  .sm\:focus\:w-96:focus {
+    width: 24rem;
+  }
+
+  .sm\:focus\:w-112:focus {
+    width: 28rem;
+  }
+
+  .sm\:focus\:w-175:focus {
+    width: 43.75rem;
+  }
+
+  .sm\:focus\:w-208:focus {
+    width: 52rem;
+  }
+
+  .sm\:focus\:w-500:focus {
+    width: 500px;
+  }
+
+  .sm\:focus\:w-auto:focus {
+    width: auto;
+  }
+
+  .sm\:focus\:w-px:focus {
+    width: 1px;
+  }
+
+  .sm\:focus\:w-0\.5:focus {
+    width: 0.125rem;
+  }
+
+  .sm\:focus\:w-1\.5:focus {
+    width: 0.375rem;
+  }
+
+  .sm\:focus\:w-2\.5:focus {
+    width: 0.625rem;
+  }
+
+  .sm\:focus\:w-3\.5:focus {
+    width: 0.875rem;
+  }
+
+  .sm\:focus\:w-1\/2:focus {
+    width: 50%;
+  }
+
+  .sm\:focus\:w-1\/3:focus {
+    width: 33.333333%;
+  }
+
+  .sm\:focus\:w-2\/3:focus {
+    width: 66.666667%;
+  }
+
+  .sm\:focus\:w-1\/4:focus {
+    width: 25%;
+  }
+
+  .sm\:focus\:w-2\/4:focus {
+    width: 50%;
+  }
+
+  .sm\:focus\:w-3\/4:focus {
+    width: 75%;
+  }
+
+  .sm\:focus\:w-1\/5:focus {
+    width: 20%;
+  }
+
+  .sm\:focus\:w-2\/5:focus {
+    width: 40%;
+  }
+
+  .sm\:focus\:w-3\/5:focus {
+    width: 60%;
+  }
+
+  .sm\:focus\:w-4\/5:focus {
+    width: 80%;
+  }
+
+  .sm\:focus\:w-1\/6:focus {
+    width: 16.666667%;
+  }
+
+  .sm\:focus\:w-2\/6:focus {
+    width: 33.333333%;
+  }
+
+  .sm\:focus\:w-3\/6:focus {
+    width: 50%;
+  }
+
+  .sm\:focus\:w-4\/6:focus {
+    width: 66.666667%;
+  }
+
+  .sm\:focus\:w-5\/6:focus {
+    width: 83.333333%;
+  }
+
+  .sm\:focus\:w-1\/12:focus {
+    width: 8.333333%;
+  }
+
+  .sm\:focus\:w-2\/12:focus {
+    width: 16.666667%;
+  }
+
+  .sm\:focus\:w-3\/12:focus {
+    width: 25%;
+  }
+
+  .sm\:focus\:w-4\/12:focus {
+    width: 33.333333%;
+  }
+
+  .sm\:focus\:w-5\/12:focus {
+    width: 41.666667%;
+  }
+
+  .sm\:focus\:w-6\/12:focus {
+    width: 50%;
+  }
+
+  .sm\:focus\:w-7\/12:focus {
+    width: 58.333333%;
+  }
+
+  .sm\:focus\:w-8\/12:focus {
+    width: 66.666667%;
+  }
+
+  .sm\:focus\:w-9\/12:focus {
+    width: 75%;
+  }
+
+  .sm\:focus\:w-10\/12:focus {
+    width: 83.333333%;
+  }
+
+  .sm\:focus\:w-11\/12:focus {
+    width: 91.666667%;
+  }
+
+  .sm\:focus\:w-full:focus {
+    width: 100%;
+  }
+
+  .sm\:focus\:w-screen:focus {
+    width: 100vw;
+  }
+
+  .sm\:focus\:w-min:focus {
+    width: min-content;
+  }
+
+  .sm\:focus\:w-max:focus {
     width: max-content;
   }
 
@@ -70823,6 +71399,290 @@ video {
     width: max-content;
   }
 
+  .md\:focus\:w-0:focus {
+    width: 0px;
+  }
+
+  .md\:focus\:w-1:focus {
+    width: 0.25rem;
+  }
+
+  .md\:focus\:w-2:focus {
+    width: 0.5rem;
+  }
+
+  .md\:focus\:w-3:focus {
+    width: 0.75rem;
+  }
+
+  .md\:focus\:w-4:focus {
+    width: 1rem;
+  }
+
+  .md\:focus\:w-5:focus {
+    width: 1.25rem;
+  }
+
+  .md\:focus\:w-6:focus {
+    width: 1.5rem;
+  }
+
+  .md\:focus\:w-7:focus {
+    width: 1.75rem;
+  }
+
+  .md\:focus\:w-8:focus {
+    width: 2rem;
+  }
+
+  .md\:focus\:w-9:focus {
+    width: 2.25rem;
+  }
+
+  .md\:focus\:w-10:focus {
+    width: 2.5rem;
+  }
+
+  .md\:focus\:w-11:focus {
+    width: 2.75rem;
+  }
+
+  .md\:focus\:w-12:focus {
+    width: 3rem;
+  }
+
+  .md\:focus\:w-14:focus {
+    width: 3.5rem;
+  }
+
+  .md\:focus\:w-16:focus {
+    width: 4rem;
+  }
+
+  .md\:focus\:w-20:focus {
+    width: 5rem;
+  }
+
+  .md\:focus\:w-24:focus {
+    width: 6rem;
+  }
+
+  .md\:focus\:w-28:focus {
+    width: 7rem;
+  }
+
+  .md\:focus\:w-32:focus {
+    width: 8rem;
+  }
+
+  .md\:focus\:w-36:focus {
+    width: 9rem;
+  }
+
+  .md\:focus\:w-40:focus {
+    width: 10rem;
+  }
+
+  .md\:focus\:w-44:focus {
+    width: 11rem;
+  }
+
+  .md\:focus\:w-48:focus {
+    width: 12rem;
+  }
+
+  .md\:focus\:w-52:focus {
+    width: 13rem;
+  }
+
+  .md\:focus\:w-56:focus {
+    width: 14rem;
+  }
+
+  .md\:focus\:w-60:focus {
+    width: 15rem;
+  }
+
+  .md\:focus\:w-64:focus {
+    width: 16rem;
+  }
+
+  .md\:focus\:w-72:focus {
+    width: 18rem;
+  }
+
+  .md\:focus\:w-75:focus {
+    width: 18.75rem;
+  }
+
+  .md\:focus\:w-80:focus {
+    width: 20rem;
+  }
+
+  .md\:focus\:w-96:focus {
+    width: 24rem;
+  }
+
+  .md\:focus\:w-112:focus {
+    width: 28rem;
+  }
+
+  .md\:focus\:w-175:focus {
+    width: 43.75rem;
+  }
+
+  .md\:focus\:w-208:focus {
+    width: 52rem;
+  }
+
+  .md\:focus\:w-500:focus {
+    width: 500px;
+  }
+
+  .md\:focus\:w-auto:focus {
+    width: auto;
+  }
+
+  .md\:focus\:w-px:focus {
+    width: 1px;
+  }
+
+  .md\:focus\:w-0\.5:focus {
+    width: 0.125rem;
+  }
+
+  .md\:focus\:w-1\.5:focus {
+    width: 0.375rem;
+  }
+
+  .md\:focus\:w-2\.5:focus {
+    width: 0.625rem;
+  }
+
+  .md\:focus\:w-3\.5:focus {
+    width: 0.875rem;
+  }
+
+  .md\:focus\:w-1\/2:focus {
+    width: 50%;
+  }
+
+  .md\:focus\:w-1\/3:focus {
+    width: 33.333333%;
+  }
+
+  .md\:focus\:w-2\/3:focus {
+    width: 66.666667%;
+  }
+
+  .md\:focus\:w-1\/4:focus {
+    width: 25%;
+  }
+
+  .md\:focus\:w-2\/4:focus {
+    width: 50%;
+  }
+
+  .md\:focus\:w-3\/4:focus {
+    width: 75%;
+  }
+
+  .md\:focus\:w-1\/5:focus {
+    width: 20%;
+  }
+
+  .md\:focus\:w-2\/5:focus {
+    width: 40%;
+  }
+
+  .md\:focus\:w-3\/5:focus {
+    width: 60%;
+  }
+
+  .md\:focus\:w-4\/5:focus {
+    width: 80%;
+  }
+
+  .md\:focus\:w-1\/6:focus {
+    width: 16.666667%;
+  }
+
+  .md\:focus\:w-2\/6:focus {
+    width: 33.333333%;
+  }
+
+  .md\:focus\:w-3\/6:focus {
+    width: 50%;
+  }
+
+  .md\:focus\:w-4\/6:focus {
+    width: 66.666667%;
+  }
+
+  .md\:focus\:w-5\/6:focus {
+    width: 83.333333%;
+  }
+
+  .md\:focus\:w-1\/12:focus {
+    width: 8.333333%;
+  }
+
+  .md\:focus\:w-2\/12:focus {
+    width: 16.666667%;
+  }
+
+  .md\:focus\:w-3\/12:focus {
+    width: 25%;
+  }
+
+  .md\:focus\:w-4\/12:focus {
+    width: 33.333333%;
+  }
+
+  .md\:focus\:w-5\/12:focus {
+    width: 41.666667%;
+  }
+
+  .md\:focus\:w-6\/12:focus {
+    width: 50%;
+  }
+
+  .md\:focus\:w-7\/12:focus {
+    width: 58.333333%;
+  }
+
+  .md\:focus\:w-8\/12:focus {
+    width: 66.666667%;
+  }
+
+  .md\:focus\:w-9\/12:focus {
+    width: 75%;
+  }
+
+  .md\:focus\:w-10\/12:focus {
+    width: 83.333333%;
+  }
+
+  .md\:focus\:w-11\/12:focus {
+    width: 91.666667%;
+  }
+
+  .md\:focus\:w-full:focus {
+    width: 100%;
+  }
+
+  .md\:focus\:w-screen:focus {
+    width: 100vw;
+  }
+
+  .md\:focus\:w-min:focus {
+    width: min-content;
+  }
+
+  .md\:focus\:w-max:focus {
+    width: max-content;
+  }
+
   .md\:min-w-0 {
     min-width: 0px;
   }
@@ -102223,6 +103083,290 @@ video {
   }
 
   .lg\:w-max {
+    width: max-content;
+  }
+
+  .lg\:focus\:w-0:focus {
+    width: 0px;
+  }
+
+  .lg\:focus\:w-1:focus {
+    width: 0.25rem;
+  }
+
+  .lg\:focus\:w-2:focus {
+    width: 0.5rem;
+  }
+
+  .lg\:focus\:w-3:focus {
+    width: 0.75rem;
+  }
+
+  .lg\:focus\:w-4:focus {
+    width: 1rem;
+  }
+
+  .lg\:focus\:w-5:focus {
+    width: 1.25rem;
+  }
+
+  .lg\:focus\:w-6:focus {
+    width: 1.5rem;
+  }
+
+  .lg\:focus\:w-7:focus {
+    width: 1.75rem;
+  }
+
+  .lg\:focus\:w-8:focus {
+    width: 2rem;
+  }
+
+  .lg\:focus\:w-9:focus {
+    width: 2.25rem;
+  }
+
+  .lg\:focus\:w-10:focus {
+    width: 2.5rem;
+  }
+
+  .lg\:focus\:w-11:focus {
+    width: 2.75rem;
+  }
+
+  .lg\:focus\:w-12:focus {
+    width: 3rem;
+  }
+
+  .lg\:focus\:w-14:focus {
+    width: 3.5rem;
+  }
+
+  .lg\:focus\:w-16:focus {
+    width: 4rem;
+  }
+
+  .lg\:focus\:w-20:focus {
+    width: 5rem;
+  }
+
+  .lg\:focus\:w-24:focus {
+    width: 6rem;
+  }
+
+  .lg\:focus\:w-28:focus {
+    width: 7rem;
+  }
+
+  .lg\:focus\:w-32:focus {
+    width: 8rem;
+  }
+
+  .lg\:focus\:w-36:focus {
+    width: 9rem;
+  }
+
+  .lg\:focus\:w-40:focus {
+    width: 10rem;
+  }
+
+  .lg\:focus\:w-44:focus {
+    width: 11rem;
+  }
+
+  .lg\:focus\:w-48:focus {
+    width: 12rem;
+  }
+
+  .lg\:focus\:w-52:focus {
+    width: 13rem;
+  }
+
+  .lg\:focus\:w-56:focus {
+    width: 14rem;
+  }
+
+  .lg\:focus\:w-60:focus {
+    width: 15rem;
+  }
+
+  .lg\:focus\:w-64:focus {
+    width: 16rem;
+  }
+
+  .lg\:focus\:w-72:focus {
+    width: 18rem;
+  }
+
+  .lg\:focus\:w-75:focus {
+    width: 18.75rem;
+  }
+
+  .lg\:focus\:w-80:focus {
+    width: 20rem;
+  }
+
+  .lg\:focus\:w-96:focus {
+    width: 24rem;
+  }
+
+  .lg\:focus\:w-112:focus {
+    width: 28rem;
+  }
+
+  .lg\:focus\:w-175:focus {
+    width: 43.75rem;
+  }
+
+  .lg\:focus\:w-208:focus {
+    width: 52rem;
+  }
+
+  .lg\:focus\:w-500:focus {
+    width: 500px;
+  }
+
+  .lg\:focus\:w-auto:focus {
+    width: auto;
+  }
+
+  .lg\:focus\:w-px:focus {
+    width: 1px;
+  }
+
+  .lg\:focus\:w-0\.5:focus {
+    width: 0.125rem;
+  }
+
+  .lg\:focus\:w-1\.5:focus {
+    width: 0.375rem;
+  }
+
+  .lg\:focus\:w-2\.5:focus {
+    width: 0.625rem;
+  }
+
+  .lg\:focus\:w-3\.5:focus {
+    width: 0.875rem;
+  }
+
+  .lg\:focus\:w-1\/2:focus {
+    width: 50%;
+  }
+
+  .lg\:focus\:w-1\/3:focus {
+    width: 33.333333%;
+  }
+
+  .lg\:focus\:w-2\/3:focus {
+    width: 66.666667%;
+  }
+
+  .lg\:focus\:w-1\/4:focus {
+    width: 25%;
+  }
+
+  .lg\:focus\:w-2\/4:focus {
+    width: 50%;
+  }
+
+  .lg\:focus\:w-3\/4:focus {
+    width: 75%;
+  }
+
+  .lg\:focus\:w-1\/5:focus {
+    width: 20%;
+  }
+
+  .lg\:focus\:w-2\/5:focus {
+    width: 40%;
+  }
+
+  .lg\:focus\:w-3\/5:focus {
+    width: 60%;
+  }
+
+  .lg\:focus\:w-4\/5:focus {
+    width: 80%;
+  }
+
+  .lg\:focus\:w-1\/6:focus {
+    width: 16.666667%;
+  }
+
+  .lg\:focus\:w-2\/6:focus {
+    width: 33.333333%;
+  }
+
+  .lg\:focus\:w-3\/6:focus {
+    width: 50%;
+  }
+
+  .lg\:focus\:w-4\/6:focus {
+    width: 66.666667%;
+  }
+
+  .lg\:focus\:w-5\/6:focus {
+    width: 83.333333%;
+  }
+
+  .lg\:focus\:w-1\/12:focus {
+    width: 8.333333%;
+  }
+
+  .lg\:focus\:w-2\/12:focus {
+    width: 16.666667%;
+  }
+
+  .lg\:focus\:w-3\/12:focus {
+    width: 25%;
+  }
+
+  .lg\:focus\:w-4\/12:focus {
+    width: 33.333333%;
+  }
+
+  .lg\:focus\:w-5\/12:focus {
+    width: 41.666667%;
+  }
+
+  .lg\:focus\:w-6\/12:focus {
+    width: 50%;
+  }
+
+  .lg\:focus\:w-7\/12:focus {
+    width: 58.333333%;
+  }
+
+  .lg\:focus\:w-8\/12:focus {
+    width: 66.666667%;
+  }
+
+  .lg\:focus\:w-9\/12:focus {
+    width: 75%;
+  }
+
+  .lg\:focus\:w-10\/12:focus {
+    width: 83.333333%;
+  }
+
+  .lg\:focus\:w-11\/12:focus {
+    width: 91.666667%;
+  }
+
+  .lg\:focus\:w-full:focus {
+    width: 100%;
+  }
+
+  .lg\:focus\:w-screen:focus {
+    width: 100vw;
+  }
+
+  .lg\:focus\:w-min:focus {
+    width: min-content;
+  }
+
+  .lg\:focus\:w-max:focus {
     width: max-content;
   }
 
@@ -133629,6 +134773,290 @@ video {
     width: max-content;
   }
 
+  .xl\:focus\:w-0:focus {
+    width: 0px;
+  }
+
+  .xl\:focus\:w-1:focus {
+    width: 0.25rem;
+  }
+
+  .xl\:focus\:w-2:focus {
+    width: 0.5rem;
+  }
+
+  .xl\:focus\:w-3:focus {
+    width: 0.75rem;
+  }
+
+  .xl\:focus\:w-4:focus {
+    width: 1rem;
+  }
+
+  .xl\:focus\:w-5:focus {
+    width: 1.25rem;
+  }
+
+  .xl\:focus\:w-6:focus {
+    width: 1.5rem;
+  }
+
+  .xl\:focus\:w-7:focus {
+    width: 1.75rem;
+  }
+
+  .xl\:focus\:w-8:focus {
+    width: 2rem;
+  }
+
+  .xl\:focus\:w-9:focus {
+    width: 2.25rem;
+  }
+
+  .xl\:focus\:w-10:focus {
+    width: 2.5rem;
+  }
+
+  .xl\:focus\:w-11:focus {
+    width: 2.75rem;
+  }
+
+  .xl\:focus\:w-12:focus {
+    width: 3rem;
+  }
+
+  .xl\:focus\:w-14:focus {
+    width: 3.5rem;
+  }
+
+  .xl\:focus\:w-16:focus {
+    width: 4rem;
+  }
+
+  .xl\:focus\:w-20:focus {
+    width: 5rem;
+  }
+
+  .xl\:focus\:w-24:focus {
+    width: 6rem;
+  }
+
+  .xl\:focus\:w-28:focus {
+    width: 7rem;
+  }
+
+  .xl\:focus\:w-32:focus {
+    width: 8rem;
+  }
+
+  .xl\:focus\:w-36:focus {
+    width: 9rem;
+  }
+
+  .xl\:focus\:w-40:focus {
+    width: 10rem;
+  }
+
+  .xl\:focus\:w-44:focus {
+    width: 11rem;
+  }
+
+  .xl\:focus\:w-48:focus {
+    width: 12rem;
+  }
+
+  .xl\:focus\:w-52:focus {
+    width: 13rem;
+  }
+
+  .xl\:focus\:w-56:focus {
+    width: 14rem;
+  }
+
+  .xl\:focus\:w-60:focus {
+    width: 15rem;
+  }
+
+  .xl\:focus\:w-64:focus {
+    width: 16rem;
+  }
+
+  .xl\:focus\:w-72:focus {
+    width: 18rem;
+  }
+
+  .xl\:focus\:w-75:focus {
+    width: 18.75rem;
+  }
+
+  .xl\:focus\:w-80:focus {
+    width: 20rem;
+  }
+
+  .xl\:focus\:w-96:focus {
+    width: 24rem;
+  }
+
+  .xl\:focus\:w-112:focus {
+    width: 28rem;
+  }
+
+  .xl\:focus\:w-175:focus {
+    width: 43.75rem;
+  }
+
+  .xl\:focus\:w-208:focus {
+    width: 52rem;
+  }
+
+  .xl\:focus\:w-500:focus {
+    width: 500px;
+  }
+
+  .xl\:focus\:w-auto:focus {
+    width: auto;
+  }
+
+  .xl\:focus\:w-px:focus {
+    width: 1px;
+  }
+
+  .xl\:focus\:w-0\.5:focus {
+    width: 0.125rem;
+  }
+
+  .xl\:focus\:w-1\.5:focus {
+    width: 0.375rem;
+  }
+
+  .xl\:focus\:w-2\.5:focus {
+    width: 0.625rem;
+  }
+
+  .xl\:focus\:w-3\.5:focus {
+    width: 0.875rem;
+  }
+
+  .xl\:focus\:w-1\/2:focus {
+    width: 50%;
+  }
+
+  .xl\:focus\:w-1\/3:focus {
+    width: 33.333333%;
+  }
+
+  .xl\:focus\:w-2\/3:focus {
+    width: 66.666667%;
+  }
+
+  .xl\:focus\:w-1\/4:focus {
+    width: 25%;
+  }
+
+  .xl\:focus\:w-2\/4:focus {
+    width: 50%;
+  }
+
+  .xl\:focus\:w-3\/4:focus {
+    width: 75%;
+  }
+
+  .xl\:focus\:w-1\/5:focus {
+    width: 20%;
+  }
+
+  .xl\:focus\:w-2\/5:focus {
+    width: 40%;
+  }
+
+  .xl\:focus\:w-3\/5:focus {
+    width: 60%;
+  }
+
+  .xl\:focus\:w-4\/5:focus {
+    width: 80%;
+  }
+
+  .xl\:focus\:w-1\/6:focus {
+    width: 16.666667%;
+  }
+
+  .xl\:focus\:w-2\/6:focus {
+    width: 33.333333%;
+  }
+
+  .xl\:focus\:w-3\/6:focus {
+    width: 50%;
+  }
+
+  .xl\:focus\:w-4\/6:focus {
+    width: 66.666667%;
+  }
+
+  .xl\:focus\:w-5\/6:focus {
+    width: 83.333333%;
+  }
+
+  .xl\:focus\:w-1\/12:focus {
+    width: 8.333333%;
+  }
+
+  .xl\:focus\:w-2\/12:focus {
+    width: 16.666667%;
+  }
+
+  .xl\:focus\:w-3\/12:focus {
+    width: 25%;
+  }
+
+  .xl\:focus\:w-4\/12:focus {
+    width: 33.333333%;
+  }
+
+  .xl\:focus\:w-5\/12:focus {
+    width: 41.666667%;
+  }
+
+  .xl\:focus\:w-6\/12:focus {
+    width: 50%;
+  }
+
+  .xl\:focus\:w-7\/12:focus {
+    width: 58.333333%;
+  }
+
+  .xl\:focus\:w-8\/12:focus {
+    width: 66.666667%;
+  }
+
+  .xl\:focus\:w-9\/12:focus {
+    width: 75%;
+  }
+
+  .xl\:focus\:w-10\/12:focus {
+    width: 83.333333%;
+  }
+
+  .xl\:focus\:w-11\/12:focus {
+    width: 91.666667%;
+  }
+
+  .xl\:focus\:w-full:focus {
+    width: 100%;
+  }
+
+  .xl\:focus\:w-screen:focus {
+    width: 100vw;
+  }
+
+  .xl\:focus\:w-min:focus {
+    width: min-content;
+  }
+
+  .xl\:focus\:w-max:focus {
+    width: max-content;
+  }
+
   .xl\:min-w-0 {
     min-width: 0px;
   }
@@ -165029,6 +166457,290 @@ video {
   }
 
   .\32xl\:w-max {
+    width: max-content;
+  }
+
+  .\32xl\:focus\:w-0:focus {
+    width: 0px;
+  }
+
+  .\32xl\:focus\:w-1:focus {
+    width: 0.25rem;
+  }
+
+  .\32xl\:focus\:w-2:focus {
+    width: 0.5rem;
+  }
+
+  .\32xl\:focus\:w-3:focus {
+    width: 0.75rem;
+  }
+
+  .\32xl\:focus\:w-4:focus {
+    width: 1rem;
+  }
+
+  .\32xl\:focus\:w-5:focus {
+    width: 1.25rem;
+  }
+
+  .\32xl\:focus\:w-6:focus {
+    width: 1.5rem;
+  }
+
+  .\32xl\:focus\:w-7:focus {
+    width: 1.75rem;
+  }
+
+  .\32xl\:focus\:w-8:focus {
+    width: 2rem;
+  }
+
+  .\32xl\:focus\:w-9:focus {
+    width: 2.25rem;
+  }
+
+  .\32xl\:focus\:w-10:focus {
+    width: 2.5rem;
+  }
+
+  .\32xl\:focus\:w-11:focus {
+    width: 2.75rem;
+  }
+
+  .\32xl\:focus\:w-12:focus {
+    width: 3rem;
+  }
+
+  .\32xl\:focus\:w-14:focus {
+    width: 3.5rem;
+  }
+
+  .\32xl\:focus\:w-16:focus {
+    width: 4rem;
+  }
+
+  .\32xl\:focus\:w-20:focus {
+    width: 5rem;
+  }
+
+  .\32xl\:focus\:w-24:focus {
+    width: 6rem;
+  }
+
+  .\32xl\:focus\:w-28:focus {
+    width: 7rem;
+  }
+
+  .\32xl\:focus\:w-32:focus {
+    width: 8rem;
+  }
+
+  .\32xl\:focus\:w-36:focus {
+    width: 9rem;
+  }
+
+  .\32xl\:focus\:w-40:focus {
+    width: 10rem;
+  }
+
+  .\32xl\:focus\:w-44:focus {
+    width: 11rem;
+  }
+
+  .\32xl\:focus\:w-48:focus {
+    width: 12rem;
+  }
+
+  .\32xl\:focus\:w-52:focus {
+    width: 13rem;
+  }
+
+  .\32xl\:focus\:w-56:focus {
+    width: 14rem;
+  }
+
+  .\32xl\:focus\:w-60:focus {
+    width: 15rem;
+  }
+
+  .\32xl\:focus\:w-64:focus {
+    width: 16rem;
+  }
+
+  .\32xl\:focus\:w-72:focus {
+    width: 18rem;
+  }
+
+  .\32xl\:focus\:w-75:focus {
+    width: 18.75rem;
+  }
+
+  .\32xl\:focus\:w-80:focus {
+    width: 20rem;
+  }
+
+  .\32xl\:focus\:w-96:focus {
+    width: 24rem;
+  }
+
+  .\32xl\:focus\:w-112:focus {
+    width: 28rem;
+  }
+
+  .\32xl\:focus\:w-175:focus {
+    width: 43.75rem;
+  }
+
+  .\32xl\:focus\:w-208:focus {
+    width: 52rem;
+  }
+
+  .\32xl\:focus\:w-500:focus {
+    width: 500px;
+  }
+
+  .\32xl\:focus\:w-auto:focus {
+    width: auto;
+  }
+
+  .\32xl\:focus\:w-px:focus {
+    width: 1px;
+  }
+
+  .\32xl\:focus\:w-0\.5:focus {
+    width: 0.125rem;
+  }
+
+  .\32xl\:focus\:w-1\.5:focus {
+    width: 0.375rem;
+  }
+
+  .\32xl\:focus\:w-2\.5:focus {
+    width: 0.625rem;
+  }
+
+  .\32xl\:focus\:w-3\.5:focus {
+    width: 0.875rem;
+  }
+
+  .\32xl\:focus\:w-1\/2:focus {
+    width: 50%;
+  }
+
+  .\32xl\:focus\:w-1\/3:focus {
+    width: 33.333333%;
+  }
+
+  .\32xl\:focus\:w-2\/3:focus {
+    width: 66.666667%;
+  }
+
+  .\32xl\:focus\:w-1\/4:focus {
+    width: 25%;
+  }
+
+  .\32xl\:focus\:w-2\/4:focus {
+    width: 50%;
+  }
+
+  .\32xl\:focus\:w-3\/4:focus {
+    width: 75%;
+  }
+
+  .\32xl\:focus\:w-1\/5:focus {
+    width: 20%;
+  }
+
+  .\32xl\:focus\:w-2\/5:focus {
+    width: 40%;
+  }
+
+  .\32xl\:focus\:w-3\/5:focus {
+    width: 60%;
+  }
+
+  .\32xl\:focus\:w-4\/5:focus {
+    width: 80%;
+  }
+
+  .\32xl\:focus\:w-1\/6:focus {
+    width: 16.666667%;
+  }
+
+  .\32xl\:focus\:w-2\/6:focus {
+    width: 33.333333%;
+  }
+
+  .\32xl\:focus\:w-3\/6:focus {
+    width: 50%;
+  }
+
+  .\32xl\:focus\:w-4\/6:focus {
+    width: 66.666667%;
+  }
+
+  .\32xl\:focus\:w-5\/6:focus {
+    width: 83.333333%;
+  }
+
+  .\32xl\:focus\:w-1\/12:focus {
+    width: 8.333333%;
+  }
+
+  .\32xl\:focus\:w-2\/12:focus {
+    width: 16.666667%;
+  }
+
+  .\32xl\:focus\:w-3\/12:focus {
+    width: 25%;
+  }
+
+  .\32xl\:focus\:w-4\/12:focus {
+    width: 33.333333%;
+  }
+
+  .\32xl\:focus\:w-5\/12:focus {
+    width: 41.666667%;
+  }
+
+  .\32xl\:focus\:w-6\/12:focus {
+    width: 50%;
+  }
+
+  .\32xl\:focus\:w-7\/12:focus {
+    width: 58.333333%;
+  }
+
+  .\32xl\:focus\:w-8\/12:focus {
+    width: 66.666667%;
+  }
+
+  .\32xl\:focus\:w-9\/12:focus {
+    width: 75%;
+  }
+
+  .\32xl\:focus\:w-10\/12:focus {
+    width: 83.333333%;
+  }
+
+  .\32xl\:focus\:w-11\/12:focus {
+    width: 91.666667%;
+  }
+
+  .\32xl\:focus\:w-full:focus {
+    width: 100%;
+  }
+
+  .\32xl\:focus\:w-screen:focus {
+    width: 100vw;
+  }
+
+  .\32xl\:focus\:w-min:focus {
+    width: min-content;
+  }
+
+  .\32xl\:focus\:w-max:focus {
     width: max-content;
   }
 
