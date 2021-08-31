@@ -37,7 +37,7 @@ const VideoId = () => {
                             <FaRegHeart className="text-red-400 mr-1" />
                             <span className="text-xs text-white">收藏</span>
                         </Link>
-                        <Link to="/user/WatchLater" className="flex">
+                        <Link to="/user/watchLater" className="flex">
                             <FaList className="text-yellow-400 mr-1" />
                             <span className="text-xs text-white">稍後觀看</span>
                         </Link>
