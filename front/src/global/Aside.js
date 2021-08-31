@@ -22,46 +22,46 @@ function Aside() {
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
                     <li className="users-li">
-                        <a href="">
+                        <Link to="">
                             <FaUserAlt className="userIcons" /> 會員資料
-                        </a>
+                        </Link>
                     </li>
                     <li className="users-li">
-                        <a href="">
+                        <Link to="">
                             <FaShoppingCart className="userIcons" />
                             訂單管理
-                        </a>
+                        </Link>
                         <ul className="submenu">
                             <li>
-                                <a href="">購買紀錄</a>
+                                <Link to="">購買紀錄</Link>
                             </li>
                             <li>
-                                <a href="">購物車</a>
+                                <Link to="">購物車</Link>
                             </li>
                             <li>
-                                <a href="">我的最愛</a>
+                                <Link to="">我的最愛</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a href="">
+                        <Link to="">
                             <FaHeart className="userIcons" />
                             影片收藏
-                        </a>
+                        </Link>
                         <ul className="submenu">
                             <li>
-                                <a href="">我的最愛</a>
+                                <Link to="">我的最愛</Link>
                             </li>
                             <li>
-                                <a href="">稍後觀看</a>
+                                <Link to="">稍後觀看</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a href="">
+                        <Link to="">
                             <FaMoneyCheck className="userIcons" />
                             文章管理
-                        </a>
+                        </Link>
                         <ul className="submenu">
                             <li>
                                 <Link to="ArticleAdd">我的文章</Link>
@@ -75,10 +75,10 @@ function Aside() {
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a href="">
+                        <Link to="">
                             <FaComment className="userIcons" />
                             聯絡我們
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

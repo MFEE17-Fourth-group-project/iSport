@@ -24,6 +24,8 @@ import SignIn from './user/sign/SignIn';
 import ArticleAdd from './user/articles/ArticleAdd';
 import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleMyart from './user/articles/ArticleMyart';
+import VideoCollection from './user/videos/VideoCollection';
+import WatchLater from './user/videos/WatchLater';
 
 //import Aside from '../global/Aside';
 
@@ -66,7 +68,7 @@ function HomeRouter() {
                     <Route path="/products">
                         <Product />
                     </Route>
-                    <Route path="/user">
+                    <Route path="/user" exact>
                         <User />
                     </Route>
                     <Route path="/video/:videoId">
@@ -74,6 +76,12 @@ function HomeRouter() {
                     </Route>
                     <Route path="/video">
                         <Video />
+                    </Route>
+                    <Route path="/user/videoCollection">
+                        <VideoCollection />
+                    </Route>
+                    <Route path="/user/WatchLater">
+                        <WatchLater />
                     </Route>
                     <Route path="/cart">
                         <Cart />
