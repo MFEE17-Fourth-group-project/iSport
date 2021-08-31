@@ -34,7 +34,7 @@ function CartItem() {
                     <div className="flex flex-row items-center">
                         <p className="mr-2.5">數量：</p>
                         <div className="w-16 px-2.5 mr-2.5 border border-yellow-400 rounded-md flex items-center">
-                            <p>1</p>
+                            <select>1</select>
                             <BsCaretDownFill className="mr-2.5" />
                         </div>
                         <div className="cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
