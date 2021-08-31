@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import product from '../../../../images/product/1002-3.png';
-import { FaHeart } from 'react-icons/fa';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaHeart, FaTrashAlt } from 'react-icons/fa';
+import { TiPlus, TiMinus } from 'react-icons/ti';
 // import { BsCaretDownFill } from 'react-icons/bs';
 
-function CartItem() {
-    const [selectedOption, setSelectedOption] = useState('');
+function CartItem(props) {
+    const { count, setCount } = props;
+
+    // const [selectedOption, setSelectedOption] = useState('');
+
+    function minus() {
+        setCount(count - 1);
+    }
+
+    function plus() {
+        setCount(count + 1);
+    }
 
     return (
         <>
@@ -36,7 +46,16 @@ function CartItem() {
                     <div className="flex flex-row items-center">
                         <p className="mr-2.5">數量：</p>
 
-                        <select
+                        <div className="px-2 mr-2.5 border border-yellow-400 rounded-md flex items-center bg-transparent">
+                            <div onClick={minus} className="">
+                                <TiMinus />
+                            </div>
+                            <div className="px-1.5">{count}</div>
+                            <div onClick={plus}>
+                                <TiPlus />
+                            </div>
+                        </div>
+                        {/* <select
                             className="w-16 px-2.5 mr-2.5 border border-yellow-400 rounded-md flex items-center bg-transparent"
                             value={selectedOption}
                             onChange={(e) => {
@@ -67,7 +86,7 @@ function CartItem() {
                             >
                                 4
                             </option>
-                        </select>
+                        </select> */}
                         {/* <BsCaretDownFill className="mr-2.5" /> */}
 
                         <div className="cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">

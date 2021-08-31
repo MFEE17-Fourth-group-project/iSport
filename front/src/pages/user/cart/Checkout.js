@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import CheckItem from './components/CheckItem';
@@ -6,6 +6,11 @@ import ProgressBar from './components/ProgressBar';
 import { CgChevronDoubleDown } from 'react-icons/cg';
 
 function Checkout() {
+    const [showCheckItem, setShowCartItem] = useState(false);
+
+    function showItem() {
+        setShowCartItem(true);
+    }
     return (
         <>
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -19,13 +24,16 @@ function Checkout() {
                             <ProgressBar />
                         </div>
                         <CheckItem />
-                        <CheckItem />
-                        <CheckItem />
+                        {/* {showCheckItem && <CartItem />}
+                        {showCheckItem && <CartItem />} */}
                         <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
-                        <div className="flex justify-center animate-bounce py-1">
+                        <div
+                            className="flex justify-center animate-bounce py-1"
+                            onClick={showItem}
+                        >
                             <CgChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
                     </div>

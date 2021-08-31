@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './components/CartItem';
 import { FaArrowRight } from 'react-icons/fa';
 import Aside from '../../../global/Aside';
 
-function Cart() {
+function Cart(props) {
+    const { counts, setCounts } = props;
+
     return (
         <>
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -14,7 +16,19 @@ function Cart() {
                         購物車
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
-                        <CartItem />
+                        <CartItem
+                            count={counts}
+                            setCount={(newCount) => {
+                                // 先從目前狀態中拷貝一個新陣列, [1,1,1,1]
+                                let newCounts = 0;
+
+                                // 更新數量陣列自己的索引值，如果小於1則用1來更新
+                                newCounts = newCount < 1 ? 1 : newCount;
+
+                                // 更新到狀態中
+                                setCounts(newCounts);
+                            }}
+                        />
                         <CartItem />
                         <CartItem />
                         <div className="pt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
