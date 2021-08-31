@@ -19,14 +19,15 @@ function Checkout() {
                             <ProgressBar />
                         </div>
                         <CheckItem />
+                        <CheckItem />
+                        <CheckItem />
                         <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center animate-bounce py-1">
                             <CgChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
-                        {/* <button className="flex flex-row justify-end">前往結帳</button> */}
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
                         <from>

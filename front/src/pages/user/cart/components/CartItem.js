@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import product from '../../../../images/product/1002-3.png';
 import { FaHeart } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa';
-import { BsCaretDownFill } from 'react-icons/bs';
+// import { BsCaretDownFill } from 'react-icons/bs';
 
 function CartItem() {
+    const [selectedOption, setSelectedOption] = useState('');
+
     return (
         <>
             <div className="p-5 flex flex-row">
@@ -33,10 +35,41 @@ function CartItem() {
                     </div>
                     <div className="flex flex-row items-center">
                         <p className="mr-2.5">數量：</p>
-                        <div className="w-16 px-2.5 mr-2.5 border border-yellow-400 rounded-md flex items-center">
-                            <select>1</select>
-                            <BsCaretDownFill className="mr-2.5" />
-                        </div>
+
+                        <select
+                            className="w-16 px-2.5 mr-2.5 border border-yellow-400 rounded-md flex items-center bg-transparent"
+                            value={selectedOption}
+                            onChange={(e) => {
+                                setSelectedOption(e.target.value);
+                            }}
+                        >
+                            <option
+                                className="bg-gray-900 text-white text-opacity-85"
+                                value="1"
+                            >
+                                1
+                            </option>
+                            <option
+                                className="bg-gray-900 text-white text-opacity-85"
+                                value="2"
+                            >
+                                2
+                            </option>
+                            <option
+                                className="bg-gray-900 text-white text-opacity-85"
+                                value="3"
+                            >
+                                3
+                            </option>
+                            <option
+                                className="bg-gray-900 text-white text-opacity-85"
+                                value="4"
+                            >
+                                4
+                            </option>
+                        </select>
+                        {/* <BsCaretDownFill className="mr-2.5" /> */}
+
                         <div className="cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                             <FaHeart className="mr-2.5" />
                             <p>移至收藏</p>
