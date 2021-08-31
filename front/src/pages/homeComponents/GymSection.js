@@ -25,18 +25,18 @@ const GymSection = () => {
                     alt=""
                 />
                 <Link to="">
-                    <TiLocation className="z-0 text-gray-700 hover:text-yellow-400 w-24 h-24 absolute top-14 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
+                    <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-14 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
                 </Link>
                 <Link to="">
-                    <TiLocation className="z-0 text-gray-700 hover:text-yellow-400 w-24 h-24 absolute top-72 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
-                </Link>
-
-                <Link to="">
-                    <TiLocation className="z-0 text-gray-700 hover:text-yellow-400 w-24 h-24 absolute top-96 left-24 transform -translate-y-1/2 cursor-pointer animate-bounce" />
+                    <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-72 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
                 </Link>
 
                 <Link to="">
-                    <TiLocation className="z-0 text-gray-700 hover:text-yellow-400 w-24 h-24 absolute top-48 left-32 transform -translate-y-1/2 cursor-pointer animate-bounce" />
+                    <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-96 left-24 transform -translate-y-1/2 cursor-pointer animate-bounce" />
+                </Link>
+
+                <Link to="">
+                    <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-48 left-32 transform -translate-y-1/2 cursor-pointer animate-bounce" />
                 </Link>
             </div>
             <div className="content-right">

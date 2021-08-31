@@ -10,24 +10,23 @@ const HomePage = () => {
     return (
         <div className="flex mr-auto">
             <div className="max-w-screen-2xl">
-
                 {/* Banner Section */}
-                <div className="h-175 w-full">
+                <div className="h-175 bg-gray-900">
                     <BannerSection />
                 </div>
 
                 {/* Video Section */}
-                <section className="h-208 flex mt-7">
+                <section className="h-208 flex  bg-gray-800">
                     <VideoSection />
                 </section>
 
                 {/* Product Section */}
-                <section className="h-208 flex mt-7 bg-gray-900">
+                <section className="h-208 flex bg-gray-900">
                     <ProductSection />
                 </section>
 
                 {/* Article Section */}
-                <section className="h-208 flex mt-7">
+                <section className="h-208 flex bg-gray-800">
                     <ArticleSection />
                 </section>
 
@@ -35,7 +34,6 @@ const HomePage = () => {
                 <section className="h-208 flex bg-gray-900">
                     <GymSection />
                 </section>
-
             </div>
         </div>
     );
