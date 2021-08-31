@@ -18,9 +18,9 @@ const BannerSection = () => {
             <div className="absolute bottom-40 left-40">
                 <h1 className="font-normal text-5xl text-white tracking-wide leading-snug mb-4">
                     提供健身資訊分享平台與眾多
-                        <br />
-                        專業健身影片、文章分享、商城。
-                    </h1>
+                    <br />
+                    專業健身影片、文章分享、商城。
+                </h1>
                 <button className="btn-yellow">立即加入</button>
             </div>
         </div>
