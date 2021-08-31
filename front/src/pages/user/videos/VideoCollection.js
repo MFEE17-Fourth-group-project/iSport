@@ -10,12 +10,24 @@ const VideoCollection = () => {
                     收藏影片
                 </div>
                 <div className="text-white bg-gray-900 w-full pl-20 pb-6 flex flex-col rounded-b-xl">
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
+                    <div className="mb-4">
+                        <SuggestVideoCol />
+                    </div>
                 </div>
             </artical>
         </main>
