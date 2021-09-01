@@ -56,7 +56,7 @@ function Footer() {
                 <div className="flex justify-center text-white text-opacity-85 mb-5">
                     <p>Copyright © ISport! All rights reserved.</p>
                 </div>
-                <div className="flex justify-center text-sm text-white text-opacity-85">
+                <div className="flex justify-center text-center text-xs text-gray-500 text-opacity-85">
                     <p>
                         本網站為中壢資策會前端設計工程師班MFEE17第四組學員專題成果作品，本平台僅供學習、展示之用。
                         <br />

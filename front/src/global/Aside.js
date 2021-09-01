@@ -1,15 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userHeader from '../images/user/pic04.jpg';
-import { FaUserAlt } from 'react-icons/fa';
-import { FaShoppingCart } from 'react-icons/fa';
-import { FaHeart } from 'react-icons/fa';
-import { FaMoneyCheck } from 'react-icons/fa';
-import { FaComment } from 'react-icons/fa';
+import {
+    FaUserAlt,
+    FaShoppingCart,
+    FaHeart,
+    FaMoneyCheck,
+    FaComment,
+} from 'react-icons/fa';
+import { useState } from 'react';
+import CustomerService from '../pages/user/sign/CustomerService';
 
 function Aside() {
+    const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
+
+    const handleCustomerService = () => {
+        setCustomerServiceWindow(true);
+    };
+
+    const handleCancel = () => {
+        setCustomerServiceWindow(false);
+    };
     return (
-        <aside className="w-64 mr-2.5 bg-gray-900 rounded-t-xl shadow-xl">
+        <aside className="sm:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+            {CustomerServiceWindow && (
+                <CustomerService onCancel={handleCancel} />
+            )}
             <div className=" w-64 h-64 flex justify-center items-center">
                 <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
                     <img
@@ -21,65 +37,63 @@ function Aside() {
             </div>
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
+                    <Link to="/user">
+                        <li className="users-li">
+                            <FaUserAlt className="userIcons" />
+                            會員資料
+                        </li>
+                    </Link>
                     <li className="users-li">
-                        <a href="">
-                            <FaUserAlt className="userIcons" /> 會員資料
-                        </a>
-                    </li>
-                    <li className="users-li">
-                        <a href="">
-                            <FaShoppingCart className="userIcons" />
-                            訂單管理
-                        </a>
+                        <FaShoppingCart className="userIcons" />
+                        訂單管理
                         <ul className="submenu">
-                            <li>
-                                <a href="">購買紀錄</a>
+                            <li className="user-li">
+                                <Link to="user/cart/TradingRecord">
+                                    購買紀錄
+                                </Link>
                             </li>
-                            <li>
-                                <a href="">購物車</a>
+                            <li className="user-li">
+                                <Link to="/cart">購物車</Link>
                             </li>
-                            <li>
-                                <a href="">我的最愛</a>
+                            <li className="user-li">
+                                <Link to="user/cart/favourite">我的最愛</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a href="">
-                            <FaHeart className="userIcons" />
-                            影片收藏
-                        </a>
+                        <FaHeart className="userIcons" />
+                        影片收藏
                         <ul className="submenu">
-                            <li>
-                                <a href="">我的最愛</a>
+                            <li className="user-li">
+                                <Link to="/user/videoCollection">收藏影片</Link>
                             </li>
-                            <li>
-                                <a href="">稍後觀看</a>
+                            <li className="user-li">
+                                <Link to="/user/watchLater">稍後觀看</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a href="">
-                            <FaMoneyCheck className="userIcons" />
-                            文章管理
-                        </a>
+                        <FaMoneyCheck className="userIcons" />
+                        文章管理
                         <ul className="submenu">
-                            <li>
-                                <Link to="/ArticleMyart">我的文章</Link>
+                            <li className="user-li">
+                                <Link to="/user/ArticleMyart">我的文章</Link>
                             </li>
-                            <li>
-                                <Link to="/ArticleAdd">新增文章</Link>
+                            <li className="user-li">
+                                <Link to="/user/ArticleAdd">新增文章</Link>
                             </li>
-                            <li>
-                                <Link to="/ArticleCollect">收藏文章</Link>
+                            <li className="user-li">
+                                <Link to="/user/ArticleCollect">收藏文章</Link>
                             </li>
                         </ul>
                     </li>
-                    <li className="users-li">
-                        <a href="">
-                            <FaComment className="userIcons" />
-                            聯絡我們
-                        </a>
-                    </li>
+                    <button
+                        onClick={handleCustomerService}
+                        className="pl-8 py-2.5 block"
+                    >
+                        <FaComment className="userIcons" />
+                        聯絡我們
+                    </button>
                 </ul>
             </div>
         </aside>

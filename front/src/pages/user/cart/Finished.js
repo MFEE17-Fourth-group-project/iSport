@@ -6,27 +6,27 @@ import ProgressBar from './components/ProgressBar';
 function Finished() {
     return (
         <>
-            <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
+            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
                 <Aside />
                 <article className="flex-grow flex-col">
-                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
+                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
+                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
                         <div>
                             <ProgressBar />
                         </div>
-                        <div className="flex justify-center mb-8">
-                            <h3 className="text-2xl font-bold text-yellow-400 py-2">
+                        <div className="flex justify-center sm:mb-8 my-4">
+                            <h3 className="sm:text-2xl text-xl font-bold text-yellow-400 py-2">
                                 訂單已成立，謝謝您的購買!
                             </h3>
                         </div>
                         <div className="border-b-2 border-yellow-400 mb-8">
-                            <h5 className="pb-2.5 text-xl text-center">
+                            <h5 className="pb-2.5 sm:text-xl text-lg text-center">
                                 訂單編號 : 2107ORD1425
                             </h5>
                         </div>
-                        <div className="flex flex-row mb-8">
+                        <div className="flex sm:flex-row flex-col mb-8">
                             <div className="flex-1">
                                 <table>
                                     <tr className="">
@@ -38,7 +38,7 @@ function Finished() {
                                         <td className="pb-4">0988777888</td>
                                     </tr>
                                     <tr>
-                                        <td className="pb-4">信箱 : </td>
+                                        <td className="pb-4">電子信箱 : </td>
                                         <td className="pb-4">
                                             aali@isport.com
                                         </td>
@@ -51,7 +51,7 @@ function Finished() {
                                     </tr>
                                 </table>
                             </div>
-                            <div className="flex-1 ml-5">
+                            <div className="flex-1 sm:ml-5">
                                 <table>
                                     <tr>
                                         <td className="w-20 pb-4">

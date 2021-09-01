@@ -86,7 +86,7 @@ function Users() {
                 </div>
             </aside> */}
             <artical className="flex-grow flex-col">
-                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85  rounded-t-xl user-page-title">
                     基本資料
                     <span className="text-base text-red-500	">(必填)</span>
                 </div>
@@ -153,7 +153,7 @@ function Users() {
                         </div>
                     </from>
                 </div>
-                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title">
                     其他資料
                 </div>
 

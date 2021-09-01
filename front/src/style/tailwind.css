@@ -38,6 +38,23 @@
     @apply outline-none;
 }
 
+/* btn-yellow-hollow*/
+.btn-yellow-hollow {
+    @apply text-yellow-400 bg-transparent border border-solid border-yellow-300 uppercase text-base px-4 py-2 rounded-full outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+}
+
+.btn-yellow-hollow:hover {
+    @apply bg-yellow-400 text-gray-800;
+}
+
+.btn-yellow-hollow:active {
+    @apply bg-yellow-600;
+}
+
+.btn-yellow-hollow:focus {
+    @apply outline-none;
+}
+
 /* btn-yellow */
 .btn-yellow {
     @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base
@@ -164,7 +181,10 @@
 }
 
 /* 會員表單的li樣式 */
-.users-li a {
+.user-p {
+    @apply pl-8 py-2.5 block;
+}
+.users-li {
     @apply pl-8 py-2.5 block;
 }
 /* 會員表單的li hover */
@@ -195,6 +215,11 @@
 }
 
 /*會員頁面title*/
-.user-page-title{
+.user-page-title {
     @apply text-2xl font-bold;
+}
+
+/* input會員樣式 */
+.input-style {
+    @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400;
 }
