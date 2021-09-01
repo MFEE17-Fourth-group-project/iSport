@@ -20,7 +20,7 @@ function CartItem(props) {
     return (
         <>
             <div className="p-5 flex flex-row">
-                <div className="w-36 mx-5 self-center text-center">
+                <div className="w-36 mx-5 sm:mx-0 self-center text-center">
                     <img
                         className="w-full"
                         src={product}
@@ -50,9 +50,11 @@ function CartItem(props) {
                             <div onClick={minus} className="">
                                 <TiMinus />
                             </div>
-                            <div className="px-1.5">{count}</div>
-                            <div onClick={plus}>
-                                <TiPlus />
+                            <div>
+                                <div className="w-5 text-center">{count}</div>
+                                <div onClick={plus}>
+                                    <TiPlus />
+                                </div>
                             </div>
                         </div>
                         {/* <select
@@ -89,13 +91,13 @@ function CartItem(props) {
                         </select> */}
                         {/* <BsCaretDownFill className="mr-2.5" /> */}
 
-                        <div className="cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
-                            <FaHeart className="mr-2.5" />
-                            <p>移至收藏</p>
+                        <div className="sm:text-center cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
+                            <FaHeart className="mr-2.5 sm:mx-1" />
+                            <p className="sm:hidden">移至收藏</p>
                         </div>
                         <div className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
-                            <FaTrashAlt className="mr-2.5" />
-                            <p>移除商品</p>
+                            <FaTrashAlt className="mr-2.5 sm:mx-1" />
+                            <p className="sm:hidden">移除商品</p>
                         </div>
                     </div>
                 </div>

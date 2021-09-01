@@ -9,7 +9,7 @@ function Finished() {
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
                 <Aside />
                 <article className="flex-grow flex-col">
-                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
+                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">

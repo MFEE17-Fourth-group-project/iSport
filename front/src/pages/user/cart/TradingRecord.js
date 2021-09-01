@@ -20,7 +20,7 @@ function TradingRecord() {
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
             <artical className="flex-grow flex-col rounded-lg overflow-hidden text-white text-opacity-85 shadow-2xl ">
-                <div className="bg-gray-700 pl-5 py-5 text-3xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 user-page-title font-bold">
                     購買紀錄
                 </div>
                 <section className="my-2.5 p-4 leading-relaxed border-2 border-yellow-400">

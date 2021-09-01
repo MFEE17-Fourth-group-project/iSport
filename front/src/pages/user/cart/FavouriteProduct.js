@@ -20,7 +20,7 @@ function FavouriteProduct() {
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
             <artical className="flex-grow flex-col rounded-lg overflow-hidden">
-                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title font-bold">
                     我的最愛
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">

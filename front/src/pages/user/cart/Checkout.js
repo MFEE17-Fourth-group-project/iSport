@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import CheckItem from './components/CheckItem';
 import ProgressBar from './components/ProgressBar';
-import { CgChevronDoubleDown } from 'react-icons/cg';
+import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
 
 function Checkout() {
     const [showCheckItem, setShowCartItem] = useState(false);
@@ -16,7 +16,7 @@ function Checkout() {
             <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
                 <Aside />
                 <article className="flex-grow flex-col">
-                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
+                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 mb-2.5">
@@ -24,17 +24,17 @@ function Checkout() {
                             <ProgressBar />
                         </div>
                         <CheckItem />
-                        {/* {showCheckItem && <CartItem />}
-                        {showCheckItem && <CartItem />} */}
+                        {showCheckItem && <CheckItem />}
+                        {showCheckItem && <CheckItem />}
                         <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
                         <div
-                            className="flex justify-center animate-bounce py-1"
+                            className="flex justify-center animate-bounce py-1 delay-300"
                             onClick={showItem}
                         >
-                            <CgChevronDoubleDown className="text-2xl text-yellow-400" />
+                            <HiChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
                     </div>
                     <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
