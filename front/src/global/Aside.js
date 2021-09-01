@@ -11,7 +11,7 @@ import {
 
 function Aside() {
     return (
-        <aside className="sm:hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+        <aside className="sm:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             <div className="w-64 h-64 flex justify-center items-center">
                 <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
                     <img

@@ -97,7 +97,7 @@ function CartItem(props) {
                         </div>
                         <div className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                             <FaTrashAlt className="mr-2.5 sm:mx-1" />
-                            <p className="sm:hidden">移除商品</p>
+                            <p className="sm:block hidden">移除商品</p>
                         </div>
                     </div>
                 </div>
