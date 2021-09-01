@@ -12,64 +12,63 @@ function SignUp() {
                 <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                     <from>
                         <br />
-                        <div className="items-center border-b py-2">
+                        <div>
                             <label for="menberName">姓名：</label>
                             <input
                                 type="text"
-                                className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                className="input-style "
                                 placeholder="請輸入姓名"
                                 name="menberName"
                                 required
                             />
                         </div>
                         <br />
-                        <div className="flex flex-wrap mr-3 mb-6 justify-between text-white">
-                            <div className="items-center border-b py-2 md:w-2/5">
+                        <div className="lg:flex lg:flex-wrap mr-3 mb-6 lg:justify-between text-white">
+                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5">
                                 <label for="menberAccount">帳號：</label>
                                 <input
                                     type="text"
-                                    className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                    className="input-style"
                                     placeholder="請輸入帳號"
                                     name="menberAccount"
                                     required
                                 />
                             </div>
-                            <div className="items-center border-b py-2 md:w-2/5 text-white">
+                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5">
                                 <label for="password">密碼：</label>
                                 <input
                                     type="password"
-                                    placeholder="請輸入6-8英數密碼"
-                                    className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                    placeholder="請輸入6-8位英數密碼"
+                                    className="input-style"
                                     name="password"
-                                    required
                                 />
                             </div>
                         </div>
-                        <div className="items-center border-b py-2 mb-6 text-white">
+                        <div className="py-2 mb-5">
                             <label for="email">信箱：</label>
                             <input
                                 type="email"
-                                className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                className="input-style "
                                 placeholder="請輸入信箱"
                                 name="email"
                                 required
                             />
                         </div>
-                        <div className="items-center border-b py-2 mb-6 text-white">
+                        <div className=" py-2 mb-5">
                             <label for="phone">行動電話：</label>
                             <input
-                                type="number"
-                                className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                type="phone"
+                                className="input-style "
                                 placeholder="請輸入行動電話09xx-xxx-xxx"
                                 name="phone"
                                 required
                             />
                         </div>
-                        <div className="items-center border-b py-2 mb-6 text-white">
+                        <div className="py-2 mb-5">
                             <label for="address">住家地址</label>
                             <input
                                 type="text"
-                                className="appearance-none bg-transparent border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                className="input-style"
                                 placeholder="請輸入地址    ex:台北市中山區羅斯福路x段x巷x弄x號x樓"
                                 name="address"
                                 required
@@ -92,11 +91,11 @@ function SignUp() {
                                     name="menberAccount"
                                 />
                             </div>
-                            <div class="inline-block w-64">
+                            <div class="xl:inline-block xl:w-64 mt-5">
                                 <label for="gender">性別：</label>
                                 <select
                                     name="gender"
-                                    className="bg-transparent"
+                                    className="bg-transparent border-2 border-gray-700 w-40"
                                 >
                                     <option className="text-black" value="null">
                                         保留

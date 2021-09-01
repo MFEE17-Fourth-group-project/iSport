@@ -22,7 +22,7 @@ function Aside() {
         setCustomerServiceWindow(false);
     };
     return (
-        <aside className="sm:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+        <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
