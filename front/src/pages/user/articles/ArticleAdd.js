@@ -21,7 +21,7 @@ function ArticleAdd() {
                         <br />
                         <input
                             type="text"
-                            className="w-full bg-gray-900 border-b-2  p-4 my-4 focus:border-yellow-400 outline-none"
+                            className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             name="article_name"
                             id="article_name"
                             placeholder="最多50字"
@@ -32,13 +32,13 @@ function ArticleAdd() {
                         <select
                             name="category"
                             id="category"
-                            className="w-full bg-gray-900 border-b-2  p-4 my-4 focus:border-yellow-400 outline-none"
+                            className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                         >
-                            <option value="1">有氧</option>
-                            <option value="2">重訓</option>
-                            <option value="3">tabata</option>
-                            <option value="4">核心</option>
-                            <option value="5">飲食</option>
+                            <option value="1">有氧運動</option>
+                            <option value="2">重量訓練</option>
+                            <option value="3">間歇訓練</option>
+                            <option value="4">增肌飲食</option>
+                            <option value="5">核心強化</option>
                         </select>
                         <br />
                         <label>標題：</label>
@@ -48,7 +48,7 @@ function ArticleAdd() {
                         <br />
                         <input
                             type="text"
-                            className="w-full bg-gray-900 border-b-2  p-4 my-4 focus:border-yellow-400 outline-none"
+                            className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             name="added_by"
                             id="added_by"
                             placeholder="最多100字"
@@ -57,14 +57,14 @@ function ArticleAdd() {
                         <label for="">上傳圖片:</label>
                         <br />
                         <input
-                            className="w-full bg-gray-900 border-b-2  p-4 my-4 focus:border-yellow-400 outline-none"
+                            className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             type="file"
                             name="file"
                             id="file"
                         />
                         <br />
                         <label>內容：</label>
-                        <span className="text-base text-red-500	 mx-4">
+                        <span className="text-base text-red-500 mx-4">
                             必填
                         </span>
                         <br />
