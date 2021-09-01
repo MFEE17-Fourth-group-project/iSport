@@ -1,5 +1,6 @@
 import React from 'react';
-
+import SignUp from './SignUp';
+import { Link } from 'react-router-dom';
 function SignIn(props) {
     return (
         <div className="w-screen h-screen fixed z-0">
@@ -14,13 +15,13 @@ function SignIn(props) {
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
-                            for="username"
+                            htmlFor="account"
                         >
                             請輸入帳號：
                         </label>
                         <input
                             className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
-                            id="username"
+                            id="account"
                             type="text"
                         />
                         <hr className="border-2 border-yellow-400" />
@@ -28,7 +29,7 @@ function SignIn(props) {
                     <div className="mb-6">
                         <label
                             className="block text-white text-base font-bold mb-2"
-                            for="password"
+                            htmlFor="password"
                         >
                             請輸入密碼：
                         </label>
@@ -39,20 +40,25 @@ function SignIn(props) {
                             placeholder="******************"
                         />
                         <hr className="border-2 border-yellow-400" />
-
-                        <a
-                            className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1"
-                            href="#"
-                        >
-                            忘記密碼?
-                        </a>
+                        <Link to="/SearchPassword">
+                            <a className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1">
+                                忘記密碼?
+                            </a>
+                        </Link>
                         <div className="flex items-center justify-center">
-                            <button className="btn-green mr-10" type="button">
-                                註冊
-                            </button>
-                            <button className="btn-yellow" type="button">
-                                登入
-                            </button>
+                            <Link to="/SignUp">
+                                <button
+                                    className="btn-green mr-10"
+                                    type="button"
+                                >
+                                    註冊
+                                </button>
+                            </Link>
+                            <Link to="/user">
+                                <a className="btn-yellow" type="button">
+                                    登入
+                                </a>
+                            </Link>
                         </div>
                     </div>
                 </form>

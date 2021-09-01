@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
     return (
@@ -119,9 +120,14 @@ function SignUp() {
                             rows="4"
                         ></textarea>
                         <div className="justify-center flex">
-                            <a href="" className="btn-green mr-10">
-                                返回
-                            </a>
+                            <Link to="/">
+                                <button
+                                    className="btn-green mr-10"
+                                    type="button"
+                                >
+                                    返回
+                                </button>
+                            </Link>
                             <button type="submit" className="btn-yellow">
                                 註冊
                             </button>
