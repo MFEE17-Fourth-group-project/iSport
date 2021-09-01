@@ -10,7 +10,7 @@ const HomePage = () => {
     return (
         <div className="max-w-screen-2xl mx-auto">
             {/* Banner Section */}
-            <div className="h-175 bg-gray-900">
+            <div className="h-208 bg-gray-900">
                 <BannerSection />
             </div>
 
@@ -25,7 +25,7 @@ const HomePage = () => {
             </section>
 
             {/* Article Section */}
-            <section className="flex bg-gray-800">
+            <section className="h-208 flex bg-gray-800">
                 <ArticleSection />
             </section>
 
