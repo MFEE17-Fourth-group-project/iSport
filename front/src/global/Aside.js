@@ -77,13 +77,13 @@ function Aside() {
                         </a>
                         <ul className="submenu">
                             <li>
-                                <Link to="ArticleMyart">我的文章</Link>
+                                <Link to="/user/ArticleMyart">我的文章</Link>
                             </li>
                             <li>
-                                <Link to="ArticleAdd">新增文章</Link>
+                                <Link to="/user/ArticleAdd">新增文章</Link>
                             </li>
                             <li>
-                                <Link to="ArticleCollect">收藏文章</Link>
+                                <Link to="/user/ArticleCollect">收藏文章</Link>
                             </li>
                         </ul>
                     </li>

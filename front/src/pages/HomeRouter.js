@@ -59,13 +59,13 @@ function HomeRouter() {
                     <Route path="/ArticleId">
                         <ArticleId />
                     </Route>
-                    <Route path="/ArticleCollect">
+                    <Route path="/user/ArticleCollect">
                         <ArticleCollect />
                     </Route>
-                    <Route path="/ArticleMyart">
+                    <Route path="/user/ArticleMyart">
                         <ArticleMyart />
                     </Route>
-                    <Route path="/ArticleAdd">
+                    <Route path="/user/ArticleAdd">
                         <ArticleAdd />
                     </Route>
                     <Route path="/products">
