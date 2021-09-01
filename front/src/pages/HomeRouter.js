@@ -21,8 +21,13 @@ import TradingRecord from './user/cart/TradingRecord';
 import Gym from './gym/Gym';
 import SignUp from './user/sign/SignUp';
 import SignIn from './user/sign/SignIn';
+import ArticleAdd from './user/articles/ArticleAdd';
+import ArticleCollect from './user/articles/ArticleCollect';
+import ArticleMyart from './user/articles/ArticleMyart';
+import VideoCollection from './user/videos/VideoCollection';
+import WatchLater from './user/videos/WatchLater';
 
-// import Aside from '../global/Aside';
+//import Aside from '../global/Aside';
 
 function HomeRouter() {
     return (
@@ -51,10 +56,19 @@ function HomeRouter() {
                     <Route path="/ArticleId">
                         <ArticleId />
                     </Route>
+                    <Route path="/ArticleCollect">
+                        <ArticleCollect />
+                    </Route>
+                    <Route path="/ArticleMyart">
+                        <ArticleMyart />
+                    </Route>
+                    <Route path="/ArticleAdd">
+                        <ArticleAdd />
+                    </Route>
                     <Route path="/products">
                         <Product />
                     </Route>
-                    <Route path="/user">
+                    <Route path="/user" exact>
                         <User />
                     </Route>
                     <Route path="/video/:videoId">
@@ -62,6 +76,12 @@ function HomeRouter() {
                     </Route>
                     <Route path="/video">
                         <Video />
+                    </Route>
+                    <Route path="/user/videoCollection">
+                        <VideoCollection />
+                    </Route>
+                    <Route path="/user/watchLater">
+                        <WatchLater />
                     </Route>
                     <Route path="/cart">
                         <Cart />

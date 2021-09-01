@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
-import { FaClock } from "react-icons/fa";
-import { FaThumbsUp } from "react-icons/fa";
-import { FaShare } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
-import { FaList } from "react-icons/fa";
-import { FaCaretDown } from "react-icons/fa";
-import { FaComments } from "react-icons/fa";
+import {
+    FaClock,
+    FaThumbsUp,
+    FaShare,
+    FaRegHeart,
+    FaList,
+    FaCaretDown,
+    FaComments
+} from "react-icons/fa";
 
 
 const VideoId = () => {
@@ -30,10 +33,14 @@ const VideoId = () => {
                         <span className="text-xs text-white mr-4">2844</span>
                         <FaShare className="text-yellow-400 mr-1 cursor-pointer" />
                         <span className="text-xs text-white mr-4">分享</span>
-                        <FaRegHeart className="text-red-400 mr-1 cursor-pointer" />
-                        <span className="text-xs text-white mr-4">收藏</span>
-                        <FaList className="text-yellow-400 mr-1 cursor-pointer" />
-                        <span className="text-xs text-white">稍後觀看</span>
+                        <Link to="/user/videoCollection" className="flex mr-4">
+                            <FaRegHeart className="text-red-400 mr-1" />
+                            <span className="text-xs text-white">收藏</span>
+                        </Link>
+                        <Link to="/user/watchLater" className="flex">
+                            <FaList className="text-yellow-400 mr-1" />
+                            <span className="text-xs text-white">稍後觀看</span>
+                        </Link>
                     </div>
                 </div>
 
@@ -44,7 +51,7 @@ const VideoId = () => {
                     待在家其實多了很多自己的時間，不如來讓自己的肥肉熱起來吧!<br />
                     找不到動力嗎?這歌單會保證讓你全身熱血沸騰!<br />
                     分享一下我朋友的經驗<br />
-                    他從93kg練到現在是68kg，花了2個月的時間<br />
+                    他從93kg練到現在是68kg，花了12個月的時間<br />
                     我覺得他真的超強!<br />
                     他可以，我們肯定也可以! (我自己也在努力當中XD)<br />
                     希望這輕電音歌單帶給你滿滿的動力喔 加油!<br />
@@ -62,8 +69,8 @@ const VideoId = () => {
                     <div className="flex items-center mb-7">
                         <FaComments className="text-yellow-400 mr-1 text-lg" />
                         <span className="text-base text-white mr-4">48 則留言</span>
-                        <button className="btn-yellow mr-3">最新留言</button>
-                        <button className="btn-gray">熱門留言</button>
+                        <button className="btn-yellow-sm mr-3">最新留言</button>
+                        <button className="btn-gray-sm">熱門留言</button>
                     </div>
                     <div className="flex mb-7">
                         <img
@@ -77,12 +84,11 @@ const VideoId = () => {
                                 placeholder="新增留言"
                             />
                             <div className="flex justify-end">
-                                <button className="btn-gray mr-3">取消</button>
-                                <button className="btn-yellow">留言</button>
+                                <button className="btn-gray-sm mr-3">取消</button>
+                                <button className="btn-yellow-sm">留言</button>
                             </div>
                         </div>
                     </div>
-
 
                     <Comment />
                     <Comment />
