@@ -25,6 +25,10 @@ import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleMyart from './user/articles/ArticleMyart';
 import CustomerService from './user/sign/CustomerService';
 import SearchPassword from './user/sign/SearchPassword';
+import VideoCollection from './user/videos/VideoCollection';
+import WatchLater from './user/videos/WatchLater';
+
+//import Aside from '../global/Aside';
 
 function HomeRouter() {
     return (
@@ -71,7 +75,7 @@ function HomeRouter() {
                     <Route path="/products">
                         <Product />
                     </Route>
-                    <Route path="/user">
+                    <Route path="/user" exact>
                         <User />
                     </Route>
                     <Route path="/video/:videoId">
@@ -79,6 +83,12 @@ function HomeRouter() {
                     </Route>
                     <Route path="/video">
                         <Video />
+                    </Route>
+                    <Route path="/user/videoCollection">
+                        <VideoCollection />
+                    </Route>
+                    <Route path="/user/watchLater">
+                        <WatchLater />
                     </Route>
                     <Route path="/cart">
                         <Cart />

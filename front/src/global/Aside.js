@@ -63,10 +63,10 @@ function Aside() {
                         </a>
                         <ul className="submenu">
                             <li>
-                                <Link to="user/video/favorite">我的最愛</Link>
+                                <Link to="/user/videoCollection">收藏影片</Link>
                             </li>
                             <li>
-                                <Link to="/video/awite">稍後觀看</Link>
+                                <Link to="/user/watchLater">稍後觀看</Link>
                             </li>
                         </ul>
                     </li>

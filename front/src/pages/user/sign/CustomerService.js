@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Aside } from '../../../global/Aside';
 
 function CustomerService(props) {
     return (
@@ -93,12 +94,17 @@ function CustomerService(props) {
                             name="memo"
                             placeholder="請輸入您的內容"
                             cols="70"
-                            rows="20"
+                            rows="10"
                         ></textarea>
                     </div>
 
                     <div className="flex justify-center ">
-                        <button className="btn-green mr-5">返回</button>
+                        <button
+                            className="btn-green mr-5"
+                            onClick={props.onCancel}
+                        >
+                            返回
+                        </button>
                         <button className="btn-yellow" type="submit">
                             送出
                         </button>
