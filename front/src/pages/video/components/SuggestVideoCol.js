@@ -6,8 +6,7 @@ import { FaThumbsUp } from "react-icons/fa";
 
 const SuggestVideoCol = () => {
     return (
-        <div className="flex mt-6 h-24">
-
+        <div className="flex mt-6 h-24 pr-2">
             <div className="w-48 mr-4">
                 <img className="w-full h-full object-cover rounded-lg" src={Fitness1} alt="" />
             </div>
