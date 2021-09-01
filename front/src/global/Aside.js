@@ -36,18 +36,14 @@ function Aside() {
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
                     <Link to="/user">
-                        <p className="user-p">
-                            <li className="users-li">
-                                <FaUserAlt className="userIcons" />
-                                會員資料
-                            </li>
-                        </p>
+                        <li className="users-li">
+                            <FaUserAlt className="userIcons" />
+                            會員資料
+                        </li>
                     </Link>
                     <li className="users-li">
-                        <p className="user-p">
-                            <FaShoppingCart className="userIcons" />
-                            訂單管理
-                        </p>
+                        <FaShoppingCart className="userIcons" />
+                        訂單管理
                         <ul className="submenu">
                             <li className="user-li">
                                 <Link to="user/cart/TradingRecord">
@@ -63,10 +59,8 @@ function Aside() {
                         </ul>
                     </li>
                     <li className="users-li">
-                        <p className="user-p">
-                            <FaHeart className="userIcons" />
-                            影片收藏
-                        </p>
+                        <FaHeart className="userIcons" />
+                        影片收藏
                         <ul className="submenu">
                             <li className="user-li">
                                 <Link to="/user/videoCollection">收藏影片</Link>
@@ -77,10 +71,8 @@ function Aside() {
                         </ul>
                     </li>
                     <li className="users-li">
-                        <p className="user-p">
-                            <FaMoneyCheck className="userIcons" />
-                            文章管理
-                        </p>
+                        <FaMoneyCheck className="userIcons" />
+                        文章管理
                         <ul className="submenu">
                             <li className="user-li">
                                 <Link to="/user/ArticleMyart">我的文章</Link>
@@ -93,15 +85,13 @@ function Aside() {
                             </li>
                         </ul>
                     </li>
-                    <li className="users-li">
-                        <button
-                            onClick={handleCustomerService}
-                            className="pl-8 py-2.5 block"
-                        >
-                            <FaComment className="userIcons" />
-                            聯絡我們
-                        </button>
-                    </li>
+                    <button
+                        onClick={handleCustomerService}
+                        className="pl-8 py-2.5 block"
+                    >
+                        <FaComment className="userIcons" />
+                        聯絡我們
+                    </button>
                 </ul>
             </div>
         </aside>

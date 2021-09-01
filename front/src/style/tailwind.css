@@ -167,7 +167,7 @@
 .user-p {
     @apply pl-8 py-2.5 block;
 }
-.user-li {
+.users-li {
     @apply pl-8 py-2.5 block;
 }
 /* 會員表單的li hover */
