@@ -21,8 +21,11 @@ import TradingRecord from './user/cart/TradingRecord';
 import Gym from './gym/Gym';
 import SignUp from './user/sign/SignUp';
 import SignIn from './user/sign/SignIn';
+import ArticleAdd from './user/articles/ArticleAdd';
+import ArticleCollect from './user/articles/ArticleCollect';
+import ArticleMyart from './user/articles/ArticleMyart';
 
-// import Aside from '../global/Aside';
+//import Aside from '../global/Aside';
 
 function HomeRouter() {
     const [counts, setCounts] = useState(1);
@@ -54,6 +57,15 @@ function HomeRouter() {
                     </Route>
                     <Route path="/ArticleId">
                         <ArticleId />
+                    </Route>
+                    <Route path="/ArticleCollect">
+                        <ArticleCollect />
+                    </Route>
+                    <Route path="/ArticleMyart">
+                        <ArticleMyart />
+                    </Route>
+                    <Route path="/ArticleAdd">
+                        <ArticleAdd />
                     </Route>
                     <Route path="/products">
                         <Product />

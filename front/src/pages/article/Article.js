@@ -16,37 +16,52 @@ function Article() {
                 <ArticleNav />
 
                 <main className="bg-gray-800">
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        <div className="w-1/4 h-60"></div>
-                        <Link to="/ArticleCategory">
+                    <article className="">
+                        {/* <div className="w-1/4 h-60"></div> */}
+                        <Link
+                            to="/ArticleCategory"
+                            className="flex justify-end mt-4 w-3/4 m-auto"
+                        >
                             <ArticleCardRight />
                         </Link>
                     </article>
 
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        <Link to="/ArticleCategory">
+                    <article className="">
+                        <Link
+                            to="/ArticleCategory"
+                            className="flex justify-start mt-4 w-3/4 m-auto"
+                        >
                             <ArticleCardLeft />
                         </Link>
-                        <div className="w-1/4 h-60"></div>
+                        {/* <div className="w-1/4 h-60"></div> */}
                     </article>
 
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        <div className="w-1/4 h-60"></div>
-                        <Link to="/ArticleCategory">
+                    <article className="">
+                        {/* <div className="w-1/4 h-60"></div> */}
+                        <Link
+                            to="/ArticleCategory"
+                            className="flex justify-end mt-4 w-3/4 m-auto"
+                        >
                             <ArticleCardRight />
                         </Link>
                     </article>
 
-                    <article className="flex justify-center mt-4 w-3/4 m-auto">
-                        <Link to="/ArticleCategory">
+                    <article className="">
+                        <Link
+                            to="/ArticleCategory"
+                            className="flex justify-start mt-4 w-3/4 m-auto"
+                        >
                             <ArticleCardLeft />
                         </Link>
-                        <div className="w-1/4 h-60"></div>
+                        {/* <div className="w-1/4 h-60"></div> */}
                     </article>
 
-                    <article className="flex justify-center mt-4 mb-4 w-3/4 m-auto">
-                        <div className="w-1/4 h-60"></div>
-                        <Link to="/ArticleCategory">
+                    <article className="">
+                        {/* <div className="w-1/4 h-60"></div> */}
+                        <Link
+                            to="/ArticleCategory"
+                            className="flex justify-end mt-4 w-3/4 m-auto mb-4"
+                        >
                             <ArticleCardRight />
                         </Link>
                     </article>
