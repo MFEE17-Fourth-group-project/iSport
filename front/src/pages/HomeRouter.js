@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Articles from './article/Article';
 import Product from './product/Product';
@@ -31,6 +31,7 @@ import WatchLater from './user/videos/WatchLater';
 //import Aside from '../global/Aside';
 
 function HomeRouter() {
+    const [counts, setCounts] = useState(1);
     return (
         <Router>
             <>
@@ -48,10 +49,13 @@ function HomeRouter() {
                     <Route path="/user/cart/favourite">
                         <FavouriteProduct />
                     </Route>
+                    <Route path="/user/cart">
+                        <Cart counts={counts} setCounts={setCounts} />
+                    </Route>
                     <Route path="/product/item">
                         <ProductItem />
                     </Route>
-                    <Route path="/Gym">
+                    <Route path="/gym">
                         <Gym />
                     </Route>
                     <Route path="/articles">
@@ -89,9 +93,6 @@ function HomeRouter() {
                     </Route>
                     <Route path="/user/watchLater">
                         <WatchLater />
-                    </Route>
-                    <Route path="/cart">
-                        <Cart />
                     </Route>
                     <Route path="/checkout">
                         <Checkout />

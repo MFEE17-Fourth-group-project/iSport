@@ -1,101 +1,105 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import CheckItem from './components/CheckItem';
 import ProgressBar from './components/ProgressBar';
-import { CgChevronDoubleDown } from 'react-icons/cg';
+import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
 
 function Checkout() {
+    const [showCheckItem, setShowCartItem] = useState(false);
+
+    function showItem() {
+        setShowCartItem(true);
+    }
     return (
         <>
-            <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
+            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
                 <Aside />
-                <article className="flex-grow flex-col">
-                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-4xl rounded-t-xl">
+                <article className="flex-grow flex-col ">
+                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 mb-2.5">
+                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 mb-2.5 transition-all duration-1000">
+                        {/* facebook - overflow hidden */}
                         <div>
                             <ProgressBar />
                         </div>
                         <CheckItem />
+                        {showCheckItem && <CheckItem />}
+                        {showCheckItem && <CheckItem />}
                         <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
-                        <div className="flex justify-center">
-                            <CgChevronDoubleDown className="text-2xl text-yellow-400" />
+                        <div
+                            className="flex justify-center animate-bounce py-1"
+                            onClick={showItem}
+                        >
+                            <HiChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
-                        {/* <button className="flex flex-row justify-end">前往結帳</button> */}
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
+                    <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10 rounded-b-xl">
                         <from>
-                            <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 focus:border-yellow-400"
-                            >
-                                <label>收件人</label>
+                            <div className="items-center pt-2 mb-6">
+                                <label for="recipient">收件人</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1 outline-none"
+                                    className="input-style"
+                                    id="recipient"
+                                    placeholder="Jennifer"
                                 ></input>
                             </div>
-                            <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
-                                <label>行動電話</label>
+                            <div className="items-center pt-2 mb-6">
+                                <label for="phone">行動電話</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1 outline-none"
+                                    className="input-style"
+                                    id="phone"
+                                    placeholder="0955123456"
                                 ></input>
                             </div>
-                            <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
-                                <label>信箱</label>
+                            <div className="items-center pt-2 mb-6">
+                                <label for="email">信箱</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style"
+                                    id="email"
+                                    placeholder="jen@isport.com"
                                 ></input>
                             </div>
-                            <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
-                                <label>住家地址</label>
+                            <div className="items-center pt-2 mb-6">
+                                <label for="address">住家地址</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style"
+                                    id="address"
+                                    placeholder="桃園市平鎮區中央路123號"
                                 ></input>
                             </div>
-                            <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
-                                <label>寄送方式</label>
+                            <div className="items-center pt-2 mb-6">
+                                <label for="delivery">寄送方式</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style"
+                                    id="delivery"
+                                    placeholder=""
                                 ></input>
                             </div>
                             {/* <div
-                                className="flex mb-8 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
+                                className="items-center pt-2 mb-6"
                             >
                                 <label>多得多得多的</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style"
                                 ></input>
                             </div> */}
                         </from>
                         {/* <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div> */}
-                        <div className="flex flex-row justify-end">
+                        <div className="flex flex-row justify-center">
                             <button type="submit">
                                 <Link
-                                    to="/finished"
+                                    to="/checkout2"
                                     className="btn-yellow flex flex-row justify-end items-center"
                                 >
                                     <p className="font-bold text-xl">下一步</p>

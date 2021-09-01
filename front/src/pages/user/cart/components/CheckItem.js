@@ -5,7 +5,7 @@ function CheckItem() {
     return (
         <>
             <div className="p-5 flex flex-row">
-                <div className="w-36 mx-5 self-center text-center">
+                <div className="sm:w-36 w-1/3 sm:mx-5 mx-0 self-center text-center">
                     <img
                         className="w-full"
                         src={product}

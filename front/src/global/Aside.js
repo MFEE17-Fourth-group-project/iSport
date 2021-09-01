@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userHeader from '../images/user/pic04.jpg';
-import { FaUserAlt } from 'react-icons/fa';
-import { FaShoppingCart } from 'react-icons/fa';
-import { FaHeart } from 'react-icons/fa';
-import { FaMoneyCheck } from 'react-icons/fa';
-import { FaComment } from 'react-icons/fa';
+import {
+    FaUserAlt,
+    FaShoppingCart,
+    FaHeart,
+    FaMoneyCheck,
+    FaComment,
+} from 'react-icons/fa';
 import { useState } from 'react';
 import CustomerService from '../pages/user/sign/CustomerService';
 
