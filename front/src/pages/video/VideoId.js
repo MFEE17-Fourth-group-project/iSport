@@ -1,14 +1,17 @@
+import { Link } from 'react-router-dom';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
-import { FaClock } from "react-icons/fa";
-import { FaThumbsUp } from "react-icons/fa";
-import { FaShare } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
-import { FaList } from "react-icons/fa";
-import { FaCaretDown } from "react-icons/fa";
-import { FaComments } from "react-icons/fa";
+import {
+    FaClock,
+    FaThumbsUp,
+    FaShare,
+    FaRegHeart,
+    FaList,
+    FaCaretDown,
+    FaComments
+} from "react-icons/fa";
 
 
 const VideoId = () => {
@@ -30,10 +33,14 @@ const VideoId = () => {
                         <span className="text-xs text-white mr-4">2844</span>
                         <FaShare className="text-yellow-400 mr-1 cursor-pointer" />
                         <span className="text-xs text-white mr-4">分享</span>
-                        <FaRegHeart className="text-red-400 mr-1 cursor-pointer" />
-                        <span className="text-xs text-white mr-4">收藏</span>
-                        <FaList className="text-yellow-400 mr-1 cursor-pointer" />
-                        <span className="text-xs text-white">稍後觀看</span>
+                        <Link to="/user/videoCollection" className="flex mr-4">
+                            <FaRegHeart className="text-red-400 mr-1" />
+                            <span className="text-xs text-white">收藏</span>
+                        </Link>
+                        <Link to="/user/watchLater" className="flex">
+                            <FaList className="text-yellow-400 mr-1" />
+                            <span className="text-xs text-white">稍後觀看</span>
+                        </Link>
                     </div>
                 </div>
 
