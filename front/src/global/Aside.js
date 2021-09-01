@@ -47,15 +47,15 @@ function Aside() {
                         <FaShoppingCart className="userIcons" />
                         訂單管理
                         <ul className="submenu">
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="user/cart/TradingRecord">
                                     購買紀錄
                                 </Link>
                             </li>
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/cart">購物車</Link>
                             </li>
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="user/cart/favourite">我的最愛</Link>
                             </li>
                         </ul>
@@ -64,10 +64,10 @@ function Aside() {
                         <FaHeart className="userIcons" />
                         影片收藏
                         <ul className="submenu">
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/user/videoCollection">收藏影片</Link>
                             </li>
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/user/watchLater">稍後觀看</Link>
                             </li>
                         </ul>
@@ -76,13 +76,13 @@ function Aside() {
                         <FaMoneyCheck className="userIcons" />
                         文章管理
                         <ul className="submenu">
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/user/ArticleMyart">我的文章</Link>
                             </li>
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/user/ArticleAdd">新增文章</Link>
                             </li>
-                            <li className="user-li">
+                            <li className="user-p">
                                 <Link to="/user/ArticleCollect">收藏文章</Link>
                             </li>
                         </ul>
