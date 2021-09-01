@@ -21,6 +21,9 @@ function Aside() {
     };
     return (
         <aside className="w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+            {CustomerServiceWindow && (
+                <CustomerService onCancel={handleCancel} />
+            )}
             <div className=" w-64 h-64 flex justify-center items-center">
                 <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
                     <img
@@ -95,9 +98,6 @@ function Aside() {
                     </li>
                 </ul>
             </div>
-            {CustomerServiceWindow && (
-                <CustomerService onCancel={handleCancel} />
-            )}
         </aside>
     );
 }
