@@ -7,7 +7,9 @@ import { FaSearch } from 'react-icons/fa';
 const Video = () => {
     return (
         <div className="">
-            <img className="h-112 object-cover w-full" src={videoHeader} alt="" />
+            <div className="h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112 ">
+                <img className="object-cover h-full min-w-full" src={videoHeader} alt="" />
+            </div>
             <VideoNav />
             <main className="max-w-screen-xl flex flex-col mx-auto">
                 <div className="flex my-6 justify-between">
@@ -29,6 +31,22 @@ const Video = () => {
                     </div>
                 </div>
 
+                <div className="flex w-full flex-wrap justify-between mb-6">
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard2 />
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard />
+                </div>
+                {/* <div className="flex w-full justify-between mb-6">
+                    <VideoCard2 />
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard />
+                </div>
                 <div className="flex w-full justify-between mb-6">
                     <VideoCard />
                     <VideoCard2 />
@@ -40,19 +58,7 @@ const Video = () => {
                     <VideoCard />
                     <VideoCard2 />
                     <VideoCard />
-                </div>
-                <div className="flex w-full justify-between mb-6">
-                    <VideoCard />
-                    <VideoCard2 />
-                    <VideoCard />
-                    <VideoCard2 />
-                </div>
-                <div className="flex w-full justify-between mb-6">
-                    <VideoCard2 />
-                    <VideoCard />
-                    <VideoCard2 />
-                    <VideoCard />
-                </div>
+                </div> */}
             </main>
         </div>
     );

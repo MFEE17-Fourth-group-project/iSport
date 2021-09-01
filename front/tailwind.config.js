@@ -7,6 +7,7 @@ module.exports = {
     theme: {
         extend: {
             spacing: {
+                500: '500px',
                 208: '52rem',
                 175: '43.75rem',
                 112: '28rem',
@@ -73,7 +74,6 @@ module.exports = {
             72: '18rem',
             80: '20rem',
             96: '24rem',
-            500: '500px',
         },
         animation: {
             none: 'none',
