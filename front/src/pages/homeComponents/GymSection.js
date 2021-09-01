@@ -16,14 +16,10 @@ const GymSection = () => {
     };
 
     return (
-        <div className="flex justify-center m-auto">
+        <div className="flex justify-center w-full">
             {gymWindow && <GymWindow onCancel={handleCancel} />}
-            <div className="relative p-72 ">
-                <img
-                    className="absolute top-8 left-16 w-2/4"
-                    src={Map}
-                    alt=""
-                />
+            <div className="relative p-36 object-contain mr-32">
+                <img className="absolute top-8 left-16" src={Map} alt="" />
                 <Link to="">
                     <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-14 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
                 </Link>
