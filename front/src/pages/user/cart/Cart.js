@@ -15,7 +15,7 @@ function Cart(props) {
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
+                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
                         <CartItem
                             count={counts}
                             setCount={(newCount) => {

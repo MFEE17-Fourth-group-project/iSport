@@ -7,18 +7,18 @@ import ProgressBar from './components/ProgressBar';
 function Checkout2() {
     return (
         <>
-            <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
+            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
                 <Aside />
                 <article className="flex-grow flex-col">
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white px-12 py-6 bg-gray-900 rounded-b-xl">
+                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
                         <div>
                             <ProgressBar />
                         </div>
                         <div className="flex justify-center mb-8">
-                            <h3 className="text-xl text-white text-opacity-85 py-2 border-b-2 border-yellow-400">
+                            <h3 className="sm:text-xl text-lg text-white text-opacity-85 py-2 border-b-2 border-yellow-400">
                                 信用卡付款
                             </h3>
                         </div>
@@ -30,7 +30,7 @@ function Checkout2() {
                         </div>
                         <from>
                             <div
-                                className="flex mb-8 border-b border-gray-700
+                                className="flex sm:mb-8 mb-4 border-b border-gray-700
                             pb-2.5 hover:border-yellow-400"
                             >
                                 <label className="w-24">信用卡號碼</label>
@@ -40,7 +40,7 @@ function Checkout2() {
                                 ></input>
                             </div>
                             <div
-                                className="flex mb-8 border-b border-gray-700
+                                className="flex sm:mb-8 mb-4 border-b border-gray-700
                             pb-2.5 hover:border-yellow-400"
                             >
                                 <label className="w-24">持卡人姓名</label>
@@ -49,10 +49,10 @@ function Checkout2() {
                                     className="bg-transparent flex-1"
                                 ></input>
                             </div>
-                            <div className="flex mb-8">
+                            <div className="flex sm:flex-row flex-col mb-8">
                                 <div
                                     className="flex flex-1 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400 mr-8"
+                            pb-2.5 hover:border-yellow-400 sm:mr-8 sm:mb-0 mb-4"
                                 >
                                     <label className="w-20">有效期限</label>
                                     <input

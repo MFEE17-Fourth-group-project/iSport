@@ -58,7 +58,7 @@ function Nav() {
                         <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
                             優質文章
                         </p>
-                    </Link>
+                    </Link> 
                     <Link to="/Gym">
                         <p className="text-white text-opacity-85 mx-4 hover:text-yellow-400">
                             健身房
