@@ -35,54 +35,60 @@ function Aside() {
             </div>
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
+                    <Link to="/user">
+                        <p className="user-p">
+                            <li className="users-li">
+                                <FaUserAlt className="userIcons" />
+                                會員資料
+                            </li>
+                        </p>
+                    </Link>
                     <li className="users-li">
-                        <Link to="/user">
-                            <FaUserAlt className="userIcons" />
-                            會員資料
-                        </Link>
-                    </li>
-                    <li className="users-li">
-                        <a>
+                        <p className="user-p">
                             <FaShoppingCart className="userIcons" />
                             訂單管理
-                        </a>
+                        </p>
                         <ul className="submenu">
-                            <Link to="user/cart/TradingRecord">購買紀錄</Link>
-                            <li>
+                            <li className="user-li">
+                                <Link to="user/cart/TradingRecord">
+                                    購買紀錄
+                                </Link>
+                            </li>
+                            <li className="user-li">
                                 <Link to="/cart">購物車</Link>
                             </li>
-                            <li>
+                            <li className="user-li">
                                 <Link to="user/cart/favourite">我的最愛</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a>
+                        <p className="user-p">
                             <FaHeart className="userIcons" />
                             影片收藏
-                        </a>
+                        </p>
                         <ul className="submenu">
-                            <li>
+                            <li className="user-li">
                                 <Link to="/user/videoCollection">收藏影片</Link>
                             </li>
-                            <li>
+                            <li className="user-li">
                                 <Link to="/user/watchLater">稍後觀看</Link>
                             </li>
                         </ul>
                     </li>
                     <li className="users-li">
-                        <a>
+                        <p className="user-p">
                             <FaMoneyCheck className="userIcons" />
                             文章管理
-                        </a>
+                        </p>
                         <ul className="submenu">
-                            <li>
+                            <li className="user-li">
                                 <Link to="/user/ArticleMyart">我的文章</Link>
                             </li>
-                            <li>
+                            <li className="user-li">
                                 <Link to="/user/ArticleAdd">新增文章</Link>
                             </li>
-                            <li>
+                            <li className="user-li">
                                 <Link to="/user/ArticleCollect">收藏文章</Link>
                             </li>
                         </ul>
