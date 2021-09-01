@@ -4,7 +4,7 @@ import { BsFillCaretLeftFill } from 'react-icons/bs';
 
 const ArticleSection = () => {
     return (
-        <div className="relative h-175 w-full">
+        <div className="relative h-208 w-full">
             <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer z-10" />
             <img
                 src={HomePage14}
