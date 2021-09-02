@@ -20,7 +20,7 @@ const HomePage = () => {
             </section>
 
             {/* Product Section */}
-            <section className="h-208 flex bg-gray-900">
+            <section className="max-h-full flex bg-gray-900">
                 <ProductSection />
             </section>
 

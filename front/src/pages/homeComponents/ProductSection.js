@@ -6,24 +6,28 @@ import HomePage13 from './../../images/homepage/homepage-13.jpg';
 
 const ProductSection = () => {
     return (
-        <div className="flex pt-16 w-full">
-            <div className="w-1/3 h-175 mr-10 relative">
+        <div className="flex pt-24 pb-8 sm:py-20 md:py-12 lg:py-14 xl:py-16 w-full">
+            <div className="w-full md:w-1/3 h-full md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 relative">
                 <img
                     src={HomePage13}
-                    className="w-full h-full rounded-3xl object-cover"
+                    className="w-full h-80 md:h-full md:rounded-3xl object-cover object-top md:object-center"
                 />
-                <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-16 pt-8 pl-6 pr-6">
-                    <h2 className="text-white text-4xl">多樣商品</h2>
-                    <p className="text-white text-2xl border-l-4 border-yellow-400 pl-7 py-6 ml-10 mt-7 mb-3">
-                        眾多精選商品，
-                        <br />
-                        讓你在健康的道路上更加分。
+                <div className="absolute h-80 w-full bg-black bg-opacity-50 bottom-0 md:bottom-16
+                    pt-16 md:pt-8 2xs:px-6 xs:px-12 md:px-6">
+                    <h2 className="absolute -top-16 left-1/2 transform -translate-x-1/2 sm:-translate-x-0 sm:static
+                        pb-2.5 sm:pb-0 border-b-2 border-yellow-400 sm:border-0 text-white text-2xl lg:text-3xl xl:text-4xl">多樣商品</h2>
+                    <p className="text-white text-xl xs:text-2xl md:text-xl lg:text-2xl sm:border-l-4 border-yellow-400
+                        pl-5 lg:pl-7 py-4 lg:py-6 sm:ml-8 lg:ml-10 mt-7 mb-3 flex flex-col items-center sm:block">
+                        眾多精選商品，<span className="pt-1.5">讓你在健康的道路上加分。</span>
                     </p>
-                    <button className="btn-yellow-sm flex ml-auto">立即選購</button>
+                    <button className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase
+                    rounded-full outline-none ease-linear transition-all duration-150 block
+                    hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
+                    text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto">立即選購</button>
                 </div>
             </div>
-            <div className="w-1/3 h-175 mr-10 flex flex-col justify-between">
-                <div className="h-1/2 mb-8 rounded-3xl relative cursor-pointer">
+            <div className="w-1/3 md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 hidden md:flex flex-col justify-between">
+                <div className="h-1/2 md:mb-5 lg:mb-6 xl:mb-8 rounded-3xl relative cursor-pointer">
                     <img
                         src={HomePage12}
                         className="w-full h-full object-cover rounded-3xl"
@@ -31,7 +35,7 @@ const ProductSection = () => {
                     <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full
                                 h-full top-0 mb-8">
                         <h3 className="text-white absolute top-1/2 left-1/2
-                                    transform -translate-y-1/2 -translate-x-1/2 text-3xl font-medium">
+                                    transform -translate-y-1/2 -translate-x-1/2 text-2xl lg:text-3xl font-medium">
                             運動服飾
                         </h3>
                     </div>
@@ -44,21 +48,21 @@ const ProductSection = () => {
                     />
                     <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
                         <h3 className="text-white absolute top-1/2 left-1/2
-                                    transform -translate-y-1/2 -translate-x-1/2 text-3xl font-medium">
+                                    transform -translate-y-1/2 -translate-x-1/2 text-2xl lg:text-3xl font-medium">
                             營養補給
                         </h3>
                     </div>
                 </div>
             </div>
-            <div className="mr-11 w-1/3 h-175 flex flex-col justify-between">
-                <div className="h-1/2 mb-8 rounded-3xl relative cursor-pointer">
+            <div className="md:mr-7 lg:mr-9 xl:mr-11 w-1/3 md:h-124 lg:h-152 xl:h-175 hidden md:flex flex-col justify-between">
+                <div className="h-1/2 md:mb-5 lg:mb-6 xl:mb-8 rounded-3xl relative cursor-pointer">
                     <img
                         src={HomePage10}
                         className="w-full h-full object-cover rounded-3xl"
                     />
                     <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0 mb-8">
                         <h3 className="text-white absolute top-1/2 left-1/2
-                                    transform -translate-y-1/2 -translate-x-1/2 text-3xl font-medium">
+                                    transform -translate-y-1/2 -translate-x-1/2 text-2xl lg:text-3xl font-medium">
                             健身器材
                         </h3>
                     </div>
@@ -71,7 +75,7 @@ const ProductSection = () => {
                     />
                     <div className="opacity-0 hover:bg-black hover:opacity-50 rounded-3xl absolute w-full h-full top-0">
                         <h3 className="text-white absolute top-1/2 left-1/2
-                                    transform -translate-y-1/2 -translate-x-1/2 text-3xl font-medium">
+                                    transform -translate-y-1/2 -translate-x-1/2 text-2xl lg:text-3xl font-medium">
                             運動鞋類
                         </h3>
                     </div>
