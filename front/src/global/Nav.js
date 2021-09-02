@@ -2,6 +2,7 @@ import Logo from '../images/biceps.svg';
 import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { HiMenu } from 'react-icons/hi';
 
 function Nav() {
     const [signInWindow, setSignInWindow] = useState(false);
@@ -18,6 +19,9 @@ function Nav() {
         <>
             <nav className="App sticky top-0 z-50">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
+                    <div className="w-36 cursor-pointer lg:hidden flex justify-start items-center">
+                        <HiMenu className="w-14 h-10 text-white text-opacity-85" />
+                    </div>
                     <div className="flex items-center">
                         <img
                             src={Logo}
@@ -32,6 +36,7 @@ function Nav() {
                             iSport!
                         </Link>
                     </div>
+
                     <div className="flex items-center ">
                         {/* <Link to="/user/cart/TradingRecord">
                             <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
