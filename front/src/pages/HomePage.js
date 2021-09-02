@@ -10,12 +10,12 @@ const HomePage = () => {
     return (
         <div className="max-w-screen-2xl mx-auto">
             {/* Banner Section */}
-            <div className="h-208 bg-gray-900">
+            <div className="max-h-full bg-gray-900">
                 <BannerSection />
             </div>
 
             {/* Video Section */}
-            <section className="h-208 flex bg-gray-800">
+            <section className="h-full flex bg-gray-800">
                 <VideoSection />
             </section>
 
