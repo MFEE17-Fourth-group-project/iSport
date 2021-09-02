@@ -11,18 +11,19 @@ const Video = () => {
                 <img className="object-cover h-full min-w-full" src={videoHeader} alt="" />
             </div>
             <VideoNav />
-            <main className="max-w-screen-xl flex flex-col mx-auto">
-                <div className="flex my-6 justify-between">
-                    <div>
+            <main className="max-w-screen-xl flex flex-col mx-auto px-2.5 sm:px-5">
+                <div className="flex my-6 justify-between flex-col xs:flex-row">
+                    <div className="flex mb-2.5 xs:mb-0">
                         <button className="btn-gray-sm mr-4">最新上傳</button>
-                        <button className="btn-yellow-sm">最多觀看</button>
+                        <button className="btn-yellow-sm mr-4">最多觀看</button>
                     </div>
-                    <div className="relative">
+                    <div className="relative flex">
                         <input
                             type="text"
                             className="placeholder-white text-white bg-gray-700 border border-solid border-gray-700
                                     uppercase text-base px-4 py-1.5 rounded-full outline-none ease-linear
-                                    transition-all duration-150 w-80 focus:w-96 focus:placeholder-gray-400"
+                                    transition-all duration-150 w-full xs:w-56 xs:focus:w-60 sm:w-80 sm:focus:w-96 focus:placeholder-gray-400
+                                    "
                             placeholder="搜尋"
                         />
                         <button className="absolute right-0 top-0 flex text-xl m-1 p-1.5 transform -translate-y-px">
@@ -31,7 +32,16 @@ const Video = () => {
                     </div>
                 </div>
 
-                <div className="flex w-full flex-wrap justify-between mb-6">
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 
+                    lg:grid-cols-4 gap-4 xs:gap-2.5 sm:gap-4 pb-5">
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard2 />
+                    <VideoCard />
+                    <VideoCard2 />
+                    <VideoCard />
                     <VideoCard />
                     <VideoCard2 />
                     <VideoCard />
@@ -41,24 +51,6 @@ const Video = () => {
                     <VideoCard2 />
                     <VideoCard />
                 </div>
-                {/* <div className="flex w-full justify-between mb-6">
-                    <VideoCard2 />
-                    <VideoCard />
-                    <VideoCard2 />
-                    <VideoCard />
-                </div>
-                <div className="flex w-full justify-between mb-6">
-                    <VideoCard />
-                    <VideoCard2 />
-                    <VideoCard />
-                    <VideoCard2 />
-                </div>
-                <div className="flex w-full justify-between mb-6">
-                    <VideoCard2 />
-                    <VideoCard />
-                    <VideoCard2 />
-                    <VideoCard />
-                </div> */}
             </main>
         </div>
     );
