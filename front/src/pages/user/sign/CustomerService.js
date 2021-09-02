@@ -4,10 +4,10 @@ import { Aside } from '../../../global/Aside';
 
 function CustomerService(props) {
     return (
-        <div className="w-screen h-screen fixed top-8 left-0">
+        <div className="w-screen h-screen fixed top-8 left-0 z-50">
             <form
                 className="w-full max-w-screen-sm rounded justify-center items-center transform -translate-y-1/2
-                    -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2"
+                    -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2 overflow-y-auto"
             >
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-2xl rounded-t-xl font-bold top-0 left-0">
                     聯絡我們

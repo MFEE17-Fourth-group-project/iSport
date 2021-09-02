@@ -16,7 +16,7 @@ function Nav() {
 
     return (
         <>
-            <nav className="App sticky top-0 z-50">
+            <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="flex items-center">
                         <img

@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import CustomerService from '../pages/user/sign/CustomerService';
 
+// 聯絡我們跳窗
 function Aside() {
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
 
@@ -20,6 +21,17 @@ function Aside() {
 
     const handleCancel = () => {
         setCustomerServiceWindow(false);
+    };
+
+    // submenu點擊顯示
+    const [SubmenuShow, setSubmenuShow] = useState(false);
+
+    const handleSubmenuShow = () => {
+        setSubmenuShow(true);
+    };
+
+    const handleSubmenuShowSCancel = () => {
+        setSubmenuShow(false);
     };
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
@@ -43,20 +55,20 @@ function Aside() {
                             會員資料
                         </li>
                     </Link>
-                    <li className="users-li">
+                    <li className="users-li" onClick={handleSubmenuShow}>
                         <FaShoppingCart className="userIcons" />
                         訂單管理
                         <ul className="submenu">
-                            <li className="user-p">
-                                <Link to="user/cart/TradingRecord">
+                            <li className="user-submenu-li">
+                                <Link to="/user/cart/TradingRecord">
                                     購買紀錄
                                 </Link>
                             </li>
-                            <li className="user-p">
-                                <Link to="/cart">購物車</Link>
+                            <li className="user-submenu-li">
+                                <Link to="/user/cart">購物車</Link>
                             </li>
-                            <li className="user-p">
-                                <Link to="user/cart/favourite">我的最愛</Link>
+                            <li className="user-submenu-li">
+                                <Link to="/user/cart/favourite">我的最愛</Link>
                             </li>
                         </ul>
                     </li>
@@ -64,10 +76,10 @@ function Aside() {
                         <FaHeart className="userIcons" />
                         影片收藏
                         <ul className="submenu">
-                            <li className="user-p">
+                            <li className="user-submenu-li">
                                 <Link to="/user/videoCollection">收藏影片</Link>
                             </li>
-                            <li className="user-p">
+                            <li className="user-submenu-li">
                                 <Link to="/user/watchLater">稍後觀看</Link>
                             </li>
                         </ul>
@@ -76,24 +88,24 @@ function Aside() {
                         <FaMoneyCheck className="userIcons" />
                         文章管理
                         <ul className="submenu">
-                            <li className="user-p">
+                            <li className="user-submenu-li">
                                 <Link to="/user/ArticleMyart">我的文章</Link>
                             </li>
-                            <li className="user-p">
+                            <li className="user-submenu-li">
                                 <Link to="/user/ArticleAdd">新增文章</Link>
                             </li>
-                            <li className="user-p">
+                            <li className="user-submenu-li">
                                 <Link to="/user/ArticleCollect">收藏文章</Link>
                             </li>
                         </ul>
                     </li>
-                    <button
+                    <li
                         onClick={handleCustomerService}
-                        className="pl-8 py-2.5 block"
+                        className="users-li cursor-pointer"
                     >
                         <FaComment className="userIcons" />
                         聯絡我們
-                    </button>
+                    </li>
                 </ul>
             </div>
         </aside>

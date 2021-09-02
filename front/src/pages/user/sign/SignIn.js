@@ -11,7 +11,7 @@ function SignIn(props) {
                 <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                     登入
                 </div>
-                <form className="bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
