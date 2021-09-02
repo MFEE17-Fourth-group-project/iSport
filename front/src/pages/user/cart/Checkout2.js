@@ -91,7 +91,7 @@ function Checkout2() {
                                         to="/checkout"
                                         className="btn-yellow-hollow flex flex-row justify-end items-center"
                                     >
-                                        <p className="font-bold text-xl">
+                                        <p className="font-bold sm:text-xl text-lg">
                                             上一步
                                         </p>
                                     </Link>
@@ -101,7 +101,7 @@ function Checkout2() {
                                         to="/finished"
                                         className="btn-yellow flex flex-row justify-end items-center"
                                     >
-                                        <p className="font-bold text-xl">
+                                        <p className="font-bold sm:text-xl text-lg">
                                             下一步
                                         </p>
                                     </Link>
