@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleHeader from '../../images/11.jpeg';
+import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import SuggestVideoCol from '../video/components/SuggestVideoCol';
 import SuggestArtCol from '../video/components/SuggestArtCol';
@@ -17,9 +17,9 @@ const ArticleId = () => {
                     alt=""
                 />
                 <ArticleNav />
-                <main className="max-w-screen-2xl mx-auto p-6 flex">
+                <main className="w-full md:w-8/12 mx-auto p-6 flex">
                     <div className="mx-8">
-                        <div className="mb-8">
+                        <div className="mb-8 md:w-full">
                             <Article />
                         </div>
                         <div>
@@ -55,7 +55,6 @@ const ArticleId = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <Comment />
                             <Comment />
                             <Comment />
@@ -63,9 +62,9 @@ const ArticleId = () => {
                         </div>
                     </div>
 
-                    <div className="mr-8 w-4/12 flex flex-col">
+                    <div className="mr-8 w-4/12 xl:flex xl:flex-col hidden">
                         <div className="mt-6">
-                            <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400">
+                            <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 lg:border-b-0 lg:pb-0">
                                 推薦文章
                             </h3>
                             <SuggestArtCol />
@@ -77,16 +76,6 @@ const ArticleId = () => {
                         <div>
                             <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 mt-8">
                                 推薦影片
-                            </h3>
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                        </div>
-                        <div>
-                            <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 mt-8">
-                                推薦商品
                             </h3>
                             <SuggestVideoCol />
                             <SuggestVideoCol />

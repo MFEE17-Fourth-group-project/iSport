@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleHeader from '../../images/11.jpeg';
+import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import Article from './components/Article';
 import { Link } from 'react-router-dom';
@@ -10,11 +10,11 @@ const ArticleCategory = () => {
             <div>
                 <div className="relative">
                     <img
-                        className="h-112 object-cover w-full z-0"
+                        className="h-112 object-cover w-full z-0  filter brightness-50"
                         src={ArticleHeader}
                         alt=""
                     />
-                    <div className="absolute bottom-40 left-40 z-20">
+                    <div className="absolute bottom-20 z-20 md:mx-10">
                         <h3 className="text-5xl text-white">
                             有氧運動Aerobic exercise
                         </h3>
