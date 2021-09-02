@@ -96,7 +96,7 @@ function Nav() {
                         優質文章
                     </p>
                 </Link>
-                <Link className="flex-1" to="/articles">
+                <Link className="flex-1" to="/gym">
                     <p className="text-white text-opacity-85 hover:text-yellow-400 hover:bg-gray-700 py-4">
                         健身房
                     </p>

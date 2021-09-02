@@ -5,7 +5,7 @@ const ArticleCardLeft = () => {
             <div
                 className="
                 
-                      flex flex-col xl:flex-row
+                      flex flex-col xl:flex-row flex-col-reverse
                       bg-gray-900
                       py-8
                       px-4
