@@ -78,12 +78,16 @@ function Checkout() {
                             </div>
                             <div className="items-center pt-2 mb-6">
                                 <label for="delivery">寄送方式</label>
-                                <input
+                                <select
                                     type="text"
                                     className="input-style"
                                     id="delivery"
-                                    placeholder=""
-                                ></input>
+                                    value=""
+                                >
+                                    <option value="1">郵寄</option>
+                                    <option value="2">宅急便</option>
+                                    <option value="3">超商貨到付款</option>
+                                </select>
                             </div>
                             {/* <div
                                 className="items-center pt-2 mb-6"

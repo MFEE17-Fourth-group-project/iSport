@@ -221,5 +221,5 @@
 
 /* input會員樣式 */
 .input-style {
-    @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400;
+    @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400 mt-1;
 }

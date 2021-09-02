@@ -14,14 +14,16 @@ const VideoSection = () => {
                         隨地觀看，不需擔心固定時間與定點的課程。
                     </p>
                 </div>
-                <div className="flex justify-between">
+                {/* <div className="overflow-x-scroll"> */}
+                <div className="grid grid-cols-3 gap-3">
                     <VideoCard />
                     <VideoCard2 />
                     <VideoCard />
                 </div>
+                {/* </div> */}
                 <div className=""></div>
             </div>
-            <div className="w-1/3 ml-8 mt-7 relative">
+            <div className="w-1/3 ml-8 mt-7 relative hidden xl:block">
                 <img
                     className="w-full rounded-3xl object-cover"
                     src={HomePage8}
