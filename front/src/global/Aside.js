@@ -23,16 +23,6 @@ function Aside() {
         setCustomerServiceWindow(false);
     };
 
-    // submenu點擊顯示
-    const [SubmenuShow, setSubmenuShow] = useState(false);
-
-    const handleSubmenuShow = () => {
-        setSubmenuShow(true);
-    };
-
-    const handleSubmenuShowSCancel = () => {
-        setSubmenuShow(false);
-    };
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
@@ -55,7 +45,7 @@ function Aside() {
                             會員資料
                         </li>
                     </Link>
-                    <li className="users-li" onClick={handleSubmenuShow}>
+                    <li className="users-li">
                         <FaShoppingCart className="userIcons" />
                         訂單管理
                         <ul className="submenu">
