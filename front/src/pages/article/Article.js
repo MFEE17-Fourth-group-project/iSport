@@ -9,7 +9,7 @@ function Article() {
         <>
             <div className="">
                 <img
-                    className="h-112 object-cover w-full"
+                    className="object-cover w-full h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112"
                     src={ArticleHeader}
                     alt=""
                 />
