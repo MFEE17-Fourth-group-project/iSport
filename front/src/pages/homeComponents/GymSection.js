@@ -16,9 +16,9 @@ const GymSection = () => {
     };
 
     return (
-        <div className="flex justify-center w-full">
+        <div className="md:flex md:justify-center w-full">
             {gymWindow && <GymWindow onCancel={handleCancel} />}
-            <div className="relative p-36 object-contain mr-32">
+            <div className="relative p-36 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
                 <Link to="">
                     <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-14 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce" />
@@ -35,9 +35,9 @@ const GymSection = () => {
                     <TiLocation className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-48 left-32 transform -translate-y-1/2 cursor-pointer animate-bounce" />
                 </Link>
             </div>
-            <div className="content-right">
-                <h3 class="text-4xl text-white text-center m-6">健身房</h3>
-                <div className="flex justify-center text-2xl text-white text-center">
+            <div className="">
+                <h3 class="text-4xl text-white text-center my-6">健身房</h3>
+                <div className="flex justify-center text-2xl text-white text-center my-4">
                     <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
                         北
                     </div>
@@ -53,11 +53,7 @@ const GymSection = () => {
                 </div>
                 <Link to="" onClick={handleGymWindow}>
                     <div className="card flex items-center m-2">
-                        <img
-                            className="map-img h-24 px-2"
-                            src={MapImg}
-                            alt=""
-                        />
+                        <img className="h-24 px-2" src={MapImg} alt="" />
                         <div class="text-white">
                             <h5 class="text-2xl">中正運動中心</h5>
                             <p class="">
@@ -72,11 +68,7 @@ const GymSection = () => {
                 </Link>
                 <Link to="" onClick={handleGymWindow}>
                     <div className="card flex items-center m-2">
-                        <img
-                            className="map-img h-24 px-2"
-                            src={MapImg}
-                            alt=""
-                        />
+                        <img className="h-24 px-2" src={MapImg} alt="" />
                         <div class="text-white">
                             <h5 class="text-2xl">中正運動中心</h5>
                             <p class="">
@@ -91,11 +83,7 @@ const GymSection = () => {
                 </Link>
                 <Link to="" onClick={handleGymWindow}>
                     <div className="card flex items-center m-2">
-                        <img
-                            className="map-img h-24 px-2"
-                            src={MapImg}
-                            alt=""
-                        />
+                        <img className="h-24 px-2" src={MapImg} alt="" />
                         <div class="text-white">
                             <h5 class="text-2xl">中正運動中心</h5>
                             <p class="">
@@ -108,13 +96,9 @@ const GymSection = () => {
                         </div>
                     </div>
                 </Link>
-                <Link to="" onClick={handleGymWindow}>
+                <Link to="">
                     <div className="card flex items-center m-2">
-                        <img
-                            className="map-img h-24 px-2"
-                            src={MapImg}
-                            alt=""
-                        />
+                        <img className="h-24 px-2" src={MapImg} alt="" />
                         <div class="text-white">
                             <h5 class="text-2xl">中正運動中心</h5>
                             <p class="">
