@@ -36,8 +36,8 @@ const GymSection = () => {
                 </Link>
             </div>
             <div className="">
-                <h3 class="text-4xl text-white text-center m-6">健身房</h3>
-                <div className="flex justify-center text-2xl text-white text-center m-4">
+                <h3 class="text-4xl text-white text-center my-6">健身房</h3>
+                <div className="flex justify-center text-2xl text-white text-center my-4">
                     <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
                         北
                     </div>
