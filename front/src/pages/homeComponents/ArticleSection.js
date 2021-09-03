@@ -6,9 +6,15 @@ import { Link } from 'react-router-dom';
 const ArticleSection = () => {
     return (
         <div className="relative h-208 w-full">
-            <BsFillCaretLeftFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 transform -translate-y-1/2 cursor-pointer z-10" />
+            <BsFillCaretLeftFill
+                className="text-yellow-400 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 absolute
+                inset-y-1/2 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
+            />
 
-            <BsFillCaretRightFill className="text-yellow-400 w-16 h-16 absolute inset-y-1/2 right-0 transform -translate-y-1/2 cursor-pointer" />
+            <BsFillCaretRightFill
+                className="text-yellow-400 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 absolute
+                inset-y-1/2 right-0 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
+            />
             <div className="text-center py-6 mt-3.5 sm:my-7">
                 <span className="text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400 pb-2.5 sm:pb-3.5">
                     精選文章

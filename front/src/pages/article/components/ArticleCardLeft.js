@@ -18,7 +18,7 @@ const ArticleCardLeft = () => {
                     alt=""
                 />
                 <div className="p-8">
-                    <h3 className="text-4xl text-white">
+                    <h3 className="text-2xl lg:text-3xl xl:text-4xl text-white">
                         重量訓練Weight training
                     </h3>
                     <p className="text-base leading-loose tracking-wide text-white h-full ">
