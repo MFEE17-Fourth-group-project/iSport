@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArticleHeader from '../../images/11.jpeg';
-import MapImg from '../../images/11.jpeg';
 import Gyms from '../../images/map/gym.png';
+import NorthGym from './NorthGym/NorthGym';
+import MidthGym from './MidthGym/MidthGym';
+import SouthGym from './SouthGym/SouthGym';
+import EasthGym from './EasthGym/EasthGym';
 
 function Gym() {
+    let [gym, setGym] = useState(<NorthGym />);
+    const changeNorthGym = () => {
+        setGym(<NorthGym />);
+    };
+    const changeMidthGym = () => {
+        setGym(<MidthGym />);
+    };
+    const changeSouthGym = () => {
+        setGym(<SouthGym />);
+    };
+    const changeEasthGym = () => {
+        setGym(<EasthGym />);
+    };
     return (
         <>
             <div>
@@ -25,64 +41,32 @@ function Gym() {
                 <div className="w-full md:w-1/2 p-4">
                     <h3 class="text-4xl text-white text-center m-6">健身房</h3>
                     <div className="flex justify-center text-2xl text-white text-center">
-                        <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                        <div
+                            className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                            onClick={changeNorthGym}
+                        >
                             北
                         </div>
-                        <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                        <div
+                            className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                            onClick={changeMidthGym}
+                        >
                             中
                         </div>
-                        <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                        <div
+                            className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                            onClick={changeSouthGym}
+                        >
                             南
                         </div>
-                        <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
+                        <div
+                            className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                            onClick={changeEasthGym}
+                        >
                             東
                         </div>
                     </div>
-                    <Link to="">
-                        <div className="flex items-center my-2">
-                            <img className="h-24" src={MapImg} alt="" />
-                            <div class="text-white">
-                                <h5 class="text-2xl">中正運動中心</h5>
-                                <p class="">
-                                    電話: 2581-1060 <br />
-                                    地址: 臺北市中山區中山北路二段44巷2號
-                                    <br />
-                                    網址:https://cssc.cyc.org.tw
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="">
-                        <div className="flex items-center my-2">
-                            <img className="h-24" src={MapImg} alt="" />
-                            <div class="text-white">
-                                <h5 class="text-2xl">中正運動中心</h5>
-                                <p class="">
-                                    電話: 2581-1060 <br />
-                                    地址: 臺北市中山區中山北路二段44巷2號
-                                    <br />
-                                    網址:https://cssc.cyc.org.tw
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="">
-                        <div className="flex items-center my-2">
-                            <img className="h-24" src={MapImg} alt="" />
-                            <div class="text-white">
-                                <h5 class="text-2xl">中正運動中心</h5>
-                                <p class="">
-                                    電話: 2581-1060 <br />
-                                    地址: 臺北市中山區中山北路二段44巷2號
-                                    <br />
-                                    網址:https://cssc.cyc.org.tw
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </Link>
+                    <div>{gym}</div>
                 </div>
             </div>
         </>
