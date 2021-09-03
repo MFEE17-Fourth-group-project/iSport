@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import product from '../../../images/product/1002-3.png';
 import { FaHeart } from 'react-icons/fa';
 
-function ProductCard() {
+function ProductCard(props) {
+    const { productName, price, sale } = props;
     return (
         <>
             <Link to="/product/item">
@@ -17,13 +18,13 @@ function ProductCard() {
                         </div>
                         <img className="w-full" src={product} alt="Mountain" />
                         <div className=" px-4 py-2 sm:px-5 sm:py-3 xl:px-6 xl:py-4 h-36 sm:h-40 flex flex-col justify-between">
-                            <div className="text-base sm:text-lg mb-2 text-yellow-400">
-                                15 分鐘高强度全身肌肉 無需器材又能在家做的運動
+                            <div className=" h-20 text-base md:text-lg　mb-2 text-yellow-400 ">
+                                {productName}
                             </div>
                             <div className="text-sm sm:text-base text-white flex justify-between">
-                                <div>$350</div>
+                                <div>${price}</div>
                                 <div>
-                                    已出售 <span>100</span>
+                                    已出售 <span>{sale}</span>
                                 </div>
                             </div>
                         </div>

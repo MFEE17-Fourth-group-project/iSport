@@ -2,6 +2,8 @@ import React from 'react';
 import ProductNav from './components/ProductNav';
 import ProductFilter from './components/ProductFilter';
 import ProductCard from './components/ProductCard';
+
+import ProductList from './ProductList';
 import productHeader from '../../images/product-header.png';
 import { FaAngleUp } from 'react-icons/fa';
 
@@ -33,9 +35,17 @@ export default function Product() {
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
                 <ProductFilter />
 
-                <section className="my-5 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {/* 卡片 */}
-                    <ProductCard />
+                <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                    {ProductList.map((item) => {
+                        return (
+                            <ProductCard
+                                key={item.id}
+                                productName={item.name}
+                                price={item.price}
+                                sale={item.sale}
+                            />
+                        );
+                    })}
                 </section>
             </main>
         </>
