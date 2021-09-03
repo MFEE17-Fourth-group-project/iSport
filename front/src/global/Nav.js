@@ -17,7 +17,7 @@ function Nav() {
 
     return (
         <>
-            <nav className="App sticky top-0 z-50">
+            <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="w-36 cursor-pointer lg:hidden flex justify-start items-center">
                         <HiMenu className="w-14 h-10 text-white text-opacity-85" />
