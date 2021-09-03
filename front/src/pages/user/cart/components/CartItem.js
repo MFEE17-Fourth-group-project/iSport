@@ -19,18 +19,18 @@ function CartItem(props) {
 
     return (
         <>
-            <div className="sm:p-5 p-1.5 flex flex-row">
+            <div className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row">
                 {/* ========== 商品圖片 ========== */}
-                <div className="sm:w-36 w-1/3 sm:mx-5 mx-0 self-center text-center">
+                <div className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center text-center">
                     <img
                         className="w-full"
                         src={product}
                         alt="good product"
                     ></img>
                 </div>
-                <div className="flex flex-col flex-grow sm:ml-10 ml-4">
+                <div className="flex flex-col flex-grow lg:ml-10 ml-5">
                     <div className="flex flex-row justify-between pb-2.5">
-                        <h3 className="sm:text-xl text-lg  font-bold">
+                        <h3 className="sm:text-xl text-lg font-bold">
                             女款路跑背心
                         </h3>
                         <p className="text-yellow-400 font-bold">$350</p>
@@ -99,11 +99,11 @@ function CartItem(props) {
                         </select> */}
                         {/* <BsCaretDownFill className="mr-2.5" /> */}
                         <div className="flex flex-row">
-                            <div className=" cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
+                            <div className=" cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                                 <FaHeart className="mx-1 sm:mr-2.5" />
                                 <p className="sm:block hidden">移至收藏</p>
                             </div>
-                            <div className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
+                            <div className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                                 <FaTrashAlt className="mx-1 sm:mr-2.5" />
                                 <p className="sm:block hidden">移除商品</p>
                             </div>

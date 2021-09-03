@@ -8,7 +8,7 @@ function Users() {
             <Aside />
 
             <artical className="flex-grow flex-col">
-                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl font-bold">
                     基本資料
                     <span className="text-base text-red-500	">(必填)</span>
                 </div>
