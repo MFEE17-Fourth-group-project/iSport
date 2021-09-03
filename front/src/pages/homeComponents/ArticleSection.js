@@ -20,7 +20,7 @@ const ArticleSection = () => {
                     精選文章
                 </span>
             </div>
-            <p className="text-white text-xl sm:text-2xl text-center w-full px-4">
+            <p className="text-white text-xl sm:text-2xl text-center w-full px-4 hidden md:block">
                 這裡有豐富強大的健身資料庫，提供您健身資訊、營養菜單...
             </p>
             <div className="object-cover filter brightness-100 h-112">
