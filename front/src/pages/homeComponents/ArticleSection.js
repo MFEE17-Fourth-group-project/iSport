@@ -1,6 +1,8 @@
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import Article from '../article/components/Article';
+import { Link } from 'react-router-dom';
+
 const ArticleSection = () => {
     return (
         <div className="relative h-208 w-full">
@@ -17,7 +19,9 @@ const ArticleSection = () => {
             </p>
             <div className="object-cover filter brightness-100 h-112">
                 <div className="mx-auto my-20 h-full overflow-y-auto w-3/4">
-                    <Article />
+                    <Link className="flex-1" to="/articles">
+                        <Article />
+                    </Link>
                 </div>
             </div>
         </div>
