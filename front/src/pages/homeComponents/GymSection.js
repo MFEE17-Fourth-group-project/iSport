@@ -16,7 +16,7 @@ const GymSection = () => {
     };
 
     return (
-        <div className="md:flex md:justify-center w-full">
+        <div className="md:flex md:justify-center w-full mt-12 sm:my-auto">
             {gymWindow && <GymWindow onCancel={handleCancel} />}
             <div className="relative p-36 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
@@ -36,7 +36,8 @@ const GymSection = () => {
                 </Link>
             </div>
             <div className="">
-                <h3 class="text-4xl text-white text-center my-6">健身房</h3>
+                <h3 class="w-max text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400
+                    pb-2.5 sm:pb-3.5 flex mx-auto mb-4 sm:mb-6 lg:mb-8 xl:mb-10">健身房</h3>
                 <div className="flex justify-center text-2xl text-white text-center my-4">
                     <div className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2">
                         北

@@ -9,40 +9,40 @@ const ProductSection = () => {
     return (
         <div className="flex pt-24 pb-8 sm:py-20 md:py-12 lg:py-14 xl:py-16 w-full">
             <div className="w-full md:w-1/3 h-full md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 relative">
-                <Link to="/products">
-                    <img
-                        src={HomePage13}
-                        className="w-full h-80 md:h-full md:rounded-3xl object-cover object-top md:object-center"
-                    />
-                    <div
-                        className="absolute h-80 w-full bg-black bg-opacity-50 bottom-0 md:bottom-16
-                    pt-16 md:pt-8 2xs:px-6 xs:px-12 md:px-6"
+                <img
+                    src={HomePage13}
+                    className="w-full h-80 md:h-full md:rounded-3xl object-cover object-top md:object-center"
+                />
+                <div
+                    className="absolute h-80 w-full bg-black bg-opacity-50 bottom-0 md:bottom-16
+                            pt-16 md:pt-8 2xs:px-6 xs:px-12 md:px-6"
+                >
+                    <h2
+                        className="absolute -top-16 left-1/2 transform -translate-x-1/2 sm:-translate-x-0 sm:static
+                                pb-2.5 sm:pb-0 border-b-2 border-yellow-400 sm:border-0 text-white text-2xl lg:text-3xl xl:text-4xl"
                     >
-                        <h2
-                            className="absolute -top-16 left-1/2 transform -translate-x-1/2 sm:-translate-x-0 sm:static
-                        pb-2.5 sm:pb-0 border-b-2 border-yellow-400 sm:border-0 text-white text-2xl lg:text-3xl xl:text-4xl"
-                        >
-                            多樣商品
+                        多樣商品
                         </h2>
-                        <p
-                            className="text-white text-xl xs:text-2xl md:text-xl lg:text-2xl sm:border-l-4 border-yellow-400
-                        pl-5 lg:pl-7 py-4 lg:py-6 sm:ml-8 lg:ml-10 mt-7 mb-3 flex flex-col items-center sm:block"
-                        >
-                            眾多精選商品，
+                    <p
+                        className="text-white text-xl xs:text-2xl md:text-xl lg:text-2xl sm:border-l-4 border-yellow-400
+                                pl-5 lg:pl-7 py-4 lg:py-6 sm:ml-8 lg:ml-10 mt-7 mb-3 flex flex-col items-center sm:block"
+                    >
+                        眾多精選商品，
                             <span className="pt-1.5">
-                                讓你在健康的道路上加分。
+                            讓你在健康的道路上加分。
                             </span>
-                        </p>
+                    </p>
+                    <Link to="/products">
                         <button
                             className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase
-                    rounded-full outline-none ease-linear transition-all duration-150 block
-                    hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
-                    text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto"
+                                    rounded-full outline-none ease-linear transition-all duration-150 block
+                                    hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
+                                    text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto"
                         >
                             立即選購
                         </button>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
             </div>
             <div className="w-1/3 md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 hidden md:flex flex-col justify-between">
                 <div className="h-1/2 md:mb-5 lg:mb-6 xl:mb-8 rounded-3xl relative cursor-pointer">
