@@ -6,7 +6,7 @@ const VideoSection = () => {
     return (
         <div className="w-full h-124 sm:h-168 sm:grid grid-cols-3 grid-rows-3 overflow-hidden">
             <div className="col-span-full xl:col-span-2 row-span-1">
-                <div className="flex justify-center sm:block mt-7 md:mt-10 xl:ml-24 mx-24">
+                <div className="flex justify-center sm:block mt-7 md:mt-10 xl:ml-24 mx-auto">
                     <h2 className="w-max text-white pb-2.5 sm:pb-0 mb-5 sm:mb-0 sm:text-left
                         text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-0 border-yellow-400">精選影片</h2>
                     <p className="text-white text-lg md:text-xl lg:text-2xl border-l-4 border-yellow-400

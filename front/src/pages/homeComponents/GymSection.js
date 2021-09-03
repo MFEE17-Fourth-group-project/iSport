@@ -33,7 +33,7 @@ function GymSection() {
     };
 
     return (
-        <div className="md:flex md:justify-center w-full mt-12 sm:my-auto">
+        <div className="md:flex md:justify-center w-full mt-7 sm:mx-auto sm:mt-14 lg:mt-16 xl:mt-20">
             {gymWindow && <GymWindow onCancel={handleCancel} />}
             <div className="relative p-36 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
