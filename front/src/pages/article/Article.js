@@ -13,7 +13,9 @@ function Article() {
                     src={ArticleHeader}
                     alt=""
                 />
-                <ArticleNav />
+                <div className="sticky top-0 z-40">
+                    <ArticleNav />
+                </div>
 
                 <main className="bg-gray-800">
                     <article className="w-full md:w-3/4 xs:m-auto">
