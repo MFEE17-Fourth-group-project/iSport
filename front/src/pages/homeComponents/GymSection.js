@@ -71,6 +71,32 @@ function GymSection() {
                 >
                     健身房
                 </h3>
+                <div className="flex justify-center text-2xl text-white text-center md:hidden">
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeNorthGym}
+                    >
+                        北
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeMidthGym}
+                    >
+                        中
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeSouthGym}
+                    >
+                        南
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeEasthGym}
+                    >
+                        東
+                    </div>
+                </div>
                 <div>{gym}</div>
             </div>
         </div>
