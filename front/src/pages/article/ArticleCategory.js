@@ -24,7 +24,9 @@ const ArticleCategory = () => {
                         </h4>
                     </div>
                 </div>
-                <ArticleNav />
+                <div className="sticky top-0 z-40">
+                    <ArticleNav />
+                </div>
                 <main className="max-w-screen-2xl mx-auto p-6">
                     <div className="m-8">
                         <Link to="/ArticleId">

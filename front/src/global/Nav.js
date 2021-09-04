@@ -1,10 +1,11 @@
 import Logo from '../images/biceps.svg';
 import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { HiMenu } from 'react-icons/hi';
+import React, { useState } from 'react';
+// import { HiMenu } from 'react-icons/hi';
+import userHeader from '../images/user/pic04.jpg';
 
-function Nav() {
+function Nav({ toggle }) {
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -19,9 +20,9 @@ function Nav() {
         <>
             <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
-                    <div className="w-36 cursor-pointer lg:hidden flex justify-start items-center">
-                        <HiMenu className="w-14 h-10 text-white text-opacity-85" />
-                    </div>
+                    {/* <div className="w-36 lg:hidden flex justify-start items-center">
+                        <HiMenu className="w-14 h-10 text-white text-opacity-85 cursor-pointer" />
+                    </div> */}
                     <div className="flex items-center">
                         <img
                             src={Logo}
@@ -48,6 +49,16 @@ function Nav() {
                                 收藏商品
                             </p>
                         </Link> */}
+                        <div
+                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
+                            onClick={toggle}
+                        >
+                            <img
+                                src={userHeader}
+                                alt=""
+                                className="w-full h-full object-cover object-center"
+                            />
+                        </div>
                         <button
                             className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}

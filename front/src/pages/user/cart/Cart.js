@@ -9,7 +9,7 @@ function Cart(props) {
 
     return (
         <>
-            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex lg:justify-start sm:justify-center border-red-300">
+            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex lg:justify-start border-red-300">
                 <Aside />
                 <article className="w-full flex-grow flex-col">
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">

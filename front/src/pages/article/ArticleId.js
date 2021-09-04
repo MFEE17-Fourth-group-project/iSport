@@ -16,7 +16,9 @@ const ArticleId = () => {
                     src={ArticleHeader}
                     alt=""
                 />
-                <ArticleNav />
+                <div className="sticky top-0 z-40">
+                    <ArticleNav />
+                </div>
                 <main className="w-full md:w-8/12 mx-auto p-6 flex">
                     <div className="mx-8">
                         <div className="mb-8 md:w-full">

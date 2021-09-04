@@ -10,7 +10,7 @@ const Article = () => {
         <>
             <div className="border-4 border-light-blue-500 border-opacity-100 p-5">
                 <img className="mr-4" src={Person2} alt="" />
-                <h3 class="text-4xl m-2 text-yellow-400">
+                <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
                     防疫必備！自組轟菌懶人包，五種居家訓練器材推薦組合
                 </h3>
                 <div className="m-2 md:flex md:justify-between">
