@@ -35,10 +35,15 @@ function HomeRouter() {
     const [counts, setCounts] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggle = () => {
-        setIsOpen(!isOpen);
+    const showMobileAside = () => {
+        setIsOpen(true);
     };
 
+    const hideMobileAside = () => {
+        setIsOpen(false);
+    };
+
+    // ******************** 手機側欄隨瀏覽器調整隱藏 *****************
     useEffect(() => {
         const hideMenu = () => {
             if (window.innerWidth > 1024) {
@@ -57,8 +62,12 @@ function HomeRouter() {
     return (
         <Router>
             <>
-                <Nav toggle={toggle} />
-                <MobileAside isOpen={isOpen} toggle={toggle} />
+                <Nav showMobileAside={showMobileAside} />
+                <MobileAside
+                    isOpen={isOpen}
+                    showMobileAside={showMobileAside}
+                    hideMobileAside={hideMobileAside}
+                />
                 <Switch>
                     <Route path="/SearchPassword">
                         <SearchPassword />

@@ -12,7 +12,9 @@ import {
     FaSignOutAlt,
 } from 'react-icons/fa';
 
-function MobileAside({ isOpen, toggle }) {
+function MobileAside(props) {
+    const { isOpen, hideMobileAside } = props;
+
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
 
     const handleCustomerService = () => {
@@ -30,7 +32,8 @@ function MobileAside({ isOpen, toggle }) {
                         ? 'lg:block w-64 mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50'
                         : 'hidden'
                 }
-                onClick={toggle}
+                // onClick={showMobileAside}
+                onCancel={handleCancel}
             >
                 {CustomerServiceWindow && (
                     <CustomerService onCancel={handleCancel} />
@@ -46,13 +49,16 @@ function MobileAside({ isOpen, toggle }) {
                     <p className="text-white text-opacity-85 ml-2.5">
                         Hi BB，歡迎回來！
                     </p>
-                    <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
+                    <div
+                        className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center"
+                        onClick={hideMobileAside}
+                    >
                         <FaTimes className="w-6 h-6 text-white" />
                     </div>
                 </div>
                 <div className="h-full aside-menu">
                     <ul className="text-white text-lg ">
-                        <Link to="/user">
+                        <Link to="/user" className="w-full">
                             <li className="users-li">
                                 <FaUserAlt className="userIcons" />
                                 會員資料
@@ -62,16 +68,27 @@ function MobileAside({ isOpen, toggle }) {
                             <FaShoppingCart className="userIcons" />
                             訂單管理
                             <ul className="submenu">
-                                <li className="user-p">
-                                    <Link to="user/cart/TradingRecord">
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/cart/TradingRecord"
+                                        className="w-full block"
+                                    >
                                         購買紀錄
                                     </Link>
                                 </li>
-                                <li className="user-p">
-                                    <Link to="/cart">購物車</Link>
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/cart"
+                                        className="w-full block"
+                                    >
+                                        購物車
+                                    </Link>
                                 </li>
-                                <li className="user-p">
-                                    <Link to="user/cart/favourite">
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/cart/favourite"
+                                        className="w-full block"
+                                    >
                                         我的最愛
                                     </Link>
                                 </li>
@@ -81,13 +98,21 @@ function MobileAside({ isOpen, toggle }) {
                             <FaHeart className="userIcons" />
                             影片收藏
                             <ul className="submenu">
-                                <li className="user-p">
-                                    <Link to="/user/videoCollection">
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/videoCollection"
+                                        className="w-full block"
+                                    >
                                         收藏影片
                                     </Link>
                                 </li>
-                                <li className="user-p">
-                                    <Link to="/user/watchLater">稍後觀看</Link>
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/watchLater"
+                                        className="w-full block"
+                                    >
+                                        稍後觀看
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -95,32 +120,43 @@ function MobileAside({ isOpen, toggle }) {
                             <FaMoneyCheck className="userIcons" />
                             文章管理
                             <ul className="submenu">
-                                <li className="user-p">
-                                    <Link to="/user/ArticleMyart">
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/ArticleMyart"
+                                        className="w-full block"
+                                    >
                                         我的文章
                                     </Link>
                                 </li>
-                                <li className="user-p">
-                                    <Link to="/user/ArticleAdd">新增文章</Link>
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/ArticleAdd"
+                                        className="w-full block"
+                                    >
+                                        新增文章
+                                    </Link>
                                 </li>
-                                <li className="user-p">
-                                    <Link to="/user/ArticleCollect">
+                                <li className="user-submenu-li">
+                                    <Link
+                                        to="/user/ArticleCollect"
+                                        className="w-full block"
+                                    >
                                         收藏文章
                                     </Link>
                                 </li>
                             </ul>
                         </li>
-                        <button
+                        <li
                             onClick={handleCustomerService}
-                            className="pl-8 py-2.5 block"
+                            className="users-li cursor-pointer"
                         >
                             <FaComment className="userIcons" />
                             聯絡我們
-                        </button>
-                        <button className="w-64 pl-8 py-2.5 border-t-2 border-yellow-400 text-left">
+                        </li>
+                        <li className="users-li cursor-pointer border-t-2 border-yellow-400">
                             <FaSignOutAlt className="userIcons" />
                             登出帳號
-                        </button>
+                        </li>
                     </ul>
                 </div>
             </aside>

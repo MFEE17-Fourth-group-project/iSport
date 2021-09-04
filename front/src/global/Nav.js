@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
 
-function Nav({ toggle }) {
+function Nav(props) {
+    const { showMobileAside } = props;
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -51,7 +52,7 @@ function Nav({ toggle }) {
                         </Link> */}
                         <div
                             className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
-                            onClick={toggle}
+                            onClick={showMobileAside}
                         >
                             <img
                                 src={userHeader}
