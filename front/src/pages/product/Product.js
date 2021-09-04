@@ -12,6 +12,12 @@ import { FaAngleUp } from 'react-icons/fa';
 
 export default function Product() {
     console.log(UserLike);
+
+    /**
+     *
+     * @param {string} id 商品的id
+     * @returns {boolean}
+     */
     const isLike = (id) => {
         return UserLike.includes(id);
     };
@@ -44,14 +50,14 @@ export default function Product() {
 
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
                     {ProductList.map((item) => {
-                        let id = item.id;
                         return (
                             <ProductCard
                                 key={item.id}
                                 productName={item.name}
+                                photo={item.photo}
                                 price={item.price}
                                 sale={item.sale}
-                                like={isLike(id)}
+                                like={isLike(item.id)}
                             />
                         );
                     })}
