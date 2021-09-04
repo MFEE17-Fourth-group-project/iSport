@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import ProductNav from './components/ProductNav';
-import ProductFilter from './components/ProductFilter';
-import ProductCard from './components/ProductCard';
-
-import ProductList from './ProductList';
-import UserLike from './UserLike';
+import ProductMain from './components/ProductMain';
 
 import productHeader from '../../images/product-header.png';
 import { FaAngleUp } from 'react-icons/fa';
 
 export default function Product() {
-    console.log(UserLike);
-
-    /**
-     *
-     * @param {string} id 商品的id
-     * @returns {boolean}
-     */
-    const isLike = (id) => {
-        return UserLike.includes(id);
-    };
     return (
         <>
             <div className=" w-8 h-8 xl:w-14 xl:h-14 rounded-full bg-yellow-400 text-gray-900 flex justify-center items-center cursor-pointer fixed right-5 bottom-16 z-50">
@@ -44,25 +30,7 @@ export default function Product() {
                 </figure>
             </header>
             <ProductNav />
-
-            <main className="px-3 max-w-screen-xl my-0 mx-auto">
-                <ProductFilter />
-
-                <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {ProductList.map((item) => {
-                        return (
-                            <ProductCard
-                                key={item.id}
-                                productName={item.name}
-                                photo={item.photo}
-                                price={item.price}
-                                sale={item.sale}
-                                like={isLike(item.id)}
-                            />
-                        );
-                    })}
-                </section>
-            </main>
+            <ProductMain />
         </>
     );
 }
