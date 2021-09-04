@@ -3,10 +3,12 @@ import { SiOpenstreetmap } from 'react-icons/si';
 
 function GymItem(props) {
     const { phone, name, image, address, latitude, longitude } = props;
-    // const LatLng = () => {
-    //     console.log(latitude);
-    //     console.log(longitude);
-    // };
+    const LatLng = () => {
+        let lat = this.data - lng,
+            lng = this.data - lat;
+        console.log(lat);
+        console.log(lng);
+    };
     return (
         <>
             <div className="flex items-center my-2">
@@ -23,9 +25,10 @@ function GymItem(props) {
                     className="text-white"
                     data-lng={latitude}
                     data-lat={longitude}
-                    // onClick={LatLng}
+                    onClick={LatLng}
                 >
-                    <SiOpenstreetmap className="text-5xl" />
+                    {latitude}
+                    {longitude}
                 </button>
             </div>
         </>
