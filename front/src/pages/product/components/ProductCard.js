@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import product from '../../../images/product/1002-3.png';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 function ProductCard(props) {
-    const { productName, price, sale } = props;
+    const { productName, price, sale, like } = props;
+    console.log(like);
     return (
         <>
             <Link to="/product/item">
@@ -14,7 +15,17 @@ function ProductCard(props) {
                             <div className="text-xs sm:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
                                 New
                             </div>
-                            <FaHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer" />
+                            {like ? (
+                                <>
+                                    <FaRegHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer hidden" />
+                                    <FaHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer" />
+                                </>
+                            ) : (
+                                <>
+                                    <FaRegHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer " />
+                                    <FaHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer hidden" />
+                                </>
+                            )}
                         </div>
                         <img className="w-full" src={product} alt="Mountain" />
                         <div className=" px-4 py-2 sm:px-5 sm:py-3 xl:px-6 xl:py-4 h-36 sm:h-40 flex flex-col justify-between">
