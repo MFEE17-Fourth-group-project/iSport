@@ -8,9 +8,9 @@ function GymItem(props) {
             <Link to="">
                 <div className="flex items-center my-2">
                     <img className="h-24" src={image} alt="" />
-                    <div class="text-white">
-                        <h5 class="text-2xl">{name}</h5>
-                        <p class="">
+                    <div className="text-white">
+                        <h5 className="text-2xl">{name}</h5>
+                        <p className="">
                             {phone} <br />
                             {address}
                             <br />

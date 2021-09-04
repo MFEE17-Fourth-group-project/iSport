@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ArticleHeader from '../../images/11.jpeg';
-import Gyms from '../../images/map/gym.png';
+// import Gyms from '../../images/map/gym.png';
 import NorthGym from './NorthGym/NorthGym';
 import MidthGym from './MidthGym/MidthGym';
 import SouthGym from './SouthGym/SouthGym';
 import EasthGym from './EasthGym/EasthGym';
-
+import GymMap from './GymMap';
 function Gym() {
     let [gym, setGym] = useState(<NorthGym />);
     const changeNorthGym = () => {
@@ -21,6 +21,7 @@ function Gym() {
     const changeEasthGym = () => {
         setGym(<EasthGym />);
     };
+
     return (
         <>
             <div>
@@ -32,11 +33,12 @@ function Gym() {
             </div>
             <div className="flex justify-center">
                 <div className="w-1/2 p-4 hidden md:block">
-                    <img
-                        className="object-contain h-full hidden md:block"
-                        src={Gyms}
-                        alt=""
-                    />
+                    <div
+                    // id="mapid"
+                    // style={{ height: '100vh', width: '100vw' }}
+                    // onClick="{myMap}"
+                    ></div>
+                    <GymMap />
                 </div>
                 <div className="w-full md:w-1/2 p-4">
                     <h3 class="text-4xl text-white text-center m-6">健身房</h3>
