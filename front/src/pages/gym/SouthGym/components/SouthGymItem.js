@@ -1,4 +1,6 @@
 import React from 'react';
+import { SiOpenstreetmap } from 'react-icons/si';
+
 function GymItem(props) {
     const { phone, name, image, address, latitude, longitude } = props;
     const LatLng = () => {
