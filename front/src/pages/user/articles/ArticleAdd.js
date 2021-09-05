@@ -8,7 +8,7 @@ function ArticleAdd() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
-            <artical className="flex-grow flex-col">
+            <article className="flex-grow flex-col">
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                     新增文章
                 </div>
@@ -71,9 +71,9 @@ function ArticleAdd() {
                         <div id="toolbar-container"></div>
                         <div id="editor"></div>
                         <Editor
-                            toolbarClassName="toolbarClassName"
-                            wrapperClassName="wrapperClassName"
-                            editorClassName="editorClassName"
+                            toolbarClassName="toolbar"
+                            wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
+                            editorClassName="editor px-5 h-40"
                         />
                         {/* <textarea
                             name="content"
@@ -95,7 +95,7 @@ function ArticleAdd() {
                         </div>
                     </from>
                 </div>
-            </artical>
+            </article>
         </main>
     );
 }

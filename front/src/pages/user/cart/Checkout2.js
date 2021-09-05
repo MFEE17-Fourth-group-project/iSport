@@ -22,52 +22,40 @@ function Checkout2() {
                                 信用卡付款
                             </h3>
                         </div>
-                        <div className="flex justify-center mb-8">
+                        <div className="sm:flex hidden justify-center mb-8">
                             {/* <img src="creditCard" alt=""></img> */}
                             <div className="w-56 h-32 bg-white rounded-lg bg-opacity-90 text-gray-700 text-center flex justify-center items-center">
                                 <p>示意圖</p>
                             </div>
                         </div>
                         <from>
-                            <div
-                                className="flex sm:mb-8 mb-4 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
+                            <div className="flex sm:mb-8 mb-4">
                                 <label className="w-24">信用卡號碼</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style flex-1"
                                 ></input>
                             </div>
-                            <div
-                                className="flex sm:mb-8 mb-4 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                            >
+                            <div className="flex sm:mb-8 mb-4">
                                 <label className="w-24">持卡人姓名</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style flex-1"
                                 ></input>
                             </div>
                             <div className="flex sm:flex-row flex-col mb-8">
-                                <div
-                                    className="flex flex-1 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400 sm:mr-8 sm:mb-0 mb-4"
-                                >
-                                    <label className="w-20">有效期限</label>
+                                <div className="flex flex-1 sm:mr-8 sm:mb-0 mb-4">
+                                    <label className="w-24">有效期限</label>
                                     <input
                                         type="text"
-                                        className="bg-transparent flex-1"
+                                        className="input-style flex-1"
                                     ></input>
                                 </div>
-                                <div
-                                    className="flex flex-1 border-b border-gray-700
-                            pb-2.5 hover:border-yellow-400"
-                                >
+                                <div className="flex flex-1">
                                     <label className="w-20">CVC</label>
                                     <input
                                         type="text"
-                                        className="bg-transparent flex-1"
+                                        className="input-style flex-1"
                                     ></input>
                                 </div>
                             </div>
@@ -76,7 +64,7 @@ function Checkout2() {
                                 <label className="w-20">住家地址</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style flex-1"
                                 ></input>
                             </div>
 
@@ -84,7 +72,7 @@ function Checkout2() {
                                 <label className="w-20">寄送方式</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style flex-1"
                                 ></input>
                             </div>
 
@@ -92,7 +80,7 @@ function Checkout2() {
                                 <label className="w-20">多得多得多的</label>
                                 <input
                                     type="text"
-                                    className="bg-transparent flex-1"
+                                    className="input-style flex-1"
                                 ></input>
                             </div> */}
 
@@ -103,7 +91,7 @@ function Checkout2() {
                                         to="/checkout"
                                         className="btn-yellow-hollow flex flex-row justify-end items-center"
                                     >
-                                        <p className="font-bold text-xl">
+                                        <p className="font-bold sm:text-xl text-lg">
                                             上一步
                                         </p>
                                     </Link>
@@ -113,7 +101,7 @@ function Checkout2() {
                                         to="/finished"
                                         className="btn-yellow flex flex-row justify-end items-center"
                                     >
-                                        <p className="font-bold text-xl">
+                                        <p className="font-bold sm:text-xl text-lg">
                                             下一步
                                         </p>
                                     </Link>

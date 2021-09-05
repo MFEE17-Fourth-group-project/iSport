@@ -9,13 +9,13 @@ function Cart(props) {
 
     return (
         <>
-            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex lg:justify-start sm:justify-center border-red-300">
+            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex lg:justify-start border-red-300">
                 <Aside />
                 <article className="w-full flex-grow flex-col">
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
+                    <div className="text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl">
                         <CartItem
                             count={counts}
                             setCount={(newCount) => {
@@ -45,7 +45,7 @@ function Cart(props) {
                                 setCounts(newCounts);
                             }}
                         />
-                        <div className="pt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
+                        <div className="pt-2.5 mt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>

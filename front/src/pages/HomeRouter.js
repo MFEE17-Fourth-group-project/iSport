@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Articles from './article/Article';
 import Product from './product/Product';
@@ -27,15 +27,38 @@ import CustomerService from './user/sign/CustomerService';
 import SearchPassword from './user/sign/SearchPassword';
 import VideoCollection from './user/videos/VideoCollection';
 import WatchLater from './user/videos/WatchLater';
+import MobileAside from '../global/MobileAside';
 
 //import Aside from '../global/Aside';
 
 function HomeRouter() {
     const [counts, setCounts] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
+    useEffect(() => {
+        const hideMenu = () => {
+            if (window.innerWidth > 1024) {
+                setIsOpen(false);
+                console.log('i resizeeed');
+            }
+        };
+
+        window.addEventListener('resize', hideMenu);
+
+        return () => {
+            window.removeEventListener('resize', hideMenu);
+        };
+    });
+
     return (
         <Router>
             <>
-                <Nav />
+                <Nav toggle={toggle} />
+                <MobileAside isOpen={isOpen} toggle={toggle} />
                 <Switch>
                     <Route path="/SearchPassword">
                         <SearchPassword />

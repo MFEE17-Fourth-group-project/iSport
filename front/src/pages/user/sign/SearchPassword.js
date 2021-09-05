@@ -4,7 +4,7 @@ function SearchPassword() {
     return (
         <div className="w-screen">
             <form className=" max-w-sm rounded justify-center items-center block">
-                <div className=" block w-screen justify-center items-center flex">
+                <div className=" w-screen justify-center items-center flex">
                     <div className="max-w-xl w-full m-10 ">
                         <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-2xl  font-bold rounded-t-xl">
                             忘記密碼

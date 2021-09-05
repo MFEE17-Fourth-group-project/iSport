@@ -6,12 +6,12 @@ function SignIn(props) {
         <div className="w-screen h-screen fixed z-0">
             <div
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
-                -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2"
+                -translate-x-1/2 z-20 absolute top-1/2 left-1/2"
             >
                 <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                     登入
                 </div>
-                <form className="bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
@@ -41,9 +41,9 @@ function SignIn(props) {
                         />
                         <hr className="border-2 border-yellow-400" />
                         <Link to="/SearchPassword">
-                            <a className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1">
+                            <button className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1">
                                 忘記密碼?
-                            </a>
+                            </button>
                         </Link>
                         <div className="flex items-center justify-center">
                             <Link to="/SignUp">
@@ -55,9 +55,9 @@ function SignIn(props) {
                                 </button>
                             </Link>
                             <Link to="/user">
-                                <a className="btn-yellow" type="button">
+                                <button className="btn-yellow" type="button">
                                     登入
-                                </a>
+                                </button>
                             </Link>
                         </div>
                     </div>

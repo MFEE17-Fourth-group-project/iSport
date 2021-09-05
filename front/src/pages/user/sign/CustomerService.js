@@ -4,12 +4,12 @@ import { Aside } from '../../../global/Aside';
 
 function CustomerService(props) {
     return (
-        <div className="w-screen h-screen fixed">
+        <div className="w-screen h-screen fixed top-8 xl:left-0 z-50">
             <form
                 className="w-full max-w-screen-sm rounded justify-center items-center transform -translate-y-1/2
-                    -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2"
+                    -translate-x-1/2 z-20 absolute top-1/2 left-1/2 overflow-y-auto"
             >
-                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-2xl rounded-t-xl font-bold">
+                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-2xl rounded-t-xl font-bold top-0 left-0">
                     聯絡我們
                 </div>
                 <div className="bg-gray-500 py-5 px-3 text-white text-opacity-85 text-base  font-bold ">
@@ -38,7 +38,7 @@ function CustomerService(props) {
                     />
                     <hr className="border-1 border-yellow-400 mb-5" />
                     <label htmlFor="type">種類：</label>
-                    <div className="ml-12 justify-between flex text-base mb-5">
+                    <div className="xs:ml-12 xs:justify-between flex text-base mb-5">
                         <div>
                             <input
                                 type="radio"
@@ -90,7 +90,7 @@ function CustomerService(props) {
                     </label>
                     <div className="flex justify-center">
                         <textarea
-                            className="block bg-transparent  border border-yellow-400 mb-5 focus:outline-none"
+                            className="block bg-transparent  border border-yellow-400 mb-5 focus:outline-none xs:max-h-full max-h-32"
                             name="memo"
                             placeholder="請輸入您的內容"
                             cols="70"

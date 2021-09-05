@@ -181,27 +181,27 @@
 }
 
 /* 會員表單的li樣式 */
-.user-p {
-    @apply pl-8 py-2.5 block;
+.user-submenu-li {
+    @apply pl-8 py-2 block ml-7  border-l border-yellow-400;
 }
 .users-li {
     @apply pl-8 py-2.5 block;
 }
 /* 會員表單的li hover */
 .users-li:hover {
-    @apply block bg-gray-700 border-l-4 border-yellow-400 text-yellow-400 transition-all;
+    @apply block bg-gray-700  text-yellow-400;
 }
 
 /* 會員表單的副欄樣式 */
 .submenu {
-    @apply bg-opacity-0 opacity-0 max-h-0 duration-700 transition hidden;
+    @apply bg-opacity-0;
 }
 /* 會員表單的副欄hover */
 .users-li:hover .submenu {
     @apply block opacity-100 max-h-full text-white;
 }
 .users-li:hover .submenu li:hover {
-    @apply bg-gray-700 block border-r-2 border-yellow-400  text-yellow-400 transition;
+    @apply bg-gray-900 block border-r-2 border-yellow-400  text-yellow-400 transition;
 }
 /* 會員表單react icons樣式 */
 .userIcons {
@@ -221,5 +221,19 @@
 
 /* input會員樣式 */
 .input-style {
-    @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400;
+    @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400 mt-1;
 }
+
+/* 側欄點擊功能 */
+/* section {
+    @apply hidden;
+}
+#ordermenu:checked ~ section {
+    @apply block;
+}
+#videomenu:checked ~ section {
+    @apply block;
+}
+#articlemenu:checked ~ section {
+    @apply block;
+} */

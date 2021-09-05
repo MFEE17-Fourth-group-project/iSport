@@ -77,7 +77,7 @@ const BannerSection = () => {
                         key={index}
                     >
                         {index === current && (
-                            <img src={image.imageSource} className="h-full w-full object-cover" />
+                            <img src={image.imageSource} className="h-208 w-full object-cover" />
                         )}
                     </div>
                 );
