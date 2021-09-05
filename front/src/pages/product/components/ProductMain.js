@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+//component import
 import ProductFilter from './ProductFilter';
 import ProductCard from './ProductCard';
 
+//fake data
 import ProductList from '../data/ProductList';
 import UserLike from '../data/UserLike';
 
-function ProductMain() {
-    // console.log(UserLike);
-
+function ProductMain(props) {
     /**
      *
      * @param {string} id 商品的id
@@ -28,6 +28,7 @@ function ProductMain() {
                                 key={item.id}
                                 productName={item.name}
                                 category={item.category}
+                                brand={item.brand}
                                 photo={item.photo}
                                 price={item.price}
                                 sale={item.sale}
