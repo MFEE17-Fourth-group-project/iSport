@@ -43,6 +43,9 @@ function HomeRouter() {
         setIsOpen(false);
     };
 
+    // 手機版側欄開啟關閉設定
+    const [open, setOpen] = useState(false);
+
     // ******************** 手機側欄隨瀏覽器調整隱藏 *****************
     useEffect(() => {
         const hideMenu = () => {
@@ -62,11 +65,16 @@ function HomeRouter() {
     return (
         <Router>
             <>
-                <Nav showMobileAside={showMobileAside} />
+                <Nav
+                    // showMobileAside={showMobileAside}
+                    open={open}
+                    setOpen={setOpen}
+                />
                 <MobileAside
                     isOpen={isOpen}
-                    showMobileAside={showMobileAside}
-                    hideMobileAside={hideMobileAside}
+                    open={open}
+                    // showMobileAside={showMobileAside}
+                    // hideMobileAside={hideMobileAside}
                 />
                 <Switch>
                     <Route path="/SearchPassword">

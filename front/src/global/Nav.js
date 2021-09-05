@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import userHeader from '../images/user/pic04.jpg';
 
 function Nav(props) {
-    const { showMobileAside } = props;
+    const { showMobileAside, open, setOpen } = props;
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -15,6 +15,11 @@ function Nav(props) {
 
     const handleCancel = () => {
         setSignInWindow(false);
+    };
+
+    // 手機版側欄開關
+    const openMobile = (e) => {
+        setOpen(e.target.checked);
     };
 
     return (
@@ -50,7 +55,14 @@ function Nav(props) {
                                 收藏商品
                             </p>
                         </Link> */}
-                        <div
+                        <input
+                            type="checkbox"
+                            checked={open}
+                            id="nav-toggle"
+                            onChange={openMobile}
+                        />
+                        <label
+                            for="nav-toggle"
                             className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
                             onClick={showMobileAside}
                         >
@@ -59,7 +71,7 @@ function Nav(props) {
                                 alt=""
                                 className="w-full h-full object-cover object-center"
                             />
-                        </div>
+                        </label>
                         <button
                             className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}
