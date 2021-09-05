@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaAngleUp, FaFilter, FaSearch, FaMinus } from 'react-icons/fa';
 
-function ProductFilter() {
-    const [filter, setFilter] = useState(false);
-    const testRef = useRef(null);
+function ProductFilter(props) {
+    const { setSearch, doSearch, search } = props;
 
+    const testRef = useRef(null);
     const handleClick = () => {
-        filter ? setFilter(false) : setFilter(true);
-        console.log(filter);
+        // filter ? setFilter(false) : setFilter(true);
+        // console.log(filter);
         const test = testRef.current;
         console.log(test.classList);
         test.classList.toggle('max-h-52');
@@ -31,10 +31,19 @@ function ProductFilter() {
                 </div>
                 <div className="mb-2 w-full sm:w-1/3 bg-gray-700 rounded-full flex items-center px-4 py-2">
                     <input
+                        onChange={(e) => {
+                            // console.log(e.target.value);
+                            setSearch(e.target.value);
+                            // console.log(search);
+                        }}
+                        value={search}
                         className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white "
                         placeholder="關鍵字..."
                     />
-                    <FaSearch className="text-white text-xl cursor-pointer" />
+                    <FaSearch
+                        onClick={doSearch}
+                        className="text-white text-xl cursor-pointer"
+                    />
                 </div>
             </div>
 

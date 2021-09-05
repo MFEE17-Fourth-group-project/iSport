@@ -5,10 +5,22 @@ import ProductFilter from './ProductFilter';
 import ProductCard from './ProductCard';
 
 //fake data
-import ProductList from '../data/ProductList';
-import UserLike from '../data/UserLike';
+import ProductList from '../../data/ProductList';
+import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
+    const [search, setSearch] = useState('');
+    let handelData = ProductList;
+    console.log(handelData);
+    const doSearch = () => {
+        let handelData = [];
+        handelData = ProductList.filter((item) => {
+            return item.name.indexOf(search) !== -1;
+        });
+        console.log(handelData);
+        console.log(search);
+    };
+
     /**
      *
      * @param {string} id 商品的id
@@ -20,9 +32,13 @@ function ProductMain(props) {
     return (
         <>
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
-                <ProductFilter />
+                <ProductFilter
+                    setSearch={setSearch}
+                    search={search}
+                    doSearch={doSearch}
+                />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {ProductList.map((item) => {
+                    {handelData.map((item) => {
                         return (
                             <ProductCard
                                 key={item.id}
