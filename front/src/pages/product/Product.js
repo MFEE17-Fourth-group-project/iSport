@@ -63,7 +63,7 @@ function Product(props) {
                 </figure>
             </header>
             <ProductNav url={url} setUrl={setUrl} />
-            <ProductMain />
+            <ProductMain url={url} />
         </>
     );
 }

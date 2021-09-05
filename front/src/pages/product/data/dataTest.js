@@ -21,13 +21,13 @@ const product = [
         category: 'equipment',
         smTitle: '健身運具',
         bigTitle: '多樣實用運動相關商品等您來挑選',
-        photo: 'product-header.png',
+        photo: 'equipment.jpg',
     },
     {
         category: 'food',
         smTitle: '吃的',
         bigTitle: '多樣實用運動相關商品等您來挑選',
-        photo: 'product-header.png',
+        photo: 'food.jpg',
     },
 ];
 

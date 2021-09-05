@@ -21,13 +21,13 @@ function ProductMain() {
         <>
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
                 <ProductFilter />
-
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
                     {ProductList.map((item) => {
                         return (
                             <ProductCard
                                 key={item.id}
                                 productName={item.name}
+                                category={item.category}
                                 photo={item.photo}
                                 price={item.price}
                                 sale={item.sale}
