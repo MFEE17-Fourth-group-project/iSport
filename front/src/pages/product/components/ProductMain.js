@@ -7,7 +7,7 @@ import ProductList from '../data/ProductList';
 import UserLike from '../data/UserLike';
 
 function ProductMain() {
-    console.log(UserLike);
+    // console.log(UserLike);
 
     /**
      *

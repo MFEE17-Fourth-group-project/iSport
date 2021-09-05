@@ -76,7 +76,10 @@ function HomeRouter() {
                     <Route path="/user/ArticleAdd">
                         <ArticleAdd />
                     </Route>
-                    <Route path="/products">
+                    {/* <Route path="/ProductCategory">
+                        <ProductCategory />
+                    </Route> */}
+                    <Route path="/products/:category?">
                         <Product />
                     </Route>
                     <Route path="/user" exact>

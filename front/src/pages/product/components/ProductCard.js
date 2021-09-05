@@ -5,7 +5,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 function ProductCard(props) {
     const { productName, price, sale, photo, like } = props;
     const productPhotoUrl = require('../../../images/product/' + photo);
-    console.log(productPhotoUrl);
+    // console.log(productPhotoUrl);
     return (
         <>
             <div>
