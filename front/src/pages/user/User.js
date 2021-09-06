@@ -52,6 +52,7 @@ function Users() {
                                     type="password"
                                     className="input-style lg:items-center  border-b"
                                     name="password"
+                                    placeholder="更換密碼時請輸入新密碼"
                                 />
                             </div>
                         </div>
@@ -73,11 +74,11 @@ function Users() {
                                 name="phone"
                             />
                         </div>
-                        <div className="mt-5 mb-5">
-                            <label for="address">住家地址</label>
+                        <div className="mt-5 mb-5 xs:text-base text-sm">
+                            <label for="address">住家地址：</label>
                             <input
                                 type="text"
-                                className="input-style "
+                                className="input-style overflow-x-auto"
                                 placeholder="台北市中山區羅斯福路9段201巷5弄20號3樓"
                                 name="address"
                             />
