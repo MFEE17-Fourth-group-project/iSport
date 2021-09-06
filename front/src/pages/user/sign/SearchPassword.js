@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SearchPassword() {
     return (
@@ -35,7 +36,11 @@ function SearchPassword() {
                             />
                             <hr className="border-2 border-yellow-400 mb-5" />
                             <div className="flex justify-center ">
-                                <button className="btn-green mr-5">返回</button>
+                                <Link to="/">
+                                    <button className="btn-green mr-5">
+                                        返回
+                                    </button>
+                                </Link>
                                 <button className="btn-yellow">送出</button>
                             </div>
                         </div>

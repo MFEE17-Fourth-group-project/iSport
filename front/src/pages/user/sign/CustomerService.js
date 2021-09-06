@@ -105,7 +105,11 @@ function CustomerService(props) {
                         >
                             返回
                         </button>
-                        <button className="btn-yellow" type="submit">
+                        <button
+                            className="btn-yellow"
+                            type="submit"
+                            onClick={props.onCancel}
+                        >
                             送出
                         </button>
                     </div>

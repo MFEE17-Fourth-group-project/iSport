@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from 'react';
 
 function SignUp() {
+    // 控制密碼顯示隱藏
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <artical className="flex-grow flex-col">
@@ -34,14 +41,20 @@ function SignUp() {
                                     required
                                 />
                             </div>
-                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5">
+                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5 relative">
                                 <label for="password">密碼：</label>
                                 <input
-                                    type="password"
+                                    type={passwordShown ? 'text' : 'password'}
                                     placeholder="請輸入6-8位英數密碼"
-                                    className="input-style"
+                                    className="input-style relative"
                                     name="password"
                                 />
+                                <i
+                                    onClick={togglePasswordVisiblity}
+                                    className="eyesposition"
+                                >
+                                    <FaEye className="userIcons hover:text-green-400" />
+                                </i>
                             </div>
                         </div>
                         <div className="py-2 mb-5">
