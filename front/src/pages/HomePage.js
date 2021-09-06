@@ -25,12 +25,12 @@ const HomePage = () => {
             </section>
 
             {/* Article Section */}
-            <section className="h-208 flex bg-gray-800">
+            <section className="max-h-full flex bg-gray-800">
                 <ArticleSection />
             </section>
 
             {/* Gym Section */}
-            <section className="h-208 flex bg-gray-900">
+            <section className="max-h-full flex bg-gray-900">
                 <GymSection />
             </section>
         </div>
