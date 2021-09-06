@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
+import MobileAside from './MobileAside';
 
 function Nav(props) {
-    const { showMobileAside, open, setOpen } = props;
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -17,18 +17,11 @@ function Nav(props) {
         setSignInWindow(false);
     };
 
-    // 手機版側欄開關
-    const openMobile = (e) => {
-        setOpen(e.target.checked);
-    };
 
     return (
         <>
             <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
-                    {/* <div className="w-36 lg:hidden flex justify-start items-center">
-                        <HiMenu className="w-14 h-10 text-white text-opacity-85 cursor-pointer" />
-                    </div> */}
                     <div className="flex items-center">
                         <img
                             src={Logo}
@@ -44,27 +37,11 @@ function Nav(props) {
                         </Link>
                     </div>
 
-                    <div className="flex items-center ">
-                        {/* <Link to="/user/cart/TradingRecord">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
-                                購買紀錄
-                            </p>
-                        </Link>
-                        <Link to="/user/cart/favourite">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
-                                收藏商品
-                            </p>
-                        </Link> */}
-                        <input
-                            type="checkbox"
-                            checked={open}
-                            id="nav-toggle"
-                            onChange={openMobile}
-                        />
+                    <div className="flex items-center">
+                        <input type="checkbox" id="nav-toggle" />
                         <label
                             for="nav-toggle"
                             className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
-                            onClick={showMobileAside}
                         >
                             <img
                                 src={userHeader}
@@ -72,6 +49,7 @@ function Nav(props) {
                                 className="w-full h-full object-cover object-center"
                             />
                         </label>
+                        <MobileAside />
                         <button
                             className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}

@@ -33,49 +33,12 @@ import MobileAside from '../global/MobileAside';
 
 function HomeRouter() {
     const [counts, setCounts] = useState(1);
-    const [isOpen, setIsOpen] = useState(false);
-
-    const showMobileAside = () => {
-        setIsOpen(true);
-    };
-
-    const hideMobileAside = () => {
-        setIsOpen(false);
-    };
-
-    // 手機版側欄開啟關閉設定
-    const [open, setOpen] = useState(false);
-
-    // ******************** 手機側欄隨瀏覽器調整隱藏 *****************
-    useEffect(() => {
-        const hideMenu = () => {
-            if (window.innerWidth > 1024) {
-                setIsOpen(false);
-                console.log('i resizeeed');
-            }
-        };
-
-        window.addEventListener('resize', hideMenu);
-
-        return () => {
-            window.removeEventListener('resize', hideMenu);
-        };
-    });
 
     return (
         <Router>
             <>
-                <Nav
-                    // showMobileAside={showMobileAside}
-                    open={open}
-                    setOpen={setOpen}
-                />
-                <MobileAside
-                    isOpen={isOpen}
-                    open={open}
-                    // showMobileAside={showMobileAside}
-                    // hideMobileAside={hideMobileAside}
-                />
+                <Nav />
+                <MobileAside />
                 <Switch>
                     <Route path="/SearchPassword">
                         <SearchPassword />

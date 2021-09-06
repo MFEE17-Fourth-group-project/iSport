@@ -13,8 +13,6 @@ import {
 } from 'react-icons/fa';
 
 function MobileAside(props) {
-    const { isOpen, hideMobileAside } = props;
-
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
 
     const handleCustomerService = () => {
@@ -26,14 +24,7 @@ function MobileAside(props) {
     };
     return (
         <>
-            <aside
-                // className={
-                //     isOpen
-                //         ? 'lg:block w-64 mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show'
-                //         : 'hidden'
-                // }
-                className="lg:block w-64 mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show"
-            >
+            <aside className="lg:hidden w-64 mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show">
                 {CustomerServiceWindow && (
                     <CustomerService onCancel={handleCancel} />
                 )}
@@ -48,10 +39,7 @@ function MobileAside(props) {
                     <p className="text-white text-opacity-85 ml-2.5">
                         Hi BB，歡迎回來！
                     </p>
-                    <div
-                        className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center"
-                        onClick={hideMobileAside}
-                    >
+                    <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
                         <FaTimes className="w-6 h-6 text-white" />
                     </div>
                 </div>

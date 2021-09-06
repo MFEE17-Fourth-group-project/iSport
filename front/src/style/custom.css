@@ -22,12 +22,12 @@ body {
 }
 /* 讓 checkbox 的框消失 */
 #nav-toggle {
-    /* visibility: hidden;
-    opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
 }
 
 /* 當 checkbox 被 check 時讓 Nav 選單出現，並把寬度設為 100%，因此 Nav 選單會有種展開的感覺 */
 #nav-toggle:checked ~ .nav-show {
     opacity: 1;
-    width: 100%;
+    width: 256px;
 }
