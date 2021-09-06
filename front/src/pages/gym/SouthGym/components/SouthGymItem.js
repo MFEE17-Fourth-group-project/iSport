@@ -27,7 +27,9 @@ function GymItem(props) {
                     data-lat={longitude}
                     onClick={LatLng}
                 >
+                    <SiOpenstreetmap className="text-5xl" />
                     {latitude}
+                    <br />
                     {longitude}
                 </button>
             </div>
