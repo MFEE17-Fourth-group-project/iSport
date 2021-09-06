@@ -20,13 +20,13 @@ module.exports = {
         },
         screens: {
             '2xs': '360px',
-            'xs': '480px',
+            xs: '480px',
             sm: '640px',
             md: '768px',
             lg: '1024px',
             xl: '1280px',
             '2xl': '1440px',
-            '3xl': '1800px'
+            '3xl': '1800px',
         },
         colors: {
             transparent: 'transparent',
@@ -558,6 +558,7 @@ module.exports = {
         }),
         maxHeight: (theme) => ({
             ...theme('spacing'),
+            500: '500px',
             full: '100%',
             screen: '100vh',
         }),

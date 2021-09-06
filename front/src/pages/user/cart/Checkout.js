@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import CheckItem from './components/CheckItem';
@@ -6,11 +6,14 @@ import ProgressBar from './components/ProgressBar';
 import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
 
 function Checkout() {
-    const [showCheckItem, setShowCartItem] = useState(false);
 
-    function showItem() {
-        setShowCartItem(true);
-    }
+    // TRY ANIMATE TRANSITION and DURATION
+    const showCheckItemRef = useRef(null);
+    const showItem = () => {
+        const showCheckItem = showCheckItemRef.current;
+        console.log('showCheckItem', showCheckItem);
+        showCheckItem.classList.toggle('max-h-500');
+    };
     return (
         <>
             <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -19,20 +22,24 @@ function Checkout() {
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
                     </div>
-                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 mb-2.5 transition-all duration-1000">
-                        {/* facebook - overflow hidden */}
+                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 mb-2.5">
                         <div>
                             <ProgressBar />
                         </div>
-                        <CheckItem />
-                        {showCheckItem && <CheckItem />}
-                        {showCheckItem && <CheckItem />}
+                        <div
+                            ref={showCheckItemRef}
+                            className="max-h-44 overflow-hidden transition-all duration-500"
+                        >
+                            <CheckItem />
+                            <CheckItem />
+                            <CheckItem />
+                        </div>
                         <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
                         <div
-                            className="flex justify-center animate-bounce py-1"
+                            className="flex justify-center animate-bounce py-1 cursor-pointer"
                             onClick={showItem}
                         >
                             <HiChevronDoubleDown className="text-2xl text-yellow-400" />
