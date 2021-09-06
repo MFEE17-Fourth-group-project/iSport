@@ -24,7 +24,7 @@ function MobileAside(props) {
     };
     return (
         <>
-            <aside className="lg:hidden w-64 mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show">
+            <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show">
                 {CustomerServiceWindow && (
                     <CustomerService onCancel={handleCancel} />
                 )}
@@ -147,14 +147,11 @@ function MobileAside(props) {
                     </ul>
                 </div>
             </aside>
-            {/* <div
+            <div
                 className={
-                    isOpen
-                        ? 'bg-black bg-opacity-50 w-screen h-screen z-40 absolute top-0 left-0'
-                        : 'hidden'
+                    'lg:hidden bg-black bg-opacity-50 z-40 absolute top-0 left-0 black-mask'
                 }
-                onCancel={handleCancel}
-            ></div> */}
+            ></div>
         </>
     );
 }

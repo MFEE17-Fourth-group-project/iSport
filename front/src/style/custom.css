@@ -14,7 +14,7 @@ body {
     overflow: auto;
 }
 
-/* Nav 選單，先設定成透明度 0，寬度為 0 */
+/* Aside 選單，先設定成透明度 0，寬度為 0 */
 .nav-show {
     opacity: 0;
     width: 0;
@@ -26,8 +26,21 @@ body {
     opacity: 0;
 }
 
-/* 當 checkbox 被 check 時讓 Nav 選單出現，並把寬度設為 100%，因此 Nav 選單會有種展開的感覺 */
+/* 當 checkbox 被 check 時讓 Aside 選單出現，並把寬度設為 100%，因此 Nav 選單會有種展開的感覺 */
 #nav-toggle:checked ~ .nav-show {
     opacity: 1;
     width: 256px;
+}
+
+/* Aside的黑色遮罩，先設定成透明度 0，寬度為 0 */
+.black-mask {
+    opacity: 0;
+    width: 0;
+}
+
+/* 當 checkbox 被 check 時讓 Aside的黑色遮罩出現，並把寬度設為 100%，因此 Nav 選單會有種展開的感覺 */
+#nav-toggle:checked ~ .black-mask {
+    opacity: 1;
+    width: 100%;
+    height: 100vh;
 }
