@@ -1,25 +1,13 @@
 import React from 'react';
-import product from '../../../images/product/1002-3.png';
-import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
-
-import {
-    FaComment,
-    FaMoneyCheck,
-    FaShoppingCart,
-    FaUserAlt,
-    FaAngleUp,
-    FaFilter,
-    FaSearch,
-    FaMinus,
-    FaHeart,
-} from 'react-icons/fa';
+import OrderRecord from './components/OrderRecord';
+import { FaSearch } from 'react-icons/fa';
 
 function TradingRecord() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
-            <artical className="flex-grow flex-col rounded-lg overflow-hidden text-white text-opacity-85 shadow-2xl ">
+            <article className="flex-grow flex-col rounded-lg overflow-hidden text-white text-opacity-85 shadow-2xl ">
                 <div className="bg-gray-700 pl-5 py-5 user-page-title font-bold">
                     購買紀錄
                 </div>
@@ -52,256 +40,15 @@ function TradingRecord() {
                     />
                     <FaSearch className=" text-xl" />
                 </div>
-                <section className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10 ">
+                <section className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg lg:px-10 px-4 py-6">
                     {/* 購買紀錄卡片 */}
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="mb-8  p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">
-                        <figure className="mr-4 w-32 h-32 overflow-hidden rounded-lg">
-                            <img
-                                src={product}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </figure>
-                        <div className="text-sm py-2  flex-grow grid grid-flow-col grid-cols-3 grid-rows-4 gap-y-px">
-                            <p>
-                                訂單編號：<span>123456789</span>
-                            </p>
-                            <p>
-                                商品名稱：<span>居家健身組</span>
-                            </p>
-                            <p>
-                                商品價格：<span>250元</span>
-                            </p>
-                            <p>
-                                購買數量：<span>1</span>
-                            </p>
-                            <p>
-                                商品顏色：<span>紅色</span>
-                            </p>
-                            <p>
-                                商品尺寸：<span>無</span>
-                            </p>
-                            <p>
-                                付款方式：<span>信用卡</span>
-                            </p>
-                            <p>
-                                運送方式：<span>宅配</span>
-                            </p>
-                            <p>
-                                購買時間：<span>2021-08-08</span>
-                            </p>
-                            <p>
-                                送達時間：<span>2021-08-09</span>
-                            </p>
-                        </div>
-                    </div>
+                    <OrderRecord />
+                    <OrderRecord />
+                    <OrderRecord />
+                    <OrderRecord />
+                    <OrderRecord />
                 </section>
-            </artical>
+            </article>
         </main>
     );
 }

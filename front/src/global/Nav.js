@@ -17,7 +17,6 @@ function Nav(props) {
         setSignInWindow(false);
     };
 
-
     return (
         <>
             <nav className="App sticky top-0 z-40">
@@ -31,7 +30,7 @@ function Nav(props) {
                         />
                         <Link
                             to="/"
-                            className="text-3xl text-white text-opacity-70 mx-4"
+                            className="sm:text-3xl text-2xl text-white text-opacity-70 sm:mx-4 mx-2"
                         >
                             iSport!
                         </Link>
@@ -41,7 +40,7 @@ function Nav(props) {
                         <input type="checkbox" id="nav-toggle" />
                         <label
                             for="nav-toggle"
-                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
+                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2"
                         >
                             <img
                                 src={userHeader}
@@ -51,7 +50,7 @@ function Nav(props) {
                         </label>
                         <MobileAside />
                         <button
-                            className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
+                            className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}
                         >
                             登入
@@ -79,7 +78,7 @@ function Nav(props) {
                         </Link>
                         <Link
                             to="/user/cart"
-                            className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
+                            className="text-white text-opacity-85 sm:mx-4 mx-0 hover:text-yellow-400"
                         >
                             購物車
                         </Link>

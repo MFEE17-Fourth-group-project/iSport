@@ -38,7 +38,6 @@ function HomeRouter() {
         <Router>
             <>
                 <Nav />
-                <MobileAside />
                 <Switch>
                     <Route path="/SearchPassword">
                         <SearchPassword />
