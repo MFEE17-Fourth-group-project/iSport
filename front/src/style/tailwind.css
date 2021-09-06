@@ -225,7 +225,7 @@
 }
 
 /* 側欄點擊功能 */
-section {
+.hidden-section {
     @apply hidden;
 }
 #ordermenu:checked ~ section {
@@ -236,4 +236,11 @@ section {
 }
 #articlemenu:checked ~ section {
     @apply block;
+}
+.eyesposition {
+    @apply absolute flex -translate-y-5 transform right-3 cursor-pointer;
+}
+/* 變更user-avatar樣式 */
+.avatar-change {
+    @apply hover:bg-gray-700;
 }
