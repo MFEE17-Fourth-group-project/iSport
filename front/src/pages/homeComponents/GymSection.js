@@ -33,9 +33,9 @@ function GymSection() {
     };
 
     return (
-        <div className="md:flex md:justify-center w-full mt-12 sm:my-auto">
+        <div className="md:flex md:justify-center w-full mt-7 mb-10 sm:mx-auto sm:mt-14 lg:mt-16 xl:mt-20">
             {gymWindow && <GymWindow onCancel={handleCancel} />}
-            <div className="relative p-36 object-contain mr-32 hidden md:block">
+            <div className="relative p-32 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
                 <Link to="">
                     <TiLocation
@@ -71,6 +71,32 @@ function GymSection() {
                 >
                     健身房
                 </h3>
+                <div className="flex justify-center text-2xl text-white text-center md:hidden">
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeNorthGym}
+                    >
+                        北
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeMidthGym}
+                    >
+                        中
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeSouthGym}
+                    >
+                        南
+                    </div>
+                    <div
+                        className="w-1/4 bg-gray-700 hover:bg-gray-800 py-2"
+                        onClick={changeEasthGym}
+                    >
+                        東
+                    </div>
+                </div>
                 <div>{gym}</div>
             </div>
         </div>

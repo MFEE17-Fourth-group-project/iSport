@@ -4,7 +4,7 @@ import { Aside } from '../../../global/Aside';
 
 function CustomerService(props) {
     return (
-        <div className="w-screen h-screen fixed top-8 left-0 z-50">
+        <div className="w-screen h-screen fixed top-8 xl:left-0 z-50">
             <form
                 className="w-full max-w-screen-sm rounded justify-center items-center transform -translate-y-1/2
                     -translate-x-1/2 z-20 absolute top-1/2 left-1/2 overflow-y-auto"
@@ -38,7 +38,7 @@ function CustomerService(props) {
                     />
                     <hr className="border-1 border-yellow-400 mb-5" />
                     <label htmlFor="type">種類：</label>
-                    <div className="ml-12 justify-between flex text-base mb-5">
+                    <div className="xs:ml-12 xs:justify-between flex text-base mb-5">
                         <div>
                             <input
                                 type="radio"
@@ -90,7 +90,7 @@ function CustomerService(props) {
                     </label>
                     <div className="flex justify-center">
                         <textarea
-                            className="block bg-transparent  border border-yellow-400 mb-5 focus:outline-none"
+                            className="block bg-transparent  border border-yellow-400 mb-5 focus:outline-none xs:max-h-full max-h-32"
                             name="memo"
                             placeholder="請輸入您的內容"
                             cols="70"
@@ -105,7 +105,11 @@ function CustomerService(props) {
                         >
                             返回
                         </button>
-                        <button className="btn-yellow" type="submit">
+                        <button
+                            className="btn-yellow"
+                            type="submit"
+                            onClick={props.onCancel}
+                        >
                             送出
                         </button>
                     </div>

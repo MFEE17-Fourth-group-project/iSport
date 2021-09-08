@@ -223,3 +223,24 @@
 .input-style {
     @apply appearance-none bg-transparent w-full text-white mr-3 py-1 px-2 leading-tight border-b border-gray-700 focus:outline-none focus:border-yellow-400 mt-1;
 }
+
+/* 側欄點擊功能 */
+.hidden-section {
+    @apply hidden;
+}
+#ordermenu:checked ~ section {
+    @apply block;
+}
+#videomenu:checked ~ section {
+    @apply block;
+}
+#articlemenu:checked ~ section {
+    @apply block;
+}
+.eyesposition {
+    @apply absolute flex -translate-y-5 transform right-3 cursor-pointer;
+}
+/* 變更user-avatar樣式 */
+.avatar-change {
+    @apply hover:bg-gray-700;
+}

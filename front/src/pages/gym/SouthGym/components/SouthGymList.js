@@ -13,6 +13,8 @@ function GymList(props) {
                     name={gym.name}
                     image={gym.image}
                     address={gym.address}
+                    latitude={gym.latitude}
+                    longitude={gym.longitude}
                 />
             ))}
         </div>
