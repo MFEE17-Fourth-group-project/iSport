@@ -1,20 +1,14 @@
 import React from 'react';
-// import userHeader from '../../images/user/pic04.jpg';
-// import { FaUserAlt } from 'react-icons/fa';
-// import { FaShoppingCart } from 'react-icons/fa';
-// import { FaHeart } from 'react-icons/fa';
-// import { FaMoneyCheck } from 'react-icons/fa';
-// import { FaComment } from 'react-icons/fa';
-import Aside from '../../global/Aside.js';
+import UserAside from './components/UserAside';
 
 function Users() {
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
-            <Aside />
+            <UserAside />
 
             <artical className="flex-grow flex-col">
                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85  rounded-t-xl user-page-title">
-                    基本資料
+                    會員資料
                     <span className="text-base text-red-500	">(必填)</span>
                 </div>
                 <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
@@ -52,6 +46,7 @@ function Users() {
                                     type="password"
                                     className="input-style lg:items-center  border-b"
                                     name="password"
+                                    placeholder="更換密碼時請輸入新密碼"
                                 />
                             </div>
                         </div>
@@ -73,11 +68,11 @@ function Users() {
                                 name="phone"
                             />
                         </div>
-                        <div className="mt-5 mb-5">
-                            <label for="address">住家地址</label>
+                        <div className="mt-5 mb-5 xs:text-base text-sm">
+                            <label for="address">住家地址：</label>
                             <input
                                 type="text"
-                                className="input-style "
+                                className="input-style overflow-x-auto"
                                 placeholder="台北市中山區羅斯福路9段201巷5弄20號3樓"
                                 name="address"
                             />
