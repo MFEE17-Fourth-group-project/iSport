@@ -1,20 +1,36 @@
 import React from 'react';
 // 要導入資鏈結還沒導入
-// 要增加axios moduls還沒加
-// import axios from 'axios';
+
+import axios from 'axios';
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
 
 function SignIn(props) {
+    // 控制取得帳號密碼值
+    const [account, setAccount] = useState('');
+    const [password, setPassword] = useState('');
+
+    //控制handleSumbit
+    // const handleSubmit = async (e) => {
+    //     e.prevenntDefault();
+    //     let result = await axios.post(`${API_URL}/Signin`, {
+    //         account,
+    //         password,
+    //     });
+    //     console.log(result);
+    // };
+
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
     };
     return (
-        <div className="w-screen h-screen fixed z-0">
+        <form
+            className="w-screen h-screen fixed z-0" /*onSubmit={handleSubmit}*/
+        >
             <div
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
                 -translate-x-1/2 z-20 absolute top-1/2 left-1/2"
@@ -39,6 +55,10 @@ function SignIn(props) {
                             id="account"
                             type="text"
                             placeholder="請輸入帳號"
+                            value={account}
+                            onChange={(e) => {
+                                setAccount(e.target.value);
+                            }}
                         />
                         <hr className="border-2 border-yellow-400" />
                     </div>
@@ -52,8 +72,13 @@ function SignIn(props) {
                         <input
                             className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none relative"
                             placeholder="請輸入密碼"
+                            id="password"
                             name="password"
                             type={passwordShown ? 'text' : 'password'}
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
                         />
                         <i
                             onClick={togglePasswordVisiblity}
@@ -97,7 +122,7 @@ function SignIn(props) {
                 className="bg-black bg-opacity-50 w-screen h-screen fixed z-10"
                 onClick={props.onCancel}
             ></div>
-        </div>
+        </form>
     );
 }
 export default SignIn;
