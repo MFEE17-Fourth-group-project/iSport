@@ -13,7 +13,7 @@ function ArticleAdd() {
                     新增文章
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                    <from>
+                    <from action="/create-item" method="POST">
                         <label className="">作者：</label>
                         <span className="text-base text-red-500 mx-4">
                             必填

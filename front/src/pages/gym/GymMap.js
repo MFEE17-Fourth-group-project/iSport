@@ -1,17 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import L from '../../../node_modules/leaflet';
 
 class GymMap extends Component {
+    // 給一個預設的中心點
+    //   const [lat, setLat] = useState()
+    //   const [lng, setLng] = useState()
+
+    //   useEffect(() => {
+    //     console.log(lat)
+    //   }, [lat])
+
+    //   useEffect(() => {
+    //     console.log(lng)
+    //   }, [lng])
+
+    static defaultProps = {
+        lat: 25.0259029,
+        lng: 121.5703875,
+    };
+    //static指的是這函式不屬於以這個class被宣告出來的單一物件
     //地圖
-    constructor() {
-        //初始化
-        super();
+    constructor(props) {
+        super(props);
         this.mapid = null;
+        let { latitude, longitude } = props;
+        this.state = {
+            lat: { latitude },
+            lng: { longitude },
+        };
     }
+    // ChangeLatLng() {
+    //     //加入changePercent函式
+    //     this.setState({
+    //         lat: 23.0259029,
+    //         lng: 121.5703875,
+    //     });
+    // }
     //建立組件
     componentDidMount() {
-        const mymap = L.map('mapid').setView([24.9970214, 121.5574843], 13);
+        const mymap = L.map('mapid').setView(
+            [this.props.lat, this.props.lng],
+            13
+        );
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -26,16 +57,33 @@ class GymMap extends Component {
             popupAnchor: [1, -34],
             shadowSize: [41, 41],
         });
-
-        const marker = L.marker([24.9970214, 121.5574843], {
+        const marker = L.marker([this.props.lat, this.props.lng], {
             icon: greenIcon,
         }).addTo(mymap);
         marker.bindPopup('<b>健身房在這!</b>').openPopup();
     }
+    //重新渲染
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(
+    //         'componentDidUpdate',
+    //         prevProps.lat,
+    //         this.props.lat,
+    //         prevProps.lng,
+    //         this.props.lng
+    //     );
+    // if (prevProps.google !== this.props.google) {
+    //     this.loadMap()
+    //   }
+
+    //   if (prevProps.lat !== this.props.lat || prevProps.lng !== this.props.lng) {
+    //     this.recenterMap()
+    //   }
+    // }
 
     render() {
         return (
             <>
+                <h2>{this.props.pData}</h2>
                 <div id="mapid" style={{ height: '100%', width: '100%' }} />
             </>
         );

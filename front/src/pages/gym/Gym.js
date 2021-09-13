@@ -21,7 +21,6 @@ function Gym() {
     const changeEasthGym = () => {
         setGym(<EasthGym />);
     };
-
     return (
         <>
             <div>
