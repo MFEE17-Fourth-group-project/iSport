@@ -40,7 +40,10 @@ function MobileAside(props) {
                         Hi BB，歡迎回來！
                     </p>
                     <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
-                        <FaTimes className="w-6 h-6 text-white" />
+                        <FaTimes
+                            className="w-6 h-6 text-white"
+                            // onClick={props.onCancel} 沒有作用？
+                        />
                     </div>
                 </div>
                 <div className="h-full aside-menu">

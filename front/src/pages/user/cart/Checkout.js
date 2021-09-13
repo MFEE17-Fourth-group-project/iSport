@@ -15,6 +15,12 @@ function Checkout() {
         {
             id: 2,
         },
+        {
+            id: 3,
+        },
+        {
+            id: 4,
+        },
     ];
     console.log(cartHeight * cartList.length);
 
@@ -22,7 +28,7 @@ function Checkout() {
     const showItem = () => {
         const showCheckItem = showCheckItemRef.current;
         console.log('showCheckItem', showCheckItem);
-        // showCheckItem.classList.toggle('max-h-500');
+        showCheckItem.classList.toggle('max-h-500');
     };
     return (
         <>
