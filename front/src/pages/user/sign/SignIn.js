@@ -1,63 +1,93 @@
 import React from 'react';
-import SignUp from './SignUp';
+// 要導入資鏈結還沒導入
+// 要增加axios moduls還沒加
+// import axios from 'axios';
+
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
+
 function SignIn(props) {
+    // 控制密碼顯示隱藏
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
     return (
         <div className="w-screen h-screen fixed z-0">
             <div
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
-                -translate-x-1/2 absolute z-20 absolute top-1/2 left-1/2"
+                -translate-x-1/2 z-20 absolute top-1/2 left-1/2"
             >
-                <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
+                <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold relative">
                     登入
+                    <FaTimesCircle
+                        className="userIcons absolute flex right-0 cursor-pointer"
+                        onClick={props.onCancel}
+                    />
                 </div>
-                <form className="bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <form className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
                             htmlFor="account"
                         >
-                            請輸入帳號：
+                            帳號：
                         </label>
                         <input
                             className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                             id="account"
                             type="text"
+                            placeholder="請輸入帳號"
                         />
                         <hr className="border-2 border-yellow-400" />
                     </div>
                     <div className="mb-6">
                         <label
-                            className="block text-white text-base font-bold mb-2"
+                            className="block text-white text-base font-bold mb-2 "
                             htmlFor="password"
                         >
-                            請輸入密碼：
+                            密碼：
                         </label>
                         <input
-                            className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
-                            id="password"
-                            type="password"
-                            placeholder="******************"
+                            className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none relative"
+                            placeholder="請輸入密碼"
+                            name="password"
+                            type={passwordShown ? 'text' : 'password'}
                         />
+                        <i
+                            onClick={togglePasswordVisiblity}
+                            className="eyesposition"
+                        >
+                            <FaEye className="userIcons hover:text-green-400" />
+                        </i>
                         <hr className="border-2 border-yellow-400" />
                         <Link to="/SearchPassword">
-                            <a className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1">
+                            <button
+                                className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1"
+                                onClick={props.onCancel}
+                            >
                                 忘記密碼?
-                            </a>
+                            </button>
                         </Link>
                         <div className="flex items-center justify-center">
                             <Link to="/SignUp">
                                 <button
                                     className="btn-green mr-10"
                                     type="button"
+                                    onClick={props.onCancel}
                                 >
                                     註冊
                                 </button>
                             </Link>
                             <Link to="/user">
-                                <a className="btn-yellow" type="button">
+                                <button
+                                    className="btn-yellow"
+                                    type="button"
+                                    onClick={props.onCancel}
+                                >
                                     登入
-                                </a>
+                                </button>
                             </Link>
                         </div>
                     </div>

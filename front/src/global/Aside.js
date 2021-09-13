@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import CustomerService from '../pages/user/sign/CustomerService';
 
+// 聯絡我們跳窗
 function Aside() {
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
 
@@ -22,7 +23,7 @@ function Aside() {
         setCustomerServiceWindow(false);
     };
     return (
-        <aside className="sm:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+        <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
@@ -45,55 +46,90 @@ function Aside() {
                     </Link>
                     <li className="users-li">
                         <FaShoppingCart className="userIcons" />
-                        訂單管理
-                        <ul className="submenu">
-                            <li className="user-li">
-                                <Link to="user/cart/TradingRecord">
-                                    購買紀錄
-                                </Link>
-                            </li>
-                            <li className="user-li">
-                                <Link to="/cart">購物車</Link>
-                            </li>
-                            <li className="user-li">
-                                <Link to="user/cart/favourite">我的最愛</Link>
-                            </li>
-                        </ul>
+                        <label for="ordermenu" className="cursor-pointer">
+                            訂單管理
+                        </label>
+                        <input
+                            type="checkbox"
+                            id="ordermenu"
+                            className="hidden"
+                        />
+                        <section className="hidden-section">
+                            <ul className="submenu">
+                                <li className="user-submenu-li">
+                                    <Link to="/user/cart/TradingRecord">
+                                        購買紀錄
+                                    </Link>
+                                </li>
+                                <li className="user-submenu-li">
+                                    <Link to="/user/cart">購物車</Link>
+                                </li>
+                                <li className="user-submenu-li">
+                                    <Link to="/user/cart/favourite">
+                                        我的最愛
+                                    </Link>
+                                </li>
+                            </ul>
+                        </section>
                     </li>
                     <li className="users-li">
                         <FaHeart className="userIcons" />
-                        影片收藏
-                        <ul className="submenu">
-                            <li className="user-li">
-                                <Link to="/user/videoCollection">收藏影片</Link>
-                            </li>
-                            <li className="user-li">
-                                <Link to="/user/watchLater">稍後觀看</Link>
-                            </li>
-                        </ul>
+                        <label for="videomenu" className="cursor-pointer">
+                            影片收藏
+                        </label>
+                        <input
+                            type="checkbox"
+                            id="videomenu"
+                            className="hidden"
+                        />
+                        <section className="hidden-section">
+                            <ul className="submenu">
+                                <li className="user-submenu-li">
+                                    <Link to="/user/videoCollection">
+                                        收藏影片
+                                    </Link>
+                                </li>
+                                <li className="user-submenu-li">
+                                    <Link to="/user/watchLater">稍後觀看</Link>
+                                </li>
+                            </ul>
+                        </section>
                     </li>
-                    <li className="users-li">
+                    <li className="users-li ">
                         <FaMoneyCheck className="userIcons" />
-                        文章管理
-                        <ul className="submenu">
-                            <li className="user-li">
-                                <Link to="/user/ArticleMyart">我的文章</Link>
-                            </li>
-                            <li className="user-li">
-                                <Link to="/user/ArticleAdd">新增文章</Link>
-                            </li>
-                            <li className="user-li">
-                                <Link to="/user/ArticleCollect">收藏文章</Link>
-                            </li>
-                        </ul>
+                        <label for="articlemenu" className="cursor-pointer">
+                            文章管理
+                        </label>
+                        <input
+                            id="articlemenu"
+                            type="checkbox"
+                            className="hidden"
+                        />
+                        <section className="hidden-section">
+                            <ul className="submenu">
+                                <li className="user-submenu-li ">
+                                    <Link to="/user/ArticleMyart">
+                                        我的文章
+                                    </Link>
+                                </li>
+                                <li className="user-submenu-li">
+                                    <Link to="/user/ArticleAdd">新增文章</Link>
+                                </li>
+                                <li className="user-submenu-li">
+                                    <Link to="/user/ArticleCollect">
+                                        收藏文章
+                                    </Link>
+                                </li>
+                            </ul>
+                        </section>
                     </li>
-                    <button
+                    <li
                         onClick={handleCustomerService}
-                        className="pl-8 py-2.5 block"
+                        className="users-li cursor-pointer"
                     >
                         <FaComment className="userIcons" />
                         聯絡我們
-                    </button>
+                    </li>
                 </ul>
             </div>
         </aside>

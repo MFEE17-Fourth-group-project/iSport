@@ -4,71 +4,106 @@ import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import ArticleCardRight from './components/ArticleCardRight';
 import ArticleCardLeft from './components/ArticleCardLeft';
-function Article() {
-    return (
-        <>
-            <div className="">
-                <img
-                    className="h-112 object-cover w-full"
-                    src={ArticleHeader}
-                    alt=""
-                />
-                <ArticleNav />
+import AOS from 'aos';
+import '../../../node_modules/aos/dist/aos.css';
+class Article extends React.Component {
+    constructor() {
+        super();
+    }
 
-                <main className="bg-gray-800">
-                    <article className="">
-                        {/* <div className="w-1/4 h-60"></div> */}
-                        <Link
-                            to="/ArticleCategory"
-                            className="flex justify-end mt-4 w-3/4 m-auto"
-                        >
-                            <ArticleCardRight />
-                        </Link>
-                    </article>
+    componentDidMount() {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-back',
+            delay: 100,
+        });
+    }
+    render() {
+        return (
+            <>
+                <div className="">
+                    <img
+                        className="object-cover w-full h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112"
+                        src={ArticleHeader}
+                        alt=""
+                    />
+                    <div className="sticky top-0 z-40">
+                        <ArticleNav />
+                    </div>
 
-                    <article className="">
-                        <Link
-                            to="/ArticleCategory"
-                            className="flex justify-start mt-4 w-3/4 m-auto"
-                        >
-                            <ArticleCardLeft />
-                        </Link>
-                        {/* <div className="w-1/4 h-60"></div> */}
-                    </article>
+                    <main className="bg-gray-800" id="trigger-left">
+                        <article className="w-full md:w-3/4 xs:m-auto">
+                            {/* <div className="w-1/4 h-60"></div> */}
+                            <Link
+                                to="/ArticleCategory"
+                                className="flex justify-center lg:justify-end mt-4"
+                                data-aos="fade-left"
+                                data-aos-anchor="#trigger-left"
+                                data-aos-anchor-placement="top-center"
+                            >
+                                <ArticleCardRight />
+                            </Link>
+                        </article>
 
-                    <article className="">
-                        {/* <div className="w-1/4 h-60"></div> */}
-                        <Link
-                            to="/ArticleCategory"
-                            className="flex justify-end mt-4 w-3/4 m-auto"
+                        <article
+                            className="w-full md:w-3/4 m-auto"
+                            id="trigger-right"
                         >
-                            <ArticleCardRight />
-                        </Link>
-                    </article>
+                            <Link
+                                to="/ArticleCategory"
+                                className="flex justify-center lg:justify-start mt-4"
+                                data-aos="fade-right"
+                                data-aos-anchor="#trigger-right"
+                                data-aos-anchor-placement="top-center"
+                            >
+                                <ArticleCardLeft />
+                            </Link>
+                            {/* <div className="w-1/4 h-60"></div> */}
+                        </article>
 
-                    <article className="">
-                        <Link
-                            to="/ArticleCategory"
-                            className="flex justify-start mt-4 w-3/4 m-auto"
+                        <article
+                            className="w-full md:w-3/4 m-auto"
+                            data-aos="fade-left"
                         >
-                            <ArticleCardLeft />
-                        </Link>
-                        {/* <div className="w-1/4 h-60"></div> */}
-                    </article>
+                            {/* <div className="w-1/4 h-60"></div> */}
+                            <Link
+                                to="/ArticleCategory"
+                                className="flex justify-center lg:justify-end mt-4"
+                            >
+                                <ArticleCardRight />
+                            </Link>
+                        </article>
 
-                    <article className="">
-                        {/* <div className="w-1/4 h-60"></div> */}
-                        <Link
-                            to="/ArticleCategory"
-                            className="flex justify-end mt-4 w-3/4 m-auto mb-4"
+                        <article
+                            className="w-full md:w-3/4 m-auto"
+                            data-aos="fade-right"
                         >
-                            <ArticleCardRight />
-                        </Link>
-                    </article>
-                </main>
-            </div>
-        </>
-    );
+                            <Link
+                                to="/ArticleCategory"
+                                className="flex justify-center lg:justify-start mt-4"
+                            >
+                                <ArticleCardLeft />
+                            </Link>
+                            {/* <div className="w-1/4 h-60"></div> */}
+                        </article>
+
+                        <article
+                            className="w-full md:w-3/4 m-auto"
+                            data-aos="fade-left"
+                        >
+                            {/* <div className="w-1/4 h-60"></div> */}
+                            <Link
+                                to="/ArticleCategory"
+                                className="flex justify-center lg:justify-end mt-4  mb-4"
+                            >
+                                <ArticleCardRight />
+                            </Link>
+                        </article>
+                    </main>
+                </div>
+            </>
+        );
+    }
 }
 
 export default Article;

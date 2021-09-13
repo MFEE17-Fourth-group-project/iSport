@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleHeader from '../../images/11.jpeg';
+import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import Article from './components/Article';
 import { Link } from 'react-router-dom';
@@ -10,21 +10,23 @@ const ArticleCategory = () => {
             <div>
                 <div className="relative">
                     <img
-                        className="h-112 object-cover w-full z-0"
+                        className="object-cover w-full h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112 z-0  filter brightness-50"
                         src={ArticleHeader}
                         alt=""
                     />
-                    <div className="absolute bottom-40 left-40 z-20">
-                        <h3 className="text-5xl text-white">
+                    <div className="absolute bottom-0 md:bottom-20 z-20 md:mx-10">
+                        <h3 className="text-2xl md:text-5xl text-white">
                             有氧運動Aerobic exercise
                         </h3>
-                        <h4 className="text-2xl leading-loose text-white">
+                        <h4 className="text-1xl md:text-2xl leading-loose text-white">
                             心跳率在60～80%，運動起來會喘，但不至於喘到說不出話，可以維持一段時間的運動
                             常見的有跑步、騎自行車、騎飛輪、游泳、韻律健身操等等
                         </h4>
                     </div>
                 </div>
-                <ArticleNav />
+                <div className="sticky top-0 z-40">
+                    <ArticleNav />
+                </div>
                 <main className="max-w-screen-2xl mx-auto p-6">
                     <div className="m-8">
                         <Link to="/ArticleId">

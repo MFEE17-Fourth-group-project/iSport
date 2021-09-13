@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SearchPassword() {
     return (
         <div className="w-screen">
             <form className=" max-w-sm rounded justify-center items-center block">
-                <div className=" block w-screen justify-center items-center flex">
+                <div className=" w-screen justify-center items-center flex">
                     <div className="max-w-xl w-full m-10 ">
                         <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-2xl  font-bold rounded-t-xl">
                             忘記密碼
@@ -35,7 +36,11 @@ function SearchPassword() {
                             />
                             <hr className="border-2 border-yellow-400 mb-5" />
                             <div className="flex justify-center ">
-                                <button className="btn-green mr-5">返回</button>
+                                <Link to="/">
+                                    <button className="btn-green mr-5">
+                                        返回
+                                    </button>
+                                </Link>
                                 <button className="btn-yellow">送出</button>
                             </div>
                         </div>

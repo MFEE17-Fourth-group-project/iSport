@@ -3,24 +3,26 @@ import { FaClock } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
 import { FaShare } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { FaEye } from 'react-icons/fa';
 const Article = () => {
     return (
         <>
             <div className="border-4 border-light-blue-500 border-opacity-100 p-5">
                 <img className="mr-4" src={Person2} alt="" />
-                <h3 class="text-4xl m-2 text-yellow-400">
+                <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
                     防疫必備！自組轟菌懶人包，五種居家訓練器材推薦組合
                 </h3>
-                <div className="m-2 flex justify-between">
+                <div className="m-2 md:flex md:justify-between">
                     <div className="flex items-center">
-                        <h4 className="text-sm text-white mr-4">作者：泰勒</h4>
+                        <BsFillPersonFill className="text-yellow-400 mr-1 cursor-pointer" />
+                        <h4 className="text-sm text-white mr-4">泰勒</h4>
                         <FaClock className="text-yellow-400 mr-1" />
-                        <span className="text-xs text-white">2021/06/22</span>
+                        <h4 className="text-xs text-white mr-4">2021/06/22</h4>
+                        <FaEye className="text-yellow-400 mr-1" />
+                        <h4 className="text-sm text-white mr-4">16,157</h4>
                     </div>
                     <div className="flex items-center">
-                        <h4 className="text-sm text-white mr-4">
-                            觀看次數：116,157次
-                        </h4>
                         <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer" />
                         <span className="text-xs text-white mr-4">2844</span>
                         <FaShare className="text-yellow-400 mr-1 cursor-pointer" />

@@ -27,7 +27,7 @@ function Checkout() {
                         <CheckItem />
                         {showCheckItem && <CheckItem />}
                         {showCheckItem && <CheckItem />}
-                        <div className="pt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
+                        <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
                             <span className="text-lg font-bold">1400</span>
                         </div>
@@ -38,7 +38,7 @@ function Checkout() {
                             <HiChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
                     </div>
-                    <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10 rounded-b-xl">
+                    <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
                         <from>
                             <div className="items-center pt-2 mb-6">
                                 <label for="recipient">收件人</label>
@@ -78,12 +78,16 @@ function Checkout() {
                             </div>
                             <div className="items-center pt-2 mb-6">
                                 <label for="delivery">寄送方式</label>
-                                <input
+                                <select
                                     type="text"
                                     className="input-style"
                                     id="delivery"
-                                    placeholder=""
-                                ></input>
+                                    value=""
+                                >
+                                    <option value="1">郵寄</option>
+                                    <option value="2">宅急便</option>
+                                    <option value="3">超商貨到付款</option>
+                                </select>
                             </div>
                             {/* <div
                                 className="items-center pt-2 mb-6"
@@ -102,7 +106,9 @@ function Checkout() {
                                     to="/checkout2"
                                     className="btn-yellow flex flex-row justify-end items-center"
                                 >
-                                    <p className="font-bold text-xl">下一步</p>
+                                    <p className="font-bold sm:text-xl text-lg">
+                                        下一步
+                                    </p>
                                 </Link>
                             </button>
                         </div>
