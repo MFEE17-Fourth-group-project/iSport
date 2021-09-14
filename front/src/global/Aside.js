@@ -54,7 +54,7 @@ function Aside() {
                             id="ordermenu"
                             className="hidden"
                         />
-                        <section>
+                        <section className="hidden-section">
                             <ul className="submenu">
                                 <li className="user-submenu-li">
                                     <Link to="/user/cart/TradingRecord">
@@ -82,7 +82,7 @@ function Aside() {
                             id="videomenu"
                             className="hidden"
                         />
-                        <section>
+                        <section className="hidden-section">
                             <ul className="submenu">
                                 <li className="user-submenu-li">
                                     <Link to="/user/videoCollection">
@@ -105,7 +105,7 @@ function Aside() {
                             type="checkbox"
                             className="hidden"
                         />
-                        <section>
+                        <section className="hidden-section">
                             <ul className="submenu">
                                 <li className="user-submenu-li ">
                                     <Link to="/user/ArticleMyart">
