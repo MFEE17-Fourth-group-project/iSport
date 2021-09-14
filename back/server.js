@@ -17,7 +17,7 @@ let productsRouter = require("./routers/products");
 
 app.use(
     cors({
-        origin: [process.env.Route_ORIGIN],
+        origin: [process.env.PORT_ORIGIN],
         credentials: true,
     })
 );

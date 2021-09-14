@@ -70,7 +70,7 @@ function Nav({ toggle }) {
                                 精選影片
                             </p>
                         </Link>
-                        <Link to="/products">
+                        <Link to="/products/allProduct">
                             <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 多樣商品
                             </p>
@@ -102,7 +102,7 @@ function Nav({ toggle }) {
                         精選影片
                     </p>
                 </Link>
-                <Link className="flex-1" to="/products">
+                <Link className="flex-1" to="/products/allProduct">
                     <p className="text-white text-opacity-85 hover:text-yellow-400 hover:bg-gray-700 py-4">
                         多樣商品
                     </p>

@@ -20,13 +20,13 @@ module.exports = {
         },
         screens: {
             '2xs': '360px',
-            'xs': '480px',
+            xs: '480px',
             sm: '640px',
             md: '768px',
             lg: '1024px',
             xl: '1280px',
             '2xl': '1440px',
-            '3xl': '1800px'
+            '3xl': '1800px',
         },
         colors: {
             transparent: 'transparent',
@@ -775,10 +775,11 @@ module.exports = {
             all: 'all',
             DEFAULT:
                 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
-            colors: 'background-color, border-color, color, fill, stroke',
+            colors: 'background-color, border-color, color, fill, stroke, height',
             opacity: 'opacity',
             shadow: 'box-shadow',
             transform: 'transform',
+            height: 'height',
         },
         transitionTimingFunction: {
             DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
