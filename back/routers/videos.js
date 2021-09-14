@@ -12,11 +12,16 @@ router.route('/')
             let result = await connection.queryAsync('SELECT * FROM video_file WHERE valid=1 ORDER BY views DESC');
             res.json(result);
         } else {
-            res.json({ message: 'Not Found' });
+            let result = await connection.queryAsync('SELECT * FROM video_file WHERE valid=1 ORDER BY views DESC');
+            res.json(result);
         }
-
     });
 
-router.get('/');
+router.route('/:id')
+    .get(async (req, res, next) => {
+        let videoId = req.params.id;
+        let result = await connection.queryAsync('');
+    });
+
 
 module.exports = router;
