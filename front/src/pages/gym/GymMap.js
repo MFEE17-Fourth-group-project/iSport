@@ -3,18 +3,6 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 import L from '../../../node_modules/leaflet';
 
 class GymMap extends Component {
-    // 給一個預設的中心點
-    //   const [lat, setLat] = useState()
-    //   const [lng, setLng] = useState()
-
-    //   useEffect(() => {
-    //     console.log(lat)
-    //   }, [lat])
-
-    //   useEffect(() => {
-    //     console.log(lng)
-    //   }, [lng])
-
     static defaultProps = {
         lat: 25.0259029,
         lng: 121.5703875,
@@ -24,19 +12,12 @@ class GymMap extends Component {
     constructor(props) {
         super(props);
         this.mapid = null;
-        let { latitude, longitude } = props;
-        this.state = {
-            lat: { latitude },
-            lng: { longitude },
-        };
+        // let { latitude, longitude } = props;
+        // this.state = {
+        //     lat: { latitude },
+        //     lng: { longitude },
+        // };
     }
-    // ChangeLatLng() {
-    //     //加入changePercent函式
-    //     this.setState({
-    //         lat: 23.0259029,
-    //         lng: 121.5703875,
-    //     });
-    // }
     //建立組件
     componentDidMount() {
         const mymap = L.map('mapid').setView(

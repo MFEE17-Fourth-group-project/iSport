@@ -3,8 +3,7 @@ import GymItem from './SouthGymItem';
 // import GymMap from '../../GymMap';
 function GymList(props) {
     const { Gyms } = props;
-    // 專門給子女B設定資料回來的callback
-    const [pData2, setPData2] = useState('');
+    const { pData2, setPData2 } = props;
     return (
         <div className="col-md-8 cart">
             {Gyms.map((gym, index) => (

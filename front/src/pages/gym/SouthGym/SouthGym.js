@@ -37,7 +37,8 @@ const SouthGyms = [
 ];
 function SouthGym(props) {
     // 專門給子女B設定資料回來的callback
-    const [pData2, setPData2] = useState('');
+    // const [pData2, setPData2] = useState('');
+    const { pData2, setPData2 } = props;
     return (
         <>
             <div>

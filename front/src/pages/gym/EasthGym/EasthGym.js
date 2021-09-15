@@ -35,11 +35,12 @@ const EasthGyms = [
         longitude: '121.5192045',
     },
 ];
-function EasthGym() {
+function EasthGym(props) {
+    const { pData2, setPData2 } = props;
     return (
         <>
             <div>
-                <EasthGymList Gyms={EasthGyms} />
+                <EasthGymList Gyms={EasthGyms} setPData2={setPData2} />
             </div>
         </>
     );

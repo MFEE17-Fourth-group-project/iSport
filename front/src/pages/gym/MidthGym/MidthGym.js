@@ -35,11 +35,12 @@ const MidthGyms = [
         longitude: '121.5192045',
     },
 ];
-function MidthGym() {
+function MidthGym(props) {
+    const { pData2, setPData2 } = props;
     return (
         <>
             <div>
-                <MidthGymList Gyms={MidthGyms} />
+                <MidthGymList Gyms={MidthGyms} setPData2={setPData2} />
             </div>
         </>
     );
