@@ -13,6 +13,8 @@ import UserLike from '../../data/UserLike';
 function ProductMain(props) {
     console.log(API_URL);
     const [search, setSearch] = useState('');
+    const [error, setError] = useState(null);
+
     let handelData = ProductList;
     console.log(handelData);
     const doSearch = () => {
@@ -32,6 +34,20 @@ function ProductMain(props) {
     const isLike = (id) => {
         return UserLike.includes(id);
     };
+
+    useEffect(() => {
+        const getProductList = async () => {
+            try {
+                let response = await axios.get(`${API_URL}/products/all`);
+                let data = response.data;
+                console.log(response);
+            } catch (e) {
+                setError(e.message);
+            }
+        };
+        getProductList();
+    }, []);
+
     return (
         <>
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
