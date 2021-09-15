@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_URL } from '../../../../utils/config';
 
 //component import
 import ProductFilter from './ProductFilter';
@@ -9,6 +10,7 @@ import ProductList from '../../data/ProductList';
 import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
+    console.log(API_URL);
     const [search, setSearch] = useState('');
     let handelData = ProductList;
     console.log(handelData);
