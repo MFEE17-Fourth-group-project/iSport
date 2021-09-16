@@ -776,10 +776,11 @@ module.exports = {
             all: 'all',
             DEFAULT:
                 'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
-            colors: 'background-color, border-color, color, fill, stroke',
+            colors: 'background-color, border-color, color, fill, stroke, height',
             opacity: 'opacity',
             shadow: 'box-shadow',
             transform: 'transform',
+            height: 'height',
         },
         transitionTimingFunction: {
             DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',

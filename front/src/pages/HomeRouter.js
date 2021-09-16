@@ -10,7 +10,7 @@ import Checkout2 from './user/cart/Checkout2';
 import Checkout from './user/cart/Checkout';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
-import ProductItem from './product/ProductItem';
+import ProductItem from './product/components/ProductItem'; //改路徑
 import VideoId from './video/VideoId';
 import FavouriteProduct from './user/cart/FavouriteProduct.js';
 import ArticleCategory from './article/ArticleCategory';
@@ -78,7 +78,10 @@ function HomeRouter() {
                     <Route path="/user/ArticleAdd">
                         <ArticleAdd />
                     </Route>
-                    <Route path="/products">
+                    {/* <Route path="/ProductCategory">
+                        <ProductCategory />
+                    </Route> */}
+                    <Route path="/products/:category?">
                         <Product />
                     </Route>
                     <Route path="/user" exact>
