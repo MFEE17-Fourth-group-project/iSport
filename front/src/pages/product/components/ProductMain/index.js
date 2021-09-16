@@ -7,23 +7,51 @@ import ProductFilter from './ProductFilter';
 import ProductCard from './ProductCard';
 
 //fake data
-import ProductList from '../../data/ProductList';
+// import ProductList from '../../data/ProductList';
 import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
-    console.log(API_URL);
+    const { url } = props;
+    console.log(url);
+    // console.log(API_URL);
+    const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
+    const [filter, setFilter] = useState({
+        minPrice: 0,
+        maxPrice: 999999,
+        brand: 0,
+    });
     const [error, setError] = useState(null);
 
-    let handelData = ProductList;
+    useEffect(() => {
+        const getProductList = async () => {
+            try {
+                let response = await axios.get(`${API_URL}/products/all`);
+                setData(response.data);
+            } catch (e) {
+                setError(e.message);
+            }
+        };
+        getProductList();
+    }, []);
+    let handelData = data;
     console.log(handelData);
+
+    //keyword search
     const doSearch = () => {
         let handelData = [];
-        handelData = ProductList.filter((item) => {
+        handelData = data.filter((item) => {
             return item.name.indexOf(search) !== -1;
         });
-        console.log(handelData);
-        console.log(search);
+        // console.log(handelData);
+        // console.log(search);
+    };
+
+    //filter
+    const doFilter = () => {
+        handelData = handelData.filter((item) => {
+            return item.name.indexOf(search) !== -1;
+        });
     };
 
     /**
@@ -35,19 +63,6 @@ function ProductMain(props) {
         return UserLike.includes(id);
     };
 
-    useEffect(() => {
-        const getProductList = async () => {
-            try {
-                let response = await axios.get(`${API_URL}/products/all`);
-                let data = response.data;
-                console.log(response);
-            } catch (e) {
-                setError(e.message);
-            }
-        };
-        getProductList();
-    }, []);
-
     return (
         <>
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
@@ -55,22 +70,26 @@ function ProductMain(props) {
                     setSearch={setSearch}
                     search={search}
                     doSearch={doSearch}
+                    setFilter={setFilter}
+                    filter={filter}
+                    doFilter={doFilter}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {handelData.map((item) => {
-                        return (
-                            <ProductCard
-                                key={item.id}
-                                productName={item.name}
-                                category={item.category}
-                                brand={item.brand}
-                                photo={item.photo}
-                                price={item.price}
-                                sale={item.sale}
-                                like={isLike(item.id)}
-                            />
-                        );
-                    })}
+                    {handelData &&
+                        handelData.map((item) => {
+                            return (
+                                <ProductCard
+                                    key={item.prduct_id}
+                                    productName={item.product_name}
+                                    category={item.product_category_name}
+                                    brand={item.brand_name}
+                                    photo={'1002-3.png'}
+                                    price={'100'}
+                                    sale={'100'}
+                                    like={isLike(item.prduct_id)}
+                                />
+                            );
+                        })}
                 </section>
             </main>
         </>
