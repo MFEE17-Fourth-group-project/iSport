@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../../../utils/config';
 import product from '../../../../images/product/1002-3.png';
+import axios from 'axios';
 
 function OrderRecord() {
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+
+    // 連到後端的 API
+    useEffect(() => {
+        console.log('read API_URL', API_URL);
+        const getOrderRecord = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/api/cart`);
+
+                let data = res.data;
+
+                setData(data);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getOrderRecord();
+    }, []);
+
     return (
         <>
             <div className="mb-8 p-4 rounded-lg bg-gray-700 border-r-8 border-yellow-400 flex">

@@ -42,6 +42,7 @@ function Checkout() {
                         <div>
                             <ProgressBar />
                         </div>
+                        {/*    FIXME: 下拉動畫    */}
                         <div
                             ref={showCheckItemRef}
                             className="max-h-44 overflow-hidden transition-all duration-500"
@@ -60,6 +61,7 @@ function Checkout() {
                         >
                             <HiChevronDoubleDown className="text-2xl text-yellow-400" />
                         </div>
+                        {/*    / FIXME: 下拉動畫    */}
                     </div>
                     <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
                         <from>

@@ -23,11 +23,6 @@ function Checkout2() {
                             </h3>
                         </div>
                         <div className="sm:flex hidden justify-center mb-8">
-                            {/* FIXME: 用好刪掉 */}
-                            {/* <img src="creditCard" alt=""></img> */}
-                            {/* <div className="w-56 h-32 bg-white rounded-lg bg-opacity-90 text-gray-700 text-center flex justify-center items-center">
-                                <p>示意圖</p>
-                            </div> */}
                             <div>
                                 <CreditCard />
                             </div>
