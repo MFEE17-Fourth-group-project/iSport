@@ -3,7 +3,7 @@ import Aside from '../../../global/Aside';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from '../../../../node_modules/axios';
-
+import { API_URL } from '../../../utils/config';
 function ArticleAdd() {
     const [article_name, setarticle_name] = useState();
     const [added_by, setadded_by] = useState();
@@ -23,10 +23,7 @@ function ArticleAdd() {
             formData.append('upload_date', upload_date);
             formData.append('category', category);
             formData.append('photos', photos);
-            let response = await axios.post(
-                'http://localhost:3030/ArticleAdd',
-                formData
-            );
+            let response = await axios.post(`${API_URL}/ArticleAdd`, formData);
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -129,12 +126,6 @@ function ArticleAdd() {
                                 setcontent(e.target.value);
                             }}
                         />
-                        <textarea
-                        // value={content}
-                        // onChange={(e) => {
-                        // setcontent(e.target.value)
-                        // }}
-                        />
                         <Editor
                             toolbarClassName="toolbar"
                             wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
@@ -145,7 +136,7 @@ function ArticleAdd() {
                                 className="btn-yellow flex flex-row justify-end items-center"
                                 type="submit"
                                 id="button"
-                                onSubmit={handleSubmit}
+                                onClick={handleSubmit}
                             >
                                 <p className="font-bold text-xl mx-2">新增</p>
                             </button>

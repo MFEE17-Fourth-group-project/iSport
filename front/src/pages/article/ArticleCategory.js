@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import Article from './components/Article';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 // 模擬從伺服器來的資料
 // import { data } from '../data/';
 
@@ -67,4 +67,4 @@ function ArticleCategory(props) {
     );
 }
 
-export default ArticleCategory;
+export default withRouter(ArticleCategory);
