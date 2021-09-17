@@ -87,7 +87,7 @@ function HomeRouter() {
                     <Route path="/ArticleCategory">
                         <ArticleCategory />
                     </Route>
-                    <Route path="/ArticleId">
+                    <Route path="/ArticleId/:id?">
                         <ArticleId />
                     </Route>
                     <Route path="/user/ArticleCollect">
