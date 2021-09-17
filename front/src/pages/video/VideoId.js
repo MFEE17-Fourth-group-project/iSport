@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
@@ -15,6 +18,16 @@ import {
 
 
 const VideoId = () => {
+    const { videoId } = useParams();
+    // const [data, setData] = useState(null);
+    useEffect(() => {
+        async function getVideoData() {
+            let res = await axios.get(`${API_URL}/videos/${videoId}`);
+            res = res.data;
+        }
+        getVideoData();
+    }, []);
+
     return (
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
             {/* Video Main Section */}

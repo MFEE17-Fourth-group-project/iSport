@@ -1,17 +1,20 @@
-import cardImg1 from './../../../images/有氧/cardio-2.jpg';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import { FaClock } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
+    let file = "iSport_Videos/" + video.filePath.slice(15, 28);
     return (
         <Link to={'/video/' + video.id} className="max-w-max m-auto">
             <div className="max-w-xs min-w-full h-100 rounded-md overflow-hidden shadow-2xl bg-gray-900
                 py-4 px-5 flex flex-col">
-                <img className="max-h-44 object-cover" src={cardImg1} alt="" />
+                <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover">
+                    {/* <Transformation overlay="text:arial_60:watchme" gravity="north" y="20" /> */}
+                </Video>
                 <div className="">
-                    <h3 className="text-base text-yellow-400 my-4 h-12 line-clamp-2 overflow-hidden">{video.title}</h3>
+                    <h3 className="text-base text-yellow-400 mt-4 mb-1.5 h-12 line-clamp-2 overflow-hidden">{video.title}</h3>
                     <p className="text-white text-sm text-opacity-70 leading-relaxed mb-6
                         line-clamp-3 overflow-hidden h-16">
                         {video.description}
@@ -32,7 +35,7 @@ const VideoCard = ({ video }) => {
                     </h6>
                 </div>
             </div>
-        </Link>
+        </Link >
     );
 };
 
