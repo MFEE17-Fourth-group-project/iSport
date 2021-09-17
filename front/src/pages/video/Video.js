@@ -3,14 +3,17 @@ import VideoCard from './components/VideoCard';
 import VideoCard2 from './components/VideoCard2';
 import VideoNav from './components/VideoNav';
 import { FaSearch } from 'react-icons/fa';
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
+import { useState } from 'react';
 
 const Video = () => {
-    async function now() {
-        let res = await fetch('http://localhost:3030/api/videos');
-        res = await res.json();
-        console.log(res);
-    }
-    now();
+    (async function () {
+        let res = await axios.get(`${API_URL}/videos`);
+        console.log(res.data);
+    })();
+    const [data, setData] = useState();
+
     return (
         <div className="">
             <div className="h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112 ">
