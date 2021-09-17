@@ -28,7 +28,12 @@ function ArticleId(props) {
         views: 0,
         upload_date: '',
     });
-
+    async function now() {
+        let res = await fetch('http://localhost:3030/api/articles');
+        res = await res.json();
+        console.log(res);
+    }
+    now();
     return (
         <>
             <div className="">

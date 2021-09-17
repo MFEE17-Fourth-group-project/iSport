@@ -25,3 +25,5 @@ yarn-error.log*
 
 #productImg
 /src/images/product
+
+.package-lock.json
