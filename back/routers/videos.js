@@ -9,6 +9,14 @@ router.route('/')
         res.json(result);
     });
 
+router.route('/category')
+    .get(async (req, res, next) => {
+        let result = await connection.queryAsync(
+            'SELECT id, name FROM category WHERE valid=1'
+        );
+        res.json(result);
+    });
+
 router.route('/:id')
     .get(async (req, res, next) => {
         let videoId = req.params.id;
