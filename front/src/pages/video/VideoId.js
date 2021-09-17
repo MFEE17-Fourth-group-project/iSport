@@ -19,11 +19,11 @@ import {
 
 const VideoId = () => {
     const { videoId } = useParams();
-    // const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
     useEffect(() => {
         async function getVideoData() {
             let res = await axios.get(`${API_URL}/videos/${videoId}`);
-            res = res.data;
+            setData(res.data[0]);
         }
         getVideoData();
     }, []);
@@ -31,22 +31,22 @@ const VideoId = () => {
     return (
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
             {/* Video Main Section */}
-            <div className="lg:col-span-2 lg:row-span-1 col-span-full">
+            {data && (<div className="lg:col-span-2 lg:row-span-1 col-span-full">
                 <video src="" alt="Video Preview" width="100%"
                     controls controlsList="nodownload" muted></video>
-                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">《適合在健身房或家裡健身播放的英文輕電音》- 健身時刻</h1>
+                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{data.title}</h1>
 
                 <div className="my-3 pb-2 border-b-2 border-yellow-400 flex
                     sm:justify-between justify-center mx-5 xs:mx-0">
                     <div className="sm:flex items-center hidden">
-                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：116,157次</h4>
+                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：{data.views}次</h4>
                         <FaClock className="text-yellow-400 mr-1" />
-                        <span className="text-xs text-white">2021/06/22</span>
+                        <span className="text-xs text-white w-max">{data.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
                     </div>
                     <div className="flex w-full justify-between sm:justify-end">
                         <div className="flex mr-4 items-center">
                             <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">2844</span>
+                            <span className="text-sm sm:text-xs text-white w-max">{data.likes}</span>
                         </div>
                         <div className="flex mr-4 items-center">
                             <FaShare className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
@@ -64,16 +64,8 @@ const VideoId = () => {
                 </div>
 
                 <h3 className="text-white text-lg mt-2.5 mb-2 font-bold mx-5 xs:mx-0">影片簡介</h3>
-                <p className="text-white text-base ml-8 mx-5 xs:mr-0">
-                    在家就是要健身!你動起來了沒??<br />
-                    在家待久了大家最怕的是肯定會變胖<br />
-                    待在家其實多了很多自己的時間，不如來讓自己的肥肉熱起來吧!<br />
-                    找不到動力嗎?這歌單會保證讓你全身熱血沸騰!<br />
-                    分享一下我朋友的經驗<br />
-                    他從93kg練到現在是68kg，花了12個月的時間<br />
-                    我覺得他真的超強!<br />
-                    他可以，我們肯定也可以! (我自己也在努力當中XD)<br />
-                    希望這輕電音歌單帶給你滿滿的動力喔 加油!<br />
+                <p className="text-white text-base ml-8 mx-5 xs:mr-14 sm:mr-20 md:mr-28">
+                    {data.description}
                 </p>
                 <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
                     justify-center mx-5 xs:mx-0">
@@ -84,7 +76,7 @@ const VideoId = () => {
                             transition duration-200 group-hover:translate-y-0.5" />
                     </div>
                 </div>
-            </div>
+            </div>)}
 
             {/* Suggestion Section */}
             <div className="lg:col-span-1 lg:row-span-2 col-span-full mx-5 xs:mx-0">

@@ -10,7 +10,7 @@ const VideoCard = ({ video }) => {
         <Link to={'/video/' + video.id} className="max-w-max m-auto">
             <div className="max-w-xs min-w-full h-100 rounded-md overflow-hidden shadow-2xl bg-gray-900
                 py-4 px-5 flex flex-col">
-                <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover">
+                <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover" sourceTypes={['mp4']}>
                     {/* <Transformation overlay="text:arial_60:watchme" gravity="north" y="20" /> */}
                 </Video>
                 <div className="">
