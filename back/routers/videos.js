@@ -20,6 +20,7 @@ router.route('/:id')
             'SELECT * FROM video_file WHERE id=? AND valid=1',
             [videoId]
         );
+        res.json(result);
     });
 
 
