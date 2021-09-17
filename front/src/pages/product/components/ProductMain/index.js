@@ -83,9 +83,9 @@ function ProductMain(props) {
                                     productName={item.product_name}
                                     category={item.product_category_name}
                                     brand={item.brand_name}
-                                    photo={'1002-3.png'}
-                                    price={'100'}
-                                    sale={'100'}
+                                    photo={item.img_name}
+                                    price={item.product_price}
+                                    sale={item.total_sale}
                                     like={isLike(item.prduct_id)}
                                 />
                             );

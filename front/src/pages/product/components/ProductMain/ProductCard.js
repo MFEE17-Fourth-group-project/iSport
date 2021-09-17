@@ -30,11 +30,11 @@ function ProductCard(props) {
                         <img
                             className="w-full"
                             src={productPhotoUrl.default}
-                            alt="Mountain"
+                            alt={photo}
                         />
                     </Link>
                     <div className=" px-4 py-2 sm:px-5 sm:py-3 xl:px-6 xl:py-4 h-36 sm:h-40 flex flex-col justify-between">
-                        <div className="h-20 text-base md:text-lg　mb-1 text-yellow-400 ">
+                        <div className="h-20 text-base md:text-lg　mb-1 text-yellow-400 overflow-y-hidden">
                             {productName}
                         </div>
                         <div className=" text-sm md:text-base mb-1 text-gray-400 ">
