@@ -15,6 +15,8 @@ import {
     FaEye,
 } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
+import axios from '../../../node_modules/axios';
+// import { API_URL } from '../../utils';
 // 模擬從伺服器來的資料
 // import { data } from '../data/';
 
@@ -29,7 +31,7 @@ function ArticleId(props) {
         upload_date: '',
     });
     async function now() {
-        let res = await fetch('http://localhost:3030/api/articles');
+        const res = await axios.get('http://localhost:3030/api/articles');
         res = await res.json();
         console.log(res);
     }
