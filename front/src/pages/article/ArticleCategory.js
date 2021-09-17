@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import Article from './components/Article';
 import { Link } from 'react-router-dom';
+// 模擬從伺服器來的資料
+// import { data } from '../data/';
 
-const ArticleCategory = () => {
+function ArticleCategory(props) {
+    // const [article, setArticles] = useState([]);
+    // // didMount
+    // useEffect(() => {
+    //     setArticles(data);
+    // }, []);
     return (
         <>
             <div>
@@ -28,6 +35,17 @@ const ArticleCategory = () => {
                     <ArticleNav />
                 </div>
                 <main className="max-w-screen-2xl mx-auto p-6">
+                    {/* <ul>
+                        {articles.map((v, i) => {
+                            return (
+                                <li>
+                                    <Link to={'/article-detail/' + v.id}>
+                                        {v.name}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul> */}
                     <div className="m-8">
                         <Link to="/ArticleId">
                             <Article />
@@ -47,6 +65,6 @@ const ArticleCategory = () => {
             </div>
         </>
     );
-};
+}
 
 export default ArticleCategory;
