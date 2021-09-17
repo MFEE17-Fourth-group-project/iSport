@@ -1,20 +1,10 @@
 import videoHeader from './../../images/有氧/cardio-1.jpg';
 import VideoNav from './components/VideoNav';
 import VideoList from './components/VideoList';
-import { API_URL } from '../../utils/config';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import useGet from './../../utils/useGet';
 
 const Video = () => {
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        async function getVideoData() {
-            let res = await axios.get(`${API_URL}/videos`);
-            res = res.data;
-            setData(res);
-        }
-        getVideoData();
-    }, []);
+    const { data, error, isPending } = useGet(`/videos`);
 
     return (
         <div className="">

@@ -1,7 +1,6 @@
-import { Link, useParams, useHistory } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { API_URL } from '../../utils/config';
-import axios from 'axios';
+import { Link, useParams, useHistory, useLocation } from 'react-router-dom';
+import useGet from './../../utils/useGet';
+import { APP_URL } from './../../utils/config';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
@@ -19,37 +18,38 @@ import {
 
 const VideoId = () => {
     const { videoId } = useParams();
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        async function getVideoData() {
-            let res = await axios.get(`${API_URL}/videos/${videoId}`);
-            setData(res.data[0]);
-        }
-        getVideoData();
-    }, []);
+    const location = useLocation();
+
+    let { data: video, error, isPending } = useGet(`/videos/${videoId}`);
+    if (video) video = video[0];
 
     return (
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
             {/* Video Main Section */}
-            {data && (<div className="lg:col-span-2 lg:row-span-1 col-span-full">
+            {video && (<div className="lg:col-span-2 lg:row-span-1 col-span-full">
                 <video src="" alt="Video Preview" width="100%"
                     controls controlsList="nodownload" muted></video>
-                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{data.title}</h1>
+                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{video.title}</h1>
 
                 <div className="my-3 pb-2 border-b-2 border-yellow-400 flex
                     sm:justify-between justify-center mx-5 xs:mx-0">
                     <div className="sm:flex items-center hidden">
-                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：{data.views}次</h4>
+                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：{video.views}次</h4>
                         <FaClock className="text-yellow-400 mr-1" />
-                        <span className="text-xs text-white w-max">{data.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
+                        <span className="text-xs text-white w-max">{video.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
                     </div>
                     <div className="flex w-full justify-between sm:justify-end">
                         <div className="flex mr-4 items-center">
                             <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">{data.likes}</span>
+                            <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
                         </div>
-                        <div className="flex mr-4 items-center">
-                            <FaShare className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
+                        <div
+                            className="flex mr-4 items-center cursor-pointer"
+                            onClick={() => {
+                                navigator.clipboard.writeText(APP_URL + location.pathname);
+                            }}
+                        >
+                            <FaShare className="text-yellow-400 mr-1 sm:text-base xs:text-2xl" />
                             <span className="text-sm sm:text-xs text-white w-max">分享</span>
                         </div>
                         <Link to="/user/videoCollection" className="flex mr-4 items-center">
@@ -65,7 +65,7 @@ const VideoId = () => {
 
                 <h3 className="text-white text-lg mt-2.5 mb-2 font-bold mx-5 xs:mx-0">影片簡介</h3>
                 <p className="text-white text-base ml-8 mx-5 xs:mr-14 sm:mr-20 md:mr-28">
-                    {data.description}
+                    {video.description}
                 </p>
                 <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
                     justify-center mx-5 xs:mx-0">
