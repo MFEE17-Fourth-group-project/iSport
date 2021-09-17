@@ -3,7 +3,7 @@ const connection = require('../utils/db');
 //all products query
 async function getAllProduct(){
     return await connection.queryAsync(
-        `SELECT product.id AS prduct_id, product.name AS product_name, brand.id AS brand_id, brand.name AS brand_name, product_category.id AS product_category_id, product_category.name AS product_category_name, product.intro AS product_intro, product.creat_time AS create_time
+        `SELECT product.id AS prduct_id, product.name AS product_name, brand.id AS brand_id, brand.name AS brand_name, product_category.id AS product_category_id, product_category.name AS product_category_name, product.intro AS product_intro, product.creat_time AS create_time, product.price AS product_price
         FROM product 
         INNER JOIN brand 
         ON product.brand=brand.id
@@ -14,8 +14,15 @@ async function getAllProduct(){
     );
 }
 
+const getImgList = async () => {
+    return await connection.queryAsync(
+        `SELECT * FROM product_img`
+    );
+}
+
 module.exports={
     getAllProduct,
+    getImgList,
 }
 
 // SELECT table_column1, table_column2...
