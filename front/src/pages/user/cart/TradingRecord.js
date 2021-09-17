@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../../utils/config';
+import { FaSearch } from 'react-icons/fa';
 import Aside from '../../../global/Aside';
 import OrderRecord from './components/OrderRecord';
-import { FaSearch } from 'react-icons/fa';
+import axios from 'axios';
 
 function TradingRecord() {
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    // 連到後端的 API
+    useEffect(() => {
+        console.log('read API_URL', API_URL);
+        const getOrderRecord = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/cart`);
+                let data = res.data;
+                console.log(data);
+                setData(data);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getOrderRecord();
+    }, []);
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
@@ -42,11 +63,16 @@ function TradingRecord() {
                 </div>
                 <section className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg lg:px-10 px-4 py-6">
                     {/* 購買紀錄卡片 */}
-                    <OrderRecord />
-                    <OrderRecord />
-                    <OrderRecord />
-                    <OrderRecord />
-                    <OrderRecord />
+                    {data &&
+                        data.map((order, index) => (
+                            <OrderRecord
+                                key={order.id}
+                                order_no={order.order_no}
+                                paytype={order.paytype}
+                                delivery={order.delivery}
+                                status={order.status}
+                            />
+                        ))}
                 </section>
             </article>
         </main>

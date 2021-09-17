@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { API_URL } from '../../../../utils/config';
+import React from 'react';
 import product from '../../../../images/product/1002-3.png';
-import axios from 'axios';
 
-function OrderRecord() {
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-
-    // 連到後端的 API
-    useEffect(() => {
-        console.log('read API_URL', API_URL);
-        const getOrderRecord = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/api/cart`);
-
-                let data = res.data;
-
-                setData(data);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getOrderRecord();
-    }, []);
+function OrderRecord(props) {
+    const { order_no, paytype, delivery, status } = props;
 
     return (
         <>
@@ -38,13 +16,17 @@ function OrderRecord() {
                 </figure>
                 <div className="text-sm py-2  flex-grow grid sm:grid-flow-col sm:grid-cols-3 sm:grid-rows-4 gap-y-px">
                     <p>
-                        訂單編號：<span>123456789</span>
+                        訂單編號：<span>{order_no}</span>
+                    </p>
+                    <p>
+                        購買時間：
+                        <span>2021-08-08</span>
                     </p>
                     <p>
                         商品名稱：<span>居家健身組</span>
                     </p>
                     <p>
-                        商品價格：<span>250元</span>
+                        訂單總額：<span>250元</span>
                     </p>
                     <p>
                         購買數量：<span>1</span>
@@ -56,18 +38,14 @@ function OrderRecord() {
                         商品尺寸：<span>無</span>
                     </p>
                     <p>
-                        付款方式：<span>信用卡</span>
+                        付款方式：<span>{paytype}</span>
                     </p>
                     <p>
-                        運送方式：<span>宅配</span>
+                        運送方式：<span>{delivery}</span>
                     </p>
                     <p>
-                        購買時間：
-                        <span>2021-08-08</span>
-                    </p>
-                    <p>
-                        送達時間：
-                        <span>2021-08-09</span>
+                        訂單狀態：
+                        <span>{status}</span>
                     </p>
                 </div>
             </div>
