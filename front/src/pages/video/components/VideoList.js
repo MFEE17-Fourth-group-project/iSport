@@ -4,18 +4,24 @@ import { FaSearch } from 'react-icons/fa';
 
 const VideoList = ({ videos }) => {
     const [videoData, setVideoData] = useState(videos);
-    console.log(videoData);
+    const [term, setTerm] = useState('');
+
     const handleUpdateButton = () => {
-        let newVideos = videos.sort((a, b) =>
+        let newVideos = videoData.sort((a, b) =>
             b.upload_date.replace(/-/gi, '') - a.upload_date.replace(/-/gi, ''));
         setVideoData([...newVideos]);
-        console.log(videoData);
     };
 
     const handleViewsButton = () => {
-        let newVideos = videos.sort((a, b) => b.views - a.views);
+        let newVideos = videoData.sort((a, b) => b.views - a.views);
         setVideoData([...newVideos]);
-        console.log(videoData);
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        let newVideos = videos.filter(video =>
+            video.title.indexOf(term) > -1 || video.description.indexOf(term) > -1);
+        setVideoData([...newVideos]);
     };
 
     return (
@@ -31,19 +37,26 @@ const VideoList = ({ videos }) => {
                         onClick={handleViewsButton}
                     >最多觀看</button>
                 </div>
-                <div className="relative flex">
+                <form
+                    className="relative flex"
+                    onSubmit={(e) => handleSearch(e)}
+                >
                     <input
                         type="text"
                         className="placeholder-white text-white bg-gray-700 border border-solid border-gray-700
-                                    uppercase text-base px-4 py-1.5 rounded-full outline-none ease-linear
+                                    text-base px-4 py-1.5 rounded-full outline-none ease-linear
                                     transition-all duration-150 w-full xs:w-56 xs:focus:w-60 sm:w-80 sm:focus:w-96 focus:placeholder-gray-400
                                     "
+                        value={term}
+                        onChange={(e) => setTerm(e.target.value)}
                         placeholder="搜尋"
                     />
-                    <button className="absolute right-0 top-0 flex text-xl m-1 p-1.5 transform -translate-y-px">
+                    <button
+                        type="submit"
+                        className="absolute right-0 top-0 flex text-xl m-1 p-1.5 transform -translate-y-px">
                         <FaSearch className="hover:text-white text-gray-200" />
                     </button>
-                </div>
+                </form>
             </div>
 
             {/* VideoList */}
