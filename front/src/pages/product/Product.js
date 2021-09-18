@@ -14,7 +14,6 @@ function Product(props) {
     const [url, setUrl] = useState(1);
     const [photo, setPhoto] = useState('');
 
-    console.log(photo);
     const [category, setCategory] = useState({
         category: '',
         smTitle: '',
@@ -35,9 +34,6 @@ function Product(props) {
                 require('../../images/product/header/' + newProduct.photo)
             );
         }
-
-        // console.log(category);
-        console.log(newProduct);
     }, [url]);
 
     return (

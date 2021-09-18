@@ -10,7 +10,7 @@ function ProductNav(props) {
                 <Link
                     to="/products/allProduct"
                     onClick={() => {
-                        setUrl(1);
+                        setUrl(0);
                     }}
                     className="flex-1 sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -19,7 +19,7 @@ function ProductNav(props) {
                 <Link
                     to="/products/clothe"
                     onClick={() => {
-                        setUrl(2);
+                        setUrl(1);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -28,7 +28,7 @@ function ProductNav(props) {
                 <Link
                     to="/products/shoes"
                     onClick={() => {
-                        setUrl(3);
+                        setUrl(2);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -37,7 +37,7 @@ function ProductNav(props) {
                 <Link
                     to="/products/equipment"
                     onClick={() => {
-                        setUrl(4);
+                        setUrl(3);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -46,7 +46,7 @@ function ProductNav(props) {
                 <Link
                     to="/products/food"
                     onClick={() => {
-                        setUrl(5);
+                        setUrl(4);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >

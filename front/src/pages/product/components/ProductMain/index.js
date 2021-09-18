@@ -12,9 +12,9 @@ import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
     const { url } = props;
-    console.log(url);
-    // console.log(API_URL);
+
     const [data, setData] = useState(null);
+    const [renderData, setRenderData] = useState(null);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState({
         minPrice: 0,
@@ -34,8 +34,21 @@ function ProductMain(props) {
         };
         getProductList();
     }, []);
+
+    useEffect(() => {
+        const toCategory = () => {
+            if (data && url !== 0) {
+                let newData = data.filter((item) => {
+                    return item.product_category_id === url;
+                });
+                setRenderData(newData);
+            } else {
+                setRenderData(data);
+            }
+        };
+        toCategory();
+    }, [url, data]);
     let handelData = data;
-    console.log(handelData);
 
     //keyword search
     const doSearch = () => {
@@ -75,8 +88,8 @@ function ProductMain(props) {
                     doFilter={doFilter}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {handelData &&
-                        handelData.map((item) => {
+                    {renderData &&
+                        renderData.map((item) => {
                             return (
                                 <ProductCard
                                     key={item.prduct_id}
