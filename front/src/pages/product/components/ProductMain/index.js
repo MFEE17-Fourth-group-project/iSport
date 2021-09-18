@@ -11,10 +11,11 @@ import ProductCard from './ProductCard';
 import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
-    const { url } = props;
+    const { url, refresh } = props;
 
     const [data, setData] = useState(null);
-    const [renderData, setRenderData] = useState(null);
+    const [categoryProduct, setCategoryProduct] = useState(null);
+    const [displayProducts, setDisplayProducts] = useState(null);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState({
         minPrice: 0,
@@ -35,37 +36,44 @@ function ProductMain(props) {
         getProductList();
     }, []);
 
+    //change category
     useEffect(() => {
+        console.log(url);
         const toCategory = () => {
             if (data && url !== 0) {
                 let newData = data.filter((item) => {
                     return item.product_category_id === url;
                 });
-                setRenderData(newData);
+                setCategoryProduct(newData);
             } else {
-                setRenderData(data);
+                setCategoryProduct(data);
             }
         };
         toCategory();
-    }, [url, data]);
-    let handelData = data;
+    }, [url, data, refresh]);
 
     //keyword search
     const doSearch = () => {
-        let handelData = [];
-        handelData = data.filter((item) => {
-            return item.name.indexOf(search) !== -1;
+        let handelData = categoryProduct.filter((item) => {
+            return item.product_name.indexOf(search) !== -1;
         });
-        // console.log(handelData);
-        // console.log(search);
+        setCategoryProduct(handelData);
     };
 
+    //TODO:filter function
     //filter
     const doFilter = () => {
-        handelData = handelData.filter((item) => {
+        let handelData = handelData.filter((item) => {
             return item.name.indexOf(search) !== -1;
         });
     };
+
+    //TODO:sort function
+
+    //TODO:render display products
+    useEffect(() => {
+        console.log(categoryProduct);
+    }, [categoryProduct]);
 
     /**
      *
@@ -88,18 +96,18 @@ function ProductMain(props) {
                     doFilter={doFilter}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {renderData &&
-                        renderData.map((item) => {
+                    {categoryProduct &&
+                        categoryProduct.map((item) => {
                             return (
                                 <ProductCard
-                                    key={item.prduct_id}
+                                    key={item.product_id}
                                     productName={item.product_name}
                                     category={item.product_category_name}
                                     brand={item.brand_name}
                                     photo={item.img_name}
                                     price={item.product_price}
                                     sale={item.total_sale}
-                                    like={isLike(item.prduct_id)}
+                                    like={isLike(item.product_id)}
                                 />
                             );
                         })}

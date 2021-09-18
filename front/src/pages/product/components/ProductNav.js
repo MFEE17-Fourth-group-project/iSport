@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function ProductNav(props) {
-    const { url, setUrl } = props;
+    const { url, setUrl, setRefresh, refresh } = props;
     // console.log(props);
     return (
         <>
@@ -11,6 +11,7 @@ function ProductNav(props) {
                     to="/products/allProduct"
                     onClick={() => {
                         setUrl(0);
+                        refresh ? setRefresh(false) : setRefresh(true);
                     }}
                     className="flex-1 sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -20,6 +21,7 @@ function ProductNav(props) {
                     to="/products/clothe"
                     onClick={() => {
                         setUrl(1);
+                        refresh ? setRefresh(false) : setRefresh(true);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -29,6 +31,7 @@ function ProductNav(props) {
                     to="/products/shoes"
                     onClick={() => {
                         setUrl(2);
+                        refresh ? setRefresh(false) : setRefresh(true);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -38,6 +41,7 @@ function ProductNav(props) {
                     to="/products/equipment"
                     onClick={() => {
                         setUrl(3);
+                        refresh ? setRefresh(false) : setRefresh(true);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >
@@ -47,6 +51,7 @@ function ProductNav(props) {
                     to="/products/food"
                     onClick={() => {
                         setUrl(4);
+                        refresh ? setRefresh(false) : setRefresh(true);
                     }}
                     className="flex-1  sm:flex-initial border-b-2 border-transparent hover:border-yellow-400 w-36 text-white text-center py-5"
                 >

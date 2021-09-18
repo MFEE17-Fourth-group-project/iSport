@@ -3,7 +3,7 @@ const connection = require('../utils/db');
 //all products query
 const getAllProduct = async () => {
     return await connection.queryAsync(
-        `SELECT product.id AS prduct_id, product.name AS product_name, brand.id AS brand_id, 
+        `SELECT product.id AS product_id, product.name AS product_name, brand.id AS brand_id, 
                 brand.name AS brand_name, product_category.id AS product_category_id, 
                 product_category.name AS product_category_name, product.creat_time AS create_time, 
                 product.price AS product_price, sum(product_sku.sale) AS total_sale

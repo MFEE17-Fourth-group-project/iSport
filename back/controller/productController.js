@@ -11,13 +11,13 @@ const listAllProduct = async (req, res, next) => {
     allProduct.forEach(product => {
         let arr = [];
         arr = allImg.filter(img => {
-            return product.prduct_id === img.product_id;
+            return product.product_id === img.product_id;
         });
-        imgList.set(product.prduct_id, arr);
+        imgList.set(product.product_id, arr);
     });
 
     allProduct.forEach(item => {
-        item.img_name = imgList.get(item.prduct_id)[0].img_name;
+        item.img_name = imgList.get(item.product_id)[0].img_name;
     })
 
     res.json(allProduct)

@@ -11,7 +11,8 @@ import { FaAngleUp } from 'react-icons/fa';
 import { withRouter } from 'react-router-dom';
 
 function Product(props) {
-    const [url, setUrl] = useState(1);
+    const [url, setUrl] = useState(0);
+    const [refresh, setRefresh] = useState(true);
     const [photo, setPhoto] = useState('');
 
     const [category, setCategory] = useState({
@@ -58,8 +59,13 @@ function Product(props) {
                     />
                 </figure>
             </header>
-            <ProductNav url={url} setUrl={setUrl} />
-            <ProductMain url={url} />
+            <ProductNav
+                url={url}
+                setUrl={setUrl}
+                refresh={refresh}
+                setRefresh={setRefresh}
+            />
+            <ProductMain url={url} refresh={refresh} />
         </>
     );
 }
