@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
-import MobileAside from './MobileAside';
 
 function Nav(props) {
+    const { showMobileAside } = props;
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -37,18 +37,16 @@ function Nav(props) {
                     </div>
 
                     <div className="flex items-center">
-                        <input type="checkbox" id="nav-toggle" />
-                        <label
-                            for="nav-toggle"
-                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2"
+                        <div
+                            className="lg:hidden w-10 h-10 rounded-full bg-white overflow-hidden mr-2"
+                            onClick={showMobileAside}
                         >
                             <img
                                 src={userHeader}
                                 alt=""
                                 className="w-full h-full object-cover object-center"
                             />
-                        </label>
-                        <MobileAside />
+                        </div>
                         <button
                             className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}

@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import Gym from './gym/Gym';
 import Nav from '../global/Nav';
 import Footer from '../global/Footer';
+import MobileAside from '../global/MobileAside';
 
 // USER
 import User from './user/User';
@@ -44,11 +45,41 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 
 function HomeRouter() {
     const [counts, setCounts] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const showMobileAside = () => {
+        setIsOpen(true);
+    };
+
+    const hideMobileAside = () => {
+        setIsOpen(false);
+    };
+
+    // ******************** 手機側欄隨瀏覽器調整隱藏 *****************
+    useEffect(() => {
+        const hideMenu = () => {
+            if (window.innerWidth > 1024) {
+                setIsOpen(false);
+                console.log('i resizeeed');
+            }
+        };
+
+        window.addEventListener('resize', hideMenu);
+
+        return () => {
+            window.removeEventListener('resize', hideMenu);
+        };
+    });
 
     return (
         <Router>
             <>
-                <Nav />
+                <Nav showMobileAside={showMobileAside} />
+                <MobileAside
+                    isOpen={isOpen}
+                    showMobileAside={showMobileAside}
+                    hideMobileAside={hideMobileAside}
+                />
                 <Switch>
                     <Route path="/SearchPassword">
                         <SearchPassword />

@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 
 function MobileAside(props) {
+    const { isOpen, hideMobileAside } = props;
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
 
     const handleCustomerService = () => {
@@ -24,7 +25,13 @@ function MobileAside(props) {
     };
     return (
         <>
-            <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show">
+            <aside
+                className={
+                    isOpen
+                        ? 'lg:block w-64 mr-2.5 bg-gray-900 shadow-xl fixed top-0 left-0 z-50'
+                        : 'hidden'
+                }
+            >
                 {CustomerServiceWindow && (
                     <CustomerService onCancel={handleCancel} />
                 )}
@@ -39,11 +46,11 @@ function MobileAside(props) {
                     <p className="text-white text-opacity-85 ml-2.5">
                         Hi BB，歡迎回來！
                     </p>
-                    <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
-                        <FaTimes
-                            className="w-6 h-6 text-white"
-                            // onClick={props.onCancel} 沒有作用？
-                        />
+                    <div
+                        className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center"
+                        onClick={hideMobileAside}
+                    >
+                        <FaTimes className="w-6 h-6 text-white" />
                     </div>
                 </div>
                 <div className="h-full aside-menu">
@@ -152,8 +159,11 @@ function MobileAside(props) {
             </aside>
             <div
                 className={
-                    'lg:hidden bg-black bg-opacity-50 z-40 absolute top-0 left-0 black-mask'
+                    isOpen
+                        ? 'bg-black bg-opacity-50 w-screen h-screen z-40 fixed top-0 left-0'
+                        : 'hidden'
                 }
+                // onCancel={handleCancel}
             ></div>
         </>
     );
