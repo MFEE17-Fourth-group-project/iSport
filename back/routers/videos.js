@@ -6,6 +6,7 @@ const connection = require('../utils/db');
 router.route('/')
     .get(async (req, res, next) => {
         let result = await connection.queryAsync('SELECT * FROM video_file WHERE valid=1 ORDER BY views DESC');
+        result.map(video => video.upload_date = video.upload_date.toISOString().slice(0, 16).replace(/:/gi, '').replace('T', ''));
         res.json(result);
     });
 
