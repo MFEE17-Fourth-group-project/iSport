@@ -1,13 +1,35 @@
 import VideoCard from './VideoCard';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 const VideoList = ({ videos }) => {
+    const [videoData, setVideoData] = useState(videos);
+    console.log(videoData);
+    const handleUpdateButton = () => {
+        let newVideos = videos.sort((a, b) =>
+            b.upload_date.replace(/-/gi, '') - a.upload_date.replace(/-/gi, ''));
+        setVideoData([...newVideos]);
+        console.log(videoData);
+    };
+
+    const handleViewsButton = () => {
+        let newVideos = videos.sort((a, b) => b.views - a.views);
+        setVideoData([...newVideos]);
+        console.log(videoData);
+    };
+
     return (
         <>
             <div className="flex my-6 justify-between flex-col xs:flex-row">
                 <div className="flex mb-2.5 xs:mb-0">
-                    <button className="btn-gray-sm mr-4">最新上傳</button>
-                    <button className="btn-yellow-sm mr-4">最多觀看</button>
+                    <button
+                        className="btn-gray-sm mr-4"
+                        onClick={handleUpdateButton}
+                    >最新上傳</button>
+                    <button
+                        className="btn-yellow-sm mr-4"
+                        onClick={handleViewsButton}
+                    >最多觀看</button>
                 </div>
                 <div className="relative flex">
                     <input
@@ -27,7 +49,7 @@ const VideoList = ({ videos }) => {
             {/* VideoList */}
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 
                     lg:grid-cols-4 gap-4 xs:gap-2.5 sm:gap-4 pb-5">
-                {videos.map(video => (
+                {videoData && videoData.map(video => (
                     <VideoCard video={video} key={video.id} />
                 ))}
             </div>
