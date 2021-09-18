@@ -26,9 +26,16 @@ const getImgList = async () => {
     );
 }
 
+const getBrandList = async () => {
+    return await connection.queryAsync(
+        `SELECT id, name FROM brand WHERE valid=1`
+    )
+}
+
 module.exports={
     getAllProduct,
     getImgList,
+    getBrandList,
 }
 
 // SELECT table_column1, table_column2...

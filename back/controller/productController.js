@@ -4,6 +4,7 @@ const productModel = require('../model/productModel');
 const listAllProduct = async (req, res, next) => {
     let allProduct = await productModel.getAllProduct(); //array
     let allImg = await productModel.getImgList();
+    let brandList = await productModel.getBrandList();
 
     let imgList = new Map();
 
@@ -20,7 +21,8 @@ const listAllProduct = async (req, res, next) => {
         item.img_name = imgList.get(item.product_id)[0].img_name;
     })
 
-    res.json(allProduct)
+    
+    res.json({'allProduct':allProduct , 'brandList':brandList})
 }
 
 module.exports = {
