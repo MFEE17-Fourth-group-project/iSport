@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../utils/config';
+import { withRouter, useParams } from 'react-router-dom';
 
 //component import
 import ProductFilter from './ProductFilter';
@@ -11,7 +12,8 @@ import ProductCard from './ProductCard';
 import UserLike from '../../data/UserLike';
 
 function ProductMain(props) {
-    const { url, refresh } = props;
+    const { refresh } = props;
+    const { category } = useParams();
 
     const [data, setData] = useState(null);
     const [categoryProduct, setCategoryProduct] = useState(null);
@@ -28,7 +30,7 @@ function ProductMain(props) {
         const getProductList = async () => {
             try {
                 let response = await axios.get(`${API_URL}/products/all`);
-                setData(response.data);
+                setData(response.data.allProduct);
             } catch (e) {
                 setError(e.message);
             }
@@ -38,19 +40,37 @@ function ProductMain(props) {
 
     //change category
     useEffect(() => {
-        console.log(url);
+        const filter = (categoryId) => {
+            return data.filter((item) => {
+                return item.product_category_id === categoryId;
+            });
+        };
+
         const toCategory = () => {
-            if (data && url !== 0) {
-                let newData = data.filter((item) => {
-                    return item.product_category_id === url;
-                });
-                setCategoryProduct(newData);
-            } else {
-                setCategoryProduct(data);
+            if (data) {
+                switch (category) {
+                    case 'allProduct':
+                        setCategoryProduct(data);
+                        break;
+                    case 'clothe':
+                        setCategoryProduct(filter(1));
+                        break;
+                    case 'shoes':
+                        setCategoryProduct(filter(2));
+                        break;
+                    case 'equipment':
+                        setCategoryProduct(filter(3));
+                        break;
+                    case 'food':
+                        setCategoryProduct(filter(4));
+                        break;
+                    default:
+                        console.log('error');
+                }
             }
         };
         toCategory();
-    }, [url, data, refresh]);
+    }, [category, data, refresh]);
 
     //keyword search
     const doSearch = () => {
@@ -71,9 +91,9 @@ function ProductMain(props) {
     //TODO:sort function
 
     //TODO:render display products
-    useEffect(() => {
-        console.log(categoryProduct);
-    }, [categoryProduct]);
+    // useEffect(() => {
+    //     console.log(categoryProduct);
+    // }, [categoryProduct]);
 
     /**
      *

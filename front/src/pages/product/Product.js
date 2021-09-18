@@ -5,22 +5,23 @@ import ProductMain from './components/ProductMain/';
 
 import dataTest from './data/dataTest';
 
-// import productHeader from '../../images/product-header.png';
 import { FaAngleUp } from 'react-icons/fa';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 
 function Product(props) {
-    const [url, setUrl] = useState(0);
+    const { category } = useParams();
+
     const [refresh, setRefresh] = useState(true);
     const [photo, setPhoto] = useState('');
 
-    const [category, setCategory] = useState({
+    const [categoryData, setCategoryData] = useState({
         category: '',
         smTitle: '',
         bigTitle: '',
         photo: '',
     });
+
     useEffect(() => {
         //使用網址上的id和伺服器要資料
         const category = props.match.params.category;
@@ -30,12 +31,12 @@ function Product(props) {
         });
 
         if (newProduct) {
-            setCategory(newProduct);
+            setCategoryData(newProduct);
             setPhoto(
                 require('../../images/product/header/' + newProduct.photo)
             );
         }
-    }, [url]);
+    }, [category]);
 
     return (
         <>
@@ -45,10 +46,10 @@ function Product(props) {
             <header className="relative w-full h-56 xl:h-112 overflow-hidden">
                 <div className="text-white absolute w-1/2 top-1/2 left-5 sm:left-14 xl:left-32 transform -translate-y-1/2">
                     <p className="text-sm sm:text-base xl:text-2xl break-all w-full leading-normal">
-                        {category.smTitle}
+                        {categoryData.smTitle}
                     </p>
                     <h1 className="text-lg sm:text-3xl xl:text-5xl break-all w-full leading-normal">
-                        {category.bigTitle}
+                        {categoryData.bigTitle}
                     </h1>
                 </div>
                 <figure className="h-full w-full ">
@@ -59,13 +60,8 @@ function Product(props) {
                     />
                 </figure>
             </header>
-            <ProductNav
-                url={url}
-                setUrl={setUrl}
-                refresh={refresh}
-                setRefresh={setRefresh}
-            />
-            <ProductMain url={url} refresh={refresh} />
+            <ProductNav refresh={refresh} setRefresh={setRefresh} />
+            <ProductMain refresh={refresh} />
         </>
     );
 }
