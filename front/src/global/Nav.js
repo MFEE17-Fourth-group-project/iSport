@@ -19,7 +19,7 @@ function Nav(props) {
 
     return (
         <>
-            <nav className="App sticky top-0 z-40">
+            <nav className="App sticky top-0 z-30">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="flex items-center">
                         <img
