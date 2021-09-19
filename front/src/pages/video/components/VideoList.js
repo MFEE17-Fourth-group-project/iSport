@@ -2,7 +2,7 @@ import VideoCard from './VideoCard';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, cat }) => {
     const [videoData, setVideoData] = useState(videos);
     const [term, setTerm] = useState('');
 
@@ -62,7 +62,9 @@ const VideoList = ({ videos }) => {
             {/* VideoList */}
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 
                     lg:grid-cols-4 gap-4 xs:gap-2.5 sm:gap-4 pb-5">
-                {videoData && videoData.map(video => (
+                {videoData && (parseInt(cat) === 0) ? videoData.map(video => (
+                    <VideoCard video={video} key={video.id} />
+                )) : videoData.filter(video => video.category === parseInt(cat)).map(video => (
                     <VideoCard video={video} key={video.id} />
                 ))}
             </div>
