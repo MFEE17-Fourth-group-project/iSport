@@ -28,7 +28,7 @@ function MobileAside(props) {
             <aside
                 className={
                     isOpen
-                        ? 'lg:block w-64 mr-2.5 bg-gray-900 shadow-xl fixed top-0 left-0 z-50'
+                        ? 'lg:block w-64 mr-2.5 bg-gray-900 shadow-xl fixed top-0 left-0 z-50 mobileAside-height'
                         : 'hidden'
                 }
             >
@@ -47,13 +47,13 @@ function MobileAside(props) {
                         Hi BB，歡迎回來！
                     </p>
                     <div
-                        className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center"
+                        className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center cursor-pointer"
                         onClick={hideMobileAside}
                     >
                         <FaTimes className="w-6 h-6 text-white" />
                     </div>
                 </div>
-                <div className="h-full aside-menu">
+                <div className="aside-menu">
                     <ul className="text-white text-lg ">
                         <Link to="/user" className="w-full">
                             <li className="users-li">
