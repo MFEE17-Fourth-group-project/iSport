@@ -107,17 +107,34 @@ function ProductMain(props) {
     //TODO:filter function
     //filter
     const doFilter = () => {
-        console.log(priceFilter(categoryProduct));
-        setDisplayProducts(priceFilter(categoryProduct));
+        // console.log(priceFilter(categoryProduct));
+        let filterData = priceFilter(categoryProduct);
+        filterData = brandFilter(filterData);
+        setDisplayProducts(filterData);
         clearFilter();
     };
     const priceFilter = (value) => {
+        let minPrice = filter.minPrice !== '' ? Number(filter.minPrice) : 0;
+        let maxPrice =
+            filter.maxPrice !== '' ? Number(filter.maxPrice) : 9999999;
         return value.filter((item) => {
             return (
-                Number(item.minPrice) >= Number(filter.minPrice) &&
-                Number(item.maxPrice) <= Number(filter.maxPrice)
+                Number(item.minPrice) >= minPrice &&
+                Number(item.maxPrice) <= maxPrice
             );
         });
+    };
+
+    const brandFilter = (value) => {
+        let brand = Number(filter.brand);
+        console.log(brand);
+        if (brand !== 0) {
+            return value.filter((item) => {
+                return item.brand_id === brand;
+            });
+        } else {
+            return value;
+        }
     };
 
     //TODO:sort function
