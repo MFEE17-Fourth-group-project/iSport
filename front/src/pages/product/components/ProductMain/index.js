@@ -15,16 +15,18 @@ function ProductMain(props) {
     const { refresh } = props;
     const { category } = useParams();
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [brandList, setBrandList] = useState(null);
-    const [categoryProduct, setCategoryProduct] = useState(null);
-    const [displayProducts, setDisplayProducts] = useState(null);
+    const [categoryProduct, setCategoryProduct] = useState([]);
+    const [displayProducts, setDisplayProducts] = useState([]);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState({
         minPrice: '',
         maxPrice: '',
         brand: '0',
     });
+    const [priceSort, setPriceSort] = useState(true);
+    const [sort, setSort] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -104,7 +106,6 @@ function ProductMain(props) {
         setFilter(newObj);
     };
 
-    //TODO:filter function
     //filter
     const doFilter = () => {
         // console.log(priceFilter(categoryProduct));
@@ -138,6 +139,21 @@ function ProductMain(props) {
     };
 
     //TODO:sort function
+    const doSort = (productData) => {
+        let newData = [...productData];
+        if (priceSort) {
+            newData = [...newData].sort((a, b) => a.minPrice - b.minPrice);
+        } else {
+            newData = [...newData].sort((a, b) => b.minPrice - a.minPrice);
+        }
+        console.log(newData);
+
+        setDisplayProducts(newData);
+    };
+
+    useEffect(() => {
+        doSort(displayProducts);
+    }, [priceSort]);
 
     //TODO:render display products
     // useEffect(() => {
@@ -164,6 +180,9 @@ function ProductMain(props) {
                     setFilter={setFilter}
                     filter={filter}
                     doFilter={doFilter}
+                    priceSort={priceSort}
+                    setPriceSort={setPriceSort}
+                    doSort={doSort}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
                     {displayProducts &&

@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaAngleUp, FaFilter, FaSearch, FaMinus } from 'react-icons/fa';
+import {
+    FaAngleUp,
+    FaFilter,
+    FaSearch,
+    FaMinus,
+    FaAngleDown,
+} from 'react-icons/fa';
 
 function ProductFilter(props) {
     const {
@@ -10,12 +16,20 @@ function ProductFilter(props) {
         setFilter,
         filter,
         doFilter,
+        priceSort,
+        setPriceSort,
+        doSort,
     } = props;
+
+    const [sortBtn, setSortBtn] = useState({
+        priceBtn: false,
+        newBtn: false,
+        hotBtn: false,
+    });
 
     const testRef = useRef(null);
     const handleClick = () => {
         const test = testRef.current;
-        console.log(test.classList);
         test.classList.toggle('max-h-52');
     };
     const handleFilter = (e) => {
@@ -24,6 +38,31 @@ function ProductFilter(props) {
             [e.target.name]: e.target.value,
         };
         setFilter(newObj);
+    };
+
+    const handleSortActive = (e) => {
+        setSortBtn({
+            priceBtn: false,
+            newBtn: false,
+            hotBtn: false,
+        });
+        let newObj = {
+            ...sortBtn,
+            [e.target.name]: true,
+        };
+        setSortBtn(newObj);
+    };
+
+    const currentBtnStyle = (name) => {
+        if (name) {
+            return 'btn-yellow-sm mx-1 flex';
+        } else {
+            return 'btn-gray-sm mx-1 flex';
+        }
+    };
+
+    const handlePriceSort = () => {
+        priceSort ? setPriceSort(false) : setPriceSort(true);
     };
 
     return (
@@ -35,12 +74,27 @@ function ProductFilter(props) {
                         className="text-white text-2xl cursor-pointer mr-4"
                     />
 
-                    <button className="flex items-center btn-yellow-sm mx-1">
+                    <button
+                        name="priceBtn"
+                        onClick={(e) => {
+                            handlePriceSort();
+                            handleSortActive(e);
+                        }}
+                        className={currentBtnStyle(sortBtn.priceBtn)}
+                    >
                         <div>價格</div>
-                        <FaAngleUp className="ml-1 text-xl" />
+                        {priceSort ? (
+                            <FaAngleUp className="ml-1 text-xl" />
+                        ) : (
+                            <FaAngleDown className="ml-1 text-xl" />
+                        )}
                     </button>
-                    <button className="btn-yellow-sm mx-1">最新</button>
-                    <button className="btn-gray-sm mx-1">最熱銷</button>
+                    <button name="newBtn" className="btn-yellow-sm mx-1">
+                        最新
+                    </button>
+                    <button name="hotBtn" className="btn-gray-sm mx-1">
+                        最熱銷
+                    </button>
                 </div>
                 <div className="mb-2 w-full sm:w-1/3 bg-gray-700 rounded-full flex items-center px-4 py-2">
                     <input
