@@ -16,21 +16,27 @@ function ProductMain(props) {
     const { category } = useParams();
 
     const [data, setData] = useState(null);
+    const [brandList, setBrandList] = useState(null);
     const [categoryProduct, setCategoryProduct] = useState(null);
     const [displayProducts, setDisplayProducts] = useState(null);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState({
-        minPrice: 0,
-        maxPrice: 999999,
-        brand: 0,
+        minPrice: '',
+        maxPrice: '',
+        brand: '0',
     });
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        console.log(filter);
+    }, [filter]);
 
     useEffect(() => {
         const getProductList = async () => {
             try {
                 let response = await axios.get(`${API_URL}/products/all`);
                 setData(response.data.allProduct);
+                setBrandList(response.data.brandList);
             } catch (e) {
                 setError(e.message);
             }
@@ -51,18 +57,27 @@ function ProductMain(props) {
                 switch (category) {
                     case 'allProduct':
                         setCategoryProduct(data);
+                        setDisplayProducts(data);
                         break;
                     case 'clothe':
                         setCategoryProduct(filter(1));
+                        setDisplayProducts(filter(1));
+
                         break;
                     case 'shoes':
                         setCategoryProduct(filter(2));
+                        setDisplayProducts(filter(2));
+
                         break;
                     case 'equipment':
                         setCategoryProduct(filter(3));
+                        setDisplayProducts(filter(3));
+
                         break;
                     case 'food':
                         setCategoryProduct(filter(4));
+                        setDisplayProducts(filter(4));
+
                         break;
                     default:
                         console.log('error');
@@ -77,14 +92,31 @@ function ProductMain(props) {
         let handelData = categoryProduct.filter((item) => {
             return item.product_name.indexOf(search) !== -1;
         });
-        setCategoryProduct(handelData);
+        setDisplayProducts(handelData);
+    };
+
+    const clearFilter = () => {
+        let newObj = {
+            minPrice: '',
+            maxPrice: '',
+            brand: '0',
+        };
+        setFilter(newObj);
     };
 
     //TODO:filter function
     //filter
     const doFilter = () => {
-        let handelData = handelData.filter((item) => {
-            return item.name.indexOf(search) !== -1;
+        console.log(priceFilter(categoryProduct));
+        setDisplayProducts(priceFilter(categoryProduct));
+        clearFilter();
+    };
+    const priceFilter = (value) => {
+        return value.filter((item) => {
+            return (
+                Number(item.minPrice) >= Number(filter.minPrice) &&
+                Number(item.maxPrice) <= Number(filter.maxPrice)
+            );
         });
     };
 
@@ -108,6 +140,7 @@ function ProductMain(props) {
         <>
             <main className="px-3 max-w-screen-xl my-0 mx-auto">
                 <ProductFilter
+                    brandList={brandList}
                     setSearch={setSearch}
                     search={search}
                     doSearch={doSearch}
@@ -116,8 +149,8 @@ function ProductMain(props) {
                     doFilter={doFilter}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                    {categoryProduct &&
-                        categoryProduct.map((item) => {
+                    {displayProducts &&
+                        displayProducts.map((item) => {
                             return (
                                 <ProductCard
                                     key={item.product_id}

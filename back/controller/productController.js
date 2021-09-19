@@ -18,7 +18,12 @@ const listAllProduct = async (req, res, next) => {
     });
 
     allProduct.forEach(item => {
+        let arr = item.product_price.split('~')
+        if (arr.length === 1) arr.push(arr[0]);
+
         item.img_name = imgList.get(item.product_id)[0].img_name;
+        item.minPrice = arr[0];
+        item.maxPrice = arr[1];
     })
 
     

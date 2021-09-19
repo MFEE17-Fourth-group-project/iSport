@@ -2,15 +2,28 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaAngleUp, FaFilter, FaSearch, FaMinus } from 'react-icons/fa';
 
 function ProductFilter(props) {
-    const { setSearch, doSearch, search } = props;
+    const {
+        setSearch,
+        doSearch,
+        search,
+        brandList,
+        setFilter,
+        filter,
+        doFilter,
+    } = props;
 
     const testRef = useRef(null);
     const handleClick = () => {
-        // filter ? setFilter(false) : setFilter(true);
-        // console.log(filter);
         const test = testRef.current;
         console.log(test.classList);
         test.classList.toggle('max-h-52');
+    };
+    const handleFilter = (e) => {
+        let newObj = {
+            ...filter,
+            [e.target.name]: e.target.value,
+        };
+        setFilter(newObj);
     };
 
     return (
@@ -32,9 +45,7 @@ function ProductFilter(props) {
                 <div className="mb-2 w-full sm:w-1/3 bg-gray-700 rounded-full flex items-center px-4 py-2">
                     <input
                         onChange={(e) => {
-                            // console.log(e.target.value);
                             setSearch(e.target.value);
-                            // console.log(search);
                         }}
                         value={search}
                         className="bg-transparent outline-none border-none flex-grow placeholder-gray-700::placeholder text-white "
@@ -58,11 +69,17 @@ function ProductFilter(props) {
                         </p>
                         <div className="w-full xl:w-72 py-1 bg-gray-700 rounded-full flex justify-between items-center px-4">
                             <input
+                                name="minPrice"
+                                value={filter.minPrice}
+                                onChange={handleFilter}
                                 className="text-sm xl:text-base w-1/3 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center "
                                 placeholder="最小值"
                             />
                             <FaMinus className="mx-1 text-yellow-400 text-xl" />
                             <input
+                                name="maxPrice"
+                                value={filter.maxPrice}
+                                onChange={handleFilter}
                                 className="text-sm xl:text-base w-1/3 bg-transparent outline-none border-none placeholder-gray-700::placeholder text-white text-center"
                                 placeholder="最大值"
                             />
@@ -74,18 +91,34 @@ function ProductFilter(props) {
                             品牌
                         </p>
                         <div className="">
-                            <select className="w-full xl:w-72 border-b-2 border-yellow-400 bg-gray-900 py-1 outline-none text-white">
-                                <option>A</option>
-                                <option>B</option>
-                                <option>C</option>
-                                <option>D</option>
-                                <option>E</option>
-                                <option>F</option>
+                            <select
+                                name="brand"
+                                value={filter.brand}
+                                onChange={handleFilter}
+                                className="w-full xl:w-72 border-b-2 border-yellow-400 bg-gray-900 py-1 outline-none text-white"
+                            >
+                                <option value="0" key={0}>
+                                    請選擇品牌
+                                </option>
+                                {brandList &&
+                                    brandList.map((item) => {
+                                        return (
+                                            <option
+                                                value={item.id}
+                                                key={item.id}
+                                            >
+                                                {item.name}
+                                            </option>
+                                        );
+                                    })}
                             </select>
                         </div>
                     </div>
 
-                    <button className="btn-gray-sm place-self-end mx-1">
+                    <button
+                        onClick={doFilter}
+                        className="btn-gray-sm place-self-end mx-1"
+                    >
                         篩選
                     </button>
                 </div>
