@@ -41,16 +41,15 @@ function ProductFilter(props) {
     };
 
     const handleSortActive = (e) => {
-        setSortBtn({
+        let newObj = {
             priceBtn: false,
             newBtn: false,
             hotBtn: false,
-        });
-        let newObj = {
-            ...sortBtn,
             [e.target.name]: true,
         };
         setSortBtn(newObj);
+        console.log(sortBtn);
+        console.log(e.target.name);
     };
 
     const currentBtnStyle = (name) => {
@@ -77,22 +76,46 @@ function ProductFilter(props) {
                     <button
                         name="priceBtn"
                         onClick={(e) => {
-                            handlePriceSort();
                             handleSortActive(e);
+                            handlePriceSort();
                         }}
                         className={currentBtnStyle(sortBtn.priceBtn)}
                     >
-                        <div>價格</div>
+                        價格
                         {priceSort ? (
-                            <FaAngleUp className="ml-1 text-xl" />
+                            <FaAngleUp
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                }}
+                                name="priceBtn"
+                                className="ml-1 text-xl"
+                            />
                         ) : (
-                            <FaAngleDown className="ml-1 text-xl" />
+                            <FaAngleDown
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                }}
+                                name="priceBtn"
+                                className="ml-1 text-xl"
+                            />
                         )}
                     </button>
-                    <button name="newBtn" className="btn-yellow-sm mx-1">
+                    <button
+                        name="newBtn"
+                        onClick={(e) => {
+                            handleSortActive(e);
+                        }}
+                        className={currentBtnStyle(sortBtn.newBtn)}
+                    >
                         最新
                     </button>
-                    <button name="hotBtn" className="btn-gray-sm mx-1">
+                    <button
+                        name="hotBtn"
+                        onClick={(e) => {
+                            handleSortActive(e);
+                        }}
+                        className={currentBtnStyle(sortBtn.hotBtn)}
+                    >
                         最熱銷
                     </button>
                 </div>
