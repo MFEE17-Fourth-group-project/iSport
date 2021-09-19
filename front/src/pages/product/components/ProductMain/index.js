@@ -155,6 +155,28 @@ function ProductMain(props) {
         doSort(displayProducts);
     }, [priceSort]);
 
+    const doSortNew = () => {
+        let newData = [...displayProducts].sort(
+            (a, b) =>
+                new Date(a.create_time).getTime() -
+                new Date(b.create_time).getTime()
+        );
+
+        console.log(newData);
+
+        setDisplayProducts(newData);
+    };
+
+    const doSortHot = () => {
+        let newData = [...displayProducts].sort(
+            (a, b) => b.total_sale - a.total_sale
+        );
+
+        console.log(newData);
+
+        setDisplayProducts(newData);
+    };
+
     //TODO:render display products
     // useEffect(() => {
     //     console.log(categoryProduct);
@@ -183,6 +205,8 @@ function ProductMain(props) {
                     priceSort={priceSort}
                     setPriceSort={setPriceSort}
                     doSort={doSort}
+                    doSortNew={doSortNew}
+                    doSortHot={doSortHot}
                 />
                 <section className="my-5 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
                     {displayProducts &&

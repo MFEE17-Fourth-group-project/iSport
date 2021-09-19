@@ -19,6 +19,8 @@ function ProductFilter(props) {
         priceSort,
         setPriceSort,
         doSort,
+        doSortNew,
+        doSortHot,
     } = props;
 
     const [sortBtn, setSortBtn] = useState({
@@ -48,8 +50,6 @@ function ProductFilter(props) {
             [e.target.name]: true,
         };
         setSortBtn(newObj);
-        console.log(sortBtn);
-        console.log(e.target.name);
     };
 
     const currentBtnStyle = (name) => {
@@ -104,6 +104,7 @@ function ProductFilter(props) {
                         name="newBtn"
                         onClick={(e) => {
                             handleSortActive(e);
+                            doSortNew();
                         }}
                         className={currentBtnStyle(sortBtn.newBtn)}
                     >
@@ -113,6 +114,7 @@ function ProductFilter(props) {
                         name="hotBtn"
                         onClick={(e) => {
                             handleSortActive(e);
+                            doSortHot();
                         }}
                         className={currentBtnStyle(sortBtn.hotBtn)}
                     >
