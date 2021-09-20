@@ -10,10 +10,15 @@ import {
 } from 'react-icons/fa';
 import { useState } from 'react';
 import CustomerService from '../sign/CustomerService';
+import axios from 'axios';
+import { API_URL } from '../../utils/config';
 
 // 聯絡我們跳窗
+// async
 function UserAside() {
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
+    const [photo, setphoto] = useState();
+    const formData = new FormData();
 
     const handleCustomerService = () => {
         setCustomerServiceWindow(true);
@@ -22,25 +27,37 @@ function UserAside() {
     const handleCancel = () => {
         setCustomerServiceWindow(false);
     };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        formData.append('photo', photo);
+        let response = await axios.post(`${API_URL}/users/photo`, formData);
+    };
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
-
-            <div className=" w-64 h-64 flex justify-center items-center cursor-pointer relative">
-                <input
-                    type="file"
-                    className="w-48 h-48 rounded-full  overflow z-10 absolute opacity-0 cursor-pointer"
-                />
-                <div className="w-48 h-48 rounded-full  overflow-hidden z-0">
-                    <img
-                        src={userHeader}
-                        alt=""
-                        className="w-full h-full object-cover object-center opacity-40"
+            <form onSubmit={handleSubmit}>
+                <div className=" w-64 h-64 flex justify-center items-center cursor-pointer relative">
+                    <input
+                        type="file"
+                        id="photo"
+                        name="photo"
+                        onChange={(e) => {
+                            setphoto(e.target.files[0]);
+                        }}
+                        className="w-48 h-48 rounded-full  overflow z-10 absolute opacity-0 cursor-pointer"
                     />
+                    <div className="w-48 h-48 rounded-full  overflow-hidden z-0">
+                        <img
+                            src={userHeader}
+                            alt=""
+                            className="w-full h-full object-cover object-center opacity-40"
+                        />
+                    </div>
                 </div>
-            </div>
+                <button className="btn-green">上傳</button>
+            </form>
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
                     <Link to="/user">
