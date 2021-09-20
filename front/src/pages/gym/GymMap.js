@@ -12,15 +12,15 @@ class GymMap extends Component {
     //建立組件
     componentDidMount() {
         // 引入地圖
-        const mymap = L.map('mapid').setView(
+        this.mymap = L.map('mapid').setView(
             [this.props.lat, this.props.lng],
-            13
+            18
         );
         // 引入圖資
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(mymap);
+        }).addTo(this.mymap);
         //建立座標
         const greenIcon = new L.Icon({
             iconUrl:
@@ -35,8 +35,8 @@ class GymMap extends Component {
         //定位座標
         const marker = L.marker([this.props.lat, this.props.lng], {
             icon: greenIcon,
-        }).addTo(mymap);
-        marker.bindPopup('<b>健身房在這!</b>').openPopup();
+        }).addTo(this.mymap);
+        marker.bindPopup('<b>運動中心在這!</b>').openPopup();
     }
     //重新渲染比較前後的值是否有差異，如果有差異的話才做新的一次網路請求
     componentDidUpdate(prevProps, prevState) {
@@ -48,10 +48,17 @@ class GymMap extends Component {
             this.props.lng
         );
         if (
-            prevProps.latitude !== this.props.latitude ||
-            prevProps.longitude !== this.props.longitude
+            prevProps.lat !== this.props.lat ||
+            prevProps.lng !== this.props.lng
         ) {
-            this.mapid();
+            // 引入地圖
+            // this.mymap.setView([this.props.lat, this.props.lng], 13);
+            // this.mymap.panTo([this.props.lat, this.props.lng]);
+            this.mymap.setView([this.props.lat, this.props.lng], 18);
+            L.popup()
+                .setLatLng([this.props.lat, this.props.lng])
+                .setContent(`<b>運動中心在這!</b>`)
+                .openOn(this.mymap);
         }
     }
 
