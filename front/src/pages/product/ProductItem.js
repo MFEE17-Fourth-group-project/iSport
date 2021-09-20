@@ -1,5 +1,5 @@
 import React from 'react';
-import product from '../../../images/product/1002-3.png';
+import product from '../../images/product/1002-3.png';
 import {
     FaPlus,
     FaMinus,

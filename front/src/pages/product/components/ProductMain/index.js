@@ -138,7 +138,7 @@ function ProductMain(props) {
         }
     };
 
-    //TODO:sort function
+    //sort
     const doSort = (productData) => {
         let newData = [...productData];
         if (priceSort) {
@@ -177,11 +177,6 @@ function ProductMain(props) {
         setDisplayProducts(newData);
     };
 
-    //TODO:render display products
-    // useEffect(() => {
-    //     console.log(categoryProduct);
-    // }, [categoryProduct]);
-
     /**
      *
      * @param {string} id 商品的id
@@ -214,6 +209,7 @@ function ProductMain(props) {
                             return (
                                 <ProductCard
                                     key={item.product_id}
+                                    id={item.product_id}
                                     productName={item.product_name}
                                     category={item.product_category_name}
                                     brand={item.brand_name}

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 function ProductCard(props) {
-    const { productName, brand, category, price, sale, photo, like } = props;
+    const { productName, brand, category, price, sale, photo, like, id } =
+        props;
     const productPhotoUrl = require('../../../../images/product/' + photo);
     // console.log(productPhotoUrl);
     return (
@@ -26,7 +27,7 @@ function ProductCard(props) {
                             </>
                         )}
                     </div>
-                    <Link to="/product/item">
+                    <Link to={'/products/productItem/?id=' + id}>
                         <img
                             className="w-full"
                             src={productPhotoUrl.default}
