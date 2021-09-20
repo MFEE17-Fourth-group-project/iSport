@@ -16,6 +16,7 @@ function Cart(props) {
                         購物車
                     </div>
                     <div className="text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl">
+                        {/* 購物車商品卡片 */}
                         <CartItem
                             count={counts}
                             setCount={(newCount) => {
