@@ -35,7 +35,7 @@ class Article extends React.Component {
                         <article className="w-full md:w-3/4 xs:m-auto">
                             {/* <div className="w-1/4 h-60"></div> */}
                             <Link
-                                to="/ArticleCategory"
+                                to="/ArticleAerobicExercise"
                                 className="flex justify-center lg:justify-end mt-4"
                                 data-aos="fade-left"
                                 data-aos-anchor="#trigger-left"
@@ -50,7 +50,7 @@ class Article extends React.Component {
                             id="trigger-right"
                         >
                             <Link
-                                to="/ArticleCategory"
+                                to="/ArticleWeightTraining"
                                 className="flex justify-center lg:justify-start mt-4"
                                 data-aos="fade-right"
                                 data-aos-anchor="#trigger-right"
@@ -67,7 +67,7 @@ class Article extends React.Component {
                         >
                             {/* <div className="w-1/4 h-60"></div> */}
                             <Link
-                                to="/ArticleCategory"
+                                to="/ArticleCoreStrength"
                                 className="flex justify-center lg:justify-end mt-4"
                             >
                                 <ArticleCardRight />
@@ -79,7 +79,7 @@ class Article extends React.Component {
                             data-aos="fade-right"
                         >
                             <Link
-                                to="/ArticleCategory"
+                                to="/ArticleLeanBulking"
                                 className="flex justify-center lg:justify-start mt-4"
                             >
                                 <ArticleCardLeft />
@@ -93,7 +93,7 @@ class Article extends React.Component {
                         >
                             {/* <div className="w-1/4 h-60"></div> */}
                             <Link
-                                to="/ArticleCategory"
+                                to="/ArticleTABATATraining"
                                 className="flex justify-center lg:justify-end mt-4  mb-4"
                             >
                                 <ArticleCardRight />
