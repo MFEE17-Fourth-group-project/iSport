@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import product from '../../images/product/1002-3.png';
 import {
     FaPlus,
@@ -13,23 +15,41 @@ import {
     FaCircle,
 } from 'react-icons/fa';
 
-function ProductItem() {
+function ProductItem(props) {
+    console.log(props);
+
+    useEffect(() => {
+        //使用網址上的id和伺服器要資料
+        const paramsString = props.location.search;
+        const searchParams = new URLSearchParams(paramsString);
+
+        const id = searchParams.get('id');
+
+        console.log(id);
+
+        // const newProduct = data.find((v) => {
+        //     return v.id === id;
+        // });
+
+        // if (newProduct) setProduct(newProduct);
+    }, []);
+
     return (
         <>
-            <nav className="mt-2 bg-gray-900 flex justify-center text-sm xl:text-base">
-                <div className="flex-1 sm:flex-initial border-b-2 border-yellow-400 w-36 text-white text-center text-base py-3">
+            <nav className="mt-2 text-white bg-gray-900 flex justify-center text-sm xl:text-base">
+                <div className="flex-1 sm:flex-initial w-36  text-center py-3">
                     所有商品
                 </div>
-                <div className="flex-1 sm:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
                     運動服飾
                 </div>
-                <div className="flex-1 sm:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
                     運動鞋類
                 </div>
-                <div className="flex-1 sm:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
                     健身器材
                 </div>
-                <div className="flex-1 sm:flex-initial border-b-2 border-transparent w-36 text-white text-center text-base py-3">
+                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
                     營養補給
                 </div>
             </nav>
@@ -269,12 +289,12 @@ function ProductItem() {
 
                         <div className="py-5 flex mx-0 lg:mx-2">
                             <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-1 flex justify-between items-center absolute">
+                                {/* <div className="w-full py-1 flex justify-between items-center absolute">
                                     <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
                                         New
                                     </div>
                                     <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
-                                </div>
+                                </div> */}
                                 <img
                                     className="w-full"
                                     src={product}
@@ -293,110 +313,6 @@ function ProductItem() {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="mr-1 xl:mr-4 flex-shrink-0 w-40 xl:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-1 flex justify-between items-center absolute">
-                                    <div className="text-xs xl:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-3xl xl:text-4xl text-red-300 cursor-pointer" />
-                                </div>
-                                <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="Mountain"
-                                />
-                                <div className="px-4 py-2  xl:px-6 xl:py-4 h-32 xl:h-40 flex flex-col justify-between">
-                                    <div className="text-base xl:text-lg mb-2 text-yellow-400">
-                                        15 分鐘高强度全身肌肉
-                                        無需器材又能在家做的運動
-                                    </div>
-                                    <div className="text-sm xl:text-base text-white flex justify-between">
-                                        <div>$350</div>
-                                        <div>
-                                            已出售 <span>100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mr-1 xl:mr-4 flex-shrink-0 w-40 xl:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-1 flex justify-between items-center absolute">
-                                    <div className="text-xs xl:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-3xl xl:text-4xl text-red-300 cursor-pointer" />
-                                </div>
-                                <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="Mountain"
-                                />
-                                <div className="px-4 py-2  xl:px-6 xl:py-4 h-32 xl:h-40 flex flex-col justify-between">
-                                    <div className="text-base xl:text-lg mb-2 text-yellow-400">
-                                        15 分鐘高强度全身肌肉
-                                        無需器材又能在家做的運動
-                                    </div>
-                                    <div className="text-sm xl:text-base text-white flex justify-between">
-                                        <div>$350</div>
-                                        <div>
-                                            已出售 <span>100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mr-1 xl:mr-4 flex-shrink-0 w-40 xl:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-1 flex justify-between items-center absolute">
-                                    <div className="text-xs xl:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-3xl xl:text-4xl text-red-300 cursor-pointer" />
-                                </div>
-                                <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="Mountain"
-                                />
-                                <div className="px-4 py-2  xl:px-6 xl:py-4 h-32 xl:h-40 flex flex-col justify-between">
-                                    <div className="text-base xl:text-lg mb-2 text-yellow-400">
-                                        15 分鐘高强度全身肌肉
-                                        無需器材又能在家做的運動
-                                    </div>
-                                    <div className="text-sm xl:text-base text-white flex justify-between">
-                                        <div>$350</div>
-                                        <div>
-                                            已出售 <span>100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mr-1 xl:mr-4 flex-shrink-0 w-40 xl:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                <div className="w-full py-1 flex justify-between items-center absolute">
-                                    <div className="text-xs xl:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-3xl xl:text-4xl text-red-300 cursor-pointer" />
-                                </div>
-                                <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="Mountain"
-                                />
-                                <div className="px-4 py-2  xl:px-6 xl:py-4 h-32 xl:h-40 flex flex-col justify-between">
-                                    <div className="text-base xl:text-lg mb-2 text-yellow-400">
-                                        15 分鐘高强度全身肌肉
-                                        無需器材又能在家做的運動
-                                    </div>
-                                    <div className="text-sm xl:text-base text-white flex justify-between">
-                                        <div>$350</div>
-                                        <div>
-                                            已出售 <span>100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -405,4 +321,4 @@ function ProductItem() {
     );
 }
 
-export default ProductItem;
+export default withRouter(ProductItem);
