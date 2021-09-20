@@ -3,7 +3,6 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 import L from '../../../node_modules/leaflet';
 
 class GymMap extends Component {
-    //static指的是這函式不屬於以這個class被宣告出來的單一物件
     //地圖
     constructor(props) {
         super(props);
@@ -12,10 +11,7 @@ class GymMap extends Component {
     //建立組件
     componentDidMount() {
         // 引入地圖
-        this.mymap = L.map('mapid').setView(
-            [this.props.lat, this.props.lng],
-            18
-        );
+        this.mymap = L.map('mapid').setView([25.0259029, 121.5703875], 18);
         // 引入圖資
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution:
@@ -33,7 +29,7 @@ class GymMap extends Component {
             shadowSize: [41, 41],
         });
         //定位座標
-        const marker = L.marker([this.props.lat, this.props.lng], {
+        const marker = L.marker([25.0259029, 121.5703875], {
             icon: greenIcon,
         }).addTo(this.mymap);
         marker.bindPopup('<b>運動中心在這!</b>').openPopup();
