@@ -13,7 +13,11 @@ import Footer from '../global/Footer';
 import ProductItem from './product/components/ProductItem'; //改路徑
 import VideoId from './video/VideoId';
 import FavouriteProduct from './user/cart/FavouriteProduct.js';
-import ArticleCategory from './article/ArticleCategory';
+import ArticleAerobicExercise from './article/ArticleAerobicExercise';
+import ArticleWeightTraining from './article/ArticleWeightTraining';
+import ArticleTABATATraining from './article/ArticleTABATATraining';
+import ArticleCoreStrength from './article/ArticleCoreStrength';
+import ArticleLeanBulking from './article/ArticleLeanBulking';
 import ArticleId from './article/ArticleId';
 import HomePage from './HomePage';
 import TradingRecord from './user/cart/TradingRecord';
@@ -85,8 +89,20 @@ function HomeRouter() {
                         <Route path="/articles">
                             <Articles />
                         </Route>
-                        <Route path="/ArticleCategory">
-                            <ArticleCategory />
+                        <Route path="/ArticleAerobicExercise">
+                            <ArticleAerobicExercise />
+                        </Route>
+                        <Route path="/ArticleWeightTraining">
+                            <ArticleWeightTraining />
+                        </Route>
+                        <Route path="/ArticleTABATATraining">
+                            <ArticleTABATATraining />
+                        </Route>
+                        <Route path="/ArticleCoreStrength">
+                            <ArticleCoreStrength />
+                        </Route>
+                        <Route path="/ArticleLeanBulking">
+                            <ArticleLeanBulking />
                         </Route>
                         <Route path="/ArticleId/:id?">
                             <ArticleId />

@@ -10,7 +10,7 @@ function ArticleAdd() {
     const [content, setcontent] = useState();
     const [category, setcategory] = useState();
     const [upload_date, setupload_date] = useState();
-    const [photos, setfile] = useState();
+    const [photo, setPhoto] = useState();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,8 +22,11 @@ function ArticleAdd() {
             formData.append('added_by', added_by);
             formData.append('upload_date', upload_date);
             formData.append('category', category);
-            formData.append('photos', photos);
-            let response = await axios.post(`${API_URL}/ArticleAdd`, formData);
+            formData.append('photo', photo);
+            let response = await axios.post(
+                `${API_URL}/articles/Create`,
+                formData
+            );
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -38,9 +41,9 @@ function ArticleAdd() {
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                     <from
-                    // onSubmit={handleSubmit}
-                    // onChange={handleFormChange}
-                    // onInvalid={handleFormInvalid}
+                        onSubmit={handleSubmit}
+                        // onChange={handleFormChange}
+                        // onInvalid={handleFormInvalid}
                     >
                         <label className="">作者：</label>
                         <span className="text-base text-red-500 mx-4">
@@ -103,10 +106,10 @@ function ArticleAdd() {
                         <input
                             className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             type="file"
-                            name="file"
-                            id="file"
+                            name="photo"
+                            id="photo"
                             onChange={(e) => {
-                                setfile(e.target.files[0]);
+                                setPhoto(e.target.photo[0]);
                             }}
                         />
                         <br />

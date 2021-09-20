@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 import ArticleHeader from '../../images/tabata/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import SuggestVideoCol from '../video/components/SuggestVideoCol';
@@ -15,36 +15,30 @@ import {
     FaEye,
 } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
-// import axios from '../../../node_modules/axios';
-// import { API_URL } from '../../utils/config';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 // 模擬從伺服器來的資料
 // import { data } from '../data/';
 
 function ArticleId(props) {
-    // const [article, setArticles] = useState({
-    //     id: '',
-    //     article_name: '',
-    //     added_by: '',
-    //     content: '',
-    //     photos: '',
-    //     views: 0,
-    //     upload_date: '',
-    // });
-    // async function now() {
-    //     const res = await axios.get(`${API_URL}/api/articles`);
-    //     res = await res.json();
-    //     console.log(res);
-    // }
-    // now();
+    const { Id } = useParams();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/articles/Read/${Id}`);
+                let data = res.data;
+                setData(data);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    });
 
-    (async function () {
-        let res = await axios.get(`${API_URL}/articles`);
-        console.log(res.data);
-    })();
-
-    // const [data, setData] = useState();
     return (
         <>
             <div className="">

@@ -28,8 +28,9 @@ app.use(
 //         resave: false
 //     })
 // );
-
+//使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
+//使用這個中間鍵才能解析json資料
 app.use(express.json());
 
 
