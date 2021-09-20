@@ -1,8 +1,7 @@
 import React from 'react';
 // 要導入資鏈結還沒導入
-
+import { API_URL } from '../../utils/config';
 import axios from 'axios';
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
@@ -12,15 +11,20 @@ function SignIn(props) {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    //控制handleSumbit
-    // const handleSubmit = async (e) => {
-    //     e.prevenntDefault();
-    //     let result = await axios.post(`${API_URL}/Signin`, {
-    //         account,
-    //         password,
-    //     });
-    //     console.log(result);
-    // };
+    // 控制handleSumbit
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let result = await axios.post(
+            `${API_URL}/auth/Signin`,
+            {
+                account,
+                password,
+            },
+            //如果要同意跨原信任 需要將withCredentials改為true
+            { withCredentials: true }
+        );
+        console.log(result);
+    };
 
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
@@ -28,9 +32,7 @@ function SignIn(props) {
         setPasswordShown(passwordShown ? false : true);
     };
     return (
-        <form
-            className="w-screen h-screen fixed z-0" /*onSubmit={handleSubmit}*/
-        >
+        <form className="w-screen h-screen fixed z-0" onSubmit={handleSubmit}>
             <div
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
                 -translate-x-1/2 z-20 absolute top-1/2 left-1/2"
@@ -42,7 +44,7 @@ function SignIn(props) {
                         onClick={props.onCancel}
                     />
                 </div>
-                <form className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
+                <div className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
@@ -59,6 +61,7 @@ function SignIn(props) {
                             onChange={(e) => {
                                 setAccount(e.target.value);
                             }}
+                            required
                         />
                         <hr className="border-2 border-yellow-400" />
                     </div>
@@ -79,6 +82,7 @@ function SignIn(props) {
                             onChange={(e) => {
                                 setPassword(e.target.value);
                             }}
+                            required
                         />
                         <i
                             onClick={togglePasswordVisiblity}
@@ -105,18 +109,16 @@ function SignIn(props) {
                                     註冊
                                 </button>
                             </Link>
-                            <Link to="/user">
-                                <button
-                                    className="btn-yellow"
-                                    type="button"
-                                    onClick={props.onCancel}
-                                >
-                                    登入
-                                </button>
-                            </Link>
+                            <button
+                                type="submit"
+                                className="btn-yellow"
+                                // onClick={props.onCancel}
+                            >
+                                登入
+                            </button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
             <div
                 className="bg-black bg-opacity-50 w-screen h-screen fixed z-10"

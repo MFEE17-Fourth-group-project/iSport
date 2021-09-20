@@ -1,10 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const { SignInCheckMiddleware } = require("../middlewares/auth");
 
-const connection = require('../utils/db');
+//  跟會員中心有關的路由
 
-router.get('/', (req, res, next) => {
-    res.send('hello');
+// 這一個 router 的路由都會先經過這個中間件
+router.use(SignInCheckMiddleware);
+
+router.get("/", (req, res, next) => {
+  res.json(req.member);
 });
+
+// 整個 app （整個網站）
+// app.use
 
 module.exports = router;
