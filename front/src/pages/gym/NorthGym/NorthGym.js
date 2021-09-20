@@ -35,11 +35,12 @@ const NorthGyms = [
         longitude: '121.5192045',
     },
 ];
-function NorthGym() {
+function NorthGym(props) {
+    const { pData2, setPData2 } = props;
     return (
         <>
             <div>
-                <NorthGymList Gyms={NorthGyms} />
+                <NorthGymList Gyms={NorthGyms} setPData2={setPData2} />
             </div>
         </>
     );

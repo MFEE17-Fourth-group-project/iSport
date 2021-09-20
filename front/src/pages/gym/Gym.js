@@ -8,20 +8,20 @@ import SouthGym from './SouthGym/SouthGym';
 import EasthGym from './EasthGym/EasthGym';
 import GymMap from './GymMap';
 function Gym() {
-    let [gym, setGym] = useState(<NorthGym />);
+    const [pData2, setPData2] = useState('');
+    let [gym, setGym] = useState(<NorthGym setPData2={setPData2} />);
     const changeNorthGym = () => {
-        setGym(<NorthGym />);
+        setGym(<NorthGym setPData2={setPData2} />);
     };
     const changeMidthGym = () => {
-        setGym(<MidthGym />);
+        setGym(<MidthGym setPData2={setPData2} />);
     };
     const changeSouthGym = () => {
-        setGym(<SouthGym />);
+        setGym(<SouthGym setPData2={setPData2} />);
     };
     const changeEasthGym = () => {
-        setGym(<EasthGym />);
+        setGym(<EasthGym setPData2={setPData2} />);
     };
-
     return (
         <>
             <div>
@@ -38,7 +38,10 @@ function Gym() {
                     // style={{ height: '100vh', width: '100vw' }}
                     // onClick="{myMap}"
                     ></div>
-                    <GymMap />
+                    <GymMap
+                        lat={pData2 && +pData2.latitude}
+                        lng={pData2 && +pData2.longitude}
+                    />
                 </div>
                 <div className="w-full md:w-1/2 p-4">
                     <h3 class="text-4xl text-white text-center m-6">健身房</h3>

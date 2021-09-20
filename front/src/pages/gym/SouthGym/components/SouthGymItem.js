@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SiOpenstreetmap } from 'react-icons/si';
 
 function GymItem(props) {
     const { phone, name, image, address, latitude, longitude } = props;
-    const LatLng = () => {
-        let lat = this.data - lng,
-            lng = this.data - lat;
-        console.log(lat);
-        console.log(lng);
-    };
+    const [cbData, setCbData] = useState({ latitude, longitude });
     return (
         <>
             <div className="flex items-center my-2">
@@ -23,13 +18,12 @@ function GymItem(props) {
                 </div>
                 <button
                     className="text-white"
-                    data-lng={latitude}
-                    data-lat={longitude}
-                    onClick={LatLng}
+                    onClick={() => {
+                        props.setPData2(cbData);
+                    }}
                 >
                     <SiOpenstreetmap className="text-5xl" />
                     {latitude}
-                    <br />
                     {longitude}
                 </button>
             </div>

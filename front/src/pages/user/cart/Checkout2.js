@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import creditCard from '../../images/';
 import Aside from '../../../global/Aside';
 import ProgressBar from './components/ProgressBar';
+import CreditCard from './components/CreditCard';
 
 function Checkout2() {
     return (
@@ -23,9 +23,8 @@ function Checkout2() {
                             </h3>
                         </div>
                         <div className="sm:flex hidden justify-center mb-8">
-                            {/* <img src="creditCard" alt=""></img> */}
-                            <div className="w-56 h-32 bg-white rounded-lg bg-opacity-90 text-gray-700 text-center flex justify-center items-center">
-                                <p>示意圖</p>
+                            <div>
+                                <CreditCard />
                             </div>
                         </div>
                         <from>
@@ -59,32 +58,6 @@ function Checkout2() {
                                     ></input>
                                 </div>
                             </div>
-
-                            {/* <div>
-                                <label className="w-20">住家地址</label>
-                                <input
-                                    type="text"
-                                    className="input-style flex-1"
-                                ></input>
-                            </div>
-
-                            <div>
-                                <label className="w-20">寄送方式</label>
-                                <input
-                                    type="text"
-                                    className="input-style flex-1"
-                                ></input>
-                            </div>
-
-                            <div>
-                                <label className="w-20">多得多得多的</label>
-                                <input
-                                    type="text"
-                                    className="input-style flex-1"
-                                ></input>
-                            </div> */}
-
-                            {/* <div className="pt-2.5 my-4 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end"></div> */}
                             <div className="flex flex-row justify-center">
                                 <button type="" className="mr-4">
                                     <Link

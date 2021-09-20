@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
+import MobileAside from './MobileAside';
 
-function Nav({ toggle }) {
+function Nav(props) {
     const [signInWindow, setSignInWindow] = useState(false);
 
     const handleSignIn = () => {
@@ -20,9 +21,6 @@ function Nav({ toggle }) {
         <>
             <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
-                    {/* <div className="w-36 lg:hidden flex justify-start items-center">
-                        <HiMenu className="w-14 h-10 text-white text-opacity-85 cursor-pointer" />
-                    </div> */}
                     <div className="flex items-center">
                         <img
                             src={Logo}
@@ -32,35 +30,27 @@ function Nav({ toggle }) {
                         />
                         <Link
                             to="/"
-                            className="text-3xl text-white text-opacity-70 mx-4"
+                            className="sm:text-3xl text-2xl text-white text-opacity-70 sm:mx-4 mx-2"
                         >
                             iSport!
                         </Link>
                     </div>
 
-                    <div className="flex items-center ">
-                        {/* <Link to="/user/cart/TradingRecord">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
-                                購買紀錄
-                            </p>
-                        </Link>
-                        <Link to="/user/cart/favourite">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
-                                收藏商品
-                            </p>
-                        </Link> */}
-                        <div
-                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden"
-                            onClick={toggle}
+                    <div className="flex items-center">
+                        <input type="checkbox" id="nav-toggle" />
+                        <label
+                            for="nav-toggle"
+                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2"
                         >
                             <img
                                 src={userHeader}
                                 alt=""
                                 className="w-full h-full object-cover object-center"
                             />
-                        </div>
+                        </label>
+                        <MobileAside />
                         <button
-                            className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base px-3.5 py-1 rounded-full outline-none ease-linear transition-all duration-150"
+                            className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
                             onClick={handleSignIn}
                         >
                             登入
@@ -70,7 +60,7 @@ function Nav({ toggle }) {
                                 精選影片
                             </p>
                         </Link>
-                        <Link to="/products">
+                        <Link to="/products/allProduct">
                             <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 多樣商品
                             </p>
@@ -88,7 +78,7 @@ function Nav({ toggle }) {
                         </Link>
                         <Link
                             to="/user/cart"
-                            className="text-white text-opacity-85 mx-4 hover:text-yellow-400"
+                            className="text-white text-opacity-85 sm:mx-4 mx-0 hover:text-yellow-400"
                         >
                             購物車
                         </Link>
@@ -102,7 +92,7 @@ function Nav({ toggle }) {
                         精選影片
                     </p>
                 </Link>
-                <Link className="flex-1" to="/products">
+                <Link className="flex-1" to="/products/allProduct">
                     <p className="text-white text-opacity-85 hover:text-yellow-400 hover:bg-gray-700 py-4">
                         多樣商品
                     </p>

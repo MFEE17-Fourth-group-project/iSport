@@ -35,11 +35,14 @@ const SouthGyms = [
         longitude: '121.5192045',
     },
 ];
-function SouthGym() {
+function SouthGym(props) {
+    // 專門給子女B設定資料回來的callback
+    // const [pData2, setPData2] = useState('');
+    const { pData2, setPData2 } = props;
     return (
         <>
             <div>
-                <SouthGymList Gyms={SouthGyms} />
+                <SouthGymList Gyms={SouthGyms} setPData2={setPData2} />
             </div>
         </>
     );
