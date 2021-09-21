@@ -16,6 +16,7 @@ function ArticleAerobicExercise(props) {
                     `${API_URL}/articles/Read/AerobicExercise`
                 );
                 let data = res.data;
+                console.log(data);
                 setData(data);
                 // setIsPending(false);
                 setError(null);

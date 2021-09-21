@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import Article from '../article/components/Article';
 import { Link } from 'react-router-dom';
-
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
 const ArticleSection = () => {
     const [step, setStep] = useState(1);
-
+    const [data, setData] = useState(null);
+    // const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/LeanBulking`
+                );
+                let data = res.data;
+                setData(data);
+                // setIsPending(false);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+                // setIsPending(false);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(data);
     const AerobicExercise = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {data &&
+                    data.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -18,7 +43,10 @@ const ArticleSection = () => {
     const WeightTraining = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {data &&
+                    data.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -26,7 +54,10 @@ const ArticleSection = () => {
     const CoreStrength = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {data &&
+                    data.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -34,14 +65,20 @@ const ArticleSection = () => {
     const LeanBulking = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {data &&
+                    data.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
     const TABATATraining = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {data &&
+                    data.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );

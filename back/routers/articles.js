@@ -23,11 +23,11 @@ res.json(result);
 
 //顯示多筆分類
  router.get('/Read/AerobicExercise', async (req, res, next) => {
-  let result = await connection.queryAsync('SELECT * FROM iSport.article WHERE valid=1 AND category=1');
+  let result = await connection.queryAsync('SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"');
   res.json(result);
 })
 router.get('/Read/WeightTraining', async (req, res, next) => {
-  let result = await connection.queryAsync('SELECT * FROM iSport.article WHERE valid=1 AND category=2');
+  let result = await connection.queryAsync('SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="重量訓練"');
   res.json(result);
 })
 router.get('/Read/TABATATraining', async (req, res, next) => {

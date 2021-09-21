@@ -136,7 +136,7 @@ function ArticleAdd() {
                         />
                         <div className="flex flex-row justify-end">
                             <button
-                                className="btn-yellow flex flex-row justify-end items-center"
+                                className="btn-yellow flex flex-row justify-end items-center my-5"
                                 type="submit"
                                 id="button"
                                 onClick={handleSubmit}
