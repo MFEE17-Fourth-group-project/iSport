@@ -6,6 +6,17 @@ import product from '../../../../images/product/1002-3.png';
 import axios from 'axios';
 
 function CartItem(props) {
+    const {} = props;
+    // 購入品項數量加減 FIXME: 刪除
+    // const [count, setCount] = useState(1);
+
+    // function minus() {
+    //     setCount(count - 1);
+    // }
+
+    // function plus() {
+    //     setCount(count + 1);
+    // }
 
     // 取得後端資料
     const [data, setData] = useState(null);
@@ -105,11 +116,11 @@ function CartItem(props) {
     }, [mycart]);
 
     // 更新購物車中的商品數量
-    const updateCartTolocalStorage = (item, isAdded = true) => {
+    const updateCartToLocalStorage = (item, isAdded = true) => {
         console.log(item, isAdded);
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // find if the product in the localStorage with its id
+        // find if the product in the localstorage with its id
         const index = currentCart.findIndex((v) => v.id === item.id);
 
         console.log('index', index);
@@ -123,8 +134,6 @@ function CartItem(props) {
         // 設定資料
         setMycart(currentCart);
     };
-
-    // 移除該品項
 
     // 計算總價用的函式
     const sum = (items) => {
@@ -156,7 +165,7 @@ function CartItem(props) {
                             <button
                                 onClick={() => {
                                     if (item.amount === 1) return;
-                                    updateCartTolocalStorage(item, false);
+                                    updateCartToLocalStorage(item, false);
                                 }}
                             >
                                 -
@@ -164,7 +173,7 @@ function CartItem(props) {
                             {item.amount}
                             <button
                                 onClick={() =>
-                                    updateCartTolocalStorage(item, true)
+                                    updateCartToLocalStorage(item, true)
                                 }
                             >
                                 +
@@ -228,7 +237,7 @@ function CartItem(props) {
                                             className="cursor-pointer"
                                             onClick={() => {
                                                 if (item.amount === 1) return;
-                                                updateCartTolocalStorage(
+                                                updateCartToLocalStorage(
                                                     item,
                                                     false
                                                 );
@@ -244,7 +253,7 @@ function CartItem(props) {
                                         <div
                                             className="cursor-pointer"
                                             onClick={() =>
-                                                updateCartTolocalStorage(
+                                                updateCartToLocalStorage(
                                                     item,
                                                     true
                                                 )

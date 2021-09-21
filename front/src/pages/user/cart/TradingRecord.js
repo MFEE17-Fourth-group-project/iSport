@@ -5,15 +5,17 @@ import Aside from '../../../global/Aside';
 import OrderRecord from './components/OrderRecord';
 import axios from 'axios';
 
+// TODO: 依照使用者 id 拋轉他的歷史訂單
+
 function TradingRecord() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    // 連到後端的 API
+    // 連到後端的 API，取得訂單記錄
     useEffect(() => {
         console.log('read API_URL', API_URL);
         const getOrderRecord = async () => {
             try {
-                let res = await axios.get(`${API_URL}/cart`);
+                let res = await axios.get(`${API_URL}/order`);
                 let data = res.data;
                 console.log(data);
                 setData(data);
@@ -25,6 +27,7 @@ function TradingRecord() {
         };
         getOrderRecord();
     }, []);
+
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
@@ -64,13 +67,15 @@ function TradingRecord() {
                 <section className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg lg:px-10 px-4 py-6">
                     {/* 購買紀錄卡片 */}
                     {data &&
-                        data.map((order, index) => (
+                        data.map((item, index) => (
                             <OrderRecord
-                                key={order.id}
-                                order_no={order.order_no}
-                                paytype={order.paytype}
-                                delivery={order.delivery}
-                                status={order.status}
+                                key={item.id}
+                                order_no={item.order_no}
+                                order_date={item.order_date.slice(0, 10)}
+                                price={item.price}
+                                paytype={item.paytype}
+                                delivery={item.delivery}
+                                status={item.status}
                             />
                         ))}
                 </section>
