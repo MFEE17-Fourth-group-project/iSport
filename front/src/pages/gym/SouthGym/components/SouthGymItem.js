@@ -23,8 +23,6 @@ function GymItem(props) {
                     }}
                 >
                     <SiOpenstreetmap className="text-5xl" />
-                    {latitude}
-                    {longitude}
                 </button>
             </div>
         </>

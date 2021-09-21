@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Aside from '../../../global/Aside';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-// import axios from "axios";
-// import { API_URL } from "../utils/config";
-
+import axios from '../../../../node_modules/axios';
+import { API_URL } from '../../../utils/config';
 function ArticleAdd() {
-    // const [article_name, setarticle_name] = useState();
-    // const [added_by, setadded_by] = useState();
-    // const [content, setcontent] = useState();
-    // const [category, setcategory] = useState();
-    // const [upload_date, setupload_date] = useState();
+    const [article_name, setarticle_name] = useState();
+    const [added_by, setadded_by] = useState();
+    const [content, setcontent] = useState();
+    const [category, setcategory] = useState();
+    const [upload_date, setupload_date] = useState();
+    const [photo, setPhoto] = useState();
 
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //     // const formData = new FormData(e.target)
-    //     // console.log(formData.get('email'))
-    //     let formData = new FormData();
-    //     formData.append("article_name", article_name);
-    //     formData.append("added_by", added_by);
-    //     formData.append("upload_date", upload_date);
-    //     formData.append("category", category);
-    //     formData.append("photos", photos);
-    //     let response = await axios.post(`${API_URL}/auth/register`, formData);
-    //     console.log(response);
-    //   } catch (e) {
-    //     console.error(e.response);
-    //   }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // const formData = new FormData(e.target)
+            // console.log(formData.get('email'))
+            let formData = new FormData();
+            formData.append('article_name', article_name);
+            formData.append('added_by', added_by);
+            formData.append('upload_date', upload_date);
+            formData.append('category', category);
+            formData.append('photo', photo);
+            let response = await axios.post(
+                `${API_URL}/articles/Create`,
+                formData
+            );
+            console.log(response);
+        } catch (e) {
+            console.error(e.response);
+        }
+    };
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <Aside />
@@ -37,9 +41,9 @@ function ArticleAdd() {
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                     <from
-                    // onSubmit={handleSubmit}
-                    // onChange={handleFormChange}
-                    // onInvalid={handleFormInvalid}
+                        onSubmit={handleSubmit}
+                        // onChange={handleFormChange}
+                        // onInvalid={handleFormInvalid}
                     >
                         <label className="">作者：</label>
                         <span className="text-base text-red-500 mx-4">
@@ -56,9 +60,10 @@ function ArticleAdd() {
                             // setState={handleFieldChange}
                             // error={fieldErrors.article_name}
                             required
-                            // value={article_name}
-                            // onChange={(e) => {
-                            //     setarticle_name(e.target.value);}}
+                            value={article_name}
+                            onChange={(e) => {
+                                setarticle_name(e.target.value);
+                            }}
                         ></input>
                         <br />
                         <label>分類：</label>
@@ -66,9 +71,10 @@ function ArticleAdd() {
                         <select
                             name="category"
                             id="category"
-                            // value={category}
-                            // onChange={(e) => {
-                            //     setcategory(e.target.value);}}
+                            value={category}
+                            onChange={(e) => {
+                                setcategory(e.target.value);
+                            }}
                             className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                         >
                             <option value="1">有氧運動</option>
@@ -89,9 +95,10 @@ function ArticleAdd() {
                             name="added_by"
                             id="added_by"
                             placeholder="最多100字"
-                            // value={added_by}
-                            // onChange={(e) => {
-                            //     setadded_by(e.target.value);}}
+                            value={added_by}
+                            onChange={(e) => {
+                                setadded_by(e.target.value);
+                            }}
                         />
                         <br />
                         <label htmlFor="photo">上傳圖片:</label>
@@ -99,10 +106,11 @@ function ArticleAdd() {
                         <input
                             className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             type="file"
-                            name="file"
-                            id="file"
-                            // onChange={(e) => {
-                            //     setfile(e.target.files[0]);}}
+                            name="photo"
+                            id="photo"
+                            onChange={(e) => {
+                                setPhoto(e.target.photo[0]);
+                            }}
                         />
                         <br />
                         <label>內容：</label>
@@ -116,15 +124,10 @@ function ArticleAdd() {
                             name="content"
                             id="content"
                             style={{ display: 'none' }}
-                            // value={content}
-                            // onChange={(e) => {
-                            //         setcontent(e.target.value);}}
-                        />
-                        <textarea
-                        // value={content}
-                        // onChange={(e) => {
-                        // setcontent(e.target.value)
-                        // }}
+                            value={content}
+                            onChange={(e) => {
+                                setcontent(e.target.value);
+                            }}
                         />
                         <Editor
                             toolbarClassName="toolbar"
@@ -133,9 +136,10 @@ function ArticleAdd() {
                         />
                         <div className="flex flex-row justify-end">
                             <button
-                                className="btn-yellow flex flex-row justify-end items-center"
+                                className="btn-yellow flex flex-row justify-end items-center my-5"
                                 type="submit"
                                 id="button"
+                                onClick={handleSubmit}
                             >
                                 <p className="font-bold text-xl mx-2">新增</p>
                             </button>
