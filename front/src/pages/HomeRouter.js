@@ -36,7 +36,7 @@ import WatchLater from './user/videos/WatchLater';
 
 // PRODUCT
 import Product from './product/Product';
-import ProductItem from './product/components/ProductItem'; //改路徑
+import ProductItem from './product/ProductItem'; //改路徑
 
 // CART, ORDER
 import Cart from './user/cart/Cart';
@@ -72,10 +72,7 @@ function HomeRouter() {
                         <Route path="/user/cart">
                             <Cart counts={counts} setCounts={setCounts} />
                         </Route>
-                        {/* <Route path="/ProductCategory">
-                        <ProductCategory />
-                    </Route> */}
-                        <Route path="/product/item">
+                        <Route path="/products/productItem/">
                             <ProductItem />
                         </Route>
                         <Route path="/products/:category?">
