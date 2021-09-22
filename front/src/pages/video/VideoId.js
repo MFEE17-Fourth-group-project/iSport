@@ -1,4 +1,5 @@
 import { Link, useParams, useHistory, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import useGet from './../../utils/useGet';
 import { APP_URL } from './../../utils/config';
 import SuggestVideoCol from './components/SuggestVideoCol';
@@ -7,13 +8,23 @@ import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
 import {
     FaClock,
-    FaThumbsUp,
-    FaShare,
-    FaRegHeart,
-    FaList,
     FaCaretDown,
     FaComments
 } from "react-icons/fa";
+
+import {
+    RiShareForwardLine,
+    RiShareForwardFill,
+    RiThumbUpLine,
+    RiThumbUpFill,
+    RiHeartFill,
+    RiHeartLine
+} from 'react-icons/ri';
+
+import {
+    MdPlaylistAdd,
+    MdPlaylistAddCheck
+} from 'react-icons/md';
 
 
 const VideoId = () => {
@@ -22,6 +33,12 @@ const VideoId = () => {
 
     let { data: video, error, isPending } = useGet(`/videos/${videoId}`);
     if (video) video = video[0];
+
+    const [liked, setLiked] = useState(false);
+    const [alert, setAlert] = useState(false);
+    const [collect, setCollect] = useState(false);
+    const [list, setList] = useState(false);
+
 
     return (
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
@@ -39,27 +56,63 @@ const VideoId = () => {
                         <span className="text-xs text-white w-max">{video.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
                     </div>
                     <div className="flex w-full justify-between sm:justify-end">
-                        <div className="flex mr-4 items-center">
-                            <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
-                        </div>
+                        {liked ?
+                            <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setLiked(false)}
+                            >
+                                <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
+                            </div>
+                            : <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setLiked(true)}
+                            >
+                                <RiThumbUpFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">{video.likes + 1}</span>
+                            </div>}
+
                         <div
                             className="flex mr-4 items-center cursor-pointer"
                             onClick={() => {
                                 navigator.clipboard.writeText(APP_URL + location.pathname);
                             }}
                         >
-                            <FaShare className="text-yellow-400 mr-1 sm:text-base xs:text-2xl" />
+                            <RiShareForwardLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                             <span className="text-sm sm:text-xs text-white w-max">分享</span>
                         </div>
-                        <Link to="/user/videoCollection" className="flex mr-4 items-center">
-                            <FaRegHeart className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">收藏</span>
-                        </Link>
-                        <Link to="/user/watchLater" className="flex items-center">
-                            <FaList className="text-yellow-400 mr-1 sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
-                        </Link>
+
+                        {collect ?
+                            <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setCollect(false)}
+                            >
+                                <RiHeartFill className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">收藏</span>
+                            </div>
+                            : <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setCollect(true)}
+                            >
+                                <RiHeartLine className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">收藏</span>
+                            </div>}
+                        {list ?
+                            <div
+                                className="flex items-center cursor-pointer"
+                                onClick={() => setList(false)}
+                            >
+                                <MdPlaylistAdd className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
+                            </div>
+                            : <div
+                                className="flex items-center cursor-pointer"
+                                onClick={() => setList(true)}
+                            >
+                                <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
+                            </div>}
+
                     </div>
                 </div>
 
