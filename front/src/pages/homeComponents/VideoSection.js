@@ -4,18 +4,18 @@ import VideoCard from './../video/components/VideoCard';
 import VideoCard2 from './../video/components/VideoCard2';
 
 const VideoSection = () => {
-    let [gym, setGym] = useState(<VideoCard />);
+    let [gym, setGym] = useState(<VideoCard2 />);
     const Pectoralis = () => {
         setGym(<VideoCard2 />);
     };
     const BackMuscles = () => {
-        setGym(<VideoCard />);
+        setGym(<VideoCard2 />);
     };
     const AbdominalMuscles = () => {
         setGym(<VideoCard2 />);
     };
     const GlutealMuscles = () => {
-        setGym(<VideoCard />);
+        setGym(<VideoCard2 />);
     };
     const LegMuscles = () => {
         setGym(<VideoCard2 />);
@@ -43,7 +43,6 @@ const VideoSection = () => {
                     className="h-152 w-full rounded-3xl object-cover shadow-lg"
                     src={HomePage8}
                 />
-                {/* <BsCursorFill /> */}
                 <button
                     className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase
                                     rounded-full outline-none ease-linear transition-all duration-150 block
