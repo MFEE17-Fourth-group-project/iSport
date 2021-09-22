@@ -11,6 +11,7 @@ const listAllProduct = async (req, res, next) => {
     //group img with product_id
     allProduct.forEach(product => {
         let arr = [];
+        //TODO:用find重構
         arr = allImg.filter(img => {
             return product.product_id === img.product_id;
         });
@@ -30,6 +31,38 @@ const listAllProduct = async (req, res, next) => {
     res.json({'allProduct':allProduct , 'brandList':brandList})
 }
 
+const productItem = async (req, res, next) => {
+    const productId = req.params.productId
+    const product = await productModel.getOneProduct(productId);
+    const skuDetail = await productModel.getSkuDetail(productId);
+    const skuType = await productModel.getSkuType(productId);
+    const typeList = await productModel.getTypeList();
+    const productImg = await productModel.getProductImg(productId);
+
+
+    let typeValueArr = [];
+    // console.log(typeList)
+    typeList.forEach((item) => {
+        console.log(item.id)
+        let arr = skuType.filter((typeValue) => {
+            return typeValue.type_id === item.id
+        })
+        if(arr.length > 0) {
+            let obj = {
+                type_id:item.id,
+                type_name:item.name_frontend,
+                typeValue:arr
+            }
+            typeValueArr.push(obj)
+        }
+    })
+
+    console.log(typeValueArr)
+    
+    res.json({'product':product, 'skuDetail':skuDetail, 'typeValue':typeValueArr, 'productImg':productImg})
+}
+
 module.exports = {
-    listAllProduct
+    listAllProduct,
+    productItem
 };

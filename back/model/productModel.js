@@ -32,10 +32,64 @@ const getBrandList = async () => {
     )
 }
 
+//get product detail with product id
+const getOneProduct = async (id) => {
+    return await connection.queryAsync(
+        `SELECT product.id AS product_id, product.name AS product_name, 
+                product.intro AS product_intro, brand.id AS brand_id, brand.name AS brand_name,
+                product_category.id AS product_category_id, product_category.name AS product_category_name,
+                sum(product_sku.sale) AS total_sale
+        FROM product 
+        INNER JOIN brand 
+        ON product.brand=brand.id
+        INNER JOIN product_category 
+        ON product.category=product_category.id
+        INNER JOIN product_sku
+        ON product.id=product_sku.product_id
+        WHERE product.valid=1 && product.id=?
+        GROUP BY product.id`,
+        [id]
+    )
+}
+
+const getSkuDetail = async (id) => {
+    return await connection.queryAsync(
+        `SELECT sku_code, stock,  sku_group, price
+        FROM product_sku
+        WHERE product_id=?`,
+        [id]
+    )
+}
+
+const getSkuType = async (id) => {
+    return await connection.queryAsync(
+        `SELECT * FROM product_type_value WHERE product_id=?`,
+        [id]
+    )
+}
+
+const getTypeList = async () => {
+    return await connection.queryAsync(
+        `SELECT * FROM product_type`
+    )
+}
+
+const getProductImg = async (id) => {
+    return await connection.queryAsync(
+        `SELECT img_name, id FROM product_img WHERE product_id=?`,
+        [id]
+    )
+}
+
 module.exports={
     getAllProduct,
     getImgList,
     getBrandList,
+    getOneProduct,
+    getSkuDetail,
+    getSkuType,
+    getTypeList,
+    getProductImg
 }
 
 // SELECT table_column1, table_column2...
