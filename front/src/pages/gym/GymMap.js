@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import L from '../../../node_modules/leaflet';
 
 class GymMap extends Component {
     //地圖
-    constructor() {
-        //初始化
-        super();
+    constructor(props) {
+        super(props);
         this.mapid = null;
     }
     //建立組件
     componentDidMount() {
-        const mymap = L.map('mapid').setView([24.9970214, 121.5574843], 13);
+        // 引入地圖
+        this.mymap = L.map('mapid').setView([25.0259029, 121.5703875], 18);
+        // 引入圖資
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(mymap); //建立地圖
+        }).addTo(this.mymap);
+        //建立座標
         const greenIcon = new L.Icon({
             iconUrl:
                 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -26,11 +28,34 @@ class GymMap extends Component {
             popupAnchor: [1, -34],
             shadowSize: [41, 41],
         });
-
-        const marker = L.marker([24.9970214, 121.5574843], {
+        //定位座標
+        const marker = L.marker([25.0259029, 121.5703875], {
             icon: greenIcon,
-        }).addTo(mymap);
-        marker.bindPopup('<b>健身房在這!</b>').openPopup();
+        }).addTo(this.mymap);
+        marker.bindPopup('<b>運動中心在這!</b>').openPopup();
+    }
+    //重新渲染比較前後的值是否有差異，如果有差異的話才做新的一次網路請求
+    componentDidUpdate(prevProps, prevState) {
+        console.log(
+            'componentDidUpdate',
+            prevProps.lat,
+            this.props.lat,
+            prevProps.lng,
+            this.props.lng
+        );
+        if (
+            prevProps.lat !== this.props.lat ||
+            prevProps.lng !== this.props.lng
+        ) {
+            // 引入地圖
+            // this.mymap.setView([this.props.lat, this.props.lng], 13);
+            // this.mymap.panTo([this.props.lat, this.props.lng]);
+            this.mymap.setView([this.props.lat, this.props.lng], 18);
+            L.popup()
+                .setLatLng([this.props.lat, this.props.lng])
+                .setContent(`<b>運動中心在這!</b>`)
+                .openOn(this.mymap);
+        }
     }
 
     render() {

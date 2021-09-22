@@ -15,6 +15,7 @@ module.exports = {
                 136: '34rem',
                 124: '31rem',
                 112: '28rem',
+                100: '25rem',
                 75: '18.75rem',
             },
         },
@@ -558,6 +559,7 @@ module.exports = {
         }),
         maxHeight: (theme) => ({
             ...theme('spacing'),
+            500: '500px',
             full: '100%',
             screen: '100vh',
         }),

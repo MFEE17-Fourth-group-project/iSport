@@ -21,13 +21,13 @@ function CartItem(props) {
         <>
             <div className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row">
                 {/* ========== 商品圖片 ========== */}
-                <div className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center text-center">
+                <figure className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center">
                     <img
                         className="w-full"
                         src={product}
                         alt="good product"
                     ></img>
-                </div>
+                </figure>
                 <div className="flex flex-col flex-grow lg:ml-10 ml-5">
                     <div className="flex flex-row justify-between pb-2.5">
                         <h3 className="sm:text-xl text-lg font-bold">

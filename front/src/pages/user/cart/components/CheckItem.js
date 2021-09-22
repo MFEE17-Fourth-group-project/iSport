@@ -4,7 +4,7 @@ import product from '../../../../images/product/1002-3.png';
 function CheckItem() {
     return (
         <>
-            <div className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row">
+            <div className="sm:p-2.5 h-180 lg:p-4 p-1.5 flex flex-row">
                 <div className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center text-center">
                     <img
                         className="w-full"

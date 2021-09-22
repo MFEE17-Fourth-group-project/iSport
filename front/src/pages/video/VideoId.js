@@ -1,66 +1,124 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams, useHistory, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import useGet from './../../utils/useGet';
+import { APP_URL } from './../../utils/config';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
 import {
     FaClock,
-    FaThumbsUp,
-    FaShare,
-    FaRegHeart,
-    FaList,
     FaCaretDown,
     FaComments
 } from "react-icons/fa";
 
+import {
+    RiShareForwardLine,
+    RiShareForwardFill,
+    RiThumbUpLine,
+    RiThumbUpFill,
+    RiHeartFill,
+    RiHeartLine
+} from 'react-icons/ri';
+
+import {
+    MdPlaylistAdd,
+    MdPlaylistAddCheck
+} from 'react-icons/md';
+
 
 const VideoId = () => {
+    const { videoId } = useParams();
+    const location = useLocation();
+
+    let { data: video, error, isPending } = useGet(`/videos/${videoId}`);
+    if (video) video = video[0];
+
+    const [liked, setLiked] = useState(false);
+    const [alert, setAlert] = useState(false);
+    const [collect, setCollect] = useState(false);
+    const [list, setList] = useState(false);
+
+
     return (
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
             {/* Video Main Section */}
-            <div className="lg:col-span-2 lg:row-span-1 col-span-full">
+            {video && (<div className="lg:col-span-2 lg:row-span-1 col-span-full">
                 <video src="" alt="Video Preview" width="100%"
                     controls controlsList="nodownload" muted></video>
-                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">《適合在健身房或家裡健身播放的英文輕電音》- 健身時刻</h1>
+                <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{video.title}</h1>
 
                 <div className="my-3 pb-2 border-b-2 border-yellow-400 flex
                     sm:justify-between justify-center mx-5 xs:mx-0">
                     <div className="sm:flex items-center hidden">
-                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：116,157次</h4>
+                        <h4 className="text-sm text-white mr-4 w-max">觀看次數：{video.views}次</h4>
                         <FaClock className="text-yellow-400 mr-1" />
-                        <span className="text-xs text-white">2021/06/22</span>
+                        <span className="text-xs text-white w-max">{video.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
                     </div>
                     <div className="flex w-full justify-between sm:justify-end">
-                        <div className="flex mr-4 items-center">
-                            <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">2844</span>
-                        </div>
-                        <div className="flex mr-4 items-center">
-                            <FaShare className="text-yellow-400 mr-1 cursor-pointer sm:text-base xs:text-2xl" />
+                        {liked ?
+                            <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setLiked(false)}
+                            >
+                                <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
+                            </div>
+                            : <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setLiked(true)}
+                            >
+                                <RiThumbUpFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">{video.likes + 1}</span>
+                            </div>}
+
+                        <div
+                            className="flex mr-4 items-center cursor-pointer"
+                            onClick={() => {
+                                navigator.clipboard.writeText(APP_URL + location.pathname);
+                            }}
+                        >
+                            <RiShareForwardLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                             <span className="text-sm sm:text-xs text-white w-max">分享</span>
                         </div>
-                        <Link to="/user/videoCollection" className="flex mr-4 items-center">
-                            <FaRegHeart className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">收藏</span>
-                        </Link>
-                        <Link to="/user/watchLater" className="flex items-center">
-                            <FaList className="text-yellow-400 mr-1 sm:text-base xs:text-2xl" />
-                            <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
-                        </Link>
+
+                        {collect ?
+                            <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setCollect(false)}
+                            >
+                                <RiHeartFill className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">收藏</span>
+                            </div>
+                            : <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setCollect(true)}
+                            >
+                                <RiHeartLine className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">收藏</span>
+                            </div>}
+                        {list ?
+                            <div
+                                className="flex items-center cursor-pointer"
+                                onClick={() => setList(false)}
+                            >
+                                <MdPlaylistAdd className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
+                            </div>
+                            : <div
+                                className="flex items-center cursor-pointer"
+                                onClick={() => setList(true)}
+                            >
+                                <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
+                            </div>}
+
                     </div>
                 </div>
 
                 <h3 className="text-white text-lg mt-2.5 mb-2 font-bold mx-5 xs:mx-0">影片簡介</h3>
-                <p className="text-white text-base ml-8 mx-5 xs:mr-0">
-                    在家就是要健身!你動起來了沒??<br />
-                    在家待久了大家最怕的是肯定會變胖<br />
-                    待在家其實多了很多自己的時間，不如來讓自己的肥肉熱起來吧!<br />
-                    找不到動力嗎?這歌單會保證讓你全身熱血沸騰!<br />
-                    分享一下我朋友的經驗<br />
-                    他從93kg練到現在是68kg，花了12個月的時間<br />
-                    我覺得他真的超強!<br />
-                    他可以，我們肯定也可以! (我自己也在努力當中XD)<br />
-                    希望這輕電音歌單帶給你滿滿的動力喔 加油!<br />
+                <p className="text-white text-base ml-8 mx-5 xs:mr-14 sm:mr-20 md:mr-28">
+                    {video.description}
                 </p>
                 <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
                     justify-center mx-5 xs:mx-0">
@@ -71,7 +129,7 @@ const VideoId = () => {
                             transition duration-200 group-hover:translate-y-0.5" />
                     </div>
                 </div>
-            </div>
+            </div>)}
 
             {/* Suggestion Section */}
             <div className="lg:col-span-1 lg:row-span-2 col-span-full mx-5 xs:mx-0">
