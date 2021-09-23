@@ -14,6 +14,18 @@ body {
     overflow: auto;
 }
 
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+}
+
 /* Aside 選單，先設定成透明度 0，寬度為 0 */
 .nav-show {
     opacity: 0;
