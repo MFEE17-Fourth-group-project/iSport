@@ -44,7 +44,18 @@ app.use(
 );
 console.log(process.env.Route_ORIGIN)
 
+<<<<<<< HEAD
+=======
+// app.use(
+//     expressSession({
+//         secret: process.env.SESSION_SECRET,
+//         resave: false
+//     })
+// );
+//使用這個中間鍵才能讀到body的資料
+>>>>>>> develop
 app.use(express.urlencoded({ extended: true }));
+//使用這個中間鍵才能解析json資料
 app.use(express.json());
 //設定靜態檔案的位置
 app.use(express.static(path.join(__dirname,"public")));

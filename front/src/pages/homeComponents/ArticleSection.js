@@ -1,16 +1,129 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
 import Article from '../article/components/Article';
 import { Link } from 'react-router-dom';
-
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
 const ArticleSection = () => {
     const [step, setStep] = useState(1);
+    const [data, setData] = useState(null);
+    const [Aer, setAer] = useState(null);
+    const [Wei, setWei] = useState(null);
+    const [Cor, setCor] = useState(null);
+    const [Lea, setLea] = useState(null);
+    const [TAB, setTAB] = useState(null);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/LeanBulking`
+                );
+                let data = res.data;
+                setData(data);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(data);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/AerobicExercise`
+                );
+                let Aer = res.data;
+                setAer(Aer);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(Aer);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/WeightTraining`
+                );
+                let Wei = res.data;
+                setWei(Wei);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(Wei);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/CoreStrength`
+                );
+                let Cor = res.data;
+                setCor(Cor);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(Cor);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/LeanBulking`
+                );
+                let Lea = res.data;
+                setLea(Lea);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(Lea);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(
+                    `${API_URL}/articles/Read/TABATATraining`
+                );
+                let TAB = res.data;
+                setTAB(TAB);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(TAB);
 
     const AerobicExercise = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {Aer &&
+                    Aer.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -18,7 +131,10 @@ const ArticleSection = () => {
     const WeightTraining = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {Wei &&
+                    Wei.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -26,7 +142,10 @@ const ArticleSection = () => {
     const CoreStrength = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {Cor &&
+                    Cor.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
@@ -34,14 +153,20 @@ const ArticleSection = () => {
     const LeanBulking = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {Lea &&
+                    Lea.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );
     const TABATATraining = (
         <>
             <Link className="flex-1" to="/articles">
-                <Article />
+                {TAB &&
+                    TAB.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))}
             </Link>
         </>
     );

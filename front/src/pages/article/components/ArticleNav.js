@@ -1,47 +1,29 @@
-const ArticleNav = () => {
+import useGet from '../../../utils/useGet';
+const ArticleNav = ({ cat }) => {
+    const { data: categories, error, isPending } = useGet(`/videos/category`);
     return (
         <nav className="bg-gray-900 flex justify-center">
             <div
                 className="border-b-2 border-yellow-400 w-36 text-yellow-400 text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer"
+                onClick={(e) => cat(e)}
+                data-id="0"
             >
                 所有文章
             </div>
-            <div
-                className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
-                hover:border-yellow-400 hover:text-yellow-400"
-            >
-                有氧運動
-            </div>
-            <div
-                className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
-                hover:border-yellow-400 hover:text-yellow-400"
-            >
-                重量訓練
-            </div>
-            <div
-                className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
-                hover:border-yellow-400 hover:text-yellow-400"
-            >
-                核心強化
-            </div>
-            <div
-                className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
-                hover:border-yellow-400 hover:text-yellow-400"
-            >
-                增肌飲食
-            </div>
-            <div
-                className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
-                hover:border-yellow-400 hover:text-yellow-400"
-            >
-                間歇訓練
-            </div>
+            {categories &&
+                categories.map((category) => (
+                    <div
+                        className="border-b-2 border-transparent w-36 text-white text-center
+                        text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                        hover:border-yellow-400 hover:text-yellow-400"
+                        key={category.id}
+                        data-id={category.id}
+                        onClick={(e) => cat(e)}
+                    >
+                        {category.name}
+                    </div>
+                ))}
         </nav>
     );
 };
