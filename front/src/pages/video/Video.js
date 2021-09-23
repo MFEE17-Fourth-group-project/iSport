@@ -9,8 +9,6 @@ const Video = () => {
     const [category, setCategory] = useState(0);
 
     const changeCategory = (e) => {
-        // console.log(e.target.getAttribute('data-id'));
-        // let filteredVideo = data.filter(video => video.category === parseInt(e.target.getAttribute('data-id')));
         setCategory(e.target.getAttribute('data-id'));
     };
 
