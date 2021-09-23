@@ -25,6 +25,10 @@ const VideoList = ({ videos, cat }) => {
         setVideoData([...newVideos]);
     };
 
+    const handleEmpty = (e) => {
+        if (e.target.value === '') setVideoData(videos);
+    };
+
     return (
         <>
             {/* Buttons & Search */}
@@ -51,6 +55,7 @@ const VideoList = ({ videos, cat }) => {
                                     "
                         value={term}
                         onChange={(e) => setTerm(e.target.value)}
+                        onKeyUp={(e) => handleEmpty(e)}
                         placeholder="搜尋"
                     />
                     <button
