@@ -122,7 +122,7 @@ function HomeRouter() {
                     <Route path="/SignIn">
                         <SignIn />
                     </Route>
-                    <Route path="/user" exact>
+                    <Route path="/user">
                         <User />
                     </Route>
                     <Route path="/" exact>

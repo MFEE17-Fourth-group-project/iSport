@@ -44,13 +44,6 @@ app.use(
 );
 console.log(process.env.Route_ORIGIN)
 
-// app.use(
-//     expressSession({
-//         secret: process.env.SESSION_SECRET,
-//         resave: false
-//     })
-// );
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //設定靜態檔案的位置
@@ -98,6 +91,11 @@ app.use((err,req,res,next)=>{
     console.log(err);
     res.status(err.status).json({message:err.message});
 });
+
+  app.use((req, res, next) => {
+    console.log("沒有符合的路由");
+    next();
+  });
 
 // Port
 app.listen(port, async function () {

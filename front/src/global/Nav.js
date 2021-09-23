@@ -5,9 +5,11 @@ import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
 import MobileAside from './MobileAside';
+import SignSecress from '../pages/user/components/SignSecress';
 
 function Nav(props) {
     const [signInWindow, setSignInWindow] = useState(false);
+    const [signInSuccess, setSignInSuccess] = useState(false);
 
     const handleSignIn = () => {
         setSignInWindow(true);
@@ -15,6 +17,7 @@ function Nav(props) {
 
     const handleCancel = () => {
         setSignInWindow(false);
+        setSignInSuccess(true);
     };
 
     return (
@@ -84,6 +87,7 @@ function Nav(props) {
                         </Link>
                     </div>
                 </div>
+                {signInSuccess && <SignSecress />}
                 {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
             <nav className="xl:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">

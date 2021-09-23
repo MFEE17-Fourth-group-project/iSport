@@ -47,6 +47,7 @@ const signUpRules=[
 ]
 //密碼加密用
 const bcrypt=require("bcrypt");
+const { JsonWebTokenError } = require('jsonwebtoken');
 
 //上傳檔案用路由中間件
 router.post("/photo",uploader.single("photo"),async(req,res,next)=>{
@@ -64,11 +65,11 @@ router.post("/photo",uploader.single("photo"),async(req,res,next)=>{
 // 註冊會員資料送至express 中間件寫入資料庫
 router.post("/SignUp",signUpRules,async(req,res,next)=>{
     //檢查帳號是否重複
-    let account =await connection.queryAsync(
+    let member =await connection.queryAsync(
         "SELECT*FROM users WHERE account=?;",
         [req.body.account]
     );
-    if(account.length>0){
+    if(member.length>0){
         return next({
             status:400,
             message:"帳號已重複",
@@ -100,57 +101,66 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
             req.body.gender,
         ]]
     )
-    res.json({message:"收到了"});
-});
-
-//取得所有會員路由資料
-router.get("/",async(req,res,next)=>{
-    let result=await connection.queryAsync("SELECT * FROM users");
     res.json(result);
 });
 
-// 取得特定會員資料
-router.get("/:account",async(req,res,next)=>{
-    let menber = await connection.queryAsync(
-        "SELECT * FROM users WHERE account=?",
-        [req.params.account]
-        );
-    res.json(menber);
-    // res.send(req.params);
-});
-
+const jwt =require("jsonwebtoken")
 router.post("/Signin",async(req,res,next)=>{
     // 檢查是否有帳號
-    let account =await connection.queryAsync(
+    let member =await connection.queryAsync(
         "SELECT*FROM users WHERE account=?;",
         [req.body.account]
     );
-    if(account.length===0){
+    if(member.length===0){
         return next({
             status:400,
             message:"沒有找到帳號",
         });
     }
 
-    account=account[0];
+    member=member[0];
         // 檢查密碼是否正確
         let result =await       
-        bcrypt.compare(req.body.password, account.password);
+        bcrypt.compare(req.body.password, member.password);
         if(!result){
             return next({
                 status:400,
                 message:"密碼錯誤",
             });
         }
-    let returMenber={
-        id:account.id,
-        account:account.account,
-        email:account.email,
-        name:account.name,
-        photo:account.photo,
+        console.log("登入成功")
+    let returnMember={
+        // id:account.id,
+        account:member.account,
+        email:member.email,
+        name:member.name,
+        phone:member.phone,
+        address:member.address,
+        birthday:member.birthday,
+        gender:member.gender,
+        aboutme:member.aboutme,
     };
-    req.session.account=returMenber;
-    res.json(returMenber);
-})
+    //這是取得會員全部資料
+    // req.session.account=account;
+    // 這是取得會員部分資料
+    req.session.member=returnMember;
+    res.json(req.session.member);
+
+    // //簽發一個token jwt用
+    // const token =jwt.sign(returnMember,process.env.JWT_SECRET,{expiresIn:"24h",
+    // });
+    //回覆前端
+    // res.json({
+    //     name:member.name,
+    //     photo:member.photo,
+    //     // token:token,
+    // });
+});
+
+router.get("/logout", (req, res, next) => {
+    req.session.member = null;
+    res.sendStatus(202);
+  });
+  
 
 module.exports = router;
