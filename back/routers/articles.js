@@ -12,15 +12,6 @@ router.get('/Read', async (req, res, next) => {
   result.map(article => article.upload_date = article.upload_date.toISOString().slice(0, 16).replace(/:/gi, '').replace('T', ''));
 res.json(result);
 });
-
-//顯示單筆
-// router.get('/Read/:Id', async (req, res, next) => {
-  // let articleId = req.params.id;
-//      let result = await connection.queryAsync("SELECT * FROM article WHERE id=?",
-//      [req.params.Id]);
-// res.json(result);
-//  });
-
 //顯示多筆分類
  router.get('/Read/AerobicExercise', async (req, res, next) => {
   let result = await connection.queryAsync('SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"');
@@ -42,7 +33,13 @@ router.get('/Read/LeanBulking', async (req, res, next) => {
   let result = await connection.queryAsync('SELECT * FROM iSport.article WHERE valid=1 AND category=5');
   res.json(result);
 })
-
+//顯示單筆
+// router.get('/Read/:id', async (req, res, next) => {
+  // let articleId = req.params.id;
+//      let result = await connection.queryAsync("SELECT * FROM article WHERE id=?",
+//      [req.params.Id]);
+// res.json(result);
+//  });
 //新增
 // //資料驗證
 // const registerRules = [
@@ -95,12 +92,12 @@ router.get('/Read/LeanBulking', async (req, res, next) => {
 // console.log(req.file);
 
 //修改
-// router.put('/Update', async (req, res, next) => {
+// router.put('/Update/:id', async (req, res, next) => {
 //   let result = await connection.queryAsync("UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?");
 // res.json(result);
 // });
 //刪除
-// router.delete('/Delete', async (req, res, next) => {
+// router.delete('/Delete/:id', async (req, res, next) => {
 //   let result = await connection.queryAsync("UPDATE article SET valid=0  WHERE id=?");
 // res.json(result);
 // });
