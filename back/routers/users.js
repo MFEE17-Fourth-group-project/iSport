@@ -2,20 +2,14 @@ const express = require("express");
 const router = express.Router();
 const { SignInCheckMiddleware } = require("../middlewares/auth");
 const connection = require('../utils/db');
+//密碼加密用
+const bcrypt=require("bcrypt");
 
 
 //  跟會員中心有關的路由
 
 // 這一個 router 的路由都會先經過這個中間件
 router.use(SignInCheckMiddleware);
-
-// router.get("/", (req, res, next) => {
-//   res.json(req.session.member);
-//     // //jwt 用
-//     // res.json(req.account);
-//   console.log(req.session.member);
-//   console.log("api成功取得資料")
-// });
 
 // 取得特定會員資料
 router.get("/",async(req,res,next)=>{
@@ -25,7 +19,6 @@ router.get("/",async(req,res,next)=>{
       [req.session.member.account]
       );
       let returnMember={
-        // id:account.id,
         account:member.account,
         email:member.email,
         name:member.name,
@@ -38,7 +31,29 @@ router.get("/",async(req,res,next)=>{
     console.log("刷新頁面")
     req.session.member=returnMember;
     res.json( req.session.member);
-  // res.send(req.params);
+});
+
+router.post("/UpdateAccount",async(req,res,next)=>{
+  let member =await connection.queryAsync(
+    "SELECT*FROM users WHERE account=?;",
+    [req.body.account]
+);
+  let result=await connection.queryAsync(
+    "UPDATE users SET (name,account,password,email,phone,address,birthday,about,gender,valid) VALUE(?)",
+    [[
+        req.body.name,
+        req.body.account,
+        await bcrypt.hash(req.body.password,10),
+        req.body.email,
+        req.body.phone,
+        req.body.address,
+        req.body.birthday,
+        req.body.aboutme,
+        req.body.gender,
+        req.body.valid,
+    ]]
+)
+res.json({message:"修改成功"});
 });
 
 // 整個 app （整個網站）

@@ -17,7 +17,33 @@ function Users() {
     const [birthday, setBirthday] = useState('');
     const [gender, setGender] = useState('');
     const [aboutme, setAboutme] = useState('');
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let response = await axios.post(
+                `${API_URL}/users/UpdateAccount`,
+                {
+                    name,
+                    account,
+                    password,
+                    email,
+                    phone,
+                    address,
+                    birthday,
+                    aboutme,
+                    gender,
+                },
+                { withCredentials: true }
+            );
+            alert('註冊成功');
+            console.log(response);
+        } catch (e) {
+            //透過e.response拿到axios的response
+            console.error(e.response);
+            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
+            alert(e.response.data.message);
+        }
+    };
     // useEffect(() => {
     //     const getMember = async () => {
     //         try {
@@ -44,7 +70,7 @@ function Users() {
                             </span>
                         </div>
                         <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <from>
+                            <form onSubmit={handleSubmit}>
                                 <br />
                                 <div className="items-center  py-2">
                                     <label for="name">姓名：</label>
@@ -54,6 +80,9 @@ function Users() {
                                         aria-label="Full name"
                                         name="name"
                                         value={member.name}
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
                                     />
                                 </div>
                                 <br />
@@ -80,6 +109,9 @@ function Users() {
                                             className="input-style lg:items-center  border-b"
                                             name="password"
                                             placeholder="更換密碼時請輸入新密碼"
+                                            onChange={(e) => {
+                                                setPassword(e.target.value);
+                                            }}
                                         />
                                     </div>
                                 </div>
@@ -90,6 +122,9 @@ function Users() {
                                         className="input-style "
                                         name="email"
                                         value={member.email}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                        }}
                                     />
                                 </div>
                                 <div className=" mt-5 mb-5">
@@ -99,6 +134,9 @@ function Users() {
                                         className="input-style"
                                         value={member.phone}
                                         name="phone"
+                                        onChange={(e) => {
+                                            setPhone(e.target.value);
+                                        }}
                                     />
                                 </div>
                                 <div className="mt-5 mb-5 xs:text-base text-sm">
@@ -108,74 +146,87 @@ function Users() {
                                         className="input-style overflow-x-auto"
                                         name="address"
                                         value={member.address}
+                                        onChange={(e) => {
+                                            setAddress(e.target.value);
+                                        }}
                                     />
                                 </div>
-                            </from>
-                        </div>
-                        <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title">
-                            其他資料
-                        </div>
+                                {/* </from> */}
+                                {/* </div> */}
+                                <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title">
+                                    其他資料
+                                </div>
 
-                        <from>
-                            <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                                <div className="flex flex-wrap mr-3 mb-6 justify-between">
-                                    <div className="items-center border-b py-2 md:w-2/5">
-                                        <label for="menberAccount">
-                                            生日：
-                                        </label>
-                                        <input
-                                            type="date"
-                                            className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                            name="menberAccount"
-                                        />
+                                {/* <from> */}
+                                <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
+                                    <div className="flex flex-wrap mr-3 mb-6 justify-between">
+                                        <div className="items-center border-b py-2 md:w-2/5">
+                                            <label for="menberAccount">
+                                                生日：
+                                            </label>
+                                            <input
+                                                type="date"
+                                                className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                                name="menberAccount"
+                                                onChange={(e) => {
+                                                    setBirthday(e.target.value);
+                                                }}
+                                            />
+                                        </div>
+                                        <div class="xl:inline-block xl:w-64 mt-5">
+                                            <label for="gender">性別：</label>
+                                            <select
+                                                value={member.gender}
+                                                name="gender"
+                                                className="bg-transparent border-2 border-gray-700 w-40"
+                                                onChange={(e) => {
+                                                    setGender(e.target.value);
+                                                }}
+                                            >
+                                                <option
+                                                    className="text-black"
+                                                    value="null"
+                                                >
+                                                    保留
+                                                </option>
+                                                <option
+                                                    className="text-black"
+                                                    value="male"
+                                                >
+                                                    男性
+                                                </option>
+                                                <option
+                                                    className="text-black"
+                                                    value="female"
+                                                >
+                                                    女性
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="xl:inline-block xl:w-64 mt-5">
-                                        <label for="gender">性別：</label>
-                                        <select
-                                            value={member.gender}
-                                            name="gender"
-                                            className="bg-transparent border-2 border-gray-700 w-40"
+                                    <div classNmae="mt-10"></div>
+                                    <label for="aboutme">關於我：</label>
+                                    <textarea
+                                        value={member.aboutme}
+                                        id="aboutme"
+                                        name="name"
+                                        class="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
+                                        rows="4"
+                                        onChange={(e) => {
+                                            setAboutme(e.target.value);
+                                        }}
+                                    ></textarea>
+                                    <div className="justify-center flex">
+                                        <button
+                                            type="submit"
+                                            className="btn-yellow"
                                         >
-                                            <option
-                                                className="text-black"
-                                                value="null"
-                                            >
-                                                保留
-                                            </option>
-                                            <option
-                                                className="text-black"
-                                                value="male"
-                                            >
-                                                男性
-                                            </option>
-                                            <option
-                                                className="text-black"
-                                                value="female"
-                                            >
-                                                女性
-                                            </option>
-                                        </select>
+                                            更改個人資料
+                                        </button>
                                     </div>
                                 </div>
-                                <div classNmae="mt-10"></div>
-                                <label for="aboutme">關於我：</label>
-                                <textarea
-                                    value={member.aboutme}
-                                    id="aboutme"
-                                    name="name"
-                                    class="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
-                                    rows="4"
-                                ></textarea>
-                                <div className="justify-center flex">
-                                    <button
-                                        type="submit"
-                                        className="btn-yellow"
-                                    >
-                                        更改個人資料
-                                    </button>
-                                </div>
-                            </div>
-                        </from>
+                            </form>
+                        </div>
                     </artical>
                 </main>
             ) : (

@@ -28,6 +28,6 @@ module.exports={
         }else{
             next();
         }
-        console.log("取得會員資料:",req.session.member)
+        console.log("通過驗證",req.session.member)
     },
 };

@@ -88,7 +88,7 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     }
     console.log(req.body);
     let result=await connection.queryAsync(
-        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender) VALUE(?)",
+        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender,valid) VALUE(?)",
         [[
             req.body.name,
             req.body.account,
@@ -99,9 +99,10 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
             req.body.birthday,
             req.body.aboutme,
             req.body.gender,
+            req.body.valid,
         ]]
     )
-    res.json(result);
+    res.json({message:"註冊成功"});
 });
 
 const jwt =require("jsonwebtoken")

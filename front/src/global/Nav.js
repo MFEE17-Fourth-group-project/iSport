@@ -87,7 +87,7 @@ function Nav(props) {
                         </Link>
                     </div>
                 </div>
-                {signInSuccess && <SignSecress />}
+                {/* {signInSuccess && <SignSecress />} */}
                 {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
             <nav className="xl:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">

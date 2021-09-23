@@ -55,88 +55,6 @@ function HomeRouter() {
         <Router>
             <>
                 <Nav />
-<<<<<<< HEAD
-                <Switch>
-                    <Route path="/SearchPassword">
-                        <SearchPassword />
-                    </Route>
-                    <Route path="/user/CustomerService">
-                        <CustomerService />
-                    </Route>
-                    <Route path="/user/cart/TradingRecord">
-                        <TradingRecord />
-                    </Route>
-                    <Route path="/user/cart/favorite">
-                        <FavoriteProduct />
-                    </Route>
-                    <Route path="/user/cart">
-                        <Cart counts={counts} setCounts={setCounts} />
-                    </Route>
-                    {/* <Route path="/ProductCategory">
-                        <ProductCategory />
-                    </Route> */}
-                    <Route path="/product/item">
-                        <ProductItem />
-                    </Route>
-                    <Route path="/products/:category?">
-                        <Product />
-                    </Route>
-                    <Route path="/gym">
-                        <Gym />
-                    </Route>
-                    <Route path="/articles">
-                        <Articles />
-                    </Route>
-                    <Route path="/ArticleCategory">
-                        <ArticleCategory />
-                    </Route>
-                    <Route path="/ArticleId/:id?">
-                        <ArticleId />
-                    </Route>
-                    <Route path="/user/ArticleCollect">
-                        <ArticleCollect />
-                    </Route>
-                    <Route path="/user/ArticleMyart">
-                        <ArticleMyart />
-                    </Route>
-                    <Route path="/user/ArticleAdd">
-                        <ArticleAdd />
-                    </Route>
-                    <Route path="/video/:videoId">
-                        <VideoId />
-                    </Route>
-                    <Route path="/user/videoCollection">
-                        <VideoCollection />
-                    </Route>
-                    <Route path="/user/watchLater">
-                        <WatchLater />
-                    </Route>
-                    <Route path="/video">
-                        <Video />
-                    </Route>
-                    <Route path="/checkout">
-                        <Checkout />
-                    </Route>
-                    <Route path="/checkout2">
-                        <Checkout2 />
-                    </Route>
-                    <Route path="/finished">
-                        <Finished />
-                    </Route>
-                    <Route path="/SignUp">
-                        <SignUp />
-                    </Route>
-                    <Route path="/SignIn">
-                        <SignIn />
-                    </Route>
-                    <Route path="/user">
-                        <User />
-                    </Route>
-                    <Route path="/" exact>
-                        <HomePage />
-                    </Route>
-                </Switch>
-=======
                 <ScrollToTop>
                     <Switch>
                         <Route path="/SearchPassword">
@@ -240,7 +158,6 @@ function HomeRouter() {
                         </Route>
                     </Switch>
                 </ScrollToTop>
->>>>>>> develop
                 <Footer />
             </>
         </Router>
