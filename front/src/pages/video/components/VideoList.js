@@ -1,6 +1,7 @@
 import VideoCard from './VideoCard';
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 
 const VideoList = ({ videos, cat }) => {
     const [videoData, setVideoData] = useState(videos);
@@ -26,6 +27,7 @@ const VideoList = ({ videos, cat }) => {
 
     return (
         <>
+            {/* Buttons & Search */}
             <div className="flex my-6 justify-between flex-col xs:flex-row">
                 <div className="flex mb-2.5 xs:mb-0">
                     <button
@@ -68,6 +70,42 @@ const VideoList = ({ videos, cat }) => {
                     <VideoCard video={video} key={video.id} />
                 ))}
             </div>
+
+            {/* Pagination */}
+            <nav className="flex mx-auto pb-5">
+                <ul className="flex pl-0 rounded list-none flex-wrap">
+                    <li>
+                        <button
+                            className="first:ml-0 text-lg font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative text-white bg-gray-700">
+                            <BiChevronLeft />
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative text-white bg-gray-900">
+                            1
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative text-white bg-gray-700">
+                            2
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative text-white bg-gray-700">
+                            3
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="first:ml-0 text-lg font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative text-white bg-gray-700">
+                            <BiChevronRight />
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </>
     );
 };

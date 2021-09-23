@@ -7,7 +7,7 @@ const VideoNav = ({ cat }) => {
 
     const setCat = (e) => {
         cat(e);
-        setSelected(parseInt(e.target.getAttribute('data-id')));
+        setSelected(parseInt(e.target.dataset.id));
     };
 
     const selectedClass =
@@ -17,27 +17,28 @@ const VideoNav = ({ cat }) => {
         'border-b-2 border-transparent w-36 text-white text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer hover:border-yellow-400 hover:text-yellow-400';
 
     return (
-        <nav className="bg-gray-900 flex justify-center">
-            <div
-                className={selected === 0 ? selectedClass : unselectedClass}
-                onClick={e => setCat(e)}
-                data-id="0"
-            >
-                所有影片
-            </div>
-            {categories && (
-                categories.map(category => (
+        <>
+            { categories &&
+                <nav className="bg-gray-900 flex justify-center">
                     <div
-                        className={selected === category.id ? selectedClass : unselectedClass}
-                        key={category.id}
-                        data-id={category.id}
+                        className={selected === 0 ? selectedClass : unselectedClass}
                         onClick={e => setCat(e)}
+                        data-id="0"
                     >
-                        {category.name}
+                        所有影片
                     </div>
-                ))
-            )}
-        </nav>
+                    {categories.map(category => (
+                        <div
+                            className={selected === category.id ? selectedClass : unselectedClass}
+                            key={category.id}
+                            data-id={category.id}
+                            onClick={e => setCat(e)}
+                        >
+                            {category.name}
+                        </div>
+                    ))}
+                </nav>}
+        </>
     );
 };
 

@@ -9,7 +9,7 @@ const Video = () => {
     const [category, setCategory] = useState(0);
 
     const changeCategory = (e) => {
-        setCategory(e.target.getAttribute('data-id'));
+        setCategory(e.target.dataset.id);
     };
 
     return (
