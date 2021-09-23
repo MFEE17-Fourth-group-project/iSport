@@ -45,7 +45,7 @@ function ArticleAdd() {
                         // onChange={handleFormChange}
                         // onInvalid={handleFormInvalid}
                     >
-                        <label className="">作者：</label>
+                        <label htmlFor="article_name">作者：</label>
                         <span className="text-base text-red-500 mx-4">
                             必填
                         </span>
@@ -66,7 +66,7 @@ function ArticleAdd() {
                             }}
                         ></input>
                         <br />
-                        <label>分類：</label>
+                        <label htmlFor="category">分類：</label>
                         <br />
                         <select
                             name="category"
@@ -84,7 +84,7 @@ function ArticleAdd() {
                             <option value="5">增肌飲食</option>
                         </select>
                         <br />
-                        <label>標題：</label>
+                        <label htmlFor="added_by">標題：</label>
                         <span className="text-base text-red-500 mx-4">
                             必填
                         </span>
@@ -113,7 +113,7 @@ function ArticleAdd() {
                             }}
                         />
                         <br />
-                        <label>內容：</label>
+                        <label htmlFor="content">內容：</label>
                         <span className="text-base text-red-500 mx-4">
                             必填
                         </span>

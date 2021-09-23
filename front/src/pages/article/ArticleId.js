@@ -21,13 +21,13 @@ import axios from 'axios';
 // import { data } from '../data/';
 
 function ArticleId(props) {
-    const { Id } = useParams();
+    const { id } = useParams();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/Read/${Id}`);
+                let res = await axios.get(`${API_URL}/articles/${id}`);
                 let data = res.data;
                 setData(data);
                 setError(null);
