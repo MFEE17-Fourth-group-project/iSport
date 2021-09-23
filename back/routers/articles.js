@@ -12,13 +12,13 @@ router.get('/Read', async (req, res, next) => {
   result.map(article => article.upload_date = article.upload_date.toISOString().slice(0, 16).replace(/:/gi, '').replace('T', ''));
 res.json(result);
 });
-//顯示多筆分類
+//顯示多筆分類SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"
  router.get('/Read/AerobicExercise', async (req, res, next) => {
-  let result = await connection.queryAsync('SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"');
+  let result = await connection.queryAsync('SELECT * FROM iSport.article WHERE valid=1 AND category=1');
   res.json(result);
 })
 router.get('/Read/WeightTraining', async (req, res, next) => {
-  let result = await connection.queryAsync('SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="重量訓練"');
+  let result = await connection.queryAsync('SELECT * FROM iSport.article WHERE valid=1 AND category=2');
   res.json(result);
 })
 router.get('/Read/TABATATraining', async (req, res, next) => {
@@ -35,11 +35,20 @@ router.get('/Read/LeanBulking', async (req, res, next) => {
 })
 //顯示單筆
 // router.get('/Read/:id', async (req, res, next) => {
-  // let articleId = req.params.id;
+//   let articleId = req.params.id;
 //      let result = await connection.queryAsync("SELECT * FROM article WHERE id=?",
 //      [req.params.Id]);
 // res.json(result);
 //  });
+ router.route('/:id')
+    .get(async (req, res, next) => {
+        let articleId = req.params.id;
+        let result = await connection.queryAsync(
+            'SELECT * FROM article WHERE id=?',
+            [articleId]
+        );
+        res.json(result);
+    });
 //新增
 // //資料驗證
 // const registerRules = [
