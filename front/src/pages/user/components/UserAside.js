@@ -30,7 +30,7 @@ function UserAside() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         formData.append('photo', photo);
-        let response = await axios.post(`${API_URL}/users/photo`, formData);
+        let response = await axios.post(`${API_URL}/auth/photo`, formData);
     };
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">

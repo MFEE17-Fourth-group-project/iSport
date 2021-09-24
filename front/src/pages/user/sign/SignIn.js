@@ -1,39 +1,67 @@
 import React from 'react';
-// 要導入資鏈結還沒導入
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
+import { useAuth } from '../../../context/auth';
+import { Redirect, Link } from 'react-router-dom';
 
 function SignIn(props) {
     // 控制取得帳號密碼值
+    const { member, setMember } = useAuth();
+    const { token, setToken } = useAuth();
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
+
+    const windowClose = () => {
+        props.onCancel();
+    };
 
     // 控制handleSumbit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let result = await axios.post(
-            `${API_URL}/auth/Signin`,
-            {
-                account,
-                password,
-            },
-            //如果要同意跨原信任 需要將withCredentials改為true
-            { withCredentials: true }
-        );
-        console.log(result);
+        try {
+            let result = await axios.post(
+                `${API_URL}/auth/Signin`,
+                {
+                    account,
+                    password,
+                },
+                //如果要同意跨原信任 需要將withCredentials改為true
+                { withCredentials: true }
+            );
+            console.log(result);
+            setMember(result.data);
+            console.log(member);
+            windowClose();
+            // setToken(result.data.token);
+        } catch (e) {
+            //透過e.response拿到axios的response
+            console.error(e);
+            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
+            // alert(e.response.data.message);
+        }
     };
-
+    //控制成功登入視窗
+    const [SignSucress, setSignSucress] = useState(false);
+    const handleSignSucress = () => {
+        setSignSucress(true);
+    };
+    const handleCancelSignSucress = () => {
+        setSignSucress(false);
+    };
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
     };
+    if (member !== null) {
+        return <Redirect to="/user" />;
+    }
     return (
         <form className="w-screen h-screen fixed z-0" onSubmit={handleSubmit}>
             <div
+                id="module"
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
                 -translate-x-1/2 z-20 absolute top-1/2 left-1/2"
             >
@@ -109,10 +137,11 @@ function SignIn(props) {
                                     註冊
                                 </button>
                             </Link>
+
                             <button
                                 type="submit"
                                 className="btn-yellow"
-                                // onClick={props.onCancel}
+                                onClick={handleSignSucress}
                             >
                                 登入
                             </button>
