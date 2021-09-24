@@ -4,7 +4,31 @@ import ProductType from './ProductType';
 
 import { FaPlus, FaMinus, FaAngleLeft, FaHeart, FaShare } from 'react-icons/fa';
 
-function ProductItemInfo() {
+function ProductItemInfo(props) {
+    const { productInfo, typeValue } = props;
+    const [info, setInfo] = useState({
+        category: '',
+        brand: '',
+        productName: '',
+        productId: '',
+        intro: '',
+        totalSale: '',
+    });
+
+    useEffect(() => {
+        // console.log(productInfo);
+        if (productInfo) {
+            setInfo({
+                category: productInfo.product_category_name,
+                brand: productInfo.brand_name,
+                productName: productInfo.product_name,
+                productId: productInfo.product_id,
+                intro: productInfo.product_intro,
+                totalSale: productInfo.total_sale,
+            });
+        }
+        // console.log(info);
+    }, [productInfo]);
     return (
         <>
             <div className="sm:w-1/2 py-5 flex-grow flex flex-col">
@@ -13,7 +37,7 @@ function ProductItemInfo() {
                     <div className="flex items-center cursor-pointer">
                         <FaAngleLeft className="text-yellow-400" />
                         <span>回 &nbsp; </span>
-                        <span className="text-yellow-400">運動服飾</span>
+                        <span className="text-yellow-400">{info.category}</span>
                     </div>
                     <div className="flex items-center cursor-pointer">
                         <FaShare className="text-yellow-400" />
@@ -23,32 +47,30 @@ function ProductItemInfo() {
                 </div>
                 <div className="mb-2 lg:mb-8 ">
                     <h1 className="py-1 lg:py-3 font-bold text-xl sm:text-2xl xl:text-3xl">
-                        女款路跑背心
+                        {info.productName}
                     </h1>
                     <div className="text-xs lg:text-sm">
-                        品名：
+                        品牌：
                         <span className="text-yellow-400 cursor-pointer">
-                            MIZUNO 美津濃
+                            {info.brand}
                         </span>
                         ｜ 總銷售量：
-                        <span>1243</span>
+                        <span>{info.totalSale}</span>
                     </div>
                 </div>
                 <div className="flex-grow">
                     <h2 className="py-2 text-lg lg:text-xl font-bold">規格</h2>
-                    <ProductType />
-                    <div className="py-1 flex">
-                        尺寸：
-                        <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                            S
-                        </div>
-                        <div className="mx-1 px-3 py-0 rounded-full bg-yellow-400 text-gray-900 cursor-pointer">
-                            M
-                        </div>
-                        <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                            L
-                        </div>
-                    </div>
+                    {typeValue &&
+                        typeValue.map((item) => {
+                            return (
+                                <ProductType
+                                    key={item.id}
+                                    typeName={item.type_name}
+                                    typeValue={item.typeValue}
+                                />
+                            );
+                        })}
+
                     <div className="py-1 flex justify-between">
                         <div>
                             貨號：

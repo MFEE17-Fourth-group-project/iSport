@@ -17,12 +17,12 @@ function ProductPhoto(props) {
     const [bigImg, setBigImg] = useState('1002-3.png');
     const [bigImgUrl, setBigImgUrl] = useState(null);
 
-    console.log(bigImg);
+    // console.log(bigImg);
 
     // const bigImgUrl = require('../../../../../images/product/' + bigImg);
 
     useEffect(() => {
-        console.log(productImg);
+        // console.log(productImg);
         if (productImg) {
             setBigImg(productImg[0].img_name);
         }

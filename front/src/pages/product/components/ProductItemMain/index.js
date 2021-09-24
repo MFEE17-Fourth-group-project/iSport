@@ -32,10 +32,10 @@ function ProductItemMain(props) {
                 let response = await axios.get(
                     `${API_URL}/products/item/${productId}`
                 );
-                console.log(response);
+                // console.log(response);
                 let oData = response.data;
                 setData(oData);
-                setProductInfo(response.data.product);
+                setProductInfo(response.data.product[0]);
                 setSkuDetail(response.data.skuDetail);
                 setTypeValue(response.data.typeValue);
                 setProductImg(response.data.productImg);
@@ -58,7 +58,10 @@ function ProductItemMain(props) {
                     {/* 圖片 */}
                     <ProductPhoto productImg={productImg} />
                     {/* 資訊與加入購物車 */}
-                    <ProductItemInfo />
+                    <ProductItemInfo
+                        productInfo={productInfo}
+                        typeValue={typeValue}
+                    />
                 </section>
                 {/* 商品簡介 */}
                 <section className=" h-96 xl:h-screen mt-5 overflow-y-hidden relative">
