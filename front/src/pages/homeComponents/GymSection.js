@@ -38,19 +38,19 @@ function GymSection() {
             <div className="relative p-32 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
                 <TiLocation
-                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-14 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce"
+                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-14 left-48 transform -translate-y-1/2 cursor-pointer animate-bounce"
                     onClick={changeNorthGym}
                 />
                 <TiLocation
-                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-72 left-56 transform -translate-y-1/2 cursor-pointer animate-bounce"
+                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-64 left-48 transform -translate-y-1/2 cursor-pointer animate-bounce"
                     onClick={changeEasthGym}
                 />
                 <TiLocation
-                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-96 left-24 transform -translate-y-1/2 cursor-pointer animate-bounce"
+                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-80 left-24 transform -translate-y-1/2 cursor-pointer animate-bounce"
                     onClick={changeSouthGym}
                 />
                 <TiLocation
-                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-48 left-32 transform -translate-y-1/2 cursor-pointer animate-bounce"
+                    className="z-0 text-yellow-300 hover:text-yellow-400 w-24 h-24 absolute top-40 left-26 transform -translate-y-1/2 cursor-pointer animate-bounce"
                     onClick={changeMidthGym}
                 />
             </div>
