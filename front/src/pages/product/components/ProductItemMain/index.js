@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../../../utils/config';
+import axios from 'axios';
+import { withRouter, useParams } from 'react-router-dom';
+
+import ProductPhoto from './ProductPhoto/';
+import ProductItemInfo from './ProductItemInfo/';
 
 import product from '../../../../images/product/1002-3.png';
 
@@ -10,164 +16,49 @@ import {
     FaHeart,
     FaCaretDown,
     FaShare,
-    FaAngleUp,
-    FaAngleDown,
-    FaCircle,
 } from 'react-icons/fa';
 
-function ProductItemMain() {
+function ProductItemMain(props) {
+    const { productId } = useParams();
+    const [error, setError] = useState(null);
+    const [productInfo, setProductInfo] = useState(null);
+    const [skuDetail, setSkuDetail] = useState(null);
+    const [typeValue, setTypeValue] = useState(null);
+    const [productImg, setProductImg] = useState(null);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        const getOneProductList = async () => {
+            try {
+                let response = await axios.get(
+                    `${API_URL}/products/item/${productId}`
+                );
+                console.log(response);
+                let oData = response.data;
+                setData(oData);
+                setProductInfo(response.data.product);
+                setSkuDetail(response.data.skuDetail);
+                setTypeValue(response.data.typeValue);
+                setProductImg(response.data.productImg);
+            } catch (e) {
+                setError(e.message);
+            }
+        };
+        getOneProductList();
+    }, [productId]);
+
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data]);
+
     return (
         <>
             <main className="px-3 sm:px-6 text-white text-opacity-85 max-w-screen-xl my-0 mx-auto">
                 {/* 圖片與資訊 */}
                 <section className="w-full py-3 flex flex-col sm:flex-row">
                     {/* 圖片 */}
-                    <div className="w-full sm:w-2/5 xl:w-1/2 flex sm:justify-end sm:flex-col-reverse xl:flex-row mr-2 lg:mr-5 py-3">
-                        {/* 小圖 */}
-                        <div className=" hidden sm:block sm:w-full xl:w-auto xl:h-500 sm:overflow-x-hidden xl:overflow-y-hidden mr-2 relative">
-                            <div className="sm:w-6 sm:h-full xl:w-full xl:h-6 sm:bg-gradient-to-r xl:bg-gradient-to-b from-gray-800 absolute top-0 left-0 cursor-pointer flex justify-center items-center">
-                                <FaAngleUp className="hidden xl:block text-2xl text-yellow-400" />
-                                <FaAngleLeft className="xl:hidden sm:block text-2xl text-yellow-400" />
-                            </div>
-                            <div className="sm:w-6 sm:h-full xl:w-full xl:h-6 sm:bg-gradient-to-l xl:bg-gradient-to-t from-gray-800 absolute bottom-0 right-0 cursor-pointer flex justify-center items-center">
-                                <FaAngleDown className="hidden xl:block text-2xl text-yellow-400" />
-                                <FaAngleRight className="xl:hidden sm:block text-2xl text-yellow-400" />
-                            </div>
-                            {/* 圖片群組 */}
-                            <div className="flex w-auto flex-row xl:flex-col">
-                                <figure className="sm:mr-2 xl:mr-0 lx:mb-2 sm:w-20 sm:h-20 xl:w-28 xl:h-28 rounded-md overflow-hidden flex-shrink-0">
-                                    <img
-                                        src={product}
-                                        alt="product"
-                                        className="w-full h-full object-cover object-center"
-                                    />
-                                </figure>
-                            </div>
-                        </div>
-                        {/* 大圖 */}
-                        <div className="sm:mb-5 w-full xl:w-500 rounded-lg overflow-y-hidden shadow-xl relative">
-                            <div className="sm:hidden h-full w-8 absolute left-0 top-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <FaAngleLeft className="text-lg text-white " />
-                            </div>
-                            <div className="sm:hidden h-full w-8 absolute right-0 top-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <FaAngleRight className="text-lg text-white " />
-                            </div>
-                            <img
-                                src={product}
-                                alt="product"
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </div>
-                    </div>
-                    {/* 點點 */}
-                    <div className="sm:hidden flex justify-center">
-                        <FaCircle className="text-yellow-400 text-xs p-0.5" />
-                        <FaCircle className="text-gray-700 text-xs p-0.5" />
-                        <FaCircle className="text-gray-700 text-xs p-0.5" />
-                        <FaCircle className="text-gray-700 text-xs p-0.5" />
-                        <FaCircle className="text-gray-700 text-xs p-0.5" />
-                    </div>
+                    <ProductPhoto productImg={productImg} />
                     {/* 資訊與加入購物車 */}
-                    <div className="sm:w-1/2 py-5 flex-grow flex flex-col">
-                        {/* 連結 */}
-                        <div className=" mb-0 lg:mb-7  text-xs lg:text-sm flex justify-between ">
-                            <div className="flex items-center cursor-pointer">
-                                <FaAngleLeft className="text-yellow-400" />
-                                <span>回 &nbsp; </span>
-                                <span className="text-yellow-400">
-                                    運動服飾
-                                </span>
-                            </div>
-                            <div className="flex items-center cursor-pointer">
-                                <FaShare className="text-yellow-400" />
-                                &nbsp;
-                                <p>分享</p>
-                            </div>
-                        </div>
-                        <div className="mb-2 lg:mb-8 ">
-                            <h1 className="py-1 lg:py-3 font-bold text-xl sm:text-2xl xl:text-3xl">
-                                女款路跑背心
-                            </h1>
-                            <div className="text-xs lg:text-sm">
-                                品名：
-                                <span className="text-yellow-400 cursor-pointer">
-                                    MIZUNO 美津濃
-                                </span>
-                                ｜ 總銷售量：
-                                <span>1243</span>
-                            </div>
-                        </div>
-                        <div className="flex-grow">
-                            <h2 className="py-2 text-lg lg:text-xl font-bold">
-                                規格
-                            </h2>
-                            <div className="py-1 flex items-center ">
-                                顏色：
-                                <div className=" mx-1 px-3 py-0 rounded-full bg-yellow-400 text-gray-900 cursor-pointer">
-                                    粉色
-                                </div>
-                                <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                                    灰色
-                                </div>
-                                <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                                    黑色
-                                </div>
-                            </div>
-                            <div className="py-1 flex">
-                                尺寸：
-                                <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                                    S
-                                </div>
-                                <div className="mx-1 px-3 py-0 rounded-full bg-yellow-400 text-gray-900 cursor-pointer">
-                                    M
-                                </div>
-                                <div className="mx-1 px-3 py-0 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 hover:border-transparent cursor-pointer">
-                                    L
-                                </div>
-                            </div>
-                            <div className="py-1 flex justify-between">
-                                <div>
-                                    貨號：
-                                    <span className="text-gray-400">
-                                        10011031
-                                    </span>
-                                </div>
-                                <div>
-                                    庫存：<span>134</span>
-                                </div>
-                            </div>
-                            <div className="my-2 py-2 border-b-2 border-yellow-400 flex justify-between">
-                                <div className="text-yellow-400 text-lg">
-                                    NT$ <span>350</span>
-                                </div>
-                                <div className="flex py-1 rounded-md justify-between items-center shadow-emboss">
-                                    <button type="button" className="px-2">
-                                        <FaPlus />
-                                    </button>
-                                    <input
-                                        type="text"
-                                        className=" w-20 xl:w-auto bg-transparent outline-none text-center"
-                                        value={1}
-                                    />
-                                    <button type="button" className="px-2">
-                                        <FaMinus />
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="text-right text-yellow-400 text-lg">
-                                小計 NT$ <span>350</span>
-                            </div>
-                        </div>
-                        <div className="flex">
-                            <button className="btn-yellow mr-3 w-2/3  ">
-                                加入購物車
-                            </button>
-                            <button className="border border-red-300 rounded-full text-red-300 flex-grow flex justify-center items-center">
-                                <FaHeart />
-                                <p className="pl-2">收藏</p>
-                            </button>
-                        </div>
-                    </div>
+                    <ProductItemInfo />
                 </section>
                 {/* 商品簡介 */}
                 <section className=" h-96 xl:h-screen mt-5 overflow-y-hidden relative">

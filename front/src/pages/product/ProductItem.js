@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import ProductItemMain from './components/ProductItemMain/';
 
 function ProductItem(props) {
-    console.log(props);
+    // console.log(props);
+
+    const [productId, setProductId] = useState(null);
 
     useEffect(() => {
         //使用網址上的id和伺服器要資料
         const paramsString = props.location.search;
         const searchParams = new URLSearchParams(paramsString);
 
-        const id = searchParams.get('id');
-
-        console.log(id);
+        setProductId(searchParams.get('id'));
 
         // const newProduct = data.find((v) => {
         //     return v.id === id;
@@ -41,7 +41,7 @@ function ProductItem(props) {
                     營養補給
                 </div>
             </nav>
-            <ProductItemMain />
+            <ProductItemMain productId={productId} />
         </>
     );
 }
