@@ -21,7 +21,6 @@ function SignUp() {
     const [birthday, setbirthday] = useState();
     const [aboutme, setaboutme] = useState();
     const [gender, setgender] = useState('reserve');
-    const [valid, setvalid] = useState('1');
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -35,7 +34,6 @@ function SignUp() {
                 birthday,
                 aboutme,
                 gender,
-                valid,
             });
             alert('註冊成功');
             console.log(response);
@@ -212,13 +210,6 @@ function SignUp() {
                                 className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
                                 rows="4"
                             ></textarea>
-                            <input
-                                id="vaild"
-                                name="vaild"
-                                value="1"
-                                type="text"
-                                className="hidden"
-                            />
                             <div className="justify-center flex">
                                 <Link to="/">
                                     <button

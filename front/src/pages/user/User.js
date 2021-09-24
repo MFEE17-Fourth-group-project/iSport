@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../utils/config';
 import { useAuth } from '../../context/auth';
+import NotAuth from './components/NotAuth';
 import SignIn from './sign/SignIn';
 
 function Users() {
@@ -230,7 +231,7 @@ function Users() {
                     </artical>
                 </main>
             ) : (
-                <h3 class="text-white">請先登入會員</h3>
+                <NotAuth />
             )}
         </>
     );

@@ -87,7 +87,7 @@ function UserAside() {
                                     <Link to="/user/cart">購物車</Link>
                                 </li>
                                 <li className="user-submenu-li">
-                                    <Link to="/user/cart/favourite">
+                                    <Link to="/user/cart/favorite" exact>
                                         我的最愛
                                     </Link>
                                 </li>

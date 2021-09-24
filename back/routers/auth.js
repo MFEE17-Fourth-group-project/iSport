@@ -88,7 +88,7 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     }
     console.log(req.body);
     let result=await connection.queryAsync(
-        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender,valid) VALUE(?)",
+        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender) VALUE(?)",
         [[
             req.body.name,
             req.body.account,
@@ -99,7 +99,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
             req.body.birthday,
             req.body.aboutme,
             req.body.gender,
-            req.body.valid,
         ]]
     )
     res.json({message:"註冊成功"});
@@ -161,7 +160,9 @@ router.post("/Signin",async(req,res,next)=>{
 router.get("/logout", (req, res, next) => {
     req.session.member = null;
     res.sendStatus(202);
-  });
+    console.log("登出成功")
+  }
+  );
   
 
 module.exports = router;

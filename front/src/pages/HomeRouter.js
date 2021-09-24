@@ -66,7 +66,7 @@ function HomeRouter() {
                         <Route path="/user/cart/TradingRecord">
                             <TradingRecord />
                         </Route>
-                        <Route path="/user/cart/favorite">
+                        <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
