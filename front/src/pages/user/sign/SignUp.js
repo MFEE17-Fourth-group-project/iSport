@@ -18,9 +18,10 @@ function SignUp() {
     const [email, setemail] = useState();
     const [phone, setphone] = useState();
     const [address, setaddress] = useState();
-    const [birthday, setbirthday] = useState('');
-    const [aboutme, setaboutme] = useState('');
+    const [birthday, setbirthday] = useState();
+    const [aboutme, setaboutme] = useState();
     const [gender, setgender] = useState('reserve');
+    const [valid, setvalid] = useState('1');
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -34,7 +35,9 @@ function SignUp() {
                 birthday,
                 aboutme,
                 gender,
+                valid,
             });
+            alert('註冊成功');
             console.log(response);
         } catch (e) {
             //透過e.response拿到axios的response
@@ -159,11 +162,11 @@ function SignUp() {
                                     <input
                                         type="date"
                                         id="birthday"
-                                        value="1911-01-01"
+                                        value=""
                                         onChange={(e) => {
                                             setbirthday(e.target.value);
                                         }}
-                                        className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                        className="text-black"
                                         name="birthday"
                                     />
                                 </div>
@@ -209,6 +212,13 @@ function SignUp() {
                                 className="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
                                 rows="4"
                             ></textarea>
+                            <input
+                                id="vaild"
+                                name="vaild"
+                                value="1"
+                                type="text"
+                                className="hidden"
+                            />
                             <div className="justify-center flex">
                                 <Link to="/">
                                     <button
