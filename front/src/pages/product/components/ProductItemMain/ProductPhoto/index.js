@@ -14,7 +14,24 @@ import {
 
 function ProductPhoto(props) {
     const { productImg } = props;
-    // console.log(props);
+    const [bigImg, setBigImg] = useState('1002-3.png');
+    const [bigImgUrl, setBigImgUrl] = useState(null);
+
+    console.log(bigImg);
+
+    // const bigImgUrl = require('../../../../../images/product/' + bigImg);
+
+    useEffect(() => {
+        console.log(productImg);
+        if (productImg) {
+            setBigImg(productImg[0].img_name);
+        }
+    }, [productImg]);
+
+    useEffect(() => {
+        setBigImgUrl(require('../../../../../images/product/' + bigImg));
+    }, [bigImg]);
+
     return (
         <>
             <div className="w-full sm:w-2/5 xl:w-1/2 flex sm:justify-end sm:flex-col-reverse xl:flex-row mr-2 lg:mr-5 py-3">
@@ -37,6 +54,8 @@ function ProductPhoto(props) {
                                         key={item.id}
                                         id={item.id}
                                         imgName={item.img_name}
+                                        bigImg={bigImg}
+                                        setBigImg={setBigImg}
                                     />
                                 );
                             })}
@@ -51,7 +70,7 @@ function ProductPhoto(props) {
                         <FaAngleRight className="text-lg text-white " />
                     </div>
                     <img
-                        src={product}
+                        src={bigImgUrl ? bigImgUrl.default : ''}
                         alt="product"
                         className="w-full h-full object-cover object-center"
                     />
