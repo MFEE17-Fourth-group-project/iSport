@@ -13,7 +13,7 @@ const Article = (props) => {
     return (
         <>
             <Link to={'/article/' + article.id} className="max-w-max m-auto">
-                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 m-5">
+                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5">
                     <img className="mr-4" src={article.photos} alt="" />
                     <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
                         {article.added_by}
