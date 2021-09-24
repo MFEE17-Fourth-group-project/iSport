@@ -6,17 +6,19 @@ function ProductType(props) {
     console.log(typeName, typeValue);
     return (
         <>
-            <div className="py-1 flex items-center ">
+            <div className="py-1 flex items-start">
                 {typeName}：
-                {typeValue &&
-                    typeValue.map((item) => {
-                        return (
-                            <ProductTypeValue
-                                key={item.id}
-                                typeValue={item.type_value}
-                            />
-                        );
-                    })}
+                <div className="grid grid-cols-3 gap-2">
+                    {typeValue &&
+                        typeValue.map((item) => {
+                            return (
+                                <ProductTypeValue
+                                    key={item.id}
+                                    typeValue={item.type_value}
+                                />
+                            );
+                        })}
+                </div>
             </div>
         </>
     );

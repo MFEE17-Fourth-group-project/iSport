@@ -46,7 +46,7 @@ function ProductItemInfo(props) {
                     </div>
                 </div>
                 <div className="mb-2 lg:mb-8 ">
-                    <h1 className="py-1 lg:py-3 font-bold text-xl sm:text-2xl xl:text-3xl">
+                    <h1 className="py-1 lg:py-3 font-bold text-xl sm:text-2xl xl:text-2xl">
                         {info.productName}
                     </h1>
                     <div className="text-xs lg:text-sm">

@@ -36,7 +36,7 @@ function ProductPhoto(props) {
         <>
             <div className="w-full sm:w-2/5 xl:w-1/2 flex sm:justify-end sm:flex-col-reverse xl:flex-row mr-2 lg:mr-5 py-3">
                 {/* 小圖 */}
-                <div className=" hidden sm:block sm:w-full xl:w-auto xl:h-500 sm:overflow-x-hidden xl:overflow-y-hidden mr-2 relative">
+                <div className="hidden sm:block sm:w-full xl:w-auto xl:h-500 sm:overflow-x-hidden xl:overflow-y-hidden mr-2 relative">
                     <div className="sm:w-6 sm:h-full xl:w-full xl:h-6 sm:bg-gradient-to-r xl:bg-gradient-to-b from-gray-800 absolute top-0 left-0 cursor-pointer flex justify-center items-center">
                         <FaAngleUp className="hidden xl:block text-2xl text-yellow-400" />
                         <FaAngleLeft className="xl:hidden sm:block text-2xl text-yellow-400" />

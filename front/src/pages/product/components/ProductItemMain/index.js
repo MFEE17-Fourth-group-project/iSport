@@ -64,69 +64,12 @@ function ProductItemMain(props) {
                     />
                 </section>
                 {/* 商品簡介 */}
-                <section className=" h-96 xl:h-screen mt-5 overflow-y-hidden relative">
+                <section className=" h-75 mt-5 overflow-y-hidden relative">
                     <h1 className="py-3 text-xl border-b-2 border-yellow-400 ">
                         商品介紹
                     </h1>
                     <div className="  py-3 break-all leading-relaxed">
-                        吸汗快乾材質,​前胸後中反光燙印,優惠便宜好價格,值得推薦！
-                        <br />
-                        <br /> 多次實驗調整
-                        <br /> 完美比例QQ彈力纖維 全面包覆胸部
-                        <br />
-                        體驗自由運動的舒適
-                        <br /> 滿足各種運動姿勢的溫柔包覆
-                        <br />
-                        高強度防震支
-                        <br />
-                        <br /> 運動內衣也要滿滿的安全感 商品內容：
-                        <br />
-                        顏色：黑/膚/藍 隨機（不含內褲）
-                        <br /> 材質：尼龍/氨綸
-                        <br />
-                        適穿尺寸： S 70/32 BCD M 75/34 BCD L 80/36 BCD XL 85/38
-                        <br />
-                        BCD
-                        <br />
-                        <br />
-                        (((貼身內著衣物-內褲、襪子(基於衛生原則)，以上述無法受理退換貨，瑕疵品除外)))
-                        <br />
-                        注意事項：
-                        <br />
-                        布料染料時，深色比淺色不易固色，因此深色衣服下水時，會見水中有許色水，此屬正常現象，請您別擔心，請安心穿著！
-                        <br />
-                        洗滌方法：手洗（深色衣物與淺色衣物請分開洗，請勿浸泡或使用洗衣機、脫水機，及任何刷子類物品清洗，請使用中性洗劑（沐浴乳、洗
-                        精等），加入少許清水，待充分溶解后再放入衣物清洗。
-                        <br />
-                        吸汗快乾材質,​前胸後中反光燙印,優惠便宜好價格,值得推薦！
-                        <br />
-                        <br /> 多次實驗調整
-                        <br /> 完美比例QQ彈力纖維 全面包覆胸部
-                        <br />
-                        體驗自由運動的舒適
-                        <br /> 滿足各種運動姿勢的溫柔包覆
-                        <br />
-                        高強度防震支
-                        <br />
-                        <br /> 運動內衣也要滿滿的安全感 商品內容：
-                        <br />
-                        顏色：黑/膚/藍 隨機（不含內褲）
-                        <br /> 材質：尼龍/氨綸
-                        <br />
-                        適穿尺寸： S 70/32 BCD M 75/34 BCD L 80/36 BCD XL 85/38
-                        <br />
-                        BCD
-                        <br />
-                        <br />
-                        (((貼身內著衣物-內褲、襪子(基於衛生原則)，以上述無法受理退換貨，瑕疵品除外)))
-                        <br />
-                        注意事項：
-                        <br />
-                        布料染料時，深色比淺色不易固色，因此深色衣服下水時，會見水中有許色水，此屬正常現象，請您別擔心，請安心穿著！
-                        <br />
-                        洗滌方法：手洗（深色衣物與淺色衣物請分開洗，請勿浸泡或使用洗衣機、脫水機，及任何刷子類物品清洗，請使用中性洗劑（沐浴乳、洗
-                        精等），加入少許清水，待充分溶解后再放入衣物清洗。
-                        <br />
+                        {productInfo ? productInfo.product_intro : ''}
                     </div>
                     <div className="w-full pt-20 pb-1 absolute bottom-0 left-0 flex flex-col justify-center items-center bg-gradient-to-t from-gray-900 text-yellow-400 text-center">
                         <p>顯示完整資訊</p>
