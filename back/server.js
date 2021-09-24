@@ -21,7 +21,7 @@ const { MulterError } = require('multer');
 let authRouter = require("./routers/auth");
 
 
-
+app.use(express.static('public'));
 //啟用session
 app.use(
     expressSession({
