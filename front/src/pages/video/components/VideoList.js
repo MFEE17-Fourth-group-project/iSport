@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 
 const VideoList = ({ videos, cat }) => {
+    const cardCount = 8;
     const [videoData, setVideoData] = useState(videos);
     const [term, setTerm] = useState('');
     const [totalPages, setTotalPages] = useState(1);
@@ -20,7 +21,7 @@ const VideoList = ({ videos, cat }) => {
     }, [cat]);
 
     useEffect(() => {
-        let total = Math.ceil(videoData.length / 8);
+        let total = Math.ceil(videoData.length / cardCount);
         setTotalPages(total);
         if (total === 1) setCurrentPage(1);
     }, [videoData]);
@@ -108,9 +109,10 @@ const VideoList = ({ videos, cat }) => {
             {/* VideoList */}
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 
                     lg:grid-cols-4 gap-4 xs:gap-2.5 sm:gap-4 pb-5">
-                {videoData && videoData.map(video => (
-                    <VideoCard video={video} key={video.id} />
-                ))}
+                {videoData &&
+                    videoData.slice((currentPage - 1) * cardCount, currentPage * cardCount).map(video => (
+                        <VideoCard video={video} key={video.id} />
+                    ))}
             </div>
 
             {/* Pagination */}
