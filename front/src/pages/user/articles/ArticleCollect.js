@@ -11,35 +11,33 @@ function ArticleCollect() {
     return (
         <>
             {member ? (
-                member(
-                    <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                        <Aside />
-                        <artical className="flex-grow flex-col">
-                            <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                                收藏文章
+                <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
+                    <Aside />
+                    <artical className="flex-grow flex-col">
+                        <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
+                            收藏文章
+                        </div>
+                        <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
+                            <div className="mt-6">
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
                             </div>
-                            <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                                <div className="mt-6">
-                                    <Link to="">
-                                        <SuggestArtCol />
-                                    </Link>
-                                    <Link to="">
-                                        <SuggestArtCol />
-                                    </Link>
-                                    <Link to="">
-                                        <SuggestArtCol />
-                                    </Link>
-                                    <Link to="">
-                                        <SuggestArtCol />
-                                    </Link>
-                                    <Link to="">
-                                        <SuggestArtCol />
-                                    </Link>
-                                </div>
-                            </div>
-                        </artical>
-                    </main>
-                )
+                        </div>
+                    </artical>
+                </main>
             ) : (
                 <NotAuth />
             )}

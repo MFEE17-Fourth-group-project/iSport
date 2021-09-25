@@ -12,10 +12,13 @@ import { useState } from 'react';
 import CustomerService from '../sign/CustomerService';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
+import { useAuth } from '../../../context/auth';
+import { IMAGE_URL } from '../../utils/config';
 
 // 聯絡我們跳窗
 // async
 function UserAside() {
+    const { member, setMember } = useAuth();
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
     const [photo, setphoto] = useState();
     const formData = new FormData();
@@ -30,16 +33,28 @@ function UserAside() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         formData.append('photo', photo);
-        let response = await axios.post(`${API_URL}/auth/photo`, formData);
+        let response = await axios.post(`${API_URL}/auth/photo`, formData, {
+            withCredentials: true,
+        });
+        try {
+            alert('頭像上傳成功');
+        } catch (e) {
+            //透過e.response拿到axios的response
+            console.error(e.response);
+            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
+            alert(e.response.data.message);
+        }
     };
+
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
             <form onSubmit={handleSubmit}>
-                <div className=" w-64 h-64 flex justify-center items-center cursor-pointer relative">
+                <div className=" w-64 h-54 flex justify-center items-center cursor-pointer relative mt-3 mb-3 hover:opacity-60">
                     <input
+                        required
                         type="file"
                         id="photo"
                         name="photo"
@@ -48,15 +63,25 @@ function UserAside() {
                         }}
                         className="w-48 h-48 rounded-full  overflow z-10 absolute opacity-0 cursor-pointer"
                     />
-                    <div className="w-48 h-48 rounded-full  overflow-hidden z-0">
-                        <img
-                            src={userHeader}
-                            alt=""
-                            className="w-full h-full object-cover object-center opacity-40"
-                        />
-                    </div>
+                    {member.photo ? (
+                        <div className="w-48 h-48 rounded-full  overflow-hidden z-0 ">
+                            <img
+                                src={`${IMAGE_URL}${member.photo}`}
+                                alt=""
+                                className="w-full h-full object-cover object-center opacity-40"
+                            />
+                        </div>
+                    ) : (
+                        <div className="w-48 h-48 rounded-full  overflow-hidden z-0 ">
+                            <img
+                                src={userHeader}
+                                alt=""
+                                className="w-full h-full object-cover object-center opacity-50 "
+                            />
+                        </div>
+                    )}
                 </div>
-                <button className="btn-green">上傳</button>
+                <button className="btn-green block m-auto">上傳</button>
             </form>
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">

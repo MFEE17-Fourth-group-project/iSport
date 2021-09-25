@@ -45,19 +45,6 @@ function Users() {
             alert(e.response.data.message);
         }
     };
-    // useEffect(() => {
-    //     const getMember = async () => {
-    //         try {
-    //             let res = await axios.get(`${API_URL}/users/`, {
-    //                 withCredentials: true,
-    //             });
-    //             console.log(res);
-    //         } catch (e) {
-    //             console.error(e.response);
-    //         }
-    //     };
-    //     getMember();
-    // }, []);
     return (
         <>
             {member ? (
