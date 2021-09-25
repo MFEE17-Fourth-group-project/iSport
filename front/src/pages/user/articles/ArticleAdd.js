@@ -10,7 +10,7 @@ function ArticleAdd() {
     const [content, setcontent] = useState('');
     const [category, setcategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
-    const [photo, setPhoto] = useState('');
+    const [photos, setPhotos] = useState();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ function ArticleAdd() {
             // formData.append('upload_date', upload_date);
             formData.append('category', category);
             formData.append('content', content);
-            formData.append('photo', photo);
+            formData.append('photos', photos);
             let response = await axios.post(
                 `${API_URL}/articles/Create`,
                 formData
@@ -99,15 +99,15 @@ function ArticleAdd() {
                             }}
                         />
                         <br />
-                        <label htmlFor="photo">上傳圖片:</label>
+                        <label htmlFor="photos">上傳圖片:</label>
                         <br />
                         <input
                             className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                             type="file"
-                            name="photo"
-                            id="photo"
+                            name="photos"
+                            id="photos"
                             onChange={(e) => {
-                                setPhoto(e.target.photo[0]);
+                                setPhotos(e.target.files[0]);
                             }}
                         />
                         <br />
