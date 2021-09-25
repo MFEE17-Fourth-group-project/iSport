@@ -160,7 +160,7 @@ function SignUp() {
                                     <input
                                         type="date"
                                         id="birthday"
-                                        value=""
+                                        value={birthday}
                                         onChange={(e) => {
                                             setbirthday(e.target.value);
                                         }}

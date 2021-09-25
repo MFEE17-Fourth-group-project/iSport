@@ -42,7 +42,7 @@ function MobileAside(props) {
                         />
                     </div>
                     <p className="text-white text-opacity-85 ml-2.5">
-                        {/* Hi <>{member.name}</>，歡迎回來！ */}
+                        Hi <>{member.name}</>，歡迎回來！
                     </p>
                     <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
                         <FaTimes

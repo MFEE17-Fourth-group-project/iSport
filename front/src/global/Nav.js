@@ -59,39 +59,42 @@ function Nav(props) {
                     </div>
 
                     <div className="flex items-center">
-                        <div
-                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
-                            onClick={handleMobileWindow}
-                        >
-                            <img
-                                src={userHeader}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </div>
-                        {MobileWindow && (
-                            <MobileAside onCancel={handleCancelMobileWindow} />
-                        )}
-
                         {member ? (
-                            <div className="hidden lg:flex items-center justify-between w-64">
-                                <div className="text-white">
-                                    Hi, {member.name}
-                                </div>
-                                <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
+                            <>
+                                <div
+                                    className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
+                                    onClick={handleMobileWindow}
+                                >
                                     <img
                                         src={userHeader}
-                                        style={{ width: '80px' }}
+                                        alt=""
+                                        className="w-full h-full object-cover object-center"
                                     />
                                 </div>
-                                <Link
-                                    to="/"
-                                    onClick={signout}
-                                    className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
-                                >
-                                    登出
-                                </Link>
-                            </div>
+                                {MobileWindow && (
+                                    <MobileAside
+                                        onCancel={handleCancelMobileWindow}
+                                    />
+                                )}
+                                <div className="hidden lg:flex items-center justify-between w-64">
+                                    <div className="text-white">
+                                        Hi, {member.name}
+                                    </div>
+                                    <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
+                                        <img
+                                            src={userHeader}
+                                            style={{ width: '80px' }}
+                                        />
+                                    </div>
+                                    <Link
+                                        to="/"
+                                        onClick={signout}
+                                        className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
+                                    >
+                                        登出
+                                    </Link>
+                                </div>
+                            </>
                         ) : (
                             <button
                                 className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
