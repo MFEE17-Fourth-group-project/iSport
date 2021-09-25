@@ -2,6 +2,7 @@ import { Link, useParams, useHistory, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import useGet from './../../utils/useGet';
 import { APP_URL } from './../../utils/config';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import Comment from './components/Comment';
@@ -44,8 +45,20 @@ const VideoId = () => {
         <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
             {/* Video Main Section */}
             {video && (<div className="lg:col-span-2 lg:row-span-1 col-span-full">
-                <video src="" alt="Video Preview" width="100%"
-                    controls controlsList="nodownload" muted></video>
+                <Video
+                    cloudName="dnmayrvjj"
+                    id="doc-player"
+                    className="cld-video-player cld-fluid"
+                    secure="true"
+                    publicId={`iSport_Videos/${video.filePath.slice(15, 28)}`}
+                    sourceType={['mp4']}
+                    width="100%"
+                    controls
+                    controlsList="nodownload"
+                    muted
+                >
+                    {/* <Transformation /> */}
+                </Video>
                 <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{video.title}</h1>
 
                 <div className="my-3 pb-2 border-b-2 border-yellow-400 flex
@@ -59,17 +72,17 @@ const VideoId = () => {
                         {liked ?
                             <div
                                 className="flex mr-4 items-center cursor-pointer"
-                                onClick={() => setLiked(false)}
-                            >
-                                <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
-                            </div>
-                            : <div
-                                className="flex mr-4 items-center cursor-pointer"
                                 onClick={() => setLiked(true)}
                             >
                                 <RiThumbUpFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                                 <span className="text-sm sm:text-xs text-white w-max">{video.likes + 1}</span>
+                            </div>
+                            : <div
+                                className="flex mr-4 items-center cursor-pointer"
+                                onClick={() => setLiked(false)}
+                            >
+                                <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
                             </div>}
 
                         <div
@@ -102,14 +115,14 @@ const VideoId = () => {
                                 className="flex items-center cursor-pointer"
                                 onClick={() => setList(false)}
                             >
-                                <MdPlaylistAdd className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                                 <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
                             </div>
                             : <div
                                 className="flex items-center cursor-pointer"
                                 onClick={() => setList(true)}
                             >
-                                <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <MdPlaylistAdd className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                                 <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
                             </div>}
 
@@ -117,8 +130,9 @@ const VideoId = () => {
                 </div>
 
                 <h3 className="text-white text-lg mt-2.5 mb-2 font-bold mx-5 xs:mx-0">影片簡介</h3>
-                <p className="text-white text-base ml-8 mx-5 xs:mr-14 sm:mr-20 md:mr-28">
-                    {video.description}
+                <p
+                    className="text-white text-base ml-8 mx-5 xs:mr-14 sm:mr-20 md:mr-28"
+                    dangerouslySetInnerHTML={{ __html: video.description }}>
                 </p>
                 <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
                     justify-center mx-5 xs:mx-0">
