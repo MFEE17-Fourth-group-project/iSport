@@ -93,6 +93,11 @@ app.use((err, req, res, next) => {
     res.status(err.status).json({ message: err.message });
 });
 
+  app.use((req, res, next) => {
+    console.log("沒有符合的路由");
+    next();
+  });
+
 // Port
 app.listen(port, async function () {
     // await connection.connectAsync();

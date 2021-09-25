@@ -97,7 +97,7 @@ function HomeRouter() {
                         <Route path="/ArticleLeanBulking">
                             <ArticleLeanBulking />
                         </Route>
-                        <Route path="/ArticleId/:id?">
+                        <Route path="/article/:id">
                             <ArticleId />
                         </Route>
                         <Route path="/user/ArticleCollect">

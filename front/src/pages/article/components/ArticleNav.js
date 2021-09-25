@@ -1,5 +1,6 @@
+import useGet from '../../../utils/useGet';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
 const ArticleNav = () => {
     return (
         <nav className="bg-gray-900 flex justify-center">
@@ -13,8 +14,7 @@ const ArticleNav = () => {
             </Link>
             <Link to="/ArticleAerobicExercise">
                 <div
-                    className="border-b-2 border-transparent w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
+                    className="border-b-2 border-transparent w-36 text-white text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer 
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     有氧運動
