@@ -15,9 +15,7 @@ function ArticleAdd() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // const formData = new FormData(e.target)
-            // console.log(formData.get('email'))
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('article_name', article_name);
             formData.append('added_by', added_by);
             // formData.append('upload_date', upload_date);
@@ -54,9 +52,6 @@ function ArticleAdd() {
                             name="article_name"
                             id="article_name"
                             placeholder="最多50字"
-                            // state={fields.article_name}
-                            // setState={handleFieldChange}
-                            // error={fieldErrors.article_name}
                             required
                             value={article_name}
                             onChange={(e) => {

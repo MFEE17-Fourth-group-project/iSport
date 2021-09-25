@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-// 處理 multipart/form-data
+// 處理formData需要用到的中間件
 const multer = require("multer");
 //處理 檔案路徑
 const path = require("path");
 const connection = require("../utils/db");
-
+//上傳檔案用的亂數名稱
+// const { uuid } = require('uuidv4');
 //顯示多筆
 router.get("/Read", async (req, res, next) => {
   let result = await connection.queryAsync("SELECT * FROM article");
@@ -66,9 +67,9 @@ const registerRules = [
   body("article_name").isLength({ max: 50 }).withMessage("最多50字"),
 ];
 //上傳檔案
-// 檔案存在硬碟 => diskStorage
+// 上傳檔案的位置，diskStorage為本機硬碟
 const storage = multer.diskStorage({
-  //儲存檔案的地方
+  //儲存檔案的位置
   destination: function (req, file, callback) {
     callback(null, path.join(__dirname, "..", "public", "articles", "uploads"));
   },
@@ -93,8 +94,6 @@ const uploader = multer({
     callback(null, true);
   },
   limits: {
-    // 1M: 1024*1024
-    // 1K: 1024
     fileSize: 1024 * 1024,
   },
 });
@@ -118,7 +117,7 @@ router.post(
           ],
         ]
       );
-      res.json({});
+      res.json({ message: "上傳成功" });
     } catch (e) {
       console.error(e);
     }
