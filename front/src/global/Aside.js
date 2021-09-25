@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import userHeader from '../images/user/pic04.jpg';
+import userHeader from '../pages/user/components/images.png';
 import {
     FaUserAlt,
     FaShoppingCart,
@@ -9,12 +9,15 @@ import {
     FaComment,
 } from 'react-icons/fa';
 import { useState } from 'react';
+import { useAuth } from '../context/auth';
+import { IMAGE_URL } from '../pages/utils/config';
+
 import CustomerService from '../pages/user/sign/CustomerService';
 
 // 聯絡我們跳窗
 function Aside() {
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
-
+    const { member, setMember } = useAuth();
     const handleCustomerService = () => {
         setCustomerServiceWindow(true);
     };
@@ -29,11 +32,19 @@ function Aside() {
             )}
             <div className=" w-64 h-64 flex justify-center items-center">
                 <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
-                    <img
-                        src={userHeader}
-                        alt=""
-                        className="w-full h-full object-cover object-center"
-                    />
+                    {member.photo ? (
+                        <img
+                            src={`${IMAGE_URL}${member.photo}`}
+                            alt=""
+                            className="w-full h-full object-cover object-center"
+                        />
+                    ) : (
+                        <img
+                            src={userHeader}
+                            alt=""
+                            className="w-full h-full object-cover object-center "
+                        />
+                    )}
                 </div>
             </div>
             <div className="h-full aside-menu">

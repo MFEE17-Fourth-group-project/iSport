@@ -5,9 +5,14 @@ import React, { useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
 import MobileAside from './MobileAside';
+import { useAuth } from '../context/auth';
+import axios from 'axios';
+import { API_URL } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 
 function Nav(props) {
+    const { member, setMember } = useAuth();
+
     const [signInWindow, setSignInWindow] = useState(false);
     const [signInSuccess, setSignInSuccess] = useState(false);
 
@@ -20,6 +25,20 @@ function Nav(props) {
         setSignInSuccess(true);
     };
 
+    //控制手機側欄
+    const [MobileWindow, setMobileWindow] = useState(false);
+    const handleMobileWindow = () => {
+        setMobileWindow(true);
+    };
+
+    const handleCancelMobileWindow = () => {
+        setMobileWindow(false);
+    };
+    //登出
+    const signout = async () => {
+        await axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
+        setMember(null);
+    };
     return (
         <>
             <nav className="App sticky top-0 z-40">
@@ -40,24 +59,50 @@ function Nav(props) {
                     </div>
 
                     <div className="flex items-center">
-                        <input type="checkbox" id="nav-toggle" />
-                        <label
-                            for="nav-toggle"
-                            className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2"
-                        >
-                            <img
-                                src={userHeader}
-                                alt=""
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </label>
-                        <MobileAside />
-                        <button
-                            className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
-                            onClick={handleSignIn}
-                        >
-                            登入
-                        </button>
+                        {member ? (
+                            <>
+                                <div
+                                    className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
+                                    onClick={handleMobileWindow}
+                                >
+                                    <img
+                                        src={userHeader}
+                                        alt=""
+                                        className="w-full h-full object-cover object-center"
+                                    />
+                                </div>
+                                {MobileWindow && (
+                                    <MobileAside
+                                        onCancel={handleCancelMobileWindow}
+                                    />
+                                )}
+                                <div className="hidden lg:flex items-center justify-between w-64">
+                                    <div className="text-white">
+                                        Hi, {member.name}
+                                    </div>
+                                    <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
+                                        <img
+                                            src={userHeader}
+                                            style={{ width: '80px' }}
+                                        />
+                                    </div>
+                                    <Link
+                                        to="/"
+                                        onClick={signout}
+                                        className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
+                                    >
+                                        登出
+                                    </Link>
+                                </div>
+                            </>
+                        ) : (
+                            <button
+                                className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
+                                onClick={handleSignIn}
+                            >
+                                登入
+                            </button>
+                        )}
                         <Link to="/video">
                             <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 精選影片
@@ -87,6 +132,9 @@ function Nav(props) {
                         </Link>
                     </div>
                 </div>
+                {MobileWindow && (
+                    <MobileAside onCancel={handleCancelMobileWindow} />
+                )}
                 {/* {signInSuccess && <SignSecress />} */}
                 {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
