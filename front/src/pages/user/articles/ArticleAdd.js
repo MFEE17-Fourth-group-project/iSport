@@ -5,12 +5,12 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 function ArticleAdd() {
-    const [article_name, setarticle_name] = useState();
-    const [added_by, setadded_by] = useState();
-    const [content, setcontent] = useState();
-    const [category, setcategory] = useState();
-    const [upload_date, setupload_date] = useState();
-    const [photo, setPhoto] = useState();
+    const [article_name, setarticle_name] = useState('');
+    const [added_by, setadded_by] = useState('');
+    const [content, setcontent] = useState('');
+    const [category, setcategory] = useState('');
+    // const [upload_date, setupload_date] = useState('');
+    const [photo, setPhoto] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,13 +20,15 @@ function ArticleAdd() {
             let formData = new FormData();
             formData.append('article_name', article_name);
             formData.append('added_by', added_by);
-            formData.append('upload_date', upload_date);
+            // formData.append('upload_date', upload_date);
             formData.append('category', category);
+            formData.append('content', content);
             formData.append('photo', photo);
             let response = await axios.post(
                 `${API_URL}/articles/Create`,
                 formData
             );
+            alert('新增文章成功');
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -40,11 +42,7 @@ function ArticleAdd() {
                     新增文章
                 </div>
                 <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                    <from
-                        onSubmit={handleSubmit}
-                        // onChange={handleFormChange}
-                        // onInvalid={handleFormInvalid}
-                    >
+                    <from onSubmit={handleSubmit}>
                         <label htmlFor="article_name">作者：</label>
                         <span className="text-base text-red-500 mx-4">
                             必填
@@ -120,7 +118,7 @@ function ArticleAdd() {
                         <br />
                         <div id="toolbar-container"></div>
                         <div id="editor"></div>
-                        <textarea
+                        {/* <textarea
                             name="content"
                             id="content"
                             style={{ display: 'none' }}
@@ -128,11 +126,24 @@ function ArticleAdd() {
                             onChange={(e) => {
                                 setcontent(e.target.value);
                             }}
-                        />
+                        /> */}
                         <Editor
                             toolbarClassName="toolbar"
                             wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                             editorClassName="editor px-5 h-40"
+                            onEditorStateChange={(editorState) => {
+                                console.log(
+                                    editorState
+                                        .getCurrentContent()
+                                        .getPlainText()
+                                );
+
+                                setcontent(
+                                    editorState
+                                        .getCurrentContent()
+                                        .getPlainText()
+                                );
+                            }}
                         />
                         <div className="flex flex-row justify-end">
                             <button
