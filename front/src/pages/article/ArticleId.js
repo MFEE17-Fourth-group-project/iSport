@@ -51,9 +51,9 @@ function ArticleId(props) {
                 <div className="sticky top-0 z-40">
                     <ArticleNav />
                 </div>
-                <main className="w-full md:w-8/12 mx-auto p-6 flex">
+                <main className="w-full md:w-8/12 mx-auto flex">
                     <div className="mx-8">
-                        <div className="m-8">
+                        <div className="">
                             {data &&
                                 data.map((article) => (
                                     <Article
