@@ -6,30 +6,14 @@ import ProgressBar from './components/ProgressBar';
 import { HiChevronDoubleDown, HiChevronDoubleUp } from 'react-icons/hi';
 
 function Checkout() {
-    // TRY ANIMATE TRANSITION and DURATION
-    const cartHeight = 180;
-    const cartList = [
-        {
-            id: 1,
-        },
-        {
-            id: 2,
-        },
-        {
-            id: 3,
-        },
-        {
-            id: 4,
-        },
-    ];
-    console.log(cartHeight * cartList.length);
-
+    // FIXME: ANIMATE TRANSITION and DURATION ** 沒作用 **
     const showCheckItemRef = useRef(null);
     const showItem = () => {
         const showCheckItem = showCheckItemRef.current;
         console.log('showCheckItem', showCheckItem);
-        showCheckItem.classList.toggle('max-h-500');
+        showCheckItem.classList.toggle('max-h-full');
     };
+
     return (
         <>
             <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
@@ -47,9 +31,7 @@ function Checkout() {
                             ref={showCheckItemRef}
                             className="max-h-44 overflow-hidden transition-all duration-500"
                         >
-                            {cartList.map(function (object, i) {
-                                return <CheckItem obj={object} key={i} />;
-                            })}
+                            <CheckItem />
                         </div>
                         <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>

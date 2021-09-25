@@ -68,7 +68,7 @@ function HomeRouter() {
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart counts={counts} setCounts={setCounts} />
+                            <Cart />
                         </Route>
                         <Route path="/products/productItem/">
                             <ProductItem />
