@@ -34,12 +34,6 @@ router.get('/Read/LeanBulking', async (req, res, next) => {
   res.json(result);
 })
 //顯示單筆
-// router.get('/Read/:id', async (req, res, next) => {
-//   let articleId = req.params.id;
-//      let result = await connection.queryAsync("SELECT * FROM article WHERE id=?",
-//      [req.params.Id]);
-// res.json(result);
-//  });
  router.route('/:id')
     .get(async (req, res, next) => {
         let articleId = req.params.id;
@@ -50,55 +44,55 @@ router.get('/Read/LeanBulking', async (req, res, next) => {
         res.json(result);
     });
 //新增
-// //資料驗證
-// const registerRules = [
-//   body("added_by").isLength({max:100}).withMessage("最多100字"),
-//   body("article_name").isLength({max:50}).withMessage("最多50字"),];
-// //上傳檔案
-// // 檔案存在硬碟 => diskStorage
-// const storage = multer.diskStorage({
-//   //儲存檔案的地方
-//   destination: function (req, file, callback){
-//     callback(null, path.join(__dirname, "..", "public", "articles", "uploads"));
-//   },
-//   //檔案命名
-//   filename:function(req, file, callback){
-//     console.log(file);
-//     callback(null,file.originalname);
-//   },
-// });
-// const uploader=multer({
-//   storage:storage,
-//   //檔案驗證
-//   fileFilter: function (req, file, callback) {
-//     console.log(file.mimetype);
-//     if (
-//       file.mimetype !== "image/jpeg" &&
-//       file.mimetype !== "image/jpg" &&
-//       file.mimetype !== "image/png"
-//     ) {
-//       cb(new Error("不接受的檔案型態"), false);
-//     }
-//     cb(null, true);
-//   },
-//   limits: {
-//     // 1M: 1024*1024
-//     // 1K: 1024
-//     fileSize: 1024 * 1024,
-//   },
-// });
+//資料驗證
+const registerRules = [
+  body("added_by").isLength({max:100}).withMessage("最多100字"),
+  body("article_name").isLength({max:50}).withMessage("最多50字"),];
+//上傳檔案
+// 檔案存在硬碟 => diskStorage
+const storage = multer.diskStorage({
+  //儲存檔案的地方
+  destination: function (req, file, callback){
+    callback(null, path.join(__dirname, "..", "public", "articles", "uploads"));
+  },
+  //檔案命名
+  filename:function(req, file, callback){
+    console.log(file);
+    callback(null,file.originalname);
+  },
+});
+const uploader=multer({
+  storage:storage,
+  //檔案驗證
+  fileFilter: function (req, file, callback) {
+    console.log(file.mimetype);
+    if (
+      file.mimetype !== "image/jpeg" &&
+      file.mimetype !== "image/jpg" &&
+      file.mimetype !== "image/png"
+    ) {
+      cb(new Error("不接受的檔案型態"), false);
+    }
+    cb(null, true);
+  },
+  limits: {
+    // 1M: 1024*1024
+    // 1K: 1024
+    fileSize: 1024 * 1024,
+  },
+});
 
 
-//  router.post('/Create',
-//  uploader.single("photo"),//上傳檔案驗證資料
-//  registerRules,//驗證資料
-//   async (req, res, next) => {
-//   let result = await connection.queryAsync("INSERT INTO article (article_name, added_by, upload_date, content, category, photos) VALUES (?);",
-//   [[req.body.article_name, req.body.added_by, req.body.upload_date, req.body.content, req.body.category, req.body.photos]]);
-// res.json({});
-// });
-// console.log(req.body);
-// console.log(req.file);
+ router.post('/Create',
+ uploader.single("photo"),//上傳檔案驗證資料
+ registerRules,//驗證資料
+  async (req, res, next) => {
+  let result = await connection.queryAsync("INSERT INTO article (article_name, added_by, upload_date, content, category, photos) VALUES (?);",
+  [[req.body.article_name, req.body.added_by, req.body.upload_date, req.body.content, req.body.category, req.body.photos]]);
+res.json({});
+});
+console.log(req.body);
+console.log(req.file);
 
 //修改
 // router.put('/Update/:id', async (req, res, next) => {
