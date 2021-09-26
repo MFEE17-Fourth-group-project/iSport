@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
 import CustomerService from '../pages/user/sign/CustomerService';
 import userHeader from '../images/user/pic04.jpg';
@@ -13,8 +14,10 @@ import {
 } from 'react-icons/fa';
 
 function MobileAside(props) {
-    const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
+    const { member, setMember } = useAuth();
 
+    //控制cs跳窗
+    const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
     const handleCustomerService = () => {
         setCustomerServiceWindow(true);
     };
@@ -22,12 +25,14 @@ function MobileAside(props) {
     const handleCancel = () => {
         setCustomerServiceWindow(false);
     };
+
     return (
         <>
-            <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 nav-show">
+            <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50">
                 {CustomerServiceWindow && (
                     <CustomerService onCancel={handleCancel} />
                 )}
+
                 <div className="flex justify-center items-center p-2.5 bg-gray-800">
                     <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
                         <img
@@ -37,12 +42,12 @@ function MobileAside(props) {
                         />
                     </div>
                     <p className="text-white text-opacity-85 ml-2.5">
-                        Hi BB，歡迎回來！
+                        Hi <>{member.name}</>，歡迎回來！
                     </p>
                     <div className="w-10 h-10 p-2 rounded-full bg-gray-900 text-center items-center">
                         <FaTimes
-                            className="w-6 h-6 text-white"
-                            // onClick={props.onCancel} 沒有作用？
+                            className="w-6 h-6 text-white cursor-pointer"
+                            onClick={props.onCancel}
                         />
                     </div>
                 </div>
@@ -151,9 +156,8 @@ function MobileAside(props) {
                 </div>
             </aside>
             <div
-                className={
-                    'lg:hidden bg-black bg-opacity-50 z-40 absolute top-0 left-0 black-mask'
-                }
+                className="lg:hidden bg-black bg-opacity-10 z-40 absolute top-0 left-0 w-screen h-screen fixed"
+                onClick={props.onCancel}
             ></div>
         </>
     );

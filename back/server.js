@@ -21,7 +21,7 @@ const { MulterError } = require('multer');
 let authRouter = require("./routers/auth");
 
 
-
+app.use(express.static('public'));
 //啟用session
 app.use(
     expressSession({
@@ -99,6 +99,11 @@ app.use((err,req,res,next)=>{
     console.log(err);
     res.status(err.status).json({message:err.message});
 });
+
+  app.use((req, res, next) => {
+    console.log("沒有符合的路由");
+    next();
+  });
 
 // Port
 app.listen(port, async function () {

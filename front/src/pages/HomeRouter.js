@@ -66,7 +66,7 @@ function HomeRouter() {
                         <Route path="/user/cart/TradingRecord">
                             <TradingRecord />
                         </Route>
-                        <Route path="/user/cart/favorite">
+                        <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
@@ -99,7 +99,7 @@ function HomeRouter() {
                         <Route path="/ArticleLeanBulking">
                             <ArticleLeanBulking />
                         </Route>
-                        <Route path="/ArticleId/:id?">
+                        <Route path="/article/:id">
                             <ArticleId />
                         </Route>
                         <Route path="/user/ArticleCollect">
