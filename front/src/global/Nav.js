@@ -104,23 +104,23 @@ function Nav(props) {
                             </button>
                         )}
                         <Link to="/video">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            <p className="hidden lg:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 精選影片
                             </p>
                         </Link>
                         <Link to="/products/allProduct">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            <p className="hidden lg:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 多樣商品
                             </p>
                         </Link>
                         <Link to="/articles">
-                            <p className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
+                            <p className="hidden lg:block text-white text-opacity-85 mx-4 hover:text-yellow-400">
                                 優質文章
                             </p>
                         </Link>
                         <Link
                             to="/gym"
-                            className="hidden xl:block text-white text-opacity-85 mx-4 hover:text-yellow-400"
+                            className="hidden lg:block text-white text-opacity-85 mx-4 hover:text-yellow-400"
                         >
                             健身房
                         </Link>
@@ -141,7 +141,7 @@ function Nav(props) {
                 {/* {signInSuccess && <SignSecress />} */}
                 {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
-            <nav className="xl:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">
+            <nav className="lg:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">
                 <Link className="flex-1" to="/video">
                     <p className="text-white text-opacity-85 hover:text-yellow-400 hover:bg-gray-700 py-4">
                         精選影片

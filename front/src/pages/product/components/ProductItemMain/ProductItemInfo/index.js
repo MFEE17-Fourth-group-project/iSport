@@ -22,6 +22,23 @@ function ProductItemInfo(props) {
 
     const [currentSku, setCurrentSku] = useState({});
 
+    console.log(localStorage);
+
+    function updateCartToLocalStorage(value) {
+        // 從localstorage得到cart(json字串)
+        const currentCart = localStorage.getItem('cart') || '[]';
+
+        // 把得到的cart(json字串)轉為陣列值，然後和新加入的物件值合併為新陣列
+        const newCart = [...JSON.parse(currentCart), value];
+
+        // 設定回localstorage中(記得轉回json字串)
+        localStorage.setItem('cart', JSON.stringify(newCart));
+
+        // console.log(newCart);
+        // 設定至元件的狀態中
+        // setMycart(newCart);
+    }
+
     useEffect(() => {
         if (productInfo) {
             setInfo({
@@ -59,11 +76,6 @@ function ProductItemInfo(props) {
         }
         // console.log(skuInfo);
     }, [currentSku, skuDetail]);
-
-    useEffect(() => {
-        if (skuInfo) {
-        }
-    }, [skuInfo]);
 
     return (
         <>
@@ -110,59 +122,19 @@ function ProductItemInfo(props) {
                             );
                         })}
                     <SkuInfo skuInfo={skuInfo} qty={qty} setQty={setQty} />
-
-                    {/* <div className="py-1 flex justify-between">
-                        <div>
-                            貨號：
-                            <span className="text-gray-400">
-                                {skuInfo ? skuInfo.sku_code : '暫無資料'}
-                            </span>
-                        </div>
-                        <div>
-                            庫存：
-                            <span>{skuInfo ? skuInfo.stock : '暫無資料'}</span>
-                        </div>
-                    </div>
-                    <div className="my-2 py-2 border-b-2 border-yellow-400 flex justify-between">
-                        <div className="text-yellow-400 text-lg">
-                            NT$
-                            <span>{skuInfo ? skuInfo.price : '暫無資料'}</span>
-                        </div>
-                        <div className="flex py-1 rounded-md justify-between items-center shadow-emboss">
-                            <button
-                                onClick={() => {
-                                    if (qty < stockTest) setQty(qty + 1);
-                                }}
-                                type="button"
-                                className="px-2"
-                            >
-                                <FaPlus className="hover:text-yellow-400" />
-                            </button>
-                            <input
-                                type="text"
-                                className=" w-20 xl:w-auto bg-transparent outline-none text-center"
-                                value={qty}
-                            />
-                            <button
-                                onClick={() => {
-                                    if (qty > 1) setQty(qty - 1);
-                                }}
-                                type="button"
-                                className="px-2"
-                            >
-                                <FaMinus className="hover:text-yellow-400" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className="text-right text-yellow-400 text-lg">
-                        小計 NT${' '}
-                        <span>
-                            {skuInfo ? skuInfo.price * qty : '暫無資料'}
-                        </span>
-                    </div> */}
                 </div>
                 <div className="flex">
-                    <button className="btn-yellow mr-3 w-2/3  ">
+                    <button
+                        onClick={() => {
+                            updateCartToLocalStorage({
+                                id: skuInfo.sku_id,
+                                product_id: info.productId,
+                                sku_code: skuInfo.sku_code,
+                                qty: qty,
+                            });
+                        }}
+                        className="btn-yellow mr-3 w-2/3  "
+                    >
                         加入購物車
                     </button>
                     <button className="border border-red-300 rounded-full text-red-300 flex-grow flex justify-center items-center">
