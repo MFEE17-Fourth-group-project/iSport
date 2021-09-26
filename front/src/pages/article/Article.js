@@ -7,14 +7,6 @@ import ArticleCardLeft from './components/ArticleCardLeft';
 import AOS from 'aos';
 import '../../../node_modules/aos/dist/aos.css';
 class Article extends React.Component {
-    // const { data, error, isPending } = useGet(`/videos`);
-    // const [category, setCategory] = useState(0);
-
-    // const changeCategory = (e) => {
-    //     // console.log(e.target.getAttribute('data-id'));
-    //     // let filteredVideo = data.filter(video => video.category === parseInt(e.target.getAttribute('data-id')));
-    //     setCategory(e.target.getAttribute('data-id'));
-    // };
     constructor() {
         super();
     }
