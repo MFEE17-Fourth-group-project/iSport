@@ -5,38 +5,35 @@ import axios from 'axios';
 
 function CheckItem() {
     // 取得後端資料
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
     const [error, setError] = useState('');
     // 連到後端的 API，取得商品資訊
     console.log('read API_URL', API_URL);
-    const getItemDetail = async () => {
-        try {
-            let res = await axios.get(`${API_URL}/cart`);
-            let data = res.data;
-            console.log('data', data);
-            setData(data);
-            setError(null);
-        } catch (e) {
-            console.log(e);
-            setError(e.message);
-        }
-    };
 
     // 存取 localStorage
     const [myCart, setMyCart] = useState([]);
-    // 初始化：一開始開啟這個網站時，取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
+    // 取得 localStorage 中 cart 資料
     const getDataFromLocalStorage = async () => {
         try {
-            const myCartItem = JSON.parse(localStorage.getItem('cart'));
-            let getSkuCode = myCartItem.map((item) => item.sku_code);
-            console.log('getSkuCode', getSkuCode);
-            // TODO: async await post 資料到後端 --> 後端再丟資料回來
-            let result = await axios.post(
-                `${API_URL}/cart`,
-                { getSkuCode },
-                { withCredentials: true }
-            );
-            setMyCart(myCartItem);
+            // post local storage 資料到後端並取得後端丟回來的商品資訊
+            let myCartItem = JSON.parse(localStorage.getItem('cart'));
+            let productId = myCartItem.map((item) => item.product_id);
+            let skuCode = myCartItem.map((item) => item.sku_code);
+            // console.log('myCartItem', ...myCartItem);
+            // console.log('getSkuCode', skuCode);
+            let result = await axios.post(`${API_URL}/cart`, {
+                productId,
+                skuCode,
+            });
+            // console.log('result.data', result.data);
+            // 設定回 useState render 到網頁
+            // brand_name: "MIZUNO 美津濃"
+            // price: 476
+            // product_id: 1
+            // product_name: "【MIZUNO 美津濃】女款路跑背心 J2TA1201XX（任選）(T恤)"
+            // product_sku_id: 5
+            // sku_code: '10011015';
+            setMyCart(result.data.cartItem);
             console.log('myCart in CheckItem', myCartItem);
             setError('');
         } catch (e) {
@@ -47,8 +44,8 @@ function CheckItem() {
 
     // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
     useEffect(() => {
-        getItemDetail();
         getDataFromLocalStorage();
+        // getDataFromServer();
     }, []);
 
     return (
