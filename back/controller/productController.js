@@ -51,6 +51,7 @@ const productItem = async (req, res, next) => {
             let obj = {
                 type_id:item.id,
                 type_name:item.name_frontend,
+                type_name_back:item.name_backend,
                 typeValue:arr
             }
             typeValueArr.push(obj)
