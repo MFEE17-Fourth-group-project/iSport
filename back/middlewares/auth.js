@@ -19,23 +19,16 @@ module.exports={
         //     }
       
         //  FIXME: 暫時關閉身份驗證
-        // 這是witchcreadition的身分驗證
-        // if(!req.session.member){
-        //     return next({
-        //         status:401,
-        //         mseeage:"請先登入會員",
-        //     });
+        //  這是witchcreadition的身分驗證
+        if(!req.session.member){
+            return next({
+                status:401,
+                mseeage:"請先登入會員",
+            });
             
-<<<<<<< HEAD
-        // }else{
-        //     next();
-        // }
-        // console.log("通過驗證",req.session.member)
-=======
         }else{
             next();
         }
         console.log("通過驗證")
->>>>>>> develop
     },
 };

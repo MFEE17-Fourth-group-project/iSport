@@ -6,21 +6,14 @@ import OrderRecord from './components/OrderRecord';
 import axios from 'axios';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
-<<<<<<< HEAD
 
 // TODO: 依照使用者 id 拋轉他的歷史訂單
-=======
->>>>>>> develop
 
 function TradingRecord() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const { member, setMember } = useAuth();
-<<<<<<< HEAD
     // 連到後端的 API，取得訂單記錄
-=======
-    // 連到後端的 API
->>>>>>> develop
     useEffect(() => {
         console.log('read API_URL', API_URL);
         const getOrderRecord = async () => {
@@ -68,27 +61,17 @@ function TradingRecord() {
                             <input
                                 type="date"
                                 className="outline-none bg-transparent"
-<<<<<<< HEAD
                             />
                             <span>至</span>
                             <input
                                 type="date"
                                 className="outline-none bg-transparent"
                             />
-=======
-                            />
-                            <span>至</span>
-                            <input
-                                type="date"
-                                className="outline-none bg-transparent"
-                            />
->>>>>>> develop
                             <FaSearch className=" text-xl" />
                         </div>
                         <section className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg lg:px-10 px-4 py-6">
                             {/* 購買紀錄卡片 */}
                             {data &&
-<<<<<<< HEAD
                                 data.map((item, index) => (
                                     <OrderRecord
                                         key={item.id}
@@ -101,15 +84,6 @@ function TradingRecord() {
                                         paytype={item.paytype}
                                         delivery={item.delivery}
                                         status={item.status}
-=======
-                                data.map((order, index) => (
-                                    <OrderRecord
-                                        key={order.id}
-                                        order_no={order.order_no}
-                                        paytype={order.paytype}
-                                        delivery={order.delivery}
-                                        status={order.status}
->>>>>>> develop
                                     />
                                 ))}
                         </section>
