@@ -27,7 +27,7 @@ function ProductCard(props) {
                             </>
                         )}
                     </div>
-                    <Link to={'/products/productItem/?id=' + id}>
+                    <Link to={'/products/productItem/' + id}>
                         <img
                             className="w-full"
                             src={productPhotoUrl.default}

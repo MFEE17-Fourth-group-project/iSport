@@ -13,24 +13,24 @@ function ArticleAdd() {
     const [added_by, setadded_by] = useState();
     const [content, setcontent] = useState();
     const [category, setcategory] = useState();
-    const [upload_date, setupload_date] = useState();
-    const [photo, setPhoto] = useState();
+    // const [upload_date, setupload_date] = useState('');
+    const [photos, setPhotos] = useState();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // const formData = new FormData(e.target)
-            // console.log(formData.get('email'))
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('article_name', article_name);
             formData.append('added_by', added_by);
-            formData.append('upload_date', upload_date);
+            // formData.append('upload_date', upload_date);
             formData.append('category', category);
-            formData.append('photo', photo);
+            formData.append('content', content);
+            formData.append('photos', photos);
             let response = await axios.post(
                 `${API_URL}/articles/Create`,
                 formData
             );
+            alert('新增文章成功');
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -46,11 +46,7 @@ function ArticleAdd() {
                             新增文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <from
-                                onSubmit={handleSubmit}
-                                // onChange={handleFormChange}
-                                // onInvalid={handleFormInvalid}
-                            >
+                            <from onSubmit={handleSubmit}>
                                 <label htmlFor="article_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -62,9 +58,6 @@ function ArticleAdd() {
                                     name="article_name"
                                     id="article_name"
                                     placeholder="最多50字"
-                                    // state={fields.article_name}
-                                    // setState={handleFieldChange}
-                                    // error={fieldErrors.article_name}
                                     required
                                     value={article_name}
                                     onChange={(e) => {
@@ -107,15 +100,15 @@ function ArticleAdd() {
                                     }}
                                 />
                                 <br />
-                                <label htmlFor="photo">上傳圖片:</label>
+                                <label htmlFor="photos">上傳圖片:</label>
                                 <br />
                                 <input
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                     type="file"
-                                    name="photo"
-                                    id="photo"
+                                    name="photos"
+                                    id="photos"
                                     onChange={(e) => {
-                                        setPhoto(e.target.photo[0]);
+                                        setPhotos(e.target.files[0]);
                                     }}
                                 />
                                 <br />
@@ -126,19 +119,32 @@ function ArticleAdd() {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <textarea
-                                    name="content"
-                                    id="content"
-                                    style={{ display: 'none' }}
-                                    value={content}
-                                    onChange={(e) => {
-                                        setcontent(e.target.value);
-                                    }}
-                                />
+                                {/* <textarea
+                            name="content"
+                            id="content"
+                            style={{ display: 'none' }}
+                            value={content}
+                            onChange={(e) => {
+                                setcontent(e.target.value);
+                            }}
+                        /> */}
                                 <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
+                                    onEditorStateChange={(editorState) => {
+                                        console.log(
+                                            editorState
+                                                .getCurrentContent()
+                                                .getPlainText()
+                                        );
+
+                                        setcontent(
+                                            editorState
+                                                .getCurrentContent()
+                                                .getPlainText()
+                                        );
+                                    }}
                                 />
                                 <div className="flex flex-row justify-end">
                                     <button

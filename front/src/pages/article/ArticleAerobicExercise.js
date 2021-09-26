@@ -19,7 +19,7 @@ function ArticleAerobicExercise(props) {
                 console.log(data);
                 setData(data);
                 // setIsPending(false);
-                setError(null);
+                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
