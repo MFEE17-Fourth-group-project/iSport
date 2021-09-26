@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import ProductType from './ProductType';
 import SkuInfo from './SkuInfo';
@@ -13,6 +14,7 @@ function ProductItemInfo(props) {
     const [qty, setQty] = useState(1);
     const [info, setInfo] = useState({
         category: '',
+        categoryId: 0,
         brand: '',
         productName: '',
         productId: '',
@@ -22,7 +24,7 @@ function ProductItemInfo(props) {
 
     const [currentSku, setCurrentSku] = useState({});
 
-    console.log(localStorage);
+    // console.log(localStorage);
 
     function updateCartToLocalStorage(value) {
         // 從localstorage得到cart(json字串)
@@ -39,10 +41,33 @@ function ProductItemInfo(props) {
         // setMycart(newCart);
     }
 
+    const backToCategory = () => {
+        console.log(props);
+        let currentCategory = info.categoryId;
+        switch (currentCategory) {
+            case 1:
+                props.history.push('/products/clothe');
+                break;
+            case 2:
+                props.history.push('/products/shoes');
+                break;
+            case 3:
+                props.history.push('/products/equipment');
+                break;
+            case 4:
+                props.history.push('/products/food');
+                break;
+            default:
+                console.log('error');
+        }
+        // console.log('productInfo_categoryId:', info.categoryId);
+    };
+
     useEffect(() => {
         if (productInfo) {
             setInfo({
                 category: productInfo.product_category_name,
+                categoryId: productInfo.product_category_id,
                 brand: productInfo.brand_name,
                 productName: productInfo.product_name,
                 productId: productInfo.product_id,
@@ -81,17 +106,20 @@ function ProductItemInfo(props) {
         <>
             <div className="sm:w-1/2 py-5 flex-grow flex flex-col">
                 {/* 連結 */}
-                <div className=" mb-0 lg:mb-7  text-xs lg:text-sm flex justify-between ">
-                    <div className="flex items-center cursor-pointer">
+                <div className=" mb-0 lg:mb-7  text-xs lg:text-sm flex justify-start ">
+                    <div
+                        onClick={backToCategory}
+                        className="flex items-center cursor-pointer"
+                    >
                         <FaAngleLeft className="text-yellow-400" />
                         <span>回 &nbsp; </span>
                         <span className="text-yellow-400">{info.category}</span>
                     </div>
-                    <div className="flex items-center cursor-pointer">
+                    {/* <div className="flex items-center cursor-pointer">
                         <FaShare className="text-yellow-400" />
                         &nbsp;
                         <p>分享</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="mb-2 lg:mb-8 ">
                     <h1 className="py-1 lg:py-3 font-bold text-xl sm:text-2xl xl:text-2xl">
@@ -132,19 +160,20 @@ function ProductItemInfo(props) {
                                 sku_code: skuInfo.sku_code,
                                 qty: qty,
                             });
+                            alert('成功加入購物車！！');
                         }}
-                        className="btn-yellow mr-3 w-2/3  "
+                        className="btn-yellow mr-3 w-full  "
                     >
                         加入購物車
                     </button>
-                    <button className="border border-red-300 rounded-full text-red-300 flex-grow flex justify-center items-center">
+                    {/* <button className="border border-red-300 rounded-full text-red-300 flex-grow flex justify-center items-center">
                         <FaHeart />
                         <p className="pl-2">收藏</p>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </>
     );
 }
 
-export default ProductItemInfo;
+export default withRouter(ProductItemInfo);
