@@ -31,7 +31,25 @@ function ProductItemInfo(props) {
         const currentCart = localStorage.getItem('cart') || '[]';
 
         // 把得到的cart(json字串)轉為陣列值，然後和新加入的物件值合併為新陣列
-        const newCart = [...JSON.parse(currentCart), value];
+        // const newCart = [...JSON.parse(currentCart), value];
+
+        const newCart = [...JSON.parse(currentCart)];
+
+        let arr = newCart.find((item) => {
+            return item.id === value.id;
+        });
+
+        if (arr) {
+            newCart.map((item) => {
+                if (item.id === value.id) {
+                    item.qty = value.qty;
+                }
+            });
+        } else {
+            newCart.push(value);
+        }
+
+        console.log('newCart', newCart);
 
         // 設定回localstorage中(記得轉回json字串)
         localStorage.setItem('cart', JSON.stringify(newCart));
