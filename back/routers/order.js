@@ -1,17 +1,19 @@
 const express = require("express");
 const router = express.Router();
-
 const connection = require("../utils/db");
+const { SignInCheckMiddleware } = require("../middlewares/auth");
 
 // /api/order 取得 database user_order 的資料
-router.get("/", async (req, res, next) => {
+router.get("/", SignInCheckMiddleware, async (req, res, next) => {
     try {
+        let member = req.session.member.id;
         // 撈出(主訂單) user_order 中 user_id 為 [2] 的訂單
         let orders = await connection.queryAsync(
             `
             SELECT * FROM user_order
-            WHERE user_id = ?;`,
-            [2]
+            WHERE user_id = ? && valid =?;`,
+            [2, 1]
+            // FIXME: [member, 1]
         );
         console.log("orders", orders);
 
