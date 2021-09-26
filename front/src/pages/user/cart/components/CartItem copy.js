@@ -6,10 +6,22 @@ import product from '../../../../images/product/1002-3.png';
 import axios from 'axios';
 
 function CartItem(props) {
+    const {} = props;
+    // 購入品項數量加減 FIXME: 刪除
+    // const [count, setCount] = useState(1);
+
+    // function minus() {
+    //     setCount(count - 1);
+    // }
+
+    // function plus() {
+    //     setCount(count + 1);
+    // }
+
     // 取得後端資料
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    // 連到後端的 API，取得商品資訊
+    // 連到後端的 API，取得訂單記錄
     useEffect(() => {
         console.log('read API_URL', API_URL);
         const getItemDetail = async () => {
@@ -36,7 +48,29 @@ function CartItem(props) {
         // 開啟載入的指示圖示
         setDataLoading(true);
 
-        // 初始化：一開始開啟這個網站時，取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
+        // FIXME: 預設 localStorage 資料，之後刪掉
+        localStorage.setItem(
+            'cart',
+            JSON.stringify([
+                {
+                    id: 1,
+                    product_id: 43,
+                    amount: 1,
+                },
+                {
+                    id: 2,
+                    product_id: 5,
+                    amount: 2,
+                },
+                {
+                    id: 3,
+                    product_id: 22,
+                    amount: 1,
+                },
+            ])
+        );
+
+        // 初始化：一開始開啟這個網站時，取得 cookie 中 cart 資料，如果 cookie 中沒有 cart 時，存一個空的 []。
         const newCart = localStorage.getItem('cart') || '[]';
 
         console.log('newCart', JSON.parse(newCart));
@@ -67,9 +101,9 @@ function CartItem(props) {
             //有的話就數量+1
             if (index !== -1) {
                 //每次只有加1個數量
-                //newMycartDisplay[index].qty++
+                //newMycartDisplay[index].amount++
                 //假設是加數量的
-                newMycartDisplay[index].qty += mycart[i].qty;
+                newMycartDisplay[index].amount += mycart[i].amount;
             } else {
                 //沒有的話就把項目加入，數量為1
                 const newItem = { ...mycart[i] };
@@ -82,17 +116,17 @@ function CartItem(props) {
     }, [mycart]);
 
     // 更新購物車中的商品數量
-    const updateCartTolocalStorage = (item, isAdded = true) => {
+    const updateCartToLocalStorage = (item, isAdded = true) => {
         console.log(item, isAdded);
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // find if the product in the localStorage with its id
+        // find if the product in the localstorage with its id
         const index = currentCart.findIndex((v) => v.id === item.id);
 
         console.log('index', index);
         // found: index! == -1
         if (index > -1) {
-            isAdded ? currentCart[index].qty++ : currentCart[index].qty--;
+            isAdded ? currentCart[index].amount++ : currentCart[index].amount--;
         }
 
         localStorage.setItem('cart', JSON.stringify(currentCart));
@@ -101,16 +135,25 @@ function CartItem(props) {
         setMycart(currentCart);
     };
 
-    // 移除該品項
-
     // 計算總價用的函式
     const sum = (items) => {
         let total = 0;
         for (let i = 0; i < items.length; i++) {
-            total += items[i].qty * items[i].price;
+            total += items[i].amount * items[i].price;
         }
         return total;
     };
+
+    // 沒設 loading 圖示
+    const loading = (
+        <>
+            <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+        </>
+    );
 
     const display = (
         <>
@@ -121,22 +164,22 @@ function CartItem(props) {
                             產品：{item.name}/數量：
                             <button
                                 onClick={() => {
-                                    if (item.qty === 1) return;
-                                    updateCartTolocalStorage(item, false);
+                                    if (item.amount === 1) return;
+                                    updateCartToLocalStorage(item, false);
                                 }}
                             >
                                 -
                             </button>
-                            {item.qty}
+                            {item.amount}
                             <button
                                 onClick={() =>
-                                    updateCartTolocalStorage(item, true)
+                                    updateCartToLocalStorage(item, true)
                                 }
                             >
                                 +
                             </button>
                             /單價：{item.price}/{'   '}
-                            小計：{item.qty * item.price}
+                            小計：{item.amount * item.price}
                         </li>
                     );
                 })}
@@ -193,8 +236,8 @@ function CartItem(props) {
                                         <div
                                             className="cursor-pointer"
                                             onClick={() => {
-                                                if (item.qty === 1) return;
-                                                updateCartTolocalStorage(
+                                                if (item.amount === 1) return;
+                                                updateCartToLocalStorage(
                                                     item,
                                                     false
                                                 );
@@ -204,13 +247,13 @@ function CartItem(props) {
                                         </div>
                                         <div>
                                             <div className="w-5 text-center">
-                                                {item.qty}
+                                                {item.amount}
                                             </div>
                                         </div>
                                         <div
                                             className="cursor-pointer"
                                             onClick={() =>
-                                                updateCartTolocalStorage(
+                                                updateCartToLocalStorage(
                                                     item,
                                                     true
                                                 )

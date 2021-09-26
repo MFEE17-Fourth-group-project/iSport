@@ -126,9 +126,12 @@ function Nav(props) {
                         </Link>
                         <Link
                             to="/user/cart"
-                            className="text-white text-opacity-85 sm:mx-4 mx-0 hover:text-yellow-400"
+                            className="text-white text-opacity-85 sm:mx-4 mx-0 relative"
                         >
-                            購物車
+                            <p className="hover:text-yellow-400">購物車</p>
+                            <div className="absolute -right-3 -top-2 bg-red-600 w-5 h-5 rounded-full text-center text-xs pt-0.5">
+                                1
+                            </div>
                         </Link>
                     </div>
                 </div>

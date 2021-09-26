@@ -49,8 +49,6 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 // import Aside from '../global/Aside';
 
 function HomeRouter() {
-    const [counts, setCounts] = useState(1);
-
     return (
         <Router>
             <>
@@ -70,7 +68,7 @@ function HomeRouter() {
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart counts={counts} setCounts={setCounts} />
+                            <Cart />
                         </Route>
                         <Route path="/products/productItem/:productId?">
                             <ProductItem />
