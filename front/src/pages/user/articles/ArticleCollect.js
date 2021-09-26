@@ -4,31 +4,9 @@ import Aside from '../../../global/Aside';
 import SuggestArtCol from '../../video/components/SuggestArtCol';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
-import { API_URL } from '../../utils/config';
-import axios from 'axios';
 
 function ArticleCollect() {
     const { member, setMember } = useAuth();
-    const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-        const getArticleData = async () => {
-            try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/AerobicExercise`
-                );
-                let data = res.data;
-                console.log(data);
-                setData(data);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getArticleData();
-    }, []);
-    console.log(data);
     return (
         <>
             {member ? (
@@ -40,13 +18,9 @@ function ArticleCollect() {
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <div className="mt-6">
-                                {data &&
-                                    data.map((article) => (
-                                        <SuggestArtCol
-                                            article={article}
-                                            key={article.id}
-                                        />
-                                    ))}
+                                <Link to="">
+                                    <SuggestArtCol />
+                                </Link>
                             </div>
                         </div>
                     </artical>
