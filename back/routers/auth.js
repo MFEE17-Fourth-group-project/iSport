@@ -1,43 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path =require("path")
-//上傳檔案用的亂數名稱
-const { uuid } = require('uuidv4');
 const connection = require('../utils/db');
-// 處理formData需要用到的中間件
-const multer=require("multer");
-//設定上傳檔案的位置，diskStorage為本機硬碟
-const storage=multer.diskStorage({
-    // 檔案存取位置
-    destination:function(req,file,callback){
-        callback(null,path.join(__dirname,"../","public","uploads"));
-    },
-    // 檔案命名
-    filename:function(req,file,cb){
-        const ext=file.originalname.split(".").pop();
-        cb(null,`member-${uuid()}.${ext}`);
-    }
-    });
-const uploader=multer({
-    storage:storage,
-    // 檔案驗證，限定檔案類型
-    fileFilter:function(req,file,cb){
-        if(
-            file.mimetype !=="image/jpeg" &&
-            file.mimetype !=="image/jpg" &&
-            file.mimetype !=="image/png"
-        
-        ){
-            cb(new Error("檔案類型錯誤"),false);
-        }
-        cb(null,true);
-    },
-    //檔案大小1024*1024等於1M
-    limits:{
-        fileSize:1024*1024,
-    }
-});
-
 //這是資料驗證套件
 const{body,validationResult}=require("express-validator");
 //資料驗證規則
@@ -49,19 +13,7 @@ const signUpRules=[
 const bcrypt=require("bcrypt");
 const { JsonWebTokenError } = require('jsonwebtoken');
 
-//上傳檔案用路由中間件
-router.post("/photo",uploader.single("photo"),async(req,res,next)=>{
-    console.log(req.file);
-    let filename= req.file?"/uploads/"+req.file.filename:"";
-    let result=await connection.queryAsync(
-        "INSERT INTO users (photo) VALUE(?)",
-        [[
-            filename
-        ]]
-    )
-    res.json({message:"上傳成功"});
-}
-)
+
 // 註冊會員資料送至express 中間件寫入資料庫
 router.post("/SignUp",signUpRules,async(req,res,next)=>{
     //檢查帳號是否重複
@@ -88,7 +40,7 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     }
     console.log(req.body);
     let result=await connection.queryAsync(
-        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender,valid) VALUE(?)",
+        "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender) VALUE(?)",
         [[
             req.body.name,
             req.body.account,
@@ -99,7 +51,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
             req.body.birthday,
             req.body.aboutme,
             req.body.gender,
-            req.body.valid,
         ]]
     )
     res.json({message:"註冊成功"});
@@ -140,6 +91,8 @@ router.post("/Signin",async(req,res,next)=>{
         birthday:member.birthday,
         gender:member.gender,
         aboutme:member.aboutme,
+        photo:member.photo,
+
     };
     //這是取得會員全部資料
     // req.session.account=account;
@@ -161,7 +114,9 @@ router.post("/Signin",async(req,res,next)=>{
 router.get("/logout", (req, res, next) => {
     req.session.member = null;
     res.sendStatus(202);
-  });
+    console.log("登出成功")
+  }
+  );
   
 
 module.exports = router;

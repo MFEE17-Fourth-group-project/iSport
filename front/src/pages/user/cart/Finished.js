@@ -7,7 +7,10 @@ import NotAuth from '../components/NotAuth';
 
 function Finished() {
     const { member, setMember } = useAuth();
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
     return (
         <>
             {member ? (

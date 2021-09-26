@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Person2 from '../../../images/tabata/1.jpeg';
+// import Person2 from '../../../../../back/public/articles/uploads/';
 import { FaClock } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
 import { FaShare } from 'react-icons/fa';
@@ -14,7 +14,11 @@ const Article = (props) => {
         <>
             <Link to={'/article/' + article.id} className="max-w-max m-auto">
                 <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5">
-                    <img className="mr-4" src={article.photos} alt="" />
+                    <img
+                        className="m-auto"
+                        src={`http://localhost:3030/articles/uploads/${article.photos}`}
+                        alt=""
+                    />
                     <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
                         {article.added_by}
                     </h3>

@@ -64,13 +64,13 @@ function HomeRouter() {
                         <Route path="/user/cart/TradingRecord">
                             <TradingRecord />
                         </Route>
-                        <Route path="/user/cart/favorite">
+                        <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
                             <Cart />
                         </Route>
-                        <Route path="/products/productItem/">
+                        <Route path="/products/productItem/:productId?">
                             <ProductItem />
                         </Route>
                         <Route path="/products/:category?">

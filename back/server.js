@@ -18,6 +18,11 @@ let productsRouter = require("./routers/products");
 const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
 
+<<<<<<< HEAD
+=======
+
+app.use(express.static('public'));
+>>>>>>> develop
 //啟用session
 app.use(
     expressSession({

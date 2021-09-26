@@ -9,6 +9,26 @@ import NotAuth from '../components/NotAuth';
 
 function Checkout() {
     const { member, setMember } = useAuth();
+<<<<<<< HEAD
+=======
+    // TRY ANIMATE TRANSITION and DURATION
+    const cartHeight = 180;
+    const cartList = [
+        {
+            id: 1,
+        },
+        {
+            id: 2,
+        },
+        {
+            id: 3,
+        },
+        {
+            id: 4,
+        },
+    ];
+    console.log(cartHeight * cartList.length);
+>>>>>>> develop
 
     // FIXME: ANIMATE TRANSITION and DURATION ** 沒作用 **
     const showCheckItemRef = useRef(null);
@@ -36,7 +56,13 @@ function Checkout() {
                                 ref={showCheckItemRef}
                                 className="max-h-44 overflow-hidden transition-all duration-500"
                             >
+<<<<<<< HEAD
                                 <CheckItem />
+=======
+                                {cartList.map(function (object, i) {
+                                    return <CheckItem obj={object} key={i} />;
+                                })}
+>>>>>>> develop
                             </div>
                             <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                                 <p className="text-lg font-bold">Total :</p>

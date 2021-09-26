@@ -43,7 +43,7 @@ const productItem = async (req, res, next) => {
     let typeValueArr = [];
     // console.log(typeList)
     typeList.forEach((item) => {
-        console.log(item.id)
+        // console.log(item.id)
         let arr = skuType.filter((typeValue) => {
             return typeValue.type_id === item.id
         })
@@ -51,13 +51,14 @@ const productItem = async (req, res, next) => {
             let obj = {
                 type_id:item.id,
                 type_name:item.name_frontend,
+                type_name_back:item.name_backend,
                 typeValue:arr
             }
             typeValueArr.push(obj)
         }
     })
 
-    console.log(typeValueArr)
+    // console.log(typeValueArr)
     
     res.json({'product':product, 'skuDetail':skuDetail, 'typeValue':typeValueArr, 'productImg':productImg})
 }

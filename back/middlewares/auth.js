@@ -26,9 +26,16 @@ module.exports={
         //         mseeage:"請先登入會員",
         //     });
             
+<<<<<<< HEAD
         // }else{
         //     next();
         // }
         // console.log("通過驗證",req.session.member)
+=======
+        }else{
+            next();
+        }
+        console.log("通過驗證")
+>>>>>>> develop
     },
 };
