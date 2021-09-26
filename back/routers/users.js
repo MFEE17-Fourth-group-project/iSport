@@ -9,6 +9,8 @@ const bcrypt=require("bcrypt");
 const { uuid } = require('uuidv4');
 // 處理formData需要用到的中間件
 const multer=require("multer");
+//處理 檔案路徑
+const path = require("path");
 //設定上傳檔案的位置，diskStorage為本機硬碟
 const storage=multer.diskStorage({
     // 檔案存取位置
@@ -93,17 +95,31 @@ res.json({message:"修改成功"});
 });
 
 //會員上傳檔案用路由中間件
-router.post("/photo",uploader.single("photo"),async(req,res,next)=>{
-  console.log(req.file);
+router.put("/photo/:account",uploader.single("photo"),async(req,res,next)=>{
   let filename= req.file?"/uploads/"+req.file.filename:"";
-  let result=await connection.queryAsync(
-      "INSERT INTO users (photo) VALUE(?)",
-      [[
-          filename
-      ]]
-  )
+  try{
+    let result=await connection.queryAsync(
+        "UPDATE users SET photo=? WHERE account=?",
+        [[
+            filename
+        ],[req.params.account]]
+    )
+  
+      console.log('上傳更新成功')
+      res.json("上傳成功")
+  }catch{
+      next(
+    res.status(400).json({ message: "400 上傳更新失敗!!" })
+    )
+    console.log("400 上傳更新失敗!!")
+  }
 }
 )
+// router.get('/:account', (req,res,next)=>{
+//     console.log(req.params.account)
+// })
+
+// router.put("/(req.body.account)")
 
 //訂單管理
 router.post("/cart",(req,res,next)=>{
