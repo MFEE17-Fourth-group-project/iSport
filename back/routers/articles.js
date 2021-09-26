@@ -20,34 +20,35 @@ router.get("/Read", async (req, res, next) => {
   );
   res.json(result);
 });
-//顯示多筆分類SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"
+//顯示多筆分類
 router.get("/Read/AerobicExercise", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM iSport.article WHERE valid=1 AND category=1"
+    "SELECT * FROM article WHERE valid=1 AND category=1"
+    // 'SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
   );
   res.json(result);
 });
 router.get("/Read/WeightTraining", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM iSport.article WHERE valid=1 AND category=2"
+    "SELECT * FROM article WHERE valid=1 AND category=2"
   );
   res.json(result);
 });
 router.get("/Read/TABATATraining", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM iSport.article WHERE valid=1 AND category=3"
+    "SELECT * FROM article WHERE valid=1 AND category=3"
   );
   res.json(result);
 });
 router.get("/Read/CoreStrength", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM iSport.article WHERE valid=1 AND category=4"
+    "SELECT * FROM article WHERE valid=1 AND category=4"
   );
   res.json(result);
 });
 router.get("/Read/LeanBulking", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM iSport.article WHERE valid=1 AND category=5"
+    "SELECT * FROM article WHERE valid=1 AND category=5"
   );
   res.json(result);
 });

@@ -28,7 +28,10 @@ function ArticleAdd() {
             formData.append('photos', photos);
             let response = await axios.post(
                 `${API_URL}/articles/Create`,
-                formData
+                formData,
+                {
+                    withCredentials: true,
+                }
             );
             alert('新增文章成功');
             console.log(response);
@@ -76,6 +79,7 @@ function ArticleAdd() {
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
+                                    <option value="0">請選擇</option>
                                     <option value="1">有氧運動</option>
                                     <option value="2">重量訓練</option>
                                     <option value="3">間歇訓練</option>
