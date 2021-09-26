@@ -118,7 +118,7 @@ router.post(
           ],
         ]
       );
-      res.json({ message: "上傳成功" });
+      res.json({ message: "新增文章" });
     } catch (e) {
       console.error(e);
     }
@@ -126,10 +126,35 @@ router.post(
 );
 
 //修改
-// router.put('/Update/:id', async (req, res, next) => {
+// router.patch('/Update/:id', async (req, res, next) => {
 //   let result = await connection.queryAsync("UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?");
 // res.json(result);
 // });
+router.patch(
+  "/Update/:id",
+  uploader.single("photos"), //上傳檔案驗證資料
+  registerRules, //驗證資料
+  async (req, res, next) => {
+    try {
+      let result = await connection.queryAsync(
+        "UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?",
+        [
+          [
+            req.body.article_name,
+            req.body.added_by,
+            // req.body.upload_date,
+            req.body.content,
+            req.body.category,
+            req.body.photos,
+          ],
+        ]
+      );
+      res.json({ message: "修改文章" });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+);
 //刪除
 // router.delete('/Delete/:id', async (req, res, next) => {
 //   let result = await connection.queryAsync("UPDATE article SET valid=0  WHERE id=?");
