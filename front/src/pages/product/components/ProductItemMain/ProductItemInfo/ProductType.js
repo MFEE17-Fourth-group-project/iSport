@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ProductTypeValue from './ProductTypeValue';
 
 function ProductType(props) {
-    const { typeName, typeValue } = props;
-    console.log(typeName, typeValue);
+    const { typeName, typeValue, typeNameBack, currentSku, setCurrentSku } =
+        props;
     return (
         <>
             <div className="py-1 flex items-start">
@@ -14,7 +14,11 @@ function ProductType(props) {
                             return (
                                 <ProductTypeValue
                                     key={item.id}
+                                    valueId={item.id}
                                     typeValue={item.type_value}
+                                    typeNameBack={typeNameBack}
+                                    currentSku={currentSku}
+                                    setCurrentSku={setCurrentSku}
                                 />
                             );
                         })}

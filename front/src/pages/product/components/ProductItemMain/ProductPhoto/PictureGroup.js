@@ -11,7 +11,7 @@ function PictureGroup(props) {
                     setBigImg(e.target.name);
                 }}
                 name={imgName}
-                className="mb-2 sm:mr-2 xl:mr-0 lx:mb-2 sm:w-20 sm:h-20 xl:w-28 xl:h-28 rounded-md overflow-hidden flex-shrink-0"
+                className="mb-2 mr-2 xl:mr-0 lx:mb-2 w-20 h-20 xl:w-28 xl:h-28 rounded-md overflow-hidden flex-shrink-0"
             >
                 <img
                     src={photoUrl.default}

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 import ProductType from './ProductType';
+import SkuInfo from './SkuInfo';
 
 import { FaPlus, FaMinus, FaAngleLeft, FaHeart, FaShare } from 'react-icons/fa';
 
 function ProductItemInfo(props) {
     const priceTest = 350;
     const stockTest = 12;
-    const { productInfo, typeValue } = props;
+    const { productInfo, typeValue, skuDetail } = props;
+    const [skuInfo, setSkuInfo] = useState(null);
     const [qty, setQty] = useState(1);
     const [info, setInfo] = useState({
         category: '',
@@ -18,8 +20,9 @@ function ProductItemInfo(props) {
         totalSale: '',
     });
 
+    const [currentSku, setCurrentSku] = useState({});
+
     useEffect(() => {
-        // console.log(productInfo);
         if (productInfo) {
             setInfo({
                 category: productInfo.product_category_name,
@@ -30,8 +33,38 @@ function ProductItemInfo(props) {
                 totalSale: productInfo.total_sale,
             });
         }
-        // console.log(info);
     }, [productInfo]);
+
+    useEffect(() => {
+        if (typeValue) {
+            let obj = {};
+            typeValue.forEach((item) => {
+                obj[item.type_name_back] = item.typeValue[0].id;
+            });
+            setCurrentSku(obj);
+        }
+    }, [typeValue]);
+
+    useEffect(() => {
+        console.log(currentSku);
+        let arr = [];
+        let string = '';
+        arr = Object.values(currentSku);
+        string = arr.join();
+        if (skuDetail) {
+            let aaaaa = skuDetail.filter((item) => {
+                return item.sku_group === string;
+            });
+            setSkuInfo(aaaaa[0]);
+        }
+        // console.log(skuInfo);
+    }, [currentSku, skuDetail]);
+
+    useEffect(() => {
+        if (skuInfo) {
+        }
+    }, [skuInfo]);
+
     return (
         <>
             <div className="sm:w-1/2 py-5 flex-grow flex flex-col">
@@ -69,23 +102,31 @@ function ProductItemInfo(props) {
                                 <ProductType
                                     key={item.id}
                                     typeName={item.type_name}
+                                    typeNameBack={item.type_name_back}
                                     typeValue={item.typeValue}
+                                    currentSku={currentSku}
+                                    setCurrentSku={setCurrentSku}
                                 />
                             );
                         })}
+                    <SkuInfo skuInfo={skuInfo} qty={qty} setQty={setQty} />
 
-                    <div className="py-1 flex justify-between">
+                    {/* <div className="py-1 flex justify-between">
                         <div>
                             貨號：
-                            <span className="text-gray-400">10011031</span>
+                            <span className="text-gray-400">
+                                {skuInfo ? skuInfo.sku_code : '暫無資料'}
+                            </span>
                         </div>
                         <div>
-                            庫存：<span>{stockTest}</span>
+                            庫存：
+                            <span>{skuInfo ? skuInfo.stock : '暫無資料'}</span>
                         </div>
                     </div>
                     <div className="my-2 py-2 border-b-2 border-yellow-400 flex justify-between">
                         <div className="text-yellow-400 text-lg">
-                            NT$ <span>{priceTest}</span>
+                            NT$
+                            <span>{skuInfo ? skuInfo.price : '暫無資料'}</span>
                         </div>
                         <div className="flex py-1 rounded-md justify-between items-center shadow-emboss">
                             <button
@@ -114,8 +155,11 @@ function ProductItemInfo(props) {
                         </div>
                     </div>
                     <div className="text-right text-yellow-400 text-lg">
-                        小計 NT$ <span>350</span>
-                    </div>
+                        小計 NT${' '}
+                        <span>
+                            {skuInfo ? skuInfo.price * qty : '暫無資料'}
+                        </span>
+                    </div> */}
                 </div>
                 <div className="flex">
                     <button className="btn-yellow mr-3 w-2/3  ">

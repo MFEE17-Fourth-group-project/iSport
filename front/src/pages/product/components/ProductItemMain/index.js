@@ -59,25 +59,23 @@ function ProductItemMain(props) {
                     <ProductPhoto productImg={productImg} />
                     {/* 資訊與加入購物車 */}
                     <ProductItemInfo
+                        key={productId}
                         productInfo={productInfo}
                         typeValue={typeValue}
+                        skuDetail={skuDetail}
                     />
                 </section>
                 {/* 商品簡介 */}
-                <section className=" h-75 mt-5 overflow-y-hidden relative">
+                <section className=" min-h-80 mt-5 overflow-y-hidden relative">
                     <h1 className="py-3 text-xl border-b-2 border-yellow-400 ">
                         商品介紹
                     </h1>
                     <div className="  py-3 break-all leading-relaxed">
-                        {productInfo ? productInfo.product_intro : ''}
-                    </div>
-                    <div className="w-full pt-20 pb-1 absolute bottom-0 left-0 flex flex-col justify-center items-center bg-gradient-to-t from-gray-900 text-yellow-400 text-center">
-                        <p>顯示完整資訊</p>
-                        <FaCaretDown />
+                        {productInfo ? productInfo.product_intro : '無相關簡介'}
                     </div>
                 </section>
                 {/* 你可能會喜歡 */}
-                <section className="my-5">
+                <section className="hidden my-5">
                     <h1 className="py-3 text-xl border-b-2 border-yellow-400 ">
                         你可能會喜歡......
                     </h1>
@@ -91,12 +89,6 @@ function ProductItemMain(props) {
 
                         <div className="py-5 flex mx-0 lg:mx-2">
                             <div className="mr-1 lg:mr-4 flex-shrink-0 w-40 lg:w-60 rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                                {/* <div className="w-full py-1 flex justify-between items-center absolute">
-                                    <div className="text-xs lg:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-3 py-1 invisible">
-                                        New
-                                    </div>
-                                    <FaHeart className="pr-3 text-3xl lg:text-4xl text-red-300 cursor-pointer" />
-                                </div> */}
                                 <img
                                     className="w-full"
                                     src={product}
