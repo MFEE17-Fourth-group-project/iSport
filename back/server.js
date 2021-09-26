@@ -40,12 +40,12 @@ app.use(
 );
 console.log(process.env.Route_ORIGIN);
 
-// app.use(
-//     expressSession({
-//         secret: process.env.SESSION_SECRET,
-//         resave: false
-//     })
-// );
+app.use(
+    expressSession({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+    })
+);
 //使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
 //使用這個中間鍵才能解析json資料
