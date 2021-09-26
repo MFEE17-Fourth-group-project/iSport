@@ -54,7 +54,7 @@ const getOneProduct = async (id) => {
 
 const getSkuDetail = async (id) => {
     return await connection.queryAsync(
-        `SELECT sku_code, stock,  sku_group, price
+        `SELECT id AS sku_id, sku_code, stock,  sku_group, price
         FROM product_sku
         WHERE product_id=?`,
         [id]
