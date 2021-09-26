@@ -9,12 +9,12 @@ import NotAuth from '../components/NotAuth';
 
 function ArticleAdd() {
     const { member, setMember } = useAuth();
-    const [article_name, setarticle_name] = useState();
-    const [added_by, setadded_by] = useState();
-    const [content, setcontent] = useState();
-    const [category, setcategory] = useState();
+    const [article_name, setarticle_name] = useState('');
+    const [added_by, setadded_by] = useState('');
+    const [content, setcontent] = useState('');
+    const [category, setcategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState();
+    const [photos, setPhotos] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();

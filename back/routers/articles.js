@@ -101,7 +101,7 @@ const uploader = multer({
 
 router.post(
   "/Create",
-  uploader.single("photo"), //上傳檔案驗證資料
+  uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
     try {
