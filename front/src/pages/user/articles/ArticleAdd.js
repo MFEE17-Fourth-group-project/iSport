@@ -14,7 +14,7 @@ function ArticleAdd() {
     const [content, setcontent] = useState('');
     const [category, setcategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState();
+    const [photos, setPhotos] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -111,7 +111,7 @@ function ArticleAdd() {
                                     onChange={(e) => {
                                         setPhotos(e.target.files[0]);
                                         // setPhotos(e.target.files[0].name);
-                                        console.log(e.target.files[0].name);
+                                        // console.log(e.target.files[0].name);
                                     }}
                                 />
                                 <br />

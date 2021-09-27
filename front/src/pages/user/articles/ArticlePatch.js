@@ -30,10 +30,7 @@ function ArticlePatch() {
             formData.append('photos', photos);
             let response = await axios.post(
                 `${API_URL}/articles/Update/${id}`,
-                formData,
-                {
-                    withCredentials: true,
-                }
+                formData
             );
             alert('修改文章成功');
             console.log(response);
