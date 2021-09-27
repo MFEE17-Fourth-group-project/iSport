@@ -85,8 +85,8 @@ function ArticlePatch() {
                                     <option value="1">有氧運動</option>
                                     <option value="2">重量訓練</option>
                                     <option value="3">間歇訓練</option>
-                                    <option value="4">核心強化</option>
-                                    <option value="5">增肌飲食</option>
+                                    <option value="5">核心強化</option>
+                                    <option value="4">增肌飲食</option>
                                 </select>
                                 <br />
                                 <label htmlFor="title">標題：</label>
