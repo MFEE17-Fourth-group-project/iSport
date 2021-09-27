@@ -113,6 +113,7 @@ function ArticleAdd() {
                                     id="photos"
                                     onChange={(e) => {
                                         setPhotos(e.target.files[0]);
+                                        console.log(e.target.files[0].name);
                                     }}
                                 />
                                 <br />
