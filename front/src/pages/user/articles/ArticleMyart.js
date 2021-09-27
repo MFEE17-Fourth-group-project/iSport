@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
-import SuggestArtCol from '../../video/components/SuggestArtCol';
+import ArticleMyartItem from './ArticleMyartItem';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
 import { API_URL } from '../../utils/config';
@@ -10,14 +10,11 @@ import axios from 'axios';
 function ArticleMyart() {
     const { member, setMember } = useAuth();
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/AerobicExercise`
-                );
+                let res = await axios.get(`${API_URL}/articles/Read/MyArticle`);
                 let data = res.data;
                 console.log(data);
                 setData(data);
@@ -42,33 +39,11 @@ function ArticleMyart() {
                             <div className="mt-6">
                                 {data &&
                                     data.map((article) => (
-                                        <SuggestArtCol
+                                        <ArticleMyartItem
                                             article={article}
                                             key={article.id}
                                         />
                                     ))}
-                            </div>
-                            <div className="flex flex-row justify-end">
-                                <button
-                                    className="btn-yellow flex flex-row justify-end items-center my-5"
-                                    type="submit"
-                                    id="button"
-                                    // onClick={handleSubmit}
-                                >
-                                    <p className="font-bold text-xl mx-2">
-                                        修改
-                                    </p>
-                                </button>
-                                <button
-                                    className="btn-yellow flex flex-row justify-end items-center my-5"
-                                    type="submit"
-                                    id="button"
-                                    // onClick={handleSubmit}
-                                >
-                                    <p className="font-bold text-xl mx-2">
-                                        刪除
-                                    </p>
-                                </button>
                             </div>
                         </div>
                     </artical>
