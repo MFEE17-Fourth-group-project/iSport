@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
-// const { uuid } = require('uuidv4');
+const { uuid } = require("uuidv4");
 //顯示多筆
 router.get("/Read", async (req, res, next) => {
   let result = await connection.queryAsync("SELECT * FROM article");
@@ -53,7 +53,7 @@ router.get("/Read/LeanBulking", async (req, res, next) => {
   res.json(result);
 });
 //顯示單筆
-router.route("/:id").get(async (req, res, next) => {
+router.route("/Read/:id").get(async (req, res, next) => {
   let articleId = req.params.id;
   let result = await connection.queryAsync("SELECT * FROM article WHERE id=?", [
     articleId,
@@ -76,8 +76,10 @@ const storage = multer.diskStorage({
   },
   //檔案命名
   filename: function (req, file, callback) {
-    console.log(file);
-    callback(null, file.originalname);
+    // console.log(file);
+    // callback(null, file.originalname);
+    const ext = file.originalname.split(".").pop();
+    callback(null, `member-${uuid()}.${ext}`);
   },
 });
 const uploader = multer({
@@ -104,7 +106,9 @@ router.post(
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
+    console.log(req.params);
     try {
+      let filename = req.file ? "" + req.file.filename : "";
       let result = await connection.queryAsync(
         "INSERT INTO article (article_name, title, content, category, photos) VALUES (?);",
         [
@@ -114,11 +118,11 @@ router.post(
             // req.body.upload_date,
             req.body.content,
             req.body.category,
-            req.body.photos,
+            [filename],
           ],
         ]
       );
-      res.json({ message: "新增文章" });
+      res.json(result);
     } catch (e) {
       console.error(e);
     }
