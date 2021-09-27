@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaEye, FaClock } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
+import { BiWrench, BiTrash, BiSearchAlt } from 'react-icons/bi';
 import moment from 'moment';
 function ArticleMyart({ article }) {
     const { member, setMember } = useAuth();
@@ -48,36 +49,15 @@ function ArticleMyart({ article }) {
                             </h4>
                         </div>
                     </div>
-                    <div>
+                    <div className="flex items-center">
                         <Link to={'/article/' + article.id}>
-                            <button
-                                className="btn-yellow my-4 mx-2"
-                                type="submit"
-                                id="button"
-                                // onClick={handleSubmit}
-                            >
-                                <p className="font-bold text-xl mx-2">顯示</p>
-                            </button>
+                            <BiSearchAlt className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                         <Link to={'/user/ArticlePatch/' + article.id}>
-                            <button
-                                className="btn-yellow my-4 mx-2"
-                                type="submit"
-                                id="button"
-                                // onClick={handleSubmit}
-                            >
-                                <p className="font-bold text-xl mx-2">修改</p>
-                            </button>
+                            <BiWrench className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                         <Link to={'/article/Delete/' + article.id}>
-                            <button
-                                className="btn-yellow my-4 mx-2"
-                                type="submit"
-                                id="button"
-                                // onClick={handleSubmit}
-                            >
-                                <p className="font-bold text-xl mx-2">刪除</p>
-                            </button>
+                            <BiTrash className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                     </div>
                 </div>
