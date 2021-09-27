@@ -20,6 +20,7 @@ import CustomerService from './user/sign/CustomerService';
 import Articles from './article/Article';
 import ArticleId from './article/ArticleId';
 import ArticleAdd from './user/articles/ArticleAdd';
+import ArticlePatch from './user/articles/ArticlePatch';
 import ArticleMyart from './user/articles/ArticleMyart';
 import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleAerobicExercise from './article/ArticleAerobicExercise';
@@ -49,8 +50,6 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 // import Aside from '../global/Aside';
 
 function HomeRouter() {
-    const [counts, setCounts] = useState(1);
-
     return (
         <Router>
             <>
@@ -66,13 +65,13 @@ function HomeRouter() {
                         <Route path="/user/cart/TradingRecord">
                             <TradingRecord />
                         </Route>
-                        <Route path="/user/cart/favorite">
+                        <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart counts={counts} setCounts={setCounts} />
+                            <Cart />
                         </Route>
-                        <Route path="/products/productItem/">
+                        <Route path="/products/productItem/:productId?">
                             <ProductItem />
                         </Route>
                         <Route path="/products/:category?">
@@ -99,7 +98,7 @@ function HomeRouter() {
                         <Route path="/ArticleLeanBulking">
                             <ArticleLeanBulking />
                         </Route>
-                        <Route path="/ArticleId/:id?">
+                        <Route path="/article/:id">
                             <ArticleId />
                         </Route>
                         <Route path="/user/ArticleCollect">
@@ -111,14 +110,8 @@ function HomeRouter() {
                         <Route path="/user/ArticleAdd">
                             <ArticleAdd />
                         </Route>
-                        <Route path="/user/ArticleCollect">
-                            <ArticleCollect />
-                        </Route>
-                        <Route path="/user/ArticleMyart">
-                            <ArticleMyart />
-                        </Route>
-                        <Route path="/user/ArticleAdd">
-                            <ArticleAdd />
+                        <Route path="/user/ArticlePatch">
+                            <ArticlePatch />
                         </Route>
                         <Route path="/video/:videoId">
                             <VideoId />

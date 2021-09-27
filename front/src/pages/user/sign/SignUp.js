@@ -18,8 +18,8 @@ function SignUp() {
     const [email, setemail] = useState();
     const [phone, setphone] = useState();
     const [address, setaddress] = useState();
-    const [birthday, setbirthday] = useState('');
-    const [aboutme, setaboutme] = useState('');
+    const [birthday, setbirthday] = useState();
+    const [aboutme, setaboutme] = useState();
     const [gender, setgender] = useState('reserve');
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +35,7 @@ function SignUp() {
                 aboutme,
                 gender,
             });
+            alert('註冊成功');
             console.log(response);
         } catch (e) {
             //透過e.response拿到axios的response
@@ -159,11 +160,11 @@ function SignUp() {
                                     <input
                                         type="date"
                                         id="birthday"
-                                        value="1911-01-01"
+                                        value={birthday}
                                         onChange={(e) => {
                                             setbirthday(e.target.value);
                                         }}
-                                        className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
+                                        className="text-black"
                                         name="birthday"
                                     />
                                 </div>

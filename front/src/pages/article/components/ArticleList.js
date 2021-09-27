@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import Article from './Article';
+import ArticleCardRight from './ArticleCardRight';
 function ArticleList(props) {
-    const { article } = props;
+    const { ArticleCard } = props;
     return (
         <div className="col-md-8 cart">
-            {article.map((article, index) => (
-                <Article
+            {ArticleCard.map((article, index) => (
+                <ArticleCardRight
                     key={index}
-                    article_name={article.article_name}
-                    added_by={article.added_by}
-                    upload_date={article.upload_date}
-                    content={article.content}
                     category={article.category}
+                    smTitle={article.smTitle}
+                    bigTitle={article.bigTitle}
+                    photo={article.photo}
                 />
             ))}
         </div>
