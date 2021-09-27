@@ -23,9 +23,10 @@ function CheckItem() {
             // console.log('myCartItem', ...myCartItem);
             // console.log('getSkuCode', skuCode);
             let result = await axios.post(`${API_URL}/cart`, {
-                productId,
-                skuCode,
-                qty,
+                // productId,
+                // skuCode,
+                // qty,
+                myCartItem,
             });
             // console.log('result.data', result.data);
             // 設定回 useState render 到網頁
@@ -35,6 +36,7 @@ function CheckItem() {
             // product_name: "【MIZUNO 美津濃】女款路跑背心 J2TA1201XX（任選）(T恤)"
             // product_sku_id: 5
             // sku_code: '10011015';
+
             setQty();
             setMyCart(result.data.cartItem);
             console.log('myCart in CheckItem', myCartItem);
@@ -54,6 +56,8 @@ function CheckItem() {
         <>
             {myCart &&
                 myCart.map((item) => {
+                    const productPhotoUrl = require('../../../../images/product/' +
+                        item.img[0].img_name);
                     return (
                         <div
                             className="sm:p-2.5 h-180 lg:p-4 p-1.5 flex flex-row"
@@ -61,9 +65,9 @@ function CheckItem() {
                         >
                             <div className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center text-center">
                                 <img
-                                    className="w-full"
-                                    src={product}
-                                    alt="{photo}"
+                                    className="sm:w-36 w-full"
+                                    src={productPhotoUrl.default}
+                                    alt={item.product_name}
                                 ></img>
                             </div>
                             <div className="flex flex-col flex-grow lg:ml-10 ml-5">
