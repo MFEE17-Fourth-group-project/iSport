@@ -42,13 +42,13 @@ router.get("/Read/TABATATraining", async (req, res, next) => {
 });
 router.get("/Read/CoreStrength", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=4"
+    "SELECT * FROM article WHERE valid=1 AND category=5"
   );
   res.json(result);
 });
 router.get("/Read/LeanBulking", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=5"
+    "SELECT * FROM article WHERE valid=1 AND category=4"
   );
   res.json(result);
 });
