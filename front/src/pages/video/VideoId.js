@@ -101,7 +101,7 @@ const VideoId = () => {
                                 onClick={() => setCollect(false)}
                             >
                                 <RiHeartFill className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
-                                <span className="text-sm sm:text-xs text-white w-max">收藏</span>
+                                <span className="text-sm sm:text-xs text-white w-max">已收藏</span>
                             </div>
                             : <div
                                 className="flex mr-4 items-center cursor-pointer"
@@ -116,7 +116,7 @@ const VideoId = () => {
                                 onClick={() => setList(false)}
                             >
                                 <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
+                                <span className="text-sm sm:text-xs text-white w-max">移除稍後觀看</span>
                             </div>
                             : <div
                                 className="flex items-center cursor-pointer"
@@ -136,12 +136,12 @@ const VideoId = () => {
                 </p>
                 <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
                     justify-center mx-5 xs:mx-0">
-                    <div className="group cursor-pointer relative flex flex-col items-center">
+                    {/* <div className="group cursor-pointer relative flex flex-col items-center">
                         <span className="text-xs text-white pb-4 transform transition duration-200
                         group-hover:text-gray-200 group-hover:-translate-y-0.5">顯示更多</span>
                         <FaCaretDown className="text-yellow-400 absolute bottom-0 transform 
                             transition duration-200 group-hover:translate-y-0.5" />
-                    </div>
+                    </div> */}
                 </div>
             </div>)}
 
