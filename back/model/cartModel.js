@@ -8,23 +8,34 @@ const getCartItem = async (skuCode) => {
         FROM product
         LEFT JOIN product_sku ON product.id=product_sku.product_id
         LEFT JOIN brand ON product.brand=brand.id
-        WHERE product.valid = 1 && product_sku.sku_code IN ?
+        WHERE product.valid = 1 && product_sku.sku_code = ?
         `,
-        [[skuCode]]
+        [skuCode]
     );
 };
 
-const getImg = async () => {
-    return await connection.queryAsync(`SELECT * FROM product_img`);
+const getImg = async (skuCode) => {
+    return await connection.queryAsync(
+        `SELECT product_sku.id AS product_sku_id,
+                product_img.img_name AS img_name
+        FROM product_sku
+        INNER JOIN product_img ON product_sku.product_id=product_img.product_id
+        WHERE product_sku.sku_code = ?
+        `,
+        [skuCode]
+    );
 };
 
-const getType = async () => {
+const getType = async (skuCode) => {
     return await connection.queryAsync(
-        `SELECT product_type_value.id AS type_value_id, type_value,
+        `SELECT product_sku.id AS product_sku_id,
+                product_type_value.id AS type_value_id, type_value,
                 product_type.name_frontend AS type_name
         FROM product_type_value
         LEFT JOIN product_type ON product_type.id = product_type_value.type_id    
-        `
+        WHERE product_sku.sku_code = ?
+        `,
+        [skuCode]
     );
 };
 

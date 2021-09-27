@@ -18,16 +18,7 @@ let productsRouter = require("./routers/products");
 const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
 
-
-app.use(express.static('public'));
-//啟用session
-app.use(
-    expressSession({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-    })
-);
+app.use(express.static("public"));
 
 app.use(
     cors({
@@ -42,12 +33,14 @@ app.use(
 );
 console.log(process.env.Route_ORIGIN);
 
-app.use(
-    expressSession({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-    })
-);
+//啟用session
+// app.use(
+//     expressSession({
+//         secret: process.env.SESSION_SECRET,
+//         resave: false,
+//         saveUninitialized: true,
+//     })
+// );
 //使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
 //使用這個中間鍵才能解析json資料
