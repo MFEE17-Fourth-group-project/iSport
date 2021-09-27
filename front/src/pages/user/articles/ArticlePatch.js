@@ -6,9 +6,11 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
+import { useParams } from 'react-router-dom';
 
-function ArticleAdd() {
+function ArticlePatch() {
     const { member, setMember } = useAuth();
+    const { id } = useParams();
     const [article_name, setarticle_name] = useState('');
     const [added_by, setadded_by] = useState('');
     const [content, setcontent] = useState('');
@@ -27,13 +29,13 @@ function ArticleAdd() {
             formData.append('content', content);
             formData.append('photos', photos);
             let response = await axios.post(
-                `${API_URL}/articles/Create`,
+                `${API_URL}/articles/Update/${id}`,
                 formData,
                 {
                     withCredentials: true,
                 }
             );
-            alert('新增文章成功');
+            alert('修改文章成功');
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -173,4 +175,4 @@ function ArticleAdd() {
     );
 }
 
-export default ArticleAdd;
+export default ArticlePatch;
