@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
-// const { uuid } = require("uuidv4");
+const { uuid } = require("uuidv4");
 //顯示多筆
 router.get("/Read", async (req, res, next) => {
   let result = await connection.queryAsync("SELECT * FROM article");
@@ -76,10 +76,10 @@ const storage = multer.diskStorage({
   },
   //檔案命名
   filename: function (req, file, callback) {
-    console.log(file);
-    callback(null, file.originalname);
-    // const ext = file.originalname.split(".").pop();
-    // callback(null, `member-${uuid()}.${ext}`);
+    // console.log(file);
+    // callback(null, file.originalname);
+    const ext = file.originalname.split(".").pop();
+    callback(null, `member-${uuid()}.${ext}`);
   },
 });
 const uploader = multer({
