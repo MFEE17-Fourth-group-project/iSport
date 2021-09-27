@@ -18,7 +18,8 @@ module.exports={
         //         });
         //     }
       
-        // 這是witchcreadition的身分驗證
+        //  FIXME: 暫時關閉身份驗證
+        //  這是witchcreadition的身分驗證
         if(!req.session.member){
             return next({
                 status:401,
