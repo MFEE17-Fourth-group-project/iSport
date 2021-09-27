@@ -24,7 +24,7 @@ router.get("/Read", async (req, res, next) => {
 router.get("/Read/AerobicExercise", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=1"
-    // 'SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
+    // 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
   );
   res.json(result);
 });
@@ -64,7 +64,7 @@ router.route("/:id").get(async (req, res, next) => {
 //資料驗證
 const { body, validationResult } = require("express-validator");
 const registerRules = [
-  body("added_by").isLength({ max: 100 }).withMessage("最多100字"),
+  body("title").isLength({ max: 100 }).withMessage("最多100字"),
   body("article_name").isLength({ max: 50 }).withMessage("最多50字"),
 ];
 //上傳檔案
@@ -106,11 +106,11 @@ router.post(
   async (req, res, next) => {
     try {
       let result = await connection.queryAsync(
-        "INSERT INTO article (article_name, added_by, content, category, photos) VALUES (?);",
+        "INSERT INTO article (article_name, title, content, category, photos) VALUES (?);",
         [
           [
             req.body.article_name,
-            req.body.added_by,
+            req.body.title,
             // req.body.upload_date,
             req.body.content,
             req.body.category,
@@ -127,7 +127,7 @@ router.post(
 
 //修改
 // router.patch('/Update/:id', async (req, res, next) => {
-//   let result = await connection.queryAsync("UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?");
+//   let result = await connection.queryAsync("UPDATE article SET article_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?");
 // res.json(result);
 // });
 router.patch(
@@ -137,11 +137,11 @@ router.patch(
   async (req, res, next) => {
     try {
       let result = await connection.queryAsync(
-        "UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?",
+        "UPDATE article SET article_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?",
         [
           [
             req.body.article_name,
-            req.body.added_by,
+            req.body.title,
             // req.body.upload_date,
             req.body.content,
             req.body.category,

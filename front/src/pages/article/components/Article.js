@@ -20,7 +20,7 @@ const Article = (props) => {
                         alt=""
                     />
                     <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
-                        {article.added_by}
+                        {article.title}
                     </h3>
                     <div className="m-2 md:flex md:justify-between">
                         <div className="flex items-center">

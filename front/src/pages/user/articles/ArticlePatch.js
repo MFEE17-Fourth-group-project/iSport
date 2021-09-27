@@ -12,7 +12,7 @@ function ArticlePatch() {
     const { member, setMember } = useAuth();
     const { id } = useParams();
     const [article_name, setarticle_name] = useState('');
-    const [added_by, setadded_by] = useState('');
+    const [title, settitle] = useState('');
     const [content, setcontent] = useState('');
     const [category, setcategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
@@ -23,7 +23,7 @@ function ArticlePatch() {
         try {
             const formData = new FormData();
             formData.append('article_name', article_name);
-            formData.append('added_by', added_by);
+            formData.append('title', title);
             // formData.append('upload_date', upload_date);
             formData.append('category', category);
             formData.append('content', content);
@@ -89,7 +89,7 @@ function ArticlePatch() {
                                     <option value="5">增肌飲食</option>
                                 </select>
                                 <br />
-                                <label htmlFor="added_by">標題：</label>
+                                <label htmlFor="title">標題：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
                                 </span>
@@ -97,12 +97,12 @@ function ArticlePatch() {
                                 <input
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="added_by"
-                                    id="added_by"
+                                    name="title"
+                                    id="title"
                                     placeholder="最多100字"
-                                    value={added_by}
+                                    value={title}
                                     onChange={(e) => {
-                                        setadded_by(e.target.value);
+                                        settitle(e.target.value);
                                     }}
                                 />
                                 <br />
