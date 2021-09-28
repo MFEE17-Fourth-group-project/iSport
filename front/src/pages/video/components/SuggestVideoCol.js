@@ -1,4 +1,6 @@
 import useGet from '../../../utils/useGet';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import { Link } from 'react-router-dom';
 import Fitness1 from './../../../images/重訓/fitness-1.jpg';
 import Person1 from './../../../images/person-1.jpg';
 import { FaClock } from "react-icons/fa";
@@ -9,44 +11,46 @@ const SuggestVideoCol = () => {
     const { data: suggestVideos, error, isPending } = useGet(`/videos/suggestVideos`);
 
     return (
-        <div className="flex mt-6 h-24 pr-2">
-            <div className="w-48 mr-4">
-                <img className="w-full h-full object-cover rounded-lg" src={Fitness1} alt="" />
-            </div>
+        <>
+            { suggestVideos && suggestVideos.map(video => {
+                let file = "iSport_Videos/" + video.filePath.slice(15, 28);
+                return (
+                    <Link to={'/video/' + video.id} className="flex mt-6 h-24 pr-2 max-w-full">
+                        <Video
+                            cloudName="dnmayrvjj"
+                            secure="true"
+                            publicId={file}
+                            className="w-44 flex-grow-0 flex-shrink-0 h-full object-cover rounded-lg mr-4"
+                            sourceType={['jpg']}>
+                        </Video>
+                        {/* <img className="max-w-48 h-full object-cover rounded-lg mr-4" src={Fitness1} alt="" /> */}
 
-            <div className="flex flex-col justify-between">
+                        <div className="flex flex-col justify-between w-72">
 
-                <h4 className="text-yellow-400 text-base">
-                    15 分鐘高強度全身肌肉 無需器材又能在家做的運動
-                        </h4>
+                            <h4 className="text-yellow-400 text-base">
+                                {video.title}
+                            </h4>
 
-                <div className="flex items-center">
-                    <img
-                        className="w-6 h-6 rounded-full mr-1.5"
-                        src={Person1}
-                    />
-                    <span className="text-white text-sm">沙拉</span>
-                </div>
+                            <div className="flex justify-between">
+                                <h6 className="flex items-center">
+                                    <FaClock className="text-yellow-400 mr-1.5" />
+                                    <span className="text-xs text-white text-opacity-85">3 天前</span>
+                                </h6>
+                                <h6 className="flex items-center">
+                                    <FaEye className="text-yellow-400 mr-1.5" />
+                                    <span className="text-xs text-white text-opacity-85">{video.views}</span>
+                                </h6>
+                                <h6 className="flex items-center">
+                                    <FaThumbsUp className="text-yellow-400 mr-1.5" />
+                                    <span className="text-xs text-white text-opacity-85">542</span>
+                                </h6>
+                            </div>
 
-                <div className="flex justify-between">
-                    <h6 className="flex items-center">
-                        <FaClock className="text-yellow-400 mr-1.5" />
-                        <span className="text-xs text-white text-opacity-85">3 天前</span>
-                    </h6>
-                    <h6 className="flex items-center">
-                        <FaEye className="text-yellow-400 mr-1.5" />
-                        <span className="text-xs text-white text-opacity-85">1530</span>
-                    </h6>
-                    <h6 className="flex items-center">
-                        <FaThumbsUp className="text-yellow-400 mr-1.5" />
-                        <span className="text-xs text-white text-opacity-85">542</span>
-                    </h6>
-                </div>
-
-            </div>
-
-        </div>
-    );
+                        </div>
+                    </Link>
+                );
+            })}
+        </>);
 };
 
 export default SuggestVideoCol;
