@@ -150,18 +150,9 @@ const VideoId = () => {
                 <div className="mt-0 border-b-2 pb-5 border-yellow-400 lg:border-b-0 lg:pb-0">
                     <h3 className="text-xl text-white lg:pb-2 lg:border-b-2 lg:border-yellow-400 ">推薦影片</h3>
                     <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
-                    <SuggestVideoCol />
                 </div>
                 <div className="mt-6 hidden lg:block">
                     <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400">推薦文章</h3>
-                    <SuggestArtCol />
-                    <SuggestArtCol />
-                    <SuggestArtCol />
-                    <SuggestArtCol />
                     <SuggestArtCol />
                 </div>
             </div>

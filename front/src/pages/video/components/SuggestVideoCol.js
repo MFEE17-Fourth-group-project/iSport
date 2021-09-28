@@ -1,3 +1,4 @@
+import useGet from '../../../utils/useGet';
 import Fitness1 from './../../../images/重訓/fitness-1.jpg';
 import Person1 from './../../../images/person-1.jpg';
 import { FaClock } from "react-icons/fa";
@@ -5,6 +6,8 @@ import { FaEye } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 
 const SuggestVideoCol = () => {
+    const { data: suggestVideos, error, isPending } = useGet(`/videos/suggestVideos`);
+
     return (
         <div className="flex mt-6 h-24 pr-2">
             <div className="w-48 mr-4">

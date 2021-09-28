@@ -1,7 +1,10 @@
+import useGet from '../../../utils/useGet';
 import Person1 from './../../../images/person-1.jpg';
 import { FaEye } from "react-icons/fa";
 
 const SuggestVideoCol = () => {
+    const { data: suggestArticles, error, isPending } = useGet(`/videos/suggestArticles`);
+
     return (
         <div className="flex mt-6 h-28">
 
