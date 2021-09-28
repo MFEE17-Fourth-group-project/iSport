@@ -1,140 +1,24 @@
-import react, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import HomePage8 from './../../images/homepage/homepage-8.jpg';
 import VideoCard from './../video/components/VideoCard';
 import VideoCard2 from './../video/components/VideoCard2';
-import { Link } from 'react-router-dom';
-import { API_URL } from '../../utils/config';
-import axios from 'axios';
-const VideoSection = () => {
-    const [step, setStep] = useState(1);
-    const [data, setData] = useState(null);
-    const [Pec, setPec] = useState(null);
-    const [Bac, setBac] = useState(null);
-    const [Abd, seLegd] = useState(null);
-    const [Glu, setGlu] = useState(null);
-    const [Leg, setLeg] = useState(null);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let data = res.data;
-                setData(data);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(data);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let Pec = res.data;
-                setPec(Pec);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(Pec);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let Bac = res.data;
-                setBac(Bac);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(Bac);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let Abd = res.data;
-                seLegd(Abd);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(Abd);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let Glu = res.data;
-                setGlu(Glu);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(Glu);
-    useEffect(() => {
-        const getVideoData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/videos/category`);
-                let Leg = res.data;
-                setLeg(Leg);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getVideoData();
-    }, []);
-    console.log(Leg);
 
+const VideoSection = () => {
     let [gym, setGym] = useState(<VideoCard2 />);
     const Pectoralis = () => {
-        {
-            Pec &&
-                Pec.map((Video) => <VideoCard2 Video={Video} key={Video.id} />);
-        }
+        setGym(<VideoCard2 />);
     };
     const BackMuscles = () => {
-        {
-            Bac &&
-                Bac.map((Video) => <VideoCard2 Video={Video} key={Video.id} />);
-        }
+        setGym(<VideoCard2 />);
     };
     const AbdominalMuscles = () => {
-        {
-            Abd &&
-                Abd.map((Video) => <VideoCard2 Video={Video} key={Video.id} />);
-        }
+        setGym(<VideoCard2 />);
     };
     const GlutealMuscles = () => {
-        {
-            Glu &&
-                Glu.map((Video) => <VideoCard2 Video={Video} key={Video.id} />);
-        }
+        setGym(<VideoCard2 />);
     };
     const LegMuscles = () => {
-        {
-            Leg &&
-                Leg.map((Video) => <VideoCard2 Video={Video} key={Video.id} />);
-        }
+        setGym(<VideoCard2 />);
     };
     return (
         <div className="w-full h-124 sm:h-168 sm:grid grid-cols-3 grid-rows-3 overflow-hidden">
