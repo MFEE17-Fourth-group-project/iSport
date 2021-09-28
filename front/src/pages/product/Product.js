@@ -40,9 +40,9 @@ function Product(props) {
 
     return (
         <>
-            <div className=" w-8 h-8 xl:w-14 xl:h-14 rounded-full bg-yellow-400 text-gray-900 flex justify-center items-center cursor-pointer fixed right-5 bottom-16 z-50">
+            {/* <div className=" w-8 h-8 xl:w-14 xl:h-14 rounded-full bg-yellow-400 text-gray-900 flex justify-center items-center cursor-pointer fixed right-5 bottom-16 z-50">
                 <FaAngleUp className="text-3xl sm:text-4xl  xl:text-5xl" />
-            </div>
+            </div> */}
             <header className="relative w-full h-56 xl:h-112 overflow-hidden">
                 <div className="text-white absolute w-1/2 top-1/2 left-5 sm:left-14 xl:left-32 transform -translate-y-1/2">
                     <p className="text-sm sm:text-base xl:text-2xl break-all w-full leading-normal">

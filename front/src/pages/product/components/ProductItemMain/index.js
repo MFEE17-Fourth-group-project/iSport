@@ -71,7 +71,9 @@ function ProductItemMain(props) {
                         商品介紹
                     </h1>
                     <div className="  py-3 break-all leading-relaxed">
-                        {productInfo ? productInfo.product_intro : '無相關簡介'}
+                        {productInfo && productInfo.product_intro !== ''
+                            ? productInfo.product_intro
+                            : '無相關簡介'}
                     </div>
                 </section>
                 {/* 你可能會喜歡 */}

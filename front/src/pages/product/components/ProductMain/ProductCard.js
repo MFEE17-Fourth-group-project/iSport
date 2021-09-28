@@ -11,22 +11,17 @@ function ProductCard(props) {
         <>
             <div>
                 <div className="w-full rounded overflow-hidden shadow-lg bg-gray-900 relative">
-                    <div className="w-full py-1 flex justify-between items-center absolute">
-                        <div className="text-xs sm:text-sm text-center bg-yellow-400 rounded-r-lg border-r-2 border-t-2 border-b-2 border-gray-900 px-1.5 py-0">
-                            New
-                        </div>
+                    {/* <div className="w-full py-1 flex justify-end items-center absolute">
                         {like ? (
                             <>
-                                <FaRegHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer hidden" />
                                 <FaHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer" />
                             </>
                         ) : (
                             <>
                                 <FaRegHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer " />
-                                <FaHeart className="pr-3 text-3xl sm:text-4xl text-red-300 cursor-pointer hidden" />
                             </>
                         )}
-                    </div>
+                    </div> */}
                     <Link to={'/products/productItem/' + id}>
                         <img
                             className="w-full"

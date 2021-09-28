@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import ProductItemMain from './components/ProductItemMain/';
 
@@ -25,21 +25,36 @@ function ProductItem(props) {
     return (
         <>
             <nav className="mt-2 text-white bg-gray-900 flex justify-center text-sm xl:text-base">
-                <div className="flex-1 sm:flex-initial w-36  text-center py-3">
+                <Link
+                    to="/products/allProduct"
+                    className="flex-1 sm:flex-initial w-36  text-center py-3 hover:text-yellow-400 cursor-pointer"
+                >
                     所有商品
-                </div>
-                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
+                </Link>
+                <Link
+                    to="/products/clothe"
+                    className="flex-1 sm:flex-initial w-36 text-center py-3 hover:text-yellow-400 cursor-pointer"
+                >
                     運動服飾
-                </div>
-                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
+                </Link>
+                <Link
+                    to="/products/shoes"
+                    className="flex-1 sm:flex-initial w-36 text-center py-3 hover:text-yellow-400 cursor-pointer"
+                >
                     運動鞋類
-                </div>
-                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
+                </Link>
+                <Link
+                    to="/products/equipment"
+                    className="flex-1 sm:flex-initial w-36 text-center py-3 hover:text-yellow-400 cursor-pointer"
+                >
                     健身器材
-                </div>
-                <div className="flex-1 sm:flex-initial w-36 text-center py-3">
+                </Link>
+                <Link
+                    to="/products/food"
+                    className="flex-1 sm:flex-initial w-36 text-center py-3 hover:text-yellow-400 cursor-pointer"
+                >
                     營養補給
-                </div>
+                </Link>
             </nav>
             <ProductItemMain productId={productId} />
         </>

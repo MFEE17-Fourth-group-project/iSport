@@ -6,9 +6,11 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
+import { useParams } from 'react-router-dom';
 
-function ArticleAdd() {
+function ArticlePatch() {
     const { member, setMember } = useAuth();
+    const { id } = useParams();
     const [article_name, setarticle_name] = useState('');
     const [title, settitle] = useState('');
     const [content, setcontent] = useState('');
@@ -27,10 +29,10 @@ function ArticleAdd() {
             formData.append('content', content);
             formData.append('photos', photos);
             let response = await axios.post(
-                `${API_URL}/articles/Create`,
+                `${API_URL}/articles/Update/${id}`,
                 formData
             );
-            alert('新增文章成功');
+            alert('修改文章成功');
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -43,7 +45,7 @@ function ArticleAdd() {
                     <Aside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                            新增文章
+                            修改文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <from onSubmit={handleSubmit}>
@@ -110,8 +112,6 @@ function ArticleAdd() {
                                     id="photos"
                                     onChange={(e) => {
                                         setPhotos(e.target.files[0]);
-                                        // setPhotos(e.target.files[0].name);
-                                        // console.log(e.target.files[0].name);
                                     }}
                                 />
                                 <br />
@@ -172,4 +172,4 @@ function ArticleAdd() {
     );
 }
 
-export default ArticleAdd;
+export default ArticlePatch;
