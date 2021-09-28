@@ -10,49 +10,43 @@ function CartItem(props) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     // 連到後端的 API，取得商品資訊
+    console.log('read API_URL', API_URL);
+    const getItemDetail = async () => {
+        try {
+            let res = await axios.get(`${API_URL}/cart`);
+            let data = res.data;
+            console.log('data', data);
+            setData(data);
+            setError(null);
+        } catch (e) {
+            console.log(e);
+            setError(e.message);
+        }
+    };
     useEffect(() => {
-        console.log('read API_URL', API_URL);
-        const getItemDetail = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/cart`);
-                let data = res.data;
-                console.log('data', data);
-                setData(data);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
         getItemDetail();
     }, []);
 
     // 存取 localStorage
     const [mycart, setMycart] = useState([]);
-    const [dataLoading, setDataLoading] = useState(false);
     const [mycartDisplay, setMycartDisplay] = useState([]);
 
-    function getCartFromLocalStorage() {
-        // 開啟載入的指示圖示
-        setDataLoading(true);
-
+    const getCartFromLocalStorage = () => {
         // 初始化：一開始開啟這個網站時，取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
         const newCart = localStorage.getItem('cart') || '[]';
 
         console.log('newCart', JSON.parse(newCart));
 
         setMycart(JSON.parse(newCart));
-    }
+    };
+
     // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
     useEffect(() => {
         getCartFromLocalStorage();
     }, []);
 
-    // 每次mycart資料有改變，1秒後關閉載入指示
-    // componentDidUpdate
+    // componentDidUpdate 每次 mycart 資料更新
     useEffect(() => {
-        setTimeout(() => setDataLoading(false), 1000);
-
         // mycartDisplay運算
         let newMycartDisplay = [];
 
@@ -82,11 +76,11 @@ function CartItem(props) {
     }, [mycart]);
 
     // 更新購物車中的商品數量
-    const updateCartTolocalStorage = (item, isAdded = true) => {
-        console.log(item, isAdded);
+    const updateCartTolocalStorage = async (item, isAdded = true) => {
+        console.log('item, isAdded', item, isAdded);
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // find if the product in the localStorage with its id
+        // 尋找localStorage 中有沒有此cart[i].id
         const index = currentCart.findIndex((v) => v.id === item.id);
 
         console.log('index', index);
@@ -94,23 +88,33 @@ function CartItem(props) {
         if (index > -1) {
             isAdded ? currentCart[index].qty++ : currentCart[index].qty--;
         }
-
         localStorage.setItem('cart', JSON.stringify(currentCart));
 
+        // TODO: 帶資料
+        let myCartItem = JSON.parse(localStorage.getItem('cart'));
+        let result = await axios.post(`${API_URL}/cart`, {
+            myCartItem,
+        });
+
         // 設定資料
+        // setMycart(currentCart);
         setMycart(currentCart);
     };
 
-    // 移除該品項
+    // TODO: 移除購物車中的商品
+    // const removeFromCart = (item) => {
+    //     const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // 計算總價用的函式
-    const sum = (items) => {
-        let total = 0;
-        for (let i = 0; i < items.length; i++) {
-            total += items[i].qty * items[i].price;
-        }
-        return total;
-    };
+    //     // 尋找localStorage 中有沒有此cart[i].id
+    //     currentCart.cart.splice(currentCart.cart.indexOf(`${item.id}`, 1));
+    //     localStorage.setItem('cart', JSON.stringify(currentCart));
+
+    //     // 設定資料
+    //     // setMycart(currentCart);
+    //     // localStorage.removeItem('cart', JSON.stringify(currentCart));
+    //     setMycart(currentCart);
+    //     return item.filter((i) => i.id !== item.id);
+    // };
 
     const display = (
         <>
@@ -141,7 +145,7 @@ function CartItem(props) {
                     );
                 })}
             </ul>
-            <h3>總價：{sum(mycartDisplay)}</h3>
+            {/* <h3>總價：{sum(mycartDisplay)}</h3> */}
         </>
     );
 
@@ -228,7 +232,12 @@ function CartItem(props) {
                                             移至收藏
                                         </p>
                                     </div>
-                                    <div className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
+                                    <div
+                                        className="cursor-pointer btn text-yellow-400 bg-transparent border border-solid border-yellow-300 hover:bg-yellow-400 hover:text-gray-800 active:bg-yellow-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center"
+                                        // onClick={() => {
+                                        //     removeFromCart(item);
+                                        // }}
+                                    >
                                         <FaTrashAlt className="mx-1 sm:mr-2.5" />
                                         <p className="sm:block hidden">
                                             移除商品
