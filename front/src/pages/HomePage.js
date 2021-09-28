@@ -6,9 +6,8 @@ import VideoSection from './homeComponents/VideoSection';
 import ArticleSection from './homeComponents/ArticleSection';
 import GymSection from './homeComponents/GymSection';
 import AOS from 'aos';
-import Sport1 from '../images/homepage/1.png';
+import Sport1 from '../images/homepage/3.png';
 import Sport2 from '../images/homepage/2.png';
-import Sport3 from '../images/homepage/3.png';
 import '../../node_modules/aos/dist/aos.css';
 // const HomePage = () => {
 class HomePage extends React.Component {
@@ -42,25 +41,17 @@ class HomePage extends React.Component {
                     id="trigger-right"
                 >
                     <ProductSection />
-                    <img
-                        className="absolute z-30 w-1/4 -top-64 -left-72"
-                        src={Sport1}
-                        alt=""
-                        data-aos="fade-right"
-                        data-aos-anchor="#trigger-right"
-                        data-aos-anchor-placement="top-center"
-                    />
                 </section>
 
                 {/* Article Section */}
                 <section
-                    className="max-h-full flex bg-gray-800 relative"
+                    className="max-h-full flex bg-gray-800 relative -top-10"
                     id="trigger-left"
                 >
                     <ArticleSection />
                     <img
-                        className="absolute z-30 w-1/2 -top-72 -right-96"
-                        src={Sport3}
+                        className="absolute z-30 w-1/3 top-20 -right-20 hidden md:block"
+                        src={Sport1}
                         alt=""
                         data-aos="fade-left"
                         data-aos-anchor="#trigger-left"
@@ -75,7 +66,7 @@ class HomePage extends React.Component {
                 >
                     <GymSection />
                     <img
-                        className="absolute z-30 w-1/2 -top-48 -left-72"
+                        className="absolute z-30 w-1/3 top-54 -left-10 hidden md:block"
                         src={Sport2}
                         alt=""
                         data-aos="fade-right"
