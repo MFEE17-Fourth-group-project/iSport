@@ -45,7 +45,7 @@ function ArticlePatch() {
                     <Aside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                            新增文章
+                            修改文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <from onSubmit={handleSubmit}>

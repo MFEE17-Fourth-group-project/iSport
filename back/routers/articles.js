@@ -8,18 +8,18 @@ const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
 const { uuid } = require("uuidv4");
 //顯示多筆
-router.get("/Read", async (req, res, next) => {
-  let result = await connection.queryAsync("SELECT * FROM article");
-  result.map(
-    (article) =>
-      (article.upload_date = article.upload_date
-        .toISOString()
-        .slice(0, 16)
-        .replace(/:/gi, "")
-        .replace("T", ""))
-  );
-  res.json(result);
-});
+// router.get("/Read", async (req, res, next) => {
+//   let result = await connection.queryAsync("SELECT * FROM article");
+//   result.map(
+//     (article) =>
+//       (article.upload_date = article.upload_date
+//         .toISOString()
+//         .slice(0, 16)
+//         .replace(/:/gi, "")
+//         .replace("T", ""))
+//   );
+//   res.json(result);
+// });
 //顯示多筆分類
 router.get("/Read/AerobicExercise", async (req, res, next) => {
   let result = await connection.queryAsync(
@@ -52,6 +52,16 @@ router.get("/Read/LeanBulking", async (req, res, next) => {
   );
   res.json(result);
 });
+//顯示我的文章
+router.get("/Read/MyArticle", async (req, res, next) => {
+  let name = "沙拉";
+  let result = await connection.queryAsync(
+    "SELECT * FROM article WHERE article_name=?",
+    [name]
+  );
+  console.log(result);
+  res.json(result);
+});
 //顯示單筆
 router.route("/Read/:id").get(async (req, res, next) => {
   let articleId = req.params.id;
@@ -60,6 +70,7 @@ router.route("/Read/:id").get(async (req, res, next) => {
   ]);
   res.json(result);
 });
+
 //新增
 //資料驗證
 const { body, validationResult } = require("express-validator");
