@@ -7,7 +7,7 @@ import { FaEye, FaClock } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiWrench, BiTrash, BiSearchAlt } from 'react-icons/bi';
 import moment from 'moment';
-function ArticleMyart({ article }) {
+function ArticleMyart({ article, handleDelete }) {
     const { member, setMember } = useAuth();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -53,12 +53,13 @@ function ArticleMyart({ article }) {
                         <Link to={'/article/' + article.id}>
                             <BiSearchAlt className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
-                        <Link to={'/user/ArticlePatch/' + article.id}>
+                        <Link to={'/user/ArticleEdit/' + article.id}>
                             <BiWrench className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
-                        <Link to={'/article/Delete/' + article.id}>
-                            <BiTrash className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
-                        </Link>
+                        <BiTrash
+                            className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2"
+                            onClick={() => handleDelete(article.id)}
+                        />
                     </div>
                 </div>
             </div>
