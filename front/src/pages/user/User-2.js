@@ -8,28 +8,42 @@ import NotAuth from './components/NotAuth';
 import SignIn from './sign/SignIn';
 
 function Users() {
-    const { member } = useAuth('');
-    const [tempMember, setTempMember] = useState({ ...member });
-
+    const { member } = useAuth();
+    const [account, setAccount] = useState(``);
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
+    const [address, setAddress] = useState();
+    const [password, setPassword] = useState();
+    const [name, setName] = useState();
+    const [birthday, setBirthday] = useState();
+    const [gender, setGender] = useState();
+    const [aboutme, setAboutme] = useState();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let require = await axios.put(
+            let response = await axios.put(
                 `${API_URL}/users/${member.account}`,
-                tempMember,
                 {
-                    withCredentials: true,
-                }
+                    name,
+                    password,
+                    email,
+                    phone,
+                    address,
+                    birthday,
+                    aboutme,
+                    gender,
+                },
+                { withCredentials: true }
             );
-            alert('會員資料更新成功');
-        } catch {
+            alert('修改會員資料成功');
+            console.log(response);
+        } catch (e) {
+            //透過e.response拿到axios的response
             console.error(e.response);
+            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
+            alert(e.response.data.message);
         }
     };
-    useEffect(() => {
-        setTempMember({ ...member });
-    }, [member]);
-
     return (
         <>
             {member ? (
@@ -51,19 +65,11 @@ function Users() {
                                         type="text"
                                         className="input-style "
                                         aria-label="Full name"
-                                        id="name"
                                         name="name"
-                                        value={
-                                            tempMember.name
-                                                ? tempMember.name
-                                                : member.name
-                                        }
                                         onChange={(e) => {
-                                            setTempMember({
-                                                ...tempMember,
-                                                name: e.target.value,
-                                            });
+                                            setName(e.target.value);
                                         }}
+                                        placeholder={member.name}
                                     />
                                 </div>
                                 <br />
@@ -72,13 +78,8 @@ function Users() {
                                         <label for="account">帳號：</label>
                                         <input
                                             type="text"
-                                            value={
-                                                tempMember.account
-                                                    ? tempMember.account
-                                                    : member.account
-                                            }
                                             className="input-style lg:items-center  border-b "
-                                            placeholder=""
+                                            placeholder={member.account}
                                             name="account"
                                             disabled
                                         />
@@ -95,10 +96,7 @@ function Users() {
                                             name="password"
                                             placeholder="更換密碼時請輸入新密碼"
                                             onChange={(e) => {
-                                                setTempMember({
-                                                    ...tempMember,
-                                                    password: e.target.value,
-                                                });
+                                                setPassword(e.target.value);
                                             }}
                                         />
                                     </div>
@@ -109,18 +107,10 @@ function Users() {
                                         type="email"
                                         className="input-style "
                                         name="email"
-                                        id="email"
-                                        value={
-                                            tempMember.email
-                                                ? tempMember.email
-                                                : member.email
-                                        }
                                         onChange={(e) => {
-                                            setTempMember({
-                                                ...tempMember,
-                                                email: e.target.value,
-                                            });
+                                            setEmail(e.target.value);
                                         }}
+                                        placeholder={member.email}
                                     />
                                 </div>
                                 <div className=" mt-5 mb-5">
@@ -128,18 +118,11 @@ function Users() {
                                     <input
                                         type="phone"
                                         className="input-style"
-                                        value={
-                                            tempMember.phone
-                                                ? tempMember.phone
-                                                : member.phone
-                                        }
                                         name="phone"
                                         onChange={(e) => {
-                                            setTempMember({
-                                                ...tempMember,
-                                                phone: e.target.value,
-                                            });
+                                            setPhone(e.target.value);
                                         }}
+                                        placeholder={member.phone}
                                     />
                                 </div>
                                 <div className="mt-5 mb-5 xs:text-base text-sm">
@@ -148,17 +131,10 @@ function Users() {
                                         type="text"
                                         className="input-style overflow-x-auto"
                                         name="address"
-                                        value={
-                                            tempMember.address
-                                                ? tempMember.address
-                                                : member.address
-                                        }
                                         onChange={(e) => {
-                                            setTempMember({
-                                                ...tempMember,
-                                                address: e.target.value,
-                                            });
+                                            setAddress(e.target.value);
                                         }}
+                                        placeholder={member.address}
                                     />
                                 </div>
                                 {/* </from> */}
@@ -166,7 +142,6 @@ function Users() {
                                 <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title">
                                     其他資料
                                 </div>
-
                                 {/* <from> */}
                                 <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                                     <div className="flex flex-wrap mr-3 mb-6 justify-between">
@@ -176,38 +151,23 @@ function Users() {
                                             </label>
                                             <input
                                                 type="date"
-                                                value={
-                                                    tempMember.birthday
-                                                        ? tempMember.birthday
-                                                        : member.birthday
-                                                }
                                                 className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
                                                 name="menberAccount"
                                                 onChange={(e) => {
-                                                    setTempMember({
-                                                        ...tempMember,
-                                                        birthday:
-                                                            e.target.value,
-                                                    });
+                                                    setBirthday(e.target.value);
                                                 }}
+                                                placeholder={member.birthday}
                                             />
                                         </div>
                                         <div class="xl:inline-block xl:w-64 mt-5">
                                             <label for="gender">性別：</label>
                                             <select
-                                                value={
-                                                    tempMember.gender
-                                                        ? tempMember.gender
-                                                        : member.gender
-                                                }
                                                 name="gender"
                                                 className="bg-transparent border-2 border-gray-700 w-40"
                                                 onChange={(e) => {
-                                                    setTempMember({
-                                                        ...tempMember,
-                                                        gender: e.target.value,
-                                                    });
+                                                    setGender(e.target.value);
                                                 }}
+                                                value={member.gender}
                                             >
                                                 <option
                                                     className="text-black"
@@ -233,32 +193,23 @@ function Users() {
                                     <div classNmae="mt-10"></div>
                                     <label for="aboutme">關於我：</label>
                                     <textarea
-                                        value={
-                                            tempMember.aboutme
-                                                ? tempMember.aboutme
-                                                : member.aboutme
-                                        }
                                         id="aboutme"
-                                        name="aboutme"
+                                        name="name"
                                         class="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"
                                         rows="4"
                                         onChange={(e) => {
-                                            setTempMember({
-                                                ...tempMember,
-                                                aboutme: e.target.value,
-                                            });
+                                            setAboutme(e.target.value);
                                         }}
+                                        placeholder={member.aboutme}
                                     ></textarea>
-                                    {tempMember && (
-                                        <div className="justify-center flex">
-                                            <button
-                                                type="submit"
-                                                className="btn-yellow"
-                                            >
-                                                更改個人資料
-                                            </button>
-                                        </div>
-                                    )}
+                                    <div className="justify-center flex">
+                                        <button
+                                            type="submit"
+                                            className="btn-yellow"
+                                        >
+                                            更改個人資料
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
