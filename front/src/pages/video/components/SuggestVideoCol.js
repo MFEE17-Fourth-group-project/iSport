@@ -27,7 +27,7 @@ const SuggestVideoCol = () => {
 
                         <div className="flex flex-col justify-between w-72">
 
-                            <h4 className="text-yellow-400 text-base">
+                            <h4 className="text-yellow-400 text-base flex-shrink-0 w-full">
                                 {video.title}
                             </h4>
 
