@@ -7,11 +7,15 @@ import { AuthContext } from './context/auth';
 
 function App() {
     const [member, setMember] = useState(null);
-    // const [token, setToken] = useState(null);
-
     const setAuthMember = (m) => {
         setMember(m);
     };
+    const [tempMember, setTempMember] = useState({ ...member });
+    const setAuthTempMember = (m) => {
+        setTempMember(m);
+    };
+
+    // const [token, setToken] = useState(null);
 
     // //取得jwt token用
     // const setJWTToken = (token) => {
@@ -54,8 +58,6 @@ function App() {
             value={{
                 member,
                 setMember: setAuthMember,
-                // token,
-                // setToken: setJWTToken,
             }}
         >
             <div className="bg-gray-800 min-h-screen">

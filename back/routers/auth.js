@@ -90,8 +90,9 @@ router.post("/Signin",async(req,res,next)=>{
         address:member.address,
         birthday:member.birthday,
         gender:member.gender,
-        aboutme:member.aboutme,
+        aboutme:member.about,
         photo:member.photo,
+        password:"",
 
     };
     //這是取得會員全部資料
