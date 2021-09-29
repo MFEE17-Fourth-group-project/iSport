@@ -37,8 +37,19 @@ function ArticleMyart() {
                 <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
                     <Aside />
                     <artical className="flex-grow flex-col">
-                        <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
+                        <div className="bg-gray-700 pl-5 p-3 text-white text-opacity-85 text-3xl rounded-t-xl font-bold  flex justify-between">
                             我的文章
+                            <Link to="/user/ArticleAdd">
+                                <button
+                                    // className="btn-yellow"
+                                    type="submit"
+                                    id="button"
+                                >
+                                    <p className="font-bold text-xl mx-2">
+                                        新增
+                                    </p>
+                                </button>
+                            </Link>
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <div className="mt-6">
