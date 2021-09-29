@@ -18,6 +18,22 @@ router.route('/category')
         res.json(result);
     });
 
+router.route('/suggestVideos')
+    .get(async (req, res, next) => {
+        let result = await connection.queryAsync(
+            'SELECT id, title, filePath, views, upload_date, likes FROM video_file ORDER BY RAND() LIMIT 5'
+        );
+        res.json(result);
+    });
+
+router.route('/suggestArticles')
+    .get(async (req, res, next) => {
+        let result = await connection.queryAsync(
+            'SELECT id, article_name, title, views, upload_date FROM article ORDER BY RAND() LIMIT 5'
+        );
+        res.json(result);
+    });
+
 router.route('/:id')
     .get(async (req, res, next) => {
         let videoId = req.params.id;
@@ -31,6 +47,8 @@ router.route('/:id')
         );
         res.json(result);
     });
+
+
 
 
 module.exports = router;
