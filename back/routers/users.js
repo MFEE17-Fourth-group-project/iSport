@@ -11,6 +11,7 @@ const { uuid } = require('uuidv4');
 const multer=require("multer");
 //處理 檔案路徑
 const path = require("path");
+const { json } = require("express");
 //設定上傳檔案的位置，diskStorage為本機硬碟
 const storage=multer.diskStorage({
     // 檔案存取位置
@@ -47,7 +48,6 @@ const uploader=multer({
 router.use(SignInCheckMiddleware);
 // 取得特定會員資料
 router.get("/resect",async(req,res,next)=>{
-  
   let member = await connection.queryAsync(
       "SELECT * FROM users WHERE account=?",
       [req.session.member.account]
@@ -71,27 +71,28 @@ router.get("/resect",async(req,res,next)=>{
 });
 
 // 修改會員資料
-router.post("/UpdateAccount",async(req,res,next)=>{
-  console.log("修改會員資料:",req.body)
-  let member =await connection.queryAsync(
-    "SELECT*FROM users WHERE account=?;",
-    [req.body.account]
-);
-  let result=await connection.queryAsync(
-    "UPDATE users SET (name,account,password,email,phone,address,birthday,about,gender) VALUE(?)",
-    [[
-        req.body.name,
-        req.body.account,
-        await bcrypt.hash(req.body.password,10),
-        req.body.email,
-        req.body.phone,
-        req.body.address,
-        req.body.birthday,
-        req.body.aboutme,
-        req.body.gender,
-    ]]
-)
-res.json({message:"修改成功"});
+router.put("/:account",async(req,res,next)=>{
+    // try{ 
+        console.log(req.body);
+        // let UpDateMemberData =await connection.queryAsync(
+        //     "UPDATE users SET (name,password,email,phone,address,birthday,about,gender)VALUE(?) WHERE account=?",
+        // [[
+        //     req.body.name,
+        //     await bcrypt.hash(req.body.password,10),
+        //     req.body.email,
+        //     req.body.phone,
+        //     req.body.address,
+        //     req.body.birthday,
+        //     req.body.aboutme,
+        //     req.body.gender,
+        // ],[req.params.account]])
+        // res.json({message:"更新資料成功"})
+        // }catch{
+        //     next(
+        //         res.status(400).json({ message: "400 上傳更新失敗!!" })
+        //         )
+        //         console.log("400 上傳更新失敗!!")
+    // }
 });
 
 //會員上傳檔案用路由中間件
@@ -104,7 +105,7 @@ router.put("/photo/:account",uploader.single("photo"),async(req,res,next)=>{
             filename
         ],[req.params.account]]
     )
-  
+
       console.log('上傳更新成功')
       res.json("上傳成功")
   }catch{
@@ -115,6 +116,34 @@ router.put("/photo/:account",uploader.single("photo"),async(req,res,next)=>{
   }
 }
 )
+
+// CS寫入資料庫
+router.post("/CS",async(req,res,next)=>{
+    try{
+    let result = await connection.queryAsync(
+        "INSERT INTO csdata (account,email,category,memo) VALUE(?)",
+        [[
+            req.body.account,
+            req.body.email,
+            req.body.category,
+            req.body.memo,
+        ]]
+    )
+    res.json("成功")
+
+    console.log("寫入成功")
+}catch(e){
+    console.log({
+        status:400,
+        message:" 寫入資料庫失敗",
+    });
+    res.json({
+        status:400,
+        message:"寫入失敗請再試一試",
+    })
+}});
+
+
 // router.get('/:account', (req,res,next)=>{
 //     console.log(req.params.account)
 // })
