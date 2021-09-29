@@ -8,39 +8,43 @@ import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticlePatch() {
+function ArticleEdit({ onHide, show, post, status }) {
     const { member, setMember } = useAuth();
     const { id } = useParams();
-    const [article_name, setarticle_name] = useState('');
-    const [title, settitle] = useState('');
-    const [content, setcontent] = useState('');
-    const [category, setcategory] = useState('');
-    // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState('');
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const formData = new FormData();
-            formData.append('article_name', article_name);
-            formData.append('title', title);
-            // formData.append('upload_date', upload_date);
-            formData.append('category', category);
-            formData.append('content', content);
-            formData.append('photos', photos);
-            let response = await axios.post(
-                `${API_URL}/articles/Update/${id}`,
-                formData,
-                {
-                    withCredentials: true,
-                }
-            );
-            alert('修改文章成功');
-            console.log(response);
-        } catch (e) {
-            console.error(e.response);
-        }
+    const newPost = {
+        article_name: '',
+        title: '',
+        content: '',
+        category: '',
+        photos: '',
     };
+    const [thisPost, setThisPost] = useState(post ? post : newPost);
+    const changePost = (e) => {
+        setThisPost({
+            ...thisPost,
+            [e.target.name]: e.target.value,
+        });
+    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append('article_name', article_name);
+    //         formData.append('title', title);
+    //         // formData.append('upload_date', upload_date);
+    //         formData.append('category', category);
+    //         formData.append('content', content);
+    //         formData.append('photos', photos);
+    //         let response = await axios.post(
+    //             `${API_URL}/articles/Update/${id}`,
+    //             formData
+    //         );
+    //         alert('修改文章成功');
+    //         console.log(response);
+    //     } catch (e) {
+    //         console.error(e.response);
+    //     }
+    // };
     return (
         <>
             {member ? (
@@ -48,10 +52,10 @@ function ArticlePatch() {
                     <Aside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                            新增文章
+                            修改文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <from onSubmit={handleSubmit}>
+                            <from>
                                 <label htmlFor="article_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -64,9 +68,9 @@ function ArticlePatch() {
                                     id="article_name"
                                     placeholder="最多50字"
                                     required
-                                    value={article_name}
+                                    value={thisPost && thisPost.article_name}
                                     onChange={(e) => {
-                                        setarticle_name(e.target.value);
+                                        changePost(e, 'article_name');
                                     }}
                                 ></input>
                                 <br />
@@ -75,9 +79,9 @@ function ArticlePatch() {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={category}
+                                    value={thisPost && thisPost.category}
                                     onChange={(e) => {
-                                        setcategory(e.target.value);
+                                        changePost(e, 'category');
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
@@ -100,9 +104,9 @@ function ArticlePatch() {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={title}
+                                    value={thisPost && thisPost.title}
                                     onChange={(e) => {
-                                        settitle(e.target.value);
+                                        changePost(e, 'title');
                                     }}
                                 />
                                 <br />
@@ -113,8 +117,9 @@ function ArticlePatch() {
                                     type="file"
                                     name="photos"
                                     id="photos"
+                                    value={thisPost && thisPost.photos}
                                     onChange={(e) => {
-                                        setPhotos(e.target.files[0]);
+                                        changePost(e, 'photos');
                                     }}
                                 />
                                 <br />
@@ -134,7 +139,7 @@ function ArticlePatch() {
                                 setcontent(e.target.value);
                             }}
                         /> */}
-                                <Editor
+                                {/* <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
@@ -151,16 +156,18 @@ function ArticlePatch() {
                                                 .getPlainText()
                                         );
                                     }}
-                                />
+                                /> */}
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
-                                        onClick={handleSubmit}
+                                        onClick={() =>
+                                            console.log('送出', thisPost)
+                                        }
                                     >
                                         <p className="font-bold text-xl mx-2">
-                                            新增
+                                            修改
                                         </p>
                                     </button>
                                 </div>
@@ -175,4 +182,4 @@ function ArticlePatch() {
     );
 }
 
-export default ArticlePatch;
+export default ArticleEdit;

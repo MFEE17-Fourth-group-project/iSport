@@ -211,7 +211,7 @@ const ArticleSection = () => {
                 <button>
                     <BsFillCaretLeftFill
                         className="text-yellow-400 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 absolute
-                inset-y-1/2 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
+                inset-y-2/3 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
                         onClick={() => {
                             changeStep(false);
                         }}
@@ -222,7 +222,7 @@ const ArticleSection = () => {
                 <button>
                     <BsFillCaretRightFill
                         className="text-yellow-400 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 absolute
-                inset-y-1/2 right-0 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
+                inset-y-2/3 right-0 transform -translate-y-1/2 cursor-pointer hidden 2xs:block"
                         onClick={() => {
                             changeStep(true);
                         }}
