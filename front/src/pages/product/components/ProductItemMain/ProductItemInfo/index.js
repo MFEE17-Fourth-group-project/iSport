@@ -9,7 +9,7 @@ import { FaPlus, FaMinus, FaAngleLeft, FaHeart, FaShare } from 'react-icons/fa';
 function ProductItemInfo(props) {
     const priceTest = 350;
     const stockTest = 12;
-    const { productInfo, typeValue, skuDetail } = props;
+    const { productInfo, typeValue, skuDetail, cartAdd } = props;
     const [skuInfo, setSkuInfo] = useState(null);
     const [qty, setQty] = useState(1);
     const [info, setInfo] = useState({
@@ -49,7 +49,7 @@ function ProductItemInfo(props) {
             newCart.push(value);
         }
 
-        console.log('newCart', newCart);
+        // console.log('newCart', newCart);
 
         // 設定回localstorage中(記得轉回json字串)
         localStorage.setItem('cart', JSON.stringify(newCart));
@@ -60,7 +60,7 @@ function ProductItemInfo(props) {
     }
 
     const backToCategory = () => {
-        console.log(props);
+        // console.log(props);
         let currentCategory = info.categoryId;
         switch (currentCategory) {
             case 1:
@@ -106,7 +106,7 @@ function ProductItemInfo(props) {
     }, [typeValue]);
 
     useEffect(() => {
-        console.log(currentSku);
+        // console.log(currentSku);
         let arr = [];
         let string = '';
         arr = Object.values(currentSku);
@@ -179,6 +179,7 @@ function ProductItemInfo(props) {
                                 qty: qty,
                             });
                             alert('成功加入購物車！！');
+                            cartAdd();
                         }}
                         className="btn-yellow mr-3 w-full  "
                     >

@@ -50,10 +50,23 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 // import Aside from '../global/Aside';
 
 function HomeRouter() {
+    const [cartCount, setCartCount] = useState(0);
+
+    const cartAdd = () => {
+        let currentCart = localStorage.getItem('cart') || '[]';
+        let newCart = [...JSON.parse(currentCart)];
+        setCartCount(newCart.length);
+    };
+
+    useEffect(() => {
+        let currentCart = localStorage.getItem('cart') || '[]';
+        let newCart = [...JSON.parse(currentCart)];
+        setCartCount(newCart.length);
+    }, []);
     return (
         <Router>
             <>
-                <Nav />
+                <Nav cartCount={cartCount} />
                 <ScrollToTop>
                     <Switch>
                         <Route path="/SearchPassword">
@@ -72,7 +85,7 @@ function HomeRouter() {
                             <Cart />
                         </Route>
                         <Route path="/products/productItem/:productId?">
-                            <ProductItem />
+                            <ProductItem cartAdd={cartAdd} />
                         </Route>
                         <Route path="/products/:category?">
                             <Product />
