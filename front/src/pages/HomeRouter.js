@@ -59,9 +59,7 @@ function HomeRouter() {
     };
 
     useEffect(() => {
-        let currentCart = localStorage.getItem('cart') || '[]';
-        let newCart = [...JSON.parse(currentCart)];
-        setCartCount(newCart.length);
+        cartAdd();
     }, []);
     return (
         <Router>

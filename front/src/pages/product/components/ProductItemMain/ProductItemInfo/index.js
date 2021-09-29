@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../../../../context/auth';
 import { withRouter } from 'react-router-dom';
 
 import ProductType from './ProductType';
@@ -7,9 +8,9 @@ import SkuInfo from './SkuInfo';
 import { FaPlus, FaMinus, FaAngleLeft, FaHeart, FaShare } from 'react-icons/fa';
 
 function ProductItemInfo(props) {
-    const priceTest = 350;
-    const stockTest = 12;
     const { productInfo, typeValue, skuDetail, cartAdd } = props;
+    const { member, setMember } = useAuth();
+    const [currentSku, setCurrentSku] = useState({});
     const [skuInfo, setSkuInfo] = useState(null);
     const [qty, setQty] = useState(1);
     const [info, setInfo] = useState({
@@ -22,9 +23,15 @@ function ProductItemInfo(props) {
         totalSale: '',
     });
 
-    const [currentSku, setCurrentSku] = useState({});
-
     // console.log(localStorage);
+
+    const isMember = () => {
+        member ? console.log('member is true') : console.log('member is false');
+        if (!member) {
+            alert('請先登入');
+            return;
+        }
+    };
 
     function updateCartToLocalStorage(value) {
         // 從localstorage得到cart(json字串)
@@ -59,6 +66,7 @@ function ProductItemInfo(props) {
         // setMycart(newCart);
     }
 
+    //nav router change
     const backToCategory = () => {
         // console.log(props);
         let currentCategory = info.categoryId;
@@ -172,6 +180,10 @@ function ProductItemInfo(props) {
                 <div className="flex">
                     <button
                         onClick={() => {
+                            if (!member) {
+                                alert('請先登入');
+                                return;
+                            }
                             updateCartToLocalStorage({
                                 id: skuInfo.sku_id,
                                 product_id: info.productId,
