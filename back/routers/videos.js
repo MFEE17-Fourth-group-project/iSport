@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const connection = require('../utils/db');
+const { SignInCheckMiddleware } = require("../middlewares/auth");
 
 router.route('/')
     .get(async (req, res, next) => {
@@ -46,6 +47,11 @@ router.route('/:id')
             [videoId]
         );
         res.json(result);
+    })
+    .patch(SignInCheckMiddleware, async (req, res, next) => {
+        let videoId = req.params.id;
+        console.log(videoId);
+        console.log(req.session);
     });
 
 
