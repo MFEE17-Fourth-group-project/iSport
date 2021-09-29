@@ -9,28 +9,28 @@ import NotAuth from '../components/NotAuth';
 
 function ArticleAdd() {
     const { member, setMember } = useAuth();
-    const [article_name, setarticle_name] = useState();
-    const [added_by, setadded_by] = useState();
-    const [content, setcontent] = useState();
-    const [category, setcategory] = useState();
-    const [upload_date, setupload_date] = useState();
-    const [photo, setPhoto] = useState();
+    const [article_name, setarticle_name] = useState('');
+    const [title, settitle] = useState('');
+    const [content, setcontent] = useState('');
+    const [category, setcategory] = useState('');
+    // const [upload_date, setupload_date] = useState('');
+    const [photos, setPhotos] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // const formData = new FormData(e.target)
-            // console.log(formData.get('email'))
-            let formData = new FormData();
+            const formData = new FormData();
             formData.append('article_name', article_name);
-            formData.append('added_by', added_by);
-            formData.append('upload_date', upload_date);
+            formData.append('title', title);
+            // formData.append('upload_date', upload_date);
             formData.append('category', category);
-            formData.append('photo', photo);
+            formData.append('content', content);
+            formData.append('photos', photos);
             let response = await axios.post(
                 `${API_URL}/articles/Create`,
                 formData
             );
+            alert('新增文章成功');
             console.log(response);
         } catch (e) {
             console.error(e.response);
@@ -46,11 +46,7 @@ function ArticleAdd() {
                             新增文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <from
-                                onSubmit={handleSubmit}
-                                // onChange={handleFormChange}
-                                // onInvalid={handleFormInvalid}
-                            >
+                            <from onSubmit={handleSubmit}>
                                 <label htmlFor="article_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -62,9 +58,6 @@ function ArticleAdd() {
                                     name="article_name"
                                     id="article_name"
                                     placeholder="最多50字"
-                                    // state={fields.article_name}
-                                    // setState={handleFieldChange}
-                                    // error={fieldErrors.article_name}
                                     required
                                     value={article_name}
                                     onChange={(e) => {
@@ -83,14 +76,15 @@ function ArticleAdd() {
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
+                                    <option value="0">請選擇</option>
                                     <option value="1">有氧運動</option>
                                     <option value="2">重量訓練</option>
                                     <option value="3">間歇訓練</option>
-                                    <option value="4">核心強化</option>
-                                    <option value="5">增肌飲食</option>
+                                    <option value="5">核心強化</option>
+                                    <option value="4">增肌飲食</option>
                                 </select>
                                 <br />
-                                <label htmlFor="added_by">標題：</label>
+                                <label htmlFor="title">標題：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
                                 </span>
@@ -98,24 +92,26 @@ function ArticleAdd() {
                                 <input
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="added_by"
-                                    id="added_by"
+                                    name="title"
+                                    id="title"
                                     placeholder="最多100字"
-                                    value={added_by}
+                                    value={title}
                                     onChange={(e) => {
-                                        setadded_by(e.target.value);
+                                        settitle(e.target.value);
                                     }}
                                 />
                                 <br />
-                                <label htmlFor="photo">上傳圖片:</label>
+                                <label htmlFor="photos">上傳圖片:</label>
                                 <br />
                                 <input
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                     type="file"
-                                    name="photo"
-                                    id="photo"
+                                    name="photos"
+                                    id="photos"
                                     onChange={(e) => {
-                                        setPhoto(e.target.photo[0]);
+                                        setPhotos(e.target.files[0]);
+                                        // setPhotos(e.target.files[0].name);
+                                        // console.log(e.target.files[0].name);
                                     }}
                                 />
                                 <br />
@@ -126,19 +122,32 @@ function ArticleAdd() {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <textarea
-                                    name="content"
-                                    id="content"
-                                    style={{ display: 'none' }}
-                                    value={content}
-                                    onChange={(e) => {
-                                        setcontent(e.target.value);
-                                    }}
-                                />
+                                {/* <textarea
+                            name="content"
+                            id="content"
+                            style={{ display: 'none' }}
+                            value={content}
+                            onChange={(e) => {
+                                setcontent(e.target.value);
+                            }}
+                        /> */}
                                 <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
+                                    onEditorStateChange={(editorState) => {
+                                        console.log(
+                                            editorState
+                                                .getCurrentContent()
+                                                .getPlainText()
+                                        );
+
+                                        setcontent(
+                                            editorState
+                                                .getCurrentContent()
+                                                .getPlainText()
+                                        );
+                                    }}
                                 />
                                 <div className="flex flex-row justify-end">
                                     <button

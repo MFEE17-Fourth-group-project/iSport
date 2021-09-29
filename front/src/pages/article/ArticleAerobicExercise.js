@@ -19,7 +19,7 @@ function ArticleAerobicExercise(props) {
                 console.log(data);
                 setData(data);
                 // setIsPending(false);
-                setError(null);
+                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -52,7 +52,7 @@ function ArticleAerobicExercise(props) {
                     <ArticleNav />
                 </div>
                 <main className="max-w-screen-2xl mx-auto p-6">
-                    <div className="m-8">
+                    <div className="w-4/5 m-auto">
                         {data &&
                             data.map((article) => (
                                 <Article article={article} key={article.id} />

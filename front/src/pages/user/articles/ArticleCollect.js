@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import SuggestArtCol from '../../video/components/SuggestArtCol';
@@ -7,7 +7,6 @@ import NotAuth from '../components/NotAuth';
 
 function ArticleCollect() {
     const { member, setMember } = useAuth();
-
     return (
         <>
             {member ? (
@@ -19,18 +18,6 @@ function ArticleCollect() {
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <div className="mt-6">
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
                                 <Link to="">
                                     <SuggestArtCol />
                                 </Link>

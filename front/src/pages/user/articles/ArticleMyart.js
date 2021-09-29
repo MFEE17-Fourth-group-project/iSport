@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Aside from '../../../global/Aside';
-import SuggestArtCol from '../../video/components/SuggestArtCol';
+import ArticleMyartItem from './ArticleMyartItem';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
 
 function ArticleMyart() {
     const { member, setMember } = useAuth();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/articles/Read/MyArticle`);
+                let data = res.data;
+                console.log(data);
+                setData(data);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    }, []);
+    console.log(data);
+    //刪除
+    const handleDelete = (id) => {
+        setData(data.filter((Data) => data.id !== id));
+        alert('刪除完成');
+    };
     return (
         <>
             {member ? (
@@ -18,21 +42,14 @@ function ArticleMyart() {
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <div className="mt-6">
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
-                                <Link to="">
-                                    <SuggestArtCol />
-                                </Link>
+                                {data &&
+                                    data.map((article) => (
+                                        <ArticleMyartItem
+                                            article={article}
+                                            key={article.id}
+                                            handleDelete={handleDelete}
+                                        />
+                                    ))}
                             </div>
                         </div>
                     </artical>
@@ -43,5 +60,4 @@ function ArticleMyart() {
         </>
     );
 }
-
 export default ArticleMyart;
