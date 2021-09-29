@@ -152,9 +152,10 @@ router.patch(
   async (req, res, next) => {
     try {
       let result = await connection.queryAsync(
-        "UPDATE article SET article_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?",
+        "UPDATE article SET  WHERE id=?",
         [
           [
+            req.body.id,
             req.body.article_name,
             req.body.title,
             // req.body.upload_date,

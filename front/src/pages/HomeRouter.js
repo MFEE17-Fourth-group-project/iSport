@@ -20,7 +20,7 @@ import CustomerService from './user/sign/CustomerService';
 import Articles from './article/Article';
 import ArticleId from './article/ArticleId';
 import ArticleAdd from './user/articles/ArticleAdd';
-import ArticlePatch from './user/articles/ArticlePatch';
+import ArticleEdit from './user/articles/ArticleEdit';
 import ArticleMyart from './user/articles/ArticleMyart';
 import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleAerobicExercise from './article/ArticleAerobicExercise';
@@ -110,8 +110,8 @@ function HomeRouter() {
                         <Route path="/user/ArticleAdd">
                             <ArticleAdd />
                         </Route>
-                        <Route path="/user/ArticlePatch">
-                            <ArticlePatch />
+                        <Route path="/user/ArticleEdit">
+                            <ArticleEdit />
                         </Route>
                         <Route path="/video/:videoId">
                             <VideoId />
