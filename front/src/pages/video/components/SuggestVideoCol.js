@@ -34,7 +34,7 @@ const SuggestVideoCol = () => {
                             <div className="flex justify-between">
                                 <h6 className="flex items-center">
                                     <FaClock className="text-yellow-400 mr-1.5" />
-                                    <span className="text-xs text-white text-opacity-85">3 天前</span>
+                                    <span className="text-xs text-white text-opacity-85">{video.upload_date.slice(0, 10).replace(/-/gi, ' / ')}</span>
                                 </h6>
                                 <h6 className="flex items-center">
                                     <FaEye className="text-yellow-400 mr-1.5" />
