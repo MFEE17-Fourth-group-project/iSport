@@ -118,7 +118,7 @@ function ArticleCoreStrength({ article }) {
                             </button>
                         </form>
                     </div>
-                    <div className="w-3/5 m-auto">
+                    <div className="w-3/4 m-auto">
                         {data &&
                             data.map((article) => (
                                 <Article article={article} key={article.id} />
