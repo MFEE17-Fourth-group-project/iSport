@@ -7,25 +7,38 @@ import { FaEye, FaClock } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BiWrench, BiTrash, BiSearchAlt } from 'react-icons/bi';
 import moment from 'moment';
+import { useParams } from 'react-router-dom';
 function ArticleMyart({ article, handleDelete }) {
     const { member, setMember } = useAuth();
-    const [data, setData] = useState(null);
+    // const [pData, setPData] = useState([
+    //     article.title,
+    //     article.article_name,
+    //     article.upload_date,
+    //     article.views,
+    // ]);
+    // console.log(pData);
+    const { id } = useParams();
+    const [data, setData] = useState([
+        article.title,
+        article.article_name,
+        article.upload_date,
+        article.views,
+    ]);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/Read/MyArticle`);
+                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
                 let data = res.data;
-                console.log(data);
                 setData(data);
+                setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
             }
         };
         getArticleData();
-    }, []);
-    console.log(data);
+    });
     return (
         <>
             <div className="mt-6">
@@ -53,7 +66,10 @@ function ArticleMyart({ article, handleDelete }) {
                         <Link to={'/article/' + article.id}>
                             <BiSearchAlt className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
-                        <Link to={'/user/ArticleEdit/' + article.id}>
+                        <Link
+                            to={'/user/ArticleEdit/' + article.id}
+                            pData={pData}
+                        >
                             <BiWrench className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                         <BiTrash

@@ -8,43 +8,8 @@ import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticleEdit({ onHide, show, post, status }) {
+function ArticleEdit(props) {
     const { member, setMember } = useAuth();
-    const { id } = useParams();
-    const newPost = {
-        article_name: '',
-        title: '',
-        content: '',
-        category: '',
-        photos: '',
-    };
-    const [thisPost, setThisPost] = useState(post ? post : newPost);
-    const changePost = (e) => {
-        setThisPost({
-            ...thisPost,
-            [e.target.name]: e.target.value,
-        });
-    };
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const formData = new FormData();
-    //         formData.append('article_name', article_name);
-    //         formData.append('title', title);
-    //         // formData.append('upload_date', upload_date);
-    //         formData.append('category', category);
-    //         formData.append('content', content);
-    //         formData.append('photos', photos);
-    //         let response = await axios.post(
-    //             `${API_URL}/articles/Update/${id}`,
-    //             formData
-    //         );
-    //         alert('修改文章成功');
-    //         console.log(response);
-    //     } catch (e) {
-    //         console.error(e.response);
-    //     }
-    // };
     return (
         <>
             {member ? (
@@ -66,12 +31,8 @@ function ArticleEdit({ onHide, show, post, status }) {
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                     name="article_name"
                                     id="article_name"
-                                    placeholder="最多50字"
+                                    placeholder={props.article_name}
                                     required
-                                    value={thisPost && thisPost.article_name}
-                                    onChange={(e) => {
-                                        changePost(e, 'article_name');
-                                    }}
                                 ></input>
                                 <br />
                                 <label htmlFor="category">分類：</label>
@@ -79,10 +40,6 @@ function ArticleEdit({ onHide, show, post, status }) {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={thisPost && thisPost.category}
-                                    onChange={(e) => {
-                                        changePost(e, 'category');
-                                    }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
                                     <option value="0">請選擇</option>
@@ -104,10 +61,6 @@ function ArticleEdit({ onHide, show, post, status }) {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={thisPost && thisPost.title}
-                                    onChange={(e) => {
-                                        changePost(e, 'title');
-                                    }}
                                 />
                                 <br />
                                 <label htmlFor="photos">上傳圖片:</label>
@@ -117,10 +70,6 @@ function ArticleEdit({ onHide, show, post, status }) {
                                     type="file"
                                     name="photos"
                                     id="photos"
-                                    value={thisPost && thisPost.photos}
-                                    onChange={(e) => {
-                                        changePost(e, 'photos');
-                                    }}
                                 />
                                 <br />
                                 <label htmlFor="content">內容：</label>
@@ -130,16 +79,7 @@ function ArticleEdit({ onHide, show, post, status }) {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                {/* <textarea
-                            name="content"
-                            id="content"
-                            style={{ display: 'none' }}
-                            value={content}
-                            onChange={(e) => {
-                                setcontent(e.target.value);
-                            }}
-                        /> */}
-                                {/* <Editor
+                                <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
@@ -150,21 +90,18 @@ function ArticleEdit({ onHide, show, post, status }) {
                                                 .getPlainText()
                                         );
 
-                                        setcontent(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
+                                        // setcontent(
+                                        //     editorState
+                                        //         .getCurrentContent()
+                                        //         .getPlainText()
+                                        // );
                                     }}
-                                /> */}
+                                />
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
-                                        onClick={() =>
-                                            console.log('送出', thisPost)
-                                        }
                                     >
                                         <p className="font-bold text-xl mx-2">
                                             修改

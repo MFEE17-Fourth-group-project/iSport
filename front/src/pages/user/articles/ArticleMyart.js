@@ -16,7 +16,7 @@ function ArticleMyart() {
             try {
                 let res = await axios.get(`${API_URL}/articles/Read/MyArticle`);
                 let data = res.data;
-                console.log(data);
+                // console.log(data);
                 setData(data);
             } catch (e) {
                 console.log(e);
@@ -25,7 +25,7 @@ function ArticleMyart() {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
     //刪除
     const handleDelete = (id) => {
         setData(data.filter((Data) => data.id !== id));
