@@ -22,7 +22,10 @@ const ProductSection = () => {
             className="flex pt-24 pb-8 sm:py-20 md:py-12 lg:py-14 xl:py-16 w-full"
             id="productcard"
         >
-            <div className="w-full md:w-1/3 h-full md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 relative">
+            <div
+                className="w-full md:w-1/3 h-full md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 relative"
+                data-aos="fade-right"
+            >
                 <img
                     src={HomePage13}
                     className="w-full h-80 md:h-full md:rounded-3xl object-cover object-top md:object-center"

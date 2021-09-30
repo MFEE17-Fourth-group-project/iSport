@@ -96,13 +96,14 @@ const BannerSection = () => {
             <div
                 className="absolute bottom-16 left-16 xs:bottom-20 xs:left-20 sm:bottom-24 sm:left-24
                     md:bottom-32 md:left-32 lg:bottom-40 lg:left-40 z-10"
+                id="banner"
             >
                 <h1
                     className="font-normal text-xl xs:text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-white
                         tracking-wide leading-snug mb-3 sm:mb-4 hidden 2xs:block"
                     data-aos="fade-up"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="1000"
+                    data-aos-anchor="#banner"
+                    data-aos-anchor-placement="top-center"
                 >
                     提供健身資訊分享平台與眾多
                     <br />
@@ -115,8 +116,8 @@ const BannerSection = () => {
                             hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                             text-sm md:text-base px-3 py-1.5 md:px-4 md:py-2"
                         data-aos="fade-up"
-                        data-aos-easing="ease-out-cubic"
-                        data-aos-duration="1000"
+                        data-aos-anchor="#banner"
+                        data-aos-anchor-placement="top-center"
                     >
                         立即加入
                     </button>
