@@ -80,7 +80,7 @@ function ArticleAerobicExercise({ article }) {
                 <div className="sticky top-0 z-40">
                     <ArticleNav />
                 </div>
-                <main className="max-w-screen-2xl mx-auto py-6">
+                <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}
                     <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
                         <div className="flex mb-2.5 xs:mb-0">
