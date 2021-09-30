@@ -49,14 +49,14 @@ class HomePage extends React.Component {
                     id="trigger-left"
                 >
                     <ArticleSection />
-                    <img
+                    {/* <img
                         className="absolute z-30 w-1/3 top-20 -right-20 hidden md:block"
                         src={Sport1}
                         alt=""
                         data-aos="fade-left"
                         data-aos-anchor="#trigger-left"
                         data-aos-anchor-placement="top-center"
-                    />
+                    /> */}
                 </section>
 
                 {/* Gym Section */}
@@ -66,7 +66,7 @@ class HomePage extends React.Component {
                 >
                     <GymSection />
                     <img
-                        className="absolute z-30 w-1/3 top-54 -left-10 hidden md:block"
+                        className="absolute z-30 w-1/3 top-54 -left-5 hidden md:block"
                         src={Sport2}
                         alt=""
                         data-aos="fade-right"

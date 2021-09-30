@@ -1,8 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TiLocation } from 'react-icons/ti';
 import Map from './../../images/map/map.png';
 import GymList from './GymList';
+import AOS from 'aos';
+import '../../../node_modules/aos/dist/aos.css';
 function GymSection() {
+    useEffect(() => {
+        AOS.init({
+            duration: 500,
+            easing: 'ease-out-back',
+            delay: 0,
+        });
+        AOS.refresh();
+    }, []);
     const EasthGyms = [
         {
             name: '花蓮縣立體育館',
@@ -27,6 +37,14 @@ function GymSection() {
             address: '950台東縣台東市桂林北路52巷120號',
             latitude: '22.79812840874506',
             longitude: '121.154642430138',
+        },
+        {
+            name: '花蓮縣立中正體育場',
+            phone: '(03)834-6035',
+            image: 'https://i.imgur.com/FYDUCpO.jpg',
+            address: '970花蓮縣花蓮市公園路53號',
+            latitude: '23.983809852601006',
+            longitude: '121.6154482648243',
         },
     ];
     const MidthGyms = [
@@ -170,6 +188,10 @@ function GymSection() {
                 <h3
                     class="w-max text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400
                     pb-2.5 sm:pb-3.5 flex mx-auto mb-4 sm:mb-6 lg:mb-8 xl:mb-10"
+                    data-aos="zoom-in"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="100"
+                    id="example-anchor"
                 >
                     健身房
                 </h3>
@@ -199,11 +221,12 @@ function GymSection() {
                         東
                     </div>
                 </div>
-                <div>
-                    {/* {TAB &&
-                    TAB.map((article) => (
-                        <Article article={article} key={article.id} />
-                    ))} */}
+                <div
+                    data-aos="fade-left"
+                    data-aos-anchor="#example-anchor"
+                    data-aos-offset="500"
+                    data-aos-duration="500"
+                >
                     <GymList Gyms={gym} />
                 </div>
             </div>
