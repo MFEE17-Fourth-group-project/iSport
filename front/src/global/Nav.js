@@ -1,7 +1,7 @@
 import Logo from '../images/biceps.svg';
 import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/pic04.jpg';
 import MobileAside from './MobileAside';
@@ -11,6 +11,7 @@ import { API_URL } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 
 function Nav(props) {
+    const { cartCount } = props;
     const { member, setMember } = useAuth();
 
     const [signInWindow, setSignInWindow] = useState(false);
@@ -130,7 +131,7 @@ function Nav(props) {
                         >
                             <p className="hover:text-yellow-400">購物車</p>
                             <div className="absolute -right-3 -top-2 bg-red-600 w-5 h-5 rounded-full text-center text-xs pt-0.5">
-                                1
+                                {cartCount}
                             </div>
                         </Link>
                     </div>
