@@ -184,13 +184,13 @@ function GymSection() {
                     onClick={changeMidthGym}
                 />
             </div>
-            <div className="">
+            <div className="" id="gym">
                 <h3
                     class="w-max text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400
                     pb-2.5 sm:pb-3.5 flex mx-auto mb-4 sm:mb-6 lg:mb-8 xl:mb-10"
-                    data-aos="zoom-in"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="100"
+                    data-aos="fade-up"
+                    data-aos-anchor="#gym"
+                    data-aos-anchor-placement="top-center"
                     id="example-anchor"
                 >
                     健身房
