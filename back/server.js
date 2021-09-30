@@ -17,7 +17,7 @@ let usersRouter = require("./routers/users");
 let productsRouter = require("./routers/products");
 const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
-
+let commentsRouter = require("./routers/comments");
 
 app.use(express.static('public'));
 //啟用session
@@ -69,6 +69,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 // /api/authe
 app.use("/api/auth", authRouter);
+app.use("/api/videos/:id/comments", commentsRouter);
 
 // 顯示來訪
 app.use((req, res, next) => {
