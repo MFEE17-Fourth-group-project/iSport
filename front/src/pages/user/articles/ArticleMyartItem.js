@@ -66,10 +66,7 @@ function ArticleMyart({ article, handleDelete }) {
                         <Link to={'/article/' + article.id}>
                             <BiSearchAlt className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
-                        <Link
-                            to={'/user/ArticleEdit/' + article.id}
-                            pData={pData}
-                        >
+                        <Link to={'/user/ArticleEdit/' + article.id}>
                             <BiWrench className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                         <BiTrash

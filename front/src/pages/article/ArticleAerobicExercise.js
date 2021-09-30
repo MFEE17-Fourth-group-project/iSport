@@ -48,9 +48,9 @@ function ArticleAerobicExercise({ article }) {
     const handleSearch = (e) => {
         e.preventDefault();
         let newArticles = article.filter(
-            (video) =>
-                video.title.indexOf(term) > -1 ||
-                video.description.indexOf(term) > -1
+            (article) =>
+                article.title.indexOf(term) > -1 ||
+                article.description.indexOf(term) > -1
         );
         setData([...newArticles]);
     };
@@ -82,7 +82,7 @@ function ArticleAerobicExercise({ article }) {
                 </div>
                 <main className="max-w-screen-2xl mx-auto py-6">
                     {/* Buttons & Search */}
-                    <div className="flex my-6 justify-between flex-col xs:flex-row">
+                    <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
                         <div className="flex mb-2.5 xs:mb-0">
                             <button
                                 className="btn-gray-sm mr-4"
