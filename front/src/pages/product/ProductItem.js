@@ -5,7 +5,7 @@ import ProductItemMain from './components/ProductItemMain/';
 
 function ProductItem(props) {
     // console.log(props);
-
+    const { cartAdd } = props;
     const [productId, setProductId] = useState(null);
 
     useEffect(() => {
@@ -56,7 +56,7 @@ function ProductItem(props) {
                     營養補給
                 </Link>
             </nav>
-            <ProductItemMain productId={productId} />
+            <ProductItemMain productId={productId} cartAdd={cartAdd} />
         </>
     );
 }

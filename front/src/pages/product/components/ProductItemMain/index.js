@@ -19,6 +19,7 @@ import {
 } from 'react-icons/fa';
 
 function ProductItemMain(props) {
+    const { cartAdd } = props;
     const { productId } = useParams();
     const [error, setError] = useState(null);
     const [productInfo, setProductInfo] = useState(null);
@@ -63,6 +64,7 @@ function ProductItemMain(props) {
                         productInfo={productInfo}
                         typeValue={typeValue}
                         skuDetail={skuDetail}
+                        cartAdd={cartAdd}
                     />
                 </section>
                 {/* 商品簡介 */}

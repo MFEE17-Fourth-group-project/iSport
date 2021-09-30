@@ -1,40 +1,152 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { TiLocation } from 'react-icons/ti';
 import Map from './../../images/map/map.png';
-import GymWindow from '../gym/GymWindow';
-import NorthGym from '../gym/NorthGym/NorthGym';
-import MidthGym from '../gym/MidthGym/MidthGym';
-import SouthGym from '../gym/SouthGym/SouthGym';
-import EasthGym from '../gym/EasthGym/EasthGym';
-
+import GymList from './GymList';
 function GymSection() {
-    let [gym, setGym] = useState(<NorthGym />);
+    const EasthGyms = [
+        {
+            name: '花蓮縣立體育館',
+            phone: '',
+            image: 'https://i.imgur.com/QaNO9mx.jpg',
+            address: '970花蓮縣花蓮市達固湖彎大路23號',
+            latitude: '24.05630148193927',
+            longitude: '121.56319266647677',
+        },
+        {
+            name: '花蓮縣立中正體育場',
+            phone: '(03)834-6035',
+            image: 'https://i.imgur.com/FYDUCpO.jpg',
+            address: '970花蓮縣花蓮市公園路53號',
+            latitude: '23.983809852601006',
+            longitude: '121.6154482648243',
+        },
+        {
+            name: '臺東縣立體育場',
+            phone: '(08)931-0194',
+            image: 'https://i.imgur.com/1j5uLaq.jpg',
+            address: '950台東縣台東市桂林北路52巷120號',
+            latitude: '22.79812840874506',
+            longitude: '121.154642430138',
+        },
+    ];
+    const MidthGyms = [
+        {
+            name: '台南一中體育館',
+            phone: '(06)209-7177',
+            image: 'https://i.imgur.com/1j5uLaq.jpg',
+            address: '701台南市東區',
+            latitude: '23.008468446226853',
+            longitude: '120.21561861576318',
+        },
+        {
+            name: '臺南市立新營體育場',
+            phone: '(06)656-2104',
+            image: 'https://i.imgur.com/DY3dgw5.jpg',
+            address: '730台南市新營區長榮路二段78號',
+            latitude: '23.337133357352414',
+            longitude: '120.31012058035297',
+        },
+        {
+            name: '北港鎮立體育館',
+            phone: '(05)778-8321',
+            image: 'https://i.imgur.com/kxZE8gf.jpg',
+            address: '651雲林縣北港鎮',
+            latitude: '23.599655816274197',
+            longitude: '120.31025024442027',
+        },
+        {
+            name: '嘉義縣立體育館',
+            phone: '(05)370-8101',
+            image: 'https://i.imgur.com/tKLqhsW.jpg',
+            address: '613嘉義縣朴子市四維路一段460號',
+            latitude: '23.485088205242167',
+            longitude: '120.24433227672894',
+        },
+    ];
+    const NorthGyms = [
+        {
+            name: '臺北體育館',
+            phone: '(02)2570-2330',
+            image: 'https://i.imgur.com/i1jEQPF.jpg',
+            address: '105台北市松山區南京東路四段10號',
+            latitude: '25.051422618669456',
+            longitude: '121.55210445503499',
+        },
+        {
+            name: '桃園巨蛋體育館',
+            phone: '(03)319-4510',
+            image: 'https://i.imgur.com/QaNO9mx.jpg',
+            address: '330桃園市桃園區三民路一段1號',
+            latitude: '24.995298701673114',
+            longitude: '121.32294371509067',
+        },
+        {
+            name: '新竹市立體育館',
+            phone: '(03)562-1138',
+            image: 'https://i.imgur.com/kxZE8gf.jpg',
+            address: '300新竹市東區公園路295號',
+            latitude: '24.802119438741403',
+            longitude: '120.97933025403563',
+        },
+        {
+            name: '基隆市立體育館',
+            phone: '(02)2427-5518',
+            image: 'https://i.imgur.com/1j5uLaq.jpg',
+            address: '201基隆市信義區信二路40-1號2樓',
+            latitude: '25.13111517939692',
+            longitude: '121.75669757060912',
+        },
+    ];
+    const SouthGyms = [
+        {
+            name: '高雄市鳳山運動中心',
+            phone: '(07)790-2288',
+            image: 'https://i.imgur.com/DY3dgw5.jpg',
+            address: '830高雄市鳳山區光華路68號',
+            latitude: '22.626029100180858',
+            longitude: '120.35393548581638',
+        },
+        {
+            name: '青少年文化體育活動中心',
+            phone: '(08)736-258',
+            image: 'https://i.imgur.com/1j5uLaq.jpg',
+            address: '812高雄市小港區學府路115號',
+            latitude: '22.56646349031065',
+            longitude: '120.35895019887515',
+        },
+        {
+            name: '屏東市國民運動中心',
+            phone: '(08)737-1388',
+            image: 'https://i.imgur.com/i1jEQPF.jpg',
+            address: '900屏東縣屏東市勝利東路50號',
+            latitude: '22.67760067648531',
+            longitude: '120.49853954149451',
+        },
+        {
+            name: '屏東縣立體育館',
+            phone: '(08)736-2589',
+            image: 'https://i.imgur.com/tKLqhsW.jpg',
+            address: '900屏東縣屏東市勝利路9號',
+            latitude: '22.677719470805414',
+            longitude: '120.49388490101751',
+        },
+    ];
+    let [gym, setGym] = useState(NorthGyms);
     const changeNorthGym = () => {
-        setGym(<NorthGym />);
+        setGym(NorthGyms);
     };
     const changeMidthGym = () => {
-        setGym(<MidthGym />);
+        setGym(MidthGyms);
     };
     const changeSouthGym = () => {
-        setGym(<SouthGym />);
+        setGym(SouthGyms);
     };
     const changeEasthGym = () => {
-        setGym(<EasthGym />);
-    };
-
-    const [gymWindow, setGymWindow] = useState(false);
-    const handleGymWindow = () => {
-        setGymWindow(true);
-    };
-
-    const handleCancel = () => {
-        setGymWindow(false);
+        setGym(EasthGyms);
     };
 
     return (
         <div className="md:flex md:justify-center w-full mt-7 mb-10 sm:mx-auto sm:mt-14 lg:mt-16 xl:mt-20">
-            {gymWindow && <GymWindow onCancel={handleCancel} />}
             <div className="relative p-32 object-contain mr-32 hidden md:block">
                 <img className="absolute top-8 left-16" src={Map} alt="" />
                 <TiLocation
@@ -87,7 +199,13 @@ function GymSection() {
                         東
                     </div>
                 </div>
-                <div>{gym}</div>
+                <div>
+                    {/* {TAB &&
+                    TAB.map((article) => (
+                        <Article article={article} key={article.id} />
+                    ))} */}
+                    <GymList Gyms={gym} />
+                </div>
             </div>
         </div>
     );
