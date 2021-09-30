@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
 function ArticleAerobicExercise({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -19,6 +19,7 @@ function ArticleAerobicExercise({ article }) {
                 let data = res.data;
                 console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
                 // setError(null);
             } catch (e) {
@@ -29,8 +30,9 @@ function ArticleAerobicExercise({ article }) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
     const [term, setTerm] = useState('');
+    //最新上傳
     const handleUpdateButton = () => {
         let newArticles = data.sort(
             (a, b) =>
@@ -39,25 +41,26 @@ function ArticleAerobicExercise({ article }) {
         );
         setData([...newArticles]);
     };
-
+    //最多觀看
     const handleViewsButton = () => {
         let newArticles = data.sort((a, b) => b.views - a.views);
         setData([...newArticles]);
     };
-
+    //搜尋
     const handleSearch = (e) => {
         e.preventDefault();
-        let newArticles = article.filter(
-            (article) =>
-                article.title.indexOf(term) > -1 ||
-                article.description.indexOf(term) > -1
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
         );
         setData([...newArticles]);
     };
 
     const handleEmpty = (e) => {
-        if (e.target.value === '') setData(article);
+        if (e.target.value === '') setData(allData);
     };
+
     return (
         <>
             <div>
