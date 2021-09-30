@@ -12,7 +12,6 @@ import Comment from './components/Comment';
 import Person2 from './../../images/person-2.jpg';
 import {
     FaClock,
-    FaCaretDown,
     FaComments
 } from "react-icons/fa";
 
@@ -37,29 +36,66 @@ const VideoId = () => {
     const { member, setMember } = useAuth();
 
     let { data: video, error, isPending } = useGet(`/videos/${videoId}`);
-    if (video) video = video[0];
 
     const [liked, setLiked] = useState(false);
+    const [ILiked, setILiked] = useState(false);
     const [signInModal, setSignInModal] = useState(false);
     const [alert, setAlert] = useState(false);
     const [collect, setCollect] = useState(false);
-    const [list, setList] = useState(false);
+    const [ICollect, setICollect] = useState(false);
+
+    useEffect(() => {
+        if (video) {
+            let LikedOrNot = video.wasLiked;
+            setILiked(LikedOrNot);
+            setLiked(LikedOrNot);
+            let CollectedOrNot = video.wasCollected;
+            setICollect(CollectedOrNot);
+            setCollect(CollectedOrNot);
+        }
+    }, [video]);
 
     const handleDislike = () => {
         setLiked(false);
         if (member) {
-            axios.patch(`${API_URL}/videos/${videoId}`, {
-                member
-            });
+            (async function () {
+                await axios.patch(`${API_URL}/videos/${videoId}`,
+                    { like: 'dislike' }
+                    , { withCredentials: true });
+            })();
         }
     };
 
     const handleLike = () => {
         member ? setLiked(true) : setSignInModal(true);
         if (member) {
-            axios.patch(`${API_URL}/videos/${videoId}`, {
-                member
-            });
+            (async function () {
+                await axios.patch(`${API_URL}/videos/${videoId}`,
+                    { like: 'like' }
+                    , { withCredentials: true });
+            })();
+        }
+    };
+
+    const handleRemoveCollection = () => {
+        setCollect(false);
+        if (member) {
+            (async function () {
+                await axios.patch(`${API_URL}/videos/${videoId}`,
+                    { collect: 'removeCollection' }
+                    , { withCredentials: true });
+            })();
+        }
+    };
+
+    const handleAddCollection = () => {
+        member ? setCollect(true) : setSignInModal(true);
+        if (member) {
+            (async function () {
+                await axios.patch(`${API_URL}/videos/${videoId}`,
+                    { collect: 'addCollection' }
+                    , { withCredentials: true });
+            })();
         }
     };
 
@@ -104,14 +140,16 @@ const VideoId = () => {
                                     onClick={() => handleDislike()}
                                 >
                                     <RiThumbUpFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                    <span className="text-sm sm:text-xs text-white w-max">{video.likes + 1}</span>
+                                    <span className="text-sm sm:text-xs text-white w-max">{ILiked ? video.likes : video.likes + 1}</span>
+                                    {/* <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span> */}
                                 </div>
                                 : <div
                                     className="flex mr-4 items-center cursor-pointer"
                                     onClick={() => handleLike()}
                                 >
                                     <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                    <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span>
+                                    <span className="text-sm sm:text-xs text-white w-max">{ILiked ? video.likes - 1 : video.likes}</span>
+                                    {/* <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span> */}
                                 </div>}
 
                             <div
@@ -127,34 +165,18 @@ const VideoId = () => {
                             {collect ?
                                 <div
                                     className="flex mr-4 items-center cursor-pointer"
-                                    onClick={() => setCollect(false)}
+                                    onClick={() => handleRemoveCollection()}
                                 >
                                     <RiHeartFill className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
                                     <span className="text-sm sm:text-xs text-white w-max">已收藏</span>
                                 </div>
                                 : <div
                                     className="flex mr-4 items-center cursor-pointer"
-                                    onClick={() => setCollect(true)}
+                                    onClick={() => handleAddCollection()}
                                 >
                                     <RiHeartLine className="text-red-400 mr-1 sm:text-base xs:text-2xl" />
                                     <span className="text-sm sm:text-xs text-white w-max">收藏</span>
                                 </div>}
-                            {list ?
-                                <div
-                                    className="flex items-center cursor-pointer"
-                                    onClick={() => setList(false)}
-                                >
-                                    <MdPlaylistAddCheck className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                    <span className="text-sm sm:text-xs text-white w-max">移除稍後觀看</span>
-                                </div>
-                                : <div
-                                    className="flex items-center cursor-pointer"
-                                    onClick={() => setList(true)}
-                                >
-                                    <MdPlaylistAdd className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                    <span className="text-sm sm:text-xs text-white w-max">稍後觀看</span>
-                                </div>}
-
                         </div>
                     </div>
 
@@ -164,13 +186,7 @@ const VideoId = () => {
                         dangerouslySetInnerHTML={{ __html: video.description }}>
                     </p>
                     <div className="mt-3 xs:my-3 pb-2 border-b-2 border-yellow-400 flex
-                    justify-center mx-5 xs:mx-0">
-                        {/* <div className="group cursor-pointer relative flex flex-col items-center">
-                        <span className="text-xs text-white pb-4 transform transition duration-200
-                        group-hover:text-gray-200 group-hover:-translate-y-0.5">顯示更多</span>
-                        <FaCaretDown className="text-yellow-400 absolute bottom-0 transform 
-                            transition duration-200 group-hover:translate-y-0.5" />
-                    </div> */}
+                        justify-center mx-5 xs:mx-0">
                     </div>
                 </div>)}
 
@@ -187,7 +203,7 @@ const VideoId = () => {
                 </div>
 
                 {/* Comment Section */}
-                <div className="lg:col-span-2 lg:row-span-1 col-span-full mx-5 xs:mx-0">
+                <div className="lg:col-span-2 lg:row-span-1 col-span-full mb-5 xs:mx-0">
                     <div className="flex items-center mb-7">
                         <FaComments className="text-yellow-400 mr-1 text-lg hidden xs:block" />
                         <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4">48 則留言</span>
