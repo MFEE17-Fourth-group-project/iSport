@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
 function ArticleTABATATraining({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -17,9 +17,11 @@ function ArticleTABATATraining({ article }) {
                     `${API_URL}/articles/Read/TABATATraining`
                 );
                 let data = res.data;
+                console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
-                setError(null);
+                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -28,7 +30,7 @@ function ArticleTABATATraining({ article }) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
     const [term, setTerm] = useState('');
     const handleUpdateButton = () => {
         let newArticles = data.sort(
@@ -38,25 +40,23 @@ function ArticleTABATATraining({ article }) {
         );
         setData([...newArticles]);
     };
-
     const handleViewsButton = () => {
         let newArticles = data.sort((a, b) => b.views - a.views);
         setData([...newArticles]);
     };
-
     const handleSearch = (e) => {
         e.preventDefault();
-        let newArticles = article.filter(
-            (article) =>
-                article.title.indexOf(term) > -1 ||
-                article.description.indexOf(term) > -1
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
         );
         setData([...newArticles]);
     };
-
     const handleEmpty = (e) => {
-        if (e.target.value === '') setData(article);
+        if (e.target.value === '') setData(allData);
     };
+
     return (
         <>
             <div>
