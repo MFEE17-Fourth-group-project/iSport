@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
 function ArticleAerobicExercise({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -19,6 +19,7 @@ function ArticleAerobicExercise({ article }) {
                 let data = res.data;
                 console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
                 // setError(null);
             } catch (e) {
@@ -29,35 +30,41 @@ function ArticleAerobicExercise({ article }) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
     const [term, setTerm] = useState('');
+    //最新上傳sort() 方法用原地算法对数组的元素进行排序，并返回数组replace正規表達式
     const handleUpdateButton = () => {
         let newArticles = data.sort(
             (a, b) =>
                 b.upload_date.replace(/-/gi, '') -
                 a.upload_date.replace(/-/gi, '')
         );
+        //組成一個新陣列
         setData([...newArticles]);
     };
-
+    //最多觀看
     const handleViewsButton = () => {
         let newArticles = data.sort((a, b) => b.views - a.views);
+        //組成一個新陣列
         setData([...newArticles]);
     };
-
+    //搜尋filter() 用在搜尋符合條件的資料，會回傳一個陣列。
+    //indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
     const handleSearch = (e) => {
         e.preventDefault();
-        let newArticles = article.filter(
-            (article) =>
-                article.title.indexOf(term) > -1 ||
-                article.description.indexOf(term) > -1
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
         );
+        //組成一個新陣列
         setData([...newArticles]);
     };
-
+    //如果搜尋是空的話顯示所有allData
     const handleEmpty = (e) => {
-        if (e.target.value === '') setData(article);
+        if (e.target.value === '') setData(allData);
     };
+
     return (
         <>
             <div>
@@ -80,7 +87,7 @@ function ArticleAerobicExercise({ article }) {
                 <div className="sticky top-0 z-40">
                     <ArticleNav />
                 </div>
-                <main className="max-w-screen-2xl mx-auto py-6">
+                <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}
                     <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
                         <div className="flex mb-2.5 xs:mb-0">

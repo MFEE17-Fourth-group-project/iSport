@@ -5,6 +5,8 @@ import Article from '../article/components/Article';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
+import AOS from 'aos';
+import '../../../node_modules/aos/dist/aos.css';
 const ArticleSection = () => {
     const [step, setStep] = useState(1);
     const [data, setData] = useState(null);
@@ -192,14 +194,32 @@ const ArticleSection = () => {
         if (isAdded && step < 5) setStep(step + 1);
         if (!isAdded && step > 1) setStep(step - 1);
     };
+    useEffect(() => {
+        AOS.init({
+            duration: 500,
+            easing: 'ease-out-back',
+            delay: 0,
+        });
+        AOS.refresh();
+    }, []);
     return (
         <div className="relative w-full mb-16 sm:mb-24 sm:mt-2 lg:mt-2.5 xl:mt-4">
-            <div className="text-center sm:py-6 mt-7 mb-4">
+            <div
+                className="text-center sm:py-6 mt-7 mb-4"
+                data-aos="zoom-in"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="600"
+            >
                 <span className="text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400 pb-2.5 sm:pb-3.5">
                     精選文章
                 </span>
             </div>
-            <p className="text-white text-xl md:text-2xl text-center w-full px-4 hidden sm:block">
+            <p
+                className="text-white text-xl md:text-2xl text-center w-full px-4 hidden sm:block"
+                data-aos="fade-up"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="800"
+            >
                 這裡有豐富強大的健身資料庫，提供您健身資訊、營養菜單...
             </p>
             <div className="object-cover filter brightness-100 h-112">
