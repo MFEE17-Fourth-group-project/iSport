@@ -18,6 +18,7 @@ import CustomerService from './user/sign/CustomerService';
 
 // ARTICLE
 import Articles from './article/Article';
+import ArticleOutSide from './article/components/ArticleOutSide';
 import ArticleId from './article/ArticleId';
 import ArticleAdd from './user/articles/ArticleAdd';
 import ArticleEdit from './user/articles/ArticleEdit';
@@ -93,6 +94,9 @@ function HomeRouter() {
                         </Route>
                         <Route path="/articles">
                             <Articles />
+                        </Route>
+                        <Route path="/articleOutSide">
+                            <ArticleOutSide />
                         </Route>
                         <Route path="/ArticleAerobicExercise">
                             <ArticleAerobicExercise />

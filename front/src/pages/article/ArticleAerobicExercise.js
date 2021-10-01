@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/核心/core-1.jpg';
 import ArticleNav from './components/ArticleNav';
-import Article from './components/Article';
+import ArticleOutSide from './components/ArticleOutSide';
 import { Link, withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
@@ -64,7 +64,13 @@ function ArticleAerobicExercise({ article }) {
     const handleEmpty = (e) => {
         if (e.target.value === '') setData(allData);
     };
+    //nav
 
+    const [category, setCategory] = useState(0);
+
+    const changeCategory = (e) => {
+        setCategory(e.target.dataset.id);
+    };
     return (
         <>
             <div>
@@ -85,7 +91,7 @@ function ArticleAerobicExercise({ article }) {
                     </div>
                 </div>
                 <div className="sticky top-0 z-40">
-                    <ArticleNav />
+                    <ArticleNav cat={changeCategory} />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}
@@ -130,7 +136,10 @@ function ArticleAerobicExercise({ article }) {
                     <div className="w-3/4 m-auto">
                         {data &&
                             data.map((article) => (
-                                <Article article={article} key={article.id} />
+                                <ArticleOutSide
+                                    article={article}
+                                    key={article.id}
+                                />
                             ))}
                     </div>
                 </main>

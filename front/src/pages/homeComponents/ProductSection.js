@@ -25,6 +25,7 @@ const ProductSection = () => {
             <div
                 className="w-full md:w-1/3 h-full md:h-124 lg:h-152 xl:h-175 md:mr-6 lg:mr-8 xl:mr-10 relative"
                 data-aos="fade-right"
+                data-aos-duration="1500"
             >
                 <img
                     src={HomePage13}
