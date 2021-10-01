@@ -7,6 +7,7 @@ import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
 
 function Cart(props) {
+    const { cartAdd } = props;
     const { member, setMember } = useAuth();
     const [totalAmount, setTotalAmount] = useState(0);
     const showNoItemRef = useRef('');
@@ -77,7 +78,10 @@ function Cart(props) {
                             className="text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl"
                         >
                             {/* 購物車商品卡片 */}
-                            <CartItem setTotalAmount={setTotalAmount} />
+                            <CartItem
+                                setTotalAmount={setTotalAmount}
+                                cartAdd={cartAdd}
+                            />
 
                             <div className="pt-2.5 mt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                                 <p className="text-lg font-bold">Total : $ </p>
