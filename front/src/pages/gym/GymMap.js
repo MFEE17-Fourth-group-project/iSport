@@ -32,7 +32,7 @@ class GymMap extends Component {
         const marker = L.marker([25.0259029, 121.5703875], {
             icon: greenIcon,
         }).addTo(this.mymap);
-        marker.bindPopup('<b>運動中心在這!</b>').openPopup();
+        marker.bindPopup('<b>點即旁邊的按鈕可以顯示地圖!</b>').openPopup();
     }
     //重新渲染比較前後的值是否有差異，如果有差異的話才做新的一次網路請求
     componentDidUpdate(prevProps, prevState) {
@@ -48,13 +48,18 @@ class GymMap extends Component {
             prevProps.lng !== this.props.lng
         ) {
             // 引入地圖
-            // this.mymap.setView([this.props.lat, this.props.lng], 13);
-            // this.mymap.panTo([this.props.lat, this.props.lng]);
             this.mymap.setView([this.props.lat, this.props.lng], 18);
+
+            //修改
             L.popup()
-                .setLatLng([this.props.lat, this.props.lng])
-                .setContent(`<b>運動中心在這!</b>`)
-                .openOn(this.mymap);
+                .setLatLng([this.props.lat, this.props.lng]) //設置彈出窗口將打開的地理點。
+                .addTo(this.mymap) //將彈出窗口添加到地圖。
+                .setContent(
+                    `<h1>${this.props.name}</h1>
+                      <p>${this.props.address}</p>
+                      <img class="img-fluid" src="${this.props.image}">`
+                ) //設置彈出窗口的 HTML 內容。
+                .openOn(this.mymap); //將彈出窗口添加到地圖並關閉前一個。
         }
     }
 

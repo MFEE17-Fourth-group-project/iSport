@@ -3,7 +3,13 @@ import { SiOpenstreetmap } from 'react-icons/si';
 
 function GymItem(props) {
     const { phone, name, image, address, latitude, longitude } = props;
-    const [cbData, setCbData] = useState({ latitude, longitude });
+    const [cbData, setCbData] = useState({
+        latitude,
+        longitude,
+        name,
+        image,
+        address,
+    });
     return (
         <>
             <div className="flex items-center my-2">
