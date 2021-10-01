@@ -63,7 +63,7 @@ router.route('/:id')
             [videoId]
         );
         let commentResult = await connection.queryAsync(
-            'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1',
+            'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
             [videoId]
         );
         result[0].wasLiked = wasLiked;

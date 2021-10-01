@@ -14,7 +14,11 @@ router.post('/', SignInCheckMiddleware, async (req, res, next) => {
         'INSERT INTO comment_video SET user_account=?, video_id=?, valid=1, content=?',
         [userAccount, videoId, commentBody]
     );
-    res.json(result.affectedRows);
+    result = await connection.queryAsync(
+        'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+        [videoId]
+    );
+    res.json(result);
 });
 
 router.route('/:commentId')
