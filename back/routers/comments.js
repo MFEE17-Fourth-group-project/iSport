@@ -1,17 +1,27 @@
 const express = require('express');
-const router = express.Router();
+// { mergeParams: true } : Merge params of the routes
+const router = express.Router({ mergeParams: true });
 
 const connection = require('../utils/db');
 const { SignInCheckMiddleware } = require("../middlewares/auth");
 
-router.post('/', async (req, res, next) => {
-    console.log(req.params);
+router.post('/', SignInCheckMiddleware, async (req, res, next) => {
+    let videoId = req.params.id;
+    let userAccount = req.session.member.account;
+    // Remove HTML tags
+    let commentBody = req.body.comment.replace(/<[^>]+>/g, '');
+    let result = await connection.queryAsync(
+        'INSERT INTO comment_video SET user_account=?, video_id=?, valid=1, content=?',
+        [userAccount, videoId, commentBody]
+    );
+    res.json(result.affectedRows);
 });
 
 router.route('/:commentId')
     .put((req, res, next) => {
         console.log(req.params);
     })
+
     .delete((req, res, next) => {
         console.log(req.params);
     });

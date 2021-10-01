@@ -62,8 +62,13 @@ router.route('/:id')
             'SELECT * FROM video_file WHERE id=? AND valid=1',
             [videoId]
         );
+        let commentResult = await connection.queryAsync(
+            'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1',
+            [videoId]
+        );
         result[0].wasLiked = wasLiked;
         result[0].wasCollected = wasCollected;
+        result[0].comment = commentResult;
         res.json(result[0]);
     })
     .patch(SignInCheckMiddleware, async (req, res, next) => {
