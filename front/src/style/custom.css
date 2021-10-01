@@ -1,17 +1,16 @@
-html {
-    overflow: -moz-hidden-unscrollable;
-    height: 100%;
+.outer-container {
+    overflow: hidden;
+    position: relative;
 }
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-body {
-    -ms-overflow-style: none;
-    height: 100%;
-    /* width: calc(100vw + 18px); */
-    overflow: auto;
+.inner-container {
+    position: absolute;
+    /*這四個方向的位置要寫全，否則不生效*/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: -17px;
+    overflow-y: scroll;
 }
 
 .line-clamp-3 {

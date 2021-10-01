@@ -222,9 +222,9 @@ const ArticleSection = () => {
             >
                 這裡有豐富強大的健身資料庫，提供您健身資訊、營養菜單...
             </p>
-            <div className="object-cover filter brightness-100 h-112">
-                <div className="mx-auto my-8 sm:my-12 md:my-14 h-full overflow-y-auto w-3/4">
-                    <div>{switchStep(step)}</div>
+            <div className="object-cover filter brightness-100 h-112 outer-container">
+                <div className="mx-auto my-8 sm:my-12 md:my-14 h-full overflow-y-auto w-3/4 outer-container">
+                    <div className=" inner-container">{switchStep(step)}</div>
                 </div>
             </div>
             {step !== 1 && (

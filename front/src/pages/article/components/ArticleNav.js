@@ -1,6 +1,6 @@
 import useGet from '../../../utils/useGet';
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const ArticleNav = ({ cat }) => {
     const { data: categories, error, isPending } = useGet(`/videos/category`);
     const [selected, setSelected] = useState(0);
@@ -29,19 +29,22 @@ const ArticleNav = ({ cat }) => {
                     >
                         所有文章
                     </div>
+
                     {categories.map((category) => (
-                        <div
-                            className={
-                                selected === category.id
-                                    ? selectedClass
-                                    : unselectedClass
-                            }
-                            key={category.id}
-                            data-id={category.id}
-                            onClick={(e) => setCat(e)}
-                        >
-                            {category.name}
-                        </div>
+                        <Link to={'/article/' + category.id}>
+                            <div
+                                className={
+                                    selected === category.id
+                                        ? selectedClass
+                                        : unselectedClass
+                                }
+                                key={category.id}
+                                data-id={category.id}
+                                onClick={(e) => setCat(e)}
+                            >
+                                {category.name}
+                            </div>
+                        </Link>
                     ))}
                 </nav>
             )}

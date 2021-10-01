@@ -6,7 +6,6 @@ import { FaShare } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaEye } from 'react-icons/fa';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
 const ArticleOutSide = (props) => {
     const { article } = props;
