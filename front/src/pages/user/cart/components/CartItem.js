@@ -25,7 +25,7 @@ function CartItem(props) {
         let result = await axios.post(`${API_URL}/cart`, {
             myCartItem,
         });
-        console.log('result.data.myCart', result.data.myCart);
+        // console.log('result.data.myCart', result.data.myCart);
 
         // 前端計算總金額，傳回父母元件
         result.data.myCart.forEach((item) => {
@@ -47,7 +47,7 @@ function CartItem(props) {
         const index = currentCart.findIndex(
             (v) => v.id === item.product_sku_id // FIXME: v.product_id === item.product_sku_id
         );
-        console.log('index', index);
+        // console.log('index', index);
 
         if (index > -1) {
             isAdded ? currentCart[index].qty++ : currentCart[index].qty--;

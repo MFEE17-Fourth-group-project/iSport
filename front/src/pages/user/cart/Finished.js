@@ -9,6 +9,7 @@ import axios from 'axios';
 
 function Finished(props) {
     const { member, setMember } = useAuth();
+    const { cartAdd } = props;
     const [totalAmount, setTotalAmount] = useState(0);
     const [orderInfo, setOrderInfo] = useState({});
 
@@ -16,7 +17,7 @@ function Finished(props) {
     const getDataFromServer = async (myCartItem) => {
         let result = await axios.post(`${API_URL}/order`);
         console.log('result.data.myCart', result.data.myCart);
-
+        console.log('result.data.totalAmount', result.data.totalAmount);
         // 前端計算總金額，傳回父母元件
         result.data.myCart.forEach((item) => {
             const amount = item.price * item.qty;
@@ -27,6 +28,7 @@ function Finished(props) {
 
     useEffect(() => {
         getDataFromServer();
+        cartAdd();
     }, []);
 
     return (

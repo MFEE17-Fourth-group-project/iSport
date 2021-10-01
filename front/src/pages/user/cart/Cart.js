@@ -8,6 +8,7 @@ import NotAuth from '../components/NotAuth';
 
 function Cart(props) {
     const { member, setMember } = useAuth();
+    const { cartAdd } = props;
     const [totalAmount, setTotalAmount] = useState(0);
     const showNoItemRef = useRef('');
     const hideItemRef = useRef('');
@@ -55,6 +56,7 @@ function Cart(props) {
     // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
     useEffect(() => {
         getCartFromLocalStorage();
+        cartAdd();
     }, []);
 
     return (

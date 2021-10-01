@@ -9,8 +9,9 @@ import NotAuth from '../components/NotAuth';
 import Aside from '../../../global/Aside';
 import axios from 'axios';
 
-function Checkout() {
+function Checkout(props) {
     const { member, setMember } = useAuth();
+    const { cartAdd } = props;
     const [totalAmount, setTotalAmount] = useState(0);
     // Recipient FormData
     const [recipient, setRecipient] = useState('Sarah');
@@ -60,6 +61,7 @@ function Checkout() {
 
     useEffect(() => {
         getUserData();
+        cartAdd();
     }, []);
 
     return (

@@ -75,13 +75,13 @@ function HomeRouter() {
                             <CustomerService />
                         </Route>
                         <Route path="/user/cart/TradingRecord">
-                            <TradingRecord />
+                            <TradingRecord cartAdd={cartAdd} />
                         </Route>
                         <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart />
+                            <Cart cartAdd={cartAdd}/>
                         </Route>
                         <Route path="/products/productItem/:productId?">
                             <ProductItem cartAdd={cartAdd} />
@@ -141,13 +141,13 @@ function HomeRouter() {
                             <Video />
                         </Route>
                         <Route path="/checkout">
-                            <Checkout />
+                            <Checkout cartAdd={cartAdd} />
                         </Route>
                         <Route path="/checkout2">
-                            <Checkout2 />
+                            <Checkout2 cartAdd={cartAdd} />
                         </Route>
                         <Route path="/finished">
-                            <Finished />
+                            <Finished cartAdd={cartAdd} />
                         </Route>
                         <Route path="/SignUp">
                             <SignUp />

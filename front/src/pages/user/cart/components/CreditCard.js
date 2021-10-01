@@ -59,6 +59,10 @@ export default class App extends React.Component {
         this.form.reset();
     };
 
+    clearLocalStorage = () => {
+        localStorage.removeItem('cart');
+    };
+
     render() {
         const { name, number, expiry, cvc, focused, issuer, formData } =
             this.state;
@@ -146,7 +150,10 @@ export default class App extends React.Component {
                                     </p>
                                 </Link>
                             </button>
-                            <button type="submit">
+                            <button
+                                type="submit"
+                                onClick={this.clearLocalStorage}
+                            >
                                 <Link
                                     to="/finished"
                                     className="btn-yellow flex flex-row justify-end items-center"

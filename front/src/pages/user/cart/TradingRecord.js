@@ -9,10 +9,12 @@ import NotAuth from '../components/NotAuth';
 
 // TODO: 依照使用者 id 拋轉他的歷史訂單
 
-function TradingRecord() {
+function TradingRecord(props) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const { member, setMember } = useAuth();
+    const { cartAdd } = props;
+
     // 連到後端的 API，取得訂單記錄
     useEffect(() => {
         console.log('read API_URL', API_URL);
@@ -29,6 +31,7 @@ function TradingRecord() {
             }
         };
         getOrderRecord();
+        cartAdd();
     }, []);
 
     return (

@@ -27,7 +27,7 @@ function CheckItem(props) {
             // 將總金額傳回父母元件
             setTotalAmount(result.data.totalAmount);
             setMyCart(result.data.myCart);
-            console.log('myCart in CheckItem', myCartItem);
+            // console.log('myCart in CheckItem', myCartItem);
 
             setError('');
         } catch (e) {
@@ -74,8 +74,8 @@ function CheckItem(props) {
                                     {item.brand_name}
                                 </div>
                                 {item.typeValue.map((value) => {
-                                    console.log(value);
-                                    console.log(value.type_name);
+                                    // console.log(value);
+                                    // console.log(value.type_name);
                                     return (
                                         <div
                                             className="flex flex-row items-center pb-1.5"
