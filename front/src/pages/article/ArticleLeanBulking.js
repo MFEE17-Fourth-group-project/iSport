@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/飲食/pexels-photo-1307658.jpeg';
 import ArticleNav from './components/ArticleNav';
-import Article from './components/Article';
+import ArticleOutSide from './components/ArticleOutSide';
 import { Link, withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
 function ArticleLeanBulking({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -17,9 +17,11 @@ function ArticleLeanBulking({ article }) {
                     `${API_URL}/articles/Read/LeanBulking`
                 );
                 let data = res.data;
+                console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
-                setError(null);
+                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -28,7 +30,7 @@ function ArticleLeanBulking({ article }) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
     const [term, setTerm] = useState('');
     const handleUpdateButton = () => {
         let newArticles = data.sort(
@@ -38,24 +40,27 @@ function ArticleLeanBulking({ article }) {
         );
         setData([...newArticles]);
     };
-
     const handleViewsButton = () => {
         let newArticles = data.sort((a, b) => b.views - a.views);
         setData([...newArticles]);
     };
-
     const handleSearch = (e) => {
         e.preventDefault();
-        let newArticles = article.filter(
-            (article) =>
-                article.title.indexOf(term) > -1 ||
-                article.description.indexOf(term) > -1
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
         );
         setData([...newArticles]);
     };
-
     const handleEmpty = (e) => {
-        if (e.target.value === '') setData(article);
+        if (e.target.value === '') setData(allData);
+    };
+    //nav
+    const [category, setCategory] = useState(0);
+
+    const changeCategory = (e) => {
+        setCategory(e.target.dataset.id);
     };
     return (
         <>
@@ -76,9 +81,9 @@ function ArticleLeanBulking({ article }) {
                     </div>
                 </div>
                 <div className="sticky top-0 z-40">
-                    <ArticleNav />
+                    <ArticleNav cat={changeCategory} />
                 </div>
-                <main className="max-w-screen-2xl mx-auto py-6">
+                <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}
                     <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
                         <div className="flex mb-2.5 xs:mb-0">
@@ -121,7 +126,10 @@ function ArticleLeanBulking({ article }) {
                     <div className="w-3/4 m-auto">
                         {data &&
                             data.map((article) => (
-                                <Article article={article} key={article.id} />
+                                <ArticleOutSide
+                                    article={article}
+                                    key={article.id}
+                                />
                             ))}
                     </div>
                 </main>

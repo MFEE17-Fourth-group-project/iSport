@@ -559,7 +559,7 @@ module.exports = {
         }),
         maxHeight: (theme) => ({
             ...theme('spacing'),
-            500: '500px',
+            1000: '1000px',
             full: '100%',
             screen: '100vh',
         }),
