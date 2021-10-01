@@ -1,107 +1,51 @@
-// import useGet from '../../../utils/useGet';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import useGet from '../../../utils/useGet';
+import { useState } from 'react';
 
-const ArticleNav = () => {
+const ArticleNav = ({ cat }) => {
+    const { data: categories, error, isPending } = useGet(`/videos/category`);
+    const [selected, setSelected] = useState(0);
+
+    const setCat = (e) => {
+        cat(e);
+        setSelected(parseInt(e.target.dataset.id));
+    };
+
+    const selectedClass =
+        'border-b-2 border-yellow-400 w-36 text-yellow-400 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer';
+
+    const unselectedClass =
+        'border-b-2 border-transparent w-36 text-white text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer hover:border-yellow-400 hover:text-yellow-400';
+
     return (
-        <nav className="bg-gray-900 flex justify-center">
-            <NavLink
-                to="/articles"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                    color: '#FBBF24',
-                }}
-            >
-                <div
-                    className="border-b-2 border-yellow-400 w-36 text-yellow-400 text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer"
-                >
-                    所有文章
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleAerobicExercise"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                    color: '#FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-white text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    有氧運動
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleWeightTraining"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    重量訓練
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleTABATATraining"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    間歇訓練
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleCoreStrength"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    核心強化
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleLeanBulking"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-white text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    增肌飲食
-                </div>
-            </NavLink>
-        </nav>
+        <>
+            {categories && (
+                <nav className="bg-gray-900 flex justify-center">
+                    <div
+                        className={
+                            selected === 0 ? selectedClass : unselectedClass
+                        }
+                        onClick={(e) => setCat(e)}
+                        data-id="0"
+                    >
+                        所有文章
+                    </div>
+                    {categories.map((category) => (
+                        <div
+                            className={
+                                selected === category.id
+                                    ? selectedClass
+                                    : unselectedClass
+                            }
+                            key={category.id}
+                            data-id={category.id}
+                            onClick={(e) => setCat(e)}
+                        >
+                            {category.name}
+                        </div>
+                    ))}
+                </nav>
+            )}
+        </>
     );
 };
 
