@@ -39,7 +39,7 @@ const VideoId = () => {
     const [signInModal, setSignInModal] = useState(false);
     const [alert, setAlert] = useState(false);
     const [collect, setCollect] = useState(false);
-
+    const [comments, setComments] = useState(null);
 
     useEffect(() => {
         if (video) {
@@ -48,6 +48,7 @@ const VideoId = () => {
             setLiked(LikedOrNot);
             let CollectedOrNot = video.wasCollected;
             setCollect(CollectedOrNot);
+            setComments(video.comment);
         }
     }, [video]);
 
@@ -102,7 +103,7 @@ const VideoId = () => {
     return (
         <>
             {signInModal && <SignIn onCancel={handleCancel} />}
-            <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-2 gap-y-6 items-start">
+            <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-3 gap-y-6 items-start">
 
                 {/* Video Main Section */}
                 {video && (<div className="lg:col-span-2 lg:row-span-1 col-span-full z-0">
@@ -199,7 +200,7 @@ const VideoId = () => {
                 </div>
 
                 {/* Comment Section */}
-                <CommentSection />
+                <CommentSection videoId={videoId} comments={comments} />
             </div>
         </>
     );
