@@ -65,136 +65,136 @@ function Checkout() {
     return (
         <>
             {member ? (
-            <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                <Aside />
-                <article className="flex-grow flex-col ">
-                    <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
-                        購物車
-                    </div>
-                    <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 mb-2.5">
-                        <div>
-                            <ProgressBar />
+                <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
+                    <Aside />
+                    <article className="flex-grow flex-col ">
+                        <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
+                            購物車
                         </div>
-                        {/*    FIXME: 下拉動畫    */}
-                        <div
-                            ref={showCheckItemRef}
-                            className="max-h-44 overflow-hidden transition-all duration-500"
-                        >
-                            <CheckItem setTotalAmount={setTotalAmount} />
-                        </div>
-                        <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                            <p className="text-lg font-bold">Total : $ </p>
-                            <span className="text-lg font-bold">
-                                {totalAmount}
-                            </span>
-                        </div>
-                        <div
-                            className="flex justify-center animate-bounce py-1 cursor-pointer"
-                            onClick={showItem}
-                        >
-                            <HiChevronDoubleDown className="text-2xl text-yellow-400" />
-                        </div>
-                        {/*    / FIXME: 下拉動畫    */}
-                    </div>
-                    <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
-                        {/* <CheckRecipient /> */}
-                        <from
-                        // FIXME: onSubmit={handleSubmit}
-                        >
-                            <div className="items-center pt-2 mb-6">
-                                <label for="recipient">收件人</label>
-                                <input
-                                    type="text"
-                                    className="input-style"
-                                    id="recipient"
-                                    name="recipient"
-                                    value={recipient}
-                                    placeholder="Jennifer"
-                                    onChange={(e) => {
-                                        setRecipient(e.target.value);
-                                    }}
-                                ></input>
+                        <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 mb-2.5">
+                            <div>
+                                <ProgressBar />
                             </div>
-                            <div className="items-center pt-2 mb-6">
-                                <label for="phone">行動電話</label>
-                                <input
-                                    type="phone"
-                                    className="input-style"
-                                    id="phone"
-                                    name="phone"
-                                    value={phone}
-                                    placeholder="0955123456"
-                                    onChange={(e) => {
-                                        setPhone(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
-                            <div className="items-center pt-2 mb-6">
-                                <label for="email">信箱</label>
-                                <input
-                                    type="email"
-                                    className="input-style"
-                                    id="email"
-                                    name="email"
-                                    value={email}
-                                    placeholder="jen@isport.com"
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
-                            <div className="items-center pt-2 mb-6">
-                                <label for="address">住家地址</label>
-                                <input
-                                    type="text"
-                                    className="input-style"
-                                    id="address"
-                                    name="address"
-                                    value={address}
-                                    placeholder="桃園市平鎮區中央路123號"
-                                    onChange={(e) => {
-                                        setAddress(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
-                            <div className="items-center pt-2 mb-6">
-                                <label for="delivery">寄送方式</label>
-                                <select
-                                    type="text"
-                                    className="input-style"
-                                    id="delivery"
-                                    name="delivery"
-                                    value={delivery}
-                                    onChange={(e) => {
-                                        setDelivery(e.target.value);
-                                    }}
-                                >
-                                    <option value="1">郵寄</option>
-                                    <option value="2">宅急便</option>
-                                    <option value="3">超商貨到付款</option>
-                                </select>
-                            </div>
-                        </from>
-                        <div className="flex flex-row justify-center">
-                            <button
-                                type="submit"
-                                onClick={() => {
-                                    handleSubmit();
-                                }}
+                            {/*    FIXME: 下拉動畫    */}
+                            <div
+                                ref={showCheckItemRef}
+                                className="max-h-44 overflow-hidden transition-all duration-500"
                             >
-                                <Link
-                                    to="/checkout2"
-                                    className="btn-yellow flex flex-row justify-end items-center"
-                                >
-                                    <p className="font-bold sm:text-xl text-lg">
-                                        下一步
-                                    </p>
-                                </Link>
-                            </button>
+                                <CheckItem setTotalAmount={setTotalAmount} />
+                            </div>
+                            <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
+                                <p className="text-lg font-bold">Total : $ </p>
+                                <span className="text-lg font-bold">
+                                    {totalAmount}
+                                </span>
+                            </div>
+                            <div
+                                className="flex justify-center animate-bounce py-1 cursor-pointer"
+                                onClick={showItem}
+                            >
+                                <HiChevronDoubleDown className="text-2xl text-yellow-400" />
+                            </div>
+                            {/*    / FIXME: 下拉動畫    */}
                         </div>
-                    </div>
-                </article>
-            </main>
+                        <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
+                            {/* <CheckRecipient /> */}
+                            <from
+                            // FIXME: onSubmit={handleSubmit}
+                            >
+                                <div className="items-center pt-2 mb-6">
+                                    <label for="recipient">收件人</label>
+                                    <input
+                                        type="text"
+                                        className="input-style"
+                                        id="recipient"
+                                        name="recipient"
+                                        value={recipient}
+                                        placeholder="Jennifer"
+                                        onChange={(e) => {
+                                            setRecipient(e.target.value);
+                                        }}
+                                    ></input>
+                                </div>
+                                <div className="items-center pt-2 mb-6">
+                                    <label for="phone">行動電話</label>
+                                    <input
+                                        type="phone"
+                                        className="input-style"
+                                        id="phone"
+                                        name="phone"
+                                        value={phone}
+                                        placeholder="0955123456"
+                                        onChange={(e) => {
+                                            setPhone(e.target.value);
+                                        }}
+                                    ></input>
+                                </div>
+                                <div className="items-center pt-2 mb-6">
+                                    <label for="email">信箱</label>
+                                    <input
+                                        type="email"
+                                        className="input-style"
+                                        id="email"
+                                        name="email"
+                                        value={email}
+                                        placeholder="jen@isport.com"
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                        }}
+                                    ></input>
+                                </div>
+                                <div className="items-center pt-2 mb-6">
+                                    <label for="address">住家地址</label>
+                                    <input
+                                        type="text"
+                                        className="input-style"
+                                        id="address"
+                                        name="address"
+                                        value={address}
+                                        placeholder="桃園市平鎮區中央路123號"
+                                        onChange={(e) => {
+                                            setAddress(e.target.value);
+                                        }}
+                                    ></input>
+                                </div>
+                                <div className="items-center pt-2 mb-6">
+                                    <label for="delivery">寄送方式</label>
+                                    <select
+                                        type="text"
+                                        className="input-style"
+                                        id="delivery"
+                                        name="delivery"
+                                        value={delivery}
+                                        onChange={(e) => {
+                                            setDelivery(e.target.value);
+                                        }}
+                                    >
+                                        <option value="1">郵寄</option>
+                                        <option value="2">宅急便</option>
+                                        <option value="3">超商貨到付款</option>
+                                    </select>
+                                </div>
+                            </from>
+                            <div className="flex flex-row justify-center">
+                                <button
+                                    type="submit"
+                                    onClick={() => {
+                                        handleSubmit();
+                                    }}
+                                >
+                                    <Link
+                                        to="/checkout2"
+                                        className="btn-yellow flex flex-row justify-end items-center"
+                                    >
+                                        <p className="font-bold sm:text-xl text-lg">
+                                            下一步
+                                        </p>
+                                    </Link>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </main>
             ) : (
                 <NotAuth />
             )}
