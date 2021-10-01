@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const ArticleNav = () => {
     return (
-        <nav className="bg-gray-900 flex justify-center">
+        <nav className="bg-gray-900 flex justify-center text-white">
             <NavLink
                 to="/articles"
                 activeClassName="selected"
@@ -31,7 +31,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36 text-white text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                    className=" w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     有氧運動
@@ -43,10 +43,11 @@ const ArticleNav = () => {
                 activeStyle={{
                     fontWeight: 'bold',
                     borderBottom: '2px solid #FBBF24',
+                    color: '#FBBF24',
                 }}
             >
                 <div
-                    className=" w-36 text-white text-center
+                    className=" w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -59,10 +60,11 @@ const ArticleNav = () => {
                 activeStyle={{
                     fontWeight: 'bold',
                     borderBottom: '2px solid #FBBF24',
+                    color: '#FBBF24',
                 }}
             >
                 <div
-                    className=" w-36 text-white text-center
+                    className=" w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -75,10 +77,11 @@ const ArticleNav = () => {
                 activeStyle={{
                     fontWeight: 'bold',
                     borderBottom: '2px solid #FBBF24',
+                    color: '#FBBF24',
                 }}
             >
                 <div
-                    className=" w-36 text-white text-center
+                    className=" w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -91,10 +94,11 @@ const ArticleNav = () => {
                 activeStyle={{
                     fontWeight: 'bold',
                     borderBottom: '2px solid #FBBF24',
+                    color: '#FBBF24',
                 }}
             >
                 <div
-                    className=" w-36 text-white text-center
+                    className=" w-36 text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >

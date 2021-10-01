@@ -33,9 +33,13 @@ function UserAside() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         formData.append('photo', photo);
-        let response = await axios.post(`${API_URL}/auth/photo`, formData, {
-            withCredentials: true,
-        });
+        let response = await axios.put(
+            `${API_URL}/users/photo/${member.account}`,
+            formData,
+            {
+                withCredentials: true,
+            }
+        );
         try {
             alert('頭像上傳成功');
         } catch (e) {

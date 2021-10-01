@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/核心/core-1.jpg';
 import ArticleNav from './components/ArticleNav';
-import Article from './components/Article';
+import ArticleOutSide from './components/ArticleOutSide';
 import { Link, withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
-function ArticleAerobicExercise(props) {
+import { FaSearch } from 'react-icons/fa';
+function ArticleAerobicExercise({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -18,6 +19,7 @@ function ArticleAerobicExercise(props) {
                 let data = res.data;
                 console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
                 // setError(null);
             } catch (e) {
@@ -28,7 +30,47 @@ function ArticleAerobicExercise(props) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
+    const [term, setTerm] = useState('');
+    //最新上傳sort() 方法用原地算法对数组的元素进行排序，并返回数组replace正規表達式
+    const handleUpdateButton = () => {
+        let newArticles = data.sort(
+            (a, b) =>
+                b.upload_date.replace(/-/gi, '') -
+                a.upload_date.replace(/-/gi, '')
+        );
+        //組成一個新陣列
+        setData([...newArticles]);
+    };
+    //最多觀看
+    const handleViewsButton = () => {
+        let newArticles = data.sort((a, b) => b.views - a.views);
+        //組成一個新陣列
+        setData([...newArticles]);
+    };
+    //搜尋filter() 用在搜尋符合條件的資料，會回傳一個陣列。
+    //indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
+        );
+        //組成一個新陣列
+        setData([...newArticles]);
+    };
+    //如果搜尋是空的話顯示所有allData
+    const handleEmpty = (e) => {
+        if (e.target.value === '') setData(allData);
+    };
+    //nav
+
+    const [category, setCategory] = useState(0);
+
+    const changeCategory = (e) => {
+        setCategory(e.target.dataset.id);
+    };
     return (
         <>
             <div>
@@ -49,13 +91,55 @@ function ArticleAerobicExercise(props) {
                     </div>
                 </div>
                 <div className="sticky top-0 z-40">
-                    <ArticleNav />
+                    <ArticleNav cat={changeCategory} />
                 </div>
-                <main className="max-w-screen-2xl mx-auto p-6">
-                    <div className="w-4/5 m-auto">
+                <main className="max-w-screen-2xl mx-auto">
+                    {/* Buttons & Search */}
+                    <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
+                        <div className="flex mb-2.5 xs:mb-0">
+                            <button
+                                className="btn-gray-sm mr-4"
+                                onClick={handleUpdateButton}
+                            >
+                                最新上傳
+                            </button>
+                            <button
+                                className="btn-yellow-sm mr-4"
+                                onClick={handleViewsButton}
+                            >
+                                最多觀看
+                            </button>
+                        </div>
+                        <form
+                            className="relative flex"
+                            onSubmit={(e) => handleSearch(e)}
+                        >
+                            <input
+                                type="text"
+                                className="placeholder-white text-white bg-gray-700 border border-solid border-gray-700
+                                    text-base px-4 py-1.5 rounded-full outline-none ease-linear
+                                    transition-all duration-150 w-full xs:w-56 xs:focus:w-60 sm:w-80 sm:focus:w-96 focus:placeholder-gray-400
+                                    "
+                                value={term}
+                                onChange={(e) => setTerm(e.target.value)}
+                                onKeyUp={(e) => handleEmpty(e)}
+                                placeholder="搜尋"
+                            />
+                            <button
+                                type="submit"
+                                className="absolute right-0 top-0 flex text-xl m-1 p-1.5 transform -translate-y-px"
+                            >
+                                <FaSearch className="hover:text-white text-gray-200" />
+                            </button>
+                        </form>
+                    </div>
+                    <div className="w-3/4 m-auto">
                         {data &&
                             data.map((article) => (
-                                <Article article={article} key={article.id} />
+                                <ArticleOutSide
+                                    article={article}
+                                    key={article.id}
+                                />
                             ))}
                     </div>
                 </main>

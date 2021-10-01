@@ -8,39 +8,49 @@ import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticlePatch() {
+function ArticleEdit({ onHide, show, post, status }) {
     const { member, setMember } = useAuth();
     const { id } = useParams();
-    const [article_name, setarticle_name] = useState('');
-    const [added_by, setadded_by] = useState('');
-    const [content, setcontent] = useState('');
-    const [category, setcategory] = useState('');
-    // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState('');
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const formData = new FormData();
-            formData.append('article_name', article_name);
-            formData.append('added_by', added_by);
-            // formData.append('upload_date', upload_date);
-            formData.append('category', category);
-            formData.append('content', content);
-            formData.append('photos', photos);
-            let response = await axios.post(
-                `${API_URL}/articles/Update/${id}`,
-                formData,
-                {
-                    withCredentials: true,
-                }
-            );
-            alert('修改文章成功');
-            console.log(response);
-        } catch (e) {
-            console.error(e.response);
-        }
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const newPost = {
+        article_name: '',
+        title: '',
+        content: '',
+        category: '',
+        photos: '',
     };
+    const [fields, updatedFields] = useState(post ? post : newPost);
+    // 處理每個欄位的變動
+    const handleFieldChange = (e) => {
+        // 更新輸入欄位的變動
+        // 用新輸入的屬性值和原物件作合併
+        updatedFields({
+            ...fields,
+            [e.target.name]: e.target.value,
+        });
+        // setFields(updatedFields)
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formdata = new FormData(e.target);
+    };
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
+                let data = res.data;
+                setData(data);
+                setError(null);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    });
+
     return (
         <>
             {member ? (
@@ -48,7 +58,7 @@ function ArticlePatch() {
                     <Aside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
-                            新增文章
+                            修改文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <from onSubmit={handleSubmit}>
@@ -64,9 +74,11 @@ function ArticlePatch() {
                                     id="article_name"
                                     placeholder="最多50字"
                                     required
-                                    value={article_name}
+                                    //只要判斷一下 ThisPost 有沒有值，有的話就把值放進去
+                                    value={fields && fields.article_name}
+                                    //添加 onChange 來改變值
                                     onChange={(e) => {
-                                        setarticle_name(e.target.value);
+                                        handleFieldChange(e, 'article_name');
                                     }}
                                 ></input>
                                 <br />
@@ -75,9 +87,9 @@ function ArticlePatch() {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={category}
+                                    value={fields && fields.category}
                                     onChange={(e) => {
-                                        setcategory(e.target.value);
+                                        handleFieldChange(e, 'category');
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
@@ -85,11 +97,11 @@ function ArticlePatch() {
                                     <option value="1">有氧運動</option>
                                     <option value="2">重量訓練</option>
                                     <option value="3">間歇訓練</option>
-                                    <option value="4">核心強化</option>
-                                    <option value="5">增肌飲食</option>
+                                    <option value="5">核心強化</option>
+                                    <option value="4">增肌飲食</option>
                                 </select>
                                 <br />
-                                <label htmlFor="added_by">標題：</label>
+                                <label htmlFor="title">標題：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
                                 </span>
@@ -97,12 +109,12 @@ function ArticlePatch() {
                                 <input
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="added_by"
-                                    id="added_by"
+                                    name="title"
+                                    id="title"
                                     placeholder="最多100字"
-                                    value={added_by}
+                                    value={fields && fields.title}
                                     onChange={(e) => {
-                                        setadded_by(e.target.value);
+                                        handleFieldChange(e, 'title');
                                     }}
                                 />
                                 <br />
@@ -113,8 +125,9 @@ function ArticlePatch() {
                                     type="file"
                                     name="photos"
                                     id="photos"
+                                    value={fields && fields.photos}
                                     onChange={(e) => {
-                                        setPhotos(e.target.files[0]);
+                                        handleFieldChange(e, 'photos');
                                     }}
                                 />
                                 <br />
@@ -134,7 +147,7 @@ function ArticlePatch() {
                                 setcontent(e.target.value);
                             }}
                         /> */}
-                                <Editor
+                                {/* <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
@@ -151,16 +164,18 @@ function ArticlePatch() {
                                                 .getPlainText()
                                         );
                                     }}
-                                />
+                                /> */}
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
-                                        onClick={handleSubmit}
+                                        onClick={() =>
+                                            console.log('送出', fields)
+                                        }
                                     >
                                         <p className="font-bold text-xl mx-2">
-                                            新增
+                                            修改
                                         </p>
                                     </button>
                                 </div>
@@ -175,4 +190,4 @@ function ArticlePatch() {
     );
 }
 
-export default ArticlePatch;
+export default ArticleEdit;

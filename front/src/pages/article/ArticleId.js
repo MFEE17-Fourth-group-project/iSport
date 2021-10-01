@@ -28,7 +28,7 @@ function ArticleId(props) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/${id}`);
+                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
                 let data = res.data;
                 setData(data);
                 setError(null);
@@ -43,15 +43,8 @@ function ArticleId(props) {
     return (
         <>
             <div className="">
-                <img
-                    className="object-cover w-full h-44 xs:h-64 sm:h-72 md:h-96 lg:h-112"
-                    src={ArticleHeader}
-                    alt=""
-                />
-                <div className="sticky top-0 z-40">
-                    <ArticleNav />
-                </div>
-                <main className="w-full md:w-8/12 mx-auto flex">
+                <div className="sticky top-0 z-40"></div>
+                <main className="w-full md:w-10/12 mx-auto flex">
                     <div className="mx-8">
                         <div className="">
                             {data &&

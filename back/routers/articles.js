@@ -6,10 +6,27 @@ const multer = require("multer");
 const path = require("path");
 const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
-// const { uuid } = require('uuidv4');
-//顯示多筆
-router.get("/Read", async (req, res, next) => {
-  let result = await connection.queryAsync("SELECT * FROM article");
+const { uuid } = require("uuidv4");
+
+//顯示多筆分類// 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
+router.get("/Read/AerobicExercise", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM article WHERE valid=1 AND category=1"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString() //toISOString() 方法可以使用ISO标准将 Date 对象转换为字符串
+        .slice(0, 16) //提取字符串的某个部分，并以新的字符串返回被提取的部分
+        .replace(/:/gi, "") //正規表達式
+        .replace("T", ""))
+  );
+  res.json(result);
+});
+router.get("/Read/WeightTraining", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM article WHERE valid=1 AND category=2"
+  );
   result.map(
     (article) =>
       (article.upload_date = article.upload_date
@@ -20,51 +37,72 @@ router.get("/Read", async (req, res, next) => {
   );
   res.json(result);
 });
-//顯示多筆分類
-router.get("/Read/AerobicExercise", async (req, res, next) => {
-  let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=1"
-    // 'SELECT user_order.recipient, article.added_by, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
-  );
-  res.json(result);
-});
-router.get("/Read/WeightTraining", async (req, res, next) => {
-  let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=2"
-  );
-  res.json(result);
-});
 router.get("/Read/TABATATraining", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=3"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
   );
   res.json(result);
 });
 router.get("/Read/CoreStrength", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=4"
+    "SELECT * FROM article WHERE valid=1 AND category=5"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
   );
   res.json(result);
 });
 router.get("/Read/LeanBulking", async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE valid=1 AND category=5"
+    "SELECT * FROM article WHERE valid=1 AND category=4"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
   );
   res.json(result);
 });
+//顯示我的文章
+router.get("/Read/MyArticle", async (req, res, next) => {
+  let name = "沙拉";
+  let result = await connection.queryAsync(
+    "SELECT * FROM article WHERE article_name=?",
+    [name]
+  );
+  console.log(result);
+  res.json(result);
+});
 //顯示單筆
-router.route("/:id").get(async (req, res, next) => {
+router.route("/Read/:id").get(async (req, res, next) => {
   let articleId = req.params.id;
   let result = await connection.queryAsync("SELECT * FROM article WHERE id=?", [
     articleId,
   ]);
   res.json(result);
 });
+
 //新增
 //資料驗證
 const { body, validationResult } = require("express-validator");
 const registerRules = [
-  body("added_by").isLength({ max: 100 }).withMessage("最多100字"),
+  body("title").isLength({ max: 100 }).withMessage("最多100字"),
   body("article_name").isLength({ max: 50 }).withMessage("最多50字"),
 ];
 //上傳檔案
@@ -76,8 +114,10 @@ const storage = multer.diskStorage({
   },
   //檔案命名
   filename: function (req, file, callback) {
-    console.log(file);
-    callback(null, file.originalname);
+    // console.log(file);
+    // callback(null, file.originalname);
+    const ext = file.originalname.split(".").pop();
+    callback(null, `member-${uuid()}.${ext}`);
   },
 });
 const uploader = multer({
@@ -104,21 +144,23 @@ router.post(
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
+    console.log(req.params);
     try {
+      let filename = req.file ? "" + req.file.filename : "";
       let result = await connection.queryAsync(
-        "INSERT INTO article (article_name, added_by, content, category, photos) VALUES (?);",
+        "INSERT INTO article (article_name, title, content, category, photos) VALUES (?);",
         [
           [
             req.body.article_name,
-            req.body.added_by,
+            req.body.title,
             // req.body.upload_date,
             req.body.content,
             req.body.category,
-            req.body.photos,
+            [filename],
           ],
         ]
       );
-      res.json({ message: "新增文章" });
+      res.json(result);
     } catch (e) {
       console.error(e);
     }
@@ -127,21 +169,22 @@ router.post(
 
 //修改
 // router.patch('/Update/:id', async (req, res, next) => {
-//   let result = await connection.queryAsync("UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?");
+//   let result = await connection.queryAsync("UPDATE article SET article_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?");
 // res.json(result);
 // });
-router.patch(
+router.put(
   "/Update/:id",
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
     try {
       let result = await connection.queryAsync(
-        "UPDATE article SET article_name=?, added_by=?, upload_date=?, content=?, category=? WHERE id=?",
+        "UPDATE article SET  WHERE id=?",
         [
           [
+            req.body.id,
             req.body.article_name,
-            req.body.added_by,
+            req.body.title,
             // req.body.upload_date,
             req.body.content,
             req.body.category,
