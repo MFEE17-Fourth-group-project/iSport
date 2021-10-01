@@ -11,29 +11,58 @@ const cartItemData = async (req, res, next) => {
 
         let cartMap = {};
         myCartFromLocalStorage.map((item) => {
-            cartMap[item.sku_code] = item.qty;
+            cartMap[item.id] = item.qty;
         });
         // console.log("cartMap", cartMap);
-        // cartMap = { '10011015': 2, '10062011': 1, '30013010': 1 }
+        // cartMap = { '15': 1, '53': 2, '176': 1 }
 
-        let skuCodes = myCartFromLocalStorage.map((item) => {
-            return item.sku_code;
+        let skuId = myCartFromLocalStorage.map((item) => {
+            return item.id;
         });
-        // console.log("skuCodes", skuCodes);
-        // skuCodes = [ 10062011, 10011015, 30013010 ]
-        let cartItems = await cartModel.getCartItems(skuCodes);
-        let cartItemImgs = await cartModel.getImgs(skuCodes);
-        let myCart = cartItems.map((item) => {
-            item.qty = cartMap[item.sku_code];
-            item.amount = item.price * cartMap[item.sku_code];
-            item.img = cartItemImgs.find((cartItemImg) => {
-                return item.product_sku_id === cartItemImg.product_sku_id;
-            });
-            // console.log(item);
-            return item;
-        });
+        // console.log("skuId", skuId);
+        // skuId = [ 15, 53, 176 ]
 
-        // TODO: 1. 計算總金額
+        let cartItems = await cartModel.getCartItems(skuId);
+        let cartItemImgs = await cartModel.getImgs(skuId);
+
+        let myCart = await Promise.all(
+            cartItems.map(async (item) => {
+                // TODO: TYPE and TYPEVALUE 更好的方法？
+                let rawSkuGroup = item.sku_group;
+                let strSkuGroup = rawSkuGroup.split(",");
+                let skuGroup = strSkuGroup.map((strSkuGroupValue) =>
+                    parseInt(strSkuGroupValue, 10)
+                );
+                console.log("skuGroup", skuGroup); // [ 3, 8 ]
+
+                let cartItemTypes = await cartModel.getTypeValue(skuGroup);
+                let getTypes = await cartModel.getType();
+                console.log("cartItemType", cartItemTypes);
+                console.log("getType", getTypes);
+
+                cartItemTypes.map((cartItemType) => {
+                    const index = getTypes.findIndex(
+                        (getType) => cartItemType.type_id === getType.id
+                    );
+                    cartItemType.type_name = getTypes[index].name_frontend;
+                    console.log(cartItemType);
+                    return cartItemType;
+                });
+
+                item.typeValue = cartItemTypes;
+                console.log(item.typeValue);
+                item.qty = cartMap[item.product_sku_id];
+                item.amount = item.price * cartMap[item.product_sku_id];
+                item.img = cartItemImgs.find((cartItemImg) => {
+                    return item.product_sku_id === cartItemImg.product_sku_id;
+                });
+                return item;
+            })
+        );
+
+        console.log("mycart", myCart);
+
+        // 1. 計算總金額
         let totalAmount = 0;
         myCart.forEach((item) => {
             totalAmount += item.amount;
@@ -48,7 +77,7 @@ const cartItemData = async (req, res, next) => {
 
 const cartItemImg = async (req, res, next) => {
     try {
-        let cartItemImg = await cartModel.getImg();
+        let cartItemImg = await cartModel.getImgs([1, 5, 10]);
         console.log(cartItemImg);
         res.json({ cartItemImg });
     } catch (e) {
@@ -56,4 +85,54 @@ const cartItemImg = async (req, res, next) => {
     }
 };
 
-module.exports = { cartItemData, cartItemImg };
+const userData = async (req, res, next) => {
+    try {
+        // FIXME: let member = req.session.member.account;
+        let result = await cartModel.getUserData("admin1");
+        res.json(result);
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const cartItemType = async (req, res, next) => {
+    try {
+        let cartItemType = await cartModel.getTypeValue([3, 8]);
+        // [
+        //     {
+        //       "type_id": 1,
+        //       "type_value": "黑色"
+        //     },
+        //     {
+        //       "type_id": 2,
+        //       "type_value": "S"
+        //     }
+        // ]
+
+        let getType = await cartModel.getType();
+        // [
+        //     {
+        //       "id": 1,
+        //       "name_frontend": "顏色",
+        //       "name_backend": "color"
+        //     },
+        //     {
+        //       "id": 2,
+        //       "name_frontend": "尺寸",
+        //       "name_backend": "size"
+        //     },...
+        // ]
+
+        cartItemType.map((item) => {
+            const index = getType.findIndex(
+                (typeItem) => item.type_id === typeItem.id
+            );
+            item.type_name = getType[index].name_frontend;
+        });
+        res.json({ cartItemType });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+module.exports = { cartItemData, cartItemImg, cartItemType, userData };
