@@ -8,7 +8,7 @@ import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticleEdit({ onHide, show, post, status }) {
+function ArticleEdit(props) {
     const { member, setMember } = useAuth();
 
     return (
@@ -34,7 +34,9 @@ function ArticleEdit({ onHide, show, post, status }) {
                             // onChange={(e) => {
                             //     handleFieldChange(e, 'article_name');
                             // }}
-                        ></input>
+                        >
+                            {props.pData}
+                        </input>
                         <br />
                         <label htmlFor="category">分類：</label>
                         <br />

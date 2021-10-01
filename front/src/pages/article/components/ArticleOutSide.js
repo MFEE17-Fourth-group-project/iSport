@@ -36,20 +36,7 @@ const ArticleOutSide = (props) => {
                                 {article.views}
                             </h4>
                         </div>
-                        <div className="flex items-center">
-                            <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                {article.views}
-                            </span>
-                            <FaShare className="text-yellow-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                分享
-                            </span>
-                            <FaRegHeart className="text-red-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                收藏
-                            </span>
-                        </div>
+                        <div className="flex items-center"></div>
                     </div>
                     <div className="m-2">
                         <p

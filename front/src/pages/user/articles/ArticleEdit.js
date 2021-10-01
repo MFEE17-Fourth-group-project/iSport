@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 function ArticleEdit(props) {
     const { member, setMember } = useAuth();
     const { id } = useParams();
+    const [pData, setPData] = useState('父母元件資料');
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
@@ -41,6 +42,7 @@ function ArticleEdit(props) {
                                 <ArticleEditItem
                                     article={article}
                                     key={article.id}
+                                    pData={pData}
                                 />
                             ))}
                     </article>
