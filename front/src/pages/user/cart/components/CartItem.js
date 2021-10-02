@@ -99,12 +99,10 @@ function CartItem(props) {
             }
         }
         checkLocalStorage();
-
         console.log(`aaa`, newMyCartDisplay);
         if (newMyCartDisplay.length > 0) {
             getDataFromServer(newMyCartDisplay);
         }
-
         cartAdd();
     }, [myCart]);
 

@@ -15,9 +15,10 @@ function Cart(props) {
     const checkLocalStorage = () => {
         // 顯示購物車沒有商品
         const cartInLocalStorage = localStorage.getItem('cart');
-        const itemInLocalStorage = JSON.parse(cartInLocalStorage).length;
-        // alert(itemInLocalStorage);
-        if (!cartInLocalStorage || itemInLocalStorage === 0) {
+        if (
+            !cartInLocalStorage ||
+            JSON.parse(cartInLocalStorage).length === 0
+        ) {
             setShowNoItem(true);
         }
 
