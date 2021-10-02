@@ -88,10 +88,10 @@ function ArticleId(props) {
                                     </div>
                                 </div>
                             </div>
+                            {/* <Comment />
                             <Comment />
                             <Comment />
-                            <Comment />
-                            <Comment />
+                            <Comment /> */}
                         </div>
                     </div>
 
@@ -101,19 +101,11 @@ function ArticleId(props) {
                                 推薦文章
                             </h3>
                             <SuggestArtCol />
-                            <SuggestArtCol />
-                            <SuggestArtCol />
-                            <SuggestArtCol />
-                            <SuggestArtCol />
                         </div>
                         <div>
                             <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 mt-8">
                                 推薦影片
                             </h3>
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
                             <SuggestVideoCol />
                         </div>
                     </div>

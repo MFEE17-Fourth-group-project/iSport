@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import L from '../../../node_modules/leaflet';
+import { WrldMap } from 'wrld-react';
 
 class GymMap extends Component {
     //地圖
@@ -49,7 +50,6 @@ class GymMap extends Component {
         ) {
             // 引入地圖
             this.mymap.setView([this.props.lat, this.props.lng], 18);
-
             //修改
             L.popup()
                 .setLatLng([this.props.lat, this.props.lng]) //設置彈出窗口將打開的地理點。
@@ -66,7 +66,19 @@ class GymMap extends Component {
     render() {
         return (
             <>
-                <div id="mapid" style={{ height: '100%', width: '100%' }} />
+                <WrldMap
+                    apiKey={'1a8fa4272abbebc6f73c74d65e8ecf63'}
+                    containerStyle={{
+                        width: '600px',
+                        height: '400px',
+                    }}
+                    mapOptions={{
+                        center: [41.882276, -87.629201],
+                        indoorsEnabled: true,
+                    }}
+                >
+                    <div id="mapid" style={{ height: '100%', width: '100%' }} />
+                </WrldMap>
             </>
         );
     }
