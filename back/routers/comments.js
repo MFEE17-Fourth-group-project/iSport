@@ -23,7 +23,17 @@ router.post('/', SignInCheckMiddleware, async (req, res, next) => {
 
 router.route('/:commentId')
     .put(SignInCheckMiddleware, async (req, res, next) => {
-        console.log(req.params);
+        let { id: videoId, commentId } = req.params;
+        let newComment = req.body.newComment;
+        let result = await connection.queryAsync(
+            'UPDATE comment_video SET content=? WHERE id=? AND video_id=?',
+            [newComment, commentId, videoId]
+        );
+        result = await connection.queryAsync(
+            'SELECT u.name as username, c.id, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+            [videoId]
+        );
+        res.json(result);
     })
 
     .delete(SignInCheckMiddleware, async (req, res, next) => {
