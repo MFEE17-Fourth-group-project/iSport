@@ -44,9 +44,10 @@ function App() {
         // 每次重新整理或開啟頁面時，都去確認一下是否在已經登入的狀態。
         const getMember = async () => {
             try {
-                let result = await axios.get(`${API_URL}/users/resect`, {
+                let result = await axios.get(`${API_URL}/users/reset`, {
                     withCredentials: true,
                 });
+                console.log(result.data);
                 setMember(result.data);
             } catch (e) {}
         };
