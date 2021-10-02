@@ -14,7 +14,7 @@ function ArticleMyart({ article, handleDelete, props }) {
     const { id } = useParams();
     const [data, setData] = useState([
         article.title,
-        article.article_name,
+        article.user_name,
         article.upload_date,
         article.views,
     ]);
@@ -42,7 +42,7 @@ function ArticleMyart({ article, handleDelete, props }) {
                         <div className="flex items-center">
                             <BsFillPersonFill className="text-yellow-400 mr-1 cursor-pointer" />
                             <h4 className="text-sm text-white mr-4">
-                                {article.article_name}
+                                {article.user_name}
                             </h4>
                             <FaClock className="text-yellow-400 mr-1" />
                             <h4 className="text-xs text-white mr-4">

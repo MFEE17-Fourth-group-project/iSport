@@ -15,7 +15,7 @@ function ArticleEdit({ post, props }) {
     //把資料都放進去
     const [error, setError] = useState(null);
     const newPost = {
-        article_name: '',
+        user_name: '',
         title: '',
         content: '',
         category: '',
@@ -26,8 +26,8 @@ function ArticleEdit({ post, props }) {
     const changePost = (e, dataType) => {
         const updatePost = Object.assign({}, fields); //單層拷貝
         switch (dataType) {
-            case 'article_name':
-                updatePost.article_name = e.target.value;
+            case 'user_name':
+                updatePost.user_name = e.target.value;
                 break;
             case 'title':
                 updatePost.title = e.target.value;
@@ -88,7 +88,7 @@ function ArticleEdit({ post, props }) {
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <from onSubmit={handleSubmit}>
-                                <label htmlFor="article_name">作者：</label>
+                                <label htmlFor="user_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
                                 </span>
@@ -96,15 +96,15 @@ function ArticleEdit({ post, props }) {
                                 <input
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="article_name"
-                                    id="article_name"
+                                    name="user_name"
+                                    id="user_name"
                                     placeholder="最多50字"
                                     required
                                     //只要判斷一下有沒有值，有的話就把值放進去
-                                    value={fields && fields.article_name}
+                                    value={fields && fields.user_name}
                                     //添加 onChange 來改變值
                                     onChange={(e) => {
-                                        changePost(e, 'article_name');
+                                        changePost(e, 'user_name');
                                     }}
                                 ></input>
                                 <br />
