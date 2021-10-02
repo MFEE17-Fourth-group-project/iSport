@@ -59,7 +59,7 @@ function SignIn(props) {
         return <Redirect to="/user" />;
     }
     return (
-        <form className="w-screen h-screen fixed z-0" onSubmit={handleSubmit}>
+        <form className="w-screen h-screen fixed z-10" onSubmit={handleSubmit}>
             <div
                 id="module"
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2

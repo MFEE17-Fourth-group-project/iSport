@@ -8,6 +8,7 @@ import NotAuth from '../components/NotAuth';
 
 function Cart(props) {
     const { member, setMember } = useAuth();
+    const [totalAmount, setTotalAmount] = useState(0);
     const showNoItemRef = useRef('');
     const hideItemRef = useRef('');
 
@@ -22,29 +23,29 @@ function Cart(props) {
         }
 
         // FIXME: 預設 localStorage 資料，之後刪掉
-        localStorage.setItem(
-            'cart',
-            JSON.stringify([
-                {
-                    id: 1,
-                    product_id: 43,
-                    sku_code: 10062011,
-                    qty: 1,
-                },
-                {
-                    id: 2,
-                    product_id: 5,
-                    sku_code: 10011015,
-                    qty: 2,
-                },
-                {
-                    id: 3,
-                    product_id: 24,
-                    sku_code: 30013010,
-                    qty: 1,
-                },
-            ])
-        );
+        // localStorage.setItem(
+        //     'cart',
+        //     JSON.stringify([
+        //         {
+        //             id: 15,
+        //             product_id: 1,
+        //             sku_code: 10011035,
+        //             qty: 1,
+        //         },
+        //         {
+        //             id: 53,
+        //             product_id: 10,
+        //             sku_code: 10082002,
+        //             qty: 2,
+        //         },
+        //         {
+        //             id: 176,
+        //             product_id: 39,
+        //             sku_code: 40090022,
+        //             qty: 1,
+        //         },
+        //     ])
+        // );
 
         // 初始化：一開始開啟這個網站時，取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
         const newCart = localStorage.getItem('cart') || '[]';
@@ -76,11 +77,13 @@ function Cart(props) {
                             className="text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl"
                         >
                             {/* 購物車商品卡片 */}
-                            <CartItem />
+                            <CartItem setTotalAmount={setTotalAmount} />
 
                             <div className="pt-2.5 mt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                                {/* <p className="text-lg font-bold">Total :</p>
-                            <span className="text-lg font-bold">1400</span> */}
+                                <p className="text-lg font-bold">Total : $ </p>
+                                <span className="text-lg font-bold">
+                                    {totalAmount}
+                                </span>
                             </div>
                             <div className="flex flex-row justify-end">
                                 <Link
