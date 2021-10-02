@@ -63,7 +63,7 @@ router.route('/:id')
             [videoId]
         );
         let commentResult = await connection.queryAsync(
-            'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+            'SELECT u.name as username, c.id, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
             [videoId]
         );
         result[0].wasLiked = wasLiked;
@@ -72,32 +72,42 @@ router.route('/:id')
         res.json(result[0]);
     })
     .patch(SignInCheckMiddleware, async (req, res, next) => {
-        let videoId = req.params.id;
-        let userAccount = req.session.member.account;
+        try {
+            let videoId = req.params.id;
+            let userAccount = req.session.member.account;
+            console.log(videoId, userAccount);
 
-        // Handle Like Button
-        if (req.body.like) {
-            if (req.body.like === 'dislike') {
-                let result = await connection.queryAsync(
-                    'DELETE FROM user_like WHERE user_account=? AND video_id=?',
-                    [userAccount, videoId]
-                );
-                result = await connection.queryAsync(
-                    'UPDATE video_file SET likes=likes-1 WHERE id=?',
-                    [videoId]
-                );
-                res.json(result.affectedRows);
-            } else {
-                let result = await connection.queryAsync(
-                    'INSERT INTO user_like SET user_account=?, video_id=?',
-                    [userAccount, videoId]
-                );
-                result = await connection.queryAsync(
-                    'UPDATE video_file SET likes=likes+1 WHERE id=?',
-                    [videoId]
-                );
-                res.json(result.affectedRows);
+            // Handle Like Button
+            if (req.body.like) {
+                if (req.body.like === 'dislike') {
+                    let result = await connection.queryAsync(
+                        'DELETE FROM user_like WHERE user_account=? AND video_id=?',
+                        [userAccount, videoId]
+                    );
+                    console.log(1, result);
+
+                    result = await connection.queryAsync(
+                        'UPDATE video_file SET likes=likes-1 WHERE id=?',
+                        [videoId]
+                    );
+                    console.log(2, result);
+                    res.json(result.affectedRows);
+                } else {
+                    let result = await connection.queryAsync(
+                        'INSERT INTO user_like SET user_account=?, video_id=?',
+                        [userAccount, videoId]
+                    );
+                    console.log(1, result);
+                    result = await connection.queryAsync(
+                        'UPDATE video_file SET likes=likes+1 WHERE id=?',
+                        [videoId]
+                    );
+                    console.log(2, result);
+                    res.json(result.affectedRows);
+                }
             }
+        } catch (e) {
+            console.log(e);
         }
 
         // Handle Collection Button
