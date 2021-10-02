@@ -85,6 +85,7 @@ router.post("/Signin",async(req,res,next)=>{
         }
         console.log("登入成功")
     let returnMember={
+        id:member.id,
         account:member.account,
         email:member.email,
         name:member.name,

@@ -3,7 +3,7 @@ import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
-import userHeader from '../images/user/pic04.jpg';
+import userHeader from '../images/user/images.png';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
 import axios from 'axios';
@@ -66,6 +66,19 @@ function Nav(props) {
                                     className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
                                     onClick={handleMobileWindow}
                                 >
+                                    {`${member.photo}` !== '' ? (
+                                        <img
+                                            src={`${IMAGE_URL}${member.photo}`}
+                                            alt=""
+                                            className="w-full h-full object-cover object-center"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={userHeader}
+                                            alt=""
+                                            className="w-full h-full object-cover object-center"
+                                        />
+                                    )}
                                     <img
                                         src={`${IMAGE_URL}${member.photo}`}
                                         alt=""

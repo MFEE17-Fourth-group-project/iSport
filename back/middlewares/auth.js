@@ -27,7 +27,8 @@ module.exports={
             
         }else{
             next();
+            console.log("通過驗證")
         }
-        console.log("通過驗證")
+
     },
 };

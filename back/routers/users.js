@@ -54,6 +54,7 @@ router.get("/reset",async(req,res,next)=>{
       );
       member = member[0];
   let resetMember={
+      id:member.id,
     account:member.account,
     email:member.email,
     name:member.name,
