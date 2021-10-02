@@ -7,22 +7,11 @@ const cartController = require("../controller/cartController");
 // api/cart 取得 database product_sku jon product join brand 的資料
 router.post("/", cartController.cartItemData);
 
-router.post("/checkedItem", async (req, res, next) => {
-    try {
-        let result = await connection.queryAsync(
-            `SELECT product_sku.id AS product_sku_id, sku_code, product_sku.price AS price,
-                    product.id AS product_id, product.name AS product_name,
-                    brand.name AS brand_name
-            FROM product
-            LEFT JOIN product_sku ON product.id=product_sku.product_id
-            LEFT JOIN brand ON product.brand=brand.id
-        `
-        );
+router.get("/img", cartController.cartItemImg); // FIXME: method 改回 post (前後端)
 
-        res.json({ result });
-    } catch (e) {
-        console.error(e);
-    }
-});
+router.get("/type", cartController.cartItemType); // FIXME: method 改回 post
+
+router.post("/userData", cartController.userData); // FIXME: method 改回 post
+
 
 module.exports = router;

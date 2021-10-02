@@ -7,24 +7,19 @@ const path = require("path");
 const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
 const { uuid } = require("uuidv4");
-//顯示多筆
-// router.get("/Read", async (req, res, next) => {
-//   let result = await connection.queryAsync("SELECT * FROM article");
-//   result.map(
-//     (article) =>
-//       (article.upload_date = article.upload_date
-//         .toISOString()
-//         .slice(0, 16)
-//         .replace(/:/gi, "")
-//         .replace("T", ""))
-//   );
-//   res.json(result);
-// });
-//顯示多筆分類
+
+//顯示多筆分類// 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
 router.get("/Read/AerobicExercise", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=1"
-    // 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString() //toISOString() 方法可以使用ISO标准将 Date 对象转换为字符串
+        .slice(0, 16) //提取字符串的某个部分，并以新的字符串返回被提取的部分
+        .replace(/:/gi, "") //正規表達式
+        .replace("T", ""))
   );
   res.json(result);
 });
@@ -32,11 +27,27 @@ router.get("/Read/WeightTraining", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=2"
   );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
+  );
   res.json(result);
 });
 router.get("/Read/TABATATraining", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=3"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
   );
   res.json(result);
 });
@@ -44,11 +55,27 @@ router.get("/Read/CoreStrength", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=5"
   );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
+  );
   res.json(result);
 });
 router.get("/Read/LeanBulking", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=4"
+  );
+  result.map(
+    (article) =>
+      (article.upload_date = article.upload_date
+        .toISOString()
+        .slice(0, 16)
+        .replace(/:/gi, "")
+        .replace("T", ""))
   );
   res.json(result);
 });
@@ -145,7 +172,7 @@ router.post(
 //   let result = await connection.queryAsync("UPDATE article SET article_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?");
 // res.json(result);
 // });
-router.patch(
+router.put(
   "/Update/:id",
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料

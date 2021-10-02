@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2021-08-22 10:13:05
+-- 主機： localhost
+-- 產生時間： 2021 年 10 月 01 日 18:43
 -- 伺服器版本： 10.4.19-MariaDB
--- PHP 版本： 8.0.7
+-- PHP 版本： 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mffee7_4_db`
+-- 資料庫： `iSport`
 --
 
 -- --------------------------------------------------------
@@ -29,20 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user_like` (
   `id` int(6) UNSIGNED NOT NULL,
-  `user_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `comment_id` int(6) NOT NULL,
-  `video_id` int(6) UNSIGNED NOT NULL,
-  `product_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `article_id` tinyint(4) NOT NULL
+  `user_account` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment_id` int(6) DEFAULT NULL,
+  `video_id` int(6) UNSIGNED DEFAULT NULL,
+  `product_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `article_id` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `user_like`
 --
 
-INSERT INTO `user_like` (`id`, `user_id`, `comment_id`, `video_id`, `product_id`, `article_id`) VALUES
-(1, '1', 0, 0, '', 1),
-(2, '2', 0, 0, '', 2);
+INSERT INTO `user_like` (`id`, `user_account`, `comment_id`, `video_id`, `product_id`, `article_id`) VALUES
+(33, 'test01', NULL, 18, NULL, NULL);
 
 --
 -- 已傾印資料表的索引
@@ -62,7 +61,7 @@ ALTER TABLE `user_like`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_like`
 --
 ALTER TABLE `user_like`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

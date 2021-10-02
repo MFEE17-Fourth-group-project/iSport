@@ -17,7 +17,9 @@ let usersRouter = require("./routers/users");
 let productsRouter = require("./routers/products");
 const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
+let commentsRouter = require("./routers/comments");
 
+app.use(express.static("public"));
 
 app.use(express.static('public'));
 // 啟用session
@@ -42,12 +44,6 @@ app.use(
 );
 console.log(process.env.Route_ORIGIN);
 
-// app.use(
-//     expressSession({
-//         secret: process.env.SESSION_SECRET,
-//         resave: false,
-//     })
-// );
 //使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
 //使用這個中間鍵才能解析json資料
@@ -57,6 +53,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // /api/videos
 app.use("/api/videos", videosRouter);
+app.use("/api/videos/:id/comments", commentsRouter);
 // /api/articles
 app.use("/api/articles", articlesRouter);
 // /api/cart
@@ -69,6 +66,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 // /api/authe
 app.use("/api/auth", authRouter);
+
 
 // 顯示來訪
 app.use((req, res, next) => {
