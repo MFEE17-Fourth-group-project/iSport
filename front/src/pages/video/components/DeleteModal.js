@@ -1,4 +1,4 @@
-const DeleteModal = ({ onCancel }) => {
+const DeleteModal = ({ onCancel, onDelete }) => {
 
     return (
         <div
@@ -15,6 +15,7 @@ const DeleteModal = ({ onCancel }) => {
                     >取消</button>
                     <button
                         className="btn-yellow-sm"
+                        onClick={() => onDelete()}
                     >確定</button>
                 </div>
             </div>

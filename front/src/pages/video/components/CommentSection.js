@@ -7,12 +7,11 @@ import { useAuth } from '../../../context/auth';
 import Comment from './Comment';
 import Person2 from './../../../images/person-2.jpg';
 
-const CommentSection = ({ videoId, comments, onDelete }) => {
+const CommentSection = ({ videoId, comments, onDelete, onEdit, currentEdit }) => {
     const { member, setMember } = useAuth();
     const [showSubmit, setShowSubmit] = useState(false);
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState('');
     const [allComment, setAllComment] = useState([]);
-    const [deleteCommentId, setDeleteCommentId] = useState(null);
 
     const submitComment = (e) => {
         e.preventDefault();
@@ -29,10 +28,6 @@ const CommentSection = ({ videoId, comments, onDelete }) => {
     const handleCancelComment = () => {
         setShowSubmit(false);
         setComment('');
-    };
-
-    const handleDeleteButton = () => {
-        onDelete();
     };
 
     useEffect(() => {
@@ -87,7 +82,14 @@ const CommentSection = ({ videoId, comments, onDelete }) => {
                 <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4"> 48 則留言 (登入後即可留言)</span>
             </div>}
 
-            {allComment && <Comment comments={allComment} onDelete={handleDeleteButton} />}
+            {allComment &&
+                <Comment
+                    comments={allComment}
+                    videoId={videoId}
+                    onDelete={onDelete}
+                    onEdit={onEdit}
+                    currentEdit={currentEdit}
+                />}
         </div>
     );
 };

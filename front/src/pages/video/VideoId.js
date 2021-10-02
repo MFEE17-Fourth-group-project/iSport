@@ -35,6 +35,7 @@ const VideoId = () => {
     const [copiedAlert, setCopiedAlert] = useState(false);
     const [collect, setCollect] = useState(false);
     const [comments, setComments] = useState(null);
+    const [currentEdit, setCurrentEdit] = useState(null);
     const [deleteModal, setDeleteModal] = useState(false);
 
     useEffect(() => {
@@ -103,7 +104,7 @@ const VideoId = () => {
         setSignInModal(false);
     };
 
-    const handleDelete = () => {
+    const handleDeleteButton = () => {
         setDeleteModal(true);
     };
 
@@ -111,9 +112,18 @@ const VideoId = () => {
         setDeleteModal(false);
     };
 
+    const handleDelete = () => {
+        let commentId = comments[currentEdit].id;
+        (async function () {
+            let res = await axios.delete(`${API_URL}/videos/${videoId}/comments/${commentId}`,
+                { withCredentials: true });
+            setComments(res.data);
+        })();
+    };
+
     return (
         <>
-            {deleteModal && <DeleteModal onCancel={cancelDelete} />}
+            {deleteModal && <DeleteModal onCancel={cancelDelete} onDelete={handleDelete} />}
             {signInModal && <SignIn onCancel={handleCancel} />}
             <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-3 gap-y-6 items-start">
 
@@ -218,7 +228,7 @@ const VideoId = () => {
                 </div>
 
                 {/* Comment Section */}
-                <CommentSection videoId={videoId} comments={comments} onDelete={handleDelete} />
+                <CommentSection videoId={videoId} comments={comments} onDelete={handleDeleteButton} onEdit={setCurrentEdit} currentEdit={currentEdit} />
             </div>
         </>
     );
