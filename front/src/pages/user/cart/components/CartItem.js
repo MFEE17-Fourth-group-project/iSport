@@ -8,7 +8,7 @@ function CartItem(props) {
     const [error, setError] = useState(null);
     const [myCart, setMyCart] = useState([]);
     const [myCartDisplay, setMyCartDisplay] = useState([]);
-    const { setTotalAmount } = props;
+    const { setTotalAmount, cartAdd, checkLocalStorage } = props;
     let totalAmount = 0;
 
     // 取得 localStorage 中 cart 資料
@@ -98,8 +98,14 @@ function CartItem(props) {
                 newMyCartDisplay = [...newMyCartDisplay, newItem];
             }
         }
+        checkLocalStorage();
 
-        getDataFromServer(newMyCartDisplay);
+        console.log(`aaa`, newMyCartDisplay);
+        if (newMyCartDisplay.length > 0) {
+            getDataFromServer(newMyCartDisplay);
+        }
+
+        cartAdd();
     }, [myCart]);
 
     return (

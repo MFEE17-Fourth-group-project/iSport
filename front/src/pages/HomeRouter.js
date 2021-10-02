@@ -81,7 +81,7 @@ function HomeRouter() {
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart cartAdd={cartAdd}/>
+                            <Cart cartAdd={cartAdd} />
                         </Route>
                         <Route path="/products/productItem/:productId?">
                             <ProductItem cartAdd={cartAdd} />
