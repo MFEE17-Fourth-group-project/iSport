@@ -7,6 +7,7 @@ const path = require("path");
 const connection = require("../utils/db");
 //上傳檔案用的亂數名稱
 const { uuid } = require("uuidv4");
+const { SignInCheckMiddleware } = require("../middlewares/auth");
 
 //顯示多筆分類// 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.article_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
 router.get("/Read/AerobicExercise", async (req, res, next) => {
@@ -80,13 +81,12 @@ router.get("/Read/LeanBulking", async (req, res, next) => {
   res.json(result);
 });
 //顯示我的文章
-router.get("/Read/MyArticle", async (req, res, next) => {
-  let name = "沙拉";
+router.get("/Read/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE article_name=?",
-    [name]
+    [req.session.member.name]
   );
-  console.log(result);
+  console.log(req.session.member.name);
   res.json(result);
 });
 //顯示單筆
@@ -151,7 +151,7 @@ router.post(
         "INSERT INTO article (article_name, title, content, category, photos) VALUES (?);",
         [
           [
-            req.body.article_name,
+            req.session.member.name,
             req.body.title,
             // req.body.upload_date,
             req.body.content,
