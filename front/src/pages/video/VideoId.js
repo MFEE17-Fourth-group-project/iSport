@@ -34,7 +34,7 @@ const VideoId = () => {
     const [signInModal, setSignInModal] = useState(false);
     const [copiedAlert, setCopiedAlert] = useState(false);
     const [collect, setCollect] = useState(false);
-    const [comments, setComments] = useState(null);
+    const [allComment, setAllComment] = useState([]);
     const [currentEdit, setCurrentEdit] = useState(null);
     const [deleteModal, setDeleteModal] = useState(false);
 
@@ -45,7 +45,7 @@ const VideoId = () => {
             setLiked(LikedOrNot);
             let CollectedOrNot = video.wasCollected;
             setCollect(CollectedOrNot);
-            setComments(video.comment);
+            setAllComment(video.comment);
         }
     }, [video]);
 
@@ -113,11 +113,11 @@ const VideoId = () => {
     };
 
     const handleDelete = () => {
-        let commentId = comments[currentEdit].id;
+        let commentId = allComment[currentEdit].id;
         (async function () {
             let res = await axios.delete(`${API_URL}/videos/${videoId}/comments/${commentId}`,
                 { withCredentials: true });
-            setComments(res.data);
+            setAllComment(res.data);
         })();
     };
 
@@ -228,7 +228,14 @@ const VideoId = () => {
                 </div>
 
                 {/* Comment Section */}
-                <CommentSection videoId={videoId} comments={comments} onDelete={handleDeleteButton} onEdit={setCurrentEdit} currentEdit={currentEdit} />
+                <CommentSection
+                    videoId={videoId}
+                    allComment={allComment}
+                    setAllComment={setAllComment}
+                    onDelete={handleDeleteButton}
+                    onEdit={setCurrentEdit}
+                    currentEdit={currentEdit}
+                />
             </div>
         </>
     );

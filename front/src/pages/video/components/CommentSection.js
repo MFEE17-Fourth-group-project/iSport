@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import { FaComments } from "react-icons/fa";
 import axios from 'axios';
-import moment from 'moment';
 import { API_URL } from './../../utils/config';
 import { useAuth } from '../../../context/auth';
 import Comment from './Comment';
 import Person2 from './../../../images/person-2.jpg';
 
-const CommentSection = ({ videoId, comments, onDelete, onEdit, currentEdit }) => {
+const CommentSection = ({ videoId, allComment, setAllComment, onDelete, onEdit, currentEdit }) => {
     const { member, setMember } = useAuth();
     const [showSubmit, setShowSubmit] = useState(false);
     const [comment, setComment] = useState('');
-    const [allComment, setAllComment] = useState([]);
+    const [editValue, setEditValue] = useState('');
 
     const submitComment = (e) => {
+        setShowSubmit(false);
         e.preventDefault();
         (async function () {
             let res = await axios.post(`${API_URL}/videos/${videoId}/comments`, {
@@ -30,9 +30,16 @@ const CommentSection = ({ videoId, comments, onDelete, onEdit, currentEdit }) =>
         setComment('');
     };
 
-    useEffect(() => {
-        setAllComment(comments);
-    }, [comments]);
+    const submitEditComment = () => {
+        let commentId = allComment[currentEdit].id;
+        (async function () {
+            let res = await axios.put(`${API_URL}/videos/${videoId}/comments/${commentId}`, {
+                newComment: editValue.replace(/<[^>]+>/g, '')
+            }
+                , { withCredentials: true });
+            setAllComment(res.data);
+        })();
+    };
 
     return (
         <div className="lg:col-span-2 lg:row-span-2 col-span-full mb-5 xs:mx-0">
@@ -79,16 +86,18 @@ const CommentSection = ({ videoId, comments, onDelete, onEdit, currentEdit }) =>
                 </div>
             </> : <div className="flex items-center mb-7">
                 <FaComments className="text-yellow-400 mr-2.5 text-lg hidden xs:block" />
-                <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4"> 48 則留言 (登入後即可留言)</span>
+                <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4">{allComment && allComment.length + " 則留言"}</span>
             </div>}
 
             {allComment &&
                 <Comment
                     comments={allComment}
-                    videoId={videoId}
                     onDelete={onDelete}
                     onEdit={onEdit}
                     currentEdit={currentEdit}
+                    onSubmit={submitEditComment}
+                    editValue={editValue}
+                    setEditValue={setEditValue}
                 />}
         </div>
     );
