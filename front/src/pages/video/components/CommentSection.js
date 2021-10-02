@@ -7,7 +7,7 @@ import { useAuth } from '../../../context/auth';
 import Comment from './Comment';
 import Person2 from './../../../images/person-2.jpg';
 
-const CommentSection = ({ videoId, comments }) => {
+const CommentSection = ({ videoId, comments, onDelete }) => {
     const { member, setMember } = useAuth();
     const [showSubmit, setShowSubmit] = useState(false);
     const [comment, setComment] = useState();
@@ -25,9 +25,13 @@ const CommentSection = ({ videoId, comments }) => {
         setComment('');
     };
 
-    const handleCancel = () => {
+    const handleCancelComment = () => {
         setShowSubmit(false);
         setComment('');
+    };
+
+    const handleDeleteButton = () => {
+        onDelete();
     };
 
     useEffect(() => {
@@ -61,7 +65,7 @@ const CommentSection = ({ videoId, comments }) => {
                                 <button
                                     className="btn-gray-sm mr-3"
                                     type="button"
-                                    onClick={() => handleCancel()}>取消</button>
+                                    onClick={() => handleCancelComment()}>取消</button>
                                 <button
                                     className="btn-yellow-sm"
                                     type="submit"
@@ -82,7 +86,7 @@ const CommentSection = ({ videoId, comments }) => {
                 <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4"> 48 則留言 (登入後即可留言)</span>
             </div>}
 
-            {allComment && <Comment comments={allComment} />}
+            {allComment && <Comment comments={allComment} onDelete={handleDeleteButton} />}
         </div>
     );
 };
