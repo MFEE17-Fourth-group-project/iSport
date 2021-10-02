@@ -9,7 +9,7 @@ import { Redirect, Link } from 'react-router-dom';
 function SignIn(props) {
     // 控制取得帳號密碼值
     const { member, setMember } = useAuth();
-    const { token, setToken } = useAuth();
+    // const { token, setToken } = useAuth();
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
@@ -32,7 +32,6 @@ function SignIn(props) {
             );
             console.log(result);
             setMember(result.data);
-            console.log(member);
             windowClose();
             // setToken(result.data.token);
         } catch (e) {
@@ -42,24 +41,18 @@ function SignIn(props) {
             // alert(e.response.data.message);
         }
     };
-    //控制成功登入視窗
-    const [SignSucress, setSignSucress] = useState(false);
-    const handleSignSucress = () => {
-        setSignSucress(true);
-    };
-    const handleCancelSignSucress = () => {
-        setSignSucress(false);
-    };
+
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
         setPasswordShown(passwordShown ? false : true);
     };
-    if (member !== null) {
-        return <Redirect to="/user" />;
-    }
+    // 如果有登入member就跳轉到會員中心
+    // if (member !== null) {
+    //     return <Redirect to="/user" />;
+    // }
     return (
-        <form className="w-screen h-screen fixed z-0" onSubmit={handleSubmit}>
+        <form className="w-screen h-screen fixed " onSubmit={handleSubmit}>
             <div
                 id="module"
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
@@ -138,11 +131,7 @@ function SignIn(props) {
                                 </button>
                             </Link>
 
-                            <button
-                                type="submit"
-                                className="btn-yellow"
-                                onClick={handleSignSucress}
-                            >
+                            <button type="submit" className="btn-yellow">
                                 登入
                             </button>
                         </div>

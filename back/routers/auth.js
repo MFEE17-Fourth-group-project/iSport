@@ -57,6 +57,8 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
 });
 
 const jwt =require("jsonwebtoken")
+
+//登入路游
 router.post("/Signin",async(req,res,next)=>{
     // 檢查是否有帳號
     let member =await connection.queryAsync(
@@ -73,7 +75,8 @@ router.post("/Signin",async(req,res,next)=>{
     member=member[0];
         // 檢查密碼是否正確
         let result =await       
-        bcrypt.compare(req.body.password, member.password);
+        bcrypt.compare(req.body.password,member.password);
+        // let result=req.body.password;
         if(!result){
             return next({
                 status:400,
@@ -82,7 +85,6 @@ router.post("/Signin",async(req,res,next)=>{
         }
         console.log("登入成功")
     let returnMember={
-        // id:account.id,
         account:member.account,
         email:member.email,
         name:member.name,

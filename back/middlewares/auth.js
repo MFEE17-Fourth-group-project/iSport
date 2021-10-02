@@ -23,8 +23,13 @@ module.exports={
         if(!req.session.member){
             return next({
                 status:401,
-                mseeage:"請先登入會員",
-            });
+                mseeage:"尚未登入會員",
+            },
+            // res.json({
+            //     status:403,
+            //     message:"請先登入會員",
+            // })
+            );
             
         }else{
             next();

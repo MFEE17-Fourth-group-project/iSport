@@ -46,8 +46,8 @@ const uploader=multer({
 
 // 這一個 router 的路由都會先經過這個中間件
 router.use(SignInCheckMiddleware);
-// 取得特定會員資料
-router.get("/resect",async(req,res,next)=>{
+// 重新整理取得特定會員資料
+router.get("/reset",async(req,res,next)=>{
   let member = await connection.queryAsync(
       "SELECT * FROM users WHERE account=?",
       [req.session.member.account]
@@ -61,7 +61,7 @@ router.get("/resect",async(req,res,next)=>{
     address:member.address,
     birthday:member.birthday,
     gender:member.gender,
-    aboutme:member.aboutme,
+    aboutme:member.about,
     photo:member.photo,
   };
     console.log("刷新頁面")
@@ -72,28 +72,54 @@ router.get("/resect",async(req,res,next)=>{
 
 // 修改會員資料
 router.put("/:account",async(req,res,next)=>{
-    // try{ 
-        console.log(req.body);
-        // let UpDateMemberData =await connection.queryAsync(
-        //     "UPDATE users SET (name,password,email,phone,address,birthday,about,gender)VALUE(?) WHERE account=?",
-        // [[
-        //     req.body.name,
-        //     await bcrypt.hash(req.body.password,10),
-        //     req.body.email,
-        //     req.body.phone,
-        //     req.body.address,
-        //     req.body.birthday,
-        //     req.body.aboutme,
-        //     req.body.gender,
-        // ],[req.params.account]])
-        // res.json({message:"更新資料成功"})
-        // }catch{
-        //     next(
-        //         res.status(400).json({ message: "400 上傳更新失敗!!" })
-        //         )
-        //         console.log("400 上傳更新失敗!!")
-    // }
-});
+        if(req.body.password) {
+            // 如果前端有送密碼來
+            // let bcrtptpasswoord= await bcrypt.hash(req.body.password,10);
+
+            let UpDateMemberData =await connection.queryAsync(
+                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",  
+            [req.body.name,await bcrypt.hash(req.body.password,10),req.body.email,req.body.phone,req.body.address,req.body.birthday,req.body.aboutme,req.body.gender,req.params.account])
+        } else {
+            // 如果是空值
+            let data =await connection.queryAsync("SELECT * FROM users WHERE account=?",[req.body.account]);
+            let getpassword=data.password;
+            let UpDateMemberData =await connection.queryAsync(
+                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",  
+            [req.body.name,getpassword,req.body.email,req.body.phone,req.body.address,req.body.birthday,req.body.aboutme,req.body.gender,req.params.account])
+        }
+       
+
+        try{
+        let newMemberData=await connection.queryAsync("SELECT * FROM users WHERE account=?",[req.body.account]);
+        let returnMember={
+            account:newMemberData.account,
+            email:newMemberData.email,
+            name:newMemberData.name,
+            phone:newMemberData.phone,
+            address:newMemberData.address,
+            birthday:newMemberData.birthday,
+            gender:newMemberData.gender,
+            aboutme:newMemberData.about,
+            photo:newMemberData.photo,
+            password: ""
+        }
+            // req.session.member=returnMember;
+            // res.json(req.session.member);
+            console.log("修改成功");
+        }
+            catch(e){
+                console.log({
+                    status:400,
+                    message:" 更新會員資料失敗",
+                    e: e
+                });
+                res.json({
+                    status:400,
+                    message:"更新會員資料請再試一試",
+                })
+            }
+    }
+);
 
 //會員上傳檔案用路由中間件
 router.put("/photo/:account",uploader.single("photo"),async(req,res,next)=>{
@@ -108,12 +134,17 @@ router.put("/photo/:account",uploader.single("photo"),async(req,res,next)=>{
 
       console.log('上傳更新成功')
       res.json("上傳成功")
-  }catch{
-      next(
-    res.status(400).json({ message: "400 上傳更新失敗!!" })
-    )
-    console.log("400 上傳更新失敗!!")
-  }
+  }catch(e){
+    console.log({
+        status:400,
+        message:" 更新頭像失敗",
+    });
+    res.json({
+        status:400,
+        message:"更新頭像失敗請再試一試",
+    })
+}
+
 }
 )
 

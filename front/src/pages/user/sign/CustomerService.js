@@ -24,6 +24,7 @@ function CustomerService(props) {
                 },
                 { withCredentials: true }
             );
+            alert('我們已收到您的建議');
         } catch (e) {
             console.error(e.response);
             alert(e.response.message);
@@ -76,6 +77,7 @@ function CustomerService(props) {
                         onChange={(e) => {
                             setCategory(e.target.value);
                         }}
+                        required
                     >
                         <div>
                             <input
@@ -136,6 +138,7 @@ function CustomerService(props) {
                             onChange={(e) => {
                                 setMemo(e.target.value);
                             }}
+                            required
                         ></textarea>
                     </div>
                     <div className="flex justify-center ">

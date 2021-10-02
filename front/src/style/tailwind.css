@@ -244,3 +244,10 @@
 .avatar-change {
     @apply hover:bg-gray-700;
 }
+/* navmenu樣式 */
+.navmenu:hover .submenu {
+    @apply block;
+}
+.navmenu:hover .submenu:hover {
+    @apply block bg-yellow-400 text-black;
+}
