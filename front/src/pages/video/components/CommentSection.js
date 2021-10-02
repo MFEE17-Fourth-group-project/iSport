@@ -12,6 +12,7 @@ const CommentSection = ({ videoId, comments, onDelete }) => {
     const [showSubmit, setShowSubmit] = useState(false);
     const [comment, setComment] = useState();
     const [allComment, setAllComment] = useState([]);
+    const [deleteCommentId, setDeleteCommentId] = useState(null);
 
     const submitComment = (e) => {
         e.preventDefault();

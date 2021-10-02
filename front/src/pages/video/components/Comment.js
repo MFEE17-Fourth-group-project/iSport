@@ -6,6 +6,7 @@ import Person2 from './../../../images/person-2.jpg';
 const Comment = ({ comments, onDelete }) => {
     const [openEdit, setOpenEdit] = useToggle(false);
     const [openThis, setOpenThis] = useState(null);
+    const [editCommentId, setEditCommentId] = useState(null);
 
     // let time = new Date();
     // console.log(time);
@@ -19,10 +20,13 @@ const Comment = ({ comments, onDelete }) => {
         }
     };
 
+    const handleEditComment = (e) => {
+        setEditCommentId(parseInt(e.target.dataset.number));
+    };
+
     return (
         <>
             { (comments !== null) && comments.map((comment, idx) => {
-
                 return (<div className="flex mb-6">
                     <img
                         className="w-12 h-12 rounded-full mr-4"
@@ -39,12 +43,19 @@ const Comment = ({ comments, onDelete }) => {
                                 {openEdit && (openThis === idx) &&
                                     <div className="bg-gray-700 w-28 h-16 rounded-md shadow-lg absolute right-2 top-4 py-1">
                                         <ul className="flex flex-col justify-evenly items-center h-full">
+                                            <li className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer relative">
+                                                <div
+                                                    className="absolute w-full h-full"
+                                                    data-id={comment.id}
+                                                    onClick={(e) => handleEditComment(e)}
+                                                >
+                                                </div>
+                                                <p>修改留言</p>
+                                            </li>
                                             <li
                                                 className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer"
-                                            ><p>修改留言</p></li>
-                                            <li
-                                                className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer"
-                                                onClick={() => onDelete()}
+                                                data-id={comment.id}
+                                                onClick={(e) => onDelete(e)}
                                             ><p>刪除留言</p></li>
                                         </ul>
                                     </div>}
