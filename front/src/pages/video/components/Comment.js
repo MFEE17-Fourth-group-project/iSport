@@ -147,83 +147,90 @@ const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue,
 
     return (
         <>
-            { (comments !== null) && comments.map((comment, idx) => {
-                let time = moment(comment.date).fromNow();
-                return (<div className="flex mb-6">
-                    <img
-                        className="w-12 h-12 rounded-full mr-4"
-                        src={Person2}
-                    />
-                    <div className="flex flex-col w-full mr-6 max-h-28">
-                        <div className="flex">
+            {
+                (comments !== null) && comments.map((comment, idx) => {
+                    let time = moment(comment.date).fromNow();
+                    return (<div className="flex mb-6">
+                        <img
+                            className="w-12 h-12 rounded-full mr-4"
+                            src={Person2}
+                        />
+                        <div className="flex flex-col w-full mr-6 max-h-28">
                             <div className="flex">
-                                <h4 className="text-white font-bold text-sm mb-3 mr-2">{comment.username}</h4>
-                                <span className="text-gray-400 text-sm">{time}</span>
-                            </div>
+                                <div className="flex">
+                                    <h4 className="text-white font-bold text-sm mb-3 mr-2">{comment.username}</h4>
+                                    <span className="text-gray-400 text-sm">{time}</span>
+                                </div>
 
-                            <div className="flex ml-auto relative">
-                                {openEdit && (currentEdit === idx) &&
-                                    <div className="bg-gray-700 w-28 h-16 rounded-md shadow-lg absolute right-2 top-4 py-1">
-                                        <ul className="flex flex-col justify-evenly items-center h-full">
-                                            <li className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer relative">
-                                                <div
-                                                    className="absolute w-full h-full"
-                                                    onClick={() => handleEditComment()}
-                                                >
-                                                </div>
-                                                <p>修改留言</p>
-                                            </li>
-                                            <li
-                                                className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer"
-                                                onClick={() => handleDelete()}
-                                            ><p>刪除留言</p></li>
-                                        </ul>
-                                    </div>}
-                                <div className="flex h-4 relative">
-                                    <div
-                                        className="flex w-full h-full cursor-pointer absolute"
-                                        data-index={idx}
-                                        onClick={e => handleEdit(e)}
-                                    >
+                                <div className="flex ml-auto relative">
+                                    {openEdit && (currentEdit === idx) &&
+                                        <>
+                                            <div className="bg-gray-700 w-28 h-16 rounded-md shadow-lg absolute right-2 top-4 py-1 z-5">
+                                                <ul className="flex flex-col justify-evenly items-center h-full">
+                                                    <li className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer relative">
+                                                        <div
+                                                            className="absolute w-full h-full"
+                                                            onClick={() => handleEditComment()}
+                                                        >
+                                                        </div>
+                                                        <p>修改留言</p>
+                                                    </li>
+                                                    <li
+                                                        className="text-white flex w-full h-full items-center justify-center hover:bg-gray-900 cursor-pointer"
+                                                        onClick={() => handleDelete()}
+                                                    ><p>刪除留言</p></li>
+                                                </ul>
+                                            </div>
+                                            <div
+                                                className="w-full h-full z-0 flex fixed top-0 right-0"
+                                                onClick={() => setOpenEdit(false)}
+                                            >
+                                            </div>
+                                        </>}
+                                    <div className="flex h-4 relative">
+                                        <div
+                                            className="flex w-full h-full cursor-pointer absolute"
+                                            data-index={idx}
+                                            onClick={e => handleEdit(e)}
+                                        >
+                                        </div>
+                                        <BiDotsHorizontal className="text-white text-lg" />
                                     </div>
-                                    <BiDotsHorizontal className="text-white text-lg" />
-                                </div>
 
-                            </div>
-                        </div>
-                        {(editInput === idx) ?
-                            <>
-                                <textarea
-                                    className="commentInput pb-1.5 placeholder-white text-base text-white border-b border-gray-400 bg-gray-800
-                                        w-full focus:outline-none focus:placeholder-gray-400 focus:border-white mb-2 h-12"
-                                    placeholder="新增留言"
-                                    value={editValue}
-                                    onChange={(e) => setEditValue(e.target.value)}
-                                ></textarea>
-                                <div className="flex justify-end">
-                                    <button
-                                        className="btn-gray-sm mr-2"
-                                        type="button"
-                                        onClick={() => handleCancelEdit()}
-                                    >取消</button>
-                                    <button
-                                        className="btn-yellow-sm"
-                                        type="submit"
-                                        onClick={() => {
-                                            onSubmit();
-                                            setEditInput(null);
-                                        }}
-                                    >修改</button>
                                 </div>
-                            </>
-                            : <p className="text-white text-sm">
-                                {comment.content}
-                            </p>}
-                    </div>
-                </div>);
-            })}
-        </>
-    );
+                            </div>
+                            {(editInput === idx) ?
+                                <>
+                                    <textarea
+                                        className="commentInput pb-1.5 placeholder-white text-base text-white border-b border-gray-400 bg-gray-800
+                                        w-full focus:outline-none focus:placeholder-gray-400 focus:border-white mb-2 h-12"
+                                        placeholder="新增留言"
+                                        value={editValue}
+                                        onChange={(e) => setEditValue(e.target.value)}
+                                    ></textarea>
+                                    <div className="flex justify-end">
+                                        <button
+                                            className="btn-gray-sm mr-2"
+                                            type="button"
+                                            onClick={() => handleCancelEdit()}
+                                        >取消</button>
+                                        <button
+                                            className="btn-yellow-sm"
+                                            type="submit"
+                                            onClick={() => {
+                                                onSubmit();
+                                                setEditInput(null);
+                                            }}
+                                        >修改</button>
+                                    </div>
+                                </>
+                                : <p className="text-white text-sm">
+                                    {comment.content}
+                                </p>}
+                        </div>
+                    </div>);
+                })}
+        </>);
 };
 
 export default Comment;
