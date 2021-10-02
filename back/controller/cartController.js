@@ -33,12 +33,12 @@ const cartItemData = async (req, res, next) => {
                 let skuGroup = strSkuGroup.map((strSkuGroupValue) =>
                     parseInt(strSkuGroupValue, 10)
                 );
-                console.log("skuGroup", skuGroup); // [ 3, 8 ]
+                // console.log("skuGroup", skuGroup); // [ 3, 8 ]
 
                 let cartItemTypes = await cartModel.getTypeValue(skuGroup);
                 let getTypes = await cartModel.getType();
-                console.log("cartItemType", cartItemTypes);
-                console.log("getType", getTypes);
+                // console.log("cartItemType", cartItemTypes);
+                // console.log("getType", getTypes);
 
                 cartItemTypes.map((cartItemType) => {
                     const index = getTypes.findIndex(
@@ -50,7 +50,7 @@ const cartItemData = async (req, res, next) => {
                 });
 
                 item.typeValue = cartItemTypes;
-                console.log(item.typeValue);
+                // console.log(item.typeValue);
                 item.qty = cartMap[item.product_sku_id];
                 item.amount = item.price * cartMap[item.product_sku_id];
                 item.img = cartItemImgs.find((cartItemImg) => {
