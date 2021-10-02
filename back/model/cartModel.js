@@ -36,7 +36,7 @@ const getTypeValue = async (skuCodeGroup) => {
     );
 };
 
-const getType = async () => {
+const getTypes = async () => {
     return await connection.queryAsync(
         `SELECT *
         FROM product_type
@@ -58,6 +58,6 @@ module.exports = {
     getCartItems,
     getImgs,
     getTypeValue,
-    getType,
+    getTypes,
     getUserData,
 };
