@@ -3,6 +3,8 @@ import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
 import CustomerService from '../pages/user/sign/CustomerService';
 import userHeader from '../images/user/pic04.jpg';
+import { API_URL, IMAGE_URL } from '../utils/config';
+
 import {
     FaUserAlt,
     FaShoppingCart,
@@ -36,7 +38,7 @@ function MobileAside(props) {
                 <div className="flex justify-center items-center p-2.5 bg-gray-800">
                     <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
                         <img
-                            src={userHeader}
+                            src={`${IMAGE_URL}${member.photo}`}
                             alt=""
                             className="w-full h-full object-cover object-center"
                         />

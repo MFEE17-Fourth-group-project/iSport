@@ -8,7 +8,7 @@ import NotAuth from './components/NotAuth';
 import SignIn from './sign/SignIn';
 
 function Users() {
-    const { member } = useAuth('');
+    const { member, setMember } = useAuth();
     const [tempMember, setTempMember] = useState({ ...member });
 
     const handleSubmit = async (e) => {
@@ -21,9 +21,11 @@ function Users() {
                     withCredentials: true,
                 }
             );
-            alert('會員資料更新成功');
+            setMember(require);
+            console.log('這是返回結果', require);
+            alert();
         } catch {
-            console.error(e.response);
+            console.error(e.require);
         }
     };
     useEffect(() => {
@@ -53,11 +55,7 @@ function Users() {
                                         aria-label="Full name"
                                         id="name"
                                         name="name"
-                                        value={
-                                            tempMember.name
-                                                ? tempMember.name
-                                                : member.name
-                                        }
+                                        value={tempMember.name}
                                         onChange={(e) => {
                                             setTempMember({
                                                 ...tempMember,
@@ -72,11 +70,7 @@ function Users() {
                                         <label for="account">帳號：</label>
                                         <input
                                             type="text"
-                                            value={
-                                                tempMember.account
-                                                    ? tempMember.account
-                                                    : member.account
-                                            }
+                                            value={tempMember.account}
                                             className="input-style lg:items-center  border-b "
                                             placeholder=""
                                             name="account"
@@ -110,11 +104,7 @@ function Users() {
                                         className="input-style "
                                         name="email"
                                         id="email"
-                                        value={
-                                            tempMember.email
-                                                ? tempMember.email
-                                                : member.email
-                                        }
+                                        value={tempMember.email}
                                         onChange={(e) => {
                                             setTempMember({
                                                 ...tempMember,
@@ -148,11 +138,7 @@ function Users() {
                                         type="text"
                                         className="input-style overflow-x-auto"
                                         name="address"
-                                        value={
-                                            tempMember.address
-                                                ? tempMember.address
-                                                : member.address
-                                        }
+                                        value={tempMember.address}
                                         onChange={(e) => {
                                             setTempMember({
                                                 ...tempMember,
@@ -171,18 +157,12 @@ function Users() {
                                 <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                                     <div className="flex flex-wrap mr-3 mb-6 justify-between">
                                         <div className="items-center border-b py-2 md:w-2/5">
-                                            <label for="menberAccount">
-                                                生日：
-                                            </label>
+                                            <label for="birthday">生日：</label>
                                             <input
                                                 type="date"
-                                                value={
-                                                    tempMember.birthday
-                                                        ? tempMember.birthday
-                                                        : member.birthday
-                                                }
-                                                className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none "
-                                                name="menberAccount"
+                                                value={tempMember.birthday}
+                                                className="ml-10 bg-gray-700 border-none  text-white mr-3 py-1 px-2 leading-tight focus:outline-none relative"
+                                                name="birthday"
                                                 onChange={(e) => {
                                                     setTempMember({
                                                         ...tempMember,
@@ -192,14 +172,17 @@ function Users() {
                                                 }}
                                             />
                                         </div>
+                                        <div className="absolute py-12 text-s text-gray-400">
+                                            您的生日:
+                                            <span className="text-gray-400">
+                                                {tempMember.birthday}
+                                            </span>
+                                        </div>
+
                                         <div class="xl:inline-block xl:w-64 mt-5">
                                             <label for="gender">性別：</label>
                                             <select
-                                                value={
-                                                    tempMember.gender
-                                                        ? tempMember.gender
-                                                        : member.gender
-                                                }
+                                                value={tempMember.gender}
                                                 name="gender"
                                                 className="bg-transparent border-2 border-gray-700 w-40"
                                                 onChange={(e) => {
@@ -230,14 +213,9 @@ function Users() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div classNmae="mt-10"></div>
                                     <label for="aboutme">關於我：</label>
                                     <textarea
-                                        value={
-                                            tempMember.aboutme
-                                                ? tempMember.aboutme
-                                                : member.aboutme
-                                        }
+                                        value={tempMember.aboutme}
                                         id="aboutme"
                                         name="aboutme"
                                         class="w-full px-3 py-2 text-white border rounded-lg focus:outline-none bg-transparent"

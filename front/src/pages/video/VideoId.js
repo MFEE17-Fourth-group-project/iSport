@@ -6,6 +6,7 @@ import { APP_URL, API_URL } from './../../utils/config';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import { useAuth } from '../../context/auth';
 import SignIn from '../user/sign/SignIn';
+import DeleteModal from './components/DeleteModal';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
 import CommentSection from './components/CommentSection';
@@ -21,12 +22,6 @@ import {
     RiHeartLine
 } from 'react-icons/ri';
 
-import {
-    MdPlaylistAdd,
-    MdPlaylistAddCheck
-} from 'react-icons/md';
-
-
 const VideoId = () => {
     const { videoId } = useParams();
     const location = useLocation();
@@ -37,9 +32,11 @@ const VideoId = () => {
     const [liked, setLiked] = useState(false);
     const [ILiked, setILiked] = useState(false);
     const [signInModal, setSignInModal] = useState(false);
-    const [alert, setAlert] = useState(false);
+    const [copiedAlert, setCopiedAlert] = useState(false);
     const [collect, setCollect] = useState(false);
-    const [comments, setComments] = useState(null);
+    const [allComment, setAllComment] = useState([]);
+    const [currentEdit, setCurrentEdit] = useState(null);
+    const [deleteModal, setDeleteModal] = useState(false);
 
     useEffect(() => {
         if (video) {
@@ -48,9 +45,16 @@ const VideoId = () => {
             setLiked(LikedOrNot);
             let CollectedOrNot = video.wasCollected;
             setCollect(CollectedOrNot);
-            setComments(video.comment);
+            setAllComment(video.comment);
         }
     }, [video]);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setCopiedAlert(false);
+        }, 2000);
+        return () => clearInterval(timeout);
+    }, [copiedAlert]);
 
     const handleDislike = () => {
         setLiked(false);
@@ -100,8 +104,26 @@ const VideoId = () => {
         setSignInModal(false);
     };
 
+    const handleDeleteButton = () => {
+        setDeleteModal(true);
+    };
+
+    const cancelDelete = () => {
+        setDeleteModal(false);
+    };
+
+    const handleDelete = () => {
+        let commentId = allComment[currentEdit].id;
+        (async function () {
+            let res = await axios.delete(`${API_URL}/videos/${videoId}/comments/${commentId}`,
+                { withCredentials: true });
+            setAllComment(res.data);
+        })();
+    };
+
     return (
         <>
+            {deleteModal && <DeleteModal onCancel={cancelDelete} onDelete={handleDelete} />}
             {signInModal && <SignIn onCancel={handleCancel} />}
             <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-3 gap-y-6 items-start">
 
@@ -149,15 +171,21 @@ const VideoId = () => {
                                     {/* <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span> */}
                                 </div>}
 
-                            <div
+                            {copiedAlert ? <div
+                                className="flex mr-4 items-center cursor-pointer"
+                            >
+                                <RiShareForwardFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
+                                <span className="text-sm sm:text-xs text-white w-max">已複製連結</span>
+                            </div> : <div
                                 className="flex mr-4 items-center cursor-pointer"
                                 onClick={() => {
+                                    setCopiedAlert(true);
                                     navigator.clipboard.writeText(APP_URL + location.pathname);
                                 }}
                             >
                                 <RiShareForwardLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
-                                <span className="text-sm sm:text-xs text-white w-max">分享</span>
-                            </div>
+                                <span className="text-sm sm:text-xs text-white w-max">點擊分享</span>
+                            </div>}
 
                             {collect ?
                                 <div
@@ -200,7 +228,14 @@ const VideoId = () => {
                 </div>
 
                 {/* Comment Section */}
-                <CommentSection videoId={videoId} comments={comments} />
+                <CommentSection
+                    videoId={videoId}
+                    allComment={allComment}
+                    setAllComment={setAllComment}
+                    onDelete={handleDeleteButton}
+                    onEdit={setCurrentEdit}
+                    currentEdit={currentEdit}
+                />
             </div>
         </>
     );

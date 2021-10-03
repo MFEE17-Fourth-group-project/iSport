@@ -70,9 +70,13 @@ function UserAside() {
                     {member.photo ? (
                         <div className="w-48 h-48 rounded-full  overflow-hidden z-0 ">
                             <img
-                                src={`${IMAGE_URL}${member.photo}`}
+                                src={
+                                    `${IMAGE_URL}${member.photo}` || {
+                                        userHeader,
+                                    }
+                                }
                                 alt=""
-                                className="w-full h-full object-cover object-center opacity-40"
+                                className="w-full h-full object-cover object-center  headphoto"
                             />
                         </div>
                     ) : (
