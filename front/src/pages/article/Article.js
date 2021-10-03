@@ -71,7 +71,7 @@ class Article extends React.Component {
                         src={ArticleHeader}
                         alt=""
                     />
-                    <div className="sticky top-0 z-40">
+                    <div className="top-0 z-40 w-full">
                         <ArticleNav />
                     </div>
 
@@ -79,7 +79,7 @@ class Article extends React.Component {
                         <article className="w-full md:w-3/4 xs:m-auto ">
                             <Link
                                 to="/ArticleAerobicExercise"
-                                className="flex justify-center lg:justify-end mt-4"
+                                className="flex justify-center lg:justify-end mt-4 "
                                 data-aos="fade-left"
                                 data-aos-anchor="#trigger-left"
                                 data-aos-anchor-placement="top-center"

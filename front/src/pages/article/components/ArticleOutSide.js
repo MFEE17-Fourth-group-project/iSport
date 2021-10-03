@@ -12,7 +12,7 @@ const ArticleOutSide = (props) => {
     return (
         <>
             <Link to={'/article/' + article.id} className="max-w-max m-auto">
-                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5">
+                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 m-5">
                     {/* <img
                         className="m-auto w-1/2"
                         src={`http://localhost:3030/articles/uploads/${article.photos}`}

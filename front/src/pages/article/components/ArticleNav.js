@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const ArticleNav = () => {
     return (
-        <nav className="bg-gray-900 flex justify-center text-white">
+        <nav className="bg-gray-900 flex justify-center text-white w-full">
             <NavLink
                 to="/articles"
                 activeClassName="selected"
@@ -14,7 +14,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                    className=" md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     所有文章
@@ -30,7 +30,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                    className=" md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     有氧運動
@@ -46,11 +46,28 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36  text-center
+                    className=" md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     重量訓練
+                </div>
+            </NavLink>
+            <NavLink
+                to="/ArticleTABATATraining"
+                activeClassName="selected"
+                activeStyle={{
+                    fontWeight: 'bold',
+                    borderBottom: '2px solid #FBBF24',
+                    color: '#FBBF24',
+                }}
+            >
+                <div
+                    className=" md:w-36 text-center
+                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                hover:border-yellow-400 hover:text-yellow-400"
+                >
+                    間歇訓練
                 </div>
             </NavLink>
             <NavLink
@@ -63,7 +80,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36  text-center
+                    className=" md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -80,28 +97,11 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" w-36  text-center
+                    className=" md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     增肌飲食
-                </div>
-            </NavLink>
-            <NavLink
-                to="/ArticleTABATATraining"
-                activeClassName="selected"
-                activeStyle={{
-                    fontWeight: 'bold',
-                    borderBottom: '2px solid #FBBF24',
-                    color: '#FBBF24',
-                }}
-            >
-                <div
-                    className=" w-36 text-center
-                text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
-                hover:border-yellow-400 hover:text-yellow-400"
-                >
-                    間歇訓練
                 </div>
             </NavLink>
         </nav>
