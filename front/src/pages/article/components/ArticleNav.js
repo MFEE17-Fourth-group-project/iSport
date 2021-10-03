@@ -14,7 +14,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                    className="w-16 xs:w-20 md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     所有文章
@@ -30,7 +30,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
+                    className="w-16 xs:w-20 md:w-36 text-center text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
                     有氧運動
@@ -46,7 +46,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36  text-center
+                    className="w-16 xs:w-20 md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -63,7 +63,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36 text-center
+                    className="w-16 xs:w-20 md:w-36 text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -80,7 +80,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36  text-center
+                    className="w-16 xs:w-20 md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
@@ -97,7 +97,7 @@ const ArticleNav = () => {
                 }}
             >
                 <div
-                    className=" md:w-36  text-center
+                    className="w-16 xs:w-20 md:w-36  text-center
                 text-sm sm:text-base py-5 2xs:px-0 px-2.5 min-w-min cursor-pointer
                 hover:border-yellow-400 hover:text-yellow-400"
                 >
