@@ -2,7 +2,9 @@ import useGet from '../../../utils/useGet';
 import { Link } from 'react-router-dom';
 import Person1 from './../../../images/person-1.jpg';
 import { FaEye } from 'react-icons/fa';
-
+import { BsFillPersonFill } from 'react-icons/bs';
+import { FaClock } from 'react-icons/fa';
+import moment from 'moment';
 const SuggestVideoCol = () => {
     const {
         data: suggestArticles,
@@ -27,6 +29,22 @@ const SuggestVideoCol = () => {
                             <h4 className="text-white text-lg">
                                 {article.title}
                             </h4>
+                            <div className="flex items-center">
+                                <BsFillPersonFill className="text-yellow-400 mr-1 cursor-pointer" />
+                                <h4 className="text-sm text-white mr-4">
+                                    {article.user_name}
+                                </h4>
+                                <FaClock className="text-yellow-400 mr-1" />
+                                <h4 className="text-xs text-white mr-4">
+                                    {moment(article.upload_date).format(
+                                        'YYYY-MM-DD HH:mm'
+                                    )}
+                                </h4>
+                                <FaEye className="text-yellow-400 mr-1" />
+                                <h4 className="text-sm text-white mr-4">
+                                    {article.views}
+                                </h4>
+                            </div>
                         </div>
                     </Link>
                 ))}
