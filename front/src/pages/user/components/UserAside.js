@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 import userHeader from './images.png';
 import {
     FaUserAlt,
@@ -7,21 +8,23 @@ import {
     FaHeart,
     FaMoneyCheck,
     FaComment,
+    FaCamera
 } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import CustomerService from '../sign/CustomerService';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
 import { useAuth } from '../../../context/auth';
-import { IMAGE_URL } from '../../utils/config';
 
 // 聯絡我們跳窗
 // async
 function UserAside() {
     const { member, setMember } = useAuth();
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
-    const [photo, setphoto] = useState();
+    const [photo, setPhoto] = useState();
+    const [userImg, setUserImg] = useState(null);
     const formData = new FormData();
+    const userImageForm = useRef();
 
     const handleCustomerService = () => {
         setCustomerServiceWindow(true);
@@ -40,6 +43,7 @@ function UserAside() {
                 withCredentials: true,
             }
         );
+        setUserImg(response.data[0].photo);
         try {
             alert('頭像上傳成功');
         } catch (e) {
@@ -50,56 +54,61 @@ function UserAside() {
         }
     };
 
+    const handleImage = async (e) => {
+        await setPhoto(e.target.files[0]);
+        userImageForm.current.requestSubmit();
+    };
+
     return (
         <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
-            <form onSubmit={handleSubmit}>
-                <div className=" w-64 h-54 flex justify-center items-center cursor-pointer relative mt-3 mb-3 hover:opacity-60">
+            <form onSubmit={handleSubmit} ref={userImageForm} className="flex justify-center">
+                <div className="group w-48 h-48 rounded-full flex justify-center items-center cursor-pointer relative mt-3 mb-3">
                     <input
                         required
+                        title="請選擇圖片"
                         type="file"
                         id="photo"
                         name="photo"
-                        onChange={(e) => {
-                            setphoto(e.target.files[0]);
-                        }}
-                        className="w-48 h-48 rounded-full  overflow z-10 absolute opacity-0 cursor-pointer"
+                        onChange={(e) => handleImage(e)}
+                        className="w-48 h-48 rounded-full overflow z-10 absolute opacity-0 cursor-pointer"
                     />
                     {member.photo ? (
-                        <div className="w-48 h-48 rounded-full  overflow-hidden z-0 ">
-                            <img
-                                src={
-                                    `${IMAGE_URL}${member.photo}` || {
-                                        userHeader,
-                                    }
-                                }
-                                alt=""
-                                className="w-full h-full object-cover object-center  headphoto"
-                            />
+                        <div className="w-48 h-48 rounded-full overflow-hidden z-0 relative">
+                            <div className="flex w-full h-full rounded-full group-hover:bg-black group-hover:bg-opacity-50 absolute transition-all duration-300 ease-in-out"></div>
+                            <Image
+                                cloudName="dnmayrvjj"
+                                publicId={userImg || member.photo}
+                                secure="true"
+                                className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
+                            >
+                            </Image>
                         </div>
                     ) : (
-                        <div className="w-48 h-48 rounded-full  overflow-hidden z-0 ">
+                        <div className="w-48 h-48 rounded-full overflow-hidden z-0">
                             <img
                                 src={userHeader}
                                 alt=""
-                                className="w-full h-full object-cover object-center opacity-50 "
+                                className="w-full h-full object-cover object-center opacity-50"
                             />
                         </div>
                     )}
+                    <FaCamera
+                        className="w-16 h-16 text-gray-300 text-opacity-0 group-hover:text-opacity-70 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out"
+                    />
                 </div>
-                <button className="btn-green block m-auto">上傳</button>
             </form>
             <div className="h-full aside-menu">
                 <ul className="text-white text-lg ">
                     <Link to="/user">
-                        <li className="users-li">
+                        <li className="users-li cursor-pointer">
                             <FaUserAlt className="userIcons" />
                             會員資料
                         </li>
                     </Link>
-                    <li className="users-li">
+                    <li className="users-li cursor-pointer">
                         <FaShoppingCart className="userIcons" />
                         <label for="ordermenu" className="cursor-pointer">
                             訂單管理
@@ -111,15 +120,15 @@ function UserAside() {
                         />
                         <section className="hidden-section">
                             <ul className="submenu">
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/cart/TradingRecord">
                                         購買紀錄
                                     </Link>
                                 </li>
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/cart">購物車</Link>
                                 </li>
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/cart/favorite" exact>
                                         我的最愛
                                     </Link>
@@ -127,7 +136,7 @@ function UserAside() {
                             </ul>
                         </section>
                     </li>
-                    <li className="users-li">
+                    <li className="users-li cursor-pointer">
                         <FaHeart className="userIcons" />
                         <label for="videomenu" className="cursor-pointer">
                             影片收藏
@@ -139,18 +148,18 @@ function UserAside() {
                         />
                         <section className="hidden-section">
                             <ul className="submenu">
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/videoCollection">
                                         收藏影片
                                     </Link>
                                 </li>
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/watchLater">稍後觀看</Link>
                                 </li>
                             </ul>
                         </section>
                     </li>
-                    <li className="users-li ">
+                    <li className="users-li cursor-pointer">
                         <FaMoneyCheck className="userIcons" />
                         <label for="articlemenu" className="cursor-pointer">
                             文章管理
@@ -162,15 +171,15 @@ function UserAside() {
                         />
                         <section className="hidden-section">
                             <ul className="submenu">
-                                <li className="user-submenu-li ">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/ArticleMyart">
                                         我的文章
                                     </Link>
                                 </li>
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/ArticleAdd">新增文章</Link>
                                 </li>
-                                <li className="user-submenu-li">
+                                <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/ArticleCollect">
                                         收藏文章
                                     </Link>
