@@ -44,15 +44,15 @@ function SignIn(props) {
 
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
-        setPasswordShown(passwordShown ? false : true);
+    const togglePasswordVisibility = () => {
+        setPasswordShown(!passwordShown);
     };
     // 如果有登入member就跳轉到會員中心
     // if (member !== null) {
     //     return <Redirect to="/user" />;
     // }
     return (
-        <form className="w-screen h-screen fixed z-10" onSubmit={handleSubmit}>
+        <div className="w-full h-full fixed z-10" onSubmit={handleSubmit}>
             <div
                 id="module"
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
@@ -65,7 +65,7 @@ function SignIn(props) {
                         onClick={props.onCancel}
                     />
                 </div>
-                <div className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
+                <form className="bg-gray-700 shadow-md rounded-b-xl px-8 pt-6 pb-8 mb-4">
                     <div className="mb-4">
                         <label
                             className="block text-white text-base font-bold mb-2"
@@ -106,10 +106,12 @@ function SignIn(props) {
                             required
                         />
                         <i
-                            onClick={togglePasswordVisiblity}
-                            className="eyesposition"
+                            onClick={togglePasswordVisibility}
+                            className="absolute top-52 right-10"
                         >
-                            <FaEye className="userIcons hover:text-green-400" />
+                            {passwordShown ?
+                                <FaEyeSlash className="userIcons hover:text-green-400 cursor-pointer" title="隱藏密碼" />
+                                : <FaEye className="userIcons hover:text-green-400 cursor-pointer" title="顯示密碼" />}
                         </i>
                         <hr className="border-2 border-yellow-400" />
                         <Link to="/SearchPassword">
@@ -136,13 +138,13 @@ function SignIn(props) {
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div
                 className="bg-black bg-opacity-50 w-screen h-screen fixed z-10"
                 onClick={props.onCancel}
             ></div>
-        </form>
+        </div>
     );
 }
 export default SignIn;

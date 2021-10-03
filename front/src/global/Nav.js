@@ -42,6 +42,8 @@ function Nav(props) {
     };
     return (
         <>
+            {/* {signInSuccess && <SignSecress />} */}
+            {signInWindow && <SignIn onCancel={handleCancel} />}
             <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="flex items-center">
@@ -170,8 +172,6 @@ function Nav(props) {
                 {MobileWindow && (
                     <MobileAside onCancel={handleCancelMobileWindow} />
                 )}
-                {/* {signInSuccess && <SignSecress />} */}
-                {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
             <nav className="lg:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">
                 <Link className="flex-1" to="/video">
