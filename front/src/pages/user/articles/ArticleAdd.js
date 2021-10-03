@@ -9,7 +9,7 @@ import NotAuth from '../components/NotAuth';
 
 function ArticleAdd() {
     const { member, setMember } = useAuth();
-    const [article_name, setarticle_name] = useState('');
+    const [user_name, setuser_name] = useState('');
     const [title, settitle] = useState('');
     const [content, setcontent] = useState('');
     const [category, setcategory] = useState('');
@@ -20,7 +20,7 @@ function ArticleAdd() {
         e.preventDefault();
         try {
             const formData = new FormData();
-            formData.append('article_name', article_name);
+            formData.append('user_name', user_name);
             formData.append('title', title);
             // formData.append('upload_date', upload_date);
             formData.append('category', category);
@@ -47,7 +47,7 @@ function ArticleAdd() {
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                             <from onSubmit={handleSubmit}>
-                                <label htmlFor="article_name">作者：</label>
+                                <label htmlFor="user_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
                                 </span>
@@ -55,13 +55,13 @@ function ArticleAdd() {
                                 <input
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="article_name"
-                                    id="article_name"
+                                    name="user_name"
+                                    id="user_name"
                                     placeholder="最多50字"
                                     required
-                                    value={article_name}
+                                    value={user_name}
                                     onChange={(e) => {
-                                        setarticle_name(e.target.value);
+                                        setuser_name(e.target.value);
                                     }}
                                 ></input>
                                 <br />

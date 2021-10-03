@@ -38,9 +38,12 @@ function Gym() {
                     // style={{ height: '100vh', width: '100vw' }}
                     // onClick="{myMap}"
                     ></div>
-                    <GymMap
+                    <GymMap //, name, image, address
                         lat={pData2 && +pData2.latitude}
                         lng={pData2 && +pData2.longitude}
+                        name={pData2 && pData2.name}
+                        image={pData2 && pData2.image}
+                        address={pData2 && pData2.address}
                     />
                 </div>
                 <div className="w-full md:w-1/2 p-4">
