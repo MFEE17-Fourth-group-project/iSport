@@ -75,14 +75,12 @@ class Article extends React.Component {
                         <ArticleNav />
                     </div>
 
-                    <main className="bg-gray-800" id="trigger-left">
-                        <article className="w-full md:w-3/4 xs:m-auto ">
+                    <main className="bg-gray-800">
+                        <article className="w-full md:w-3/4 xs:m-auto">
                             <Link
                                 to="/ArticleAerobicExercise"
                                 className="flex justify-center lg:justify-end mt-4 "
                                 data-aos="fade-left"
-                                data-aos-anchor="#trigger-left"
-                                data-aos-anchor-placement="top-center"
                             >
                                 <div
                                     className="
@@ -100,16 +98,11 @@ class Article extends React.Component {
                             </Link>
                         </article>
 
-                        <article
-                            className="w-full md:w-3/4 m-auto"
-                            id="trigger-right"
-                        >
+                        <article className="w-full md:w-3/4 m-auto">
                             <Link
                                 to="/ArticleWeightTraining"
                                 className="flex justify-center lg:justify-start mt-4"
                                 data-aos="fade-right"
-                                data-aos-anchor="#trigger-right"
-                                data-aos-anchor-placement="top-center"
                             >
                                 <div
                                     className=" flex flex-col-reverse xl:flex-row
@@ -126,13 +119,11 @@ class Article extends React.Component {
                             </Link>
                         </article>
 
-                        <article
-                            className="w-full md:w-3/4 m-auto"
-                            data-aos="fade-left"
-                        >
+                        <article className="w-full md:w-3/4 m-auto">
                             <Link
                                 to="/ArticleCoreStrength"
                                 className="flex justify-center lg:justify-end mt-4"
+                                data-aos="fade-left"
                             >
                                 <div
                                     className="
@@ -150,13 +141,11 @@ class Article extends React.Component {
                             </Link>
                         </article>
 
-                        <article
-                            className="w-full md:w-3/4 m-auto"
-                            data-aos="fade-right"
-                        >
+                        <article className="w-full md:w-3/4 m-auto">
                             <Link
                                 to="/ArticleLeanBulking"
                                 className="flex justify-center lg:justify-start mt-4"
+                                data-aos="fade-right"
                             >
                                 <div
                                     className=" flex flex-col-reverse xl:flex-row
@@ -173,13 +162,11 @@ class Article extends React.Component {
                             </Link>
                         </article>
 
-                        <article
-                            className="w-full md:w-3/4 m-auto"
-                            data-aos="fade-left"
-                        >
+                        <article className="w-full md:w-3/4 m-auto">
                             <Link
                                 to="/ArticleTABATATraining"
                                 className="flex justify-center lg:justify-end mt-4  mb-4"
+                                data-aos="fade-left"
                             >
                                 <div
                                     className="
