@@ -8,6 +8,7 @@ class GymMap extends Component {
     constructor(props) {
         super(props);
         this.mapid = null;
+        this.map = null;
     }
     //建立組件
     componentDidMount() {
@@ -60,6 +61,11 @@ class GymMap extends Component {
                       <img class="img-fluid" src="${this.props.image}">`
                 ) //設置彈出窗口的 HTML 內容。
                 .openOn(this.mymap); //將彈出窗口添加到地圖並關閉前一個。
+            // this.map.setView([this.props.lat, this.props.lng], 18);
+            // L.popup({ elevation: 260.0 })
+            //     .setLatLng([41.882276, -87.629201])
+            //     .setContent(`<h1>在這</h1>`)
+            //     .addTo(this.map);
         }
     }
 
@@ -67,14 +73,21 @@ class GymMap extends Component {
         return (
             <>
                 <WrldMap
+                    id="map"
                     apiKey={'1a8fa4272abbebc6f73c74d65e8ecf63'}
                     containerStyle={{
                         width: '600px',
                         height: '400px',
                     }}
                     mapOptions={{
-                        center: [41.882276, -87.629201],
+                        center: [this.props.lat, this.props.lng],
                         indoorsEnabled: true,
+                    }}
+                    onInitialStreamingComplete={(map) => {
+                        map.openPopup('Transamerica Pyramid', [
+                            this.props.lat,
+                            this.props.lng,
+                        ]);
                     }}
                 >
                     <div id="mapid" style={{ height: '100%', width: '100%' }} />
