@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Person2 from '../../../images/tabata/1.jpeg';
+// import Person2 from '../../../../../back/public/articles/uploads/';
 import { FaClock } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
 import { FaShare } from 'react-icons/fa';
@@ -7,14 +7,19 @@ import { FaRegHeart } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaEye } from 'react-icons/fa';
 import moment from 'moment';
-const Article = (props) => {
+import { Link } from 'react-router-dom';
+const ArticleInSide = (props) => {
     const { article } = props;
     return (
         <>
-            <div className="border-4 border-light-blue-500 border-opacity-100 p-5 m-5">
-                <img className="mr-4" src={Person2} alt="" />
+            <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5">
+                <img
+                    className="m-auto"
+                    src={`http://localhost:3030/articles/uploads/${article.photos}`}
+                    alt=""
+                />
                 <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">
-                    {article.added_by}
+                    {article.title}
                 </h3>
                 <div className="m-2 md:flex md:justify-between">
                     <div className="flex items-center">
@@ -47,7 +52,9 @@ const Article = (props) => {
                 <div className="m-2">
                     <p
                         className="text-base leading-loose tracking-wide text-white"
-                        dangerouslySetInnerHTML={{ __html: article.content }}
+                        dangerouslySetInnerHTML={{
+                            __html: article.content,
+                        }}
                     ></p>
                 </div>
             </div>
@@ -55,4 +62,4 @@ const Article = (props) => {
     );
 };
 
-export default Article;
+export default ArticleInSide;

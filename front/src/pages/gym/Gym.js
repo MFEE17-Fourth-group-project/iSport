@@ -32,7 +32,7 @@ function Gym() {
                 />
             </div>
             <div className="flex justify-center">
-                <div className="w-1/2 p-4 hidden md:block">
+                <div className="w-1/2 p-4 hidden md:block z-0">
                     <div
                     // id="mapid"
                     // style={{ height: '100vh', width: '100vw' }}

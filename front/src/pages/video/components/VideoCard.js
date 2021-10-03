@@ -10,14 +10,15 @@ const VideoCard = ({ video }) => {
         <Link to={'/video/' + video.id} className="max-w-max m-auto">
             <div className="max-w-xs min-w-full h-100 rounded-md overflow-hidden shadow-2xl bg-gray-900
                 py-4 px-5 flex flex-col">
-                <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover" sourceTypes={['mp4']}>
-                    {/* <Transformation overlay="text:arial_60:watchme" gravity="north" y="20" /> */}
+                <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover" sourceType={['jpg']}>
+                    {/* <Transformation height="176" videoSampling="5" /> */}
                 </Video>
                 <div className="">
                     <h3 className="text-base text-yellow-400 mt-4 mb-1.5 h-12 line-clamp-2 overflow-hidden">{video.title}</h3>
-                    <p className="text-white text-sm text-opacity-70 leading-relaxed mb-6
-                        line-clamp-3 overflow-hidden h-16">
-                        {video.description}
+                    <p
+                        className="text-white text-sm text-opacity-70 leading-relaxed mb-6
+                        line-clamp-3 overflow-hidden h-16"
+                        dangerouslySetInnerHTML={{ __html: video.description }}>
                     </p>
                 </div>
                 <div className="flex justify-between">

@@ -10,7 +10,9 @@ const useGet = (url) => {
     useEffect(() => {
         async function getVideoData() {
             try {
-                let res = await axios.get(API_URL + url);
+                let res = await axios.get(API_URL + url, {
+                    withCredentials: true
+                });
 
                 setData(res.data);
                 setIsPending(false);

@@ -21,6 +21,7 @@ function SearchPassword() {
                                 className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 id="account"
                                 type="text"
+                                disabled
                             />
                             <hr className="border-2 border-yellow-400 mb-10" />
                             <label
@@ -33,6 +34,7 @@ function SearchPassword() {
                                 className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                                 id="email"
                                 type="email"
+                                disabled
                             />
                             <hr className="border-2 border-yellow-400 mb-5" />
                             <div className="flex justify-center ">

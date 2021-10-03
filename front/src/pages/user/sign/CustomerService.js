@@ -1,11 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Aside } from '../../../global/Aside';
+import { useAuth } from '../../../context/auth';
+import { API_URL } from '../../utils/config';
+import axios from 'axios';
+import { useState } from 'react';
 
 function CustomerService(props) {
+    const { member } = useAuth('');
+    const [category, setCategory] = useState('');
+    const [memo, setMemo] = useState('');
+    const account = member.account;
+    const email = member.email;
+
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let result = await axios.post(
+                `${API_URL}/users/CS`,
+                {
+                    account,
+                    email,
+                    category,
+                    memo,
+                },
+                { withCredentials: true }
+            );
+            alert('我們已收到您的建議');
+        } catch (e) {
+            console.error(e.response);
+            alert(e.response.message);
+        }
+    };
     return (
         <div className="w-screen h-screen fixed top-8 xl:left-0 z-50">
             <form
+                onSubmit={handlesubmit}
                 className="w-full max-w-screen-sm rounded justify-center items-center transform -translate-y-1/2
                     -translate-x-1/2 z-20 absolute top-1/2 left-1/2 overflow-y-auto"
             >
@@ -17,28 +45,40 @@ function CustomerService(props) {
                         className="block text-white text-base font-bold mb-2 mt-5"
                         htmlFor="account"
                     >
-                        請輸入帳號：
+                        帳號：
                     </label>
                     <input
                         className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                         id="account"
                         type="text"
+                        name="account"
+                        value={account}
                     />
                     <hr className="border-1 border-yellow-400 mb-10" />
                     <label
                         className="block text-white text-base font-bold mb-2"
                         for="email"
                     >
-                        請輸入註冊信箱：
+                        註冊信箱：
                     </label>
                     <input
                         className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
                         id="email"
                         type="email"
+                        name="email"
+                        value={email}
                     />
                     <hr className="border-1 border-yellow-400 mb-5" />
                     <label htmlFor="type">種類：</label>
-                    <div className="xs:ml-12 xs:justify-between flex text-base mb-5">
+                    <div
+                        className="xs:ml-12 xs:justify-between flex text-base mb-5"
+                        id="category"
+                        name="category"
+                        onChange={(e) => {
+                            setCategory(e.target.value);
+                        }}
+                        required
+                    >
                         <div>
                             <input
                                 type="radio"
@@ -95,9 +135,12 @@ function CustomerService(props) {
                             placeholder="請輸入您的內容"
                             cols="70"
                             rows="10"
+                            onChange={(e) => {
+                                setMemo(e.target.value);
+                            }}
+                            required
                         ></textarea>
                     </div>
-
                     <div className="flex justify-center ">
                         <button
                             className="btn-green mr-5"
@@ -105,13 +148,7 @@ function CustomerService(props) {
                         >
                             返回
                         </button>
-                        <button
-                            className="btn-yellow"
-                            type="submit"
-                            onClick={props.onCancel}
-                        >
-                            送出
-                        </button>
+                        <button className="btn-yellow">送出</button>
                     </div>
                 </div>
             </form>

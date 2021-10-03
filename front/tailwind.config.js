@@ -18,6 +18,11 @@ module.exports = {
                 100: '25rem',
                 75: '18.75rem',
             },
+            zIndex: {
+                5: '5',
+                '-10': '-10',
+                '-20': '-20'
+            }
         },
         screens: {
             '2xs': '360px',
@@ -559,7 +564,7 @@ module.exports = {
         }),
         maxHeight: (theme) => ({
             ...theme('spacing'),
-            500: '500px',
+            1000: '1000px',
             full: '100%',
             screen: '100vh',
         }),
@@ -587,6 +592,7 @@ module.exports = {
             0: '0px',
             full: '100%',
             screen: '100vh',
+            80: '320px',
         },
         minWidth: {
             0: '0px',

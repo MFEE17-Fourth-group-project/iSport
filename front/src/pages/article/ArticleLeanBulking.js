@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/飲食/pexels-photo-1307658.jpeg';
 import ArticleNav from './components/ArticleNav';
-import Article from './components/Article';
+import ArticleOutSide from './components/ArticleOutSide';
 import { Link, withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
-function ArticleLeanBulking(props) {
+import { FaSearch } from 'react-icons/fa';
+function ArticleLeanBulking({ article }) {
     const [data, setData] = useState(null);
-    // const [isPending, setIsPending] = useState(true);
+    const [allData, setAllData] = useState(null);
     const [error, setError] = useState(null);
     useEffect(() => {
         const getArticleData = async () => {
@@ -16,9 +17,11 @@ function ArticleLeanBulking(props) {
                     `${API_URL}/articles/Read/LeanBulking`
                 );
                 let data = res.data;
+                console.log(data);
                 setData(data);
+                setAllData(data);
                 // setIsPending(false);
-                setError(null);
+                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -27,7 +30,38 @@ function ArticleLeanBulking(props) {
         };
         getArticleData();
     }, []);
-    console.log(data);
+    // console.log(data);
+    const [term, setTerm] = useState('');
+    const handleUpdateButton = () => {
+        let newArticles = data.sort(
+            (a, b) =>
+                b.upload_date.replace(/-/gi, '') -
+                a.upload_date.replace(/-/gi, '')
+        );
+        setData([...newArticles]);
+    };
+    const handleViewsButton = () => {
+        let newArticles = data.sort((a, b) => b.views - a.views);
+        setData([...newArticles]);
+    };
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        let newArticles = allData.filter(
+            (art) =>
+                art.title.indexOf(term) > -1 || art.content.indexOf(term) > -1
+        );
+        setData([...newArticles]);
+    };
+    const handleEmpty = (e) => {
+        if (e.target.value === '') setData(allData);
+    };
+    //nav
+    const [category, setCategory] = useState(0);
+
+    const changeCategory = (e) => {
+        setCategory(e.target.dataset.id);
+    };
     return (
         <>
             <div>
@@ -47,13 +81,55 @@ function ArticleLeanBulking(props) {
                     </div>
                 </div>
                 <div className="sticky top-0 z-40">
-                    <ArticleNav />
+                    <ArticleNav cat={changeCategory} />
                 </div>
-                <main className="max-w-screen-2xl mx-auto p-6">
-                    <div className="m-8">
+                <main className="max-w-screen-2xl mx-auto">
+                    {/* Buttons & Search */}
+                    <div className="flex my-6 mx-20 justify-between flex-col xs:flex-row">
+                        <div className="flex mb-2.5 xs:mb-0">
+                            <button
+                                className="btn-gray-sm mr-4"
+                                onClick={handleUpdateButton}
+                            >
+                                最新上傳
+                            </button>
+                            <button
+                                className="btn-yellow-sm mr-4"
+                                onClick={handleViewsButton}
+                            >
+                                最多觀看
+                            </button>
+                        </div>
+                        <form
+                            className="relative flex"
+                            onSubmit={(e) => handleSearch(e)}
+                        >
+                            <input
+                                type="text"
+                                className="placeholder-white text-white bg-gray-700 border border-solid border-gray-700
+                                    text-base px-4 py-1.5 rounded-full outline-none ease-linear
+                                    transition-all duration-150 w-full xs:w-56 xs:focus:w-60 sm:w-80 sm:focus:w-96 focus:placeholder-gray-400
+                                    "
+                                value={term}
+                                onChange={(e) => setTerm(e.target.value)}
+                                onKeyUp={(e) => handleEmpty(e)}
+                                placeholder="搜尋"
+                            />
+                            <button
+                                type="submit"
+                                className="absolute right-0 top-0 flex text-xl m-1 p-1.5 transform -translate-y-px"
+                            >
+                                <FaSearch className="hover:text-white text-gray-200" />
+                            </button>
+                        </form>
+                    </div>
+                    <div className="w-3/4 m-auto">
                         {data &&
                             data.map((article) => (
-                                <Article article={article} key={article.id} />
+                                <ArticleOutSide
+                                    article={article}
+                                    key={article.id}
+                                />
                             ))}
                     </div>
                 </main>

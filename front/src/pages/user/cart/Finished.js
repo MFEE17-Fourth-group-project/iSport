@@ -1,13 +1,39 @@
-import React from 'react';
-import CheckItem from './components/CheckItem';
-import Aside from '../../../global/Aside';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../../context/auth';
+import { API_URL } from '../../../utils/config';
 import ProgressBar from './components/ProgressBar';
+import CheckItem from './components/CheckItem';
+import NotAuth from '../components/NotAuth';
+import Aside from '../../../global/Aside';
+import axios from 'axios';
 
-function Finished() {
+function Finished(props) {
+    const { member, setMember } = useAuth();
+    const [totalAmount, setTotalAmount] = useState(0);
+    const [orderInfo, setOrderInfo] = useState({});
+
+    // 向 server 拿資料
+    const getDataFromServer = async (myCartItem) => {
+        let result = await axios.post(`${API_URL}/order`);
+        console.log('result.data.myCart', result.data.myCart);
+
+        // 前端計算總金額，傳回父母元件
+        result.data.myCart.forEach((item) => {
+            const amount = item.price * item.qty;
+            totalAmount += amount;
+        });
+        // alert(totalAmount);
+    };
+
+    useEffect(() => {
+        getDataFromServer();
+    }, []);
+
     return (
         <>
+            {/* {member ? ( */}
             <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                <Aside />
+                {/* <Aside /> */}
                 <article className="flex-grow flex-col">
                     <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                         購物車
@@ -80,16 +106,19 @@ function Finished() {
                                 訂購明細
                             </h5>
                         </div>
-                        <CheckItem />
-                        <CheckItem />
-                        <CheckItem />
+                        <CheckItem setTotalAmount={setTotalAmount} />
                         <div className="pt-2.5 mt-8 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                             <p className="text-lg font-bold">Total :</p>
-                            <span className="text-lg font-bold">1400</span>
+                            <span className="text-lg font-bold">
+                                {totalAmount}
+                            </span>
                         </div>
                     </div>
                 </article>
             </main>
+            {/* ) : (
+                <NotAuth />
+            )} */}
         </>
     );
 }

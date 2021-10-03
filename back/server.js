@@ -1,35 +1,35 @@
 const port = 3030;
-const express = require('express');
-const connection = require('./utils/db');
-const path = require('path');
+const express = require("express");
+const connection = require("./utils/db");
+const path = require("path");
 // const expressSession = require('express-session');
-const cors = require("cors")
-const expressSession = require('express-session');
-require('dotenv').config();
-let app = express();
+const cors = require("cors");
+const expressSession = require("express-session");
 require("dotenv").config();
+let app = express();
 
 // Routers
 let videosRouter = require("./routers/videos");
 let articlesRouter = require("./routers/articles");
 let cartRouter = require("./routers/cart");
 let orderRouter = require("./routers/order");
-let insertDataRouter = require("./routers/insertDataBySarah");
 let usersRouter = require("./routers/users");
 let productsRouter = require("./routers/products");
-const { MulterError } = require('multer');
+const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
+let commentsRouter = require("./routers/comments");
 
+app.use(express.static("public"));
 
-
-//啟用session
+app.use(express.static('public'));
+// 啟用session
 app.use(
     expressSession({
-    secret:process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
     })
-)
+);
 
 app.use(
     cors({
@@ -42,31 +42,24 @@ app.use(
         credentials: true,
     })
 );
-console.log(process.env.Route_ORIGIN)
+console.log(process.env.Route_ORIGIN);
 
-// app.use(
-//     expressSession({
-//         secret: process.env.SESSION_SECRET,
-//         resave: false
-//     })
-// );
 //使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
 //使用這個中間鍵才能解析json資料
 app.use(express.json());
 //設定靜態檔案的位置
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // /api/videos
 app.use("/api/videos", videosRouter);
+app.use("/api/videos/:id/comments", commentsRouter);
 // /api/articles
 app.use("/api/articles", articlesRouter);
-// /api/cart FIXME: 待修改
+// /api/cart
 app.use("/api/cart", cartRouter);
 // /api/order
 app.use("/api/order", orderRouter);
-// /api/insertData
-app.use("/api/insertData", insertDataRouter);
 // /api/users
 app.use("/api/users", usersRouter);
 // /api/products
@@ -88,16 +81,21 @@ app.use((req, res, next) => {
 });
 
 // error exception 或者設計設計自訂錯誤跳到此處
-app.use((err,req,res,next)=>{
+app.use((err, req, res, next) => {
     //特別處理 multer 錯誤訊息
-    if(err instanceof MulterError){
-        if(err.code==="LIMIT_FILE_SIZE"){
-            return res.status(400).json({message:"超過上傳檔案上限"});
+    if (err instanceof MulterError) {
+        if (err.code === "LIMIT_FILE_SIZE") {
+            return res.status(400).json({ message: "超過上傳檔案上限" });
         }
-        return res.status(400).json({message:err.message});
+        return res.status(400).json({ message: err.message });
     }
     console.log(err);
-    res.status(err.status).json({message:err.message});
+    res.status(err.status).json({ message: err.message });
+});
+
+app.use((req, res, next) => {
+    console.log("沒有符合的路由");
+    next();
 });
 
 // Port

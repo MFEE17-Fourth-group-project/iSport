@@ -18,8 +18,10 @@ import CustomerService from './user/sign/CustomerService';
 
 // ARTICLE
 import Articles from './article/Article';
+import ArticleOutSide from './article/components/ArticleOutSide';
 import ArticleId from './article/ArticleId';
 import ArticleAdd from './user/articles/ArticleAdd';
+import ArticleEdit from './user/articles/ArticleEdit';
 import ArticleMyart from './user/articles/ArticleMyart';
 import ArticleCollect from './user/articles/ArticleCollect';
 import ArticleAerobicExercise from './article/ArticleAerobicExercise';
@@ -49,12 +51,21 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 // import Aside from '../global/Aside';
 
 function HomeRouter() {
-    const [counts, setCounts] = useState(1);
+    const [cartCount, setCartCount] = useState(0);
 
+    const cartAdd = () => {
+        let currentCart = localStorage.getItem('cart') || '[]';
+        let newCart = [...JSON.parse(currentCart)];
+        setCartCount(newCart.length);
+    };
+
+    useEffect(() => {
+        cartAdd();
+    }, []);
     return (
         <Router>
             <>
-                <Nav />
+                <Nav cartCount={cartCount} />
                 <ScrollToTop>
                     <Switch>
                         <Route path="/SearchPassword">
@@ -66,14 +77,14 @@ function HomeRouter() {
                         <Route path="/user/cart/TradingRecord">
                             <TradingRecord />
                         </Route>
-                        <Route path="/user/cart/favorite">
+                        <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart counts={counts} setCounts={setCounts} />
+                            <Cart />
                         </Route>
-                        <Route path="/products/productItem/">
-                            <ProductItem />
+                        <Route path="/products/productItem/:productId?">
+                            <ProductItem cartAdd={cartAdd} />
                         </Route>
                         <Route path="/products/:category?">
                             <Product />
@@ -83,6 +94,9 @@ function HomeRouter() {
                         </Route>
                         <Route path="/articles">
                             <Articles />
+                        </Route>
+                        <Route path="/articleOutSide">
+                            <ArticleOutSide />
                         </Route>
                         <Route path="/ArticleAerobicExercise">
                             <ArticleAerobicExercise />
@@ -99,7 +113,7 @@ function HomeRouter() {
                         <Route path="/ArticleLeanBulking">
                             <ArticleLeanBulking />
                         </Route>
-                        <Route path="/ArticleId/:id?">
+                        <Route path="/article/:id">
                             <ArticleId />
                         </Route>
                         <Route path="/user/ArticleCollect">
@@ -111,14 +125,8 @@ function HomeRouter() {
                         <Route path="/user/ArticleAdd">
                             <ArticleAdd />
                         </Route>
-                        <Route path="/user/ArticleCollect">
-                            <ArticleCollect />
-                        </Route>
-                        <Route path="/user/ArticleMyart">
-                            <ArticleMyart />
-                        </Route>
-                        <Route path="/user/ArticleAdd">
-                            <ArticleAdd />
+                        <Route path="/user/ArticleEdit">
+                            <ArticleEdit />
                         </Route>
                         <Route path="/video/:videoId">
                             <VideoId />
