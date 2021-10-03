@@ -189,7 +189,7 @@ const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue,
                                             >
                                             </div>
                                         </>}
-                                    {(member.id !== null) && (member.id === comment.user_id) &&
+                                    {member && (member.id === comment.user_id) &&
                                         <div className="flex h-4 relative">
                                             <div
                                                 className="flex w-full h-full cursor-pointer absolute"
@@ -199,7 +199,6 @@ const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue,
                                             </div>
                                             <BiDotsHorizontal className="text-white text-lg" />
                                         </div>}
-
                                 </div>
                             </div>
                             {(editInput === idx) ?

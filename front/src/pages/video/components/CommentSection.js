@@ -15,13 +15,15 @@ const CommentSection = ({ videoId, allComment, setAllComment, onDelete, onEdit, 
     const submitComment = (e) => {
         setShowSubmit(false);
         e.preventDefault();
-        (async function () {
-            let res = await axios.post(`${API_URL}/videos/${videoId}/comments`, {
-                comment: comment.replace(/<[^>]+>/g, '')
-            }
-                , { withCredentials: true });
-            setAllComment(res.data);
-        })();
+        if (comment !== '') {
+            (async function () {
+                let res = await axios.post(`${API_URL}/videos/${videoId}/comments`, {
+                    comment: comment.replace(/<[^>]+>/g, '')
+                }
+                    , { withCredentials: true });
+                setAllComment(res.data);
+            })();
+        }
         setComment('');
     };
 
@@ -31,14 +33,16 @@ const CommentSection = ({ videoId, allComment, setAllComment, onDelete, onEdit, 
     };
 
     const submitEditComment = () => {
-        let commentId = allComment[currentEdit].id;
-        (async function () {
-            let res = await axios.put(`${API_URL}/videos/${videoId}/comments/${commentId}`, {
-                newComment: editValue.replace(/<[^>]+>/g, '')
-            }
-                , { withCredentials: true });
-            setAllComment(res.data);
-        })();
+        if (editValue !== '') {
+            let commentId = allComment[currentEdit].id;
+            (async function () {
+                let res = await axios.put(`${API_URL}/videos/${videoId}/comments/${commentId}`, {
+                    newComment: editValue.replace(/<[^>]+>/g, '')
+                }
+                    , { withCredentials: true });
+                setAllComment(res.data);
+            })();
+        }
     };
 
     return (
