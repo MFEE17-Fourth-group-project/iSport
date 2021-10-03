@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import moment from 'moment';
 import { BiDotsHorizontal } from 'react-icons/bi';
+import { useAuth } from '../../../context/auth';
 import useToggle from '../../../utils/useToggle';
 import Person2 from './../../../images/person-2.jpg';
 
@@ -117,6 +118,7 @@ moment.locale('zh-tw', {
 });
 
 const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue, setEditValue }) => {
+    const { member, setMember } = useAuth();
     const [openEdit, setOpenEdit] = useToggle(false);
     const [editInput, setEditInput] = useState(null);
 
@@ -187,15 +189,16 @@ const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue,
                                             >
                                             </div>
                                         </>}
-                                    <div className="flex h-4 relative">
-                                        <div
-                                            className="flex w-full h-full cursor-pointer absolute"
-                                            data-index={idx}
-                                            onClick={e => handleEdit(e)}
-                                        >
-                                        </div>
-                                        <BiDotsHorizontal className="text-white text-lg" />
-                                    </div>
+                                    {(member.id !== null) && (member.id === comment.user_id) &&
+                                        <div className="flex h-4 relative">
+                                            <div
+                                                className="flex w-full h-full cursor-pointer absolute"
+                                                data-index={idx}
+                                                onClick={e => handleEdit(e)}
+                                            >
+                                            </div>
+                                            <BiDotsHorizontal className="text-white text-lg" />
+                                        </div>}
 
                                 </div>
                             </div>
