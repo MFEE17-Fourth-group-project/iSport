@@ -15,19 +15,38 @@ router.post('/', SignInCheckMiddleware, async (req, res, next) => {
         [userAccount, videoId, commentBody]
     );
     result = await connection.queryAsync(
-        'SELECT u.name as username, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+        'SELECT u.name as username, u.id as user_id ,c.id, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
         [videoId]
     );
     res.json(result);
 });
 
 router.route('/:commentId')
-    .put((req, res, next) => {
-        console.log(req.params);
+    .put(SignInCheckMiddleware, async (req, res, next) => {
+        let { id: videoId, commentId } = req.params;
+        let newComment = req.body.newComment;
+        let result = await connection.queryAsync(
+            'UPDATE comment_video SET content=? WHERE id=? AND video_id=?',
+            [newComment, commentId, videoId]
+        );
+        result = await connection.queryAsync(
+            'SELECT u.name as username, u.id as user_id ,c.id, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+            [videoId]
+        );
+        res.json(result);
     })
 
-    .delete((req, res, next) => {
-        console.log(req.params);
+    .delete(SignInCheckMiddleware, async (req, res, next) => {
+        let { id: videoId, commentId } = req.params;
+        let result = await connection.queryAsync(
+            'DELETE FROM comment_video WHERE id=? AND video_id=?',
+            [commentId, videoId]
+        );
+        result = await connection.queryAsync(
+            'SELECT u.name as username, u.id as user_id ,c.id, c.date, c.content FROM comment_video c LEFT JOIN users u ON c.user_account=u.account WHERE c.video_id=? AND valid=1 ORDER BY c.date DESC',
+            [videoId]
+        );
+        res.json(result);
     });
 
 module.exports = router;
