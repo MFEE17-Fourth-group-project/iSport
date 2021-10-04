@@ -12,7 +12,7 @@ const ArticleOutSide = (props) => {
     return (
         <>
             <Link to={'/article/' + article.id} className="max-w-max m-auto">
-                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5">
+                <div className="border-4 border-light-blue-500 border-opacity-100 p-5 m-5">
                     {/* <img
                         className="m-auto w-1/2"
                         src={`http://localhost:3030/articles/uploads/${article.photos}`}
@@ -25,7 +25,7 @@ const ArticleOutSide = (props) => {
                         <div className="flex items-center">
                             <BsFillPersonFill className="text-yellow-400 mr-1 cursor-pointer" />
                             <h4 className="text-sm text-white mr-4">
-                                {article.article_name}
+                                {article.user_name}
                             </h4>
                             <FaClock className="text-yellow-400 mr-1" />
                             <h4 className="text-xs text-white mr-4">
@@ -36,20 +36,7 @@ const ArticleOutSide = (props) => {
                                 {article.views}
                             </h4>
                         </div>
-                        <div className="flex items-center">
-                            <FaThumbsUp className="text-yellow-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                {article.views}
-                            </span>
-                            <FaShare className="text-yellow-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                分享
-                            </span>
-                            <FaRegHeart className="text-red-400 mr-1 cursor-pointer" />
-                            <span className="text-xs text-white mr-4">
-                                收藏
-                            </span>
-                        </div>
+                        <div className="flex items-center"></div>
                     </div>
                     <div className="m-2">
                         <p

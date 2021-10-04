@@ -14,6 +14,7 @@
         "axios": "0.21.4",
         "cloudinary-react": "1.7.0",
         "draft-js": "0.11.7",
+        "eegeo.js": "^0.1.1111",
         "emailjs-com": "^3.2.0",
         "leaflet": "1.7.1",
         "moment": "2.29.1",
@@ -31,7 +32,8 @@
         "react-scripts": "4.0.3",
         "smtpjs": "0.0.1",
         "tailwindcss": "2.2.7",
-        "web-vitals": "1.0.1"
+        "web-vitals": "1.0.1",
+        "wrld-react": "^0.1.2401"
     },
     "scripts": {
         "start": "react-scripts start",
