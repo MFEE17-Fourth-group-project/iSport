@@ -60,7 +60,14 @@ function ArticleMyart({ article, handleDelete, props }) {
                             <BiSearchAlt className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
                         </Link>
                         <Link to={'/user/ArticleEdit/' + article.id}>
-                            <BiWrench className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2" />
+                            <BiWrench
+                                className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2"
+                                onClick={() => {
+                                    props.history.push(
+                                        '/user/ArticleEdit/' + article.id
+                                    );
+                                }}
+                            />
                         </Link>
                         <BiTrash
                             className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2"

@@ -8,25 +8,67 @@ import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticleEdit({ post }) {
+function ArticleEdit({ post, props }) {
     const { member, setMember } = useAuth();
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
     const { id } = useParams();
-    const [user_name, setuser_name] = useState('');
-    const [title, settitle] = useState('');
-    const [content, setcontent] = useState('');
-    const [category, setcategory] = useState('');
-    // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState('');
+    const [data, setData] = useState(null);
+    //把資料都放進去
+    const [error, setError] = useState(null);
+    const newPost = {
+        user_name: '',
+        title: '',
+        content: '',
+        category: '',
+        photos: '',
+    };
+    const [fields, updatedFields] = useState(post ? post : newPost);
+    //先做淺拷貝，然後把 updatePost 物件用 switch case 做判斷之後替換，所以這邊 function 要傳入 e 跟 資料種類用做判斷。然後再把這個值傳給 setThisPost 即可變更狀態
+    const changePost = (e, dataType) => {
+        const updatePost = Object.assign({}, fields); //單層拷貝
+        switch (dataType) {
+            case 'user_name':
+                updatePost.user_name = e.target.value;
+                break;
+            case 'title':
+                updatePost.title = e.target.value;
+                break;
+            case 'content':
+                updatePost.content = e.target.value;
+                break;
+            case 'category':
+                updatePost.category = e.target.value;
+                break;
+            case 'photos':
+                updatePost.photos = e.target.value;
+                break;
+        }
+        updatedFields(updatePost);
+    };
+
+    // 處理每個欄位的變動
+    const handleFieldChange = (e) => {
+        // 更新輸入欄位的變動
+        // 用新輸入的屬性值和原物件作合併
+        updatedFields({
+            ...fields,
+            [e.target.name]: e.target.value,
+        });
+        // setFields(updatedFields)
+    };
+    //送出修改
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formdata = new FormData(e.target);
+    };
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
-                let data = res.adata;
+                let res = await axios.put(`${API_URL}/articles/Update/${id}`);
+                let data = res.data;
                 setData(data);
                 setError(null);
-                console.log(data);
+                alert('修改成功');
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -34,29 +76,7 @@ function ArticleEdit({ post }) {
         };
         getArticleData();
     });
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const formData = new FormData();
-            formData.append('user_name', user_name);
-            formData.append('title', title);
-            // formData.append('upload_date', upload_date);
-            formData.append('category', category);
-            formData.append('content', content);
-            formData.append('photos', photos);
-            let response = await axios.post(
-                `${API_URL}/articles/Update/${id}`,
-                formData
-            );
-            alert('修改文章成功');
-            console.log(response);
-        } catch (e) {
-            //透過e.response拿到axios的response
-            console.error(e.response);
-            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            alert(e.response.data.message);
-        }
-    };
+
     return (
         <>
             {member ? (
@@ -77,13 +97,15 @@ function ArticleEdit({ post }) {
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                     name="user_name"
+                                    aria-label="Full user_name"
                                     id="user_name"
-                                    placeholder="最多50字"
-                                    required
                                     placeholder={member.name}
-                                    value={user_name}
+                                    required
+                                    //只要判斷一下有沒有值，有的話就把值放進去
+                                    value={fields && fields.user_name}
+                                    //添加 onChange 來改變值
                                     onChange={(e) => {
-                                        setuser_name(e.target.value);
+                                        changePost(e, 'user_name');
                                     }}
                                 ></input>
                                 <br />
@@ -92,9 +114,9 @@ function ArticleEdit({ post }) {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={category}
+                                    value={fields && fields.category}
                                     onChange={(e) => {
-                                        setcategory(e.target.value);
+                                        changePost(e, 'category');
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
@@ -117,9 +139,9 @@ function ArticleEdit({ post }) {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={title}
+                                    value={fields && fields.title}
                                     onChange={(e) => {
-                                        settitle(e.target.value);
+                                        changePost(e, 'title');
                                     }}
                                 />
                                 <br />
@@ -130,8 +152,9 @@ function ArticleEdit({ post }) {
                                     type="file"
                                     name="photos"
                                     id="photos"
+                                    value={fields && fields.photos}
                                     onChange={(e) => {
-                                        setPhotos(e.target.files[0]);
+                                        changePost(e, 'photos');
                                     }}
                                 />
                                 <br />
@@ -153,11 +176,11 @@ function ArticleEdit({ post }) {
                                                 .getPlainText()
                                         );
 
-                                        setcontent(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
+                                        // setcontent(
+                                        //     editorState
+                                        //         .getCurrentContent()
+                                        //         .getPlainText()
+                                        // );
                                     }}
                                 />
                                 <div className="flex flex-row justify-end">
@@ -165,7 +188,9 @@ function ArticleEdit({ post }) {
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
-                                        onClick={handleSubmit}
+                                        onClick={() =>
+                                            console.log('送出', fields)
+                                        }
                                     >
                                         <p className="font-bold text-xl mx-2">
                                             修改
