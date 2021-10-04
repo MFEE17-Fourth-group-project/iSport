@@ -93,54 +93,67 @@ router.get("/reset", async (req, res, next) => {
 });
 
 // 修改會員資料
-router.put("/:account", async (req, res, next) => {
-    if (req.body.password) {
-        // 如果前端有送密碼來
-        // let bcrtptpasswoord= await bcrypt.hash(req.body.password,10);
+router.route("/:account")
+    .put(async (req, res, next) => {
+        if (req.body.password) {
+            // 如果前端有送密碼來
+            // let bcrtptpasswoord= await bcrypt.hash(req.body.password,10);
 
-        let UpDateMemberData = await connection.queryAsync(
-            "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
-            [req.body.name, await bcrypt.hash(req.body.password, 10), req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
-    } else {
-        // 如果是空值
-        let data = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
-        let getpassword = data.password;
-        let UpDateMemberData = await connection.queryAsync(
-            "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
-            [req.body.name, getpassword, req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
-    }
+            let UpDateMemberData = await connection.queryAsync(
+                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
+                [req.body.name, await bcrypt.hash(req.body.password, 10), req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
+        } else {
+            // 如果是空值
+            let data = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
+            let getpassword = data[0].password;
+            let UpDateMemberData = await connection.queryAsync(
+                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
+                [req.body.name, getpassword, req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
+        }
 
-    try {
-        let newMemberData = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
-        let returnMember = {
-            account: newMemberData.account,
-            email: newMemberData.email,
-            name: newMemberData.name,
-            phone: newMemberData.phone,
-            address: newMemberData.address,
-            birthday: newMemberData.birthday,
-            gender: newMemberData.gender,
-            aboutme: newMemberData.about,
-            photo: newMemberData.photo,
-            password: ""
-        };
-        // req.session.member=returnMember;
-        // res.json(req.session.member);
-        console.log("修改成功");
+        try {
+            let newMemberData = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
+            let returnMember = {
+                account: newMemberData.account,
+                email: newMemberData.email,
+                name: newMemberData.name,
+                phone: newMemberData.phone,
+                address: newMemberData.address,
+                birthday: newMemberData.birthday,
+                gender: newMemberData.gender,
+                aboutme: newMemberData.about,
+                photo: newMemberData.photo,
+                password: ""
+            };
+            // req.session.member=returnMember;
+            // res.json(req.session.member);
+            console.log("修改成功");
+        }
+        catch (e) {
+            console.log({
+                status: 400,
+                message: " 更新會員資料失敗",
+                e: e
+            });
+            res.json({
+                status: 400,
+                message: "更新會員資料請再試一試",
+            });
+        }
     }
-    catch (e) {
-        console.log({
-            status: 400,
-            message: " 更新會員資料失敗",
-            e: e
-        });
-        res.json({
-            status: 400,
-            message: "更新會員資料請再試一試",
-        });
-    }
-}
-);
+    )
+    .delete(async (req, res, next) => {
+        try {
+            let userImg = await connection.queryAsync("SELECT photo FROM users WHERE account=?", [req.params.account]);
+            // Delete from cloudinary
+            await cloudinary.uploader.destroy(userImg[0].photo);
+            let result = await connection.queryAsync("DELETE FROM users WHERE account=?", [req.params.account]);
+            res.json({ message: '刪除成功' });
+        } catch (e) {
+            console.log(e);
+            res.json(e);
+        }
+    });
 
 //會員上傳檔案用路由中間件
 router.put("/photo/:account", uploader.single("photo"), async (req, res, next) => {
@@ -159,11 +172,11 @@ router.put("/photo/:account", uploader.single("photo"), async (req, res, next) =
             ], [req.params.account]]
         );
         result = await connection.queryAsync(
-            "SELECT photo FROM users WHERE account=?",
+            "SELECT id, name, account, email, phone, address, birthday, about, gender, photo, create_time, article_count, video_count FROM users WHERE account=?",
             [req.params.account]
         );
         console.log('上傳更新成功');
-        res.json(result);
+        res.json(result[0]);
     } catch (e) {
         console.log(e);
         res.json(e);
