@@ -22,7 +22,6 @@ function UserAside() {
     const { member, setMember } = useAuth();
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
     const [photo, setPhoto] = useState();
-    const [userImg, setUserImg] = useState(null);
     const formData = new FormData();
     const userImageForm = useRef();
 
@@ -43,7 +42,7 @@ function UserAside() {
                 withCredentials: true,
             }
         );
-        setUserImg(response.data[0].photo);
+        setMember(response.data);
         try {
             alert('頭像上傳成功');
         } catch (e) {
@@ -80,7 +79,7 @@ function UserAside() {
                             <div className="flex w-full h-full rounded-full group-hover:bg-black group-hover:bg-opacity-50 absolute transition-all duration-300 ease-in-out"></div>
                             <Image
                                 cloudName="dbovdn1sr"
-                                publicId={userImg || member.photo}
+                                publicId={member.photo}
                                 secure="true"
                                 className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
                             >
@@ -152,9 +151,6 @@ function UserAside() {
                                     <Link to="/user/videoCollection">
                                         收藏影片
                                     </Link>
-                                </li>
-                                <li className="user-submenu-li cursor-pointer">
-                                    <Link to="/user/watchLater">稍後觀看</Link>
                                 </li>
                             </ul>
                         </section>

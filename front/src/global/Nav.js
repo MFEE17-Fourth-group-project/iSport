@@ -69,24 +69,12 @@ function Nav(props) {
                                     className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
                                     onClick={handleMobileWindow}
                                 >
-                                    {`${member.photo}` !== '' ? (
-                                        <img
-                                            src={`${IMAGE_URL}${member.photo}`}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center"
-                                        />
-                                    ) : (
-                                        <img
-                                            src={userHeader}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center"
-                                        />
-                                    )}
                                     <Image
-                                        cloudName="dnmayrvjj"
+                                        cloudName="dbovdn1sr"
                                         publicId={member.photo}
+                                        alt="123"
                                         secure="true"
-                                        className="w-full"
+                                        className="w-full h-full object-cover object-center"
                                     >
                                     </Image>
                                 </div>
@@ -109,10 +97,10 @@ function Nav(props) {
                                                 style={{ width: '80px' }}
                                             /> */}
                                             <Image
-                                                cloudName="dnmayrvjj"
+                                                cloudName="dbovdn1sr"
                                                 publicId={member.photo}
                                                 secure="true"
-                                                className="w-full"
+                                                className="w-full h-full object-cover object-center"
                                             >
                                             </Image>
 

@@ -10,35 +10,6 @@ function App() {
     const setAuthMember = (m) => {
         setMember(m);
     };
-    const [tempMember, setTempMember] = useState({ ...member });
-    const setAuthTempMember = (m) => {
-        setTempMember(m);
-    };
-
-    // const [token, setToken] = useState(null);
-
-    // //取得jwt token用
-    // const setJWTToken = (token) => {
-    //     localStorage.setItem('token', token);
-    //     setToken(token);
-    // };
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     setToken(token);
-    //     //每次驗證都會帶token
-    //     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-    //     const getMember = async () => {
-    //         try {
-    //             let result = await axios.get(
-    //                 `${API_URL}/users/`
-    //                 // { withCredentials: true,}
-    //             );
-    //             setMember(result.data);
-    //         } catch (e) {}
-    //     };
-    //     getMember();
-    // }, []);
 
     useEffect(() => {
         // 每次重新整理或開啟頁面時，都去確認一下是否在已經登入的狀態。
@@ -49,7 +20,7 @@ function App() {
                 });
                 console.log(result.data);
                 setMember(result.data);
-            } catch (e) {}
+            } catch (e) { }
         };
         getMember();
     }, []);
