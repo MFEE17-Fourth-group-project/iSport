@@ -30,7 +30,6 @@ function SignIn(props) {
                 //如果要同意跨原信任 需要將withCredentials改為true
                 { withCredentials: true }
             );
-            console.log(result);
             setMember(result.data);
             windowClose();
             // setToken(result.data.token);
@@ -44,9 +43,6 @@ function SignIn(props) {
 
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisibility = () => {
-        setPasswordShown(!passwordShown);
-    };
     // 如果有登入member就跳轉到會員中心
     // if (member !== null) {
     //     return <Redirect to="/user" />;
@@ -61,7 +57,7 @@ function SignIn(props) {
                 <div className="bg-gray-900 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold relative">
                     登入
                     <FaTimesCircle
-                        className="userIcons absolute flex right-0 cursor-pointer"
+                        className="userIcons mx-5 absolute flex right-0 cursor-pointer"
                         onClick={props.onCancel}
                     />
                 </div>
@@ -106,12 +102,12 @@ function SignIn(props) {
                             required
                         />
                         <i
-                            onClick={togglePasswordVisibility}
-                            className="absolute top-52 right-10"
+                            onClick={() => setPasswordShown(!passwordShown)}
+                            className="absolute top-52 right-10 transform translate-y-1"
                         >
                             {passwordShown ?
-                                <FaEyeSlash className="userIcons hover:text-green-400 cursor-pointer" title="隱藏密碼" />
-                                : <FaEye className="userIcons hover:text-green-400 cursor-pointer" title="顯示密碼" />}
+                                <FaEyeSlash className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" title="隱藏密碼" />
+                                : <FaEye className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" title="顯示密碼" />}
                         </i>
                         <hr className="border-2 border-yellow-400" />
                         <Link to="/SearchPassword">

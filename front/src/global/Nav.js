@@ -2,6 +2,7 @@ import Logo from '../images/biceps.svg';
 import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { Image } from 'cloudinary-react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/images.png';
 import MobileAside from './MobileAside';
@@ -81,11 +82,13 @@ function Nav(props) {
                                             className="w-full h-full object-cover object-center"
                                         />
                                     )}
-                                    <img
-                                        src={`${IMAGE_URL}${member.photo}`}
-                                        alt=""
-                                        className="w-full h-full object-cover object-center"
-                                    />
+                                    <Image
+                                        cloudName="dnmayrvjj"
+                                        publicId={member.photo}
+                                        secure="true"
+                                        className="w-full"
+                                    >
+                                    </Image>
                                 </div>
                                 {MobileWindow && (
                                     <MobileAside
@@ -101,10 +104,18 @@ function Nav(props) {
                                     </div>
                                     <ul className="navmenu cursor-pointer">
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
-                                            <img
+                                            {/* <img
                                                 src={`${IMAGE_URL}${member.photo}`}
                                                 style={{ width: '80px' }}
-                                            />
+                                            /> */}
+                                            <Image
+                                                cloudName="dnmayrvjj"
+                                                publicId={member.photo}
+                                                secure="true"
+                                                className="w-full"
+                                            >
+                                            </Image>
+
                                         </div>
                                         <div className="absolute border  border-gray-900 bg-gray-900">
                                             <li className="text-white hidden submenu text-lg cursor-pointer">

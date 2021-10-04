@@ -79,7 +79,7 @@ function UserAside() {
                         <div className="w-48 h-48 rounded-full overflow-hidden z-0 relative">
                             <div className="flex w-full h-full rounded-full group-hover:bg-black group-hover:bg-opacity-50 absolute transition-all duration-300 ease-in-out"></div>
                             <Image
-                                cloudName="dnmayrvjj"
+                                cloudName="dbovdn1sr"
                                 publicId={userImg || member.photo}
                                 secure="true"
                                 className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
