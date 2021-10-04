@@ -203,7 +203,7 @@ const ArticleSection = () => {
         AOS.refresh();
     }, []);
     return (
-        <div className="relative w-full mb-16 sm:mb-24 sm:mt-2 lg:mt-2.5 xl:mt-4">
+        <div className="relative w-full sm:mt-2 lg:mt-2.5 xl:mt-4">
             <div
                 className="text-center sm:py-6 mt-7 mb-4"
                 data-aos="zoom-in"
