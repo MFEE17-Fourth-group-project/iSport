@@ -4,7 +4,7 @@ import GymSectionItem from './GymSectionItem';
 function GymList(props) {
     const { Gyms } = props;
     return (
-        <div className="col-md-8 cart">
+        <div>
             {Gyms.map((gym, index) => (
                 <GymSectionItem
                     key={index}
