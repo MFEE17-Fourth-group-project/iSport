@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-credit-cards';
+import { API_URL } from '../../../../utils/config';
 import { Link } from 'react-router-dom';
 import {
     formatCreditCardNumber,
@@ -7,7 +8,7 @@ import {
     formatExpirationDate,
     formatFormData,
 } from './utils';
-
+import axios from 'axios';
 import 'react-credit-cards/es/styles-compiled.css';
 
 export default class App extends React.Component {
@@ -57,10 +58,6 @@ export default class App extends React.Component {
 
         this.setState({ formData });
         this.form.reset();
-    };
-
-    clearLocalStorage = () => {
-        localStorage.removeItem('cart');
     };
 
     render() {
@@ -150,13 +147,11 @@ export default class App extends React.Component {
                                     </p>
                                 </Link>
                             </button>
-                            <button
-                                type="submit"
-                                onClick={this.clearLocalStorage}
-                            >
+                            <button type="submit">
                                 <Link
                                     to="/finished"
                                     className="btn-yellow flex flex-row justify-end items-center"
+                                    onClick={this.props.checkout}
                                 >
                                     <p className="font-bold sm:text-xl text-lg">
                                         下一步

@@ -20,7 +20,6 @@ function Checkout(props) {
     const [address, setAddress] = useState('桃園市平鎮區中央路123號');
     const [delivery, setDelivery] = useState(2);
 
-    // FIXME: ANIMATE TRANSITION and DURATION ** 沒作用 **
     const showCheckItemRef = useRef(null);
     const showItem = () => {
         const showCheckItem = showCheckItemRef.current;
@@ -173,7 +172,7 @@ function Checkout(props) {
                                 >
                                     <option value="1">郵寄</option>
                                     <option value="2">宅急便</option>
-                                    <option value="3">超商貨到付款</option>
+                                    <option value="3">超商取貨</option>
                                 </select>
                             </div>
                         </from>

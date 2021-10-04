@@ -15,15 +15,15 @@ function CartItem(props) {
     const getCartFromLocalStorage = async () => {
         // 取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
         const cartLocalStorage = localStorage.getItem('cart') || '[]';
-        const myCartItem = JSON.parse(cartLocalStorage);
+        const cartItems = JSON.parse(cartLocalStorage);
 
-        setMyCart(myCartItem);
+        setMyCart(cartItems);
     };
 
     // 向 server 拿資料
-    const getDataFromServer = async (myCartItem) => {
+    const getDataFromServer = async (cartItems) => {
         let result = await axios.post(`${API_URL}/cart`, {
-            myCartItem,
+            cartItems,
         });
         // console.log('result.data.myCart', result.data.myCart);
 
@@ -99,7 +99,7 @@ function CartItem(props) {
             }
         }
         checkLocalStorage();
-        console.log(`aaa`, newMyCartDisplay);
+        // console.log(`aaa`, newMyCartDisplay);
         if (newMyCartDisplay.length > 0) {
             getDataFromServer(newMyCartDisplay);
         }

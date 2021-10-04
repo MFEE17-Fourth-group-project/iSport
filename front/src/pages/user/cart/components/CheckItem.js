@@ -11,9 +11,9 @@ function CheckItem(props) {
     const getDataFromLocalStorage = async () => {
         try {
             // post localStorage 資料到後端 API 並取得後端丟回來的商品資訊
-            let myCartItem = JSON.parse(localStorage.getItem('cart'));
+            let cartItems = JSON.parse(localStorage.getItem('cart'));
             let result = await axios.post(`${API_URL}/cart`, {
-                myCartItem,
+                cartItems,
             });
             // console.log('result.data', result.data);
             // 設定回 useState render 到網頁
@@ -27,7 +27,7 @@ function CheckItem(props) {
             // 將總金額傳回父母元件
             setTotalAmount(result.data.totalAmount);
             setMyCart(result.data.myCart);
-            // console.log('myCart in CheckItem', myCartItem);
+            // console.log('myCart in CheckItem', cartItems);
 
             setError('');
         } catch (e) {

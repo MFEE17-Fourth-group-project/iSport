@@ -20,7 +20,9 @@ function TradingRecord(props) {
         console.log('read API_URL', API_URL);
         const getOrderRecord = async () => {
             try {
-                let res = await axios.get(`${API_URL}/order`);
+                let res = await axios.get(`${API_URL}/order`, {
+                    withCredentials: true,
+                });
                 let data = res.data;
                 console.log(data);
                 setData(data);
