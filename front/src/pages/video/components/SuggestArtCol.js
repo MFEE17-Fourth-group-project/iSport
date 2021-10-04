@@ -1,38 +1,54 @@
+import useGet from '../../../utils/useGet';
+import { Link } from 'react-router-dom';
 import Person1 from './../../../images/person-1.jpg';
-import { FaEye } from "react-icons/fa";
-
+import { FaEye } from 'react-icons/fa';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { FaClock } from 'react-icons/fa';
+import moment from 'moment';
 const SuggestVideoCol = () => {
+    const {
+        data: suggestArticles,
+        error,
+        isPending,
+    } = useGet(`/videos/suggestArticles`);
+
     return (
-        <div className="flex mt-6 h-28">
-
-            <div className="mr-4">
-                <h2 className="text-4xl text-extrabold text-white">01</h2>
-            </div>
-
-            <div className="flex flex-col justify-between">
-
-                <h4 className="text-white text-lg">
-                    15 分鐘高強度全身肌肉 無需器材又能在家做的運動
-                </h4>
-
-                <div className="flex items-center">
-                    <img
-                        className="w-6 h-6 rounded-full mr-1.5"
-                        src={Person1}
-                    />
-                    <span className="text-white text-sm">沙拉<span className="text-gray-500"> · 10月26日, 2020年</span></span>
-                </div>
-
-                <div className="flex justify-between">
-                    <h6 className="flex items-center">
-                        <FaEye className="text-yellow-400 mr-1.5" />
-                        <span className="text-xs text-white text-opacity-85">1530</span>
-                    </h6>
-                </div>
-
-            </div>
-
-        </div>
+        <>
+            {suggestArticles &&
+                suggestArticles.map((article, idx) => (
+                    <Link
+                        to={'/article/' + article.id}
+                        className="flex mt-6 h-20"
+                    >
+                        <div className="mr-4">
+                            <h2 className="text-4xl text-extrabold text-white">
+                                {idx + 1}
+                            </h2>
+                        </div>
+                        <div className="flex flex-col justify-between">
+                            <h4 className="text-white text-lg">
+                                {article.title}
+                            </h4>
+                            <div className="flex items-center">
+                                <BsFillPersonFill className="text-yellow-400 mr-1 cursor-pointer" />
+                                <h4 className="text-sm text-white mr-4">
+                                    {article.user_name}
+                                </h4>
+                                <FaClock className="text-yellow-400 mr-1" />
+                                <h4 className="text-xs text-white mr-4">
+                                    {moment(article.upload_date).format(
+                                        'YYYY-MM-DD HH:mm'
+                                    )}
+                                </h4>
+                                <FaEye className="text-yellow-400 mr-1" />
+                                <h4 className="text-sm text-white mr-4">
+                                    {article.views}
+                                </h4>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+        </>
     );
 };
 

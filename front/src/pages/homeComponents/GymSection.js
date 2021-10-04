@@ -23,7 +23,7 @@ function GymSection() {
             longitude: '121.56319266647677',
         },
         {
-            name: '花蓮縣立中正體育場',
+            name: '花蓮縣中正體育場',
             phone: '(03)834-6035',
             image: 'https://i.imgur.com/FYDUCpO.jpg',
             address: '970花蓮縣花蓮市公園路53號',
@@ -39,7 +39,7 @@ function GymSection() {
             longitude: '121.154642430138',
         },
         {
-            name: '花蓮縣立中正體育場',
+            name: '花蓮縣中正體育場',
             phone: '(03)834-6035',
             image: 'https://i.imgur.com/FYDUCpO.jpg',
             address: '970花蓮縣花蓮市公園路53號',
@@ -117,7 +117,7 @@ function GymSection() {
     ];
     const SouthGyms = [
         {
-            name: '高雄市鳳山運動中心',
+            name: '高雄鳳山運動中心',
             phone: '(07)790-2288',
             image: 'https://i.imgur.com/DY3dgw5.jpg',
             address: '830高雄市鳳山區光華路68號',
@@ -125,7 +125,7 @@ function GymSection() {
             longitude: '120.35393548581638',
         },
         {
-            name: '青少年文化體育活動中心',
+            name: '青少年體育活動中心',
             phone: '(08)736-258',
             image: 'https://i.imgur.com/1j5uLaq.jpg',
             address: '812高雄市小港區學府路115號',
@@ -133,7 +133,7 @@ function GymSection() {
             longitude: '120.35895019887515',
         },
         {
-            name: '屏東市國民運動中心',
+            name: '屏東國民運動中心',
             phone: '(08)737-1388',
             image: 'https://i.imgur.com/i1jEQPF.jpg',
             address: '900屏東縣屏東市勝利東路50號',

@@ -3,11 +3,11 @@ import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 // import { HiMenu } from 'react-icons/hi';
-import userHeader from '../images/user/pic04.jpg';
+import userHeader from '../images/user/images.png';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
 import axios from 'axios';
-import { API_URL } from '../utils/config';
+import { API_URL, IMAGE_URL } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 
 function Nav(props) {
@@ -66,8 +66,21 @@ function Nav(props) {
                                     className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
                                     onClick={handleMobileWindow}
                                 >
+                                    {`${member.photo}` !== '' ? (
+                                        <img
+                                            src={`${IMAGE_URL}${member.photo}`}
+                                            alt=""
+                                            className="w-full h-full object-cover object-center"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={userHeader}
+                                            alt=""
+                                            className="w-full h-full object-cover object-center"
+                                        />
+                                    )}
                                     <img
-                                        src={userHeader}
+                                        src={`${IMAGE_URL}${member.photo}`}
                                         alt=""
                                         className="w-full h-full object-cover object-center"
                                     />
@@ -77,23 +90,41 @@ function Nav(props) {
                                         onCancel={handleCancelMobileWindow}
                                     />
                                 )}
-                                <div className="hidden lg:flex items-center justify-between w-64">
+                                <div className="hidden lg:flex items-center justify-between w-40">
                                     <div className="text-white">
-                                        Hi, {member.name}
+                                        <div className="text-yellow-400">
+                                            歡迎回來!
+                                        </div>
+                                        {member.name}
                                     </div>
-                                    <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
-                                        <img
-                                            src={userHeader}
-                                            style={{ width: '80px' }}
-                                        />
-                                    </div>
-                                    <Link
+                                    <ul className="navmenu cursor-pointer">
+                                        <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
+                                            <img
+                                                src={`${IMAGE_URL}${member.photo}`}
+                                                style={{ width: '80px' }}
+                                            />
+                                        </div>
+                                        <div className="absolute border  border-gray-900 bg-gray-900">
+                                            <li className="text-white hidden submenu text-lg cursor-pointer">
+                                                <Link to="/user">會員中心</Link>
+                                            </li>
+                                            <li className="text-white hidden submenu text-lg cursor-pointer">
+                                                <Link to="/">首頁</Link>
+                                            </li>
+                                            <li className="text-white hidden submenu text-lg cursor-pointer">
+                                                <Link to="/" onClick={signout}>
+                                                    登出
+                                                </Link>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                    {/* <Link
                                         to="/"
                                         onClick={signout}
                                         className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
                                     >
                                         登出
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </>
                         ) : (

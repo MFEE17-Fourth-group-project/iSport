@@ -88,32 +88,24 @@ function ArticleId(props) {
                                     </div>
                                 </div>
                             </div>
+                            {/* <Comment />
                             <Comment />
                             <Comment />
-                            <Comment />
-                            <Comment />
+                            <Comment /> */}
                         </div>
                     </div>
 
                     <div className="mr-8 w-4/12 xl:flex xl:flex-col hidden">
                         <div className="mt-6">
-                            <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 lg:border-b-0 lg:pb-0">
+                            <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400">
                                 推薦文章
                             </h3>
-                            <SuggestArtCol />
-                            <SuggestArtCol />
-                            <SuggestArtCol />
-                            <SuggestArtCol />
                             <SuggestArtCol />
                         </div>
                         <div>
                             <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 mt-8">
                                 推薦影片
                             </h3>
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
-                            <SuggestVideoCol />
                             <SuggestVideoCol />
                         </div>
                     </div>

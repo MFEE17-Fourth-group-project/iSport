@@ -139,6 +139,24 @@
     @apply outline-none;
 }
 
+/* 深色小按鈕 */
+.btn-gray-sm-dark {
+    @apply text-white bg-gray-800 border border-solid border-gray-800 uppercase text-sm
+        px-4 py-2 rounded-full outline-none ease-linear transition-all duration-150;
+}
+
+.btn-gray-sm-dark:hover {
+    @apply bg-gray-900 border-gray-900;
+}
+
+.btn-gray-sm-dark:active {
+    @apply bg-gray-900;
+}
+
+.btn-gray-sm-dark:focus {
+    @apply outline-none;
+}
+
 /* btn-green */
 .btn-green {
     @apply text-white bg-green-500 border border-solid border-green-500 uppercase text-base
@@ -243,4 +261,11 @@
 /* 變更user-avatar樣式 */
 .avatar-change {
     @apply hover:bg-gray-700;
+}
+/* navmenu樣式 */
+.navmenu:hover .submenu {
+    @apply block;
+}
+.navmenu:hover .submenu:hover {
+    @apply block bg-yellow-400 text-black;
 }
