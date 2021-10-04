@@ -1,11 +1,9 @@
 const cartModel = require("../model/cartModel");
 const Promise = require("bluebird");
 
-// TODO: 2. TYPE
-
 const cartItemData = async (req, res, next) => {
     try {
-        let myCartFromLocalStorage = req.body.myCartItem;
+        let myCartFromLocalStorage = req.body.cartItems;
         // console.log("myCartFromLocalStorage", myCartFromLocalStorage);
         // myCartFromLocalStorage = [
         //     { id: 2, product_id: 1, sku_code: "10011012", qty: 1 },
@@ -87,8 +85,8 @@ const cartItemImg = async (req, res, next) => {
 
 const userData = async (req, res, next) => {
     try {
-        // FIXME: let member = req.session.member.account;
-        let result = await cartModel.getUserData("admin1");
+        // FIXME: let member = req.session.member.id;
+        let result = await cartModel.getUserData(2);
         res.json(result);
     } catch (e) {
         console.error(e);
@@ -135,4 +133,9 @@ const cartItemType = async (req, res, next) => {
     }
 };
 
-module.exports = { cartItemData, cartItemImg, cartItemType, userData };
+module.exports = { 
+    cartItemData,
+    cartItemImg,
+    cartItemType,
+    userData,
+};

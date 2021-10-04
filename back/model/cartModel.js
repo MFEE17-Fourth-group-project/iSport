@@ -45,12 +45,12 @@ const getTypes = async () => {
 };
 
 // - name account email phone address
-const getUserData = async (userAccount) => {
+const getUserData = async (userId) => {
     return await connection.queryAsync(
         `SELECT account, name, email, phone, address
         FROM users
-        WHERE users.account = ?`,
-        [userAccount]
+        WHERE users.id = ?`,
+        [userId]
     )
 }
 
