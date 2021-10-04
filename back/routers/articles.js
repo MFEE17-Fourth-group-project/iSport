@@ -200,9 +200,11 @@ router.put(
   }
 );
 //刪除
-// router.delete('/Delete/:id', async (req, res, next) => {
-//   let result = await connection.queryAsync("UPDATE article SET valid=0  WHERE id=?");
-// res.json(result);
-// });
+router.delete("/Delete/:id", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "UPDATE article SET valid=0  WHERE id=?"
+  );
+  res.json(result);
+});
 
 module.exports = router;

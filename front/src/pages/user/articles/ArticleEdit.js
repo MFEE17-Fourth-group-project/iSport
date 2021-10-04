@@ -10,6 +10,8 @@ import { useParams } from 'react-router-dom';
 
 function ArticleEdit({ post }) {
     const { member, setMember } = useAuth();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
     const { id } = useParams();
     const [user_name, setuser_name] = useState('');
     const [title, settitle] = useState('');
@@ -17,7 +19,21 @@ function ArticleEdit({ post }) {
     const [category, setcategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
     const [photos, setPhotos] = useState('');
-
+    useEffect(() => {
+        const getArticleData = async () => {
+            try {
+                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
+                let data = res.adata;
+                setData(data);
+                setError(null);
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+                setError(e.message);
+            }
+        };
+        getArticleData();
+    });
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
