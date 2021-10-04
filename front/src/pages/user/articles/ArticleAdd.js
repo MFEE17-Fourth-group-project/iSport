@@ -59,6 +59,7 @@ function ArticleAdd() {
                                     id="user_name"
                                     placeholder="最多50字"
                                     required
+                                    placeholder={member.name}
                                     value={user_name}
                                     onChange={(e) => {
                                         setuser_name(e.target.value);

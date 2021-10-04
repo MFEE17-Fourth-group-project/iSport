@@ -151,7 +151,8 @@ router.post(
         "INSERT INTO article (user_name, title, content, category, photos) VALUES (?);",
         [
           [
-            req.session.member.name,
+            // req.session.member.name,
+            req.body.user_name,
             req.body.title,
             // req.body.upload_date,
             req.body.content,
