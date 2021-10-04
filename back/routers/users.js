@@ -1,7 +1,7 @@
 // 跟會員中心有關的路由
 const express = require("express");
 const router = express.Router();
-const { storage } = require('../cloudinary');
+const { cloudinary, storage } = require('../cloudinary');
 const { SignInCheckMiddleware } = require("../middlewares/auth");
 const connection = require('../utils/db');
 //密碼加密用
@@ -110,7 +110,6 @@ router.put("/:account", async (req, res, next) => {
             [req.body.name, getpassword, req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
     }
 
-
     try {
         let newMemberData = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
         let returnMember = {
@@ -147,6 +146,12 @@ router.put("/:account", async (req, res, next) => {
 router.put("/photo/:account", uploader.single("photo"), async (req, res, next) => {
     let filename = req.file.filename;
     try {
+        let oldImg = await connection.queryAsync(
+            "SELECT photo FROM users WHERE account=?",
+            [req.params.account]
+        );
+        // Delete from cloudinary
+        await cloudinary.uploader.destroy(oldImg[0].photo);
         let result = await connection.queryAsync(
             "UPDATE users SET photo=? WHERE account=?",
             [[
@@ -160,15 +165,8 @@ router.put("/photo/:account", uploader.single("photo"), async (req, res, next) =
         console.log('上傳更新成功');
         res.json(result);
     } catch (e) {
-        console.log({
-            status: 400,
-            message: " 更新頭像失敗",
-        });
         console.log(e);
-        res.json({
-            status: 400,
-            message: "更新頭像失敗請再試一試",
-        });
+        res.json(e);
     }
 }
 );
