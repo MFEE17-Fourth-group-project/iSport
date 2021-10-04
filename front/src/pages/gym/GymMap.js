@@ -61,9 +61,8 @@ class GymMap extends Component {
                       <img class="img-fluid" src="${this.props.image}">`
                 ) //設置彈出窗口的 HTML 內容。
                 .openOn(this.mymap); //將彈出窗口添加到地圖並關閉前一個。
-            // this.map.setView([this.props.lat, this.props.lng], 18);
             // L.popup({ elevation: 260.0 })
-            //     .setLatLng([41.882276, -87.629201])
+            //     .setLatLng([this.props.lat, this.props.lng])
             //     .setContent(`<h1>在這</h1>`)
             //     .addTo(this.map);
         }
@@ -84,10 +83,12 @@ class GymMap extends Component {
                         indoorsEnabled: true,
                     }}
                     onInitialStreamingComplete={(map) => {
-                        map.openPopup('Transamerica Pyramid', [
-                            this.props.lat,
-                            this.props.lng,
-                        ]);
+                        map.openPopup(
+                            `<h1>${this.props.name}</h1>
+                      <p>${this.props.address}</p>
+                      <img class="img-fluid" src="${this.props.image}">`,
+                            [this.props.lat, this.props.lng]
+                        );
                     }}
                 >
                     <div id="mapid" style={{ height: '100%', width: '100%' }} />
