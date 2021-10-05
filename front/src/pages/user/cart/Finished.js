@@ -10,7 +10,6 @@ import axios from 'axios';
 function Finished(props) {
     const { member, setMember } = useAuth();
     const { cartAdd, myCartP } = props;
-    const [myCart, setMyCart] = useState([]);
     const [orderInfo, setOrderInfo] = useState({
         order_no: 0,
         recipient: 'sa',

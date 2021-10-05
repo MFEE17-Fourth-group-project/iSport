@@ -1,17 +1,15 @@
 import React from 'react';
 import Card from 'react-credit-cards';
-import { API_URL } from '../../../../utils/config';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
     formatCreditCardNumber,
     formatCVC,
     formatExpirationDate,
     formatFormData,
 } from './utils';
-import axios from 'axios';
 import 'react-credit-cards/es/styles-compiled.css';
 
-export default class App extends React.Component {
+class CreditCard extends React.Component {
     state = {
         number: '',
         name: '',
@@ -58,6 +56,8 @@ export default class App extends React.Component {
 
         this.setState({ formData });
         this.form.reset();
+        this.props.checkout();
+        this.props.history.push('/finished');
     };
 
     render() {
@@ -137,7 +137,7 @@ export default class App extends React.Component {
                         </div>
                         <input type="hidden" name="issuer" value={issuer} />
                         <div className="flex flex-row justify-center">
-                            <button type="" className="mr-4">
+                            <button type="button" className="mr-4">
                                 <Link
                                     to="/checkout"
                                     className="btn-yellow-hollow flex flex-row justify-end items-center"
@@ -147,16 +147,18 @@ export default class App extends React.Component {
                                     </p>
                                 </Link>
                             </button>
-                            <button type="submit">
-                                <Link
+                            <button
+                                type="submit"
+                                className="btn-yellow flex flex-row justify-end items-center"
+                            >
+                                <p className="font-bold sm:text-xl text-lg">
+                                    下一步
+                                </p>
+                                {/* <Link
                                     to="/finished"
-                                    className="btn-yellow flex flex-row justify-end items-center"
                                     onClick={this.props.checkout}
                                 >
-                                    <p className="font-bold sm:text-xl text-lg">
-                                        下一步
-                                    </p>
-                                </Link>
+                                </Link> */}
                             </button>
                         </div>
                     </form>
@@ -172,3 +174,4 @@ export default class App extends React.Component {
         );
     }
 }
+export default withRouter(CreditCard);

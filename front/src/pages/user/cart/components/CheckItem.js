@@ -64,7 +64,7 @@ function CheckItem(props) {
                             </div>
                             <div className="flex flex-col flex-grow lg:ml-10 ml-5">
                                 <div className="flex flex-row justify-between pb-2.5">
-                                    <h3 className="sm:text-xl text-lg font-bold">
+                                    <h3 className="sm:text-xl text-base font-bold">
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">

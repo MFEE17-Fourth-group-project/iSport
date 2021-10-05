@@ -130,7 +130,7 @@ function CartItem(props) {
                             </figure>
                             <div className="flex flex-col flex-grow lg:ml-10 ml-5">
                                 <div className="flex flex-row justify-between pb-2.5 cursor-default">
-                                    <h3 className="sm:text-xl text-lg font-bold">
+                                    <h3 className="sm:text-xl text-base font-bold">
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">
@@ -156,14 +156,14 @@ function CartItem(props) {
                                         </div>
                                     );
                                 })}
-                                <div className="flex sm:flex-row sm:items-center flex-col">
+                                <div className="flex flex-row sm:items-center">
                                     <div className="flex flex-row pb-1.5 sm:pb-0">
                                         <p className="sm:mr-2.5 mr-4 cursor-default">
                                             數量：
                                         </p>
 
                                         {/* ============= 數量加減鈕 ============= */}
-                                        <div className="px-2 sm:mr-2.5 mr-0 border border-yellow-400 rounded-md flex flex-row items-center bg-transparent">
+                                        <div className="px-2 sm:mr-2.5 mr-2 border border-yellow-400 rounded-md flex flex-row items-center bg-transparent">
                                             <div
                                                 className="cursor-pointer"
                                                 onClick={() => {
@@ -195,7 +195,7 @@ function CartItem(props) {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row pb-1.5 sm:pb-0">
                                         {/* <div className=" cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                                             <FaHeart className="mx-1 sm:mr-2.5" />
                                             <p className="sm:block hidden">

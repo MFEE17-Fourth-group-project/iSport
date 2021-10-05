@@ -23,8 +23,6 @@ function Checkout2(props) {
             { withCredentials: true }
         );
         console.log(result.data.myCart);
-        // setMyCart(result.data.myCart);
-        // setTotalAmount(result.data.totalAmount);
         setMyCartP(result.data.myCart);
         setTotalAmountP(result.data.totalAmount);
     };

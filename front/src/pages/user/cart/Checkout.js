@@ -144,6 +144,7 @@ function Checkout(props) {
                                         name="recipient"
                                         value={recipient}
                                         placeholder="Jennifer"
+                                        required
                                         onChange={(e) => {
                                             setRecipient(e.target.value);
                                         }}
@@ -158,6 +159,7 @@ function Checkout(props) {
                                         name="phone"
                                         value={phone}
                                         placeholder="0955123456"
+                                        required
                                         onChange={(e) => {
                                             setPhone(e.target.value);
                                         }}
@@ -186,6 +188,7 @@ function Checkout(props) {
                                         name="address"
                                         value={address}
                                         placeholder="桃園市平鎮區中央路123號"
+                                        required
                                         onChange={(e) => {
                                             setAddress(e.target.value);
                                         }}
@@ -199,6 +202,7 @@ function Checkout(props) {
                                         id="delivery"
                                         name="delivery"
                                         value={delivery}
+                                        required
                                         onChange={(e) => {
                                             setDelivery(e.target.value);
                                         }}
