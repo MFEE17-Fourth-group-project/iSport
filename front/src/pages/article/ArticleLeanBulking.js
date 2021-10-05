@@ -80,7 +80,7 @@ function ArticleLeanBulking({ article }) {
                         </h4>
                     </div>
                 </div>
-                <div className="sticky top-0 z-40">
+                <div className=" z-40">
                     <ArticleNav cat={changeCategory} />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">
