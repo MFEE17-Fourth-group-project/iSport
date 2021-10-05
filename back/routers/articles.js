@@ -140,7 +140,7 @@ const uploader = multer({
 });
 
 router.post(
-  "/Create", // ('/')
+  "/", // ('/')
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
@@ -174,7 +174,7 @@ router.post(
 // res.json(result);
 // });
 router.put(
-  "/Update/:id",
+  "/:id",
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
