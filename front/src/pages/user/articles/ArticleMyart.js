@@ -31,7 +31,7 @@ function ArticleMyart() {
     // console.log(data);
     //刪除
     const handleDelete = (id) => {
-        setData(data.filter((Data) => data.id !== id));
+        setData(data.filter((article) => article.id !== id));
         alert('刪除完成');
     };
     return (
