@@ -9,12 +9,16 @@ import axios from 'axios';
 
 function Finished(props) {
     const { member, setMember } = useAuth();
-    const { cartAdd } = props;
-    const [orderInfo, setOrderInfo] = useState([]);
+    const { cartAdd, myCartP } = props;
+    const [myCart, setMyCart] = useState([]);
+    const [orderInfo, setOrderInfo] = useState({
+        order_no: 0,
+        recipient: 'sa',
+    });
 
     // 向 server 拿資料
-    const getDataFromServer = async () => {
-        let result = await axios.post(`${API_URL}/order`);
+    const getOrderDataFromServer = async () => {
+        const result = await axios.post(`${API_URL}/order`);
         console.log('result.data.orders', result.data.orders[0]);
         setOrderInfo(result.data.orders[0]);
     };
@@ -24,7 +28,7 @@ function Finished(props) {
     };
 
     useEffect(() => {
-        getDataFromServer();
+        getOrderDataFromServer();
         clearLocalStorage();
         cartAdd();
     }, []);
@@ -134,7 +138,7 @@ function Finished(props) {
                                     訂購明細
                                 </h5>
                             </div>
-                            {/* <CheckItem /> */}
+                            <CheckItem myCart={myCartP} />
                             <div className="pt-2.5 mt-8 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
                                 <p className="text-lg font-bold">Total : </p>
                                 <span className="text-lg font-bold">

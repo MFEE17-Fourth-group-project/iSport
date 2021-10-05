@@ -52,6 +52,8 @@ import FavoriteProduct from './user/cart/FavoriteProduct.js';
 
 function HomeRouter() {
     const [cartCount, setCartCount] = useState(0);
+    const [myCartP, setMyCartP] = useState([]);
+    const [totalAmountP, setTotalAmountP] = useState(0);
 
     const cartAdd = () => {
         let currentCart = localStorage.getItem('cart') || '[]';
@@ -144,10 +146,18 @@ function HomeRouter() {
                             <Checkout cartAdd={cartAdd} />
                         </Route>
                         <Route path="/checkout2">
-                            <Checkout2 cartAdd={cartAdd} />
+                            <Checkout2
+                                cartAdd={cartAdd}
+                                setMyCartP={setMyCartP}
+                                setTotalAmountP={setTotalAmountP}
+                            />
                         </Route>
                         <Route path="/finished">
-                            <Finished cartAdd={cartAdd} />
+                            <Finished
+                                cartAdd={cartAdd}
+                                myCartP={myCartP}
+                                totalAmountP={totalAmountP}
+                            />
                         </Route>
                         <Route path="/SignUp">
                             <SignUp />
