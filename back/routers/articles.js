@@ -83,7 +83,7 @@ router.get("/Read/LeanBulking", async (req, res, next) => {
 //顯示我的文章
 router.get("/Read/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE user_name=?",
+    "SELECT * FROM article WHERE valid=1 AND user_name=? ",
     [req.session.member.name]
   );
   console.log(req.session.member.name);
@@ -140,7 +140,7 @@ const uploader = multer({
 });
 
 router.post(
-  "/Create",
+  "/Create", // ('/')
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
@@ -200,11 +200,17 @@ router.put(
   }
 );
 //刪除
-router.delete("/Delete/:id", async (req, res, next) => {
-  let result = await connection.queryAsync(
-    "UPDATE article SET valid=0  WHERE id=?"
-  );
-  res.json(result);
+router.delete("/:id", async (req, res, next) => {
+  try {
+    let result = await connection.queryAsync(
+      "UPDATE article SET valid=0 WHERE id=?",
+      [req.params.id]
+    );
+    res.json(result);
+  } catch (e) {
+    console.log(result);
+    console.log(e);
+  }
 });
 
 module.exports = router;

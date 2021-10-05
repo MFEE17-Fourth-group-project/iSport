@@ -63,9 +63,9 @@ function ArticleMyart({ article, handleDelete, props }) {
                             <BiWrench
                                 className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2"
                                 onClick={() => {
-                                    props.history.push(
-                                        '/user/ArticleEdit/' + article.id
-                                    );
+                                    // props.history.push(
+                                    //     '/user/ArticleEdit/' + article.id
+                                    // );
                                 }}
                             />
                         </Link>

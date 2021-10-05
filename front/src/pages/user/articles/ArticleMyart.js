@@ -30,8 +30,11 @@ function ArticleMyart() {
     }, []);
     // console.log(data);
     //刪除
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         setData(data.filter((article) => article.id !== id));
+        let res = axios.delete(`${API_URL}/articles/${id}`, {
+            withCredentials: true,
+        });
         alert('刪除完成');
     };
     return (
