@@ -10,7 +10,6 @@ import moment from 'moment';
 import { useParams } from 'react-router-dom';
 function ArticleMyart({ article, handleDelete, props }) {
     const { member, setMember } = useAuth();
-    const [pData, setPData] = useState(article.id);
     const { id } = useParams();
     const [data, setData] = useState([
         article.title,
@@ -64,7 +63,9 @@ function ArticleMyart({ article, handleDelete, props }) {
                             <BiWrench
                                 className="text-yellow-300 hover:text-yellow-400 cursor-pointer text-2xl mx-2"
                                 onClick={() => {
-                                    props.pData(pData);
+                                    props.history.push(
+                                        '/user/ArticleEdit/' + article.id
+                                    );
                                 }}
                             />
                         </Link>

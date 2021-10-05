@@ -66,7 +66,7 @@ class HomePage extends React.Component {
                 >
                     <GymSection />
                     <img
-                        className="absolute z-30 w-1/3 top-54 -left-5 hidden md:block"
+                        className="absolute z-30 w-1/3 top-28 -left-5 hidden md:block"
                         src={Sport2}
                         alt=""
                         data-aos="fade-right"
