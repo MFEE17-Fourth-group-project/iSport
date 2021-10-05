@@ -12,8 +12,141 @@ const signUpRules=[
 //密碼加密用
 const bcrypt=require("bcrypt");
 const { JsonWebTokenError } = require('jsonwebtoken');
+//第三方登入驗證用
+const GoogleTokenStrategy=require("passport-google-token").Strategy;
+const FacebookTokenStrategy=require("passport-facebook-token");
+// passport.use(
+//     new FacebookTokenStrategy(
+//         {
+//             clientID:process.env.FACEBOOK_ID,
+//             clientSecret:process.env.FACEBOOK_SECRET,
+//         },
+//         async function(accessToken,refreshToken,profile,cb){
+//             console.log("FB profile",profile);
+//             let member=await connection.queryAsync(
+//                 "SELECT FROM users WHERE facebookid=?;",
+//                 [profile.id[0].value]
+//             );
+//             let returnMember=null;
+//             if (member.length>0){
+//                 //判斷註冊過
+//                 if(member.length>0){
+//                     member=member[0];
+//                     returnMember={
+//                         id:member.id,
+//                         account:member.account,
+//                         email:member.email,
+//                         name:member.name,
+//                         phone:member.phone,
+//                         address:member.address,
+//                         birthday:member.birthday,
+//                         gender:member.gender,
+//                         aboutme:member.about,
+//                         photo:member.photo,
+//                         password:"",
+//                     };
+//                 }else{
+//                     //找不到接續註冊
+//                     let result=await connection.querryAsync(
+//                         "INSERT INTO users (email,password,name,photo facebookid)VALUE (?);",
+//                         [[
+//                             profile.emails[0].value,
+//                             // "google login"
+//                             profile.name.givenName,
+//                             profile.photo[0].value,
+//                             profile.id[0].value,
+//                         ],]
+//                     )
+//                 }
+//             }
+//         }
+//         )
+//     )
 
 
+
+
+
+//Google 驗證註冊、登入
+// passport.use(
+//     new GoogleTokenStrategy
+//     (
+//         {
+//     clientID:process.env.GOOGOLE_ID,
+//     clientSecrect:process.env.GOOGLE_SECRET,
+//         },
+//         async function (accessToken,refreshToken,profile,cb){
+//             console.log("Google profile",profile);
+//             let member=await connection.queryAsync(
+//                 "SELECT*FROM users WHERE googleid=?;",
+//                 [profile.id[0].value]
+//             );
+//             let returnMember=null;
+//             //判斷註冊過
+//             if(member.length>0){
+//                 member=member[0];
+//                 returnMember={
+//                     id:member.id,
+//                     account:member.account,
+//                     email:member.email,
+//                     name:member.name,
+//                     phone:member.phone,
+//                     address:member.address,
+//                     birthday:member.birthday,
+//                     gender:member.gender,
+//                     aboutme:member.about,
+//                     photo:member.photo,
+//                     password:"",
+//                 };
+//             }else{
+//                 //找不到接續註冊
+//                 let result=await connection.querryAsync(
+//                     "INSERT INTO users (email,password,name,photo googleid)VALUE (?);",
+//                     [[
+//                         profile.emails[0].value,
+//                         // "google login"
+//                         profile.name.givenName,
+//                         profile.photo[0].value,
+//                         profile.id[0].value,
+
+//                     ],]
+//                 )
+//             }
+//             }
+//     ))
+
+    //google三放驗證入游
+    // router.post(
+    //     "/google",
+    //     Passport.authenticate("google-token",{session:false}),
+    //     function(req,res,next){
+    //         if(!req.user){
+    //             console.log("Google Login 登入失敗");
+    //             return res.json(401);
+    //         }
+    //         console.log("Google 登入成功");
+    //         req.session.member=req.user;
+    //         res.json({
+    //             name:req.user.name,
+    //             photo:req.user.photo,
+    //         });
+    //     }
+    // )
+    // //facebook路游
+    // router.post("/facebook",Passport.authenticate("facebook-token",{session:false}),
+    // (req,res,next)=>{
+    //     if (!req.user){
+    //         console.log("FB Loogin 登入失敗");
+    //         return res.json(401);
+    //     }
+    //     console.log("FB 登入成功")
+    //     req.session.member=req.user;
+    //     res.json({name:req.user.name,
+        
+        
+        
+    //     })
+    // })
 // 註冊會員資料送至express 中間件寫入資料庫
 router.post("/SignUp",signUpRules,async(req,res,next)=>{
     //檢查帳號是否重複
@@ -56,7 +189,9 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     res.json({message:"註冊成功"});
 });
 
-const jwt =require("jsonwebtoken")
+const jwt =require("jsonwebtoken");
+const passport = require('passport');
+const { Passport } = require('passport');
 
 //登入路游
 router.post("/Signin",async(req,res,next)=>{

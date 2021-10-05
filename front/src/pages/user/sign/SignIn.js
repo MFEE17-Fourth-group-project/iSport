@@ -4,7 +4,10 @@ import axios from 'axios';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
 import { useAuth } from '../../../context/auth';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, ReactDOM } from 'react-router-dom';
+
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 function SignIn(props) {
     // 控制取得帳號密碼值
@@ -40,6 +43,34 @@ function SignIn(props) {
             //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
             // alert(e.response.data.message);
         }
+    };
+    //google
+    const googleResponse = async (response) => {
+        let result = await axios.post(
+            `${API_URL}/auth/google`,
+            {
+                access_token: response.accessoToken,
+            },
+            {
+                withCredentials: true,
+            }
+        );
+        console.log(result);
+        setMember(result.data);
+    };
+    //facebook
+    let facebookResponse = async (response) => {
+        let result = await axios.post(
+            `${API_URL}/auth/facebook`,
+            {
+                access_token: response.access_Token,
+            },
+            {
+                withCredentials: true,
+            }
+        );
+        console.log(result);
+        setMember(result.data);
     };
 
     // 控制密碼顯示隱藏
@@ -135,6 +166,23 @@ function SignIn(props) {
                                 登入
                             </button>
                         </div>
+
+                        <FacebookLogin
+                            appId="307771631153281"
+                            autoLoad={false}
+                            callback={facebookResponse}
+                            render={(renderProps) => (
+                                <button onClick={renderProps.onClick}>
+                                    This is my custom FB button
+                                </button>
+                            )}
+                        />
+                        <GoogleLogin
+                            clientId="502876025349-ephkeb32c0a928jrchm72g4ch3p6hdoo.apps.googleusercontent.com"
+                            buttononText="Login"
+                            onSuccess={googleResponse}
+                            // onFailure={(err) => console.log('fail', err)}
+                        />
                     </div>
                 </div>
             </div>
