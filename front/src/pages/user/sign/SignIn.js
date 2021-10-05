@@ -1,5 +1,5 @@
 import React from 'react';
-import { API_URL } from '../../utils/config';
+import { API_URL,FACEBOOK_ID,GOOGLE_ID } from '../../utils/config';
 import axios from 'axios';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
@@ -82,6 +82,7 @@ function SignIn(props) {
     // if (member !== null) {
     //     return <Redirect to="/user" />;
     // }
+    console.log(process.env.REACT_APP_FACEBOOK_ID)
     return (
         <form className="w-screen h-screen fixed z-10" onSubmit={handleSubmit}>
             <div
@@ -168,17 +169,12 @@ function SignIn(props) {
                         </div>
 
                         <FacebookLogin
-                            appId="307771631153281"
+                            appId={FACEBOOK_ID}
                             autoLoad={false}
                             callback={facebookResponse}
-                            render={(renderProps) => (
-                                <button onClick={renderProps.onClick}>
-                                    This is my custom FB button
-                                </button>
-                            )}
                         />
                         <GoogleLogin
-                            clientId="502876025349-ephkeb32c0a928jrchm72g4ch3p6hdoo.apps.googleusercontent.com"
+                            clientId={GOOGLE_ID}
                             buttononText="Login"
                             onSuccess={googleResponse}
                             // onFailure={(err) => console.log('fail', err)}

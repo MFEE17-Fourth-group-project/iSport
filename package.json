@@ -1,0 +1,23 @@
+{
+  "name": "isport",
+  "version": "1.0.0",
+  "description": "第一組</br>\r 帳號:test01\r 密碼:test01\r </br>\r 第二組</br>\r 帳號:admin1\r 密碼:qwer1234\r </br>\r </br>\r 備註:\r </br>\r 如要新增測試帳號可至註冊會員自行新增",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MFEE17-Fourth-group-project/iSport.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MFEE17-Fourth-group-project/iSport/issues"
+  },
+  "homepage": "https://github.com/MFEE17-Fourth-group-project/iSport#readme"
+}
