@@ -14,7 +14,7 @@ function ArticleAerobicExercise({ article }) {
         const getArticleData = async () => {
             try {
                 let res = await axios.get(
-                    `${API_URL}/articles/Read/AerobicExercise`
+                    `${API_URL}/articles/AerobicExercise`
                 );
                 let data = res.data;
                 console.log(data);

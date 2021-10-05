@@ -26,7 +26,7 @@ function ArticleEdit({ post }) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
+                let res = await axios.get(`${API_URL}/articles/${id}`);
                 let data = res.data;
                 setData(data[0]);
                 setError(null);

@@ -14,12 +14,9 @@ function ArticleMyart() {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/MyArticle`,
-                    {
-                        withCredentials: true,
-                    }
-                );
+                let res = await axios.get(`${API_URL}/articles/MyArticle`, {
+                    withCredentials: true,
+                });
                 res = res.data;
                 setData(res);
             } catch (e) {

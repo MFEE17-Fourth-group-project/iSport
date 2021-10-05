@@ -13,9 +13,7 @@ function ArticleWeightTraining({ article }) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/WeightTraining`
-                );
+                let res = await axios.get(`${API_URL}/articles/WeightTraining`);
                 let data = res.data;
                 console.log(data);
                 setData(data);

@@ -13,9 +13,7 @@ function ArticleTABATATraining({ article }) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/TABATATraining`
-                );
+                let res = await axios.get(`${API_URL}/articles/TABATATraining`);
                 let data = res.data;
                 console.log(data);
                 setData(data);

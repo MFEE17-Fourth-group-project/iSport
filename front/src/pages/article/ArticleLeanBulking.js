@@ -13,9 +13,7 @@ function ArticleLeanBulking({ article }) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/LeanBulking`
-                );
+                let res = await axios.get(`${API_URL}/articles/LeanBulking`);
                 let data = res.data;
                 console.log(data);
                 setData(data);
