@@ -1,5 +1,9 @@
 import React from 'react';
-import { API_URL } from '../../utils/config';
+import {
+    API_URL,
+    REACT_APP_FACEBOOK_ID,
+    REACT_APP_GOOGLE_ID,
+} from '../../../utils/config';
 import axios from 'axios';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
@@ -168,7 +172,7 @@ function SignIn(props) {
                         </div>
 
                         <FacebookLogin
-                            appId="307771631153281"
+                            appId={REACT_APP_FACEBOOK_ID}
                             autoLoad={false}
                             callback={facebookResponse}
                             render={(renderProps) => (
@@ -178,10 +182,10 @@ function SignIn(props) {
                             )}
                         />
                         <GoogleLogin
-                            clientId="502876025349-ephkeb32c0a928jrchm72g4ch3p6hdoo.apps.googleusercontent.com"
+                            clientId={REACT_APP_GOOGLE_ID}
                             buttononText="Login"
                             onSuccess={googleResponse}
-                            // onFailure={(err) => console.log('fail', err)}
+                            onFailure={(err) => console.log('fail', err)}
                         />
                     </div>
                 </div>
