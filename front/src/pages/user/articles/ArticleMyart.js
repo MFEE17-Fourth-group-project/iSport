@@ -16,11 +16,12 @@ function ArticleMyart() {
             try {
                 let res = await axios.get(
                     `${API_URL}/articles/Read/MyArticle`,
-                    { withCredentials: true }
+                    {
+                        withCredentials: true,
+                    }
                 );
-                let data = res.data;
-                // console.log(data);
-                setData(data);
+                res = res.data;
+                setData(res);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -28,7 +29,7 @@ function ArticleMyart() {
         };
         getArticleData();
     }, []);
-    // console.log(data);
+    console.log(data);
     //刪除
     const handleDelete = async (id) => {
         setData(data.filter((article) => article.id !== id));
@@ -64,7 +65,7 @@ function ArticleMyart() {
                                         <ArticleMyartItem
                                             article={article}
                                             key={article.id}
-                                            handleDelete={handleDelete}
+                                            handleDelete={() => handleDelete}
                                         />
                                     ))}
                             </div>

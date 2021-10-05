@@ -95,6 +95,8 @@ router.route("/Read/:id").get(async (req, res, next) => {
   let result = await connection.queryAsync("SELECT * FROM article WHERE id=?", [
     articleId,
   ]);
+  console.log(articleId);
+  console.log(result);
   res.json(result);
 });
 

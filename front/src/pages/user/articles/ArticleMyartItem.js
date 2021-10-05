@@ -10,28 +10,28 @@ import moment from 'moment';
 import { useParams } from 'react-router-dom';
 function ArticleMyart({ article, handleDelete, props }) {
     const { member, setMember } = useAuth();
-    const { id } = useParams();
-    const [data, setData] = useState([
-        article.title,
-        article.user_name,
-        article.upload_date,
-        article.views,
-    ]);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-        const getArticleData = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
-                let data = res.data;
-                setData(data);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
-        getArticleData();
-    });
+    // const { id } = useParams();
+    // const [data, setData] = useState([
+    //     article.title,
+    //     article.user_name,
+    //     article.upload_date,
+    //     article.views,
+    // ]);
+    // const [error, setError] = useState(null);
+    // useEffect(() => {
+    //     const getArticleData = async () => {
+    //         try {
+    //             let res = await axios.get(`${API_URL}/articles/Read/${id}`);
+    //             let data = res.data;
+    //             setData(data);
+    //             setError(null);
+    //         } catch (e) {
+    //             console.log(e);
+    //             setError(e.message);
+    //         }
+    //     };
+    //     getArticleData();
+    // }, []);
     return (
         <>
             <div className="mt-6">

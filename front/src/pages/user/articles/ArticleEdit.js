@@ -7,8 +7,12 @@ import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
+import { EditorState } from 'draft-js';
 
 function ArticleEdit({ post }) {
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
+    );
     const { member, setMember } = useAuth();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -24,9 +28,9 @@ function ArticleEdit({ post }) {
             try {
                 let res = await axios.get(`${API_URL}/articles/Read/${id}`);
                 let data = res.data;
-                console.log(data);
-                setData(data);
+                setData(data[0]);
                 setError(null);
+                console.log(data);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -34,6 +38,7 @@ function ArticleEdit({ post }) {
         };
         getArticleData();
     }, []);
+
     return (
         <>
             {member ? (
@@ -58,7 +63,7 @@ function ArticleEdit({ post }) {
                                     placeholder="最多50字"
                                     required
                                     placeholder={member.name}
-                                    value={user_name}
+                                    value={data.user_name}
                                     onChange={(e) => {
                                         setuser_name(e.target.value);
                                     }}
@@ -69,7 +74,7 @@ function ArticleEdit({ post }) {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={category}
+                                    value={data.category}
                                     onChange={(e) => {
                                         setcategory(e.target.value);
                                     }}
@@ -94,7 +99,7 @@ function ArticleEdit({ post }) {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={title}
+                                    value={data.title}
                                     onChange={(e) => {
                                         settitle(e.target.value);
                                     }}
@@ -119,24 +124,25 @@ function ArticleEdit({ post }) {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <Editor
+                                <Editor editorState={editorState} />
+                                {/* <Editor
+                                    editorState={data.content}
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
                                     onEditorStateChange={(editorState) => {
-                                        console.log(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
-
-                                        setcontent(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
+                                        // console.log(
+                                        //     editorState
+                                        //         .getCurrentContent()
+                                        //         .getPlainText()
+                                        // );
+                                        // setcontent(
+                                        //     editorState
+                                        //         .getCurrentContent()
+                                        //         .getPlainText()
+                                        // );
                                     }}
-                                />
+                                /> */}
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
