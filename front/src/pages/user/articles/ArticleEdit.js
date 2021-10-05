@@ -124,7 +124,7 @@ function ArticleEdit({ post }) {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <Editor editorState={editorState} />
+
                                 {/* <Editor
                                     editorState={data.content}
                                     toolbarClassName="toolbar"

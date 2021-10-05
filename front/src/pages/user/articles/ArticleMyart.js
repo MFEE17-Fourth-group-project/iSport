@@ -62,7 +62,7 @@ function ArticleMyart() {
                                         <ArticleMyartItem
                                             article={article}
                                             key={article.id}
-                                            handleDelete={() => handleDelete}
+                                            handleDelete={handleDelete}
                                         />
                                     ))}
                             </div>
