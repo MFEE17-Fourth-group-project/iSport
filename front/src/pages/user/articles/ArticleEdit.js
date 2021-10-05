@@ -2,35 +2,52 @@ import React, { useState, useEffect } from 'react';
 import Aside from '../../../global/Aside';
 import { useAuth } from '../../../context/auth';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import { convertToHTML } from 'draft-convert';
+import DOMPurify from 'dompurify';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
-import { EditorState } from 'draft-js';
 
 function ArticleEdit({ post }) {
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     );
+    const [convertedContent, setConvertedContent] = useState(null);
+    const handleEditorChange = (state) => {
+        setEditorState(state);
+        convertContentToHTML();
+    };
+    const convertContentToHTML = () => {
+        let currentContentAsHTML = convertToHTML(
+            editorState.getCurrentContent()
+        );
+        setConvertedContent(currentContentAsHTML);
+    };
+    const createMarkup = (html) => {
+        return {
+            __html: DOMPurify.sanitize(html),
+        };
+    };
     const { member, setMember } = useAuth();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const { id } = useParams();
-    const [user_name, setuser_name] = useState('');
-    const [title, settitle] = useState('');
-    const [content, setcontent] = useState('');
-    const [category, setcategory] = useState('');
+    const [username, setUsername] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [category, setCategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
     const [photos, setPhotos] = useState('');
     useEffect(() => {
         const getArticleData = async () => {
             try {
                 let res = await axios.get(`${API_URL}/articles/${id}`);
-                let data = res.data;
-                setData(data[0]);
+                let resData = await res.data;
+                setData(resData[0]);
                 setError(null);
-                console.log(data);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -38,6 +55,16 @@ function ArticleEdit({ post }) {
         };
         getArticleData();
     }, []);
+
+    useEffect(() => {
+        if (data) {
+            setUsername(data.user_name);
+            setTitle(data.title);
+            setContent(data.content);
+            setCategory(data.category);
+            setPhotos(data.photos);
+        }
+    }, [data]);
 
     return (
         <>
@@ -63,9 +90,9 @@ function ArticleEdit({ post }) {
                                     placeholder="最多50字"
                                     required
                                     placeholder={member.name}
-                                    value={data.user_name}
+                                    value={username}
                                     onChange={(e) => {
-                                        setuser_name(e.target.value);
+                                        setUsername(e.target.value);
                                     }}
                                 ></input>
                                 <br />
@@ -74,9 +101,9 @@ function ArticleEdit({ post }) {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={data.category}
+                                    value={category}
                                     onChange={(e) => {
-                                        setcategory(e.target.value);
+                                        setCategory(e.target.value);
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
@@ -99,9 +126,9 @@ function ArticleEdit({ post }) {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={data.title}
+                                    value={title}
                                     onChange={(e) => {
-                                        settitle(e.target.value);
+                                        setTitle(e.target.value);
                                     }}
                                 />
                                 <br />
@@ -124,9 +151,26 @@ function ArticleEdit({ post }) {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-
+                                <Editor
+                                    editorState={editorState}
+                                    onEditorStateChange={handleEditorChange}
+                                    toolbarClassName="toolbar"
+                                    wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
+                                    editorClassName="editor px-5 h-40"
+                                />
+                                <div
+                                    className="preview"
+                                    dangerouslySetInnerHTML={createMarkup(
+                                        convertedContent
+                                    )}
+                                    value={content}
+                                    onChange={(e) => {
+                                        setTitle(e.target.value);
+                                    }}
+                                ></div>
                                 {/* <Editor
                                     editorState={data.content}
+                                    editorState={editorState}
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
