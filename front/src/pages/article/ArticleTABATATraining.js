@@ -13,9 +13,7 @@ function ArticleTABATATraining({ article }) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/TABATATraining`
-                );
+                let res = await axios.get(`${API_URL}/articles/TABATATraining`);
                 let data = res.data;
                 console.log(data);
                 setData(data);
@@ -80,7 +78,7 @@ function ArticleTABATATraining({ article }) {
                         </h4>
                     </div>
                 </div>
-                <div className="sticky top-0 z-40">
+                <div className=" z-40">
                     <ArticleNav cat={changeCategory} />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">

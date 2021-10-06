@@ -19,9 +19,7 @@ const ArticleSection = () => {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/LeanBulking`
-                );
+                let res = await axios.get(`${API_URL}/articles/LeanBulking`);
                 let data = res.data;
                 setData(data);
                 setError(null);
@@ -37,7 +35,7 @@ const ArticleSection = () => {
         const getArticleData = async () => {
             try {
                 let res = await axios.get(
-                    `${API_URL}/articles/Read/AerobicExercise`
+                    `${API_URL}/articles/AerobicExercise`
                 );
                 let Aer = res.data;
                 setAer(Aer);
@@ -53,9 +51,7 @@ const ArticleSection = () => {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/WeightTraining`
-                );
+                let res = await axios.get(`${API_URL}/articles/WeightTraining`);
                 let Wei = res.data;
                 setWei(Wei);
                 setError(null);
@@ -70,9 +66,7 @@ const ArticleSection = () => {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/CoreStrength`
-                );
+                let res = await axios.get(`${API_URL}/articles/CoreStrength`);
                 let Cor = res.data;
                 setCor(Cor);
                 setError(null);
@@ -87,9 +81,7 @@ const ArticleSection = () => {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/LeanBulking`
-                );
+                let res = await axios.get(`${API_URL}/articles/LeanBulking`);
                 let Lea = res.data;
                 setLea(Lea);
                 setError(null);
@@ -104,9 +96,7 @@ const ArticleSection = () => {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/TABATATraining`
-                );
+                let res = await axios.get(`${API_URL}/articles/TABATATraining`);
                 let TAB = res.data;
                 setTAB(TAB);
                 setError(null);
