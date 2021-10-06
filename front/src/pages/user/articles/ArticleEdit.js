@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Aside from '../../../global/Aside';
 import { useAuth } from '../../../context/auth';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { EditorState } from 'draft-js';
+import { EditorState, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import { convertToHTML } from 'draft-convert';
 import DOMPurify from 'dompurify';
@@ -12,8 +12,18 @@ import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
 function ArticleEdit({ post }) {
+    const { member, setMember } = useAuth();
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const { id } = useParams();
+    const [username, setUsername] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [category, setCategory] = useState('');
+    // const [upload_date, setupload_date] = useState('');
+    const [photos, setPhotos] = useState('');
     const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
+        EditorState.createWithContent(ContentState.createFromText(content))
     );
     const [convertedContent, setConvertedContent] = useState(null);
     const handleEditorChange = (state) => {
@@ -31,16 +41,7 @@ function ArticleEdit({ post }) {
             __html: DOMPurify.sanitize(html),
         };
     };
-    const { member, setMember } = useAuth();
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
-    const { id } = useParams();
-    const [username, setUsername] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [category, setCategory] = useState('');
-    // const [upload_date, setupload_date] = useState('');
-    const [photos, setPhotos] = useState('');
+
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -131,7 +132,32 @@ function ArticleEdit({ post }) {
                                         setTitle(e.target.value);
                                     }}
                                 />
+                                <input
+                                    type="text"
+                                    className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
+                                    name="content"
+                                    id="content"
+                                    placeholder="最多100字"
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
+                                    }}
+                                />
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: content,
+                                    }}
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
+                                    }}
+                                ></p>
                                 <br />
+                                <img
+                                    className="m-auto"
+                                    src={`http://localhost:3030/articles/uploads/${photos}`}
+                                    alt=""
+                                />
                                 <label htmlFor="photos">上傳圖片:</label>
                                 <br />
                                 <input
@@ -144,6 +170,7 @@ function ArticleEdit({ post }) {
                                     }}
                                 />
                                 <br />
+
                                 <label htmlFor="content">內容：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -163,28 +190,19 @@ function ArticleEdit({ post }) {
                                     dangerouslySetInnerHTML={createMarkup(
                                         convertedContent
                                     )}
-                                    value={content}
-                                    onChange={(e) => {
-                                        setTitle(e.target.value);
-                                    }}
                                 ></div>
+
                                 {/* <Editor
-                                    editorState={data.content}
                                     editorState={editorState}
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
                                     onEditorStateChange={(editorState) => {
-                                        // console.log(
-                                        //     editorState
-                                        //         .getCurrentContent()
-                                        //         .getPlainText()
-                                        // );
-                                        // setcontent(
-                                        //     editorState
-                                        //         .getCurrentContent()
-                                        //         .getPlainText()
-                                        // );
+                                        setcontent(
+                                            editorState
+                                                .getCurrentContent()
+                                                .getPlainText()
+                                        );
                                     }}
                                 /> */}
                                 <div className="flex flex-row justify-end">
