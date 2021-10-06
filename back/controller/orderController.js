@@ -6,15 +6,69 @@ const moment = require("moment");
 // 取得使用者訂單
 const userOrders = async (req, res, next) => {
     try {
-        // const useId = req.session.member.id;
-        let orders = await orderModel.getUserOrders(2);
+        const useId = req.session.member.id;
+        const getTypes = await cartModel.getTypes();
+        let orders = await orderModel.getUserOrders(useId);
 
         let orderIds = orders.map((order) => {
             return order.id;
         });
-        console.log("orderIds", orderIds); // orderIds: [ 10, 20 ]
+        // console.log("orderIds", orderIds); // orderIds: [ 10, 20 ]
 
+        // ORDER DETAIL
         let orderDetails = await orderModel.getOrderDetails(orderIds);
+        skuId = orderDetails.map((item) => {
+            return item.sku_id;
+        }); // [ 163, 134 ]
+
+        RawSkuGroup = orderDetails.map((item) => {
+            return item.sku_group.split(",");
+        }); // RawSkuGroup [ '142', '113' ]
+        let skuGroup = [...new Set(RawSkuGroup)].flat();
+        // console.log("skuGroup", skuGroup);
+
+        let typeMap = {};
+        getTypes.map((type) => {
+            typeMap[type.id] = type;
+        });
+
+        let typeValues = await cartModel.getTypeValue(skuGroup);
+        typeValues.map((typeValue) => {
+            typeValue.type_name = typeMap[typeValue.type_id].name_frontend;
+            return typeValue;
+        });
+        // console.log("typeValues", typeValues);
+        // [
+        //     {
+        //       id: 113,
+        //       type_id: 4,
+        //       type_value: '2kg',
+        //       type_name: '重量'
+        //     },
+        //     {
+        //       id: 142,
+        //       type_id: 5,
+        //       type_value: '法式香草(5磅)',
+        //       type_name: '口味'
+        //     }
+        // ]
+
+        let itemImgs = await cartModel.getImgs(skuId);
+        // console.log(itemImgs);
+        orderDetails.map((item) => {
+            item.img = itemImgs.find((itemImg) => {
+                return item.sku_id === itemImg.product_sku_id;
+            });
+            let detailSkuGroup = item.sku_group.split(",");
+            console.log("detailSkuGroup", detailSkuGroup); // [ '106', '108' ]
+
+            detailSkuGroup.forEach((detailSku) => {
+                item.type = typeValues.filter((typeValue) => {
+                    return typeValue.id == detailSku;
+                });
+            });
+        });
+        // console.log("orderDetails", orderDetails);
 
         // 合併 user_order 與 user_order_detail 撈出來的資料
         orders.map((order) => {
@@ -72,11 +126,11 @@ const createOrder = async (req, res, next) => {
         let myCart = await Promise.all(
             cartItems.map(async (item) => {
                 let rawSkuGroup = item.sku_group;
-                let SkuGroup = rawSkuGroup.split(",");
-                // console.log("SkuGroup", SkuGroup);
+                let skuGroup = rawSkuGroup.split(",");
+                // console.log("skuGroup", skuGroup);
                 // [ '3', '8' ]
 
-                let typeValues = await cartModel.getTypeValue(SkuGroup);
+                let typeValues = await cartModel.getTypeValue(skuGroup);
                 // console.log("typeValues", typeValues);
 
                 typeValues.map((typeValue) => {
@@ -137,14 +191,68 @@ const createOrder = async (req, res, next) => {
             await orderModel.createOrderDetail(detail);
         }
 
-
-        res.json({myCart, totalAmount});
+        res.json({ myCart, totalAmount });
     } catch (e) {
         console.error(e);
     }
 };
 
+// FIXME: test
+// const orderDetail = async (req, res, next) => {
+//     try {
+//         let data = await orderModel.getOrderDetails([10]);
+//         let getTypes = await cartModel.getTypes();
+//         skuId = data.map((item) => {
+//             return item.sku_id;
+//         }); // [ 163, 134 ]
+//         RawSkuGroup = data.map((item) => {
+//             return item.sku_group;
+//         }); // RawSkuGroup [ '142', '113' ]
+//         let skuGroup = [...new Set(RawSkuGroup)];
+//         // console.log("skuGroup", skuGroup);
+//         let typeMap = {};
+//         getTypes.map((type) => {
+//             typeMap[type.id] = type;
+//         });
+//         let typeValues = await cartModel.getTypeValue(skuGroup);
+//         typeValues.map((typeValue) => {
+//             typeValue.type_name = typeMap[typeValue.type_id].name_frontend;
+//             return typeValue;
+//         });
+//         // console.log("typeValues", typeValues);
+//         // [
+//         //     {
+//         //       id: 113,
+//         //       type_id: 4,
+//         //       type_value: '2kg',
+//         //       type_name: '重量'
+//         //     },
+//         //     {
+//         //       id: 142,
+//         //       type_id: 5,
+//         //       type_value: '法式香草(5磅)',
+//         //       type_name: '口味'
+//         //     }
+//         // ]
+//         let itemImgs = await cartModel.getImgs(skuId);
+//         // console.log(itemImgs);
+//         data.map((item) => {
+//             item.img = itemImgs.find((itemImg) => {
+//                 return item.sku_id === itemImg.product_sku_id;
+//             });
+//             item.type = typeValues.find((typeValue) => {
+//                 return typeValue.id == item.sku_group;
+//             });
+//         });
+
+//         res.json(data);
+//     } catch (e) {
+//         console.error(e);
+//     }
+// };
+
 module.exports = {
     userOrders,
     createOrder,
+    // orderDetail,
 };

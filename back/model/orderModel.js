@@ -14,7 +14,12 @@ const getUserOrders = async (userId) => {
 const getOrderDetails = async (orderIds) => {
     return await connection.queryAsync(
         `
-        SELECT * FROM user_order_detail
+        SELECT user_order_detail.*,
+                product.id AS product_id, product.name AS product_name,
+                product_sku.price AS price, product_sku.sku_group AS sku_group
+        FROM user_order_detail
+        LEFT JOIN product_sku ON product_sku.id=user_order_detail.sku_id
+        LEFT JOIN product ON product.id=product_sku.product_id
         WHERE order_id IN ?;`,
         [[orderIds]]
     );

@@ -28,7 +28,7 @@ const getImgs = async (skuId) => {
 
 const getTypeValue = async (skuCodeGroup) => {
     return await connection.queryAsync(
-        `SELECT type_id, type_value
+        `SELECT id, type_id, type_value
         FROM product_type_value
         WHERE id IN ?
         `,
