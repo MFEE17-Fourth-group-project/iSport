@@ -15,26 +15,31 @@ function TradingRecord(props) {
     const { member, setMember } = useAuth();
     const { cartAdd } = props;
 
+    const getOrderRecord = async () => {
+        try {
+            let res = await axios.post(
+                `${API_URL}/order`,
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
+            let data = res.data.orders;
+            console.log(data);
+            setData(data);
+            setError(null);
+        } catch (e) {
+            console.log(e);
+            setError(e.message);
+        }
+    };
+
     // 連到後端的 API，取得訂單記錄
     useEffect(() => {
         console.log('read API_URL', API_URL);
-        const getOrderRecord = async () => {
-            try {
-                let res = await axios.get(`${API_URL}/order`, {
-                    withCredentials: true,
-                });
-                let data = res.data;
-                console.log(data);
-                setData(data);
-                setError(null);
-            } catch (e) {
-                console.log(e);
-                setError(e.message);
-            }
-        };
         getOrderRecord();
         cartAdd();
-    }, []);
+    }, [member]);
 
     return (
         <>
@@ -89,6 +94,7 @@ function TradingRecord(props) {
                                         paytype={item.paytype}
                                         delivery={item.delivery}
                                         status={item.status}
+                                        total_amount={item.total_amount}
                                     />
                                 ))}
                         </section>

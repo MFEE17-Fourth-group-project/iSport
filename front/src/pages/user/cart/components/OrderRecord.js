@@ -2,7 +2,15 @@ import React from 'react';
 import product from '../../../../images/product/1002-3.png';
 
 function OrderRecord(props) {
-    const { order_no, order_date, price, paytype, delivery, status } = props;
+    const {
+        order_no,
+        order_date,
+        price,
+        paytype,
+        delivery,
+        status,
+        total_amount,
+    } = props;
 
     return (
         <>
@@ -26,7 +34,7 @@ function OrderRecord(props) {
                         商品名稱：<span>居家健身組</span>
                     </p>
                     <p>
-                        訂單總額：<span>{price}</span>
+                        訂單總額：<span>{total_amount}</span>
                     </p>
                     <p>
                         購買數量：<span>1</span>

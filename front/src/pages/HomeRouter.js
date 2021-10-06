@@ -76,7 +76,7 @@ function HomeRouter() {
                         <Route path="/user/CustomerService">
                             <CustomerService />
                         </Route>
-                        <Route path="/user/cart/TradingRecord">
+                        <Route path="/user/tradingRecord">
                             <TradingRecord cartAdd={cartAdd} />
                         </Route>
                         <Route path="/user/cart/favorite" exact>
