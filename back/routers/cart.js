@@ -4,6 +4,8 @@ const connection = require("../utils/db");
 const { SignInCheckMiddleware } = require("../middlewares/auth");
 const cartController = require("../controller/cartController");
 
+const cartTestController = require("../controller/cartTestController")
+
 // api/cart 取得 database product_sku jon product join brand 的資料
 router.post("/", cartController.cartItemData);
 
@@ -13,5 +15,8 @@ router.get("/type", cartController.cartItemType); // FIXME: method 改回 post
 
 router.post("/userData", cartController.userData); // FIXME: method 改回 post
 
+
+//測試訂單
+router.get("/orderListTest", cartTestController.orderListTest);
 
 module.exports = router;
