@@ -113,9 +113,9 @@ function CartItem(props) {
                             key={item.product_sku_id}
                         >
                             {/* ========== 商品圖片 ========== */}
-                            <figure className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center">
+                            <figure className="w-36 h-36 sm:mx-5 mx-0 self-center object-center object-cover overflow-hidden flex-shrink-0">
                                 <img
-                                    className="sm:w-36 w-full"
+                                    className="w-full h-full"
                                     // 引入圖片
                                     src={
                                         require('../../../../images/product/' +
@@ -124,9 +124,9 @@ function CartItem(props) {
                                     alt={item.img.img_name}
                                 ></img>
                             </figure>
-                            <div className="flex flex-col flex-grow lg:ml-10 ml-5">
+                            <div className="flex flex-col flex-grow lg:ml-10 ml-5 ">
                                 <div className="flex flex-row justify-between pb-2.5 cursor-default">
-                                    <h3 className="sm:text-xl text-lg font-bold">
+                                    <h3 className="sm:text-xl text-lg font-bold break-words">
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">

@@ -14,7 +14,7 @@ function ArticleAerobicExercise({ article }) {
         const getArticleData = async () => {
             try {
                 let res = await axios.get(
-                    `${API_URL}/articles/Read/AerobicExercise`
+                    `${API_URL}/articles/AerobicExercise`
                 );
                 let data = res.data;
                 console.log(data);
@@ -90,7 +90,7 @@ function ArticleAerobicExercise({ article }) {
                         </h4>
                     </div>
                 </div>
-                <div className="sticky top-0 z-40">
+                <div className=" z-40">
                     <ArticleNav cat={changeCategory} />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">

@@ -26,10 +26,7 @@ function ArticleAdd() {
             formData.append('category', category);
             formData.append('content', content);
             formData.append('photos', photos);
-            let response = await axios.post(
-                `${API_URL}/articles/Create`,
-                formData
-            );
+            let response = await axios.post(`${API_URL}/articles/`, formData);
             alert('新增文章成功');
             console.log(response);
         } catch (e) {
