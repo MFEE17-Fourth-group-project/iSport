@@ -16,7 +16,8 @@ function ArticleEdit({ post }) {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const { id } = useParams();
-    const [username, setUsername] = useState('');
+    // const [iid, setIid] = useState('');
+    const [user_name, setUsername] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [category, setCategory] = useState('');
@@ -59,6 +60,7 @@ function ArticleEdit({ post }) {
 
     useEffect(() => {
         if (data) {
+            // setIid(data.id);
             setUsername(data.user_name);
             setTitle(data.title);
             setContent(data.content);
@@ -66,7 +68,28 @@ function ArticleEdit({ post }) {
             setPhotos(data.photos);
         }
     }, [data]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
 
+            formData.append('user_name', user_name);
+            formData.append('title', title);
+            // formData.append('upload_date', upload_date);
+            formData.append('category', category);
+            formData.append('content', content);
+            formData.append('photos', photos);
+            formData.append('id', id);
+            let response = await axios.put(
+                `${API_URL}/articles/${id}`,
+                formData
+            );
+            alert('修改成功');
+            console.log(response);
+        } catch (e) {
+            console.error(e.response);
+        }
+    };
     return (
         <>
             {member ? (
@@ -77,7 +100,7 @@ function ArticleEdit({ post }) {
                             修改文章
                         </div>
                         <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <from>
+                            <from onSubmit={handleSubmit}>
                                 <label htmlFor="user_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -91,7 +114,7 @@ function ArticleEdit({ post }) {
                                     placeholder="最多50字"
                                     required
                                     placeholder={member.name}
-                                    value={username}
+                                    value={user_name}
                                     onChange={(e) => {
                                         setUsername(e.target.value);
                                     }}
@@ -170,7 +193,6 @@ function ArticleEdit({ post }) {
                                     }}
                                 />
                                 <br />
-
                                 <label htmlFor="content">內容：</label>
                                 <span className="text-base text-red-500 mx-4">
                                     必填
@@ -191,7 +213,6 @@ function ArticleEdit({ post }) {
                                         convertedContent
                                     )}
                                 ></div>
-
                                 {/* <Editor
                                     editorState={editorState}
                                     toolbarClassName="toolbar"
@@ -210,6 +231,7 @@ function ArticleEdit({ post }) {
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
+                                        onClick={handleSubmit}
                                     >
                                         <p className="font-bold text-xl mx-2">
                                             修改

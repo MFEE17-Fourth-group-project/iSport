@@ -178,17 +178,15 @@ router
     async (req, res, next) => {
       try {
         let result = await connection.queryAsync(
-          "UPDATE article SET  WHERE id=?",
+          "UPDATE article SET user_name=?,title=?,content=?,category=?,photos=? WHERE id=?",
           [
-            [
-              req.body.id,
-              req.session.member.name,
-              req.body.title,
-              // req.body.upload_date,
-              req.body.content,
-              req.body.category,
-              req.body.photos,
-            ],
+            req.body.user_name,
+            req.body.title,
+            // req.body.upload_date,
+            req.body.content,
+            req.body.category,
+            req.body.photos,
+            req.params.id,
           ]
         );
         res.json({ message: "修改文章" });
@@ -209,87 +207,5 @@ router
       console.log(e);
     }
   });
-router
-  .route("/:id")
-  .get(async (req, res, next) => {
-    let articleId = req.params.id;
-    let wasLiked = false;
-    let wasCollected = false;
-    if (req.session.member) {
-      let userAccount = req.session.member.account;
-      let result = await connection.queryAsync(
-        "SELECT * FROM user_like WHERE user_account=? AND article_id=?",
-        [userAccount, articleId]
-      );
-      result.length > 0 ? (wasLiked = true) : (wasLiked = false);
-      result = await connection.queryAsync(
-        "SELECT * FROM user_collection WHERE user_account=? AND article_id=?",
-        [userAccount, articleId]
-      );
-      result.length > 0 ? (wasCollected = true) : (wasCollected = false);
-    }
 
-    let result = await connection.queryAsync(
-      "UPDATE article SET views=views+1 WHERE id=?",
-      [articleId]
-    );
-    result = await connection.queryAsync(
-      "SELECT * FROM article WHERE id=? AND valid=1",
-      [articleId]
-    );
-    let commentResult = await connection.queryAsync(
-      "SELECT u.name as username, u.id as user_id ,c.id, c.date, c.content FROM comment_article c LEFT JOIN users u ON c.user_account=u.account WHERE c.article_id=? AND valid=1 ORDER BY c.date DESC",
-      [articleId]
-    );
-    result[0].wasLiked = wasLiked;
-    result[0].wasCollected = wasCollected;
-    result[0].comment = commentResult;
-    res.json(result[0]);
-  })
-  .patch(SignInCheckMiddleware, async (req, res, next) => {
-    let articleId = req.params.id;
-    let userAccount = req.session.member.account;
-
-    // Handle Like Button
-    if (req.body.like) {
-      if (req.body.like === "dislike") {
-        let result = await connection.queryAsync(
-          "DELETE FROM user_like WHERE user_account=? AND article_id=?",
-          [userAccount, articleId]
-        );
-        result = await connection.queryAsync(
-          "UPDATE article SET likes=likes-1 WHERE id=?",
-          [articleId]
-        );
-        res.json(result.affectedRows);
-      } else {
-        let result = await connection.queryAsync(
-          "INSERT INTO user_like SET user_account=?, article_id=?",
-          [userAccount, articleId]
-        );
-        result = await connection.queryAsync(
-          "UPDATE article SET likes=likes+1 WHERE id=?",
-          [articleId]
-        );
-        res.json(result.affectedRows);
-      }
-    }
-
-    // Handle Collection Button
-    if (req.body.collect) {
-      if (req.body.collect === "removeCollection") {
-        let result = await connection.queryAsync(
-          "DELETE FROM user_collection WHERE user_account=? AND article_id=?",
-          [userAccount, articleId]
-        );
-        res.json(result.affectedRows);
-      } else {
-        let result = await connection.queryAsync(
-          "INSERT INTO user_collection SET user_account=?, article_id=?",
-          [userAccount, articleId]
-        );
-        res.json(result.affectedRows);
-      }
-    }
-  });
 module.exports = router;
