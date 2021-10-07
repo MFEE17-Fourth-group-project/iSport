@@ -71,8 +71,7 @@ function Nav(props) {
                                 >
                                     <Image
                                         cloudName="dbovdn1sr"
-                                        publicId={member.photo}
-                                        alt="123"
+                                        publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
                                         secure="true"
                                         className="w-full h-full object-cover object-center"
                                     >
@@ -92,18 +91,13 @@ function Nav(props) {
                                     </div>
                                     <ul className="navmenu cursor-pointer">
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
-                                            {/* <img
-                                                src={`${IMAGE_URL}${member.photo}`}
-                                                style={{ width: '80px' }}
-                                            /> */}
                                             <Image
                                                 cloudName="dbovdn1sr"
-                                                publicId={member.photo}
+                                                publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
                                                 secure="true"
                                                 className="w-full h-full object-cover object-center"
                                             >
                                             </Image>
-
                                         </div>
                                         <div className="absolute border  border-gray-900 bg-gray-900">
                                             <li className="text-white hidden submenu text-lg cursor-pointer">
@@ -119,13 +113,6 @@ function Nav(props) {
                                             </li>
                                         </div>
                                     </ul>
-                                    {/* <Link
-                                        to="/"
-                                        onClick={signout}
-                                        className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
-                                    >
-                                        登出
-                                    </Link> */}
                                 </div>
                             </>
                         ) : (
