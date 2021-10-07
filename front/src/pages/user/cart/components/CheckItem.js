@@ -1,46 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
-import axios from 'axios';
 
 function CheckItem(props) {
     const [error, setError] = useState('');
-    // const [myCart, setMyCart] = useState([]);
     const { myCart } = props;
-    // const { setTotalAmount } = props;
-
-    // 取得 localStorage 中 cart 資料
-    // const getDataFromLocalStorage = async () => {
-    //     try {
-    //         // post localStorage 資料到後端 API 並取得後端丟回來的商品資訊
-    //         let cartItems = JSON.parse(localStorage.getItem('cart'));
-    //         let result = await axios.post(`${API_URL}/cart`, {
-    //             cartItems,
-    //         });
-    //         // console.log('result.data', result.data);
-    //         // 設定回 useState render 到網頁
-    //         // brand_name: "MIZUNO 美津濃"
-    //         // price: 476
-    //         // product_id: 1
-    //         // product_name: "【MIZUNO 美津濃】女款路跑背心 J2TA1201XX（任選）(T恤)"
-    //         // product_sku_id: 5
-    //         // sku_code: '10011015';
-
-    //         // 將總金額傳回父母元件
-    //         setTotalAmount(result.data.totalAmount);
-    //         setMyCart(result.data.myCart);
-    //         // console.log('myCart in CheckItem', cartItems);
-
-    //         setError('');
-    //     } catch (e) {
-    //         console.log(e);
-    //         setError(e.message);
-    //     }
-    // };
-
-    // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
-    useEffect(() => {
-        // getDataFromLocalStorage();
-    }, []);
 
     return (
         <>
@@ -75,8 +38,6 @@ function CheckItem(props) {
                                     {item.brand_name}
                                 </div>
                                 {item.typeValue.map((value) => {
-                                    // console.log(value);
-                                    // console.log(value.type_name);
                                     return (
                                         <div
                                             className="flex flex-row items-center pb-1.5"

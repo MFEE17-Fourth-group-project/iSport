@@ -13,6 +13,7 @@ function Checkout(props) {
     const history = useHistory();
     const { member, setMember } = useAuth();
     const { cartAdd } = props;
+    const [icon, setIcon] = useState(true);
     const [error, setError] = useState('');
     const [myCart, setMyCart] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
@@ -30,28 +31,22 @@ function Checkout(props) {
         showCheckItem.classList.toggle('max-h-1000');
     };
 
-    // 取得 localStorage 中 cart 資料
+    // TOGGLE ICON
+    const handleIcon = () => {
+        icon ? setIcon(false) : setIcon(true);
+    };
+
+    // READ cart FROM localStorage
     const getDataFromLocalStorage = async () => {
         try {
-            // post localStorage 資料到後端 API 並取得後端丟回來的商品資訊
+            // POST DATA TO BACKEND AND GET API 
             let cartItems = JSON.parse(localStorage.getItem('cart'));
             let result = await axios.post(`${API_URL}/cart`, {
                 cartItems,
             });
-            // console.log('result.data', result.data);
-            // 設定回 useState render 到網頁
-            // brand_name: "MIZUNO 美津濃"
-            // price: 476
-            // product_id: 1
-            // product_name: "【MIZUNO 美津濃】女款路跑背心 J2TA1201XX（任選）(T恤)"
-            // product_sku_id: 5
-            // sku_code: '10011015';
 
-            // 將總金額傳回父母元件
             setTotalAmount(result.data.totalAmount);
             setMyCart(result.data.myCart);
-            // console.log('myCart in CheckItem', cartItems);
-
             setError('');
         } catch (e) {
             console.log(e);
@@ -61,9 +56,11 @@ function Checkout(props) {
 
     // 取得 user 資料並 render 到畫面
     const getUserData = async () => {
-        // const userAccount = member.account;
-        // console.log("userAccount", userAccount);
-        let result = await axios.post(`${API_URL}/cart/userData`);
+        let result = await axios.post(
+            `${API_URL}/cart/userData`,
+            {},
+            { withCredentials: true }
+        );
         // console.log('result.data', result.data[0]);
         // {account: 'admin1', name: '黃阿花', email: 'admin1@test.com', phone: '0912345678', address: '台北市中山區羅斯福路一段一號'}
         // length: 1
@@ -74,7 +71,7 @@ function Checkout(props) {
         setAddress(result.data[0].address);
     };
 
-    // 資料變動 --> 儲存到 localStorage
+    // EDIT RECIPIENT --> STORE IN localStorage
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -95,7 +92,7 @@ function Checkout(props) {
         getDataFromLocalStorage();
         getUserData();
         cartAdd();
-    }, []);
+    }, [member]);
 
     return (
         <>
@@ -110,7 +107,7 @@ function Checkout(props) {
                             <div>
                                 <ProgressBar />
                             </div>
-                            {/*    FIXME: 下拉動畫    */}
+                            {/*    ANIMATE    */}
                             <div
                                 ref={showCheckItemRef}
                                 className="max-h-44 overflow-hidden transition-all duration-500"
@@ -123,17 +120,32 @@ function Checkout(props) {
                                     {totalAmount}
                                 </span>
                             </div>
-                            <div
-                                className="flex justify-center animate-bounce py-1 cursor-pointer"
-                                onClick={showItem}
-                            >
-                                <HiChevronDoubleDown className="text-2xl text-yellow-400" />
-                            </div>
-                            {/*    / FIXME: 下拉動畫    */}
+                            {myCart && myCart.length > 1 ? (
+                                <div
+                                    className="flex justify-center animate-bounce py-1 cursor-pointer"
+                                    onClick={showItem}
+                                >
+                                    {icon ? (
+                                        <HiChevronDoubleDown
+                                            className="text-2xl text-yellow-400"
+                                            onClick={() => {
+                                                handleIcon();
+                                            }}
+                                        />
+                                    ) : (
+                                        <HiChevronDoubleUp
+                                            className="text-2xl text-yellow-400"
+                                            onClick={() => {
+                                                handleIcon();
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            ) : (
+                                <div className="hidden"></div>
+                            )}
                         </div>
                         <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
-                            {/* <CheckRecipient /> */}
-
                             <form onSubmit={handleSubmit}>
                                 <div className="items-center pt-2 mb-6">
                                     <label for="recipient">收件人</label>

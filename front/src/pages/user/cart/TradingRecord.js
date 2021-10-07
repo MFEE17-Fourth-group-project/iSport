@@ -85,6 +85,7 @@ function TradingRecord(props) {
                                 data.map((item, index) => (
                                     <OrderRecord
                                         key={item.id}
+                                        img={item.detail[0].img.img_name}
                                         order_no={item.order_no}
                                         order_date={item.order_date.slice(
                                             0,
@@ -93,8 +94,9 @@ function TradingRecord(props) {
                                         price={item.price}
                                         paytype={item.paytype}
                                         delivery={item.delivery}
-                                        status={item.status}
+                                        status={item.order_status}
                                         total_amount={item.total_amount}
+                                        detail={item.detail}
                                     />
                                 ))}
                         </section>

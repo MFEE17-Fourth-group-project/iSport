@@ -11,13 +11,25 @@ function Finished(props) {
     const { member, setMember } = useAuth();
     const { cartAdd, myCartP } = props;
     const [orderInfo, setOrderInfo] = useState({
-        order_no: 0,
-        recipient: 'sa',
+        order_no: '2110ORD0783',
+        recipient: '阿寶',
+        phone: '0955123456',
+        email: 'bo@gmail.com',
+        address: '桃園市平鎮區212號',
+        order_date: '2021/10/05',
+        paytype: '線上刷卡',
+        delivery: '郵寄',
+        order_status: '4',
+        total_amount: 1000,
     });
 
     // 向 server 拿資料
     const getOrderDataFromServer = async () => {
-        const result = await axios.post(`${API_URL}/order`);
+        const result = await axios.post(
+            `${API_URL}/order`,
+            {},
+            { withCredentials: true }
+        );
         console.log('result.data.orders', result.data.orders[0]);
         setOrderInfo(result.data.orders[0]);
     };
@@ -26,11 +38,18 @@ function Finished(props) {
         localStorage.removeItem('cart');
     };
 
+    let orderStatusMap = {
+        1: '待出貨',
+        2: '已出貨',
+        3: '取消訂單',
+        4: '確認訂單',
+    };
+
     useEffect(() => {
         getOrderDataFromServer();
         clearLocalStorage();
         cartAdd();
-    }, []);
+    }, [member]);
 
     return (
         <>
@@ -126,7 +145,13 @@ function Finished(props) {
                                             <td className="pb-4">
                                                 訂單狀態 :{' '}
                                             </td>
-                                            <td className="pb-4">備貨中</td>
+                                            <td className="pb-4">
+                                                {
+                                                    orderStatusMap[
+                                                        orderInfo.order_status
+                                                    ]
+                                                }
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
