@@ -145,9 +145,9 @@ router.route("/:account")
     .delete(async (req, res, next) => {
         try {
             let userImg = await connection.queryAsync("SELECT photo FROM users WHERE account=?", [req.params.account]);
-            if (oldImg[0].photo !== '') {
+            if (userImg[0].photo !== '') {
                 // Delete from cloudinary
-                await cloudinary.uploader.destroy(oldImg[0].photo);
+                await cloudinary.uploader.destroy(userImg[0].photo);
             }
             let result = await connection.queryAsync("DELETE FROM users WHERE account=?", [req.params.account]);
             res.json({ message: '刪除成功' });
