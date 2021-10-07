@@ -60,10 +60,10 @@ const userOrders = async (req, res, next) => {
                 return item.sku_id === itemImg.product_sku_id;
             });
             let detailSkuGroup = item.sku_group.split(",");
-            console.log("detailSkuGroup", detailSkuGroup); // [ '106', '108' ]
+            // console.log("detailSkuGroup", detailSkuGroup); // [ '106', '108' ]
 
             detailSkuGroup.forEach((detailSku) => {
-                item.type = typeValues.filter((typeValue) => {
+                item.typeValue = typeValues.filter((typeValue) => {
                     return typeValue.id == detailSku;
                 });
             });
@@ -89,7 +89,7 @@ const createOrder = async (req, res, next) => {
     try {
         const checkItems = req.body.cartItems; // [ { id: 1, product_id: 1, sku_code: '10011011', qty: 1 } ]
         const recipient = req.body.recipient;
-        // const userId = req.session.member.id;
+        const userId = req.session.member.id;
         const order_no =
             moment().format("YYMM") +
             `ORD` +
@@ -159,7 +159,7 @@ const createOrder = async (req, res, next) => {
         // INSERT columns: user_id, recipient, phone, email, address, order_date, order_no, paytype, delivery, subtotal, delivery_fee, total_amount, order_status, valid
         const date = new Date();
         const data = {
-            user_id: 2,
+            user_id: userId,
             recipient: recipient.recipient,
             phone: recipient.phone,
             email: recipient.email,

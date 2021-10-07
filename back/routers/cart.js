@@ -10,7 +10,7 @@ router.get("/img", cartController.cartItemImg); // FIXME: method 改回 post (�
 
 router.get("/type", cartController.cartItemType); // FIXME: method 改回 post
 
-router.post("/userData", cartController.userData); // FIXME: method 改回 post
+router.post("/userData", SignInCheckMiddleware, cartController.userData);
 
 
 module.exports = router;

@@ -7,7 +7,6 @@ const getUserOrders = async (userId) => {
             WHERE user_id = ? && valid =?
             ORDER BY user_order.order_date DESC;`,
         [userId, 1]
-        // FIXME: [member, 1]
     );
 };
 
@@ -16,19 +15,21 @@ const getOrderDetails = async (orderIds) => {
         `
         SELECT user_order_detail.*,
                 product.id AS product_id, product.name AS product_name,
-                product_sku.price AS price, product_sku.sku_group AS sku_group
+                product_sku.price AS price, product_sku.sku_group AS sku_group,
+                brand.name AS brand_name
         FROM user_order_detail
         LEFT JOIN product_sku ON product_sku.id=user_order_detail.sku_id
         LEFT JOIN product ON product.id=product_sku.product_id
+        LEFT JOIN brand ON brand.id=product.brand
         WHERE order_id IN ?;`,
         [[orderIds]]
     );
 };
+
 // "INSERT IGNORE INTO stock_price (stock_id, date, volume, amount, open_price, high_price, low_price, close_price, delta_price, transactions) VALUES ?", // IGNORE 忽略重複部分
 // insert user_order
 // insert user_order_detail
 // update stock
-
 const createOrder = async (data) => {
     return await connection.queryAsync(
         `
@@ -52,13 +53,6 @@ const createOrder = async (data) => {
                 data.valid,
             ],
         ],
-        // function (error, results, next) {
-        //     // if (error) {
-        //     //     throw error;
-        //     // }
-        //     return insertId = results.insertId;
-        //     console.log(insertId);
-        // }
     );
 };
 

@@ -50,10 +50,10 @@ const cartItemData = async (req, res, next) => {
                 });
 
                 item.typeValue = typeValues;
-                item.qty = cartMap[item.product_sku_id];
-                item.amount = item.price * cartMap[item.product_sku_id];
+                item.qty = cartMap[item.sku_id];
+                item.amount = item.price * cartMap[item.sku_id];
                 item.img = cartItemImgs.find((cartItemImg) => {
-                    return item.product_sku_id === cartItemImg.product_sku_id;
+                    return item.sku_id === cartItemImg.sku_id;
                 });
                 return item;
             })
@@ -85,8 +85,9 @@ const cartItemImg = async (req, res, next) => {
 
 const userData = async (req, res, next) => {
     try {
-        // FIXME: let member = req.session.member.id;
-        let result = await cartModel.getUserData(2);
+        const userId = req.session.member.id;
+        console.log('userId', userId);
+        let result = await cartModel.getUserData(userId);
         res.json(result);
     } catch (e) {
         console.error(e);
