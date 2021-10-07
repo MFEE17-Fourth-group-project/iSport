@@ -57,7 +57,6 @@ passport.use(
                         profile.name.givenName,
                         profile.photo.value,
                         profile.id.value,
-
                     ],]
                 )
                 returnMember={
