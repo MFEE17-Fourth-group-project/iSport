@@ -2,6 +2,7 @@ import Logo from '../images/biceps.svg';
 import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { Image } from 'cloudinary-react';
 // import { HiMenu } from 'react-icons/hi';
 import userHeader from '../images/user/images.png';
 import MobileAside from './MobileAside';
@@ -42,6 +43,8 @@ function Nav(props) {
     };
     return (
         <>
+            {/* {signInSuccess && <SignSecress />} */}
+            {signInWindow && <SignIn onCancel={handleCancel} />}
             <nav className="App sticky top-0 z-40">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="flex items-center">
@@ -66,24 +69,13 @@ function Nav(props) {
                                     className="lg:hidden w-12 h-12 rounded-full bg-white overflow-hidden mr-2 cursor-pointer"
                                     onClick={handleMobileWindow}
                                 >
-                                    {`${member.photo}` !== '' ? (
-                                        <img
-                                            src={`${IMAGE_URL}${member.photo}`}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center"
-                                        />
-                                    ) : (
-                                        <img
-                                            src={userHeader}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center"
-                                        />
-                                    )}
-                                    <img
-                                        src={`${IMAGE_URL}${member.photo}`}
-                                        alt=""
+                                    <Image
+                                        cloudName="dbovdn1sr"
+                                        publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
+                                        secure="true"
                                         className="w-full h-full object-cover object-center"
-                                    />
+                                    >
+                                    </Image>
                                 </div>
                                 {MobileWindow && (
                                     <MobileAside
@@ -99,10 +91,13 @@ function Nav(props) {
                                     </div>
                                     <ul className="navmenu cursor-pointer">
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
-                                            <img
-                                                src={`${IMAGE_URL}${member.photo}`}
-                                                style={{ width: '80px' }}
-                                            />
+                                            <Image
+                                                cloudName="dbovdn1sr"
+                                                publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
+                                                secure="true"
+                                                className="w-full h-full object-cover object-center"
+                                            >
+                                            </Image>
                                         </div>
                                         <div className="absolute border  border-gray-900 bg-gray-900">
                                             <li className="text-white hidden submenu text-lg cursor-pointer">
@@ -118,13 +113,6 @@ function Nav(props) {
                                             </li>
                                         </div>
                                     </ul>
-                                    {/* <Link
-                                        to="/"
-                                        onClick={signout}
-                                        className="text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-base sm:px-3.5 px-2.5 py-1 mr-2 rounded-full outline-none ease-linear transition-all duration-150"
-                                    >
-                                        登出
-                                    </Link> */}
                                 </div>
                             </>
                         ) : (
@@ -170,8 +158,6 @@ function Nav(props) {
                 {MobileWindow && (
                     <MobileAside onCancel={handleCancelMobileWindow} />
                 )}
-                {/* {signInSuccess && <SignSecress />} */}
-                {signInWindow && <SignIn onCancel={handleCancel} />}
             </nav>
             <nav className="lg:hidden fixed bottom-0 z-50 w-full bg-gray-900 flex justify-center items-center text-center">
                 <Link className="flex-1" to="/video">

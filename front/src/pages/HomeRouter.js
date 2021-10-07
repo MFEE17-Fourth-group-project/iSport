@@ -134,9 +134,6 @@ function HomeRouter() {
                         <Route path="/user/videoCollection">
                             <VideoCollection />
                         </Route>
-                        <Route path="/user/watchLater">
-                            <WatchLater />
-                        </Route>
                         <Route path="/video">
                             <Video />
                         </Route>

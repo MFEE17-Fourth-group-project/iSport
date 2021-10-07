@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 import CustomerService from '../pages/user/sign/CustomerService';
 import userHeader from '../images/user/pic04.jpg';
 import { API_URL, IMAGE_URL } from '../utils/config';
@@ -37,11 +38,13 @@ function MobileAside(props) {
 
                 <div className="flex justify-center items-center p-2.5 bg-gray-800">
                     <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
-                        <img
-                            src={`${IMAGE_URL}${member.photo}`}
-                            alt=""
+                        <Image
+                            cloudName="dbovdn1sr"
+                            publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
+                            secure="true"
                             className="w-full h-full object-cover object-center"
-                        />
+                        >
+                        </Image>
                     </div>
                     <p className="text-white text-opacity-85 ml-2.5">
                         Hi <>{member.name}</>，歡迎回來！
@@ -101,14 +104,6 @@ function MobileAside(props) {
                                         className="w-full block"
                                     >
                                         收藏影片
-                                    </Link>
-                                </li>
-                                <li className="user-submenu-li">
-                                    <Link
-                                        to="/user/watchLater"
-                                        className="w-full block"
-                                    >
-                                        稍後觀看
                                     </Link>
                                 </li>
                             </ul>
