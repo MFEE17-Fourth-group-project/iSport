@@ -177,6 +177,7 @@ router
     registerRules, //驗證資料
     async (req, res, next) => {
       try {
+        let filename = req.file ? "" + req.file.filename : "";
         let result = await connection.queryAsync(
           "UPDATE article SET user_name=?,title=?,content=?,category=?,photos=? WHERE id=?",
           [
@@ -185,7 +186,7 @@ router
             // req.body.upload_date,
             req.body.content,
             req.body.category,
-            req.body.photos,
+            [filename],
             req.params.id,
           ]
         );
