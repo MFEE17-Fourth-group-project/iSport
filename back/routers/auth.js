@@ -1,5 +1,4 @@
 const express = require('express');
-// const passport = require('passport')
 const router = express.Router();
 const path =require("path")
 const connection = require('../utils/db');
@@ -15,61 +14,12 @@ const bcrypt=require("bcrypt");
 const { JsonWebTokenError } = require('jsonwebtoken');
 //第三方登入驗證用
 require('dotenv').config();
-// app.use(passport.initialize())
-
-const FacebookTokenStrategy=require("passport-facebook-token");
-passport.use(
-    new FacebookTokenStrategy(
-        {
-            clientID:process.env.FACEBOOK_ID,
-            clientSecret:process.env.FACEBOOK_SECRET,
-        },
-        async function(accessToken,refreshToken,profile,cb){
-            console.log("FB profile",profile);
-            let member=await connection.queryAsync(
-                "SELECT FROM users WHERE facebookid=?;",
-                [profile.id[0].value]
-            );
-            let returnMember=null;
-                //判斷註冊過
-                if(member.length>0){
-                    member=member[0];
-                    returnMember={
-                        id:member.id,
-                        account:member.account,
-                        email:member.email,
-                        name:member.name,
-                        phone:member.phone,
-                        address:member.address,
-                        birthday:member.birthday,
-                        gender:member.gender,
-                        aboutme:member.about,
-                        photo:member.photo,
-                        password:"",
-                    };
-                }else{
-                    //找不到接續註冊
-                    let result=await connection.querryAsync(
-                        "INSERT INTO users (email,name,photo facebookid)VALUE (?);",
-                        [[
-                            profile.emails[0].value,
-                            // "google login"
-                            profile.name.givenName,
-                            profile.photo[0].value,
-                            profile.id[0].value,
-                        ],]
-                    )
-                }
-            }
-        )
-    )
-
+const passport = require('passport');
 
 // Google 驗證註冊、登入
 const GoogleTokenStrategy=require("passport-google-token").Strategy;
 passport.use(
-    new GoogleTokenStrategy
-    (
+    new GoogleTokenStrategy(
         {
     clientID:process.env.GOOGOLE_ID,
     clientSecrect:process.env.GOOGLE_SECRET,
@@ -78,7 +28,7 @@ passport.use(
             console.log("Google profile",profile);
             let member=await connection.queryAsync(
                 "SELECT*FROM users WHERE googleid=?;",
-                [profile.id[0].value]
+                [profile.id.value]
             );
             let returnMember=null;
             //判斷註冊過
@@ -105,19 +55,26 @@ passport.use(
                         profile.emails[0].value,
                         // "google login"
                         profile.name.givenName,
-                        profile.photo[0].value,
-                        profile.id[0].value,
+                        profile.photo.value,
+                        profile.id.value,
 
                     ],]
                 )
+                returnMember={
+                    id:result.insertId,
+                    email:profile.emails[0].value,
+                    name:profile.name.givenName,
+                    photo:profile.photo
+                };
             }
+            cb(null,returnMember);
             }
     ))
 
-    // google三放驗證入游
+    // google路由
     router.post(
         "/google",
-        Passport.authenticate("google-token",{session:false}),
+        passport.authenticate("google-token",{session:false}),
         function(req,res,next){
             if(!req.user){
                 console.log("Google Login 登入失敗");
@@ -131,8 +88,65 @@ passport.use(
             });
         }
     )
+
+// feacebook中間件
+    const FacebookTokenStrategy=require("passport-facebook-token");
+    passport.use(
+        new FacebookTokenStrategy(
+            {
+                clientID:process.env.FACEBOOK_ID,
+                clientSecret:process.env.FACEBOOK_SECRET,
+            },
+            async function(accessToken,refreshToken,profile,cb){
+                console.log("FB profile",profile);
+                let member=await connection.queryAsync(
+                    "SELECT * FROM users WHERE facebookid=?;",
+                    [profile.id]
+                );
+                let returnMember=null;
+                    //判斷註冊過
+                if(member.length > 0) {
+                    member=member[0];
+                    returnMember={
+                        id:member.id,
+                        account:member.account,
+                        email:member.email,
+                        name:member.name,
+                        phone:member.phone,
+                        address:member.address,
+                        birthday:member.birthday,
+                        gender:member.gender,
+                        aboutme:member.about,
+                        photo:member.photo,
+                        password:"",
+                        };
+                } else {
+                    //找不到接續註冊
+                    let result=await connection.queryAsync(
+                    "INSERT INTO users (account,name,email,photo,facebookid) VALUES (?)",
+                        [[
+                        profile.emails[0].value,
+                        profile.displayName,
+                        profile.emails[0].value,
+                        profile.photos[0].value,
+                        profile.id,
+                        ]]
+                        );
+                    returnMember={
+                        facebookid:profile.id,
+                        email:profile.emails[0].value,
+                        name:profile.displayName,
+                        photo:profile.photos[0].value,
+                    };
+                    }
+                    cb(null,returnMember);
+                }
+            )
+        )
+
     //facebook路游
-    router.post("/facebook",Passport.authenticate("facebook-token",{session:false}),
+    router.post("/facebook",
+    passport.authenticate("facebook-token",{session:false}),
     (req,res,next)=>{
         if (!req.user){
             console.log("FB Loogin 登入失敗");
@@ -141,11 +155,10 @@ passport.use(
         console.log("FB 登入成功")
         req.session.member=req.user;
         res.json({name:req.user.name,
-        
-        
-        
         })
     })
+
+
 // 註冊會員資料送至express 中間件寫入資料庫
 router.post("/SignUp",signUpRules,async(req,res,next)=>{
     //檢查帳號是否重複
@@ -189,8 +202,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
 });
 
 const jwt =require("jsonwebtoken");
-const passport = require('passport');
-const { Passport } = require('passport');
 const { appendFile } = require('fs');
 
 //登入路游
@@ -238,16 +249,6 @@ router.post("/Signin",async(req,res,next)=>{
     // 這是取得會員部分資料
     req.session.member=returnMember;
     res.json(req.session.member);
-
-    // //簽發一個token jwt用
-    // const token =jwt.sign(returnMember,process.env.JWT_SECRET,{expiresIn:"24h",
-    // });
-    //回覆前端
-    // res.json({
-    //     name:member.name,
-    //     photo:member.photo,
-    //     // token:token,
-    // });
 });
 
 router.get("/logout", (req, res, next) => {

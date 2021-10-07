@@ -67,7 +67,7 @@ function SignIn(props) {
         let result = await axios.post(
             `${API_URL}/auth/facebook`,
             {
-                access_token: response.access_Token,
+                access_token: response.accessToken,
             },
             {
                 withCredentials: true,
