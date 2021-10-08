@@ -22,7 +22,8 @@ function Checkout(props) {
     const [phone, setPhone] = useState('0955123456');
     const [email, setEmail] = useState('sa@isport.com');
     const [address, setAddress] = useState('桃園市平鎮區中央路123號');
-    const [delivery, setDelivery] = useState(2);
+    const [delivery, setDelivery] = useState('2');
+    const [deliveryFee, setDeliveryFee] = useState(80);
 
     const showCheckItemRef = useRef(null);
     const showItem = () => {
@@ -39,7 +40,7 @@ function Checkout(props) {
     // READ cart FROM localStorage
     const getDataFromLocalStorage = async () => {
         try {
-            // POST DATA TO BACKEND AND GET API 
+            // POST DATA TO BACKEND AND GET API
             let cartItems = JSON.parse(localStorage.getItem('cart'));
             let result = await axios.post(`${API_URL}/cart`, {
                 cartItems,
@@ -88,11 +89,24 @@ function Checkout(props) {
         history.push('/checkout2');
     };
 
+    const calculateDeliveryFee = () => {
+        let deliveryFeeMap = {
+            1: 60, // 郵寄
+            2: 80, // 宅急便
+            3: 60, // 超商取貨
+        };
+        setDeliveryFee(deliveryFeeMap[delivery]);
+    };
+
     useEffect(() => {
         getDataFromLocalStorage();
         getUserData();
         cartAdd();
     }, [member]);
+
+    useEffect(() => {
+        calculateDeliveryFee();
+    }, [delivery]);
 
     return (
         <>
@@ -114,11 +128,25 @@ function Checkout(props) {
                             >
                                 <CheckItem myCart={myCart} />
                             </div>
-                            <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                                <p className="text-lg font-bold">Total : $ </p>
-                                <span className="text-lg font-bold">
-                                    {totalAmount}
-                                </span>
+                            <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-col">
+                                <div className="flex flex-row-reverse">
+                                    <span className="w-14 text-right text-lg font-bold">
+                                        {deliveryFee}
+                                    </span>
+                                    <p className="text-lg font-bold flex-grow text-right mr-4">
+                                        運費
+                                    </p>
+                                </div>
+                                <div className="flex flex-row-reverse">
+                                    <span className="w-14 text-right text-lg font-bold">
+                                        {(
+                                            totalAmount + deliveryFee
+                                        ).toLocaleString()}
+                                    </span>
+                                    <p className="text-lg font-bold flex-grow text-right mr-4">
+                                        Total : $
+                                    </p>
+                                </div>
                             </div>
                             {myCart && myCart.length > 1 ? (
                                 <div
@@ -221,7 +249,7 @@ function Checkout(props) {
                                     >
                                         <option value="1">郵寄</option>
                                         <option value="2">宅急便</option>
-                                        <option value="3">超商取貨</option>
+                                        {/* <option value="3">超商取貨</option> */}
                                     </select>
                                 </div>
                                 <div className="flex flex-row justify-center">

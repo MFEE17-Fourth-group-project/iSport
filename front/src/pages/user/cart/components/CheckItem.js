@@ -31,7 +31,7 @@ function CheckItem(props) {
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">
-                                        ${item.amount}
+                                        ${item.amount.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="pb-1.5 text-sm text-yellow-400">

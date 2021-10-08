@@ -123,7 +123,6 @@ class CreditCard extends React.Component {
                             <div className="flex flex-1">
                                 <label className="w-20">CVC</label>
                                 <input
-                                    // FIXME: type="tel" ??
                                     type="tel"
                                     name="cvc"
                                     className="input-style flex-1"

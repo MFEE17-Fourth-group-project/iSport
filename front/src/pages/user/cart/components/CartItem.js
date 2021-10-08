@@ -20,8 +20,8 @@ function CartItem(props) {
         setMyCart(cartItems);
     };
 
-    // 向 server 拿資料
-    const getDataFromServer = async (cartItems) => {
+    // GET DATA FROM DB
+    const getDataFromDB = async (cartItems) => {
         let result = await axios.post(`${API_URL}/cart`, {
             cartItems,
         });
@@ -45,7 +45,7 @@ function CartItem(props) {
 
         // 尋找localStorage 中有沒有此cart[i].id
         const index = currentCart.findIndex(
-            (v) => v.id === item.product_sku_id // FIXME: v.product_id === item.product_sku_id
+            (v) => v.id === item.sku_id
         );
         // console.log('index', index);
 
@@ -86,7 +86,7 @@ function CartItem(props) {
             // 找到   --> 返回該陣列的索引值
             // 沒找到 --> 返回-1
             const index = newMyCartDisplay.findIndex(
-                (value) => value.id === myCart[i].id // FIXME: v.product_id === item.product_sku_id
+                (value) => value.id === myCart[i].id
             );
 
             if (index !== -1) {
@@ -101,7 +101,7 @@ function CartItem(props) {
         checkLocalStorage();
         // console.log(`aaa`, newMyCartDisplay);
         if (newMyCartDisplay.length > 0) {
-            getDataFromServer(newMyCartDisplay);
+            getDataFromDB(newMyCartDisplay);
         }
         cartAdd();
     }, [myCart]);
@@ -109,12 +109,12 @@ function CartItem(props) {
     return (
         <>
             {myCartDisplay &&
-                myCartDisplay.map((item, index) => {
+                myCartDisplay.map((item) => {
                     // console.log('map item', item);
                     return (
                         <div
                             className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row"
-                            key={item.product_sku_id}
+                            key={item.sku_id}
                         >
                             {/* ========== 商品圖片 ========== */}
                             <figure className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center">
@@ -134,7 +134,7 @@ function CartItem(props) {
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">
-                                        ${item.amount}
+                                        ${item.amount.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="pb-1.5 text-sm text-yellow-400 cursor-default">
@@ -183,12 +183,20 @@ function CartItem(props) {
                                             </div>
                                             <div
                                                 className="cursor-pointer"
-                                                onClick={() =>
+                                                onClick={() => {
+                                                    if (
+                                                        item.qty >= item.stock
+                                                    ) {
+                                                        alert(
+                                                            '購買數量已達上限'
+                                                        );
+                                                        return;
+                                                    }
                                                     updateCartTolocalStorage(
                                                         item,
                                                         true
-                                                    )
-                                                }
+                                                    );
+                                                }}
                                             >
                                                 <TiPlus />
                                             </div>

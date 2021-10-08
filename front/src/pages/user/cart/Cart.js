@@ -43,24 +43,24 @@ function Cart(props) {
                             購物車
                         </div>
                         {showNoItem ? (
-                            <div className="h-screen text-white text-opacity-85 text-xl text-center pt-14 bg-gray-900 rounded-b-xl">
+                            <div className="cart-page-height text-white text-opacity-85 text-xl text-center pt-20 bg-gray-900 rounded-b-xl">
                                 您的購物車目前沒有商品！！
                             </div>
                         ) : (
-                            <div className="text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl">
+                            <div className="cart-page-height text-white lg:px-10 px-4 py-6 bg-gray-900 rounded-b-xl">
                                 {/* 購物車商品卡片 */}
                                 <CartItem
                                     cartAdd={cartAdd}
                                     setTotalAmount={setTotalAmount}
                                     checkLocalStorage={checkLocalStorage}
                                 />
-                                <div className="pt-2.5 mt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                                    <p className="text-lg font-bold">
-                                        Total : ${' '}
-                                    </p>
-                                    <span className="text-lg font-bold">
-                                        {totalAmount}
+                                <div className="pt-2.5 mt-2.5 mb-9 border-t-2 border-yellow-400 text-yellow-400 flex flex-row-reverse">
+                                    <span className="w-14 text-right text-lg font-bold">
+                                        {totalAmount.toLocaleString()}
                                     </span>
+                                    <p className="text-right text-lg flex-grow font-bold mr-4">
+                                        Total : $
+                                    </p>
                                 </div>
                                 <div className="flex flex-row justify-end">
                                     <Link

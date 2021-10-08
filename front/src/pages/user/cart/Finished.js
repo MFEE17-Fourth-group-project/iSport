@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../../context/auth';
 import { API_URL } from '../../../utils/config';
 import ProgressBar from './components/ProgressBar';
@@ -23,8 +24,8 @@ function Finished(props) {
         total_amount: 1000,
     });
 
-    // 向 server 拿資料
-    const getOrderDataFromServer = async () => {
+    // GET DATA FROM DB
+    const getOrderDataFromDB = async () => {
         const result = await axios.post(
             `${API_URL}/order`,
             {},
@@ -46,10 +47,10 @@ function Finished(props) {
     };
 
     useEffect(() => {
-        getOrderDataFromServer();
+        getOrderDataFromDB();
         clearLocalStorage();
         cartAdd();
-    }, [member]);
+    }, [member, orderInfo]);
 
     return (
         <>
@@ -57,8 +58,11 @@ function Finished(props) {
                 <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
                     <Aside />
                     <article className="flex-grow flex-col">
-                        <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
-                            購物車
+                        <div className="bg-gray-700 p-5 text-white text-opacity-85 rounded-t-xl flex justify-between">
+                            <div className="user-page-title">購物車</div>
+                            <div className="user-page-sub-title text-yellow-400 cursor-pointer">
+                                <Link to="/user/tradingRecord">我的訂單</Link>
+                            </div>
                         </div>
                         <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
                             <div>
@@ -162,12 +166,24 @@ function Finished(props) {
                                     訂購明細
                                 </h5>
                             </div>
-                            <CheckItem myCart={myCartP} />
-                            <div className="pt-2.5 mt-8 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-row justify-end">
-                                <p className="text-lg font-bold">Total : </p>
-                                <span className="text-lg font-bold">
-                                    $ {orderInfo.total_amount}
-                                </span>
+                            <CheckItem myCart={orderInfo.detail} />
+                            <div className="pt-2.5 mt-2.5 mb-6 border-t-2 border-yellow-400 text-yellow-400 flex flex-col">
+                                <div className="flex flex-row-reverse">
+                                    <span className="w-14 text-right text-lg font-bold">
+                                        {orderInfo.delivery_fee}
+                                    </span>
+                                    <p className="text-lg font-bold flex-grow text-right mr-4">
+                                        運費
+                                    </p>
+                                </div>
+                                <div className="flex flex-row-reverse">
+                                    <span className="w-14 text-right text-lg font-bold">
+                                        {orderInfo.total_amount.toLocaleString()}
+                                    </span>
+                                    <p className="text-lg font-bold flex-grow text-right mr-4">
+                                        Total : $
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </article>

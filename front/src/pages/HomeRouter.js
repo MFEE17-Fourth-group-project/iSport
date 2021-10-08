@@ -45,7 +45,7 @@ import Cart from './user/cart/Cart';
 import Checkout from './user/cart/Checkout';
 import Checkout2 from './user/cart/Checkout2';
 import Finished from './user/cart/Finished';
-import TradingRecord from './user/cart/TradingRecord';
+import Order from './user/cart/Order';
 import FavoriteProduct from './user/cart/FavoriteProduct.js';
 
 // import Aside from '../global/Aside';
@@ -76,8 +76,8 @@ function HomeRouter() {
                         <Route path="/user/CustomerService">
                             <CustomerService />
                         </Route>
-                        <Route path="/user/tradingRecord">
-                            <TradingRecord cartAdd={cartAdd} />
+                        <Route path="/user/order">
+                            <Order cartAdd={cartAdd} />
                         </Route>
                         <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />

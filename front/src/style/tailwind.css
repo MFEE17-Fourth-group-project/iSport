@@ -226,15 +226,19 @@
     @apply w-5 h-5 text-yellow-400 ml-5 mr-5 inline-block;
 }
 
-/* TODO: btn-yellow-tag by Sarah */
+/* btn-yellow-tag by Sarah */
 .btn-yellow-tag {
     @apply text-gray-800 bg-yellow-400 border border-solid border-yellow-400 uppercase text-sm
         rounded-full outline-none ease-linear transition-all duration-150;
 }
 
-/*會員頁面title*/
+/* 會員頁面title */
 .user-page-title {
     @apply text-2xl font-bold;
+}
+
+.user-page-sub-title {
+    @apply text-xl font-medium;
 }
 
 /* input會員樣式 */
@@ -268,4 +272,14 @@
 }
 .navmenu:hover .submenu:hover {
     @apply block bg-yellow-400 text-black;
+}
+
+/* 購物車頁面高 */
+.cart-page-height {
+    height: calc(100% - 72px);
+}
+
+/* 訂單頁面高 */
+.order-record-page-height {
+    height: calc(100% - 328px);
 }
