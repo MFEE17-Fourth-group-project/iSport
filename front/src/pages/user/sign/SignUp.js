@@ -8,9 +8,6 @@ import { API_URL } from '../../utils/config';
 function SignUp() {
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
-        setPasswordShown(passwordShown ? false : true);
-    };
 
     const [name, setname] = useState();
     const [account, setaccount] = useState();
@@ -97,10 +94,12 @@ function SignUp() {
                                     id="password"
                                 />
                                 <i
-                                    onClick={togglePasswordVisiblity}
-                                    className="eyesposition"
+                                    onClick={() => setPasswordShown(!passwordShown)}
+                                    className="absolute top-10 right-2.5"
                                 >
-                                    <FaEye className="userIcons hover:text-green-400" />
+                                    {passwordShown ?
+                                        <FaEyeSlash className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" />
+                                        : <FaEye className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" />}
                                 </i>
                             </div>
                         </div>

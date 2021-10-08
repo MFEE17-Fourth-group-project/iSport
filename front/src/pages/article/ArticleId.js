@@ -28,7 +28,7 @@ function ArticleId(props) {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(`${API_URL}/articles/Read/${id}`);
+                let res = await axios.get(`${API_URL}/articles/${id}`);
                 let data = res.data;
                 setData(data);
                 setError(null);
@@ -38,7 +38,7 @@ function ArticleId(props) {
             }
         };
         getArticleData();
-    });
+    }, []);
 
     return (
         <>

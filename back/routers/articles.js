@@ -10,7 +10,7 @@ const { uuid } = require("uuidv4");
 const { SignInCheckMiddleware } = require("../middlewares/auth");
 
 //顯示多筆分類// 'SELECT user_order.recipient, article.title, article.content, article.upload_date, category.name, category_tag.tag, article.photos, article.views FROM article INNER JOIN user_order ON article.user_name=user_order.user_id INNER JOIN category on article.category=category.id INNER JOIN category_tag on article.category_tag=category_tag.id WHERE name="有氧運動"'
-router.get("/Read/AerobicExercise", async (req, res, next) => {
+router.get("/AerobicExercise", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=1"
   );
@@ -24,7 +24,7 @@ router.get("/Read/AerobicExercise", async (req, res, next) => {
   );
   res.json(result);
 });
-router.get("/Read/WeightTraining", async (req, res, next) => {
+router.get("/WeightTraining", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=2"
   );
@@ -38,7 +38,7 @@ router.get("/Read/WeightTraining", async (req, res, next) => {
   );
   res.json(result);
 });
-router.get("/Read/TABATATraining", async (req, res, next) => {
+router.get("/TABATATraining", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=3"
   );
@@ -52,7 +52,7 @@ router.get("/Read/TABATATraining", async (req, res, next) => {
   );
   res.json(result);
 });
-router.get("/Read/CoreStrength", async (req, res, next) => {
+router.get("/CoreStrength", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=5"
   );
@@ -66,7 +66,7 @@ router.get("/Read/CoreStrength", async (req, res, next) => {
   );
   res.json(result);
 });
-router.get("/Read/LeanBulking", async (req, res, next) => {
+router.get("/LeanBulking", async (req, res, next) => {
   let result = await connection.queryAsync(
     "SELECT * FROM article WHERE valid=1 AND category=4"
   );
@@ -81,23 +81,45 @@ router.get("/Read/LeanBulking", async (req, res, next) => {
   res.json(result);
 });
 //顯示我的文章
-router.get("/Read/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
+router.get("/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
   let result = await connection.queryAsync(
-    "SELECT * FROM article WHERE user_name=?",
+    "SELECT * FROM article WHERE valid=1 AND user_name=? ",
     [req.session.member.name]
   );
   console.log(req.session.member.name);
   res.json(result);
 });
-//顯示單筆
-router.route("/Read/:id").get(async (req, res, next) => {
-  let articleId = req.params.id;
-  let result = await connection.queryAsync("SELECT * FROM article WHERE id=?", [
-    articleId,
-  ]);
+//顯示影片
+router.get("/videoAer", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=1"
+  );
   res.json(result);
 });
-
+router.get("/videoWei", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=2"
+  );
+  res.json(result);
+});
+router.get("/videoTab", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=3"
+  );
+  res.json(result);
+});
+router.get("/videoCor", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=5"
+  );
+  res.json(result);
+});
+router.get("/videoLea", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=4"
+  );
+  res.json(result);
+});
 //新增
 //資料驗證
 const { body, validationResult } = require("express-validator");
@@ -140,7 +162,7 @@ const uploader = multer({
 });
 
 router.post(
-  "/Create",
+  "/", // ('/')
   uploader.single("photos"), //上傳檔案驗證資料
   registerRules, //驗證資料
   async (req, res, next) => {
@@ -168,43 +190,53 @@ router.post(
   }
 );
 
-//修改
-// router.patch('/Update/:id', async (req, res, next) => {
-//   let result = await connection.queryAsync("UPDATE article SET user_name=?, title=?, upload_date=?, content=?, category=? WHERE id=?");
-// res.json(result);
-// });
-router.put(
-  "/Update/:id",
-  uploader.single("photos"), //上傳檔案驗證資料
-  registerRules, //驗證資料
-  async (req, res, next) => {
-    try {
-      let result = await connection.queryAsync(
-        "UPDATE article SET  WHERE id=?",
-        [
+router
+  .route("/:id")
+  .get(async (req, res, next) => {
+    let articleId = req.params.id;
+    let result = await connection.queryAsync(
+      "SELECT * FROM article WHERE id=?",
+      [articleId]
+    );
+    console.log(articleId);
+    console.log(result);
+    res.json(result);
+  })
+  .put(
+    uploader.single("photos"), //上傳檔案驗證資料
+    registerRules, //驗證資料
+    async (req, res, next) => {
+      try {
+        let filename = req.file ? "" + req.file.filename : "";
+        let result = await connection.queryAsync(
+          "UPDATE article SET user_name=?,title=?,content=?,category=?,photos=? WHERE id=?",
           [
-            req.body.id,
-            req.session.member.name,
+            req.body.user_name,
             req.body.title,
             // req.body.upload_date,
             req.body.content,
             req.body.category,
-            req.body.photos,
-          ],
-        ]
-      );
-      res.json({ message: "修改文章" });
-    } catch (e) {
-      console.error(e);
+            [filename],
+            req.params.id,
+          ]
+        );
+        res.json({ message: "修改文章" });
+      } catch (e) {
+        console.error(e);
+      }
     }
-  }
-);
-//刪除
-router.delete("/Delete/:id", async (req, res, next) => {
-  let result = await connection.queryAsync(
-    "UPDATE article SET valid=0  WHERE id=?"
-  );
-  res.json(result);
-});
+  )
+  .delete(async (req, res, next) => {
+    try {
+      let result = await connection.queryAsync(
+        "UPDATE article SET valid=0 WHERE id=?",
+        [req.params.id]
+      );
+      res.json(result);
+    } catch (e) {
+      console.log(result);
+      console.log(e);
+    }
+  });
 
 module.exports = router;
