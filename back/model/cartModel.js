@@ -2,7 +2,7 @@ const connection = require("../utils/db");
 
 const getCartItems = async (skuId) => {
     return await connection.queryAsync(
-        `SELECT product_sku.id AS sku_id, sku_code, product_sku.price AS price, product_sku.sku_group AS sku_group,
+        `SELECT product_sku.id AS sku_id, sku_code, product_sku.price AS price, product_sku.sku_group AS sku_group, product_sku.stock AS stock,
                 product.id AS product_id, product.name AS product_name,
                 brand.name AS brand_name
         FROM product
@@ -44,7 +44,7 @@ const getTypes = async () => {
     );
 };
 
-// - name account email phone address
+// name account email phone address
 const getUserData = async (userId) => {
     return await connection.queryAsync(
         `SELECT account, name, email, phone, address

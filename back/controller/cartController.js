@@ -58,9 +58,8 @@ const cartItemData = async (req, res, next) => {
                 return item;
             })
         );
-        // console.log("mycart", myCart);
 
-        // 1. 計算總金額
+        // 計算總金額
         let totalAmount = 0;
         myCart.forEach((item) => {
             totalAmount += item.amount;
@@ -76,7 +75,7 @@ const cartItemData = async (req, res, next) => {
 const cartItemImg = async (req, res, next) => {
     try {
         let cartItemImg = await cartModel.getImgs([1, 5, 10]);
-        console.log(cartItemImg);
+        // console.log(cartItemImg);
         res.json({ cartItemImg });
     } catch (e) {
         console.error(e);
@@ -86,7 +85,7 @@ const cartItemImg = async (req, res, next) => {
 const userData = async (req, res, next) => {
     try {
         const userId = req.session.member.id;
-        console.log('userId', userId);
+        // console.log('userId', userId);
         let result = await cartModel.getUserData(userId);
         res.json(result);
     } catch (e) {
