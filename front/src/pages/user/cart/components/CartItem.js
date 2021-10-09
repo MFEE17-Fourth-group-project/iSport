@@ -8,24 +8,24 @@ function CartItem(props) {
     const [error, setError] = useState(null);
     const [myCart, setMyCart] = useState([]);
     const [myCartDisplay, setMyCartDisplay] = useState([]);
-    const { setTotalAmount } = props;
+    const { setTotalAmount, cartAdd, checkLocalStorage } = props;
     let totalAmount = 0;
 
     // 取得 localStorage 中 cart 資料
     const getCartFromLocalStorage = async () => {
         // 取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
         const cartLocalStorage = localStorage.getItem('cart') || '[]';
-        const myCartItem = JSON.parse(cartLocalStorage);
+        const cartItems = JSON.parse(cartLocalStorage);
 
-        setMyCart(myCartItem);
+        setMyCart(cartItems);
     };
 
-    // 向 server 拿資料
-    const getDataFromServer = async (myCartItem) => {
+    // GET DATA FROM DB
+    const getDataFromDB = async (cartItems) => {
         let result = await axios.post(`${API_URL}/cart`, {
-            myCartItem,
+            cartItems,
         });
-        console.log('result.data.myCart', result.data.myCart);
+        // console.log('result.data.myCart', result.data.myCart);
 
         // 前端計算總金額，傳回父母元件
         result.data.myCart.forEach((item) => {
@@ -45,9 +45,9 @@ function CartItem(props) {
 
         // 尋找localStorage 中有沒有此cart[i].id
         const index = currentCart.findIndex(
-            (v) => v.id === item.product_sku_id // FIXME: v.product_id === item.product_sku_id
+            (v) => v.id === item.sku_id
         );
-        console.log('index', index);
+        // console.log('index', index);
 
         if (index > -1) {
             isAdded ? currentCart[index].qty++ : currentCart[index].qty--;
@@ -86,7 +86,7 @@ function CartItem(props) {
             // 找到   --> 返回該陣列的索引值
             // 沒找到 --> 返回-1
             const index = newMyCartDisplay.findIndex(
-                (value) => value.id === myCart[i].id // FIXME: v.product_id === item.product_sku_id
+                (value) => value.id === myCart[i].id
             );
 
             if (index !== -1) {
@@ -98,19 +98,23 @@ function CartItem(props) {
                 newMyCartDisplay = [...newMyCartDisplay, newItem];
             }
         }
-
-        getDataFromServer(newMyCartDisplay);
+        checkLocalStorage();
+        // console.log(`aaa`, newMyCartDisplay);
+        if (newMyCartDisplay.length > 0) {
+            getDataFromDB(newMyCartDisplay);
+        }
+        cartAdd();
     }, [myCart]);
 
     return (
         <>
             {myCartDisplay &&
-                myCartDisplay.map((item, index) => {
+                myCartDisplay.map((item) => {
                     // console.log('map item', item);
                     return (
                         <div
                             className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row"
-                            key={item.product_sku_id}
+                            key={item.sku_id}
                         >
                             {/* ========== 商品圖片 ========== */}
                             <figure className="w-36 h-36 sm:mx-5 mx-0 self-center object-center object-cover overflow-hidden flex-shrink-0">
@@ -130,7 +134,7 @@ function CartItem(props) {
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">
-                                        ${item.amount}
+                                        ${item.amount.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="pb-1.5 text-sm text-yellow-400 cursor-default">
@@ -152,14 +156,14 @@ function CartItem(props) {
                                         </div>
                                     );
                                 })}
-                                <div className="flex sm:flex-row sm:items-center flex-col">
+                                <div className="flex flex-row sm:items-center">
                                     <div className="flex flex-row pb-1.5 sm:pb-0">
                                         <p className="sm:mr-2.5 mr-4 cursor-default">
                                             數量：
                                         </p>
 
                                         {/* ============= 數量加減鈕 ============= */}
-                                        <div className="px-2 sm:mr-2.5 mr-0 border border-yellow-400 rounded-md flex flex-row items-center bg-transparent">
+                                        <div className="px-2 sm:mr-2.5 mr-2 border border-yellow-400 rounded-md flex flex-row items-center bg-transparent">
                                             <div
                                                 className="cursor-pointer"
                                                 onClick={() => {
@@ -179,19 +183,27 @@ function CartItem(props) {
                                             </div>
                                             <div
                                                 className="cursor-pointer"
-                                                onClick={() =>
+                                                onClick={() => {
+                                                    if (
+                                                        item.qty >= item.stock
+                                                    ) {
+                                                        alert(
+                                                            '購買數量已達上限'
+                                                        );
+                                                        return;
+                                                    }
                                                     updateCartTolocalStorage(
                                                         item,
                                                         true
-                                                    )
-                                                }
+                                                    );
+                                                }}
                                             >
                                                 <TiPlus />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row pb-1.5 sm:pb-0">
                                         {/* <div className=" cursor-pointer mr-2.5 text-red-400 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white hover:text-opacity-85 active:bg-red-600 font-md uppercase text-sm sm:px-2 px-4 py-1 rounded-full outline-none focus:outline-none ease-linear transition-all duration-150 flex items-center">
                                             <FaHeart className="mx-1 sm:mr-2.5" />
                                             <p className="sm:block hidden">

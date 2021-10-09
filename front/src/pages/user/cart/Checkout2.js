@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../../utils/config';
+import { useAuth } from '../../../context/auth';
+import { Link, useHistory } from 'react-router-dom';
 import Aside from '../../../global/Aside';
 import ProgressBar from './components/ProgressBar';
 import CreditCard from './components/CreditCard';
-import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
+import axios from 'axios';
 
-function Checkout2() {
+function Checkout2(props) {
     const { member, setMember } = useAuth();
+    const { cartAdd, setMyCartP, setTotalAmountP } = props;
 
+    const checkout = async () => {
+        let cartItems = JSON.parse(localStorage.getItem('cart')); // []
+        let recipient = JSON.parse(localStorage.getItem('recipientData')); // {}
+        let result = await axios.post(
+            `${API_URL}/order/createOrder`,
+            { cartItems, recipient },
+            { withCredentials: true }
+        );
+        console.log(result.data.myCart);
+        setMyCartP(result.data.myCart);
+        setTotalAmountP(result.data.totalAmount);
+    };
+
+    useEffect(() => {
+        cartAdd();
+    }, []);
     return (
         <>
             {member ? (
@@ -29,63 +48,9 @@ function Checkout2() {
                             </div>
                             <div className="sm:flex hidden justify-center mb-8">
                                 <div>
-                                    <CreditCard />
+                                    <CreditCard checkout={checkout} />
                                 </div>
                             </div>
-                            {/* <from>
-                            <div className="flex sm:mb-8 mb-4">
-                                <label className="w-24">信用卡號碼</label>
-                                <input
-                                    type="text"
-                                    className="input-style flex-1"
-                                ></input>
-                            </div>
-                            <div className="flex sm:mb-8 mb-4">
-                                <label className="w-24">持卡人姓名</label>
-                                <input
-                                    type="text"
-                                    className="input-style flex-1"
-                                ></input>
-                            </div>
-                            <div className="flex sm:flex-row flex-col mb-8">
-                                <div className="flex flex-1 sm:mr-8 sm:mb-0 mb-4">
-                                    <label className="w-24">有效期限</label>
-                                    <input
-                                        type="text"
-                                        className="input-style flex-1"
-                                    ></input>
-                                </div>
-                                <div className="flex flex-1">
-                                    <label className="w-20">CVC</label>
-                                    <input
-                                        type="text"
-                                        className="input-style flex-1"
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-center">
-                                <button type="" className="mr-4">
-                                    <Link
-                                        to="/checkout"
-                                        className="btn-yellow-hollow flex flex-row justify-end items-center"
-                                    >
-                                        <p className="font-bold sm:text-xl text-lg">
-                                            上一步
-                                        </p>
-                                    </Link>
-                                </button>
-                                <button type="submit">
-                                    <Link
-                                        to="/finished"
-                                        className="btn-yellow flex flex-row justify-end items-center"
-                                    >
-                                        <p className="font-bold sm:text-xl text-lg">
-                                            下一步
-                                        </p>
-                                    </Link>
-                                </button>
-                            </div>
-                        </from> */}
                         </div>
                     </article>
                 </main>

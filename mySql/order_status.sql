@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2021 年 09 月 25 日 09:01
+-- 產生時間： 2021 年 10 月 04 日 17:07
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.7
 
@@ -39,7 +39,8 @@ CREATE TABLE `order_status` (
 INSERT INTO `order_status` (`id`, `status`) VALUES
 (1, '待出貨'),
 (2, '已出貨'),
-(3, '取消訂單');
+(3, '取消訂單'),
+(4, '確認訂單');
 
 --
 -- 已傾印資料表的索引
@@ -59,7 +60,7 @@ ALTER TABLE `order_status`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

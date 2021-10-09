@@ -89,7 +89,37 @@ router.get("/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
   console.log(req.session.member.name);
   res.json(result);
 });
-
+//顯示影片
+router.get("/videoAer", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=1"
+  );
+  res.json(result);
+});
+router.get("/videoWei", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=2"
+  );
+  res.json(result);
+});
+router.get("/videoTab", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=3"
+  );
+  res.json(result);
+});
+router.get("/videoCor", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=5"
+  );
+  res.json(result);
+});
+router.get("/videoLea", async (req, res, next) => {
+  let result = await connection.queryAsync(
+    "SELECT * FROM video_file WHERE valid=1 AND category=4"
+  );
+  res.json(result);
+});
 //新增
 //資料驗證
 const { body, validationResult } = require("express-validator");
