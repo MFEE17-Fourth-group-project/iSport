@@ -6,12 +6,17 @@ import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import Messages from './ChatRoomComponents/Messages';
+import useGet from './../../utils/useGet';
 
 let socket;
 
 const ChatRoom = () => {
     const history = useHistory();
     const location = useLocation();
+
+    let { data: chatRooms, error, isPending } = useGet('/homepage/chatRoom');
+
+    const [chatRoom, setChatRoom] = useState([]);
     const [openChat, setOpenChat] = useState(false);
     const [closeForm, setCloseForm] = useState(false);
     const [nickname, setNickname] = useState('');
@@ -20,6 +25,11 @@ const ChatRoom = () => {
     const [typingUsers, setTypingUsers] = useState(null);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        setChatRoom(chatRooms);
+
+    }, [chatRooms]);
 
     useEffect(() => {
         const { nickname, room } = queryString.parse(location.search);
@@ -129,9 +139,10 @@ const ChatRoom = () => {
                         className="w-full h-10 px-2 focus:outline-none bg-gray-700 border-b-4 focus:border-yellow-400 text-white text-lg mb-36"
                         required
                     >
-                        <option value="" selected disabled hidden>請選擇</option>
-                        <option value="飲食">飲食</option>
-                        <option value="tabata">tabata</option>
+                        <option value="0" selected disabled hidden>請選擇</option>
+                        {chatRoom && chatRoom.map(room => (
+                            <option value={room.name}>{room.name}</option>
+                        ))}
                     </select>
                     <button
                         type="submit"
@@ -171,7 +182,7 @@ const ChatRoom = () => {
 
                         </div>
                     </>}
-            </div>}
+            </div>};
             <div
                 className="fixed flex items-center bottom-3 right-3 bg-yellow-400 hover:bg-yellow-500 py-1.5 px-2.5 rounded-md shadow-lg cursor-pointer"
                 onClick={() => setOpenChat(true)}
