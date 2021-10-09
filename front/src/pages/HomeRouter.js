@@ -125,7 +125,7 @@ function HomeRouter() {
                         <Route path="/user/ArticleAdd">
                             <ArticleAdd />
                         </Route>
-                        <Route path="/user/ArticleEdit">
+                        <Route path="/user/ArticleEdit/:id">
                             <ArticleEdit />
                         </Route>
                         <Route path="/video/:videoId">
@@ -133,9 +133,6 @@ function HomeRouter() {
                         </Route>
                         <Route path="/user/videoCollection">
                             <VideoCollection />
-                        </Route>
-                        <Route path="/user/watchLater">
-                            <WatchLater />
                         </Route>
                         <Route path="/video">
                             <Video />

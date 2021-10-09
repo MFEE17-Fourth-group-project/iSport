@@ -7,9 +7,10 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+
 import { useAuth } from '../../../context/auth';
 import { Redirect, Link, ReactDOM } from 'react-router-dom';
-
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
@@ -53,7 +54,7 @@ function SignIn(props) {
         let result = await axios.post(
             `${API_URL}/auth/google`,
             {
-                access_token: response.accessoToken,
+                access_token: response.accessToken,
             },
             {
                 withCredentials: true,
@@ -87,7 +88,7 @@ function SignIn(props) {
     //     return <Redirect to="/user" />;
     // }
     return (
-        <form className="w-screen h-screen fixed z-10" onSubmit={handleSubmit}>
+        <form className="w-screen h-screen fixed z-40" onSubmit={handleSubmit}>
             <div
                 id="module"
                 className="w-full max-w-sm rounded justify-center flex-auto items-center transform -translate-y-1/2
@@ -170,9 +171,29 @@ function SignIn(props) {
                                 登入
                             </button>
                         </div>
-
+                        <GoogleLogin
+                            clientId={REACT_APP_GOOGLE_ID}
+                            buttononText="Login"
+                            onSuccess={googleResponse}
+                            onFailure={(err) => console.log('fail', err)}
+                            render={(renderProps) => (
+                                <p onClick={props.onCancel}>
+                                    <button
+                                        onClick={renderProps.onClick}
+                                        disabled={renderProps.disabled}
+                                        className="bg-white w-64 h-16 flex relative mt-2 mb-2"
+                                    >
+                                        <FcGoogle className="w-10 h-10 absolute top-2" />
+                                        <p className="font-sans font-black text-2xl absolute top-4 left-14">
+                                            Google Login
+                                        </p>
+                                    </button>
+                                </p>
+                            )}
+                        />
                         <FacebookLogin
                             appId={REACT_APP_FACEBOOK_ID}
+                            onClick={props.onCancel}
                             autoLoad={false}
                             callback={facebookResponse}
                             render={(renderProps) => (
@@ -180,12 +201,6 @@ function SignIn(props) {
                                     This is my custom FB button
                                 </button>
                             )}
-                        />
-                        <GoogleLogin
-                            clientId={REACT_APP_GOOGLE_ID}
-                            buttononText="Login"
-                            onSuccess={googleResponse}
-                            onFailure={(err) => console.log('fail', err)}
                         />
                     </div>
                 </div>

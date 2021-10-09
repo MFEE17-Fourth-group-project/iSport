@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../utils/config';
+import { useAuth } from '../../../context/auth';
 
 function SignUp() {
+    const { member } = useAuth();
+
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
-        setPasswordShown(passwordShown ? false : true);
-    };
 
     const [name, setname] = useState();
     const [account, setaccount] = useState();
@@ -44,6 +44,9 @@ function SignUp() {
             alert(e.response.data.message);
         }
     };
+    if (member !== null) {
+        return <Redirect to="/user" />;
+    }
     return (
         <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
             <artical className="flex-grow flex-col">
@@ -97,10 +100,16 @@ function SignUp() {
                                     id="password"
                                 />
                                 <i
-                                    onClick={togglePasswordVisiblity}
-                                    className="eyesposition"
+                                    onClick={() =>
+                                        setPasswordShown(!passwordShown)
+                                    }
+                                    className="absolute top-10 right-2.5"
                                 >
-                                    <FaEye className="userIcons hover:text-green-400" />
+                                    {passwordShown ? (
+                                        <FaEyeSlash className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" />
+                                    ) : (
+                                        <FaEye className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" />
+                                    )}
                                 </i>
                             </div>
                         </div>

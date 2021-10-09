@@ -2,81 +2,94 @@ import React, { useState, useEffect } from 'react';
 import Aside from '../../../global/Aside';
 import { useAuth } from '../../../context/auth';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { EditorState, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import { convertToHTML } from 'draft-convert';
+import DOMPurify from 'dompurify';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticleEdit({ post, props }) {
+function ArticleEdit({ post }) {
     const { member, setMember } = useAuth();
-    const { id } = useParams();
     const [data, setData] = useState(null);
-    //把資料都放進去
     const [error, setError] = useState(null);
-    const newPost = {
-        user_name: '',
-        title: '',
-        content: '',
-        category: '',
-        photos: '',
+    const { id } = useParams();
+    // const [iid, setIid] = useState('');
+    const [user_name, setUsername] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [category, setCategory] = useState('');
+    // const [upload_date, setupload_date] = useState('');
+    const [photos, setPhotos] = useState('');
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createWithContent(ContentState.createFromText(content))
+    );
+    const [convertedContent, setConvertedContent] = useState(null);
+    const handleEditorChange = (state) => {
+        setEditorState(state);
+        convertContentToHTML();
     };
-    const [fields, updatedFields] = useState(post ? post : newPost);
-    //先做淺拷貝，然後把 updatePost 物件用 switch case 做判斷之後替換，所以這邊 function 要傳入 e 跟 資料種類用做判斷。然後再把這個值傳給 setThisPost 即可變更狀態
-    const changePost = (e, dataType) => {
-        const updatePost = Object.assign({}, fields); //單層拷貝
-        switch (dataType) {
-            case 'user_name':
-                updatePost.user_name = e.target.value;
-                break;
-            case 'title':
-                updatePost.title = e.target.value;
-                break;
-            case 'content':
-                updatePost.content = e.target.value;
-                break;
-            case 'category':
-                updatePost.category = e.target.value;
-                break;
-            case 'photos':
-                updatePost.photos = e.target.value;
-                break;
-        }
-        updatedFields(updatePost);
+    const convertContentToHTML = () => {
+        let currentContentAsHTML = convertToHTML(
+            editorState.getCurrentContent()
+        );
+        setConvertedContent(currentContentAsHTML);
+    };
+    const createMarkup = (html) => {
+        return {
+            __html: DOMPurify.sanitize(html),
+        };
     };
 
-    // 處理每個欄位的變動
-    const handleFieldChange = (e) => {
-        // 更新輸入欄位的變動
-        // 用新輸入的屬性值和原物件作合併
-        updatedFields({
-            ...fields,
-            [e.target.name]: e.target.value,
-        });
-        // setFields(updatedFields)
-    };
-    //送出修改
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const formdata = new FormData(e.target);
-    };
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.put(`${API_URL}/articles/Update/${id}`);
-                let data = res.data;
-                setData(data);
+                let res = await axios.get(`${API_URL}/articles/${id}`);
+                let resData = await res.data;
+                setData(resData[0]);
                 setError(null);
-                alert('修改成功');
             } catch (e) {
                 console.log(e);
                 setError(e.message);
             }
         };
         getArticleData();
-    });
+    }, []);
 
+    useEffect(() => {
+        if (data) {
+            // setIid(data.id);
+            setUsername(data.user_name);
+            setTitle(data.title);
+            setContent(data.content);
+            setCategory(data.category);
+            setPhotos(data.photos);
+        }
+    }, [data]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
+
+            formData.append('user_name', user_name);
+            formData.append('title', title);
+            // formData.append('upload_date', upload_date);
+            formData.append('category', category);
+            formData.append('content', content);
+            formData.append('photos', photos);
+            formData.append('id', id);
+            let response = await axios.put(
+                `${API_URL}/articles/${id}`,
+                formData
+            );
+            alert('修改成功');
+            console.log(response);
+        } catch (e) {
+            console.error(e.response);
+        }
+    };
     return (
         <>
             {member ? (
@@ -97,15 +110,13 @@ function ArticleEdit({ post, props }) {
                                     type="text"
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                     name="user_name"
-                                    aria-label="Full user_name"
                                     id="user_name"
-                                    placeholder={member.name}
+                                    placeholder="最多50字"
                                     required
-                                    //只要判斷一下有沒有值，有的話就把值放進去
-                                    value={fields && fields.user_name}
-                                    //添加 onChange 來改變值
+                                    placeholder={member.name}
+                                    value={user_name}
                                     onChange={(e) => {
-                                        changePost(e, 'user_name');
+                                        setUsername(e.target.value);
                                     }}
                                 ></input>
                                 <br />
@@ -114,9 +125,9 @@ function ArticleEdit({ post, props }) {
                                 <select
                                     name="category"
                                     id="category"
-                                    value={fields && fields.category}
+                                    value={category}
                                     onChange={(e) => {
-                                        changePost(e, 'category');
+                                        setCategory(e.target.value);
                                     }}
                                     className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
                                 >
@@ -139,12 +150,37 @@ function ArticleEdit({ post, props }) {
                                     name="title"
                                     id="title"
                                     placeholder="最多100字"
-                                    value={fields && fields.title}
+                                    value={title}
                                     onChange={(e) => {
-                                        changePost(e, 'title');
+                                        setTitle(e.target.value);
                                     }}
                                 />
+                                <input
+                                    type="text"
+                                    className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
+                                    name="content"
+                                    id="content"
+                                    placeholder="最多100字"
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
+                                    }}
+                                />
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: content,
+                                    }}
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
+                                    }}
+                                ></p>
                                 <br />
+                                <img
+                                    className="m-auto"
+                                    src={`http://localhost:3030/articles/uploads/${photos}`}
+                                    alt=""
+                                />
                                 <label htmlFor="photos">上傳圖片:</label>
                                 <br />
                                 <input
@@ -152,9 +188,8 @@ function ArticleEdit({ post, props }) {
                                     type="file"
                                     name="photos"
                                     id="photos"
-                                    value={fields && fields.photos}
                                     onChange={(e) => {
-                                        changePost(e, 'photos');
+                                        setPhotos(e.target.files[0]);
                                     }}
                                 />
                                 <br />
@@ -166,31 +201,37 @@ function ArticleEdit({ post, props }) {
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
                                 <Editor
+                                    editorState={editorState}
+                                    onEditorStateChange={handleEditorChange}
+                                    toolbarClassName="toolbar"
+                                    wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
+                                    editorClassName="editor px-5 h-40"
+                                />
+                                <div
+                                    className="preview"
+                                    dangerouslySetInnerHTML={createMarkup(
+                                        convertedContent
+                                    )}
+                                ></div>
+                                {/* <Editor
+                                    editorState={editorState}
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
                                     onEditorStateChange={(editorState) => {
-                                        console.log(
+                                        setcontent(
                                             editorState
                                                 .getCurrentContent()
                                                 .getPlainText()
                                         );
-
-                                        // setcontent(
-                                        //     editorState
-                                        //         .getCurrentContent()
-                                        //         .getPlainText()
-                                        // );
                                     }}
-                                />
+                                /> */}
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"
                                         type="submit"
                                         id="button"
-                                        onClick={() =>
-                                            console.log('送出', fields)
-                                        }
+                                        onClick={handleSubmit}
                                     >
                                         <p className="font-bold text-xl mx-2">
                                             修改

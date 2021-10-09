@@ -14,13 +14,11 @@ function ArticleMyart() {
     useEffect(() => {
         const getArticleData = async () => {
             try {
-                let res = await axios.get(
-                    `${API_URL}/articles/Read/MyArticle`,
-                    { withCredentials: true }
-                );
-                let data = res.data;
-                // console.log(data);
-                setData(data);
+                let res = await axios.get(`${API_URL}/articles/MyArticle`, {
+                    withCredentials: true,
+                });
+                res = res.data;
+                setData(res);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
@@ -28,10 +26,13 @@ function ArticleMyart() {
         };
         getArticleData();
     }, []);
-    // console.log(data);
+    console.log(data);
     //刪除
-    const handleDelete = (id) => {
-        setData(data.filter((Data) => data.id !== id));
+    const handleDelete = async (id) => {
+        setData(data.filter((article) => article.id !== id));
+        let res = axios.delete(`${API_URL}/articles/${id}`, {
+            withCredentials: true,
+        });
         alert('刪除完成');
     };
     return (

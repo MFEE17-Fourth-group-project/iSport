@@ -28,7 +28,7 @@ passport.use(
             console.log("Google profile",profile);
             let member=await connection.queryAsync(
                 "SELECT*FROM users WHERE googleid=?;",
-                [profile.id.value]
+                [profile.id]
             );
             let returnMember=null;
             //判斷註冊過
@@ -49,21 +49,23 @@ passport.use(
                 };
             }else{
                 //找不到接續註冊
-                let result=await connection.querryAsync(
-                    "INSERT INTO users (email,name,photo googleid)VALUE (?);",
+                let result=await connection.queryAsync(
+                    "INSERT INTO users (account,email,name,photo,googleid)VALUE (?);",
                     [[
                         profile.emails[0].value,
+                        profile.emails[0].value,
                         // "google login"
-                        profile.name.givenName,
-                        profile.photo.value,
-                        profile.id.value,
+                        profile.displayName,
+                        profile. _json.picture,
+                        profile.id,
                     ],]
                 )
                 returnMember={
-                    id:result.insertId,
+                    id:result.insertid,
+                    account:profile.emails[0].value,
                     email:profile.emails[0].value,
-                    name:profile.name.givenName,
-                    photo:profile.photo
+                    name:profile.displayName,
+                    photo:profile. _json.picture,
                 };
             }
             cb(null,returnMember);
@@ -82,6 +84,9 @@ passport.use(
             console.log("Google 登入成功");
             req.session.member=req.user;
             res.json({
+                id:req.user.id,
+                email:req.user.email,
+                account:req.user.account,
                 name:req.user.name,
                 photo:req.user.photo,
             });
@@ -132,7 +137,8 @@ passport.use(
                         ]]
                         );
                     returnMember={
-                        facebookid:profile.id,
+                        id:result.insertid,
+                        account:profile.emails[0].value,
                         email:profile.emails[0].value,
                         name:profile.displayName,
                         photo:profile.photos[0].value,
@@ -153,7 +159,12 @@ passport.use(
         }
         console.log("FB 登入成功")
         req.session.member=req.user;
-        res.json({name:req.user.name,
+        res.json({
+            id:req.user.id,
+            email:req.user.email,
+            account:req.user.account,
+            name:req.user.name,
+            photo:req.user.photo,
         })
     })
 
