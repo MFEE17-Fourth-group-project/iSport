@@ -22,6 +22,7 @@ let productsRouter = require("./routers/products");
 const { MulterError } = require("multer");
 let authRouter = require("./routers/auth");
 let commentsRouter = require("./routers/comments");
+let homepageRouter = require("./routers/homepage");
 
 app.use(express.static("public"));
 
@@ -70,6 +71,8 @@ app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 // /api/authe
 app.use("/api/auth", authRouter);
+// /api/homepage
+app.use("/api/homepage", homepageRouter);
 
 // 顯示來訪
 app.use((req, res, next) => {
