@@ -42,8 +42,8 @@ const Messages = ({ messages, nickname, typingUsers }) => {
                     )
                 );
             })}
-            <div className="end" />
             {typingUsers && <p className="flex mt-auto mb-1.5 text-white">{typingUsers}</p>}
+            <div className="end" />
         </div>
     );
 };

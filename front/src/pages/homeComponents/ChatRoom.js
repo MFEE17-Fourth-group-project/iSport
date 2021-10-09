@@ -48,7 +48,7 @@ const ChatRoom = () => {
         if (socket) {
             socket.on('userTyping', typingUsers => {
                 console.log(typingUsers);
-                typingUsers > 0 ? setTypingUsers(`${typingUsers}人正在輸入訊息...`) : setTypingUsers(null);
+                typingUsers && typingUsers > 0 ? setTypingUsers(`${typingUsers}人正在輸入訊息...`) : setTypingUsers(null);
             });
             socket.on('message', message => {
                 setMessages(messages => [...messages, message]);
@@ -69,12 +69,13 @@ const ChatRoom = () => {
 
     const handleChatInput = (e) => {
         setMessage(e.target.value);
-        if (socket && message !== '') {
-            socket.emit('isTyping');
-        }
-        if (message === '') {
+        socket.emit('isTyping');
+    };
+
+    const handleEmpty = (e) => {
+        if (e.target.value === '') {
             socket.emit('cancelTyping');
-            typingUsers === 1 ? setTypingUsers(null) : setTypingUsers(`${typingUsers}人正在輸入訊息...`);
+            typingUsers && typingUsers > 0 ? setTypingUsers(`${typingUsers}人正在輸入訊息...`) : setTypingUsers(null);
         }
     };
 
@@ -163,6 +164,7 @@ const ChatRoom = () => {
                                     required
                                     value={message}
                                     onChange={e => handleChatInput(e)}
+                                    onKeyUp={(e) => handleEmpty(e)}
                                     onKeyPress={e => e.key === 'Enter' ? sendMessage(message) : null}
                                 />
                             </div>
