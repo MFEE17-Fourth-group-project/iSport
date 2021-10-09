@@ -23,22 +23,28 @@ const Messages = ({ messages, nickname, typingUsers }) => {
 
                 return (
                     message.user === nickname ? (
-                        <div
-                            className="max-w-64 min-w-min py-2 px-4 bg-gray-500 rounded flex flex-shrink-0 mb-2 ml-auto break-all shadow-md chat"
-                            key={idx}
-                        >
-                            <p>{message.text}</p>
-                        </div>
-                    ) : (
-                        <>
-                            { (speakChange.current || idx === 0) ? <h5 className="text-gray-300 text-sm">{message.user}</h5> : null}
+                        <div className="flex mb-2 ml-auto">
+                            <p className="text-gray-400 text-xs self-end mr-1">{message.time}</p>
                             <div
-                                className="max-w-64 min-w-min py-2 px-4 text-white bg-gray-800 rounded flex flex-shrink-0 mb-2 mr-auto break-all shadow-md "
+                                className="max-w-64 min-w-min py-2 px-4 bg-gray-500 rounded flex flex-shrink-0 break-all shadow-md chat"
                                 key={idx}
                             >
                                 <p>{message.text}</p>
                             </div>
-                        </>
+                        </div>
+                    ) : (
+                        <div className="flex mb-2">
+                            <div>
+                                {(speakChange.current || idx === 0) ? <h5 className="text-gray-300 text-sm">{message.user}</h5> : null}
+                                <div
+                                    className="max-w-64 min-w-min py-2 px-4 text-white bg-gray-800 rounded flex flex-shrink-0 mr-auto break-all shadow-md"
+                                    key={idx}
+                                >
+                                    <p>{message.text}</p>
+                                </div>
+                            </div>
+                            <p className="ml-1 self-end text-gray-400 text-xs">{message.time}</p>
+                        </div>
                     )
                 );
             })}

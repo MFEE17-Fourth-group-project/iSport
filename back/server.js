@@ -8,6 +8,7 @@ const cors = require("cors");
 const expressSession = require("express-session");
 const { addUser, removeUser, getUser, getUsersIn } = require('./utils/users');
 const { addTypingUser, removeTypingUser } = require('./utils/typingUsers');
+const { newMessage } = require('./utils/message');
 require("dotenv").config();
 let app = express();
 
@@ -128,8 +129,8 @@ io.on('connect', (socket) => {
         socket.join(user.room);
         console.log(user);
 
-        socket.emit('message', { user: 'iSport!', text: `歡迎加入 ${user.room} 聊天室` });
-        socket.broadcast.to(user.room).emit('message', { user: 'iSport!', text: `${user.nickname} 已加入 ${user.room} 聊天室` });
+        socket.emit('message', newMessage({ user: 'iSport!', text: `歡迎加入 ${user.room} 聊天室` }));
+        socket.broadcast.to(user.room).emit('message', newMessage({ user: 'iSport!', text: `${user.nickname} 已加入 ${user.room} 聊天室` }));
 
         io.to(user.room).emit('roomData', { users: getUsersIn(user.room), room: user.room });
 
@@ -154,7 +155,7 @@ io.on('connect', (socket) => {
         const user = getUser(socket.id);
         const typingUsers = removeTypingUser(user.id).length;
 
-        io.to(user.room).emit('message', { user: user.nickname, text: message });
+        io.to(user.room).emit('message', newMessage({ user: user.nickname, text: message }));
         io.to(user.room).emit('userTyping', typingUsers);
         cb();
     });
@@ -162,7 +163,7 @@ io.on('connect', (socket) => {
     socket.on('disconnect', () => {
         const user = removeUser(socket.id);
         if (user) {
-            io.to(user.room).emit('message', { user: 'iSport!', text: `${user.nickname} 已離開 ${user.room} 聊天室` });
+            io.to(user.room).emit('message', newMessage({ user: 'iSport!', text: `${user.nickname} 已離開 ${user.room} 聊天室` }));
             io.to(user.room).emit('roomData', { users: getUsersIn(user.room), room: user.room });
         }
     });
