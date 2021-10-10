@@ -31,7 +31,6 @@ function Finished(props) {
             {},
             { withCredentials: true }
         );
-        console.log('result.data.orders', result.data.orders[0]);
         setOrderInfo(result.data.orders[0]);
     };
 

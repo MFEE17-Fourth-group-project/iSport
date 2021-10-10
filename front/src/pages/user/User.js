@@ -7,14 +7,12 @@ import { API_URL } from '../utils/config';
 import { useAuth } from '../../context/auth';
 import NotAuth from './components/NotAuth';
 import DeleteAccountModal from './components/DeleteAccountModal';
-import SignIn from './sign/SignIn';
 
 function Users() {
     const { member, setMember } = useAuth();
     const [tempMember, setTempMember] = useState({ ...member });
     const [deleteAccountModal, setDeleteAccountModal] = useState(false);
     const history = useHistory();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -38,12 +36,9 @@ function Users() {
     }, [member]);
 
     const handleDeleteAccount = async () => {
-        let require = await axios.delete(
-            `${API_URL}/users/${member.account}`,
-            {
-                withCredentials: true,
-            }
-        );
+        let require = await axios.delete(`${API_URL}/users/${member.account}`, {
+            withCredentials: true,
+        });
         setMember(null);
         history.push('/');
     };
@@ -54,7 +49,13 @@ function Users() {
 
     return (
         <>
-            {deleteAccountModal && <DeleteAccountModal onDelete={handleDeleteAccount} onCancel={handleCancelDelete} memberName={member && (member.name) || null} />}
+            {deleteAccountModal && (
+                <DeleteAccountModal
+                    onDelete={handleDeleteAccount}
+                    onCancel={handleCancelDelete}
+                    memberName={(member && member.name) || null}
+                />
+            )}
             {member ? (
                 <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
                     <UserAside />
@@ -101,7 +102,6 @@ function Users() {
                                             不可修改
                                         </p>
                                     </div>
-
                                     <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5">
                                         <label for="password">密碼：</label>
                                         <input
@@ -260,8 +260,12 @@ function Users() {
                                     )}
                                     <button
                                         className="text-red-700 font-bold flex ml-auto"
-                                        onClick={() => setDeleteAccountModal(true)}
-                                    >刪除帳號</button>
+                                        onClick={() =>
+                                            setDeleteAccountModal(true)
+                                        }
+                                    >
+                                        刪除帳號
+                                    </button>
                                 </div>
                             </form>
                         </div>
