@@ -8,11 +8,12 @@ import axios from 'axios';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-
 import { useAuth } from '../../../context/auth';
 import { Redirect, Link, ReactDOM } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { YourReCaptchaComponent } from '../components/YourReCaptchaComponent';
 
 function SignIn(props) {
     // 控制取得帳號密碼值
@@ -148,15 +149,18 @@ function SignIn(props) {
                             <FaEye className="userIcons hover:text-green-400" />
                         </i>
                         <hr className="border-2 border-yellow-400" />
-                        <Link to="/SearchPassword">
+                        {/* <Link to="/SearchPassword">
                             <button
                                 className="font-bold text-sm text-red-500 hover:text-red-800 justify-end flex mt-1 mb-1"
                                 onClick={props.onCancel}
                             >
                                 忘記密碼?
                             </button>
-                        </Link>
-                        <div className="flex items-center justify-center">
+                        </Link> */}
+                        {/* <GoogleReCaptchaProvider reCaptchaKey="[6LdntrkcAAAAANcrf0S1d_dkFRj8w7DvFcItvJWs]">
+                            <YourReCaptchaComponent />
+                        </GoogleReCaptchaProvider> */}
+                        <div className="flex items-center justify-center mt-2">
                             <Link to="/SignUp">
                                 <button
                                     className="btn-green mr-10"
