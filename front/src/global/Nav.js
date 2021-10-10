@@ -45,7 +45,7 @@ function Nav(props) {
         <>
             {/* {signInSuccess && <SignSecress />} */}
             {signInWindow && <SignIn onCancel={handleCancel} />}
-            <nav className="App sticky top-0 z-40">
+            <nav className="App sticky top-0 z-30">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <div className="flex items-center">
                         <img
@@ -71,11 +71,13 @@ function Nav(props) {
                                 >
                                     <Image
                                         cloudName="dbovdn1sr"
-                                        publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
+                                        publicId={
+                                            member.photo ||
+                                            'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'
+                                        }
                                         secure="true"
                                         className="w-full h-full object-cover object-center"
-                                    >
-                                    </Image>
+                                    ></Image>
                                 </div>
                                 {MobileWindow && (
                                     <MobileAside
@@ -93,11 +95,13 @@ function Nav(props) {
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
                                             <Image
                                                 cloudName="dbovdn1sr"
-                                                publicId={member.photo || 'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'}
+                                                publicId={
+                                                    member.photo ||
+                                                    'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'
+                                                }
                                                 secure="true"
                                                 className="w-full h-full object-cover object-center"
-                                            >
-                                            </Image>
+                                            ></Image>
                                         </div>
                                         <div className="absolute border  border-gray-900 bg-gray-900">
                                             <li className="text-white hidden submenu text-lg cursor-pointer">
