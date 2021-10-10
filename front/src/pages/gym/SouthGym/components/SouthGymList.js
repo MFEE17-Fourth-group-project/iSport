@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GymItem from './SouthGymItem';
-// import GymMap from '../../GymMap';
 function GymList(props) {
     const { Gyms } = props;
     const { pData2, setPData2 } = props;

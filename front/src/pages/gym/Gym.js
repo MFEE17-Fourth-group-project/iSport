@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import ArticleHeader from '../../images/11.jpeg';
-// import Gyms from '../../images/map/gym.png';
 import NorthGym from './NorthGym/NorthGym';
 import MidthGym from './MidthGym/MidthGym';
 import SouthGym from './SouthGym/SouthGym';
@@ -33,12 +31,8 @@ function Gym() {
             </div>
             <div className="flex justify-center">
                 <div className="w-1/2 p-4 hidden md:block z-0">
-                    <div
-                    // id="mapid"
-                    // style={{ height: '100vh', width: '100vw' }}
-                    // onClick="{myMap}"
-                    ></div>
-                    <GymMap //, name, image, address
+                    <div></div>
+                    <GymMap
                         lat={pData2 && +pData2.latitude}
                         lng={pData2 && +pData2.longitude}
                         name={pData2 && pData2.name}

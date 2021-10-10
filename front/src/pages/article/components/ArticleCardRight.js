@@ -1,6 +1,5 @@
-import AerobicExercise from './../../../images/有氧/1.jpeg';
 const ArticleCardRight = (props) => {
-    const { category, smTitle, bigTitle, photo } = props;
+    const { smTitle, bigTitle, photo } = props;
     return (
         <>
             <div

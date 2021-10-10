@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/核心/core-1.jpg';
 import ArticleNav from './components/ArticleNav';
 import ArticleOutSide from './components/ArticleOutSide';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
@@ -20,17 +20,14 @@ function ArticleAerobicExercise({ article }) {
                 console.log(data);
                 setData(data);
                 setAllData(data);
-                // setIsPending(false);
-                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
-                // setIsPending(false);
             }
         };
         getArticleData();
     }, []);
-    // console.log(data);
+
     const [term, setTerm] = useState('');
     //最新上傳sort() 方法用原地算法对数组的元素进行排序，并返回数组replace正規表達式
     const handleUpdateButton = () => {
@@ -64,13 +61,7 @@ function ArticleAerobicExercise({ article }) {
     const handleEmpty = (e) => {
         if (e.target.value === '') setData(allData);
     };
-    //nav
 
-    const [category, setCategory] = useState(0);
-
-    const changeCategory = (e) => {
-        setCategory(e.target.dataset.id);
-    };
     return (
         <>
             <div>
@@ -91,7 +82,7 @@ function ArticleAerobicExercise({ article }) {
                     </div>
                 </div>
                 <div className=" z-40">
-                    <ArticleNav cat={changeCategory} />
+                    <ArticleNav />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}

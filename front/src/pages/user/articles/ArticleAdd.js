@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Aside from '../../../global/Aside';
 import { useAuth } from '../../../context/auth';
 import { Editor } from 'react-draft-wysiwyg';
@@ -108,8 +108,6 @@ function ArticleAdd() {
                                     id="photos"
                                     onChange={(e) => {
                                         setPhotos(e.target.files[0]);
-                                        // setPhotos(e.target.files[0].name);
-                                        // console.log(e.target.files[0].name);
                                     }}
                                 />
                                 <br />
@@ -120,15 +118,6 @@ function ArticleAdd() {
                                 <br />
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                {/* <textarea
-                            name="content"
-                            id="content"
-                            style={{ display: 'none' }}
-                            value={content}
-                            onChange={(e) => {
-                                setcontent(e.target.value);
-                            }}
-                        /> */}
                                 <Editor
                                     toolbarClassName="toolbar"
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
