@@ -14,9 +14,9 @@ function CheckItem(props) {
                             className="sm:p-2.5 h-180 lg:p-4 p-1.5 flex flex-row"
                             key={item.product_sku_id}
                         >
-                            <div className="sm:w-36 w-2/5 sm:mx-5 mx-0 self-center text-center">
+                            <figure className="sm:w-36 w-16 sm:mx-5 mx-0 self-center object-cover overflow-hidden flex-shrink-0">
                                 <img
-                                    className="sm:w-36 w-full"
+                                    className="w-full"
                                     // 引入圖片
                                     src={
                                         require('../../../../images/product/' +
@@ -24,10 +24,10 @@ function CheckItem(props) {
                                     }
                                     alt={item.img.img_name}
                                 ></img>
-                            </div>
+                            </figure>
                             <div className="flex flex-col flex-grow lg:ml-10 ml-5">
                                 <div className="flex flex-row justify-between pb-2.5">
-                                    <h3 className="sm:text-xl text-base font-bold">
+                                    <h3 className="sm:text-xl text-base font-bold break-words mr-4">
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">

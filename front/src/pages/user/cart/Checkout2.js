@@ -20,7 +20,6 @@ function Checkout2(props) {
             { cartItems, recipient },
             { withCredentials: true }
         );
-        console.log(result.data.myCart);
         setMyCartP(result.data.myCart);
         setTotalAmountP(result.data.totalAmount);
     };
