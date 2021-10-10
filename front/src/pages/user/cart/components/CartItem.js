@@ -22,10 +22,13 @@ function CartItem(props) {
 
     // GET DATA FROM DB
     const getDataFromDB = async (cartItems) => {
-        let result = await axios.post(`${API_URL}/cart`, {
-            cartItems,
-        });
-        // console.log('result.data.myCart', result.data.myCart);
+        let result = await axios.post(
+            `${API_URL}/cart`,
+            {
+                cartItems,
+            },
+            { withCredentials: true }
+        );
 
         // 前端計算總金額，傳回父母元件
         result.data.myCart.forEach((item) => {
@@ -44,9 +47,7 @@ function CartItem(props) {
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // 尋找localStorage 中有沒有此cart[i].id
-        const index = currentCart.findIndex(
-            (v) => v.id === item.sku_id
-        );
+        const index = currentCart.findIndex((v) => v.id === item.sku_id);
         // console.log('index', index);
 
         if (index > -1) {
@@ -99,7 +100,6 @@ function CartItem(props) {
             }
         }
         checkLocalStorage();
-        // console.log(`aaa`, newMyCartDisplay);
         if (newMyCartDisplay.length > 0) {
             getDataFromDB(newMyCartDisplay);
         }
@@ -110,16 +110,15 @@ function CartItem(props) {
         <>
             {myCartDisplay &&
                 myCartDisplay.map((item) => {
-                    // console.log('map item', item);
                     return (
                         <div
                             className="sm:p-2.5 lg:p-4 p-1.5 flex flex-row"
                             key={item.sku_id}
                         >
                             {/* ========== 商品圖片 ========== */}
-                            <figure className="w-36 h-36 sm:mx-5 mx-0 self-center object-center object-cover overflow-hidden flex-shrink-0">
+                            <figure className="sm:w-36 w-16 sm:mx-5 mx-0 self-center object-cover overflow-hidden flex-shrink-0">
                                 <img
-                                    className="w-full h-full"
+                                    className="w-full"
                                     // 引入圖片
                                     src={
                                         require('../../../../images/product/' +
@@ -130,7 +129,7 @@ function CartItem(props) {
                             </figure>
                             <div className="flex flex-col flex-grow lg:ml-10 ml-5 ">
                                 <div className="flex flex-row justify-between pb-2.5 cursor-default">
-                                    <h3 className="sm:text-xl text-lg font-bold break-words">
+                                    <h3 className="sm:text-xl text-base font-bold break-words mr-4">
                                         {item.product_name}
                                     </h3>
                                     <p className="text-yellow-400 font-bold">

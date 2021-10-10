@@ -17,7 +17,6 @@ function OrderRecord(props) {
     const showItemRef = useRef();
     const showOrderDetail = () => {
         const showItem = showItemRef.current;
-        console.log('showItem', showItem);
         showItem.classList.toggle('hidden');
     };
 

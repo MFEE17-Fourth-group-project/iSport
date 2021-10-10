@@ -24,8 +24,6 @@ function Cart(props) {
 
         // 初始化：一開始開啟這個網站時，取得 localStorage 中 cart 資料，如果 localStorage 中沒有 cart 時，存一個空的 []。
         const newCart = localStorage.getItem('cart') || '[]';
-
-        console.log('newCart', JSON.parse(newCart));
     };
     // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
     useEffect(() => {
