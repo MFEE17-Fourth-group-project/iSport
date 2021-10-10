@@ -45,13 +45,15 @@ import Cart from './user/cart/Cart';
 import Checkout from './user/cart/Checkout';
 import Checkout2 from './user/cart/Checkout2';
 import Finished from './user/cart/Finished';
-import TradingRecord from './user/cart/TradingRecord';
+import Order from './user/cart/Order';
 import FavoriteProduct from './user/cart/FavoriteProduct.js';
 
 // import Aside from '../global/Aside';
 
 function HomeRouter() {
     const [cartCount, setCartCount] = useState(0);
+    const [myCartP, setMyCartP] = useState([]);
+    const [totalAmountP, setTotalAmountP] = useState(0);
 
     const cartAdd = () => {
         let currentCart = localStorage.getItem('cart') || '[]';
@@ -74,14 +76,14 @@ function HomeRouter() {
                         <Route path="/user/CustomerService">
                             <CustomerService />
                         </Route>
-                        <Route path="/user/cart/TradingRecord">
-                            <TradingRecord />
+                        <Route path="/user/order">
+                            <Order cartAdd={cartAdd} />
                         </Route>
                         <Route path="/user/cart/favorite" exact>
                             <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
-                            <Cart />
+                            <Cart cartAdd={cartAdd} />
                         </Route>
                         <Route path="/products/productItem/:productId?">
                             <ProductItem cartAdd={cartAdd} />
@@ -138,13 +140,21 @@ function HomeRouter() {
                             <Video />
                         </Route>
                         <Route path="/checkout">
-                            <Checkout />
+                            <Checkout cartAdd={cartAdd} />
                         </Route>
                         <Route path="/checkout2">
-                            <Checkout2 />
+                            <Checkout2
+                                cartAdd={cartAdd}
+                                setMyCartP={setMyCartP}
+                                setTotalAmountP={setTotalAmountP}
+                            />
                         </Route>
                         <Route path="/finished">
-                            <Finished />
+                            <Finished
+                                cartAdd={cartAdd}
+                                myCartP={myCartP}
+                                totalAmountP={totalAmountP}
+                            />
                         </Route>
                         <Route path="/SignUp">
                             <SignUp />

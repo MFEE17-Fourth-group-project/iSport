@@ -1,25 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomePage8 from './../../images/homepage/homepage-8.jpg';
 import VideoCard from './../video/components/VideoCard';
-import VideoCard2 from './../video/components/VideoCard2';
+import useGet from '../../utils/useGet';
 
 const VideoSection = () => {
-    let [gym, setGym] = useState(<VideoCard2 />);
-    const Pectoralis = () => {
-        setGym(<VideoCard2 />);
-    };
-    const BackMuscles = () => {
-        setGym(<VideoCard2 />);
-    };
-    const AbdominalMuscles = () => {
-        setGym(<VideoCard2 />);
-    };
-    const GlutealMuscles = () => {
-        setGym(<VideoCard2 />);
-    };
-    const LegMuscles = () => {
-        setGym(<VideoCard2 />);
-    };
+    let { data: videos, error, isPending } = useGet('/homepage/videoTag');
+
+    const [tag, setTag] = useState(3);
+    const [currentVideos, setCurrentVideos] = useState([]);
+
+    useEffect(() => {
+        if (videos) {
+            let filteredVideos = videos.filter(video => video.tag === tag);
+            setCurrentVideos(filteredVideos);
+        }
+
+    }, [tag, videos]);
+
     return (
         <div className="w-full h-124 sm:h-168 sm:grid grid-cols-3 grid-rows-3 overflow-hidden">
             <div className="col-span-full xl:col-span-2 row-span-1">
@@ -49,7 +46,7 @@ const VideoSection = () => {
                                     hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                                     text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto
                                     absolute top-72 right-20"
-                    onClick={Pectoralis}
+                    onClick={() => setTag(2)}
                 >
                     胸肌
                 </button>
@@ -59,7 +56,7 @@ const VideoSection = () => {
                                     hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                                     text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto
                                     absolute top-80 left-10"
-                    onClick={BackMuscles}
+                    onClick={() => setTag(3)}
                 >
                     背肌
                 </button>
@@ -69,7 +66,7 @@ const VideoSection = () => {
                                     hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                                     text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto
                                     absolute bottom-36 right-32"
-                    onClick={AbdominalMuscles}
+                    onClick={() => setTag(4)}
                 >
                     腹肌
                 </button>
@@ -79,7 +76,7 @@ const VideoSection = () => {
                                     hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                                     text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto
                                     absolute bottom-32 left-4"
-                    onClick={GlutealMuscles}
+                    onClick={() => setTag(5)}
                 >
                     臀肌
                 </button>
@@ -89,7 +86,7 @@ const VideoSection = () => {
                                     hover:bg-yellow-500 hover:border-yellow-500 active:bg-yellow-500
                                     text-sm lg:text-base px-3 py-1.5 lg:px-4 lg:py-2 sm:ml-auto sm:mx-0 mx-auto
                                     absolute bottom-10 left-72"
-                    onClick={LegMuscles}
+                    onClick={() => setTag(6)}
                 >
                     腿肌
                 </button>
@@ -98,7 +95,9 @@ const VideoSection = () => {
                 className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-x-2.5 sm:gap-x-3 gap-y-28
                 col-span-3 xl:col-span-2 row-span-2 content-start mx-2.5 sm:mx-3"
             >
-                <div>{gym}</div>
+                {currentVideos && currentVideos.map(video => (
+                    <VideoCard video={video} />
+                ))}
             </div>
         </div>
     );

@@ -35,7 +35,7 @@ router.route("/suggestVideos").get(async (req, res, next) => {
 
 router.route("/suggestArticles").get(async (req, res, next) => {
     let result = await connection.queryAsync(
-        "SELECT id, article_name, title, views, upload_date FROM article ORDER BY RAND() LIMIT 5"
+        "SELECT id, user_name, title, views, upload_date FROM article ORDER BY RAND() LIMIT 5"
     );
     res.json(result);
 });
