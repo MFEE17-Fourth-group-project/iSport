@@ -9,7 +9,7 @@ const VideoCard = ({ video }) => {
         <Link to="/video/:videoId" className="max-w-max m-auto flex">
             <div
                 className="max-w-xs rounded-md overflow-hidden shadow-2xl bg-gray-900
-                py-4 px-5 flex flex-col w-96 "
+                py-4 px-5 flex flex-col w-96 m-2"
             >
                 <img className="max-h-44 object-cover" src={cardImg2} alt="" />
                 <div className="">
