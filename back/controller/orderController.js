@@ -160,7 +160,7 @@ const createOrder = async (req, res, next) => {
             3: 60, // 超商取貨
         };
         totalAmount = subtotal + deliveryFeeMap[recipient.delivery];
-        console.log(totalAmount);
+        // console.log(totalAmount);
 
         // INSERT columns: user_id, recipient, phone, email, address, order_date, order_no, paytype, delivery, subtotal, delivery_fee, total_amount, order_status, valid
         const date = new Date();

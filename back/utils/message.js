@@ -8,6 +8,15 @@ const newMessage = ({ user, text }) => {
     };
 };
 
+const newImg = ({ user, img }) => {
+    return {
+        user,
+        img,
+        time: moment().format('h:mm a')
+    };
+};
+
 module.exports = {
-    newMessage
+    newMessage,
+    newImg
 };
