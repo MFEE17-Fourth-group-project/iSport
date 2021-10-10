@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GymItem from './MidthGymItem';
 
 function GymList(props) {

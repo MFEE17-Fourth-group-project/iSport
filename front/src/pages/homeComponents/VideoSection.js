@@ -11,10 +11,9 @@ const VideoSection = () => {
 
     useEffect(() => {
         if (videos) {
-            let filteredVideos = videos.filter(video => video.tag === tag);
+            let filteredVideos = videos.filter((video) => video.tag === tag);
             setCurrentVideos(filteredVideos);
         }
-
     }, [tag, videos]);
 
     return (
@@ -95,9 +94,8 @@ const VideoSection = () => {
                 className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-x-2.5 sm:gap-x-3 gap-y-28
                 col-span-3 xl:col-span-2 row-span-2 content-start mx-2.5 sm:mx-3"
             >
-                {currentVideos && currentVideos.map(video => (
-                    <VideoCard video={video} />
-                ))}
+                {currentVideos &&
+                    currentVideos.map((video) => <VideoCard video={video} />)}
             </div>
         </div>
     );

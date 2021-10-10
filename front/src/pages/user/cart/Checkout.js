@@ -28,7 +28,6 @@ function Checkout(props) {
     const showCheckItemRef = useRef(null);
     const showItem = () => {
         const showCheckItem = showCheckItemRef.current;
-        console.log('showCheckItem', showCheckItem);
         showCheckItem.classList.toggle('max-h-1000');
     };
 
@@ -42,9 +41,13 @@ function Checkout(props) {
         try {
             // POST DATA TO BACKEND AND GET API
             let cartItems = JSON.parse(localStorage.getItem('cart'));
-            let result = await axios.post(`${API_URL}/cart`, {
-                cartItems,
-            });
+            let result = await axios.post(
+                `${API_URL}/cart`,
+                {
+                    cartItems,
+                },
+                { withCredentials: true }
+            );
 
             setTotalAmount(result.data.totalAmount);
             setMyCart(result.data.myCart);
