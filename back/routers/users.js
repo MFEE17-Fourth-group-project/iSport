@@ -126,7 +126,7 @@ router.route("/:account")
                 password: ""
             };
             // req.session.member=returnMember;
-            // res.json(req.session.member);
+            res.json(req.session.member);
             console.log("修改成功");
         }
         catch (e) {
@@ -176,7 +176,7 @@ router.put("/photo/:account", uploader.single("photo"), async (req, res, next) =
             ], [req.params.account]]
         );
         result = await connection.queryAsync(
-            "SELECT id, name, account, email, phone, address, birthday, about, gender, photo, create_time, article_count, video_count FROM users WHERE account=?",
+            "SELECT id, name, account, email, phone, address, birthday, about, gender, photo FROM users WHERE account=?",
             [req.params.account]
         );
         console.log('上傳更新成功');

@@ -21,6 +21,7 @@ function SignUp() {
     const [birthday, setbirthday] = useState();
     const [aboutme, setaboutme] = useState();
     const [gender, setgender] = useState('reserve');
+    const [message, setMessage] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -78,15 +79,18 @@ function SignUp() {
                                 <input
                                     type="text"
                                     className="input-style"
-                                    placeholder="請輸入帳號"
+                                    placeholder="請輸入6~8字元帳號"
                                     name="account"
                                     id="account"
+                                    minLength="6"
+                                    maxLength="8"
                                     onChange={(e) => {
                                         setaccount(e.target.value);
                                     }}
                                     required
                                 />
                             </div>
+                            <div>{message}</div>
                             <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5 relative">
                                 <label for="password">密碼：</label>
                                 <input
@@ -98,6 +102,8 @@ function SignUp() {
                                     }}
                                     name="password"
                                     id="password"
+                                    minLength="6"
+                                    maxLength="8"
                                 />
                                 <i
                                     onClick={() =>
@@ -116,7 +122,7 @@ function SignUp() {
                         <div className="py-2 mb-5">
                             <label for="email">信箱：</label>
                             <input
-                                type="text"
+                                type="email"
                                 id="email"
                                 className="input-style "
                                 placeholder="請輸入信箱"

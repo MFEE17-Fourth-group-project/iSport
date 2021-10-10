@@ -11,7 +11,8 @@ import {
 import { useState } from 'react';
 import { useAuth } from '../context/auth';
 import { IMAGE_URL } from '../pages/utils/config';
-
+import { Image } from 'cloudinary-react';
+import { REACT_APP_CLOUDINARY } from '../utils/config';
 import CustomerService from '../pages/user/sign/CustomerService';
 
 // 聯絡我們跳窗
@@ -33,11 +34,12 @@ function Aside() {
             <div className=" w-64 h-64 flex justify-center items-center">
                 <div className="w-48 h-48 rounded-full bg-white overflow-hidden">
                     {member.photo ? (
-                        <img
-                            src={`${IMAGE_URL}${member.photo}`}
-                            alt=""
-                            className="w-full h-full object-cover object-center"
-                        />
+                        <Image
+                            cloudName={REACT_APP_CLOUDINARY}
+                            publicId={member.photo}
+                            secure="true"
+                            className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
+                        ></Image>
                     ) : (
                         <img
                             src={userHeader}

@@ -8,7 +8,7 @@ import userHeader from '../images/user/images.png';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
 import axios from 'axios';
-import { API_URL, IMAGE_URL } from '../utils/config';
+import { API_URL, IMAGE_URL, REACT_APP_CLOUDINARY } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 
 function Nav(props) {
@@ -40,6 +40,7 @@ function Nav(props) {
     const signout = async () => {
         await axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
         setMember(null);
+        alert('登出成功');
     };
     return (
         <>
@@ -70,10 +71,10 @@ function Nav(props) {
                                     onClick={handleMobileWindow}
                                 >
                                     <Image
-                                        cloudName="dbovdn1sr"
+                                        cloudName={REACT_APP_CLOUDINARY}
                                         publicId={
                                             member.photo ||
-                                            'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'
+                                            'iSport_Videos/user_photos/images_mxvtyi.png'
                                         }
                                         secure="true"
                                         className="w-full h-full object-cover object-center"
@@ -94,10 +95,10 @@ function Nav(props) {
                                     <ul className="navmenu cursor-pointer">
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
                                             <Image
-                                                cloudName="dbovdn1sr"
+                                                cloudName={REACT_APP_CLOUDINARY}
                                                 publicId={
                                                     member.photo ||
-                                                    'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd'
+                                                    'iSport_Videos/user_photos/images_mxvtyi.png'
                                                 }
                                                 secure="true"
                                                 className="w-full h-full object-cover object-center"
