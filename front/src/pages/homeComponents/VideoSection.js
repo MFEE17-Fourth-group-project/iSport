@@ -124,7 +124,7 @@ const VideoSection = () => {
         setGym(Lea);
     };
     const GlutealMuscles = () => {
-        setGym(TAB);
+        setGym(Wei);
     };
     const LegMuscles = () => {
         setGym(Aer);
@@ -214,10 +214,10 @@ const VideoSection = () => {
             </div>
 
             <div
-                className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-x-2.5 sm:gap-x-3 gap-y-28
+                className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3
                 col-span-3 xl:col-span-2 row-span-2 content-start mx-2.5 sm:mx-3 outer-container"
             >
-                <div className="flex overflow-x-auto innerbot-container">
+                <div className="flex innerbot-container container">
                     {gym &&
                         gym.map((video) => (
                             <VideoCard2 video={video} key={video.id} />
