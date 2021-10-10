@@ -1,11 +1,13 @@
-import { IoMdChatboxes } from 'react-icons/io';
-import { IoPeople } from 'react-icons/io5';
-import { FaArrowCircleRight } from 'react-icons/fa';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import io from 'socket.io-client';
+import ChatRoomHead from './ChatRoomComponents/ChatRoomHead';
+import EntryForm from './ChatRoomComponents/EntryForm';
+import RoomInfoBar from './ChatRoomComponents/RoomInfoBar';
 import Messages from './ChatRoomComponents/Messages';
+import ChatInput from './ChatRoomComponents/ChatInput';
+import ChatRoomButton from './ChatRoomComponents/ChatRoomButton';
 import useGet from './../../utils/useGet';
 
 let socket;
@@ -25,6 +27,10 @@ const ChatRoom = () => {
     const [typingUsers, setTypingUsers] = useState(null);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [seeMember, setSeeMember] = useState(false);
+    const [img, setImg] = useState(null);
+    const [imgToUpload, setImgToUpload] = useState(null);
+    const [imgMessage, setImgMessage] = useState([]);
 
     useEffect(() => {
         setChatRoom(chatRooms);
@@ -63,8 +69,12 @@ const ChatRoom = () => {
             socket.on('message', message => {
                 setMessages(messages => [...messages, message]);
             });
+            socket.on('image', image => {
+                setMessages(messages => [...messages, image]);
+            });
             socket.on('roomData', ({ users }) => {
                 setUsers(users);
+                if (users.length === 1) setSeeMember(false);
             });
         }
 
@@ -79,11 +89,11 @@ const ChatRoom = () => {
 
     const handleChatInput = (e) => {
         setMessage(e.target.value);
-        socket.emit('isTyping');
+        if (socket) socket.emit('isTyping');
     };
 
     const handleEmpty = (e) => {
-        if (e.target.value === '') {
+        if (socket && e.target.value === '') {
             socket.emit('cancelTyping');
             typingUsers && typingUsers > 0 ? setTypingUsers(`${typingUsers}人正在輸入訊息...`) : setTypingUsers(null);
         }
@@ -97,99 +107,47 @@ const ChatRoom = () => {
 
     const leaveChatRoom = () => {
         history.push('/');
-        socket.disconnect();
+        if (socket) socket.disconnect();
         setCloseForm(false);
         setMessages([]);
         setMessage('');
+        setSeeMember(false);
     };
 
-    console.log(message, messages);
+    const handleSendImg = () => {
+        if (socket) socket.emit('sendImg', imgToUpload, () => {
+            setImgToUpload(null);
+            setImg(null);
+        });
+    };
+
+    const handleImg = (e) => {
+        // setImgToUpload(e.target.files[0]);
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            setImg(reader.result);
+            setImgToUpload(reader.result);
+        });
+        reader.readAsDataURL(e.target.files[0]);
+    };
 
     return (
         <>
             {openChat && <div className="w-96 h-124 bg-gray-700 fixed bottom-0 right-3 rounded-md shadow-lg overflow-hidden border border-gray-100 border-opacity-10 filter drop-shadow-lg z-8">
-                <div
-                    className="bg-gray-900 w-full flex py-3 items-center justify-center cursor-pointer fixed"
-                    onClick={() => setOpenChat(false)}
-                >
-                    <IoMdChatboxes className="text-white w-9 h-9 mr-2" />
-                    <h3 className="text-white text-2xl">iSport! 即時聊天</h3>
-                </div>
-                {!closeForm && <form
-                    className="px-7 py-8 flex flex-col w-full h-full pt-24"
-                    onSubmit={(e) => handleEnterChatRoom(e)}
-                >
-                    <label
-                        htmlFor="nickname"
-                        className="text-white text-xl mb-2"
-                    >暱稱：</label>
-                    <input
-                        id="nickname"
-                        type="text"
-                        className="w-full h-10 px-2 focus:outline-none bg-gray-700 border-b-4 focus:border-yellow-400 text-white text-lg mb-6"
-                        placeholder="請輸入暱稱"
-                        required
-                    />
-                    <label
-                        htmlFor="room"
-                        className="text-white text-xl mb-2"
-                    >選擇聊天室：</label>
-                    <select
-                        id="room"
-                        className="w-full h-10 px-2 focus:outline-none bg-gray-700 border-b-4 focus:border-yellow-400 text-white text-lg mb-36"
-                        required
-                    >
-                        <option value="0" selected disabled hidden>請選擇</option>
-                        {chatRoom && chatRoom.map(room => (
-                            <option value={room.name}>{room.name}</option>
-                        ))}
-                    </select>
-                    <button
-                        type="submit"
-                        className="w-full h-12 px-2 focus:outline-none bg-yellow-400 hover:bg-yellow-500 text-black text-xl rounded-md shadow-lg"
-                    >進入聊天室</button>
-                </form>}
+                <ChatRoomHead setOpenChat={setOpenChat} />
+                {!closeForm && <EntryForm onSubmit={handleEnterChatRoom} chatRoom={chatRoom} />}
                 {closeForm &&
                     <>
-                        <div className="flex bg-gray-600 items-end pl-7 py-1.5 border-b border-gray-100 border-opacity-10 pt-16">
-                            <IoPeople className="text-white w-9 h-9 mr-3" />
-                            <h4 className="text-white text-lg">
-                                {room} 聊天室
-                                <span> ({`${users.length} 人`})</span>
-                            </h4>
-                            <button
-                                className="bg-gray-700 hover:bg-gray-800 rounded py-0.5 px-2.5 flex text-white mr-5 ml-auto mb-0.5"
-                                onClick={() => leaveChatRoom()}
-                            >退出</button>
-                        </div>
+                        {<RoomInfoBar seeMember={seeMember} setSeeMember={setSeeMember} nickname={nickname} room={room} users={users} onLeave={leaveChatRoom} />}
                         <div
                             className="flex flex-col w-full"
                         >
                             <Messages messages={messages} nickname={nickname} typingUsers={typingUsers} />
-                            <div className="flex w-full bg-gray-800 py-4 border-t border-gray-100 border-opacity-30">
-                                <input
-                                    type="text"
-                                    className="flex w-full h-10 px-2 focus:outline-none bg-gray-800 border-b-4 focus:border-yellow-400 text-white text-lg pb-1.5 mx-7"
-                                    placeholder="請輸入訊息"
-                                    title="請輸入訊息"
-                                    required
-                                    value={message}
-                                    onChange={e => handleChatInput(e)}
-                                    onKeyUp={(e) => handleEmpty(e)}
-                                    onKeyPress={e => e.key === 'Enter' ? sendMessage(message) : null}
-                                />
-                            </div>
-
+                            <ChatInput nickname={nickname} message={message} onMessageChange={handleChatInput} onMessageEmpty={handleEmpty} onSend={sendMessage} img={img} onSendImg={handleSendImg} onImgChange={handleImg} />
                         </div>
                     </>}
             </div>};
-            <div
-                className="fixed flex items-center bottom-3 right-3 bg-yellow-400 hover:bg-yellow-500 py-1.5 px-2.5 rounded-md shadow-lg cursor-pointer"
-                onClick={() => setOpenChat(true)}
-            >
-                <IoMdChatboxes className="w-8 h-8 mr-2" />
-                <h3 className="text-xl">聊天室</h3>
-            </div>
+            <ChatRoomButton setOpenChat={setOpenChat} />
         </>
     );
 };

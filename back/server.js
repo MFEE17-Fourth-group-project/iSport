@@ -1,4 +1,5 @@
 const port = 3030;
+const fs = require('fs');
 const http = require('http');
 const express = require("express");
 const connection = require("./utils/db");
@@ -8,7 +9,7 @@ const cors = require("cors");
 const expressSession = require("express-session");
 const { addUser, removeUser, getUser, getUsersIn } = require('./utils/users');
 const { addTypingUser, removeTypingUser } = require('./utils/typingUsers');
-const { newMessage } = require('./utils/message');
+const { newMessage, newImg } = require('./utils/message');
 require("dotenv").config();
 let app = express();
 
@@ -161,6 +162,13 @@ io.on('connect', (socket) => {
         io.to(user.room).emit('message', newMessage({ user: user.nickname, text: message }));
         io.to(user.room).emit('userTyping', typingUsers);
         cb();
+    });
+
+    socket.on('sendImg', (img, cb) => {
+        const user = getUser(socket.id);
+
+        cb();
+        io.to(user.room).emit('image', newImg({ user: user.nickname, img: img }));
     });
 
     socket.on('disconnect', () => {
