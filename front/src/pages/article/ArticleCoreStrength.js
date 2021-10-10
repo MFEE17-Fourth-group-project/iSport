@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ArticleHeader from '../../images/核心/1.jpeg';
 import ArticleNav from './components/ArticleNav';
 import ArticleOutSide from './components/ArticleOutSide';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
 import axios from 'axios';
 import { FaSearch } from 'react-icons/fa';
@@ -18,17 +18,14 @@ function ArticleCoreStrength({ article }) {
                 console.log(data);
                 setData(data);
                 setAllData(data);
-                // setIsPending(false);
-                // setError(null);
             } catch (e) {
                 console.log(e);
                 setError(e.message);
-                // setIsPending(false);
             }
         };
         getArticleData();
     }, []);
-    // console.log(data);
+
     const [term, setTerm] = useState('');
     const handleUpdateButton = () => {
         let newArticles = data.sort(
@@ -54,12 +51,7 @@ function ArticleCoreStrength({ article }) {
     const handleEmpty = (e) => {
         if (e.target.value === '') setData(allData);
     };
-    //nav
-    const [category, setCategory] = useState(0);
 
-    const changeCategory = (e) => {
-        setCategory(e.target.dataset.id);
-    };
     return (
         <>
             <div>
@@ -79,7 +71,7 @@ function ArticleCoreStrength({ article }) {
                     </div>
                 </div>
                 <div className=" z-40">
-                    <ArticleNav cat={changeCategory} />
+                    <ArticleNav />
                 </div>
                 <main className="max-w-screen-2xl mx-auto">
                     {/* Buttons & Search */}

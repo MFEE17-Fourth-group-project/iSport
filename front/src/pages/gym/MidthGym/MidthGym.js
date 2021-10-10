@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MidthGymList from './components/MidthGymList';
 
 const MidthGyms = [

@@ -2,46 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Aside from '../../../global/Aside';
 import { useAuth } from '../../../context/auth';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { EditorState, ContentState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import { convertToHTML } from 'draft-convert';
-import DOMPurify from 'dompurify';
 import axios from '../../../../node_modules/axios';
 import { API_URL } from '../../../utils/config';
 import NotAuth from '../components/NotAuth';
 import { useParams } from 'react-router-dom';
 
-function ArticleEdit({ post }) {
+function ArticleEdit() {
     const { member, setMember } = useAuth();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const { id } = useParams();
-    // const [iid, setIid] = useState('');
     const [user_name, setUsername] = useState('');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [category, setCategory] = useState('');
     // const [upload_date, setupload_date] = useState('');
     const [photos, setPhotos] = useState('');
-    const [editorState, setEditorState] = useState(() =>
-        EditorState.createWithContent(ContentState.createFromText(content))
-    );
-    const [convertedContent, setConvertedContent] = useState(null);
-    const handleEditorChange = (state) => {
-        setEditorState(state);
-        convertContentToHTML();
-    };
-    const convertContentToHTML = () => {
-        let currentContentAsHTML = convertToHTML(
-            editorState.getCurrentContent()
-        );
-        setConvertedContent(currentContentAsHTML);
-    };
-    const createMarkup = (html) => {
-        return {
-            __html: DOMPurify.sanitize(html),
-        };
-    };
 
     useEffect(() => {
         const getArticleData = async () => {
@@ -155,26 +131,7 @@ function ArticleEdit({ post }) {
                                         setTitle(e.target.value);
                                     }}
                                 />
-                                <input
-                                    type="text"
-                                    className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
-                                    name="content"
-                                    id="content"
-                                    placeholder="最多100字"
-                                    value={content}
-                                    onChange={(e) => {
-                                        setContent(e.target.value);
-                                    }}
-                                />
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: content,
-                                    }}
-                                    value={content}
-                                    onChange={(e) => {
-                                        setContent(e.target.value);
-                                    }}
-                                ></p>
+
                                 <br />
                                 <img
                                     className="m-auto"
@@ -198,34 +155,26 @@ function ArticleEdit({ post }) {
                                     必填
                                 </span>
                                 <br />
-                                <div id="toolbar-container"></div>
-                                <div id="editor"></div>
-                                <Editor
-                                    editorState={editorState}
-                                    onEditorStateChange={handleEditorChange}
-                                    toolbarClassName="toolbar"
-                                    wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
-                                    editorClassName="editor px-5 h-40"
-                                />
-                                <div
-                                    className="preview"
-                                    dangerouslySetInnerHTML={createMarkup(
-                                        convertedContent
-                                    )}
-                                ></div>
-                                {/* <Editor
-                                    editorState={editorState}
-                                    toolbarClassName="toolbar"
-                                    wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
-                                    editorClassName="editor px-5 h-40"
-                                    onEditorStateChange={(editorState) => {
-                                        setcontent(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
+                                <input
+                                    type="text"
+                                    className="w-full bg-gray-900 border-b-2 my-4 focus:border-yellow-400 outline-none"
+                                    name="content"
+                                    id="content"
+                                    placeholder="最多100字"
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
                                     }}
-                                /> */}
+                                />
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: content,
+                                    }}
+                                    value={content}
+                                    onChange={(e) => {
+                                        setContent(e.target.value);
+                                    }}
+                                ></p>
                                 <div className="flex flex-row justify-end">
                                     <button
                                         className="btn-yellow flex flex-row justify-end items-center my-5"

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BsFillCaretRightFill } from 'react-icons/bs';
-import { BsFillCaretLeftFill } from 'react-icons/bs';
+import { BsFillCaretRightFill, BsFillCaretLeftFill } from 'react-icons/bs';
 import ArticleOutSide from '../article/components/ArticleOutSide';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../utils/config';
