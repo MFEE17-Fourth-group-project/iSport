@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 // import Person2 from '../../../../../back/public/articles/uploads/';
 import { FaClock } from 'react-icons/fa';
-import { FaThumbsUp } from 'react-icons/fa';
-import { FaShare } from 'react-icons/fa';
-import { FaRegHeart } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

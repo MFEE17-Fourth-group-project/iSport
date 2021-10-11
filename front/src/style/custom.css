@@ -17,11 +17,18 @@
     /*這四個方向的位置要寫全，否則不生效*/
     top: 0;
     left: 0;
-    bottom: -17px;
+    bottom: 0;
     right: -17px;
-    overflow-y: scroll;
+    overflow-x: scroll;
+}
+.container::-webkit-scrollbar {
+    width: 1em;
 }
 
+.container::-webkit-scrollbar-thumb {
+    background-color: #fbbf24;
+    border: 1px solid transparent;
+}
 .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;

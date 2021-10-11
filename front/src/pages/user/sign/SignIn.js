@@ -14,6 +14,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { YourReCaptchaComponent } from '../components/YourReCaptchaComponent';
+// import VCode from '../components/VCode';
 
 function SignIn(props) {
     // 控制取得帳號密碼值
@@ -42,12 +43,12 @@ function SignIn(props) {
             console.log(result);
             setMember(result.data);
             windowClose();
-            // setToken(result.data.token);
+            alert('登入成功');
         } catch (e) {
             //透過e.response拿到axios的response
             console.error(e);
             //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            // alert(e.response.data.message);
+            alert(e.response.data.message);
         }
     };
     //google
@@ -63,6 +64,7 @@ function SignIn(props) {
         );
         console.log(result);
         setMember(result.data);
+        alert('登入成功');
     };
     //facebook
     let facebookResponse = async (response) => {
@@ -77,6 +79,7 @@ function SignIn(props) {
         );
         console.log(result);
         setMember(result.data);
+        alert('登入成功');
     };
 
     // 控制密碼顯示隱藏
@@ -157,9 +160,10 @@ function SignIn(props) {
                                 忘記密碼?
                             </button>
                         </Link> */}
-                        {/* <GoogleReCaptchaProvider reCaptchaKey="[6LdntrkcAAAAANcrf0S1d_dkFRj8w7DvFcItvJWs]">
+                        {/* <GoogleReCaptchaProvider reCaptchaKey="">
                             <YourReCaptchaComponent />
                         </GoogleReCaptchaProvider> */}
+                        {/* <VCode /> */}
                         <div className="flex items-center justify-center mt-2">
                             <Link to="/SignUp">
                                 <button
