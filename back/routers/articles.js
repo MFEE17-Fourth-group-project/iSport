@@ -262,7 +262,6 @@ router
                     [userAccount, articleId]
                 );
                 res.json(result.affectedRows);
-                console.log(articleId);
             }
         }
     })

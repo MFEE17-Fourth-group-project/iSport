@@ -230,9 +230,13 @@ router.get("/videoCollection", async (req, res, next) => {
     res.json(result);
 });
 
-//文章管理
-router.post("/ArticleMyart", (req, res, next) => {
-
+//文章收藏
+router.get("/articleCollection", async (req, res, next) => {
+    let result = await connection.queryAsync(
+        'SELECT article.*, user_collection.article_id FROM article RIGHT JOIN user_collection ON user_collection.user_account=? WHERE user_collection.article_id=article.id',
+        [req.session.member.account]
+    );
+    res.json(result);
 });
 
 

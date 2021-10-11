@@ -8,6 +8,7 @@ const VideoCollection = () => {
     const { member } = useAuth();
     const { data: collectedVideos, error, isPending } = useGet(`/users/videoCollection`);
 
+    console.log(collectedVideos);
     return (
         <>
             {member ? (
@@ -18,8 +19,9 @@ const VideoCollection = () => {
                             收藏影片
                         </div>
                         <div className="text-white bg-gray-900 w-full px-20 pb-6 flex flex-col rounded-b-xl min-h-screen items-start">
-                            <VideoCollectionList collectedVideos={collectedVideos} />
-                            {/* <h4 className="mt-20 font-bold text-2xl flex mx-auto">目前還沒有已收藏的影片</h4> */}
+                            {collectedVideos && collectedVideos.length > 0 ?
+                                <VideoCollectionList collectedVideos={collectedVideos} />
+                                : <h4 className="mt-20 font-bold text-2xl flex mx-auto">目前還沒有已收藏的影片</h4>}
                         </div>
                     </article>
                 </main>
