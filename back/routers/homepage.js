@@ -16,7 +16,7 @@ router.get('/videoTag', async (req, res, next) => {
     result.map(
         (video) =>
         (video.upload_date = video.upload_date
-            .toISOString()
+            // .toISOString()
             .slice(0, 16)
             .replace(/:/gi, "")
             .replace("T", ""))

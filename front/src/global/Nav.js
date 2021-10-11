@@ -3,13 +3,14 @@ import SignIn from '../pages/user/sign/SignIn';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { Image } from 'cloudinary-react';
-// import { HiMenu } from 'react-icons/hi';
-import userHeader from '../images/user/images.png';
+import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
 import axios from 'axios';
 import { API_URL, IMAGE_URL, REACT_APP_CLOUDINARY } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
+import { fromJSON } from 'postcss';
 
 function Nav(props) {
     const { cartCount } = props;
@@ -17,6 +18,7 @@ function Nav(props) {
 
     const [signInWindow, setSignInWindow] = useState(false);
     const [signInSuccess, setSignInSuccess] = useState(false);
+    const [openNav, setOpenNav] = useState(false);
 
     const handleSignIn = () => {
         setSignInWindow(true);
@@ -85,15 +87,41 @@ function Nav(props) {
                                         onCancel={handleCancelMobileWindow}
                                     />
                                 )}
-                                <div className="hidden lg:flex items-center justify-between w-40">
-                                    <div className="text-white">
+                                <div className="hidden lg:flex items-center justify-between mx-4">
+                                    <div
+                                        className="text-white cursor-pointer"
+                                        onClick={() => setOpenNav(!openNav)}
+                                    >
                                         <div className="text-yellow-400">
                                             歡迎回來!
                                         </div>
-                                        {member.name}
+                                        <div className="flex">
+                                            <p className="mr-1">{member.name}</p>
+                                            {openNav ? <TiArrowSortedUp className="text-white self-center" />
+                                                : <TiArrowSortedDown className="text-white self-center" />}
+                                        </div>
                                     </div>
-                                    <ul className="navmenu cursor-pointer">
-                                        <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative">
+                                    {openNav && <>
+                                        <div className="absolute top-14 z-5">
+                                            <ul className="bg-gray-700 py-1 rounded shadow-md">
+                                                <li className="text-white text-lg cursor-pointer hover:bg-gray-900 flex w-full px-5">
+                                                    <Link to="/user">會員中心</Link>
+                                                </li>
+                                                <li className="text-white text-lg cursor-pointer hover:bg-gray-900 w-full px-5 flex">
+                                                    <Link to="/" onClick={signout} className="flex items-center">
+                                                        登出
+                                                        <span className="ml-1"><RiLogoutBoxRLine /></span>
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div
+                                            className="z-0 flex fixed w-full h-full top-0 left-0"
+                                            onClick={() => setOpenNav(false)}
+                                        ></div>
+                                    </>}
+                                    <div className="navmenu cursor-pointer lg:hidden">
+                                        <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative mr-4">
                                             <Image
                                                 cloudName={REACT_APP_CLOUDINARY}
                                                 publicId={
@@ -104,20 +132,7 @@ function Nav(props) {
                                                 className="w-full h-full object-cover object-center"
                                             ></Image>
                                         </div>
-                                        <div className="absolute border  border-gray-900 bg-gray-900">
-                                            <li className="text-white hidden submenu text-lg cursor-pointer">
-                                                <Link to="/user">會員中心</Link>
-                                            </li>
-                                            <li className="text-white hidden submenu text-lg cursor-pointer">
-                                                <Link to="/">首頁</Link>
-                                            </li>
-                                            <li className="text-white hidden submenu text-lg cursor-pointer">
-                                                <Link to="/" onClick={signout}>
-                                                    登出
-                                                </Link>
-                                            </li>
-                                        </div>
-                                    </ul>
+                                    </div>
                                 </div>
                             </>
                         ) : (

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './components/CartItem';
 import { FaArrowRight } from 'react-icons/fa';
-import Aside from '../../../global/Aside';
+import UserAside from '../components/UserAside';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
 
@@ -35,7 +35,7 @@ function Cart(props) {
         <>
             {member ? (
                 <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex lg:justify-start border-red-300">
-                    <Aside />
+                    <UserAside />
                     <article className="w-full flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                             購物車

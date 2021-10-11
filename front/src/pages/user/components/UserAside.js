@@ -60,14 +60,14 @@ function UserAside() {
     };
 
     return (
-        <aside className="lg:block hidden w-64 mr-2.5 bg-gray-900 rounded-xl shadow-xl">
+        <aside className="lg:block hidden min-w-64 min-h-screen pt-6 mr-2.5 bg-gray-900 rounded-xl shadow-xl overflow-hidden">
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
             <form
                 onSubmit={handleSubmit}
                 ref={userImageForm}
-                className="flex justify-center"
+                className="flex justify-center mb-4"
             >
                 <div className="group w-48 h-48 rounded-full flex justify-center items-center cursor-pointer relative mt-3 mb-3">
                     <input
@@ -123,17 +123,12 @@ function UserAside() {
                         <section className="hidden-section">
                             <ul className="submenu">
                                 <li className="user-submenu-li cursor-pointer">
-                                    <Link to="/user/cart/TradingRecord">
+                                    <Link to="/user/order">
                                         購買紀錄
                                     </Link>
                                 </li>
                                 <li className="user-submenu-li cursor-pointer">
                                     <Link to="/user/cart">購物車</Link>
-                                </li>
-                                <li className="user-submenu-li cursor-pointer">
-                                    <Link to="/user/cart/favorite" exact>
-                                        我的最愛
-                                    </Link>
                                 </li>
                             </ul>
                         </section>

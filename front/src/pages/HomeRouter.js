@@ -34,7 +34,6 @@ import ArticleLeanBulking from './article/ArticleLeanBulking';
 import Video from './video/Video';
 import VideoId from './video/VideoId';
 import VideoCollection from './user/videos/VideoCollection';
-import WatchLater from './user/videos/WatchLater';
 
 // PRODUCT
 import Product from './product/Product';
@@ -46,7 +45,6 @@ import Checkout from './user/cart/Checkout';
 import Checkout2 from './user/cart/Checkout2';
 import Finished from './user/cart/Finished';
 import Order from './user/cart/Order';
-import FavoriteProduct from './user/cart/FavoriteProduct.js';
 
 // import Aside from '../global/Aside';
 
@@ -78,9 +76,6 @@ function HomeRouter() {
                         </Route>
                         <Route path="/user/order">
                             <Order cartAdd={cartAdd} />
-                        </Route>
-                        <Route path="/user/cart/favorite" exact>
-                            <FavoriteProduct />
                         </Route>
                         <Route path="/user/cart">
                             <Cart cartAdd={cartAdd} />

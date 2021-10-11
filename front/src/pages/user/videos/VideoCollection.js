@@ -1,4 +1,4 @@
-import Aside from './../../../global/Aside';
+import UserAside from '../components/UserAside';
 import SuggestVideoCol from './../../video/components/SuggestVideoCol';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
@@ -10,8 +10,8 @@ const VideoCollection = () => {
         <>
             {member ? (
                 <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start">
-                    <Aside />
-                    <artical className="w-full">
+                    <UserAside />
+                    <article className="w-full">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                             收藏影片
                         </div>
@@ -22,20 +22,8 @@ const VideoCollection = () => {
                             <div className="mb-4">
                                 <SuggestVideoCol />
                             </div>
-                            <div className="mb-4">
-                                <SuggestVideoCol />
-                            </div>
-                            <div className="mb-4">
-                                <SuggestVideoCol />
-                            </div>
-                            <div className="mb-4">
-                                <SuggestVideoCol />
-                            </div>
-                            <div className="mb-4">
-                                <SuggestVideoCol />
-                            </div>
                         </div>
-                    </artical>
+                    </article>
                 </main>
             ) : (
                 <NotAuth />
