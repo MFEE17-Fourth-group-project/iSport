@@ -21,7 +21,7 @@ const VideoCollectionList = ({ collectedVideos }) => {
                             className="flex mt-6 h-24 pr-2 min-w-full"
                         >
                             <Video
-                                // cloudName="dbovdn1sr"
+                                cloudName="dbovdn1r"
                                 secure="true"
                                 publicId={file}
                                 className="w-36 flex-grow-0 flex-shrink-0 h-full object-cover rounded-lg mr-4"

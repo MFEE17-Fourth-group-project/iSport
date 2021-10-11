@@ -1,11 +1,10 @@
-import { Link, useParams, useHistory, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import useGet from './../../utils/useGet';
 import { APP_URL, API_URL } from './../../utils/config';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import { Video, Transformation } from 'cloudinary-react';
 import { useAuth } from '../../context/auth';
-import SignIn from '../user/sign/SignIn';
 import DeleteModal from './components/DeleteModal';
 import SuggestVideoCol from './components/SuggestVideoCol';
 import SuggestArtCol from './components/SuggestArtCol';
@@ -22,7 +21,7 @@ import {
     RiHeartLine
 } from 'react-icons/ri';
 
-const VideoId = () => {
+const VideoId = ({ signInWindow, setSignInWindow }) => {
     const { videoId } = useParams();
     const location = useLocation();
     const { member, setMember } = useAuth();
@@ -31,7 +30,6 @@ const VideoId = () => {
 
     const [liked, setLiked] = useState(false);
     const [ILiked, setILiked] = useState(false);
-    const [signInModal, setSignInModal] = useState(false);
     const [copiedAlert, setCopiedAlert] = useState(false);
     const [collect, setCollect] = useState(false);
     const [allComment, setAllComment] = useState([]);
@@ -68,7 +66,7 @@ const VideoId = () => {
     };
 
     const handleLike = () => {
-        member ? setLiked(true) : setSignInModal(true);
+        member ? setLiked(true) : setSignInWindow(true);
         if (member) {
             (async function () {
                 await axios.patch(`${API_URL}/videos/${videoId}`,
@@ -90,7 +88,7 @@ const VideoId = () => {
     };
 
     const handleAddCollection = () => {
-        member ? setCollect(true) : setSignInModal(true);
+        member ? setCollect(true) : setSignInWindow(true);
         if (member) {
             (async function () {
                 await axios.patch(`${API_URL}/videos/${videoId}`,
@@ -98,10 +96,6 @@ const VideoId = () => {
                     , { withCredentials: true });
             })();
         }
-    };
-
-    const handleCancel = () => {
-        setSignInModal(false);
     };
 
     const handleDeleteButton = () => {
@@ -124,7 +118,6 @@ const VideoId = () => {
     return (
         <>
             {deleteModal && <DeleteModal onCancel={cancelDelete} onDelete={handleDelete} />}
-            {signInModal && <SignIn onCancel={handleCancel} />}
             <div className="max-w-screen-2xl mx-auto xs:p-6 grid grid-cols-3 gap-x-10 lg:grid-rows-3 gap-y-6 items-start">
 
                 {/* Video Main Section */}
@@ -160,7 +153,6 @@ const VideoId = () => {
                                 >
                                     <RiThumbUpFill className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                                     <span className="text-sm sm:text-xs text-white w-max">{ILiked ? video.likes : video.likes + 1}</span>
-                                    {/* <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span> */}
                                 </div>
                                 : <div
                                     className="flex mr-4 items-center cursor-pointer"
@@ -168,7 +160,6 @@ const VideoId = () => {
                                 >
                                     <RiThumbUpLine className="text-yellow-400 mr-1 sm:text-lg xs:text-3xl" />
                                     <span className="text-sm sm:text-xs text-white w-max">{ILiked ? video.likes - 1 : video.likes}</span>
-                                    {/* <span className="text-sm sm:text-xs text-white w-max">{video.likes}</span> */}
                                 </div>}
 
                             {copiedAlert ? <div

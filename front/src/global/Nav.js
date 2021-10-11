@@ -13,10 +13,9 @@ import SignSecress from '../pages/user/components/SignSecress';
 import { fromJSON } from 'postcss';
 
 function Nav(props) {
-    const { cartCount } = props;
+    const { cartCount, signInWindow, setSignInWindow } = props;
     const { member, setMember } = useAuth();
 
-    const [signInWindow, setSignInWindow] = useState(false);
     const [signInSuccess, setSignInSuccess] = useState(false);
     const [openNav, setOpenNav] = useState(false);
 
@@ -50,20 +49,18 @@ function Nav(props) {
             {signInWindow && <SignIn onCancel={handleCancel} />}
             <nav className="App sticky top-0 z-30">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
-                    <div className="flex items-center">
+                    <Link
+                        to="/"
+                        className="sm:text-3xl text-2xl text-white text-opacity-70 sm:mx-4 mx-2 flex items-center"
+                    >
                         <img
                             src={Logo}
                             width="40"
                             alt="Logo"
-                            className="my-1 "
+                            className="my-1 mr-3"
                         />
-                        <Link
-                            to="/"
-                            className="sm:text-3xl text-2xl text-white text-opacity-70 sm:mx-4 mx-2"
-                        >
                             iSport!
                         </Link>
-                    </div>
 
                     <div className="flex items-center">
                         {member ? (

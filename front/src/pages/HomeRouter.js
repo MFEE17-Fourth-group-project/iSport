@@ -52,6 +52,7 @@ function HomeRouter() {
     const [cartCount, setCartCount] = useState(0);
     const [myCartP, setMyCartP] = useState([]);
     const [totalAmountP, setTotalAmountP] = useState(0);
+    const [signInWindow, setSignInWindow] = useState(false);
 
     const cartAdd = () => {
         let currentCart = localStorage.getItem('cart') || '[]';
@@ -65,7 +66,7 @@ function HomeRouter() {
     return (
         <Router>
             <>
-                <Nav cartCount={cartCount} />
+                <Nav cartCount={cartCount} signInWindow={signInWindow} setSignInWindow={setSignInWindow} />
                 <ScrollToTop>
                     <Switch>
                         <Route path="/SearchPassword">
@@ -111,7 +112,7 @@ function HomeRouter() {
                             <ArticleLeanBulking />
                         </Route>
                         <Route path="/article/:id">
-                            <ArticleId />
+                            <ArticleId signInWindow={signInWindow} setSignInWindow={setSignInWindow} />
                         </Route>
                         <Route path="/user/ArticleCollect">
                             <ArticleCollect />
@@ -126,7 +127,7 @@ function HomeRouter() {
                             <ArticleEdit />
                         </Route>
                         <Route path="/video/:videoId">
-                            <VideoId />
+                            <VideoId signInWindow={signInWindow} setSignInWindow={setSignInWindow} />
                         </Route>
                         <Route path="/user/videoCollection">
                             <VideoCollection />
