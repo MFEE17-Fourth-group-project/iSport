@@ -8,12 +8,12 @@ import {
     FaHeart,
     FaMoneyCheck,
     FaComment,
-    FaCamera
+    FaCamera,
 } from 'react-icons/fa';
 import { useState, useRef } from 'react';
 import CustomerService from '../sign/CustomerService';
 import axios from 'axios';
-import { API_URL } from '../../utils/config';
+import { API_URL, REACT_APP_CLOUDINARY } from '../../../utils/config';
 import { useAuth } from '../../../context/auth';
 
 // 聯絡我們跳窗
@@ -43,6 +43,7 @@ function UserAside() {
             }
         );
         setMember(response.data);
+        console.log(member);
         try {
             alert('頭像上傳成功');
         } catch (e) {
@@ -63,7 +64,11 @@ function UserAside() {
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}
-            <form onSubmit={handleSubmit} ref={userImageForm} className="flex justify-center">
+            <form
+                onSubmit={handleSubmit}
+                ref={userImageForm}
+                className="flex justify-center"
+            >
                 <div className="group w-48 h-48 rounded-full flex justify-center items-center cursor-pointer relative mt-3 mb-3">
                     <input
                         required
@@ -78,25 +83,23 @@ function UserAside() {
                         <div className="w-48 h-48 rounded-full overflow-hidden z-0 relative">
                             <div className="flex w-full h-full rounded-full group-hover:bg-black group-hover:bg-opacity-50 absolute transition-all duration-300 ease-in-out"></div>
                             <Image
-                                cloudName="dbovdn1sr"
+                                cloudName={REACT_APP_CLOUDINARY}
                                 publicId={member.photo}
                                 secure="true"
                                 className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
-                            >
-                            </Image>
+                            ></Image>
                         </div>
                     ) : (
                         <div className="w-48 h-48 rounded-full overflow-hidden z-0">
-                            <img
-                                src={userHeader}
-                                alt=""
-                                className="w-full h-full object-cover object-center opacity-50"
-                            />
+                            <Image
+                                cloudName={REACT_APP_CLOUDINARY}
+                                publicId="iSport_Videos/origin/images_dufdlr"
+                                secure="true"
+                                className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
+                            ></Image>
                         </div>
                     )}
-                    <FaCamera
-                        className="w-16 h-16 text-gray-300 text-opacity-0 group-hover:text-opacity-70 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out"
-                    />
+                    <FaCamera className="w-16 h-16 text-gray-300 text-opacity-0 group-hover:text-opacity-70 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out" />
                 </div>
             </form>
             <div className="h-full aside-menu">

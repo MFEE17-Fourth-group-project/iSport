@@ -11,7 +11,7 @@ let connection = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     //這是設定日期顯示年月日就好
-    dateStrigns:true,
+    dateStrings:true,
 });
 
 connection = Promise.promisifyAll(connection);

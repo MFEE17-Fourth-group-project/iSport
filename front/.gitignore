@@ -26,3 +26,11 @@ yarn-error.log*
 
 #productImg
 /src/images/product
+
+
+#cliff排除檔案
+src/pages/user/components/VCode.js
+src/pages/user/components/form-elements/
+src/pages/user/sign/SignUp2.js
+src/pages/user/components/SignSecress.js
+src/pages/user/components/Messagecomponent.js

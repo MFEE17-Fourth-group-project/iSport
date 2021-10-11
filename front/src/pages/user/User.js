@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import UserAside from './components/UserAside';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { API_URL } from '../utils/config';
 import { useAuth } from '../../context/auth';
@@ -13,20 +13,22 @@ function Users() {
     const [tempMember, setTempMember] = useState({ ...member });
     const [deleteAccountModal, setDeleteAccountModal] = useState(false);
     const history = useHistory();
+    const userdataForm = useRef();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let require = await axios.put(
+            `${API_URL}/users/${member.account}`,
+            tempMember,
+            {
+                withCredentials: true,
+            }
+        );
+        setMember(require);
+        console.log('這是返回結果', require);
         try {
-            let require = await axios.put(
-                `${API_URL}/users/${member.account}`,
-                tempMember,
-                {
-                    withCredentials: true,
-                }
-            );
-            setMember(require);
-            console.log('這是返回結果', require);
-            alert();
-        } catch {
+            alert('修改成功');
+            window.location.reload();
+        } catch (e) {
             console.error(e.require);
         }
     };
@@ -67,7 +69,7 @@ function Users() {
                             </span>
                         </div>
                         <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} ref={userdataForm}>
                                 <br />
                                 <div className="items-center  py-2">
                                     <label for="name">姓名：</label>
@@ -177,7 +179,7 @@ function Users() {
                                 {/* <from> */}
                                 <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                                     <div className="flex flex-wrap mr-3 mb-6 justify-between">
-                                        <div className="items-center border-b py-2 md:w-2/5">
+                                        <div className="items-center border-b py-2 md:w-2/5 mb-5">
                                             <label for="birthday">生日：</label>
                                             <input
                                                 type="date"
@@ -192,12 +194,11 @@ function Users() {
                                                     });
                                                 }}
                                             />
-                                        </div>
-                                        <div className="absolute py-12 text-s text-gray-400">
-                                            您的生日:
-                                            <span className="text-gray-400">
-                                                {tempMember.birthday}
-                                            </span>
+                                            <div className="absolute transform translate-y-4 bg-black text-s text-gray-400">
+                                                <p className="text-gray-400">
+                                                    您的生日: {member.birthday}
+                                                </p>
+                                            </div>
                                         </div>
 
                                         <div class="xl:inline-block xl:w-64 mt-5">
