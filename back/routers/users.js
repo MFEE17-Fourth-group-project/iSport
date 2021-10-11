@@ -215,21 +215,18 @@ router.post("/CS", async (req, res, next) => {
     }
 });
 
-
-// router.get('/:account', (req,res,next)=>{
-//     console.log(req.params.account)
-// })
-
-// router.put("/(req.body.account)")
-
 //訂單管理
 router.post("/cart", (req, res, next) => {
 
 });
 
 //影片收藏
-router.post("/videoCollection", (req, res, next) => {
-
+router.get("/videoCollection", async (req, res, next) => {
+    let result = await connection.queryAsync(
+        'SELECT video_file.*, user_collection.video_id FROM video_file RIGHT JOIN user_collection ON user_collection.user_account=? WHERE user_collection.video_id=video_file.id',
+        [req.session.member.account]
+    );
+    res.json(result);
 });
 
 //文章管理
