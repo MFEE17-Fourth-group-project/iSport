@@ -164,7 +164,7 @@ function MobileAside(props) {
                         </div>
                     </aside>
                     <div
-                        className="lg:hidden bg-black bg-opacity-10 z-40 absolute top-0 left-0 w-screen h-screen fixed"
+                        className="lg:hidden bg-black bg-opacity-10 z-40 top-0 left-0 w-screen h-screen fixed"
                         onClick={props.onCancel}
                     ></div>
                 </>

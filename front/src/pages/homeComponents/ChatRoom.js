@@ -124,7 +124,7 @@ const ChatRoom = () => {
     const handleImg = (e) => {
         // setImgToUpload(e.target.files[0]);
         const reader = new FileReader();
-        reader.addEventListener("load", () => {
+        reader.addEventListener("loadend", () => {
             setImg(reader.result);
             setImgToUpload(reader.result);
         });

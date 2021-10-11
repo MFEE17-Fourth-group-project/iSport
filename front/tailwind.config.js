@@ -27,7 +27,10 @@ module.exports = {
             },
             maxWidth: {
                 '64': '16rem'
-            }
+            },
+            minWidth: {
+                64: '16rem'
+            },
         },
         screens: {
             '2xs': '360px',

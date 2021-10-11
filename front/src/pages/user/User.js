@@ -61,14 +61,14 @@ function Users() {
             {member ? (
                 <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
                     <UserAside />
-                    <artical className="flex-grow flex-col">
+                    <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85  rounded-t-xl user-page-title">
                             會員資料
                             <span className="text-base text-red-500	">
                                 (必填)
                             </span>
                         </div>
-                        <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
+                        <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10 rounded-b-xl">
                             <form onSubmit={handleSubmit} ref={userdataForm}>
                                 <br />
                                 <div className="items-center  py-2">
@@ -260,6 +260,7 @@ function Users() {
                                         </div>
                                     )}
                                     <button
+                                        type="button"
                                         className="text-red-700 font-bold flex ml-auto"
                                         onClick={() =>
                                             setDeleteAccountModal(true)
@@ -270,7 +271,7 @@ function Users() {
                                 </div>
                             </form>
                         </div>
-                    </artical>
+                    </article>
                 </main>
             ) : (
                 <NotAuth />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../../utils/config';
 import { useAuth } from '../../../context/auth';
 import { Link, useHistory } from 'react-router-dom';
-import Aside from '../../../global/Aside';
+import UserAside from '../components/UserAside';
 import ProgressBar from './components/ProgressBar';
 import CreditCard from './components/CreditCard';
 import NotAuth from '../components/NotAuth';
@@ -31,7 +31,7 @@ function Checkout2(props) {
         <>
             {member ? (
                 <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                    <Aside />
+                    <UserAside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 user-page-title rounded-t-xl">
                             購物車

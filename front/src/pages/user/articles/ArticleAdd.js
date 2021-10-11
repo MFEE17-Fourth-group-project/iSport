@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Aside from '../../../global/Aside';
+import UserAside from '../components/UserAside';
 import { useAuth } from '../../../context/auth';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -37,12 +37,12 @@ function ArticleAdd() {
         <>
             {member ? (
                 <main className="max-w-screen-xl mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                    <Aside />
+                    <UserAside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl rounded-t-xl font-bold">
                             新增文章
                         </div>
-                        <div className="text-white bg-gray-900 w-full h-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
+                        <div className="text-white bg-gray-900 min-h-screen w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10 rounded-b-xl">
                             <from onSubmit={handleSubmit}>
                                 <label htmlFor="user_name">作者：</label>
                                 <span className="text-base text-red-500 mx-4">

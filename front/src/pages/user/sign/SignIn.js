@@ -48,7 +48,7 @@ function SignIn(props) {
             //透過e.response拿到axios的response
             console.error(e);
             //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            alert(e.response.data.message);
+            // alert(e.response.data.message);
         }
     };
     //google
@@ -84,13 +84,7 @@ function SignIn(props) {
 
     // 控制密碼顯示隱藏
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
-        setPasswordShown(passwordShown ? false : true);
-    };
-    // 如果有登入member就跳轉到會員中心
-    // if (member !== null) {
-    //     return <Redirect to="/user" />;
-    // }
+
     return (
         <form className="w-screen h-screen fixed z-40" onSubmit={handleSubmit}>
             <div
@@ -146,10 +140,12 @@ function SignIn(props) {
                             required
                         />
                         <i
-                            onClick={togglePasswordVisiblity}
-                            className="eyesposition"
+                            onClick={() => setPasswordShown(!passwordShown)}
+                            className="absolute top-52 right-10 transform translate-y-1"
                         >
-                            <FaEye className="userIcons hover:text-green-400" />
+                            {passwordShown ?
+                                <FaEyeSlash className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" title="隱藏密碼" />
+                                : <FaEye className="w-5 h-5 text-yellow-400 inline-block hover:text-green-400 cursor-pointer" title="顯示密碼" />}
                         </i>
                         <hr className="border-2 border-yellow-400" />
                         {/* <Link to="/SearchPassword">

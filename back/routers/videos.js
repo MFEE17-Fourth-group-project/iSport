@@ -11,7 +11,6 @@ router.route("/").get(async (req, res, next) => {
     result.map(
         (video) =>
         (video.upload_date = video.upload_date
-            .toISOString()
             .slice(0, 16)
             .replace(/:/gi, "")
             .replace("T", ""))

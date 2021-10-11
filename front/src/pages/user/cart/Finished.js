@@ -5,7 +5,7 @@ import { API_URL } from '../../../utils/config';
 import ProgressBar from './components/ProgressBar';
 import CheckItem from './components/CheckItem';
 import NotAuth from '../components/NotAuth';
-import Aside from '../../../global/Aside';
+import UserAside from '../components/UserAside';
 import axios from 'axios';
 
 function Finished(props) {
@@ -55,7 +55,7 @@ function Finished(props) {
         <>
             {member ? (
                 <main className="sm:max-w-screen-xl w-full mx-auto px-2.5 py-5 flex justify-start border-red-300">
-                    <Aside />
+                    <UserAside />
                     <article className="flex-grow flex-col">
                         <div className="bg-gray-700 p-5 text-white text-opacity-85 rounded-t-xl flex justify-between">
                             <div className="user-page-title">購物車</div>
@@ -151,7 +151,7 @@ function Finished(props) {
                                             <td className="pb-4">
                                                 {
                                                     orderStatusMap[
-                                                        orderInfo.order_status
+                                                    orderInfo.order_status
                                                     ]
                                                 }
                                             </td>
