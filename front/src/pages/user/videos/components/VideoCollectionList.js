@@ -1,4 +1,3 @@
-import useGet from '../../../utils/useGet';
 import {
     Image,
     Video,
@@ -10,25 +9,19 @@ import { FaClock } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
 
-const SuggestVideoCol = () => {
-    const {
-        data: suggestVideos,
-        error,
-        isPending,
-    } = useGet(`/videos/suggestVideos`);
-
+const VideoCollectionList = ({ collectedVideos }) => {
     return (
         <>
-            {suggestVideos &&
-                suggestVideos.map((video) => {
+            {collectedVideos &&
+                collectedVideos.map((video) => {
                     let file = 'iSport_Videos/' + video.filePath.slice(15, 28);
                     return (
                         <Link
                             to={'/video/' + video.id}
-                            className="flex mt-6 h-24 pr-2 max-w-full"
+                            className="flex mt-6 h-24 pr-2 min-w-full"
                         >
                             <Video
-                                cloudName="dnmayrvjj"
+                                cloudName="dbovdn1r"
                                 secure="true"
                                 publicId={file}
                                 className="w-36 flex-grow-0 flex-shrink-0 h-full object-cover rounded-lg mr-4"
@@ -36,10 +29,11 @@ const SuggestVideoCol = () => {
                             >
                                 <Transformation width="200" height="150" />
                             </Video>
+
                             {/* <img className="max-w-48 h-full object-cover rounded-lg mr-4" src={Fitness1} alt="" /> */}
 
-                            <div className="flex flex-col justify-between w-72">
-                                <h4 className="text-yellow-400 text-base flex-shrink-0 w-full">
+                            <div className="flex flex-col justify-between w-full">
+                                <h4 className="text-yellow-400 text-lg flex-shrink-0 w-full">
                                     {video.title}
                                 </h4>
 
@@ -73,4 +67,4 @@ const SuggestVideoCol = () => {
     );
 };
 
-export default SuggestVideoCol;
+export default VideoCollectionList;

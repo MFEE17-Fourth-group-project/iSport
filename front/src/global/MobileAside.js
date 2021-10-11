@@ -39,7 +39,7 @@ function MobileAside(props) {
         <>
             {member && (
                 <>
-                    <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50">
+                    <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 h-screen">
                         {CustomerServiceWindow && (
                             <CustomerService onCancel={handleCancel} />
                         )}
@@ -91,14 +91,6 @@ function MobileAside(props) {
                                                 className="w-full block"
                                             >
                                                 購物車
-                                            </Link>
-                                        </li>
-                                        <li className="user-submenu-li">
-                                            <Link
-                                                to="/user/cart/favourite"
-                                                className="w-full block"
-                                            >
-                                                我的最愛
                                             </Link>
                                         </li>
                                     </ul>

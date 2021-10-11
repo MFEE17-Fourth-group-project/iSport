@@ -85,7 +85,6 @@ router.get("/MyArticle", SignInCheckMiddleware, async (req, res, next) => {
         "SELECT * FROM article WHERE valid=1 AND user_name=? ",
         [req.session.member.name]
     );
-    console.log(req.session.member.name);
     res.json(result);
 });
 //顯示影片
@@ -135,7 +134,6 @@ const storage = multer.diskStorage({
     },
     //檔案命名
     filename: function (req, file, callback) {
-        // console.log(file);
         // callback(null, file.originalname);
         const ext = file.originalname.split(".").pop();
         callback(null, `member-${uuid()}.${ext}`);
@@ -145,7 +143,6 @@ const uploader = multer({
     storage: storage,
     //檔案驗證
     fileFilter: function (req, file, callback) {
-        console.log(file.mimetype);
         if (
             file.mimetype !== "image/jpeg" &&
             file.mimetype !== "image/jpg" &&
@@ -165,7 +162,6 @@ router.post(
     uploader.single("photos"), //上傳檔案驗證資料
     registerRules, //驗證資料
     async (req, res, next) => {
-        console.log(req.params);
         try {
             let filename = req.file ? "" + req.file.filename : "";
             let result = await connection.queryAsync(
@@ -197,8 +193,6 @@ router
             "SELECT * FROM article WHERE id=?",
             [articleId]
         );
-        console.log(articleId);
-        console.log(result);
         res.json(result);
     })
     .put(
@@ -225,6 +219,52 @@ router
             }
         }
     )
+    .patch(SignInCheckMiddleware, async (req, res, next) => {
+        let articleId = req.params.id;
+        let userAccount = req.session.member.account;
+
+        // Handle Like Button
+        if (req.body.like) {
+            if (req.body.like === "dislike") {
+                let result = await connection.queryAsync(
+                    "DELETE FROM user_like WHERE user_account=? AND article_id=?",
+                    [userAccount, articleId]
+                );
+                result = await connection.queryAsync(
+                    "UPDATE video_file SET likes=likes-1 WHERE id=?",
+                    [articleId]
+                );
+                res.json(result.affectedRows);
+            } else {
+                let result = await connection.queryAsync(
+                    "INSERT INTO user_like SET user_account=?, article_id=?",
+                    [userAccount, articleId]
+                );
+                result = await connection.queryAsync(
+                    "UPDATE video_file SET likes=likes+1 WHERE id=?",
+                    [articleId]
+                );
+                res.json(result.affectedRows);
+            }
+        }
+
+        // Handle Collection Button
+        if (req.body.collect) {
+            if (req.body.collect === "removeCollection") {
+                let result = await connection.queryAsync(
+                    "DELETE FROM user_collection WHERE user_account=? AND article_id=?",
+                    [userAccount, articleId]
+                );
+                res.json(result.affectedRows);
+            } else {
+                let result = await connection.queryAsync(
+                    "INSERT INTO user_collection SET user_account=?, article_id=?",
+                    [userAccount, articleId]
+                );
+                res.json(result.affectedRows);
+            }
+        }
+    })
     .delete(async (req, res, next) => {
         try {
             let result = await connection.queryAsync(
