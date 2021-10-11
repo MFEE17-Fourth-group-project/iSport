@@ -95,24 +95,26 @@ router.get("/reset", async (req, res, next) => {
 // 修改會員資料
 router.route("/:account")
     .put(async (req, res, next) => {
-        if (req.body.password) {
-            // 如果前端有送密碼來
-            // let bcrtptpasswoord= await bcrypt.hash(req.body.password,10);
-
-            let UpDateMemberData = await connection.queryAsync(
-                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
-                [req.body.name, await bcrypt.hash(req.body.password, 10), req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
-        } else {
-            // 如果是空值
-            let data = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
-            let getpassword = data[0].password;
-            let UpDateMemberData = await connection.queryAsync(
-                "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
-                [req.body.name, getpassword, req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
-        }
-
         try {
+            if (req.body.password) {
+                // 如果前端有送密碼來
+                // let bcrtptpasswoord= await bcrypt.hash(req.body.password,10);
+
+                let UpDateMemberData = await connection.queryAsync(
+                    "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
+                    [req.body.name, await bcrypt.hash(req.body.password, 10), req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
+            } else {
+                // 如果是空值
+                let data = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
+                let getpassword = data[0].password;
+                let UpDateMemberData = await connection.queryAsync(
+                    "UPDATE users SET name=?,password=?,email=?,phone=?,address=?,birthday=?,about=?,gender=? WHERE account=?",
+                    [req.body.name, getpassword, req.body.email, req.body.phone, req.body.address, req.body.birthday, req.body.aboutme, req.body.gender, req.params.account]);
+            }
+
+
             let newMemberData = await connection.queryAsync("SELECT * FROM users WHERE account=?", [req.body.account]);
+            newMemberData = newMemberData[0];
             let returnMember = {
                 account: newMemberData.account,
                 email: newMemberData.email,
@@ -125,9 +127,8 @@ router.route("/:account")
                 photo: newMemberData.photo,
                 password: ""
             };
-            // req.session.member=returnMember;
-            res.json(req.session.member);
-            console.log("修改成功");
+            req.session.member = returnMember;
+            res.json(returnMember);
         }
         catch (e) {
             console.log({

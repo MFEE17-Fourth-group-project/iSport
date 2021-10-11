@@ -23,11 +23,10 @@ function Users() {
                 withCredentials: true,
             }
         );
-        setMember(require);
-        console.log('這是返回結果', require);
+        setMember(require.data);
         try {
             alert('修改成功');
-            window.location.reload();
+            // window.location.reload();
         } catch (e) {
             console.error(e.require);
         }
