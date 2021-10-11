@@ -23,7 +23,7 @@ const ChatInput = ({ nickname, message, onMessageChange, onMessageEmpty, onSend,
             {img &&
                 <div className="absolute bottom-12 right-4 cursor-pointer group">
                     <div
-                        className="w-full h-24 absolute z-5"
+                        className="w-full h-24 absolute z-8"
                         onClick={() => onSendImg()}
                     ></div>
                     <MdFileUpload className="text-white w-12 h-12 absolute z-5 left-1/3 top-1/4 opacity-50 group-hover:opacity-80 transition-all duration-300 ease-in-out group-hover:animate-bounce" />
