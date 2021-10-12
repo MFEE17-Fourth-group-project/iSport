@@ -136,28 +136,29 @@ class CreditCard extends React.Component {
                         </div>
                         <input type="hidden" name="issuer" value={issuer} />
                         <div className="flex flex-row justify-center">
-                            <button type="button" className="mr-4">
-                                <Link
+                            <button
+                                type="button"
+                                className=" btn-yellow-hollow flex flex-row justify-end items-center"
+                                onClick={() => {
+                                    this.props.history.push('/checkout');
+                                }}
+                            >
+                                {/* <Link
                                     to="/checkout"
                                     className="btn-yellow-hollow flex flex-row justify-end items-center"
-                                >
-                                    <p className="font-bold sm:text-xl text-lg">
-                                        上一步
-                                    </p>
-                                </Link>
+                                > */}
+                                <p className="font-bold sm:text-xl text-lg">
+                                    上一步
+                                </p>
+                                {/* </Link> */}
                             </button>
                             <button
                                 type="submit"
-                                className="btn-yellow flex flex-row justify-end items-center"
+                                className="ml-4 mb-1 btn-yellow flex flex-row justify-end items-center"
                             >
                                 <p className="font-bold sm:text-xl text-lg">
                                     下一步
                                 </p>
-                                {/* <Link
-                                    to="/finished"
-                                    onClick={this.props.checkout}
-                                >
-                                </Link> */}
                             </button>
                         </div>
                     </form>

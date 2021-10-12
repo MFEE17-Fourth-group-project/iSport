@@ -64,7 +64,8 @@ function CartItem(props) {
         // 取出 localStorage 裡的 cart 字串並 parse 回「陣列」
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
         // 找到 currentCart 裡的 item 並刪除它
-        currentCart.splice(currentCart.indexOf(item), 1);
+        const index = currentCart.findIndex((v) => v.id === item.sku_id);
+        currentCart.splice(index, 1);
         // 把新的陣列轉成「字串」存回 localStorage
         localStorage.setItem('cart', JSON.stringify(currentCart));
 
