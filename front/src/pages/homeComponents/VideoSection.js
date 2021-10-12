@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import HomePage8 from './../../images/homepage/homepage-8.jpg';
 import VideoCard from './../video/components/VideoCard';
 import useGet from '../../utils/useGet';
+import AOS from 'aos';
+import '../../../node_modules/aos/dist/aos.css';
 
 const VideoSection = () => {
     let { data: videos, error, isPending } = useGet('/homepage/videoTag');
@@ -15,10 +17,21 @@ const VideoSection = () => {
             setCurrentVideos(filteredVideos);
         }
     }, [tag, videos]);
-
+    useEffect(() => {
+        AOS.init({
+            duration: 500,
+            easing: 'ease-out-back',
+            delay: 0,
+        });
+        AOS.refresh();
+    }, []);
     return (
         <div className="w-full h-124 sm:h-168 sm:grid grid-cols-3 grid-rows-3 overflow-hidden">
-            <div className="col-span-full xl:col-span-2 row-span-1">
+            <div
+                className="col-span-full xl:col-span-2 row-span-1"
+                data-aos="fade-right"
+                data-aos-duration="1500"
+            >
                 <div className="flex justify-center sm:block mt-7 md:mt-10 xl:ml-24 mx-10">
                     <h2
                         className="w-max text-white pb-2.5 sm:pb-0 mb-5 sm:mb-0 sm:text-left
@@ -34,7 +47,11 @@ const VideoSection = () => {
                     </p>
                 </div>
             </div>
-            <div className="ml-8 mt-7 relative hidden xl:block row-span-2 col-span-1 self-start">
+            <div
+                className="ml-8 mt-7 relative hidden xl:block row-span-2 col-span-1 self-start"
+                data-aos="fade-left"
+                data-aos-duration="1500"
+            >
                 <img
                     className="h-152 w-full rounded-3xl object-cover shadow-lg"
                     src={HomePage8}
@@ -93,6 +110,9 @@ const VideoSection = () => {
             <div
                 className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-x-2.5 sm:gap-x-3 gap-y-28
                 col-span-3 xl:col-span-2 row-span-2 content-start mx-2.5 sm:mx-3"
+                data-aos="fade-up"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
             >
                 {currentVideos &&
                     currentVideos.map((video) => <VideoCard video={video} />)}
