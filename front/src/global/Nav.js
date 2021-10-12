@@ -8,7 +8,12 @@ import { RiLogoutBoxRLine } from 'react-icons/ri';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
 import axios from 'axios';
-import { API_URL, IMAGE_URL, REACT_APP_CLOUDINARY } from '../utils/config';
+import {
+    API_URL,
+    IMAGE_URL,
+    REACT_APP_CLOUDINARY,
+    REACT_APP_CLOUDINARY_USER,
+} from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 import { fromJSON } from 'postcss';
 
@@ -59,8 +64,8 @@ function Nav(props) {
                             alt="Logo"
                             className="my-1 mr-3"
                         />
-                            iSport!
-                        </Link>
+                        iSport!
+                    </Link>
 
                     <div className="flex items-center">
                         {member ? (
@@ -70,7 +75,7 @@ function Nav(props) {
                                     onClick={handleMobileWindow}
                                 >
                                     <Image
-                                        cloudName={REACT_APP_CLOUDINARY}
+                                        cloudName={REACT_APP_CLOUDINARY_USER}
                                         publicId={
                                             member.photo ||
                                             'iSport_Videos/user_photos/images_mxvtyi.png'
@@ -93,30 +98,47 @@ function Nav(props) {
                                             歡迎回來!
                                         </div>
                                         <div className="flex">
-                                            <p className="mr-1">{member.name}</p>
-                                            {openNav ? <TiArrowSortedUp className="text-white self-center" />
-                                                : <TiArrowSortedDown className="text-white self-center" />}
+                                            <p className="mr-1">
+                                                {member.name}
+                                            </p>
+                                            {openNav ? (
+                                                <TiArrowSortedUp className="text-white self-center" />
+                                            ) : (
+                                                <TiArrowSortedDown className="text-white self-center" />
+                                            )}
                                         </div>
                                     </div>
-                                    {openNav && <>
-                                        <div className="absolute top-14 z-5">
-                                            <ul className="bg-gray-700 py-1 rounded shadow-md">
-                                                <li className="text-white text-lg cursor-pointer hover:bg-gray-900 flex w-full px-5">
-                                                    <Link to="/user">會員中心</Link>
-                                                </li>
-                                                <li className="text-white text-lg cursor-pointer hover:bg-gray-900 w-full px-5 flex">
-                                                    <Link to="/" onClick={signout} className="flex items-center">
-                                                        登出
-                                                        <span className="ml-1"><RiLogoutBoxRLine /></span>
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div
-                                            className="z-0 flex fixed w-full h-full top-0 left-0"
-                                            onClick={() => setOpenNav(false)}
-                                        ></div>
-                                    </>}
+                                    {openNav && (
+                                        <>
+                                            <div className="absolute top-14 z-5">
+                                                <ul className="bg-gray-700 py-1 rounded shadow-md">
+                                                    <li className="text-white text-lg cursor-pointer hover:bg-gray-900 flex w-full px-5">
+                                                        <Link to="/user">
+                                                            會員中心
+                                                        </Link>
+                                                    </li>
+                                                    <li className="text-white text-lg cursor-pointer hover:bg-gray-900 w-full px-5 flex">
+                                                        <Link
+                                                            to="/"
+                                                            onClick={signout}
+                                                            className="flex items-center"
+                                                        >
+                                                            登出
+                                                            <span className="ml-1">
+                                                                <RiLogoutBoxRLine />
+                                                            </span>
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div
+                                                className="z-0 flex fixed w-full h-full top-0 left-0"
+                                                onClick={() =>
+                                                    setOpenNav(false)
+                                                }
+                                            ></div>
+                                        </>
+                                    )}
                                     <div className="navmenu cursor-pointer lg:hidden">
                                         <div className="w-12 h-12 rounded-full bg-white overflow-hidden relative mr-4">
                                             <Image
