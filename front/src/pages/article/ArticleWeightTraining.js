@@ -29,8 +29,8 @@ function ArticleWeightTraining({ article }) {
     const handleUpdateButton = () => {
         let newArticles = data.sort(
             (a, b) =>
-                b.upload_date.replace(/-/gi, '') -
-                a.upload_date.replace(/-/gi, '')
+                b.upload_date.replace(/-/gi, '').replace(' ', '') -
+                a.upload_date.replace(/-/gi, '').replace(' ', '')
         );
         setData([...newArticles]);
     };
