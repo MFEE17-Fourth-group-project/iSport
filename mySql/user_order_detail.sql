@@ -40,7 +40,7 @@ CREATE TABLE `user_order_detail` (
 -- 傾印資料表的資料 `user_order_detail`
 --
 
-INSERT INTO `user_order_detail` (`id`, `order_id`, `product_id`, `qty`, `price`, `title`) VALUES
+INSERT INTO `user_order_detail` (`id`, `order_id`, `sku_id`, `qty`, `price`, `product_name`) VALUES
 (1, 1, 43, 2, 572, '【NIKE 耐吉】上衣 男款 短袖上衣 緊身 快乾 健身 運動 AS M NP TOP SS TIGHT 黑 BV5632-010\r\n'),
 (2, 1, 80, 1, 1760, '【NIKE 耐吉】MC TRAINER 男慢跑鞋-健身 訓練 運動 丈青黑白(CU3580400)\r\n'),
 (3, 1, 84, 1, 4383, '【adidas官方旗艦館】ULTRABOOST 21 跑鞋 運動鞋 男(FY0377)\r\n'),
