@@ -60,7 +60,7 @@ function Finished(props) {
                         <div className="bg-gray-700 p-5 text-white text-opacity-85 rounded-t-xl flex justify-between">
                             <div className="user-page-title">購物車</div>
                             <div className="user-page-sub-title text-yellow-400 cursor-pointer">
-                                <Link to="/user/tradingRecord">我的訂單</Link>
+                                <Link to="/user/order">我的訂單</Link>
                             </div>
                         </div>
                         <div className="text-white sm:px-12 px-4 py-6 bg-gray-900 rounded-b-xl">
