@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { FaClock } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
+import { REACT_APP_CLOUDINARY } from '../../../utils/config';
 
 const SuggestVideoCol = () => {
     const {
