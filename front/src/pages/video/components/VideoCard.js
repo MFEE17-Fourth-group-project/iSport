@@ -11,7 +11,7 @@ const VideoCard = ({ video }) => {
             <div className="max-w-xs min-w-full h-100 rounded-md overflow-hidden shadow-2xl bg-gray-900
                 py-4 px-5 flex flex-col">
                 <Video cloudName="dnmayrvjj" secure="true" publicId={file} className="h-44 object-cover" sourceType={['jpg']}>
-                    {/* <Transformation height="176" videoSampling="5" /> */}
+                    <Transformation height="176" videoSampling="5" />
                 </Video>
                 <div className="">
                     <h3 className="text-base text-yellow-400 mt-4 mb-1.5 h-12 line-clamp-2 overflow-hidden">{video.title}</h3>

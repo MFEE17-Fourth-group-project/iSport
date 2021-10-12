@@ -28,7 +28,7 @@ const SuggestVideoCol = () => {
                             className="flex mt-6 h-24 pr-2 max-w-full"
                         >
                             <Video
-                                cloudName="dnmayrvjj"
+                                cloudName={REACT_APP_CLOUDINARY}
                                 secure="true"
                                 publicId={file}
                                 className="w-36 flex-grow-0 flex-shrink-0 h-full object-cover rounded-lg mr-4"

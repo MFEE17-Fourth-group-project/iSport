@@ -123,7 +123,7 @@ const VideoId = ({ signInWindow, setSignInWindow }) => {
                 {/* Video Main Section */}
                 {video && (<div className="lg:col-span-2 lg:row-span-1 col-span-full z-0">
                     <Video
-                        cloudName="dnmayrvjj"
+                        cloudName={REACT_APP_CLOUDINARY}
                         id="doc-player"
                         className="cld-video-player cld-fluid"
                         secure="true"
@@ -134,7 +134,7 @@ const VideoId = ({ signInWindow, setSignInWindow }) => {
                         controlsList="nodownload"
                         muted
                     >
-                        {/* <Transformation /> */}
+                        <Transformation height="176" videoSampling="5" />
                     </Video>
                     <h1 className="text-white text-xl mt-4 mx-5 xs:mx-0">{video.title}</h1>
 
