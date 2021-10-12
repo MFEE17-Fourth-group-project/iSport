@@ -48,7 +48,6 @@ app.use(
         credentials: true,
     })
 );
-console.log(process.env.Route_ORIGIN);
 
 //使用這個中間鍵才能讀到body的資料
 app.use(express.urlencoded({ extended: true }));
@@ -100,16 +99,12 @@ app.use((err, req, res, next) => {
     res.status(err.status).json({ message: err.message });
 });
 
-app.use((req, res, next) => {
-    console.log("沒有符合的路由");
-    next();
-});
 
 // Port
-app.listen(port, async function () {
-    // await connection.connectAsync();
-    console.log(`Web Server Port: ${port}`);
-});
+// app.listen(port, async function () {
+//     // await connection.connectAsync();
+//     console.log(`Web Server Port: ${port}`);
+// });
 
 // Socketio
 const server = http.createServer(app);
@@ -121,8 +116,13 @@ const io = socketio(server, {
             "http://localhost:8080",
             "http://localhost:3000",
         ],
-        credentials: true
+        credentials: true,
     }
+});
+
+server.listen(port, async function () {
+    // await connection.connectAsync();
+    console.log(`Web Server Port: ${port}`);
 });
 
 io.on('connect', (socket) => {
@@ -178,8 +178,4 @@ io.on('connect', (socket) => {
             io.to(user.room).emit('roomData', { users: getUsersIn(user.room), room: user.room });
         }
     });
-});
-
-server.listen(8000, () => {
-    console.log(`Server Port: 8000`);
 });
