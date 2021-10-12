@@ -15,6 +15,7 @@ function SignUp() {
     const [name, setname] = useState();
     const [account, setaccount] = useState();
     const [password, setpassword] = useState();
+    const [confirmPassword, setconfirmPassword] = useState();
     const [email, setemail] = useState();
     const [phone, setphone] = useState();
     const [address, setaddress] = useState();
@@ -24,27 +25,40 @@ function SignUp() {
     const [message, setMessage] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            let response = await axios.post(`${API_URL}/auth/SignUp`, {
-                name,
-                account,
-                password,
-                email,
-                phone,
-                address,
-                birthday,
-                aboutme,
-                gender,
-            });
-            alert('註冊成功');
-            console.log(response);
-        } catch (e) {
-            //透過e.response拿到axios的response
-            console.error(e.response);
-            //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            alert(e.response.data.message);
+        if (message == false) {
+            try {
+                let response = await axios.post(`${API_URL}/auth/SignUp`, {
+                    name,
+                    account,
+                    password,
+                    email,
+                    phone,
+                    address,
+                    birthday,
+                    aboutme,
+                    gender,
+                });
+                alert('註冊成功');
+                console.log(response);
+            } catch (e) {
+                //透過e.response拿到axios的response
+                console.error(e.response);
+                //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
+                console.log(e.response);
+            }
+        } else {
+            alert('請檢查紅色錯誤內容');
         }
     };
+    const checkpassword = (e) => {
+        setconfirmPassword(e.target.value);
+        if (e.target.value !== password) {
+            setMessage('密碼不一致');
+        } else {
+            setMessage(false);
+        }
+    };
+
     if (member !== null) {
         return <Redirect to="/user" />;
     }
@@ -73,24 +87,24 @@ function SignUp() {
                             />
                         </div>
                         <br />
+                        <div className="lg:items-center lg:py-2  text-white mt-5 mb-5">
+                            <label for="account">帳號：</label>
+                            <input
+                                type="text"
+                                className="input-style"
+                                placeholder="開頭為字母6~8碼的帳號"
+                                oninvalid="開頭為字母6~8碼的帳號"
+                                name="account"
+                                id="account"
+                                minLength="6"
+                                maxLength="8"
+                                onChange={(e) => {
+                                    setaccount(e.target.value);
+                                }}
+                                required
+                            />
+                        </div>
                         <div className="lg:flex lg:flex-wrap mr-3 mb-6 lg:justify-between text-white">
-                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5">
-                                <label for="account">帳號：</label>
-                                <input
-                                    type="text"
-                                    className="input-style"
-                                    placeholder="請輸入6~8字元帳號"
-                                    name="account"
-                                    id="account"
-                                    minLength="6"
-                                    maxLength="8"
-                                    onChange={(e) => {
-                                        setaccount(e.target.value);
-                                    }}
-                                    required
-                                />
-                            </div>
-                            <div>{message}</div>
                             <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5 relative">
                                 <label for="password">密碼：</label>
                                 <input
@@ -118,8 +132,26 @@ function SignUp() {
                                     )}
                                 </i>
                             </div>
+                            <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 relative">
+                                <label for="confirmPassword">確認密碼：</label>
+                                <input
+                                    type="password"
+                                    onBlur={checkpassword}
+                                    placeholder="請輸入6-8位英數密碼"
+                                    className="input-style relative"
+                                    onChange={(e) => {
+                                        setconfirmPassword(e.target.value);
+                                    }}
+                                    required
+                                    name="confirmPassword"
+                                    id="confirmPassword"
+                                    minLength="6"
+                                    maxLength="8"
+                                />
+                                <div className="text-red-600">{message}</div>
+                            </div>
                         </div>
-                        <div className="py-2 mb-5">
+                        <div className="py-1 mb-5">
                             <label for="email">信箱：</label>
                             <input
                                 type="email"
@@ -133,34 +165,7 @@ function SignUp() {
                                 required
                             />
                         </div>
-                        <div className=" py-2 mb-5">
-                            <label for="phone">行動電話：</label>
-                            <input
-                                type="phone"
-                                id="phone"
-                                className="input-style "
-                                placeholder="請輸入行動電話09xx-xxx-xxx"
-                                name="phone"
-                                onChange={(e) => {
-                                    setphone(e.target.value);
-                                }}
-                                required
-                            />
-                        </div>
-                        <div className="py-2 mb-5">
-                            <label for="address">住家地址</label>
-                            <input
-                                type="text"
-                                id="address"
-                                className="input-style"
-                                placeholder="請輸入地址    ex:台北市中山區羅斯福路x段x巷x弄x號x樓"
-                                name="address"
-                                onChange={(e) => {
-                                    setaddress(e.target.value);
-                                }}
-                                required
-                            />
-                        </div>
+
                         {/* </from>
                 </div> */}
                         <div className="bg-gray-700 pl-5 py-5 text-white text-opacity-85 text-3xl font-bold">
@@ -169,6 +174,33 @@ function SignUp() {
 
                         {/* <from> */}
                         <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
+                            <div className=" py-2 mb-5">
+                                <label for="phone">行動電話：</label>
+                                <input
+                                    type="phone"
+                                    id="phone"
+                                    className="input-style "
+                                    placeholder="請輸入行動電話09xxxxxxxx"
+                                    name="phone"
+                                    pattern="09\d{2}-\d{6}"
+                                    onChange={(e) => {
+                                        setphone(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            <div className="py-2 mb-5">
+                                <label for="address">住家地址</label>
+                                <input
+                                    type="text"
+                                    id="address"
+                                    className="input-style"
+                                    placeholder="請輸入地址    ex:台北市中山區羅斯福路x段x巷x弄x號x樓"
+                                    name="address"
+                                    onChange={(e) => {
+                                        setaddress(e.target.value);
+                                    }}
+                                />
+                            </div>
                             <div className="flex flex-wrap mr-3 mb-6 justify-between">
                                 <div className="items-center border-b py-2 md:w-2/5">
                                     <label for="birthday">生日：</label>
