@@ -49,7 +49,7 @@ function Finished(props) {
         getOrderDataFromDB();
         clearLocalStorage();
         cartAdd();
-    }, [member, orderInfo]);
+    }, [member]);
 
     return (
         <>
@@ -151,7 +151,7 @@ function Finished(props) {
                                             <td className="pb-4">
                                                 {
                                                     orderStatusMap[
-                                                    orderInfo.order_status
+                                                        orderInfo.order_status
                                                     ]
                                                 }
                                             </td>

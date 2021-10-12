@@ -10,12 +10,13 @@ const getUserOrders = async (userId) => {
     );
 };
 
+
 const getOrderDetails = async (orderIds) => {
     return await connection.queryAsync(
         `
         SELECT user_order_detail.*,
-                product.id AS product_id,
-                product_sku.sku_group AS sku_group,
+                product.id AS product_id, product.name AS product_name,
+                product_sku.price AS price, product_sku.sku_group AS sku_group,
                 brand.name AS brand_name
         FROM user_order_detail
         LEFT JOIN product_sku ON product_sku.id=user_order_detail.sku_id
