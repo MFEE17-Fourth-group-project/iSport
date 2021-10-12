@@ -110,11 +110,11 @@
 }
 
 .btn-gray:hover {
-    @apply bg-gray-800 border-gray-800;
+    @apply bg-gray-900 border-gray-900;
 }
 
 .btn-gray:active {
-    @apply bg-gray-800;
+    @apply bg-gray-900;
 }
 
 .btn-gray:focus {
@@ -128,11 +128,11 @@
 }
 
 .btn-gray-sm:hover {
-    @apply bg-gray-800 border-gray-800;
+    @apply bg-gray-900 border-gray-900;
 }
 
 .btn-gray-sm:active {
-    @apply bg-gray-800;
+    @apply bg-gray-900;
 }
 
 .btn-gray-sm:focus {
