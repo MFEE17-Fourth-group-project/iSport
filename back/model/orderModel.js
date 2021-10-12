@@ -14,8 +14,8 @@ const getOrderDetails = async (orderIds) => {
     return await connection.queryAsync(
         `
         SELECT user_order_detail.*,
-                product.id AS product_id, product.name AS product_name,
-                product_sku.price AS price, product_sku.sku_group AS sku_group,
+                product.id AS product_id,
+                product_sku.sku_group AS sku_group,
                 brand.name AS brand_name
         FROM user_order_detail
         LEFT JOIN product_sku ON product_sku.id=user_order_detail.sku_id
@@ -26,10 +26,6 @@ const getOrderDetails = async (orderIds) => {
     );
 };
 
-// "INSERT IGNORE INTO stock_price (stock_id, date, volume, amount, open_price, high_price, low_price, close_price, delta_price, transactions) VALUES ?", // IGNORE 忽略重複部分
-// insert user_order
-// insert user_order_detail
-// update stock
 const createOrder = async (data) => {
     return await connection.queryAsync(
         `
@@ -52,7 +48,7 @@ const createOrder = async (data) => {
                 data.order_status,
                 data.valid,
             ],
-        ],
+        ]
     );
 };
 
