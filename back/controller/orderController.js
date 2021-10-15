@@ -187,12 +187,17 @@ const createOrder = async (req, res, next) => {
         const lastOrderId = orderIds[0].id;
         // console.log("lastOrderId", lastOrderId);
 
-        // INSERT columns: order_id, sku_id, qty
+        // INSERT columns: order_id, sku_id, qty, price, product_name
         for (let i = 0; i < checkItems.length; i++) {
+            const itemData = cartItems.find((cartItem) => {
+                return cartItem.sku_id === checkItems[i].id;
+            });
             const detail = {
                 id: lastOrderId,
                 sku_id: checkItems[i].id,
                 qty: checkItems[i].qty,
+                price: itemData.price,
+                product_name: itemData.product_name,
             };
             await orderModel.createOrderDetail(detail);
         }

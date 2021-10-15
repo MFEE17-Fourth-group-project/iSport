@@ -13,7 +13,7 @@ const getUserOrders = async (userId) => {
 const getOrderDetails = async (orderIds) => {
     return await connection.queryAsync(
         `
-        SELECT user_order_detail.*,
+        SELECT user_order_detail.*, user_order_detail.product_name AS product_name,
                 product.id AS product_id,
                 product_sku.sku_group AS sku_group,
                 brand.name AS brand_name
@@ -63,9 +63,17 @@ const orderId = async () => {
 const createOrderDetail = async (detail) => {
     return await connection.queryAsync(
         `
-        INSERT IGNORE INTO user_order_detail (order_id, sku_id, qty) VALUES (?)
+        INSERT IGNORE INTO user_order_detail (order_id, sku_id, qty, price, product_name) VALUES (?)
         ;`,
-        [[detail.id, detail.sku_id, detail.qty]]
+        [
+            [
+                detail.id,
+                detail.sku_id,
+                detail.qty,
+                detail.price,
+                detail.product_name,
+            ],
+        ]
     );
 };
 

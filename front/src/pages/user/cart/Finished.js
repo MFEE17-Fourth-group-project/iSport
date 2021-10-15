@@ -49,7 +49,7 @@ function Finished(props) {
         getOrderDataFromDB();
         clearLocalStorage();
         cartAdd();
-    }, [member, orderInfo]);
+    }, [member]);
 
     return (
         <>
