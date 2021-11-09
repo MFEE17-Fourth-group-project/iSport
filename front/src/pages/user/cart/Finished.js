@@ -151,7 +151,7 @@ function Finished(props) {
                                             <td className="pb-4">
                                                 {
                                                     orderStatusMap[
-                                                    orderInfo.order_status
+                                                        orderInfo.order_status
                                                     ]
                                                 }
                                             </td>

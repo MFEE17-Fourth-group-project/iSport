@@ -200,7 +200,7 @@ const ArticleSection = () => {
                 data-aos-duration="600"
             >
                 <span className="text-white text-2xl lg:text-3xl xl:text-4xl border-b-2 sm:border-b-4 border-yellow-400 pb-2.5 sm:pb-3.5">
-                    精選文章
+                    優質文章
                 </span>
             </div>
             <p

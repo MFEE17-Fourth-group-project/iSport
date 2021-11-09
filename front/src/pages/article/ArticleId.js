@@ -42,7 +42,7 @@ function ArticleId({ signInWindow, setSignInWindow }) {
 
     return (
         <>
-            <main className="max-w-screen-2xl flex justify-center">
+            <main className="max-w-screen-2xl flex justify-center m-auto">
                 <div className="mx-8 w-9/12">
                     <div className="">
                         {data &&
@@ -96,13 +96,13 @@ function ArticleId({ signInWindow, setSignInWindow }) {
                     <div className="mt-6">
                         <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400">
                             推薦文章
-                            </h3>
+                        </h3>
                         <SuggestArtCol />
                     </div>
                     <div>
                         <h3 className="text-xl text-white pb-2 border-b-2 border-yellow-400 mt-8">
                             推薦影片
-                            </h3>
+                        </h3>
                         <SuggestVideoCol />
                     </div>
                 </div>

@@ -137,7 +137,7 @@ const VideoId = ({ signInWindow, setSignInWindow }) => {
                         <Video
                             cloudName={REACT_APP_CLOUDINARY}
                             id="doc-player"
-                            className="cld-video-player cld-fluid"
+                            className="cld-video-player cld-fluid max-h-124"
                             secure="true"
                             publicId={`iSport_Videos/${video.filePath.slice(
                                 15,
