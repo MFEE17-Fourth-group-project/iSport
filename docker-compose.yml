@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  front:
+    build: ./front
+    env_file:
+      - ./.env
+    volumes:
+      - ./back/build:/app/build
+
+  back:
+    depends_on:
+      - front
+    build: ./back
+    env_file:
+      - ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - back
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+
+
+
+
+

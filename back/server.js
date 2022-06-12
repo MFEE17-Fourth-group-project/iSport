@@ -27,7 +27,7 @@ let homepageRouter = require("./routers/homepage");
 
 app.use(express.static("public"));
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '/build')));
 // 啟用session
 app.use(
     expressSession({
@@ -79,6 +79,12 @@ app.use((req, res, next) => {
     let time = new Date();
     console.log(`${time} 有人來訪`);
     next();
+});
+
+app.get('/*', function (_req, res) {
+    res.sendFile(
+        path.join(__dirname, "./build/index.html")
+    );
 });
 
 // Not Found

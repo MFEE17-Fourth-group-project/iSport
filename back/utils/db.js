@@ -13,7 +13,6 @@ let connection = mysql.createPool({
     //這是設定日期顯示年月日就好
     dateStrings:true,
 });
-
 connection = Promise.promisifyAll(connection);
 
 module.exports = connection;
