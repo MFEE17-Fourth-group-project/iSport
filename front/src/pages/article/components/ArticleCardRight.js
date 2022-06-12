@@ -1,3 +1,5 @@
+import { IMAGE_URL } from './../../../utils/config';
+
 const ArticleCardRight = (props) => {
     const { smTitle, bigTitle, photo } = props;
     return (
@@ -17,7 +19,7 @@ const ArticleCardRight = (props) => {
                 </div>
                 <img
                     className="w-60 h-40 rounded-md m-auto"
-                    src={`http://localhost:3030/articles/uploads/${photo}`}
+                    src={`${IMAGE_URL}/articles/uploads/${photo}`}
                     alt=""
                 />
             </div>

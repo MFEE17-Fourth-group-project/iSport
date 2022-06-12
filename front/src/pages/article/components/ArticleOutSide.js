@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from './../../../utils/config';
 // import Person2 from '../../../../../back/public/articles/uploads/';
 import { FaClock } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
@@ -12,7 +13,7 @@ const ArticleOutSide = (props) => {
                 <div className="border-4 border-light-blue-500 border-opacity-100 p-5 m-5">
                     {/* <img
                         className="m-auto w-1/2"
-                        src={`http://localhost:3030/articles/uploads/${article.photos}`}
+                        src={`${API_URL}/articles/uploads/${article.photos}`}
                         alt=""
                     /> */}
                     <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">

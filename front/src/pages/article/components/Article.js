@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaClock } from 'react-icons/fa';
 import { FaThumbsUp } from 'react-icons/fa';
-import { APP_URL, API_URL } from './../../../utils/config';
+import { APP_URL, API_URL, IMAGE_URL } from './../../../utils/config';
 import { FaRegHeart } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaEye } from 'react-icons/fa';
@@ -91,7 +91,7 @@ const Article = (props) => {
             <div className="border-4 border-light-blue-500 border-opacity-100 p-5 my-5 break-all">
                 <img
                     className="m-auto"
-                    src={`http://localhost:3030/articles/uploads/${article.photos}`}
+                    src={`${IMAGE_URL}/articles/uploads/${article.photos}`}
                     alt=""
                 />
                 <h3 class="text-xl lg:text-2xl xl:text-4xl m-2 text-yellow-400">

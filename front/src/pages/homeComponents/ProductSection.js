@@ -39,7 +39,7 @@ const ProductSection = () => {
                     <h2
                         className="absolute -top-16 left-1/2 transform -translate-x-1/2 sm:-translate-x-0 sm:static
                                 pb-2.5 sm:pb-0 border-b-2 border-yellow-400 sm:border-0 text-white text-2xl lg:text-3xl xl:text-4xl"
-                        data-aos="fade-up"
+                       // data-aos="fade-up"
                         data-aos-anchor="#product"
                         data-aos-anchor-placement="top-center"
                     >

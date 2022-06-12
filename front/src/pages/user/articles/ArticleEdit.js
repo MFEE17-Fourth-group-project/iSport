@@ -135,7 +135,7 @@ function ArticleEdit() {
                                 <br />
                                 <img
                                     className="m-auto"
-                                    src={`http://localhost:3030/articles/uploads/${photos}`}
+                                    src={`${API_URL}/articles/uploads/${photos}`}
                                     alt=""
                                 />
                                 <label htmlFor="photos">上傳圖片:</label>
