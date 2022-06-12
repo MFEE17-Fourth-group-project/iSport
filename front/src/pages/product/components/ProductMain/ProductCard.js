@@ -6,7 +6,6 @@ function ProductCard(props) {
     const { productName, brand, category, price, sale, photo, like, id } =
         props;
     const productPhotoUrl = require('../../../../images/product/' + photo);
-    // console.log(productPhotoUrl);
     return (
         <>
             <div>

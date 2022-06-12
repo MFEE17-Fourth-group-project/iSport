@@ -105,13 +105,6 @@ app.use((err, req, res, next) => {
     res.status(err.status).json({ message: err.message });
 });
 
-
-// Port
-// app.listen(port, async function () {
-//     // await connection.connectAsync();
-//     console.log(`Web Server Port: ${port}`);
-// });
-
 // Socketio
 const server = http.createServer(app);
 const io = socketio(server, {

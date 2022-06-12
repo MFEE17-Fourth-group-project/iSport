@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 function PictureGroup(props) {
     const { imgName, id, setBigImg, bigImg } = props;
-    // console.log(imgName);
     const photoUrl = require('../../../../../images/product/' + imgName);
     return (
         <>

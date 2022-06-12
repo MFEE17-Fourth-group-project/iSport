@@ -8,7 +8,6 @@ const VideoCollection = () => {
     const { member } = useAuth();
     const { data: collectedVideos, error, isPending } = useGet(`/users/videoCollection`);
 
-    console.log(collectedVideos);
     return (
         <>
             {member ? (

@@ -26,7 +26,6 @@ function ArticleMyart() {
         };
         getArticleData();
     }, []);
-    console.log(data);
     //刪除
     const handleDelete = async (id) => {
         setData(data.filter((article) => article.id !== id));

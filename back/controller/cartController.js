@@ -4,7 +4,6 @@ const Promise = require("bluebird");
 const cartItemData = async (req, res, next) => {
     try {
         let myCartFromLocalStorage = req.body.cartItems;
-        // console.log("myCartFromLocalStorage", myCartFromLocalStorage);
         // myCartFromLocalStorage = [
         //     { id: 2, product_id: 1, sku_code: "10011012", qty: 1 },
         //     { id: 23, product_id: 3, sku_code: "10033105", qty: 1 },
@@ -13,7 +12,6 @@ const cartItemData = async (req, res, next) => {
         let skuId = myCartFromLocalStorage.map((item) => {
             return item.id;
         });
-        // console.log("skuId", skuId);
         // skuId = [ 15, 53, 176 ]
 
         let cartItems = await cartModel.getCartItems(skuId);
@@ -24,25 +22,21 @@ const cartItemData = async (req, res, next) => {
         myCartFromLocalStorage.map((item) => {
             cartMap[item.id] = item.qty;
         });
-        // console.log("cartMap", cartMap);
         // cartMap = { '15': 1, '53': 2, '176': 1 }
 
         let typeMap = {};
         getTypes.map((type) => {
             typeMap[type.id] = type;
         });
-        // console.log("typeMap", typeMap);
         // {'1': { id: 1, name_frontend: '顏色', name_backend: 'color' },{...}}
 
         let myCart = await Promise.all(
             cartItems.map(async (item) => {
                 let rawSkuGroup = item.sku_group;
                 let SkuGroup = rawSkuGroup.split(",");
-                // console.log("SkuGroup", SkuGroup);
                 // [ '3', '8' ]
 
                 let typeValues = await cartModel.getTypeValue(SkuGroup);
-                // console.log("typeValues", typeValues);
 
                 typeValues.map((typeValue) => {
                     typeValue.type_name = typeMap[typeValue.type_id].name_frontend;
@@ -64,7 +58,6 @@ const cartItemData = async (req, res, next) => {
         myCart.forEach((item) => {
             totalAmount += item.amount;
         });
-        // console.log(totalAmount);
 
         res.json({ myCart, totalAmount });
     } catch (e) {
@@ -75,7 +68,6 @@ const cartItemData = async (req, res, next) => {
 const cartItemImg = async (req, res, next) => {
     try {
         let cartItemImg = await cartModel.getImgs([1, 5, 10]);
-        // console.log(cartItemImg);
         res.json({ cartItemImg });
     } catch (e) {
         console.error(e);
@@ -85,7 +77,6 @@ const cartItemImg = async (req, res, next) => {
 const userData = async (req, res, next) => {
     try {
         const userId = req.session.member.id;
-        // console.log('userId', userId);
         let result = await cartModel.getUserData(userId);
         res.json(result);
     } catch (e) {

@@ -15,7 +15,6 @@ function ArticleTABATATraining({ article }) {
             try {
                 let res = await axios.get(`${API_URL}/articles/TABATATraining`);
                 let data = res.data;
-                console.log(data);
                 setData(data);
                 setAllData(data);
             } catch (e) {

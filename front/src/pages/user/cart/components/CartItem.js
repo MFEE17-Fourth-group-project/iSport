@@ -43,12 +43,10 @@ function CartItem(props) {
 
     // 更新購物車中的商品數量
     const updateCartTolocalStorage = async (item, isAdded = true) => {
-        // console.log('item, isAdded', item, isAdded);
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // 尋找localStorage 中有沒有此cart[i].id
         const index = currentCart.findIndex((v) => v.id === item.sku_id);
-        // console.log('index', index);
 
         if (index > -1) {
             isAdded ? currentCart[index].qty++ : currentCart[index].qty--;

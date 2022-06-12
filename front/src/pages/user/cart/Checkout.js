@@ -65,7 +65,6 @@ function Checkout(props) {
             {},
             { withCredentials: true }
         );
-        // console.log('result.data', result.data[0]);
         // {account: 'admin1', name: '黃阿花', email: 'admin1@test.com', phone: '0912345678', address: '台北市中山區羅斯福路一段一號'}
         // length: 1
 

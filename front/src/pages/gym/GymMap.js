@@ -37,13 +37,6 @@ class GymMap extends Component {
     }
     //重新渲染比較前後的值是否有差異，如果有差異的話才做新的一次網路請求
     componentDidUpdate(prevProps, prevState) {
-        // console.log(
-        //     'componentDidUpdate',
-        //     prevProps.lat,
-        //     this.props.lat,
-        //     prevProps.lng,
-        //     this.props.lng
-        // );
         if (
             prevProps.lat !== this.props.lat ||
             prevProps.lng !== this.props.lng

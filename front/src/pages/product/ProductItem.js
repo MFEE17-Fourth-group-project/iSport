@@ -4,7 +4,6 @@ import { withRouter, Link } from 'react-router-dom';
 import ProductItemMain from './components/ProductItemMain/';
 
 function ProductItem(props) {
-    // console.log(props);
     const { cartAdd } = props;
     const [productId, setProductId] = useState(null);
 

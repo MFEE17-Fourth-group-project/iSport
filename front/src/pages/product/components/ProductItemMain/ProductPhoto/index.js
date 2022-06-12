@@ -18,12 +18,10 @@ function ProductPhoto(props) {
     const [bigImgUrl, setBigImgUrl] = useState(null);
 
     const smallPhotoBox = useRef(null);
-    // console.log(bigImg);
 
     // const bigImgUrl = require('../../../../../images/product/' + bigImg);
 
     useEffect(() => {
-        // console.log(productImg);
         if (productImg) {
             setBigImg(productImg[0].img_name);
         }

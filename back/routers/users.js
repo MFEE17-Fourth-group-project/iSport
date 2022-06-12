@@ -86,8 +86,6 @@ router.get("/reset", async (req, res, next) => {
         aboutme: member.about,
         photo: member.photo,
     };
-    console.log("刷新頁面");
-    //console.log("我是req.session.member:",req.session.member[0])
     req.session.member = resetMember;
     res.json(req.session.member);
 });
@@ -180,7 +178,6 @@ router.put("/photo/:account", uploader.single("photo"), async (req, res, next) =
             "SELECT id, name, account, email, phone, address, birthday, about, gender, photo FROM users WHERE account=?",
             [req.params.account]
         );
-        console.log('上傳更新成功');
         res.json(result[0]);
     } catch (e) {
         console.log(e);
@@ -203,7 +200,6 @@ router.post("/CS", async (req, res, next) => {
         );
         res.json("成功");
 
-        console.log("寫入成功");
     } catch (e) {
         console.log({
             status: 400,

@@ -61,7 +61,6 @@ function ArticleEdit() {
                 formData
             );
             alert('修改成功');
-            console.log(response);
         } catch (e) {
             console.error(e.response);
         }

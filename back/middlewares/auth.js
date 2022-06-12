@@ -26,7 +26,6 @@ module.exports = {
       });
     } else {
       next();
-      console.log("通過驗證");
     }
   },
 };

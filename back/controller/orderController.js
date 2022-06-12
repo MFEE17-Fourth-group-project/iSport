@@ -13,7 +13,6 @@ const userOrders = async (req, res, next) => {
         let orderIds = orders.map((order) => {
             return order.id;
         });
-        // console.log("orderIds", orderIds); // orderIds: [ 10, 20 ]
 
         // ORDER DETAIL
         let orderDetails = await orderModel.getOrderDetails(orderIds);
@@ -25,7 +24,6 @@ const userOrders = async (req, res, next) => {
             return item.sku_group.split(",");
         }); // RawSkuGroup [ '142', '113' ]
         let skuGroup = [...new Set(RawSkuGroup)].flat();
-        // console.log("skuGroup", skuGroup);
 
         let typeMap = {};
         getTypes.map((type) => {
@@ -37,7 +35,6 @@ const userOrders = async (req, res, next) => {
             typeValue.type_name = typeMap[typeValue.type_id].name_frontend;
             return typeValue;
         });
-        // console.log("typeValues", typeValues);
         // [
         //     {
         //       id: 113,
@@ -54,13 +51,11 @@ const userOrders = async (req, res, next) => {
         // ]
 
         let itemImgs = await cartModel.getImgs(skuId);
-        // console.log(itemImgs);
         orderDetails.map((item) => {
             item.img = itemImgs.find((itemImg) => {
                 return item.sku_id === itemImg.sku_id;
             });
             let detailSkuGroup = item.sku_group.split(",");
-            // console.log("detailSkuGroup", detailSkuGroup); // [ '106', '108' ]
             item.amount = item.price * item.qty;
             detailSkuGroup.forEach((detailSku) => {
                 item.typeValue = typeValues.filter((typeValue) => {
@@ -68,7 +63,6 @@ const userOrders = async (req, res, next) => {
                 });
             });
         });
-        // console.log("orderDetails", orderDetails);
 
         // 合併 user_order 與 user_order_detail 撈出來的資料
         orders.map((order) => {
@@ -95,12 +89,10 @@ const createOrder = async (req, res, next) => {
             `ORD` +
             moment().format("DD") +
             Math.floor(Math.random() * 90 + 10);
-        // console.log('order_no', order_no);
 
         let skuId = checkItems.map((item) => {
             return item.id;
         });
-        // console.log("skuId", skuId);
         // skuId = [ 15, 53, 176 ]
 
         // --------- ORDER ITEM --------
@@ -112,25 +104,21 @@ const createOrder = async (req, res, next) => {
         checkItems.map((checkItem) => {
             checkItemsMap[checkItem.id] = checkItem.qty;
         });
-        // console.log("checkItemsMap", checkItemsMap);
         // checkItemsMap = { '15': 1, '53': 2, '176': 1 }
 
         let typeMap = {};
         getTypes.map((type) => {
             typeMap[type.id] = type;
         });
-        // console.log("typeMap", typeMap);
         // {'1': { id: 1, name_frontend: '顏色', name_backend: 'color' },{...}}
 
         let myCart = await Promise.all(
             cartItems.map(async (item) => {
                 let rawSkuGroup = item.sku_group;
                 let skuGroup = rawSkuGroup.split(",");
-                // console.log("skuGroup", skuGroup);
                 // [ '3', '8' ]
 
                 let typeValues = await cartModel.getTypeValue(skuGroup);
-                // console.log("typeValues", typeValues);
 
                 typeValues.map((typeValue) => {
                     typeValue.type_name =
@@ -160,7 +148,6 @@ const createOrder = async (req, res, next) => {
             3: 60, // 超商取貨
         };
         totalAmount = subtotal + deliveryFeeMap[recipient.delivery];
-        // console.log(totalAmount);
 
         // INSERT columns: user_id, recipient, phone, email, address, order_date, order_no, paytype, delivery, subtotal, delivery_fee, total_amount, order_status, valid
         const date = new Date();
@@ -185,7 +172,6 @@ const createOrder = async (req, res, next) => {
         // get last order id
         const orderIds = await orderModel.orderId();
         const lastOrderId = orderIds[0].id;
-        // console.log("lastOrderId", lastOrderId);
 
         // INSERT columns: order_id, sku_id, qty
         for (let i = 0; i < checkItems.length; i++) {

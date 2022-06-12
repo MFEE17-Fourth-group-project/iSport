@@ -28,7 +28,6 @@ function ArticleAdd() {
             formData.append('photos', photos);
             let response = await axios.post(`${API_URL}/articles/`, formData);
             alert('新增文章成功');
-            console.log(response);
         } catch (e) {
             console.error(e.response);
         }
@@ -123,12 +122,6 @@ function ArticleAdd() {
                                     wrapperClassName="wrapper border-2 border-white rounded bg-gray-800"
                                     editorClassName="editor px-5 h-40"
                                     onEditorStateChange={(editorState) => {
-                                        console.log(
-                                            editorState
-                                                .getCurrentContent()
-                                                .getPlainText()
-                                        );
-
                                         setcontent(
                                             editorState
                                                 .getCurrentContent()

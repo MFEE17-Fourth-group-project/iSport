@@ -47,7 +47,6 @@ function UserAside() {
             }
         );
         setMember(response.data);
-        console.log(member);
         try {
             alert('頭像上傳成功');
         } catch (e) {

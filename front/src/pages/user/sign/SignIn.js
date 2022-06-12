@@ -40,7 +40,6 @@ function SignIn(props) {
                 //如果要同意跨原信任 需要將withCredentials改為true
                 { withCredentials: true }
             );
-            console.log(result);
             setMember(result.data);
             windowClose();
             alert('登入成功');
@@ -62,7 +61,6 @@ function SignIn(props) {
                 withCredentials: true,
             }
         );
-        console.log(result);
         setMember(result.data);
         alert('登入成功');
     };
@@ -77,7 +75,6 @@ function SignIn(props) {
                 withCredentials: true,
             }
         );
-        console.log(result);
         setMember(result.data);
         alert('登入成功');
     };

@@ -18,7 +18,6 @@ function App() {
                 let result = await axios.get(`${API_URL}/users/reset`, {
                     withCredentials: true,
                 });
-                console.log(result.data);
                 setMember(result.data);
             } catch (e) { }
         };

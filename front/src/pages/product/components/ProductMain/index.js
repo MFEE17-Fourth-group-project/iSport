@@ -128,7 +128,6 @@ function ProductMain(props) {
 
     const brandFilter = (value) => {
         let brand = Number(filter.brand);
-        console.log(brand);
         if (brand !== 0) {
             return value.filter((item) => {
                 return item.brand_id === brand;
@@ -146,7 +145,6 @@ function ProductMain(props) {
         } else {
             newData = [...newData].sort((a, b) => b.minPrice - a.minPrice);
         }
-        console.log(newData);
 
         setDisplayProducts(newData);
     };
@@ -162,8 +160,6 @@ function ProductMain(props) {
                 new Date(b.create_time).getTime()
         );
 
-        console.log(newData);
-
         setDisplayProducts(newData);
     };
 
@@ -171,8 +167,6 @@ function ProductMain(props) {
         let newData = [...displayProducts].sort(
             (a, b) => b.total_sale - a.total_sale
         );
-
-        console.log(newData);
 
         setDisplayProducts(newData);
     };

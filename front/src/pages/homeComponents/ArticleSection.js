@@ -29,7 +29,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(data);
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -46,7 +45,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(Aer);
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -61,7 +59,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(Wei);
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -76,7 +73,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(Cor);
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -91,7 +87,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(Lea);
     useEffect(() => {
         const getArticleData = async () => {
             try {
@@ -106,7 +101,6 @@ const ArticleSection = () => {
         };
         getArticleData();
     }, []);
-    console.log(TAB);
 
     const AerobicExercise = (
         <>

@@ -64,7 +64,6 @@ const ChatRoom = () => {
     useEffect(() => {
         if (socket) {
             socket.on('userTyping', typingUsers => {
-                console.log(typingUsers);
                 typingUsers && typingUsers > 0 ? setTypingUsers(`${typingUsers}人正在輸入訊息...`) : setTypingUsers(null);
             });
             socket.on('message', message => {

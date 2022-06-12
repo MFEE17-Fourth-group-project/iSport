@@ -17,7 +17,6 @@ function ArticleAerobicExercise({ article }) {
                     `${API_URL}/articles/AerobicExercise`
                 );
                 let data = res.data;
-                console.log(data);
                 setData(data);
                 setAllData(data);
             } catch (e) {

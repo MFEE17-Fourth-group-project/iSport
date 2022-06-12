@@ -33,7 +33,6 @@ function ProductItemMain(props) {
                 let response = await axios.get(
                     `${API_URL}/products/item/${productId}`
                 );
-                // console.log(response);
                 let oData = response.data;
                 setData(oData);
                 setProductInfo(response.data.product[0]);
@@ -46,10 +45,6 @@ function ProductItemMain(props) {
         };
         getOneProductList();
     }, [productId]);
-
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data]);
 
     return (
         <>

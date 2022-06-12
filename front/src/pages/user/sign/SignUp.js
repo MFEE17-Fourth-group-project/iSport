@@ -39,12 +39,9 @@ function SignUp() {
                     gender,
                 });
                 alert('註冊成功');
-                console.log(response);
             } catch (e) {
                 //透過e.response拿到axios的response
                 console.error(e.response);
-                //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-                console.log(e.response);
             }
         } else {
             alert('請檢查紅色錯誤內容');

@@ -23,16 +23,6 @@ function ProductItemInfo(props) {
         totalSale: '',
     });
 
-    // console.log(localStorage);
-
-    const isMember = () => {
-        member ? console.log('member is true') : console.log('member is false');
-        if (!member) {
-            alert('請先登入');
-            return;
-        }
-    };
-
     function updateCartToLocalStorage(value) {
         // 從localstorage得到cart(json字串)
         const currentCart = localStorage.getItem('cart') || '[]';
@@ -56,19 +46,15 @@ function ProductItemInfo(props) {
             newCart.push(value);
         }
 
-        // console.log('newCart', newCart);
-
         // 設定回localstorage中(記得轉回json字串)
         localStorage.setItem('cart', JSON.stringify(newCart));
 
-        // console.log(newCart);
         // 設定至元件的狀態中
         // setMycart(newCart);
     }
 
     //nav router change
     const backToCategory = () => {
-        // console.log(props);
         let currentCategory = info.categoryId;
         switch (currentCategory) {
             case 1:
@@ -86,7 +72,6 @@ function ProductItemInfo(props) {
             default:
                 console.log('error');
         }
-        // console.log('productInfo_categoryId:', info.categoryId);
     };
 
     useEffect(() => {
@@ -114,7 +99,6 @@ function ProductItemInfo(props) {
     }, [typeValue]);
 
     useEffect(() => {
-        // console.log(currentSku);
         let arr = [];
         let string = '';
         arr = Object.values(currentSku);
@@ -125,7 +109,6 @@ function ProductItemInfo(props) {
             });
             setSkuInfo(aaaaa[0]);
         }
-        // console.log(skuInfo);
     }, [currentSku, skuDetail]);
 
     return (

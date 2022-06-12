@@ -25,7 +25,6 @@ passport.use(
     clientSecrect:process.env.GOOGLE_SECRET,
         },
         async function (accessToken,refreshToken,profile,cb){
-            console.log("Google profile",profile);
             let member=await connection.queryAsync(
                 "SELECT*FROM users WHERE googleid=?;",
                 [profile.id]
@@ -81,7 +80,6 @@ passport.use(
                 console.log("Google Login 登入失敗");
                 return res.json(401);
             }
-            console.log("Google 登入成功");
             req.session.member=req.user;
             res.json({
                 id:req.user.id,
@@ -102,7 +100,6 @@ passport.use(
                 clientSecret:process.env.FACEBOOK_SECRET,
             },
             async function(accessToken,refreshToken,profile,cb){
-                console.log("FB profile",profile);
                 let member=await connection.queryAsync(
                     "SELECT * FROM users WHERE facebookid=?;",
                     [profile.id]
@@ -157,7 +154,6 @@ passport.use(
             console.log("FB Loogin 登入失敗");
             return res.json(401);
         }
-        console.log("FB 登入成功")
         req.session.member=req.user;
         res.json({
             id:req.user.id,
@@ -184,7 +180,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     }
     //資料驗證結果
     const validateResult=validationResult(req);
-    console.log(validateResult);
     //把驗證錯誤的內容傳給前端，判斷依據，如果vaildateResult不是空的代表驗證不過，[0]表示顯示第一個錯誤給前端
     if(!validateResult.isEmpty()) {
         let error=validateResult.array();
@@ -193,7 +188,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
         .status(400)
         .json({field:error[0].param,message:error[0].msg});
     }
-    console.log(req.body);
     let result=await connection.queryAsync(
         "INSERT INTO users (name,account,password,email,phone,address,birthday,about,gender) VALUE(?)",
         [[
@@ -239,7 +233,6 @@ router.post("/Signin",async(req,res,next)=>{
                 message:"密碼錯誤",
             });
         }
-        console.log("登入成功")
     let returnMember={
         id:member.id,
         account:member.account,
@@ -264,7 +257,6 @@ router.post("/Signin",async(req,res,next)=>{
 router.get("/logout", (req, res, next) => {
     req.session.member = null;
     res.sendStatus(202);
-    console.log("登出成功")
   }
   );
   
