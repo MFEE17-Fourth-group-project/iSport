@@ -16,7 +16,6 @@ import axios from 'axios';
 import {
     API_URL,
     REACT_APP_CLOUDINARY,
-    REACT_APP_CLOUDINARY_USER,
 } from '../../../utils/config';
 import { useAuth } from '../../../context/auth';
 
@@ -86,7 +85,7 @@ function UserAside() {
                         <div className="w-48 h-48 rounded-full overflow-hidden z-0 relative">
                             <div className="flex w-full h-full rounded-full group-hover:bg-black group-hover:bg-opacity-50 absolute transition-all duration-300 ease-in-out"></div>
                             <Image
-                                cloudName={REACT_APP_CLOUDINARY_USER}
+                                cloudName={REACT_APP_CLOUDINARY}
                                 publicId={member.photo}
                                 secure="true"
                                 className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
@@ -95,8 +94,8 @@ function UserAside() {
                     ) : (
                         <div className="w-48 h-48 rounded-full overflow-hidden z-0">
                             <Image
-                                cloudName={REACT_APP_CLOUDINARY_USER}
-                                publicId="iSport_Videos/user_photos/images_mxvtyi.png"
+                                cloudName={REACT_APP_CLOUDINARY}
+                                publicId="iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png"
                                 secure="true"
                                 className="w-full h-full object-cover object-center group-hover:filter group-hover:blur-sm transition-all duration-300 ease-in-out"
                             ></Image>

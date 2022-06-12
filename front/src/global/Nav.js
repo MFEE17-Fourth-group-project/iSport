@@ -12,7 +12,6 @@ import {
     API_URL,
     IMAGE_URL,
     REACT_APP_CLOUDINARY,
-    REACT_APP_CLOUDINARY_USER,
 } from '../utils/config';
 import SignSecress from '../pages/user/components/SignSecress';
 import { fromJSON } from 'postcss';
@@ -75,10 +74,10 @@ function Nav(props) {
                                     onClick={handleMobileWindow}
                                 >
                                     <Image
-                                        cloudName={REACT_APP_CLOUDINARY_USER}
+                                        cloudName={REACT_APP_CLOUDINARY}
                                         publicId={
                                             member.photo ||
-                                            'iSport_Videos/user_photos/images_mxvtyi.png'
+                                            'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png'
                                         }
                                         secure="true"
                                         className="w-full h-full object-cover object-center"
@@ -145,7 +144,7 @@ function Nav(props) {
                                                 cloudName={REACT_APP_CLOUDINARY}
                                                 publicId={
                                                     member.photo ||
-                                                    'iSport_Videos/user_photos/images_mxvtyi.png'
+                                                    'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png'
                                                 }
                                                 secure="true"
                                                 className="w-full h-full object-cover object-center"

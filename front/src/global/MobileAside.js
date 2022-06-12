@@ -8,7 +8,6 @@ import { API_URL, IMAGE_URL } from '../utils/config';
 import axios from 'axios';
 import {
     REACT_APP_CLOUDINARY,
-    REACT_APP_CLOUDINARY_USER,
 } from '../utils/config';
 
 import {
@@ -49,10 +48,10 @@ function MobileAside(props) {
                         <div className="flex justify-center items-center p-2.5 bg-gray-800">
                             <div className="w-12 h-12 rounded-full bg-white overflow-hidden">
                                 <Image
-                                    cloudName={REACT_APP_CLOUDINARY_USER}
+                                    cloudName={REACT_APP_CLOUDINARY}
                                     publicId={
                                         member.photo ||
-                                        'iSport_Videos/user_photos/images_mxvtyi.png'
+                                        'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png'
                                     }
                                     secure="true"
                                     className="w-full h-full object-cover object-center"
