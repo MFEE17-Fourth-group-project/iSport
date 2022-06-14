@@ -8,6 +8,7 @@ import RoomInfoBar from './ChatRoomComponents/RoomInfoBar';
 import Messages from './ChatRoomComponents/Messages';
 import ChatInput from './ChatRoomComponents/ChatInput';
 import ChatRoomButton from './ChatRoomComponents/ChatRoomButton';
+import Alert from '../../global/Alert';
 import useGet from './../../utils/useGet';
 import { API_URL } from './../../utils/config';
 
@@ -31,7 +32,8 @@ const ChatRoom = () => {
     const [seeMember, setSeeMember] = useState(false);
     const [img, setImg] = useState(null);
     const [imgToUpload, setImgToUpload] = useState(null);
-    const [imgMessage, setImgMessage] = useState([]);
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
         setChatRoom(chatRooms);
@@ -41,7 +43,7 @@ const ChatRoom = () => {
     useEffect(() => {
         const { nickname, room } = queryString.parse(location.search);
 
-        if (nickname !== undefined && room !== undefined) {
+        if (nickname && room) {
             setNickname(nickname);
             setRoom(room);
 
@@ -49,7 +51,8 @@ const ChatRoom = () => {
 
             socket.emit('join', { nickname, room }, err => {
                 if (err) {
-                    return alert(err);
+                    setAlert('發生問題');
+                    setAlertMessage(err);
                 }
                 setCloseForm(true);
             });
@@ -122,7 +125,6 @@ const ChatRoom = () => {
     };
 
     const handleImg = (e) => {
-        // setImgToUpload(e.target.files[0]);
         const reader = new FileReader();
         reader.addEventListener("loadend", () => {
             setImg(reader.result);
@@ -131,17 +133,23 @@ const ChatRoom = () => {
         reader.readAsDataURL(e.target.files[0]);
     };
 
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('err');
+    }
+
     return (
         <>
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
             {openChat && <div className="w-96 h-124 bg-gray-700 fixed bottom-0 right-3 rounded-md shadow-lg overflow-hidden border border-gray-100 border-opacity-10 filter drop-shadow-lg z-8">
                 <ChatRoomHead setOpenChat={setOpenChat} />
                 {!closeForm && <EntryForm onSubmit={handleEnterChatRoom} chatRoom={chatRoom} />}
                 {closeForm &&
                     <>
                         {<RoomInfoBar seeMember={seeMember} setSeeMember={setSeeMember} nickname={nickname} room={room} users={users} onLeave={leaveChatRoom} />}
-                        <div
-                            className="flex flex-col w-full"
-                        >
+                        <div className="flex flex-col w-full">
                             <Messages messages={messages} nickname={nickname} typingUsers={typingUsers} />
                             <ChatInput nickname={nickname} message={message} onMessageChange={handleChatInput} onMessageEmpty={handleEmpty} onSend={sendMessage} img={img} onSendImg={handleSendImg} onImgChange={handleImg} />
                         </div>

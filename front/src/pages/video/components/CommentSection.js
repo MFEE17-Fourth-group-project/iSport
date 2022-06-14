@@ -4,7 +4,10 @@ import axios from 'axios';
 import { API_URL } from './../../utils/config';
 import { useAuth } from '../../../context/auth';
 import Comment from './Comment';
-import Person2 from './../../../images/person-2.jpg';
+import { Image } from 'cloudinary-react';
+import {
+    REACT_APP_CLOUDINARY,
+} from '../../../utils/config';
 
 const CommentSection = ({ videoId, allComment, setAllComment, onDelete, onEdit, currentEdit }) => {
     const { member, setMember } = useAuth();
@@ -53,10 +56,15 @@ const CommentSection = ({ videoId, allComment, setAllComment, onDelete, onEdit, 
                     <span className="text-sm font-medium xs:font-normal xs:text-base text-white mr-4">{allComment && allComment.length + " 則留言"}</span>
                 </div>
                 <div className="flex mb-7">
-                    <img
+                    <Image
+                        cloudName={REACT_APP_CLOUDINARY}
+                        publicId={
+                            member.photo ||
+                            'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png'
+                        }
+                        secure="true"
                         className="w-12 h-12 rounded-full mr-4"
-                        src={Person2}
-                    />
+                    ></Image>
                     <form
                         className="flex flex-col w-full"
                         onSubmit={(e) => submitComment(e)}>

@@ -3,7 +3,10 @@ import moment from 'moment';
 import { BiDotsHorizontal } from 'react-icons/bi';
 import { useAuth } from '../../../context/auth';
 import useToggle from '../../../utils/useToggle';
-import Person2 from './../../../images/person-2.jpg';
+import { Image } from 'cloudinary-react';
+import {
+    REACT_APP_CLOUDINARY,
+} from '../../../utils/config';
 
 moment.locale('zh-tw', {
     months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
@@ -150,13 +153,18 @@ const Comment = ({ comments, onDelete, onEdit, currentEdit, onSubmit, editValue,
     return (
         <>
             {
-                (comments !== null) && comments.map((comment, idx) => {
+                comments && comments.map((comment, idx) => {
                     let time = moment(comment.date).fromNow();
                     return (<div className="flex mb-6">
-                        <img
+                        <Image
+                            cloudName={REACT_APP_CLOUDINARY}
+                            publicId={
+                                member.photo ||
+                                'iSport_Videos/user_photos/xdod8fkexkzqv5gn01zd.png'
+                            }
+                            secure="true"
                             className="w-12 h-12 rounded-full mr-4"
-                            src={Person2}
-                        />
+                        ></Image>
                         <div className="flex flex-col w-full mr-6 max-h-28">
                             <div className="flex">
                                 <div className="flex">
