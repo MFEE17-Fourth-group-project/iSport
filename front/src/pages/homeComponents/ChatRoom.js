@@ -10,7 +10,7 @@ import ChatInput from './ChatRoomComponents/ChatInput';
 import ChatRoomButton from './ChatRoomComponents/ChatRoomButton';
 import Alert from '../../global/Alert';
 import useGet from './../../utils/useGet';
-import { API_URL } from './../../utils/config';
+import { APP_URL } from './../../utils/config';
 
 let socket;
 
@@ -47,7 +47,7 @@ const ChatRoom = () => {
             setNickname(nickname);
             setRoom(room);
 
-            socket = io(API_URL.slice(0, 21));
+            socket = io(APP_URL);
 
             socket.emit('join', { nickname, room }, err => {
                 if (err) {
