@@ -7,11 +7,15 @@ import { API_URL } from '../utils/config';
 import { useAuth } from '../../context/auth';
 import NotAuth from './components/NotAuth';
 import DeleteAccountModal from './components/DeleteAccountModal';
+import Alert from '../../global/Alert';
 
 function Users() {
     const { member, setMember } = useAuth();
     const [tempMember, setTempMember] = useState({ ...member });
     const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
+
     const history = useHistory();
     const userdataForm = useRef();
     const handleSubmit = async (e) => {
@@ -25,11 +29,16 @@ function Users() {
         );
         setMember(require.data);
         try {
-            alert('修改成功');
-            // window.location.reload();
+            setAlert('成功');
+            setAlertMessage('修改成功');
         } catch (e) {
             console.error(e.require);
         }
+    };
+
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
     };
 
     useEffect(() => {
@@ -37,7 +46,7 @@ function Users() {
     }, [member]);
 
     const handleDeleteAccount = async () => {
-        let require = await axios.delete(`${API_URL}/users/${member.account}`, {
+        await axios.delete(`${API_URL}/users/${member.account}`, {
             withCredentials: true,
         });
         setMember(null);
@@ -50,6 +59,9 @@ function Users() {
 
     return (
         <>
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
             {deleteAccountModal && (
                 <DeleteAccountModal
                     onDelete={handleDeleteAccount}

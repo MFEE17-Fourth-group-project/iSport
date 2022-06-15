@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
-import userHeader from './images.png';
 import {
     FaUserAlt,
     FaShoppingCart,
@@ -18,12 +17,15 @@ import {
     REACT_APP_CLOUDINARY,
 } from '../../../utils/config';
 import { useAuth } from '../../../context/auth';
+import Alert from '../../../global/Alert';
 
 // 聯絡我們跳窗
 // async
 function UserAside() {
     const { member, setMember } = useAuth();
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
     const [photo, setPhoto] = useState();
     const formData = new FormData();
     const userImageForm = useRef();
@@ -47,12 +49,13 @@ function UserAside() {
         );
         setMember(response.data);
         try {
-            alert('頭像上傳成功');
+            setAlert('成功');
+            setAlertMessage('頭像上傳成功');
         } catch (e) {
             //透過e.response拿到axios的response
             console.error(e.response);
             //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            alert(e.response.data.message);
+            // alert(e.response.data.message);
         }
     };
 
@@ -61,8 +64,16 @@ function UserAside() {
         userImageForm.current.requestSubmit();
     };
 
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
+    };
+
     return (
         <aside className="lg:block hidden min-w-64 min-h-screen pt-6 mr-2.5 bg-gray-900 rounded-xl shadow-xl overflow-hidden">
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
             {CustomerServiceWindow && (
                 <CustomerService onCancel={handleCancel} />
             )}

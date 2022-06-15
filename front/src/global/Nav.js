@@ -7,14 +7,12 @@ import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import MobileAside from './MobileAside';
 import { useAuth } from '../context/auth';
+import Alert from './Alert';
 import axios from 'axios';
 import {
     API_URL,
-    IMAGE_URL,
     REACT_APP_CLOUDINARY,
 } from '../utils/config';
-import SignSecress from '../pages/user/components/SignSecress';
-import { fromJSON } from 'postcss';
 
 function Nav(props) {
     const { cartCount, signInWindow, setSignInWindow } = props;
@@ -22,6 +20,8 @@ function Nav(props) {
 
     const [signInSuccess, setSignInSuccess] = useState(false);
     const [openNav, setOpenNav] = useState(false);
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
 
     const handleSignIn = () => {
         setSignInWindow(true);
@@ -42,15 +42,32 @@ function Nav(props) {
         setMobileWindow(false);
     };
     //登出
-    const signout = async () => {
+    const signOut = async () => {
         await axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
         setMember(null);
-        alert('登出成功');
+        setAlert('成功');
+        setAlertMessage('登出成功');
     };
+
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
+    };
+
+    const handleAlert = (alert) => {
+        setAlert(alert);
+    };
+
+    const handleAlertMessage = (alertMessage) => {
+        setAlertMessage(alertMessage);
+    };
+
     return (
         <>
-            {/* {signInSuccess && <SignSecress />} */}
-            {signInWindow && <SignIn onCancel={handleCancel} />}
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
+            {signInWindow && <SignIn onCancel={handleCancel} onAlert={handleAlert} onAlertMessage={handleAlertMessage} />}
             <nav className="App sticky top-0 z-30">
                 <div className="bg-gray-900 px-4 py-1.5 flex justify-between items-center">
                     <Link
@@ -119,7 +136,7 @@ function Nav(props) {
                                                     <li className="text-white text-lg cursor-pointer hover:bg-gray-900 w-full px-5 flex">
                                                         <Link
                                                             to="/"
-                                                            onClick={signout}
+                                                            onClick={signOut}
                                                             className="flex items-center"
                                                         >
                                                             登出

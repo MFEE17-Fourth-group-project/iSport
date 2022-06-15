@@ -9,12 +9,11 @@ import { useState } from 'react';
 import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../../../context/auth';
+import Alert from '../../../global/Alert';
 import { Redirect, Link, ReactDOM } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
-import { YourReCaptchaComponent } from '../components/YourReCaptchaComponent';
-// import VCode from '../components/VCode';
+
 
 function SignIn(props) {
     // 控制取得帳號密碼值
@@ -23,7 +22,9 @@ function SignIn(props) {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    const windowClose = () => {
+    const setSignInAlert = () => {
+        props.onAlert('成功');
+        props.onAlertMessage('登入成功');
         props.onCancel();
     };
 
@@ -41,13 +42,12 @@ function SignIn(props) {
                 { withCredentials: true }
             );
             setMember(result.data);
-            windowClose();
-            alert('登入成功');
+            setSignInAlert();
         } catch (e) {
             //透過e.response拿到axios的response
             console.error(e);
             //顯示錯誤訊息到前端，目前先使用alert顯示後面可以修改成套窗或者紅字顯示
-            alert(e.response.data.message);
+            // alert(e.response.data.message);
         }
     };
     //google
@@ -62,10 +62,10 @@ function SignIn(props) {
             }
         );
         setMember(result.data);
-        alert('登入成功');
+        setSignInAlert();
     };
     //facebook
-    let facebookResponse = async (response) => {
+    const facebookResponse = async (response) => {
         let result = await axios.post(
             `${API_URL}/auth/facebook`,
             {
@@ -76,7 +76,7 @@ function SignIn(props) {
             }
         );
         setMember(result.data);
-        alert('登入成功');
+        setSignInAlert();
     };
 
     // 控制密碼顯示隱藏

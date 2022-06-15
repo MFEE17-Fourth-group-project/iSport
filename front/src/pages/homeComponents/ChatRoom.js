@@ -135,8 +135,8 @@ const ChatRoom = () => {
 
     const handleConfirm = () => {
         setAlert('');
-        setAlertMessage('err');
-    }
+        setAlertMessage('');
+    };
 
     return (
         <>

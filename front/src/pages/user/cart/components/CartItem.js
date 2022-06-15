@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../../../utils/config';
-import { FaHeart, FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import axios from 'axios';
+import Alert from '../../../../global/Alert';
 
 function CartItem(props) {
-    const [error, setError] = useState(null);
     const [myCart, setMyCart] = useState([]);
     const [myCartDisplay, setMyCartDisplay] = useState([]);
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
     const { setTotalAmount, cartAdd, checkLocalStorage } = props;
     let totalAmount = 0;
 
@@ -35,7 +37,6 @@ function CartItem(props) {
             const amount = item.price * item.qty;
             totalAmount += amount;
         });
-        // alert(totalAmount);
 
         setMyCartDisplay(result.data.myCart);
         setTotalAmount(totalAmount);
@@ -69,6 +70,11 @@ function CartItem(props) {
 
         // 設定回購物車
         setMyCart(currentCart);
+    };
+
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
     };
 
     // componentDidMount 一進到此頁面，從 localStorage 得到 cart 資料
@@ -107,6 +113,9 @@ function CartItem(props) {
 
     return (
         <>
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
             {myCartDisplay &&
                 myCartDisplay.map((item) => {
                     return (
@@ -182,12 +191,9 @@ function CartItem(props) {
                                             <div
                                                 className="cursor-pointer"
                                                 onClick={() => {
-                                                    if (
-                                                        item.qty >= item.stock
-                                                    ) {
-                                                        alert(
-                                                            '購買數量已達上限'
-                                                        );
+                                                    if (item.qty >= item.stock) {
+                                                        setAlert('發生問題');
+                                                        setAlertMessage('購買數量已達上限');
                                                         return;
                                                     }
                                                     updateCartTolocalStorage(

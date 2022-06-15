@@ -3,12 +3,12 @@ import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
 import CustomerService from '../pages/user/sign/CustomerService';
-import userHeader from '../images/user/pic04.jpg';
-import { API_URL, IMAGE_URL } from '../utils/config';
+import { API_URL } from '../utils/config';
 import axios from 'axios';
 import {
     REACT_APP_CLOUDINARY,
 } from '../utils/config';
+import Alert from './Alert';
 
 import {
     FaUserAlt,
@@ -22,6 +22,8 @@ import {
 
 function MobileAside(props) {
     const { member, setMember } = useAuth();
+    const [alert, setAlert] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
 
     //控制cs跳窗
     const [CustomerServiceWindow, setCustomerServiceWindow] = useState(false);
@@ -32,13 +34,24 @@ function MobileAside(props) {
     const handleCancel = () => {
         setCustomerServiceWindow(false);
     };
+
     const signout = async () => {
         await axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
         setMember(null);
-        alert('登出成功');
+        setAlert('成功');
+        setAlertMessage('登出成功');
     };
+
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
+    }
+
     return (
         <>
+            {alert && (
+                <Alert title={alert} message={alertMessage} onConfirm={handleConfirm} />
+            )}
             {member && (
                 <>
                     <aside className="lg:hidden mr-2.5 bg-gray-900 shadow-xl absolute top-0 left-0 z-50 h-screen">
