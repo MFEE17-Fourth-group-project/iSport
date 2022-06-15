@@ -1,5 +1,4 @@
 # iSport!
-
 iSport! 是一個使用 React 建立的前端電子商務專案，此專案中，後端我們使用了 Node.js 搭配 Express 做出 restful api ，前端使用 React 框架透過 axios 的技術來跟 api 做串接，打造出一個全方位的電商網站。</br>
 
 專案中我們額外使用到 tailwind、Figma、react-draft-wysiwyg文字編輯器、aos 動畫、leaflet 地圖、socket.io聊天室、Cloudinary 雲端存取、react-credit-cards 信用卡套件等等，也善用了許多雲端平台，像是 slack、google meet、google jamboard 等，在版本控制上我們使用 git-flow 的模式來開發。</br>
@@ -156,5 +155,3 @@ npm start
 帳號:test01 密碼:test01</br>
 第二組</br>
 帳號:admin1 密碼:qwer1234</br>
-
-
