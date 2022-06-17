@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-07-16 10:08:00
--- 伺服器版本： 10.4.18-MariaDB
--- PHP 版本： 8.0.3
+-- 產生時間： 2021-10-06 06:12:46
+-- 伺服器版本： 10.4.19-MariaDB
+-- PHP 版本： 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `mfee17_4_db`
+-- 資料庫: `isport`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `product_type_value` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `product_id` int(5) UNSIGNED NOT NULL,
-  `type_id` int(3) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `type_id` int(10) UNSIGNED NOT NULL,
   `type_value` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -78,11 +78,11 @@ INSERT INTO `product_type_value` (`id`, `product_id`, `type_id`, `type_value`) V
 (37, 8, 2, 'L'),
 (38, 8, 2, 'XL'),
 (39, 8, 2, 'XXL'),
-(40, 8, 1, '黑'),
-(41, 8, 2, 'XS'),
-(42, 8, 2, 'S'),
-(43, 8, 2, 'M'),
-(44, 8, 2, 'L'),
+(40, 9, 1, '黑'),
+(41, 9, 2, 'XS'),
+(42, 9, 2, 'S'),
+(43, 9, 2, 'M'),
+(44, 9, 2, 'L'),
 (45, 10, 2, 'A/M'),
 (46, 10, 2, 'A/L'),
 (47, 11, 2, 'S'),
@@ -124,20 +124,20 @@ INSERT INTO `product_type_value` (`id`, `product_id`, `type_id`, `type_value`) V
 (83, 16, 2, '28.5'),
 (84, 16, 2, '29'),
 (85, 16, 2, '29.5'),
-(86, 17, 2, 'US5.5 腳長22.5CM'),
-(87, 17, 2, 'US6 腳長23CM'),
-(88, 17, 2, 'US6.5 腳長23.5CM'),
-(89, 17, 2, 'US7 腳長24CM'),
-(90, 17, 2, 'US7.5 腳長24.5CM'),
-(91, 17, 2, 'US8 腳長25CM'),
-(92, 17, 2, 'US8.5 腳長25.5CM'),
+(86, 17, 2, 'US5.5/22.5CM'),
+(87, 17, 2, 'US6/23CM'),
+(88, 17, 2, 'US6.5/23.5CM'),
+(89, 17, 2, 'US7/24CM'),
+(90, 17, 2, 'US7.5/24.5CM'),
+(91, 17, 2, 'US8/25CM'),
+(92, 17, 2, 'US8.5/25.5CM'),
 (93, 18, 2, 'UK6'),
 (94, 18, 2, 'UK4.5'),
-(95, 19, 2, '腳長23.5CM 女US6.5'),
-(96, 19, 2, '腳長24CM 女US7'),
-(97, 19, 2, '腳長24.5CM 女US7.5'),
-(98, 19, 2, '腳長25CM 女US8'),
-(99, 19, 2, '腳長25.5CM 女US8.5'),
+(95, 19, 2, '23.5CM/US6.5'),
+(96, 19, 2, '24CM/US7'),
+(97, 19, 2, '24.5CM/US7.5'),
+(98, 19, 2, '25CM/US8'),
+(99, 19, 2, '25.5CM/US8.5'),
 (100, 20, 2, '23.5'),
 (101, 20, 2, '25.0'),
 (102, 20, 2, '25.5'),
@@ -175,10 +175,10 @@ INSERT INTO `product_type_value` (`id`, `product_id`, `type_id`, `type_value`) V
 (134, 28, 1, '黃色'),
 (135, 28, 1, '藍色'),
 (136, 29, 1, '燕麥色'),
-(137, 30, 1, '時尚藍+瑜珈伸展圈2入'),
-(138, 30, 1, '湖水綠+瑜珈伸展圈2入'),
-(139, 30, 1, '蜜桃紅+瑜珈伸展圈2入'),
-(140, 30, 1, '深海藍+瑜珈伸展圈2入'),
+(137, 30, 1, '時尚藍2入'),
+(138, 30, 1, '湖水綠2入'),
+(139, 30, 1, '蜜桃紅2入'),
+(140, 30, 1, '深海藍2入'),
 (141, 31, 5, '雙倍巧克力(5磅)'),
 (142, 31, 5, '法式香草(5磅)'),
 (143, 32, 5, '香草冰淇淋(10磅/袋)'),
@@ -187,15 +187,13 @@ INSERT INTO `product_type_value` (`id`, `product_id`, `type_id`, `type_value`) V
 (146, 33, 3, '1200公克/罐'),
 (147, 34, 3, '4種口味綜合組'),
 (148, 35, 5, '黑巧可可(單入/包)'),
-(149, 36, 5, '玄米煎茶拿鐵(1kg/袋)'),
-(150, 37, 5, '黑糖珍珠奶茶(1kg/袋)'),
+(149, 36, 5, '1kg/袋'),
+(150, 37, 5, '1kg/袋'),
 (151, 38, 5, '巧克力(18/片)'),
 (152, 39, 5, '無麩質大燕麥片'),
 (153, 39, 5, '無麩質野莓麥片'),
 (154, 39, 3, '1入'),
-(155, 39, 3, '4入'),
-(156, 41, 1, 'h'),
-(157, 41, 2, '4');
+(155, 39, 3, '4入');
 
 --
 -- 已傾印資料表的索引
@@ -215,7 +213,7 @@ ALTER TABLE `product_type_value`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product_type_value`
 --
 ALTER TABLE `product_type_value`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

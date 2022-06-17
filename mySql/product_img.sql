@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-07-04 20:15:24
--- 伺服器版本： 10.4.18-MariaDB
--- PHP 版本： 8.0.3
+-- 產生時間： 2021-10-06 06:11:33
+-- 伺服器版本： 10.4.19-MariaDB
+-- PHP 版本： 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `mfee17_4_db`
+-- 資料庫: `isport`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `product_img` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `product_id` int(5) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
   `img_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -65,7 +65,7 @@ INSERT INTO `product_img` (`id`, `product_id`, `img_name`) VALUES
 (25, 6, '1004-5.jpg'),
 (26, 6, '1004-6.jpg'),
 (27, 7, '1005-1.jpg'),
-(28, 7, '1005-6.jpg'),
+(28, 7, '1005-2.jpg'),
 (29, 7, '1005-3.jpg'),
 (30, 8, '1006-1.jpg'),
 (31, 8, '1006-2.jpg'),
@@ -244,7 +244,7 @@ ALTER TABLE `product_img`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product_img`
 --
 ALTER TABLE `product_img`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

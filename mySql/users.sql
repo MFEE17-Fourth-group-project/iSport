@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2021-08-22 14:42:04
+-- 產生時間： 2021-10-10 21:41:57
 -- 伺服器版本： 10.4.19-MariaDB
 -- PHP 版本： 8.0.7
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mfee17_4_db`
+-- 資料庫: `isport`
 --
 
 -- --------------------------------------------------------
@@ -29,46 +29,29 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(6) UNSIGNED NOT NULL,
-  `account` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `account` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
   `phone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `birthday` datetime NOT NULL,
+  `birthday` datetime DEFAULT NULL,
+  `about` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `gender` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `intro` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
-  `valid` int(5) NOT NULL,
-  `article_count` int(6) UNSIGNED NOT NULL,
-  `video_count` int(6) UNSIGNED NOT NULL
+  `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `googleid` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `facebookid` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 傾印資料表的資料 `users`
 --
 
-INSERT INTO `users` (`id`, `account`, `password`, `email`, `user_name`, `create_time`, `phone`, `address`, `birthday`, `gender`, `intro`, `valid`, `article_count`, `video_count`) VALUES
-(1, 'Aaliyah', '$2y$10$3w1sX1WBP6xUhdgn8zFGAucbMoIy3554HrziAdJ9Ooe4M5b4SHSUy', 'Aaliyah@test01.test01', '艾莉雅', '2021-07-07 17:19:56', '0922222222', '台北市中山路一段一號一樓', '2021-07-03 00:00:00', '女性', '沒有要介紹的', 1, 0, 0),
-(2, 'Alice', '$2y$10$0FAYbqu8p5DrvrbJRjJYoer.XmKxYi61gpTADGQlQVm.LFyUsSLNu', 'Alice@test.com', '愛麗絲', '2021-07-07 17:21:32', '0922222555', '台北市南港路一段一號一樓', '2010-01-01 00:00:00', '女性', '沒有要介紹的', 1, 0, 0),
-(3, 'Brook', '$2y$10$Fz9Rmv5oiZe7aE5nzYqPfeiWnBvyVkc/jHVvKnPYt6ZaXe6xu3axG', 'Brook@test.com', '布魯克', '2021-07-07 17:23:15', '0988777444', '桃園市中正路一段一號一樓', '2021-06-27 00:00:00', '男性', '大家好', 1, 0, 0),
-(4, 'Clara', '$2y$10$OgDoi9rIXU0vXYHk5EkonupnuGsvoeQQ0/bCt2VxYrm5ZhF0Zx/P2', 'Clara@test.com', '克萊拉', '2021-07-07 17:24:50', '0977884442', '台中市台灣大道87號', '2001-02-03 00:00:00', '女性', '大家好', 1, 0, 0),
-(5, 'Debby', '$2y$10$inz1mBjYZxf3WWqSQWw9Ou.IX9L52/ln3oJjGFx1iINAkGw8FAPvC', 'Debby@test.com', '黛碧	', '2021-07-07 17:26:03', '0988777888', '台北市基隆路一段一號一樓', '1997-01-07 00:00:00', '女性', '沒有要介紹的', 1, 0, 0),
-(6, 'Eden', '$2y$10$CWpdETPi0H.PdvsaiLPeB.chtyhesK5Dlurnr9eZIA2MlZ7KAuru2', 'Eden@test.com', '伊甸', '2021-07-07 17:28:03', '0944555661', '新北市永和路一段一號', '2021-07-03 00:00:00', '男性', '大家好我是伊甸', 1, 0, 0),
-(7, 'Emma', '$2y$10$EHWqOpuvBIQrP.V0CZwQdOaGrrq.Ni.FZuUG36KG4Hl.57D6Qhk0y', 'Emma@test.com', '艾瑪', '2021-07-07 17:29:34', '0965555664', '台北市南港路一段一號一樓', '1980-01-05 00:00:00', '女性', '很難搞', 1, 0, 0),
-(8, 'Evelyn', '$2y$10$/Cjr5XJjszyU4R12U.TFQewQPr/GHpSum5u2XabWnU2VaxLOz8XMa', 'Evelyn@test.com', '伊芙琳	', '2021-07-07 17:30:50', '0922555441', '新北市福和路二段二號二樓', '2000-01-01 00:00:00', '女性', '千', 1, 0, 0),
-(9, 'Freda', '$2y$10$bIZmXOF5EoSwHzXAnDFZHe2YALmZuuPgm0QTEWOcLcXIFlZ.C4cW2', 'Freda@test.com', '弗莉達', '2021-07-07 17:32:47', '0977888415', '新竹市中正路二段二號二樓', '1945-07-10 00:00:00', '女性', '', 1, 0, 0),
-(10, 'Grace', '$2y$10$kkoPoL6tvc4s43f9fp/09eTSQQNdHgOX97iyF3EfD1EUM.nkHhJJC', 'Grace@test.com', '葛瑞絲', '2021-07-07 17:34:30', '0955444621', '高雄市七賢一路45號', '1995-12-12 00:00:00', '女性', '', 1, 0, 0),
-(11, 'Page', '$2y$10$j.Ybgf.gAIaxjRDKW0HwjuUCgcfMu0Ia4gqiA0vkn4gco3OLAf7Za', 'Page@test.com', '蓓姬', '2021-07-07 17:37:01', '0988777441', '新北市連城路一號一樓', '1991-02-02 00:00:00', '女性', '你好', 1, 0, 0),
-(12, 'Zona', '$2y$10$u41YUfN1N/1I5yfbWOGBEeEZEgAKrv4vCF/RmirmkOHvoKRsk5qpO', 'Zona@test.com', '若娜', '2021-07-07 17:39:38', '0955442134', '雲林縣中正路一段一號', '1995-06-06 00:00:00', '女性', '', 1, 0, 0),
-(13, 'Gavin', '$2y$10$0b.JoxNq/F3yPVHMEtqwB.ruaS6BEBvCD2rQTaa6bezOBkdtgULUW', 'Gavin@test.com', '加文', '2021-07-07 17:41:38', '0922111445', '桃園市文化路一段一號一樓', '1988-08-08 00:00:00', '男性', '1263', 1, 0, 0),
-(14, 'Patrick', '$2y$10$tFeWL1gywUNP82QCvUivXeZbLiyhLvm0Jshcj8UJ4vQKw7hRQh0ky', 'Patrick@test.com', '派翠克', '2021-07-07 17:44:07', '0988774214', '彰化縣軍功路一段一號', '1955-03-03 00:00:00', '女性', '', 1, 0, 0),
-(15, 'Rudolph', '$2y$10$BRm8JS5qG9EKDZy3Ycnm1eN8hQntpd7BRKQzxlOYP1N1i2SJSmiby', 'Rudolph@test.com', '魯道夫', '2021-07-07 17:45:42', '0988777421', '台北市青田街87號7樓', '2001-01-10 00:00:00', '男性', '', 1, 0, 0),
-(16, 'Tony', '$2y$10$unmcWnNJMaMMEWGHNwEc5e.57N.5Iw01etmUXC.lq0k29L1p8PCy2', 'Tony@test.com', '東尼', '2021-07-07 17:47:08', '0988745124', '台北市和平東路一段一號一樓', '1960-01-26 00:00:00', '男性', '', 1, 0, 0),
-(17, 'Wayne', '$2y$10$u89qCjbOY.RhUuajEAUX0ezDNdj4xYVhdbeymEgxkXoACF1uTOY6e', 'Wayne@test.com', '韋恩', '2021-07-07 17:48:31', '0957575757', '台北市信義路一段一號一樓', '1968-05-10 00:00:00', '男性', '', 1, 0, 0),
-(18, 'Sammy', '$2y$10$wb/aJpRcrZhbY4OiZ1tv2emgupCiZJPD88827IIHp6X9ddSe0ipvm', 'Sammy@test.com', '薩米', '2021-07-07 17:50:53', '0922575412', '台中市市府路一段一號一樓', '2005-07-08 00:00:00', '女性', '薩米', 1, 0, 0),
-(19, 'Sinclair', '$2y$10$BQejHZoarrrSG5ymAaJXjOQ7TRAyJlCxpA7/UQDWMNLYzTD5swSqm', 'Sinclair@tses.com', '辛克萊', '2021-07-07 17:52:02', '0924578424', '南投縣仁愛路一段一號', '1989-09-09 00:00:00', '女性', '', 1, 0, 0),
-(20, 'Steve', '$2y$10$.qDNwH3kLRi4KgFjYlMrdegjHj3YpPdlkWvJQQ0hT/hEjugHtwOAe', 'Steve@test.com', '史蒂夫', '2021-07-07 17:52:49', '988774124', '台北市松江路一段一號一樓', '1987-08-07 00:00:00', '男性', '', 1, 0, 0);
+INSERT INTO `users` (`id`, `name`, `account`, `password`, `email`, `phone`, `address`, `birthday`, `about`, `gender`, `photo`, `create_time`, `googleid`, `facebookid`) VALUES
+(1, '王老五', 'test01', '$2b$10$vNF/.Ul3q4LwdTuufswhS.tPRQHJs2qYGDC.MVrmW3uHvTlvvjIrO', 'test01@test01.com', '0911222333', '台北市大安區復興南路一段一號', '2009-01-01 00:00:00', '我是王老五', 'male', '', NULL, '', ''),
+(2, '黃阿花', 'admin1', '$2b$10$eJwgY7m7h4EmlgLz59jVIeLlZbaHOpD.EaTzGQcg6MxSaNVFHFRJq', 'admin1@test.com', '0912345678', '台北市中山區羅斯福路一段一號', '1997-06-25 00:00:00', '我是黃阿花', 'female', '', NULL, '', ''),
+(3, '李曉明', 'test02', '$2b$10$8A02iVbxiJ7Rq.ol4S8pluZwEDGjo7.WooCQkKT6dqBdvlJF5ejEG', 'test02@test.com', '0922111222', '台北市萬華區萬大路11號', NULL, NULL, 'reserve', '', NULL, '', '');
 
 --
 -- 已傾印資料表的索引
@@ -88,7 +71,7 @@ ALTER TABLE `users`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
