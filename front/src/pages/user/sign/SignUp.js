@@ -53,6 +53,12 @@ function SignUp() {
             setAlertMessage('請檢查紅色錯誤內容');
         }
     };
+
+    const handleConfirm = () => {
+        setAlert('');
+        setAlertMessage('');
+    };
+    
     const checkpassword = (e) => {
         setconfirmPassword(e.target.value);
         if (e.target.value !== password) {
