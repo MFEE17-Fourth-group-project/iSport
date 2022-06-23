@@ -2,8 +2,9 @@ import React from 'react';
 import HomeRouter from './pages/HomeRouter';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from './utils/config';
+import { API_URL, REACT_APP_GOOGLE_ID } from './utils/config';
 import { AuthContext } from './context/auth';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
     const [member, setMember] = useState(null);
@@ -25,16 +26,18 @@ function App() {
     }, []);
 
     return (
-        <AuthContext.Provider
-            value={{
-                member,
-                setMember: setAuthMember,
-            }}
-        >
-            <div className="bg-gray-800 min-h-screen">
-                <HomeRouter />
-            </div>
-        </AuthContext.Provider>
+        <GoogleOAuthProvider clientId={REACT_APP_GOOGLE_ID}>
+            <AuthContext.Provider
+                value={{
+                    member,
+                    setMember: setAuthMember,
+                }}
+            >
+                <div className="bg-gray-800 min-h-screen">
+                    <HomeRouter />
+                </div>
+            </AuthContext.Provider>
+        </GoogleOAuthProvider>
     );
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     API_URL,
     REACT_APP_FACEBOOK_ID,
-    REACT_APP_GOOGLE_ID,
+    // REACT_APP_GOOGLE_ID,
 } from '../../../utils/config';
 import axios from 'axios';
 import { useState } from 'react';
@@ -12,7 +12,8 @@ import { useAuth } from '../../../context/auth';
 import Alert from '../../../global/Alert';
 import { Redirect, Link, ReactDOM } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
+import { GoogleLogin } from '@react-oauth/google';
 
 
 function SignIn(props) {
@@ -22,7 +23,7 @@ function SignIn(props) {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    const setSignInAlert = () => {
+    const  setSignInAlert = () => {
         props.onAlert('成功');
         props.onAlertMessage('登入成功');
         props.onCancel();
@@ -181,24 +182,24 @@ function SignIn(props) {
                             </button>
                         </div>
                         <GoogleLogin
-                            clientId={REACT_APP_GOOGLE_ID}
-                            buttononText="Login"
+                            // clientId={REACT_APP_GOOGLE_ID}
+                            // buttononText="Login"
                             onSuccess={googleResponse}
                             onFailure={(err) => console.log('fail', err)}
-                            render={(renderProps) => (
-                                <p onClick={props.onCancel}>
-                                    <button
-                                        onClick={renderProps.onClick}
-                                        disabled={renderProps.disabled}
-                                        className="bg-white w-64 h-16 flex relative mt-2 mb-2"
-                                    >
-                                        <FcGoogle className="w-10 h-10 absolute top-2" />
-                                        <p className="font-sans font-black text-2xl absolute top-4 left-14">
-                                            Google Login
-                                        </p>
-                                    </button>
-                                </p>
-                            )}
+                            // render={(renderProps) => (
+                            //     <p onClick={props.onCancel}>
+                            //         <button
+                            //             onClick={renderProps.onClick}
+                            //             disabled={renderProps.disabled}
+                            //             className="bg-white w-64 h-16 flex relative mt-2 mb-2"
+                            //         >
+                            //             <FcGoogle className="w-10 h-10 absolute top-2" />
+                            //             <p className="font-sans font-black text-2xl absolute top-4 left-14">
+                            //                 Google Login
+                            //             </p>
+                            //         </button>
+                            //     </p>
+                            // )}
                         />
                         <FacebookLogin
                             appId={REACT_APP_FACEBOOK_ID}
