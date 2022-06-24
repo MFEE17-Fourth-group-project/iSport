@@ -1,6 +1,6 @@
+import React from 'react';
 import useGet from '../../../utils/useGet';
 import { Link } from 'react-router-dom';
-import Person1 from './../../../images/person-1.jpg';
 import { FaEye } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaClock } from 'react-icons/fa';

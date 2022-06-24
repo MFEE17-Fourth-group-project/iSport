@@ -1,3 +1,4 @@
+import React from 'react';
 import { IoPeople, IoPerson } from 'react-icons/io5';
 
 const RoomInfoBar = ({ seeMember, setSeeMember, nickname, room, users, onLeave }) => {

@@ -1,3 +1,4 @@
+import React from 'react';
 const entryForm = ({ onSubmit, chatRoom }) => {
     return (
         <form

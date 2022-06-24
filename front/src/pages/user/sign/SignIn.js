@@ -10,7 +10,7 @@ import { FaEye, FaEyeSlash, FaTimesCircle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { useAuth } from '../../../context/auth';
 import Alert from '../../../global/Alert';
-import { Redirect, Link, ReactDOM } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 // import GoogleLogin from 'react-google-login';
 import { GoogleLogin } from '@react-oauth/google';

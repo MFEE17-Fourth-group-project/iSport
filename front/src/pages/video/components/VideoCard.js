@@ -1,8 +1,7 @@
+import React from 'react';
 import {
-    Image,
     Video,
     Transformation,
-    CloudinaryContext,
 } from 'cloudinary-react';
 import { FaClock } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa';

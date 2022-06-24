@@ -1,3 +1,4 @@
+import React from 'react';
 import HomePage1 from './../../images/homepage/homepage-1.jpg';
 import HomePage2 from './../../images/homepage/homepage-2.jpg';
 import HomePage3 from './../../images/homepage/homepage-3.jpg';

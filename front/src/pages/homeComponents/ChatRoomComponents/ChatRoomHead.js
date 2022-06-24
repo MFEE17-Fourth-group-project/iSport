@@ -1,3 +1,4 @@
+import React from 'react';
 import { IoMdChatboxes } from 'react-icons/io';
 
 const ChatRoomHead = ({ setOpenChat }) => {

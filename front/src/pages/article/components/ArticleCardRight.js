@@ -1,3 +1,4 @@
+import React from 'react';
 import { IMAGE_URL } from './../../../utils/config';
 
 const ArticleCardRight = (props) => {

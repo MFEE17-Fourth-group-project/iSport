@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomePage8 from './../../images/homepage/homepage-8.jpg';
 import VideoCard from './../video/components/VideoCard';
 import useGet from '../../utils/useGet';

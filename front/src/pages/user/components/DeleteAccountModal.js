@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const DeleteAccountModal = ({ onDelete, onCancel, memberName }) => {
     const [deleteWord, setDeleteWord] = useState('');

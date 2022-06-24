@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaImage } from 'react-icons/fa';
 import { MdFileUpload } from 'react-icons/md';
 

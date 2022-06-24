@@ -1,3 +1,4 @@
+import React from 'react';
 import videoHeader from './../../images/有氧/cardio-1.jpg';
 import VideoNav from './components/VideoNav';
 import VideoList from './components/VideoList';

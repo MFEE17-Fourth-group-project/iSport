@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TiLocation } from 'react-icons/ti';
 import Map from './../../images/map/map.png';
 import GymList from './GymList';

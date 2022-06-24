@@ -46,7 +46,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "npm run build:css && react-scripts build",
+        "build": "npm run build:css && node esbuild.config.js",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "build:css": "postcss src/style/tailwind.css -o src/style/main.css",
@@ -71,6 +71,9 @@
         ]
     },
     "devDependencies": {
+        "dotenv": "^16.0.1",
+        "esbuild": "^0.14.47",
+        "esbuild-plugin-inline-image": "0.0.8",
         "eslint-config-react-app": "6.0.0",
         "eslint-plugin-import": "2.24.2",
         "eslint-plugin-jsx-a11y": "6.4.1",

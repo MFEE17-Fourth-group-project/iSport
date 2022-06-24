@@ -1,3 +1,4 @@
+import React from 'react';
 import VideoCard from './VideoCard';
 import { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';

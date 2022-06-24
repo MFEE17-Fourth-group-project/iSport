@@ -1,3 +1,4 @@
+import React from 'react';
 import UserAside from '../components/UserAside';
 import { useAuth } from '../../../context/auth';
 import NotAuth from '../components/NotAuth';
