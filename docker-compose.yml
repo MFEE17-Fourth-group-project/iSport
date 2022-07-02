@@ -6,7 +6,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - ./back/build:/app/build
+      - react_build:/app/public
 
   back:
     depends_on:
@@ -16,15 +16,20 @@ services:
       - ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-
-  nginx:
-    image: nginx:latest
-    depends_on:
-      - back
-    ports:
-      - 80:80
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - react_build:/app/build
+
+  # nginx:
+  #   image: nginx:latest
+  #   depends_on:
+  #     - back
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  react_build:
 
 
 

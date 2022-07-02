@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const path =require("path")
 const connection = require('../utils/db');
 //這是資料驗證套件
 const{body,validationResult}=require("express-validator");
@@ -11,7 +10,6 @@ const signUpRules=[
 ]
 //密碼加密用
 const bcrypt=require("bcrypt");
-const { JsonWebTokenError } = require('jsonwebtoken');
 //第三方登入驗證用
 require('dotenv').config();
 const passport = require('passport');
@@ -26,7 +24,7 @@ passport.use(
         },
         async function (accessToken,refreshToken,profile,cb){
             let member=await connection.queryAsync(
-                "SELECT*FROM users WHERE googleid=?;",
+                "SELECT * FROM users WHERE googleid=?;",
                 [profile.id]
             );
             let returnMember=null;
@@ -204,9 +202,6 @@ router.post("/SignUp",signUpRules,async(req,res,next)=>{
     )
     res.json({message:"註冊成功"});
 });
-
-const jwt =require("jsonwebtoken");
-const { appendFile } = require('fs');
 
 //登入路游
 router.post("/Signin",async(req,res,next)=>{
