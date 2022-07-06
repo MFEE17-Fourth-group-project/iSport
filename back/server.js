@@ -8,7 +8,7 @@ const expressSession = require("express-session");
 const { addUser, removeUser, getUser, getUsersIn } = require('./utils/users');
 const { addTypingUser, removeTypingUser } = require('./utils/typingUsers');
 const { newMessage, newImg } = require('./utils/message');
-require("dotenv").config();
+// require("dotenv").config();
 let app = express();
 
 // Routers
@@ -25,7 +25,7 @@ let homepageRouter = require("./routers/homepage");
 
 app.use(express.static("public"));
 
-app.use(express.static(path.join(__dirname, '/build')));
+// app.use(express.static(path.join(__dirname, '/build')));
 // 啟用session
 app.use(
     expressSession({
@@ -39,9 +39,6 @@ app.use(
     cors({
         origin: [
             process.env.PORT_ORIGIN,
-            "http://localhost:3001",
-            "http://localhost:8080",
-            "http://localhost:3000",
         ],
         credentials: true,
     })
@@ -79,11 +76,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/*', function (_req, res) {
-    res.sendFile(
-        path.join(__dirname, "./build/index.html")
-    );
-});
+// app.get('/*', function (_req, res) {
+//     res.sendFile(
+//         path.join(__dirname, "./build/index.html")
+//     );
+// });
 
 // Not Found
 app.use((req, res, next) => {
@@ -109,9 +106,6 @@ const io = socketio(server, {
     cors: {
         origin: [
             process.env.PORT_ORIGIN,
-            "http://localhost:3001",
-            "http://localhost:8080",
-            "http://localhost:3000",
         ],
         credentials: true,
     }
