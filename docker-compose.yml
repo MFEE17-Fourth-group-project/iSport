@@ -16,8 +16,8 @@ services:
       - ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    volumes:
-      - react_build:/app/build
+    # volumes:
+    #   - react_build:/app/build
 
   nginx:
     image: nginx:latest
