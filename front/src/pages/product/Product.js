@@ -5,8 +5,6 @@ import ProductMain from './components/ProductMain/';
 
 import dataTest from './data/dataTest';
 
-import { FaAngleUp } from 'react-icons/fa';
-
 import { withRouter, useParams } from 'react-router-dom';
 
 function Product(props) {
@@ -32,9 +30,7 @@ function Product(props) {
 
         if (newProduct) {
             setCategoryData(newProduct);
-            setPhoto(
-                require('../../images/product/header/' + newProduct.photo)
-            );
+            setPhoto('../' + newProduct.photo);
         }
     }, [category]);
 
@@ -54,7 +50,7 @@ function Product(props) {
                 </div>
                 <figure className="h-full w-full ">
                     <img
-                        src={photo.default}
+                        src={photo}
                         alt=""
                         className="w-full h-full object-cover object-center"
                     />
