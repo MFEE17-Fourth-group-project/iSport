@@ -178,7 +178,7 @@ function Checkout(props) {
                         <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg sm:px-12 px-4 py-6 rounded-b-xl">
                             <form onSubmit={handleSubmit}>
                                 <div className="items-center pt-2 mb-6">
-                                    <label for="recipient">收件人</label>
+                                    <label htmlFor="recipient">收件人</label>
                                     <input
                                         type="text"
                                         className="input-style"
@@ -193,7 +193,7 @@ function Checkout(props) {
                                     ></input>
                                 </div>
                                 <div className="items-center pt-2 mb-6">
-                                    <label for="phone">行動電話</label>
+                                    <label htmlFor="phone">行動電話</label>
                                     <input
                                         type="phone"
                                         className="input-style"
@@ -208,7 +208,7 @@ function Checkout(props) {
                                     ></input>
                                 </div>
                                 <div className="items-center pt-2 mb-6">
-                                    <label for="email">信箱</label>
+                                    <label htmlFor="email">信箱</label>
                                     <input
                                         type="email"
                                         className="input-style"
@@ -222,7 +222,7 @@ function Checkout(props) {
                                     ></input>
                                 </div>
                                 <div className="items-center pt-2 mb-6">
-                                    <label for="address">住家地址</label>
+                                    <label htmlFor="address">住家地址</label>
                                     <input
                                         type="text"
                                         className="input-style"
@@ -237,7 +237,7 @@ function Checkout(props) {
                                     ></input>
                                 </div>
                                 <div className="items-center pt-2 mb-6">
-                                    <label for="delivery">寄送方式</label>
+                                    <label htmlFor="delivery">寄送方式</label>
                                     <select
                                         type="text"
                                         className="input-style"

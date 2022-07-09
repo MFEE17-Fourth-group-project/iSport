@@ -57,7 +57,7 @@ function CustomerService(props) {
                     <hr className="border-1 border-yellow-400 mb-10" />
                     <label
                         className="block text-white text-base font-bold mb-2"
-                        for="email"
+                        htmlFor="email"
                     >
                         註冊信箱：
                     </label>

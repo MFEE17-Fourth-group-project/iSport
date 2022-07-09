@@ -86,7 +86,7 @@ function SignUp() {
                         <form onSubmit={handleSubmit}>
                             <br />
                             <div>
-                                <label for="name">姓名：</label>
+                                <label htmlFor="name">姓名：</label>
                                 <input
                                     type="text"
                                     className="input-style "
@@ -101,7 +101,7 @@ function SignUp() {
                             </div>
                             <br />
                             <div className="lg:items-center lg:py-2  text-white mt-5 mb-5">
-                                <label for="account">帳號：</label>
+                                <label htmlFor="account">帳號：</label>
                                 <input
                                     type="text"
                                     className="input-style"
@@ -119,7 +119,7 @@ function SignUp() {
                             </div>
                             <div className="lg:flex lg:flex-wrap mr-3 mb-6 lg:justify-between text-white">
                                 <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 mb-5 relative">
-                                    <label for="password">密碼：</label>
+                                    <label htmlFor="password">密碼：</label>
                                     <input
                                         type={passwordShown ? 'text' : 'password'}
                                         placeholder="請輸入6-8位英數密碼"
@@ -146,7 +146,7 @@ function SignUp() {
                                     </i>
                                 </div>
                                 <div className="lg:items-center lg:py-2 lg:w-2/5 text-white mt-5 relative">
-                                    <label for="confirmPassword">確認密碼：</label>
+                                    <label htmlFor="confirmPassword">確認密碼：</label>
                                     <input
                                         type="password"
                                         onBlur={checkpassword}
@@ -165,7 +165,7 @@ function SignUp() {
                                 </div>
                             </div>
                             <div className="py-1 mb-5">
-                                <label for="email">信箱：</label>
+                                <label htmlFor="email">信箱：</label>
                                 <input
                                     type="email"
                                     id="email"
@@ -188,7 +188,7 @@ function SignUp() {
                             {/* <from> */}
                             <div className="text-white bg-gray-900 w-full object-cover object-center text-opacity-85 text-lg pl-12 py-5 pr-10">
                                 <div className=" py-2 mb-5">
-                                    <label for="phone">行動電話：</label>
+                                    <label htmlFor="phone">行動電話：</label>
                                     <input
                                         type="phone"
                                         id="phone"
@@ -202,7 +202,7 @@ function SignUp() {
                                     />
                                 </div>
                                 <div className="py-2 mb-5">
-                                    <label for="address">住家地址</label>
+                                    <label htmlFor="address">住家地址</label>
                                     <input
                                         type="text"
                                         id="address"
@@ -216,7 +216,7 @@ function SignUp() {
                                 </div>
                                 <div className="flex flex-wrap mr-3 mb-6 justify-between">
                                     <div className="items-center border-b py-2 md:w-2/5">
-                                        <label for="birthday">生日：</label>
+                                        <label htmlFor="birthday">生日：</label>
                                         <input
                                             type="date"
                                             id="birthday"
@@ -229,7 +229,7 @@ function SignUp() {
                                         />
                                     </div>
                                     <div class="xl:inline-block xl:w-64 mt-5">
-                                        <label for="gender">性別：</label>
+                                        <label htmlFor="gender">性別：</label>
                                         <select
                                             name="gender"
                                             id="gender"
@@ -260,7 +260,7 @@ function SignUp() {
                                     </div>
                                 </div>
                                 <div classNmae="mt-10"></div>
-                                <label for="aboutme">關於我：</label>
+                                <label htmlFor="aboutme">關於我：</label>
                                 <textarea
                                     id="aboutme"
                                     name="aboutme"

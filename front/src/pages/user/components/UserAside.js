@@ -125,7 +125,7 @@ function UserAside() {
                     </Link>
                     <li className="users-li cursor-pointer">
                         <FaShoppingCart className="userIcons" />
-                        <label for="ordermenu" className="cursor-pointer">
+                        <label htmlFor="ordermenu" className="cursor-pointer">
                             訂單管理
                         </label>
                         <input
@@ -146,7 +146,7 @@ function UserAside() {
                     </li>
                     <li className="users-li cursor-pointer">
                         <FaHeart className="userIcons" />
-                        <label for="videomenu" className="cursor-pointer">
+                        <label htmlFor="videomenu" className="cursor-pointer">
                             影片收藏
                         </label>
                         <input
@@ -166,7 +166,7 @@ function UserAside() {
                     </li>
                     <li className="users-li cursor-pointer">
                         <FaMoneyCheck className="userIcons" />
-                        <label for="articlemenu" className="cursor-pointer">
+                        <label htmlFor="articlemenu" className="cursor-pointer">
                             文章管理
                         </label>
                         <input
