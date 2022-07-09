@@ -28,7 +28,7 @@
         "tailwindcss": "2.2.7"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "node esbuild.serve.js",
         "build": "npm run build:css && node esbuild.config.js",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
