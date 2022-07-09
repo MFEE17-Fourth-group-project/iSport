@@ -22,7 +22,7 @@ const VideoCard = ({ video }) => {
                     secure="true"
                     publicId={file}
                     className="h-44 object-cover"
-                    sourceType={['jpg']}
+                    sourceTypes={['jpg']}
                 >
                     <Transformation height="176" width="300" />
                 </Video>

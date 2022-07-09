@@ -25,7 +25,7 @@ const VideoCollectionList = ({ collectedVideos }) => {
                                 secure="true"
                                 publicId={file}
                                 className="w-36 flex-grow-0 flex-shrink-0 h-full object-cover rounded-lg mr-4"
-                                sourceType={['jpg']}
+                                sourceTypes={['jpg']}
                             >
                                 <Transformation width="200" height="150" />
                             </Video>

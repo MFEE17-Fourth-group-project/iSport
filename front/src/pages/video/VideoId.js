@@ -144,7 +144,7 @@ const VideoId = ({ signInWindow, setSignInWindow }) => {
                                 15,
                                 28
                             )}`}
-                            sourceType={['mp4']}
+                            sourceTypes={['mp4']}
                             width="100%"
                             controls
                             controlsList="nodownload"
